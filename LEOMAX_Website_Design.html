@@ -439,10 +439,11 @@ footer{
 
   /* FOOTER */
   footer { padding: 48px 24px 28px; }
-  .footer-top { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom {
-    flex-direction: column; gap: 10px; text-align: center;
-  }
+  .footer-top { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .footer-col a { color: var(--silver) !important; font-size: 14px; padding: 4px 0; display: block; }
+  .footer-col li { margin-bottom: 14px; }
+  .footer-col h4 { margin-top: 8px; font-size: 12px; }
 }
 
 /* ============================================
