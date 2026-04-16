@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v1';
+const CACHE_NAME = 'leomax-v3';
 
 const ASSETS = [
   './LEOMAX_Website_Design.html',
@@ -47,15 +47,30 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch: cache-first strategy
+// Fetch: network-first for HTML, cache-first for assets
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      return cached || fetch(event.request).then(response => {
+  const isHTML = event.request.destination === 'document' ||
+                 event.request.url.endsWith('.html');
+
+  if (isHTML) {
+    // Network-first: always get latest HTML, fallback to cache
+    event.respondWith(
+      fetch(event.request).then(response => {
         const clone = response.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
         return response;
-      });
-    }).catch(() => caches.match('./LEOMAX_Website_Design.html'))
-  );
+      }).catch(() => caches.match(event.request))
+    );
+  } else {
+    // Cache-first for images, fonts, etc.
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        return cached || fetch(event.request).then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        });
+      })
+    );
+  }
 });
