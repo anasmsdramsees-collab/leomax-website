@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v10';
+const CACHE_NAME = 'leomax-v11';
 
 const ASSETS = [
   './LEOMAX_Website_Design.html',
@@ -27,6 +27,8 @@ const ASSETS = [
   './system-05-launch.html',
   './manifest.json',
   './PHOTO-2025-12-12-11-14-59.jpg',
+  './team.html',
+  './team/dr-anas-photo.png',
   './team/dr-anas.png',
   './team/kaya-haddad.png',
   './team/rita-nasser.png',

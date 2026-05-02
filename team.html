@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Team — LEOMAX</title>
+<meta name="theme-color" content="#010B1C">
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--black:#010B1C;--dark:#060F1F;--charcoal:#0D1E35;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(1,11,27,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(184,184,184,0.15)}
+.nav-logo img{height:38px;width:auto}
+.nav-back{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;border:1px solid rgba(184,184,184,.3);padding:8px 20px;transition:.2s}
+.nav-back:hover{background:var(--silver);color:var(--black)}
+.hero{padding:140px 64px 60px;text-align:center;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%)}
+.hero-tag{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--silver);display:block;margin-bottom:16px}
+.hero h1{font-size:clamp(32px,6vw,68px);font-weight:900;letter-spacing:-1px;color:var(--white);margin-bottom:16px}
+.hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--silver),transparent);margin:0 auto 20px}
+.hero-desc{font-size:16px;color:var(--silver);max-width:560px;margin:0 auto;line-height:1.7}
+.section{padding:80px 64px;max-width:1300px;margin:0 auto}
+.section-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--silver);margin-bottom:40px;padding-bottom:12px;border-bottom:1px solid rgba(184,184,184,.12)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.member-card{position:relative;cursor:pointer;overflow:hidden;border:1px solid rgba(184,184,184,.1);transition:.3s}
+.member-card:hover{border-color:rgba(184,184,184,.4);transform:translateY(-4px)}
+.member-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block}
+.member-info{padding:16px;background:var(--charcoal)}
+.member-name{font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px}
+.member-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
+.view-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-top:10px;opacity:.6;display:block}
+.member-card:hover .view-btn{opacity:1}
+
+/* Modal */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(1,11,27,.92);z-index:999;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{max-width:480px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal img{width:100%;display:block}
+.modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;background:rgba(1,11,27,.8);border:1px solid rgba(184,184,184,.3);color:var(--white);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:.2s}
+.modal-close:hover{background:var(--silver);color:var(--black)}
+
+/* Footer */
+footer{background:var(--dark);border-top:1px solid rgba(184,184,184,.1);padding:60px 64px 32px}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-col h4{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;padding:4px 0;transition:.2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(184,184,184,.1);padding-top:24px;font-size:11px;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center}
+
+@media(max-width:900px){
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  nav{padding:14px 20px}
+  .hero{padding:120px 24px 40px}
+  .section{padding:40px 20px}
+  .footer-top{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <a href="LEOMAX_Website_Design.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <span class="hero-tag">Introducing the Leomax AI Advisory Board</span>
+  <h1>Meet The Team</h1>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">Human-led. AI-powered. Built for growth. Our regional advisory board brings together specialized experts across strategy, AI, operations, finance, and beyond.</p>
+</section>
+
+<div class="section">
+  <p class="section-title">Founder</p>
+  <div class="team-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:60px">
+    <div class="member-card" onclick="window.location='company-founder.html'">
+      <img src="team/dr-anas.png" alt="Dr. Anas Elimam">
+      <div class="member-info">
+        <div class="member-name">Dr. Anas Elimam</div>
+        <div class="member-role">Founder & CEO</div>
+        <span class="view-btn">View Profile →</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title">Regional Advisory Board</p>
+  <div class="team-grid" id="boardGrid">
+    <div class="member-card" onclick="openModal('kaya-haddad')">
+      <img src="team/kaya-haddad.png" alt="Kaya Haddad">
+      <div class="member-info"><div class="member-name">Kaya Haddad</div><div class="member-role">Chief Strategy Officer</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('rita-nasser')">
+      <img src="team/rita-nasser.png" alt="Rita Nasser">
+      <div class="member-info"><div class="member-name">Rita Nasser</div><div class="member-role">Head of Innovation</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('rami-khalidi')">
+      <img src="team/rami-khalidi.png" alt="Rami Al Khalidi">
+      <div class="member-info"><div class="member-name">Rami Al Khalidi</div><div class="member-role">Operations Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('haya-kuwari')">
+      <img src="team/haya-kuwari.png" alt="Haya Al Kuwari">
+      <div class="member-info"><div class="member-name">Haya Al Kuwari</div><div class="member-role">Business Development Lead</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('laith-darwish')">
+      <img src="team/laith-darwish.png" alt="Laith Darwish">
+      <div class="member-info"><div class="member-name">Laith Darwish</div><div class="member-role">AI & Technology Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('hani-masry')">
+      <img src="team/hani-masry.png" alt="Hani El Masry">
+      <div class="member-info"><div class="member-name">Hani El Masry</div><div class="member-role">Chief Financial Officer</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('kamilia-fouad')">
+      <img src="team/kamilia-fouad.png" alt="Kamilia Fouad">
+      <div class="member-info"><div class="member-name">Kamilia Fouad</div><div class="member-role">Marketing & Brand Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('yasin-sherif')">
+      <img src="team/yasin-sherif.png" alt="Yasin El Sherif">
+      <div class="member-info"><div class="member-name">Yasin El Sherif</div><div class="member-role">Supply Chain Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('mashari-otaibi')">
+      <img src="team/mashari-otaibi.png" alt="Mashari Al Otaibi">
+      <div class="member-info"><div class="member-name">Mashari Al Otaibi</div><div class="member-role">Investment Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('elhanouf-harbi')">
+      <img src="team/elhanouf-harbi.png" alt="Elhanouf Al Harbi">
+      <div class="member-info"><div class="member-name">Elhanouf Al Harbi</div><div class="member-role">Sustainability Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('mira-mansoori')">
+      <img src="team/mira-mansoori.png" alt="Mira Al Mansoori">
+      <div class="member-info"><div class="member-name">Mira Al Mansoori</div><div class="member-role">Partnerships Director</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('miral-hakimi')">
+      <img src="team/miral-hakimi.png" alt="Miral Al Hakimi">
+      <div class="member-info"><div class="member-name">Miral Al Hakimi</div><div class="member-role">Regional Expansion Lead</div><span class="view-btn">View Profile →</span></div>
+    </div>
+    <div class="member-card" onclick="openModal('valeria-moreno')">
+      <img src="team/valeria-moreno.png" alt="Valeria Moreno">
+      <div class="member-info"><div class="member-name">Valeria Moreno</div><div class="member-role">Executive Assistant</div><span class="view-btn">View Profile →</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img id="modalImg" src="" alt="">
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Systems</h4>
+      <a href="system-01-growth.html">Growth System</a>
+      <a href="system-02-ai.html">AI Transformation</a>
+      <a href="system-03-marketing.html">Marketing Engine</a>
+      <a href="system-04-content.html">Content System</a>
+      <a href="system-05-launch.html">Launch System</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="company-about.html">About LEOMAX</a>
+      <a href="company-process.html">Our Process</a>
+      <a href="company-case-studies.html">Case Studies</a>
+      <a href="company-founder.html">Dr. Anas Elimam</a>
+      <a href="team.html">Our Team</a>
+      <a href="company-contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <a href="mailto:info@leomaxglobal.com">info@leomaxglobal.com</a>
+      <a href="company-contact.html">Book a Discovery Call</a>
+      <a href="LEOMAX_Website_Design.html" style="margin-top:16px;background:var(--silver);color:var(--black);padding:10px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:inline-block">← Home</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LEOMAX. All rights reserved.</span>
+    <span>Human-led. AI-powered. Built for growth.</span>
+  </div>
+</footer>
+
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(r=>{r.update()});}
+function openModal(name){
+  document.getElementById('modalImg').src='team/'+name+'.png';
+  document.getElementById('modalBg').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(!e||e.target===document.getElementById('modalBg')||e.target.classList.contains('modal-close')){
+    document.getElementById('modalBg').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal({target:document.getElementById('modalBg')})});
+</script>
+</body>
+</html>
