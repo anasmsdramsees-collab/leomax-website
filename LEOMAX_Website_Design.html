@@ -26,7 +26,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
-  --silver:#C9A84C;--chrome:#E8C96A;--white:#FFFFFF;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
   --gray:#8fa8be;--lgray:#4a7090;
   
 }
@@ -39,7 +39,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:18px 64px;
   background:rgba(6,14,26,0.95);
-  border-bottom:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(184,184,184,0.15);
   backdrop-filter:blur(16px);
 }
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
@@ -65,24 +65,24 @@ nav{
 }
 .hero-grid{
   position:absolute;inset:0;
-  background-image:linear-gradient(rgba(201,168,76,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,168,76,.05) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(184,184,184,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,184,184,.05) 1px,transparent 1px);
   background-size:64px 64px;
 }
 .hero-skyline{
   position:absolute;bottom:0;left:0;right:0;height:45%;
-  background:linear-gradient(180deg,transparent 0%,rgba(201,168,76,.04) 100%);
+  background:linear-gradient(180deg,transparent 0%,rgba(184,184,184,.04) 100%);
   mask-image:linear-gradient(180deg,transparent,rgba(0,0,0,.4));
 }
 .hero-glow{
   position:absolute;top:20%;left:50%;transform:translateX(-50%);
   width:700px;height:500px;
-  background:radial-gradient(ellipse,rgba(201,168,76,.10) 0%,transparent 70%);
+  background:radial-gradient(ellipse,rgba(184,184,184,.08) 0%,transparent 70%);
   pointer-events:none;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(201,168,76,.08);
+  background:rgba(184,184,184,.08);
   border:1px solid rgba(201,168,76,.35);
   padding:6px 18px;margin-bottom:40px;
   font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--silver);
@@ -100,7 +100,7 @@ nav{
 .hero h1{
   font-size:clamp(56px,11vw,128px);
   letter-spacing:14px;font-weight:900;
-  background:linear-gradient(180deg,#FFFFFF 30%,#C9A84C 100%);
+  background:linear-gradient(180deg,#FFFFFF 30%,#B8B8B8 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   margin-bottom:6px;position:relative;z-index:1;line-height:.9;
 }
@@ -492,7 +492,7 @@ footer{
 
   <div class="hero-badge"><span class="badge-dot"></span>AI Business Transformation · Riyadh, KSA</div>
 
-    <div class="hero-lion-wrap" style="width:160px;height:160px;margin:0 auto 24px;position:relative;z-index:1"><img src="icons/icon-512.png" alt="LEOMAX Lion" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(201,168,76,.3))"></div>
+    <div class="hero-lion-wrap" style="width:160px;height:160px;margin:0 auto 24px;position:relative;z-index:1"><img src="icons/icon-512.png" alt="LEOMAX Lion" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(184,184,184,.2))"></div>
 
   <h1>LEOMAX</h1>
   <p class="hero-by">by Anas Elimam</p>
