@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v6';
+const CACHE_NAME = 'leomax-v7';
 
 const ASSETS = [
   './LEOMAX_Website_Design.html',

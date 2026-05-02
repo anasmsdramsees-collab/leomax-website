@@ -25,10 +25,9 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#060e1a;--charcoal:#0f1e35;--dark:#080f1c;
-  --silver:#c9a84c;--chrome:#e8c96a;--white:#FFFFFF;
-  --gray:#8fa8be;--dgray:#1e3a5f;--lgray:#4a6a8a;
-  --navy:#0a1628;--gold:#c9a84c;--gold-light:#e8c96a;
+  --black:#0A0A0A;--charcoal:#1C1C1E;--dark:#111113;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
@@ -39,7 +38,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:18px 64px;
   background:rgba(6,14,26,0.95);
-  border-bottom:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(184,184,184,0.15);
   backdrop-filter:blur(16px);
 }
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
@@ -61,34 +60,34 @@ nav{
   align-items:center;justify-content:center;
   text-align:center;padding:120px 40px 80px;
   position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#060e1a 0%,#0a1628 50%,#060e1a 100%);
+  background:linear-gradient(180deg,#0A0A0A 0%,#111113 50%,#0A0A0A 100%);
 }
 .hero-grid{
   position:absolute;inset:0;
-  background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);
   background-size:64px 64px;
 }
 .hero-skyline{
   position:absolute;bottom:0;left:0;right:0;height:45%;
-  background:linear-gradient(180deg,transparent 0%,rgba(201,168,76,.03) 100%);
+  background:linear-gradient(180deg,transparent 0%,rgba(184,184,184,.03) 100%);
   mask-image:linear-gradient(180deg,transparent,rgba(0,0,0,.4));
 }
 .hero-glow{
   position:absolute;top:20%;left:50%;transform:translateX(-50%);
   width:700px;height:500px;
-  background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 70%);
+  background:radial-gradient(ellipse,rgba(184,184,184,.08) 0%,transparent 70%);
   pointer-events:none;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(201,168,76,.08);
-  border:1px solid rgba(201,168,76,.35);
+  background:rgba(184,184,184,.08);
+  border:1px solid rgba(184,184,184,.35);
   padding:6px 18px;margin-bottom:40px;
-  font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--silver);
   position:relative;z-index:1;
 }
-.badge-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+.badge-dot{width:5px;height:5px;background:var(--silver);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 
 .hero-lion-wrap{
@@ -100,7 +99,7 @@ nav{
 .hero h1{
   font-size:clamp(56px,11vw,128px);
   letter-spacing:14px;font-weight:900;
-  background:linear-gradient(180deg,#FFF 30%,#c9a84c 100%);
+  background:linear-gradient(180deg,#FFF 30%,#B8B8B8 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   margin-bottom:6px;position:relative;z-index:1;line-height:.9;
 }
@@ -110,7 +109,7 @@ nav{
 }
 .hero-divider{
   width:60px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  background:linear-gradient(90deg,transparent,var(--silver),transparent);
   margin:0 auto 28px;
 }
 .hero-tagline{
@@ -759,119 +758,119 @@ footer{
 <section style="background:var(--dark);padding:100px 64px" id="team">
   <div style="max-width:1200px;margin:0 auto">
     <div style="text-align:center;margin-bottom:24px">
-      <p style="font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px">The People Behind The Systems</p>
+      <p style="font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--silver);margin-bottom:14px">Introducing the Leomax AI Advisory Board</p>
       <h2 style="font-size:clamp(30px,5vw,52px);font-weight:900;color:var(--white);margin-bottom:16px">Meet The Team</h2>
-      <div style="width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 20px"></div>
-      <p style="font-size:15px;color:var(--gray);max-width:520px;margin:0 auto">14 specialists. One unified mission. Building what lasts across the GCC and beyond.</p>
+      <div style="width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--silver),transparent);margin:0 auto 20px"></div>
+      <p style="font-size:15px;color:var(--chrome);max-width:620px;margin:0 auto">At Leomax, we believe the future of consulting will combine human leadership with AI-powered expertise. Led by Dr. Anas Elimam, our digital advisory board brings together specialized virtual experts across strategy, innovation, operations, AI, finance, branding, investment, sustainability, partnerships, and regional expansion.</p>
     </div>
 
     <!-- Team Group Photo -->
-    <div style="margin:60px 0;border:1px solid rgba(201,168,76,.2);overflow:hidden;position:relative">
+    <div style="margin:60px 0;border:1px solid rgba(184,184,184,.15);overflow:hidden;position:relative">
       <img src="team/team-office.png" alt="LEOMAX Team" style="width:100%;height:480px;object-fit:cover;object-position:center;display:block">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(6,14,26,.8) 100%)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,10,.85) 100%)"></div>
       <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);text-align:center;width:100%">
-        <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)">Human-led. AI-powered. Built for growth.</p>
+        <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--silver)">Human-led. AI-powered. Built for growth.</p>
       </div>
     </div>
 
     <!-- Team Grid -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" class="team-grid">
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/dr-anas.png" alt="Dr. Anas Elimam" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Dr. Anas Elimam</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Founder & CEO</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Founder & CEO</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/kaya-haddad.png" alt="Kaya Haddad" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Kaya Haddad</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Chief Strategy Officer</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Chief Strategy Officer</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/laith-darwish.png" alt="Laith Darwish" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Laith Darwish</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">AI & Technology Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">AI & Technology Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/kamilia-fouad.png" alt="Kamilia Fouad" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Kamilia Fouad</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Marketing & Brand Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Marketing & Brand Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/hani-masry.png" alt="Hani El Masry" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Hani El Masry</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Chief Financial Officer</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Chief Financial Officer</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/rami-khalidi.png" alt="Rami Al Khalidi" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Rami Al Khalidi</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Operations Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Operations Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/mashari-otaibi.png" alt="Mashari Al Otaibi" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Mashari Al Otaibi</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Investment Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Investment Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/haya-kuwari.png" alt="Haya Al Kuwari" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Haya Al Kuwari</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Business Development Lead</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Business Development Lead</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/rita-nasser.png" alt="Rita Nasser" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Rita Nasser</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Head of Innovation</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Head of Innovation</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/elhanouf-harbi.png" alt="Elhanouf Al Harbi" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Elhanouf Al Harbi</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Sustainability Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Sustainability Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/mira-mansoori.png" alt="Mira Al Mansoori" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Mira Al Mansoori</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Partnerships Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Partnerships Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/miral-hakimi.png" alt="Miral Al Hakimi" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Miral Al Hakimi</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Regional Expansion Lead</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Regional Expansion Lead</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/yasin-sherif.png" alt="Yasin El Sherif" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Yasin El Sherif</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Supply Chain Director</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Supply Chain Director</p>
         </div>
       </div>
-      <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
+      <div style="position:relative;overflow:hidden;border:1px solid rgba(184,184,184,.12);transition:.3s;cursor:pointer" onmouseover="this.querySelector('.team-overlay').style.opacity='1'" onmouseout="this.querySelector('.team-overlay').style.opacity='0'">
         <img src="team/valeria-moreno.png" alt="Valeria Moreno" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block">
         <div class="team-overlay" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,26,.95) 100%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px">
           <p style="font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px">Valeria Moreno</p>
-          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Executive Assistant</p>
+          <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)">Executive Assistant</p>
         </div>
       </div>
     </div>
