@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v5';
+const CACHE_NAME = 'leomax-v6';
 
 const ASSETS = [
   './LEOMAX_Website_Design.html',
@@ -26,7 +26,23 @@ const ASSETS = [
   './system-04-content.html',
   './system-05-launch.html',
   './manifest.json',
-  './PHOTO-2025-12-12-11-14-59.jpg'
+  './PHOTO-2025-12-12-11-14-59.jpg',
+  './team/dr-anas.png',
+  './team/kaya-haddad.png',
+  './team/rita-nasser.png',
+  './team/rami-khalidi.png',
+  './team/haya-kuwari.png',
+  './team/laith-darwish.png',
+  './team/hani-masry.png',
+  './team/kamilia-fouad.png',
+  './team/yasin-sherif.png',
+  './team/mashari-otaibi.png',
+  './team/elhanouf-harbi.png',
+  './team/mira-mansoori.png',
+  './team/miral-hakimi.png',
+  './team/valeria-moreno.png',
+  './team/team-group.png',
+  './team/team-office.png'
 ];
 
 // Install: cache all assets
