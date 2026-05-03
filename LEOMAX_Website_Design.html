@@ -342,15 +342,24 @@ nav{
   font-size:15px;font-weight:700;color:var(--dgray);
   letter-spacing:2px;text-transform:uppercase;
   transition:color .2s;cursor:default;
+  display:flex;align-items:center;justify-content:center;
 }
 .client-name:hover{color:var(--silver)}
 a.client-link{
   text-decoration:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
 }
-a.client-link:hover{
-  color:var(--white);
-  text-decoration:underline;
-  text-underline-offset:4px;
+a.client-link:hover{color:var(--white);}
+.client-logo{
+  max-height:38px;width:auto;
+  filter:brightness(0) invert(1);
+  opacity:0.55;
+  transition:opacity .3s,filter .3s;
+}
+a.client-link:hover .client-logo,
+.client-name:hover .client-logo{
+  opacity:1;
+  filter:none;
 }
 
 /*  CTA  */
@@ -745,14 +754,14 @@ footer{
 <div class="clients">
   <p>Trusted by leading companies</p>
   <div class="clients-row">
-    <span class="client-name">AWC</span>
+    <span class="client-name"><img src="clients/awc.png" alt="AWC" class="client-logo"></span>
     <a href="case-ramsees.html" class="client-name client-link">Ramsees</a>
     <span class="client-name">Hult Prize</span>
-    <a href="case-regional.html" class="client-name client-link">Sudan Business Forum</a>
-    <a href="case-kbc.html" class="client-name client-link">KBC</a>
-    <a href="case-jambak.html" class="client-name client-link">Jambak</a>
-    <a href="case-clenso.html" class="client-name client-link">Clenso</a>
-    <a href="case-autopoint.html" class="client-name client-link">Auto Point</a>
+    <a href="case-regional.html" class="client-name client-link"><img src="clients/regional.png" alt="Sudan Business Forum" class="client-logo"></a>
+    <a href="case-kbc.html" class="client-name client-link"><img src="clients/kbc.png" alt="KBC" class="client-logo"></a>
+    <a href="case-jambak.html" class="client-name client-link"><img src="clients/jambak.png" alt="Jambak" class="client-logo"></a>
+    <a href="case-clenso.html" class="client-name client-link"><img src="clients/clenso.png" alt="Clenso" class="client-logo"></a>
+    <a href="case-autopoint.html" class="client-name client-link"><img src="clients/autopoint.png" alt="Auto Point" class="client-logo"></a>
   </div>
 </div>
 

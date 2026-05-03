@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v15';
+const CACHE_NAME = 'leomax-v16';
 
 const ASSETS = [
   './LEOMAX_Website_Design.html',
@@ -44,7 +44,13 @@ const ASSETS = [
   './team/miral-hakimi.png',
   './team/valeria-moreno.png',
   './team/team-group.png',
-  './team/team-office.png'
+  './team/team-office.png',
+  './clients/clenso.png',
+  './clients/autopoint.png',
+  './clients/regional.png',
+  './clients/kbc.png',
+  './clients/jambak.png',
+  './clients/awc.png'
 ];
 
 // Install: cache all assets
