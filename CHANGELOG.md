@@ -205,8 +205,40 @@ Replaced simple footer on all sub-pages with a full 3-column footer:
 
 ---
 
+---
+
+## What Was Done — Session 3 (2026-05-03)
+
+### 17. Team Card Images — HTML Bug Fix
+- **Root cause:** All 13 non-founder `<img>` tags in the team grid had **duplicate `style=` attributes**
+- Browsers only read the first `style` attribute — `style="cursor:pointer"` was first, so `width:100%;aspect-ratio:3/4;object-fit:cover` were ignored
+- Dr. Anas card was correct (had sizing in first style), all others were broken
+- **Fix:** Merged into single correct style with `object-position:top` added so face is visible when cropped
+- SW cache bumped: v11 → v12
+
+### 18. Team Photos Restored to Original Colors
+- Replaced all 13 processed team member PNGs with the original unmodified ChatGPT profile card images
+- Full mapping confirmed by viewing each thumbnail:
+  - `10_49_49` → dr-anas.png, `10_49_55` → kaya-haddad.png, `10_50_00` → rita-nasser.png
+  - `10_50_06` → rami-khalidi.png, `10_50_12` → haya-kuwari.png, `10_50_19` → laith-darwish.png
+  - `10_50_26` → hani-masry.png, `10_50_32` → kamilia-fouad.png, `10_50_38` → yasin-sherif.png
+  - `10_50_43` → mashari-otaibi.png, `10_50_49` → elhanouf-harbi.png, `10_50_55` → mira-mansoori.png
+  - `10_51_02` → miral-hakimi.png, `10_51_09` → valeria-moreno.png
+- Natural skin tones and clothing colors fully preserved (no processing applied)
+- SW cache bumped: v12 → v13
+
+### 19. About Section Logo — Black Background Fixed
+- The About section card was rendering a base64-encoded PNG with black background
+- **Fix:** Replaced `<img src="data:image/png;base64,...">` with `<img src="logo.png">`
+- `logo.png` is RGBA with 95.5% transparent pixels — blends seamlessly into navy background
+- Two base64 images were found and replaced
+- SW cache bumped: v13 → v14
+
+---
+
 ## Known Notes
-- SW cache v11 — updates automatically on every page load
+- SW cache v14 — updates automatically on every page load
 - If old content appears: close browser completely and reopen
 - All 24 pages have consistent navy + silver theme
-- Team card photos: original colors preserved, only LEOMAX logo removed from top strip
+- Team card photos: original ChatGPT profile card images (unmodified, natural colors)
+- About section logo: transparent PNG, no black background
