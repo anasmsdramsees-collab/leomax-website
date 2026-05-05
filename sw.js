@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v23';
+const CACHE_NAME = 'leomax-v24';
 
 const ASSETS = [
   './motion.js',
