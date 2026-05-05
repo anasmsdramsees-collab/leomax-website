@@ -4,9 +4,28 @@
    ============================================================ */
 
 (function () {
-  const API_KEY = 'YOUR_API_KEY_HERE';
-  const MODEL   = 'claude-3-5-haiku-20241022';
-  const BASE_IMG = 'https://anasmsdramsees-collab.github.io/leomax-website/team/';
+  const API_KEY      = 'YOUR_API_KEY_HERE';
+  const MODEL        = 'claude-3-5-haiku-20241022';
+  const BASE_IMG     = 'https://anasmsdramsees-collab.github.io/leomax-website/team/';
+  const CALENDLY_URL = 'https://calendly.com/anas-msd-ramsees/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1';
+
+  // Load Calendly assets if not already present
+  function loadCalendly(cb) {
+    if (window.Calendly) { cb(); return; }
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(css);
+    const js = document.createElement('script');
+    js.src = 'https://assets.calendly.com/assets/external/widget.js';
+    js.onload = cb;
+    document.head.appendChild(js);
+  }
+
+  function openCalendlyPopup() {
+    loadCalendly(() => Calendly.initPopupWidget({ url: CALENDLY_URL }));
+    return false;
+  }
 
   const MEMBERS = {
     'dr-anas': {
@@ -119,9 +138,9 @@
   #lm-chat-send:hover{background:#fff}
   #lm-chat-send:disabled{opacity:.4;cursor:not-allowed}
   #lm-chat-book{
-    display:block;text-align:center;margin-top:10px;padding:8px;
+    display:block;width:100%;text-align:center;margin-top:10px;padding:9px;
     font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-    color:#010B1C;background:#B8B8B8;text-decoration:none;transition:.2s;
+    color:#010B1C;background:#B8B8B8;border:none;cursor:pointer;transition:.2s;font-family:inherit;
   }
   #lm-chat-book:hover{background:#fff}
   @media(max-width:500px){#lm-chat-panel{width:100vw}}
@@ -152,7 +171,7 @@
         <textarea id="lm-chat-input" placeholder="Ask a question..." rows="1"></textarea>
         <button type="submit" id="lm-chat-send">➤</button>
       </form>
-      <a id="lm-chat-book" href="https://calendly.com/anas-msd-ramsees/30min" target="_blank">📅 Book a Strategy Call</a>
+      <button id="lm-chat-book" onclick="openCalendlyPopup()">📅 Book a Strategy Call</button>
     </div>
   `;
 

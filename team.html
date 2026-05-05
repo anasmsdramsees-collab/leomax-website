@@ -61,6 +61,11 @@ footer{background:var(--dark);border-top:1px solid rgba(184,184,184,.1);padding:
   .team-grid{grid-template-columns:repeat(2,1fr);gap:10px}
 }
 </style>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/anas-msd-ramsees/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1'});return false;}
+</script>
 </head>
 <body>
 
@@ -179,7 +184,7 @@ footer{background:var(--dark);border-top:1px solid rgba(184,184,184,.1);padding:
     <div class="footer-col">
       <h4>Get In Touch</h4>
       <a href="mailto:info@leomaxglobal.com">info@leomaxglobal.com</a>
-      <a href="company-contact.html">Book a Discovery Call</a>
+      <a href="#" onclick="openCalendly();return false;">Book a Discovery Call</a>
       <a href="LEOMAX_Website_Design.html" style="margin-top:16px;background:var(--silver);color:var(--black);padding:10px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:inline-block">← Home</a>
     </div>
   </div>

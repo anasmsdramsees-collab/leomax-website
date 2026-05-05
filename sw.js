@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v21';
+const CACHE_NAME = 'leomax-v22';
 
 const ASSETS = [
   './chat-widget.js',

@@ -490,6 +490,11 @@ footer{
   .nav-wordmark { font-size: 16px; letter-spacing: 3px; }
 }
 </style>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/anas-msd-ramsees/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1'});return false;}
+</script>
 </head>
 <body>
 
@@ -502,7 +507,7 @@ footer{
     <li><a href="#process">Process</a></li>
     <li><a href="#founder">Founder</a></li>
   </ul>
-  <a href="company-contact.html"><button class="nav-cta">Start Transformation →</button></a>
+  <button class="nav-cta" onclick="openCalendly()">Start Transformation →</button>
 </nav>
 
 <!--  HERO  -->
@@ -521,7 +526,7 @@ footer{
   <p class="hero-desc">We build smart business systems powered by AI. Five integrated systems that transform complexity into clarity, chaos into structure, and potential into measurable growth.</p>
   <div class="hero-btns">
     <a href="#systems"><button class="btn-white">Explore Systems →</button></a>
-    <a href="company-contact.html"><button class="btn-outline">Book a Discovery Call</button></a>
+    <button class="btn-outline" onclick="openCalendly()">Book a Discovery Call</button>
   </div>
   <div class="scroll-hint">
     <div class="scroll-line"></div>
@@ -916,7 +921,7 @@ footer{
 <section class="cta-section">
   <h2>Ready to Build<br>What Lasts?</h2>
   <p>Let's transform your business with the Five Systems. One conversation. Unlimited potential.</p>
-  <a href="company-contact.html"><button class="btn-dark">Start Your Transformation →</button></a>
+  <button class="btn-dark" onclick="openCalendly()">Start Your Transformation →</button>
 </section>
 
 <!--  FOOTER  -->
