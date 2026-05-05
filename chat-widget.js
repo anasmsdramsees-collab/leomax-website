@@ -7,7 +7,7 @@
    • Domain-specific qualifying questions per advisor
    • Off-topic & flattery redirect with QA notice
    • Follow-up: schedule via Calendly or callback with time preference
-   • Email summary to management via EmailJS
+   • Email summary to management via Web3Forms
    ============================================================ */
 
 (function () {
@@ -15,15 +15,11 @@
   /* ============================================================
      CONFIG
      ============================================================
-     EmailJS template variables to set up at emailjs.com:
-       {{visitor_name}}, {{visitor_company}}, {{visitor_contact}},
-       {{followup_pref}}, {{advisor_name}}, {{advisor_role}},
-       {{chat_time}}, {{transcript}}
+     Web3Forms account: anas.msd.ramsees@gmail.com
+     Chat summaries emailed there after each session (free, 250/month).
   ============================================================ */
-  const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
-  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-  const MANAGEMENT_EMAIL    = 'info@leomax.sa';
+  const WEB3FORMS_KEY    = '8cbff62d-1c1b-4bea-affb-7947492e14be';
+  const MANAGEMENT_EMAIL = 'info@leomax.sa';
 
   const API_KEY      = 'YOUR_API_KEY_HERE';
   const MODEL        = 'claude-3-5-haiku-20241022';
@@ -31,7 +27,7 @@
   const CALENDLY_URL = 'https://calendly.com/anas-msd-ramsees/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1';
 
   const HAS_KEY     = API_KEY && API_KEY !== 'YOUR_API_KEY_HERE';
-  const HAS_EMAILJS = EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY';
+  const HAS_W3F = !!WEB3FORMS_KEY;
 
   /* ============================================================
      LANGUAGE DETECTION
@@ -634,32 +630,44 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
   }
 
   /* ============================================================
-     EMAILJS
+     WEB3FORMS — Email summary to management
+     Sends to the registered account email (anas.msd.ramsees@gmail.com)
+     Free plan: 250 submissions/month
      ============================================================ */
-  function loadEmailJS(cb) {
-    if (window.emailjs) { cb(); return; }
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-    s.onload = () => { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); cb(); };
-    document.head.appendChild(s);
-  }
-
   function sendEmail(contactValue, followupPref) {
-    if (!HAS_EMAILJS) return;
+    if (!HAS_W3F) return;
     const ts = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Riyadh', hour12: true });
-    loadEmailJS(() => {
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        to_email:        MANAGEMENT_EMAIL,
-        visitor_name:    visitorName    || 'Unknown',
-        visitor_company: visitorCompany || 'Not provided',
-        visitor_contact: contactValue   || 'Not provided',
-        followup_pref:   followupPref   || 'Not specified',
-        advisor_name:    currentMember  ? currentMember.name : '—',
-        advisor_role:    currentMember  ? currentMember.role : '—',
-        chat_time:       ts,
-        transcript:      buildTranscript(),
-      }).catch(() => {});
-    });
+    const advisorName = currentMember ? currentMember.name : '—';
+    const advisorRole = currentMember ? currentMember.role : '—';
+    const subject = `New LEOMAX Lead — ${advisorName} / ${visitorName || 'Unknown'}`;
+
+    const body = [
+      `=== LEOMAX Chat Lead ===`,
+      `Time:      ${ts}`,
+      `Advisor:   ${advisorName} (${advisorRole})`,
+      ``,
+      `=== Visitor ===`,
+      `Name:      ${visitorName    || 'Not provided'}`,
+      `Company:   ${visitorCompany || 'Not provided'}`,
+      `Contact:   ${contactValue   || 'Not provided'}`,
+      `Follow-up: ${followupPref   || 'Not specified'}`,
+      ``,
+      `=== Transcript ===`,
+      buildTranscript(),
+    ].join('\n');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key:  WEB3FORMS_KEY,
+        subject:     subject,
+        from_name:   'LEOMAX Chat Widget',
+        email:       contactValue || 'noreply@leomax.sa',
+        message:     body,
+        botcheck:    '',
+      }),
+    }).catch(() => {});
   }
 
   function buildTranscript() {
