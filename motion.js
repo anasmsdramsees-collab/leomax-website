@@ -278,11 +278,15 @@
     }, { passive: true });
   }
 
-  /* ---- Smooth scroll for anchor links ---- */
+  /* ---- Smooth scroll for anchor links (skip href="#" — used by chat/calendly buttons) ---- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return; // skip empty anchors — handled by onclick
     a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      try {
+        const t = document.querySelector(href);
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      } catch(err) {}
     });
   });
 
