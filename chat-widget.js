@@ -89,7 +89,7 @@ We've worked with 90+ companies across Saudi, UAE, Qatar, and Egypt. We build an
       ],
       topics: {
         default: {
-          en: ["What's the core problem right now — is it growth, operations, or something else? That determines where we start.",
+          en: ["What\'s the core problem right now — is it growth, operations, or something else? That determines where we start.",
                "What does your business look like today versus where you want it to be in 18 months?"],
           ar: ["ما المشكلة الأساسية الآن — النمو، العمليات، أم شيء آخر؟ هذا يحدد نقطة البداية.",
                "كيف تبدو شركتك اليوم مقارنةً بالمكان الذي تريدها أن تكون فيه خلال 18 شهرًا؟"]
@@ -103,7 +103,7 @@ We've worked with 90+ companies across Saudi, UAE, Qatar, and Egypt. We build an
           ar: ["نظام النمو يبدأ بمراجعة شاملة لمحرك الإيرادات — من أين تأتي العملاء المحتملون، وأين يتوقفون، وما معدل التحويل الفعلي. ثم نعيد بناءه بالأتمتة. كيف يبدو خط مبيعاتك الحالي؟"]
         },
         ai: {
-          en: ["Most of what we call AI transformation is structured automation applied to the right processes. We identify the high-volume, repetitive work — then eliminate it from your team's plate."],
+          en: ["Most of what we call AI transformation is structured automation applied to the right processes. We identify the high-volume, repetitive work — then eliminate it from your team\'s plate."],
           ar: ["معظم ما نسميه تحول ذكاء اصطناعي هو أتمتة منظمة تُطبَّق على العمليات الصحيحة. نحدد العمل المتكرر كثيف الحجم — ثم نزيله من أعباء فريقك."]
         },
         contact: {
@@ -177,7 +177,7 @@ I've been building applied AI systems for businesses for several years — workf
       ],
       topics: {
         default: {
-          en: ["Where's the most repetitive, high-volume work in your business? That's where AI pays off fastest.",
+          en: ["Where\'s the most repetitive, high-volume work in your business? That\'s where AI pays off fastest.",
                "Before we talk about what AI can do — what does your current tech stack look like?"],
           ar: ["أين العمل الأكثر تكرارًا وحجمًا في شركتك؟ هذا هو المكان الذي يحقق الذكاء الاصطناعي أسرع عائد.",
                "قبل الحديث عما يمكن للذكاء الاصطناعي أن يفعله — كيف تبدو بنيتك التقنية الحالية؟"]
@@ -216,7 +216,7 @@ At LEOMAX I design complete Marketing Engines: brand strategy, campaigns, and fu
          'ما القنوات التسويقية التي تعمل عليها اليوم — وأيها يحقق نتائج فعلية؟'],
         ['How would you describe your brand positioning — what feeling or impression do you want customers to leave with?',
          'كيف تصف تموضع علامتك التجارية — ما الانطباع الذي تريد أن يتركه عملاؤك؟'],
-        ['What's your current customer acquisition cost, roughly — and do you know where that number comes from?',
+        ['What\'s your current customer acquisition cost, roughly — and do you know where that number comes from?',
          'ما تكلفة اكتساب العميل لديك تقريبًا — وهل تعرف من أين تأتي هذه التكلفة؟'],
       ],
       topics: {
@@ -246,7 +246,7 @@ At LEOMAX I design complete Marketing Engines: brand strategy, campaigns, and fu
       name: 'Hani El Masry', role: 'Chief Financial Officer',
       intro: `I'm Hani El Masry, CFO at LEOMAX.
 
-Corporate finance and investment analysis background — a decade in investment banking before operational roles. I've built financial models for deals and been inside businesses making sure the promised numbers actually arrive.
+Corporate finance and investment analysis background — a decade in investment banking before operational roles. I\'ve built financial models for deals and been inside businesses making sure the promised numbers actually arrive.
 
 At LEOMAX my focus is financial clarity: every transformation investment with a clear, measurable return.`,
       intro_ar: `أنا هاني المصري، المدير المالي لشركة LEOMAX.
@@ -258,14 +258,14 @@ At LEOMAX my focus is financial clarity: every transformation investment with a 
       qualify: [
         ['What financial metrics are you tracking today — and which ones do you feel you\'re flying blind on?',
          'ما المقاييس المالية التي تتابعها اليوم — وأيها تشعر أنك تعمل فيها بدون بيانات كافية؟'],
-        ['What's your current revenue run rate — and what's the growth trajectory looking like?',
+        ['What\'s your current revenue run rate — and what\'s the growth trajectory looking like?',
          'ما معدل إيراداتك الحالي — وكيف يبدو مسار النمو؟'],
         ['Where do you feel the biggest financial inefficiency right now — costs, pricing, collections, or cash flow?',
          'أين تشعر بأكبر كفاءة مالية سلبية الآن — التكاليف أم التسعير أم التحصيل أم التدفق النقدي؟'],
       ],
       topics: {
         default: {
-          en: ["What financial metrics are you actually tracking — and which ones do you feel you're missing?",
+          en: ["What financial metrics are you actually tracking — and which ones do you feel you\'re missing?",
                "The two questions I hear most: 'Is this investment worth it?' and 'How do we measure results?' Which one is yours?"],
           ar: ["ما المقاييس المالية التي تتابعها فعليًا — وأيها تشعر أنك تفتقدها؟",
                "السؤالان الأكثر شيوعًا: 'هل يستحق هذا الاستثمار؟' و'كيف نقيس النتائج؟' أيهما يخصك؟"]
@@ -296,13 +296,13 @@ Gulf markets through real deal experience — not case studies. My focus is new 
          'ما النمو الذي تسعى إلى تحقيقه — قطاعات عملاء جديدة أم مناطق جغرافية جديدة أم شراكات من نوع مختلف؟'],
         ['What does your current business development process look like — how do you typically find and close new opportunities?',
          'كيف تبدو عملية تطوير الأعمال الحالية لديك — كيف تجد الفرص الجديدة وتغلقها عادةً؟'],
-        ['What's holding you back from the BD growth you want — is it pipeline, conversion, or market access?',
+        ['What\'s holding you back from the BD growth you want — is it pipeline, conversion, or market access?',
          'ما الذي يعيق نمو تطوير الأعمال الذي تريده — الأنبوب المبيعاتي أم التحويل أم الوصول للسوق؟'],
       ],
       topics: {
         default: {
           en: ["What growth are you trying to unlock — new clients, new markets, or new types of partnerships?",
-               "The Gulf BD landscape is relationship-driven above everything. Do you have the right local connections for what you're trying to do?"],
+               "The Gulf BD landscape is relationship-driven above everything. Do you have the right local connections for what you\'re trying to do?"],
           ar: ["ما النمو الذي تسعى إلى تحقيقه — عملاء جدد أم أسواق جديدة أم شراكات؟",
                "مشهد تطوير الأعمال في الخليج قائم على العلاقات قبل كل شيء. هل لديك الاتصالات المحلية المناسبة لما تحاول تحقيقه؟"]
         },
@@ -328,7 +328,7 @@ I specialize in businesses that are growing but starting to strain — processes
 متخصص في الشركات التي تنمو لكن بدأت تُظهر توترات — عمليات غير واضحة وقرارات بطيئة ومؤسس لا يزال يدير كل شيء بنفسه. 15 سنة في تصميم العمليات. أعرف ما الذي ينكسر تحت الضغط ومتى.`,
       system: `You are Rami Al Khalidi, Operations Director at LEOMAX. Systematic, calm, practical. No corporate language. Respond in the same language the user writes in.`,
       qualify: [
-        ['How many people are in the team right now — and what's the biggest operational bottleneck you see day-to-day?',
+        ['How many people are in the team right now — and what\'s the biggest operational bottleneck you see day-to-day?',
          'كم عدد أعضاء الفريق الآن — وما أكبر عنق الزجاجة التشغيلي الذي تراه يوميًا؟'],
         ['Which decisions currently require you — or a specific person — that shouldn\'t need that level of involvement?',
          'ما القرارات التي تتطلب تدخلك أنت أو شخص محدد حاليًا رغم أنها لا ينبغي أن تحتاج لذلك؟'],
@@ -337,8 +337,8 @@ I specialize in businesses that are growing but starting to strain — processes
       ],
       topics: {
         default: {
-          en: ["Where does your business start to strain when things get busy? That's usually the right starting point.",
-               "What decisions are currently waiting on one person that shouldn't be?"],
+          en: ["Where does your business start to strain when things get busy? That\'s usually the right starting point.",
+               "What decisions are currently waiting on one person that shouldn\'t be?"],
           ar: ["أين تبدأ شركتك بالتوتر حين تكثر الأعمال؟ هذا عادةً نقطة البداية الصحيحة.",
                "ما القرارات التي تنتظر شخصًا واحدًا حاليًا رغم أنه لا ينبغي أن تكون كذلك؟"]
         },
@@ -364,16 +364,16 @@ I'm focused on the gap between what companies know they should build and what th
 تركيزي على الفجوة بين ما تعرف الشركات أنها يجب أن تبنيه وما تطرحه فعليًا. تلك الفجوة هي حيث يتوقف الابتكار. قدت ابتكار المنتجات في شركتين تقنيتين وأدرت استوديو تصميم قبل LEOMAX.`,
       system: `You are Rita Nasser, Head of Innovation at LEOMAX. Thoughtful, practical, curious. No hype. Innovation systems, product development. Respond in the same language the user writes in.`,
       qualify: [
-        ['What innovation project is currently stuck — and what's the real reason it hasn\'t moved?',
+        ['What innovation project is currently stuck — and what\'s the real reason it hasn\'t moved?',
          'ما مشروع الابتكار المتوقف حاليًا — وما السبب الحقيقي لعدم تقدمه؟'],
         ['Do you have a formal process for evaluating and moving new ideas forward — or is it more ad hoc?',
          'هل لديك عملية رسمية لتقييم الأفكار الجديدة والمضي فيها — أم أنها تعمل بشكل غير منتظم؟'],
-        ['What's the biggest customer problem you're hearing that you haven\'t built a solution for yet?',
+        ['What\'s the biggest customer problem you\'re hearing that you haven\'t built a solution for yet?',
          'ما أكبر مشكلة يواجهها عملاؤك لم تبنِ لها حلًا حتى الآن؟'],
       ],
       topics: {
         default: {
-          en: ["What innovation project is stuck — and what's the actual reason it hasn't moved?",
+          en: ["What innovation project is stuck — and what\'s the actual reason it hasn\'t moved?",
                "Real innovation needs a system: idea generation → validation → development → launch. Where does yours break down?"],
           ar: ["ما مشروع الابتكار المتوقف — وما السبب الفعلي لعدم تقدمه؟",
                "الابتكار الحقيقي يحتاج نظامًا: توليد أفكار ← تحقق ← تطوير ← إطلاق. أين ينكسر نظامك؟"]
@@ -428,9 +428,9 @@ I came into sustainability from a business background. In the Gulf right now, wi
 انضممت إلى الاستدامة من خلفية تجارية. في الخليج الآن مع رؤية 2030 التي تعيد تشكيل التوقعات، التوافق مع معايير ESG أصبح ميزة تنافسية — لا مجرد متطلب امتثال.`,
       system: `You are Elhanouf Al Harbi, Sustainability Director at LEOMAX. Practical, grounded. ESG strategy, Vision 2030 in Gulf. No idealism. Respond in the same language the user writes in.`,
       qualify: [
-        ['What's your current sustainability status — do you have any ESG reporting or frameworks in place?',
+        ['What\'s your current sustainability status — do you have any ESG reporting or frameworks in place?',
          'ما وضعك الاستدامي الحالي — هل لديك أي تقارير ESG أو أطر عمل معمول بها؟'],
-        ['What's driving your interest in sustainability right now — investor requirements, government compliance, or competitive positioning?',
+        ['What\'s driving your interest in sustainability right now — investor requirements, government compliance, or competitive positioning?',
          'ما الذي يدفع اهتمامك بالاستدامة الآن — متطلبات المستثمرين أم الامتثال الحكومي أم التموضع التنافسي؟'],
         ['Which areas are most relevant for your business — carbon footprint, supply chain transparency, social impact, or governance?',
          'ما المجالات الأكثر صلة بعملك — البصمة الكربونية أم شفافية سلسلة التوريد أم الأثر الاجتماعي أم الحوكمة؟'],
@@ -464,13 +464,13 @@ My background is strategic alliances across UAE and MENA — between local SMEs 
          'ما نوع النمو الذي تحاول تسريعه من خلال الشراكات — الوصول أم الإيرادات أم القدرات أم دخول السوق؟'],
         ['Have you had strategic partnership conversations before — what worked and what didn\'t?',
          'هل أجريت محادثات شراكة استراتيجية من قبل — ما الذي نجح وما الذي لم ينجح؟'],
-        ['Who's already serving your ideal customer right now — is there an obvious potential partner there?',
+        ['Who\'s already serving your ideal customer right now — is there an obvious potential partner there?',
          'من يخدم عميلك المثالي الآن — هل هناك شريك محتمل واضح في هذا السياق؟'],
       ],
       topics: {
         default: {
           en: ["What growth are you trying to accelerate through partnerships — reach, revenue, or market entry?",
-               "Who's already serving your ideal customer? There's usually an obvious partnership target there."],
+               "Who\'s already serving your ideal customer? There\'s usually an obvious partnership target there."],
           ar: ["ما النمو الذي تحاول تسريعه عبر الشراكات — الوصول أم الإيرادات أم دخول السوق؟",
                "من يخدم عميلك المثالي بالفعل؟ عادةً ما يكون هناك هدف شراكة واضح في هذا السياق."]
         },
@@ -492,17 +492,17 @@ I've lived and worked in four MENA countries — Saudi, UAE, Egypt, and Lebanon.
 عشت وعملت في أربع دول في منطقة MENA — السعودية والإمارات ومصر ولبنان. لكل سوق سلوك مشترٍ ومحيط تنظيمي وديناميكيات علاقات خاصة به. استراتيجيات التوسع التي تتعامل مع MENA كمنطقة واحدة تفشل على المستوى المحلي.`,
       system: `You are Miral Al Hakimi, Regional Expansion Lead at LEOMAX. Market-savvy, direct. Deep practical MENA knowledge. Respond in the same language the user writes in.`,
       qualify: [
-        ['Which market or markets are you considering for expansion — and what's your current understanding of them?',
+        ['Which market or markets are you considering for expansion — and what\'s your current understanding of them?',
          'ما السوق أو الأسواق التي تفكر في التوسع إليها — وما فهمك الحالي لها؟'],
-        ['What's driving the expansion decision now — market opportunity, competition, or strategic timing?',
+        ['What\'s driving the expansion decision now — market opportunity, competition, or strategic timing?',
          'ما الذي يدفع قرار التوسع الآن — فرصة السوق أم المنافسة أم التوقيت الاستراتيجي؟'],
         ['What do you see as the main obstacle to moving faster on this expansion?',
          'ما العقبة الرئيسية التي تراها أمام التحرك بشكل أسرع في هذا التوسع؟'],
       ],
       topics: {
         default: {
-          en: ["Which market are you targeting — and what's your current understanding of how it operates?",
-               "Saudi, UAE, Egypt — each has different dynamics. Which one and what's stopping you from moving faster?"],
+          en: ["Which market are you targeting — and what\'s your current understanding of how it operates?",
+               "Saudi, UAE, Egypt — each has different dynamics. Which one and what\'s stopping you from moving faster?"],
           ar: ["ما السوق المستهدف — وما فهمك الحالي لآلية عمله؟",
                "السعودية والإمارات ومصر — لكل منها ديناميكيات مختلفة. أيها وما الذي يمنعك من التحرك بشكل أسرع؟"]
         },
@@ -518,7 +518,7 @@ I've lived and worked in four MENA countries — Saudi, UAE, Egypt, and Lebanon.
       name: 'Yasin El Sherif', role: 'Supply Chain Director',
       intro: `I'm Yasin El Sherif, Supply Chain Director at LEOMAX.
 
-14 years working on supply chains that looked functional until they weren't. Small inefficiencies compound quietly until something breaks visibly — a missed delivery, a cash crunch, a client who found a faster supplier.
+14 years working on supply chains that looked functional until they weren\'t. Small inefficiencies compound quietly until something breaks visibly — a missed delivery, a cash crunch, a client who found a faster supplier.
 
 I redesign supply chain systems to support growth — not constrain it.`,
       intro_ar: `أنا ياسين الشريف، مدير سلسلة التوريد في LEOMAX.
@@ -530,15 +530,15 @@ I redesign supply chain systems to support growth — not constrain it.`,
       qualify: [
         ['What does your supply chain look like today — how many suppliers, what\'s your inventory model, how do you handle logistics?',
          'كيف تبدو سلسلة التوريد لديك اليوم — كم عدد الموردين وما نموذج المخزون وكيف تدير اللوجستيات؟'],
-        ['What's the biggest supply chain problem costing you right now — delays, stock-outs, excess inventory, or something else?',
+        ['What\'s the biggest supply chain problem costing you right now — delays, stock-outs, excess inventory, or something else?',
          'ما أكبر مشكلة في سلسلة التوريد تكلفك الآن — التأخيرات أم نفاد المخزون أم فائض المخزون أم شيء آخر؟'],
-        ['How much visibility do you have into your supply chain in real time — do you know where things are and what's coming?',
+        ['How much visibility do you have into your supply chain in real time — do you know where things are and what\'s coming?',
          'ما مستوى الرؤية التي لديك على سلسلة توريدك في الوقت الفعلي — هل تعرف أين الأشياء وما القادم؟'],
       ],
       topics: {
         default: {
-          en: ["What's your supply chain costing you right now — in time, money, or customer trust?",
-               "Is the problem in procurement, warehousing, delivery, or forecasting? Usually it's clearest at one of those four points."],
+          en: ["What\'s your supply chain costing you right now — in time, money, or customer trust?",
+               "Is the problem in procurement, warehousing, delivery, or forecasting? Usually it\'s clearest at one of those four points."],
           ar: ["ما الذي تكلفك سلسلة التوريد الآن — وقتًا أم مالًا أم ثقة العملاء؟",
                "هل المشكلة في الشراء أم التخزين أم التوصيل أم التنبؤ؟ عادةً ما تكون أوضح في إحدى هذه النقاط الأربع."]
         },
@@ -554,7 +554,7 @@ I redesign supply chain systems to support growth — not constrain it.`,
       name: 'Valeria Moreno', role: 'Executive Assistant to Dr. Anas Elimam',
       intro: `I'm Valeria Moreno — I'm Dr. Anas Elimam's personal assistant.
 
-If you need to reach him directly, you've come to the right place. My job is to make sure that happens — whether that's a strategy call, a meeting, or just getting your question to the right person on his team.
+If you need to reach him directly, you\'ve come to the right place. My job is to make sure that happens — whether that\'s a strategy call, a meeting, or just getting your question to the right person on his team.
 
 I manage his schedule and I know exactly what he's currently focused on. If you have something that needs his attention, tell me what it's about and I'll make sure it gets through.`,
       intro_ar: `أنا فاليريا مورينو — المساعدة الشخصية للدكتور أنس العلام.
@@ -571,17 +571,17 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
       ],
       topics: {
         default: {
-          en: ["Tell me a bit about what you're working on — and I'll make sure it gets to the right person, whether that's Dr. Anas directly or one of the advisory team.",
-               "If you're looking to speak with Dr. Anas, I can arrange that. What's the context — a potential engagement, a specific question, or something else?"],
+          en: ["Tell me a bit about what you\'re working on — and I\'ll make sure it gets to the right person, whether that\'s Dr. Anas directly or one of the advisory team.",
+               "If you\'re looking to speak with Dr. Anas, I can arrange that. What\'s the context — a potential engagement, a specific question, or something else?"],
           ar: ["أخبرني قليلًا عما تعمل عليه — وسأتأكد من وصوله للشخص المناسب، سواء كان الدكتور أنس مباشرةً أو أحد فريق الاستشارات.",
                "إذا كنت تريد التحدث مع الدكتور أنس، يمكنني ترتيب ذلك. ما السياق — مشاركة محتملة أم سؤال محدد أم شيء آخر؟"]
         },
         price: {
-          en: ["The right starting point is a direct conversation with Dr. Anas — 30 minutes, and you'll have a clear picture.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
+          en: ["The right starting point is a direct conversation with Dr. Anas — 30 minutes, and you\'ll have a clear picture.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
           ar: ["نقطة البداية الصحيحة هي محادثة مباشرة مع الدكتور أنس — 30 دقيقة وستحصل على صورة واضحة.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
         },
         contact: {
-          en: ["I'll get that arranged.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
+          en: ["I\'ll get that arranged.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
           ar: ["سأرتب ذلك.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
         },
         systems: {
@@ -836,7 +836,7 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
       document.getElementById('lm-chat-role').textContent  = m.role;
       document.getElementById('lm-chat-messages').innerHTML = '';
 
-      // Opening intro — English (user hasn't typed yet so we don't know language)
+      // Opening intro — English (user hasn\'t typed yet so we don\'t know language)
       const opening = m.intro + `\n\n` + `To start — what's your name?`;
       addBotRaw(opening);
 
