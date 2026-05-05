@@ -5,7 +5,7 @@
 
 (function () {
   const API_KEY = 'YOUR_API_KEY_HERE';
-  const MODEL   = 'claude-haiku-4-5';
+  const MODEL   = 'claude-3-5-haiku-20241022';
   const BASE_IMG = 'https://anasmsdramsees-collab.github.io/leomax-website/team/';
 
   const MEMBERS = {
