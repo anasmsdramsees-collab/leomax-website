@@ -28,8 +28,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .member-info{padding:16px;background:var(--charcoal)}
 .member-name{font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px}
 .member-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
-.view-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-top:10px;opacity:.6;display:block}
+.card-actions{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.view-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);opacity:.6;cursor:pointer}
 .member-card:hover .view-btn{opacity:1}
+.chat-btn{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--black);background:var(--silver);padding:5px 12px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.chat-btn:hover{background:var(--white);color:var(--black)}
 
 /* Modal */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(1,11,27,.92);z-index:999;align-items:center;justify-content:center;padding:20px}
@@ -81,7 +84,10 @@ footer{background:var(--dark);border-top:1px solid rgba(184,184,184,.1);padding:
       <div class="member-info">
         <div class="member-name">Dr. Anas Elimam</div>
         <div class="member-role">Founder & CEO</div>
-        <span class="view-btn">View Profile →</span>
+        <div class="card-actions">
+          <span class="view-btn">View Profile →</span>
+          <a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=dr-anas" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -90,55 +96,55 @@ footer{background:var(--dark);border-top:1px solid rgba(184,184,184,.1);padding:
   <div class="team-grid" id="boardGrid">
     <div class="member-card" onclick="openModal('kaya-haddad')">
       <img src="team/kaya-haddad.png" alt="Kaya Haddad">
-      <div class="member-info"><div class="member-name">Kaya Haddad</div><div class="member-role">Chief Strategy Officer</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Kaya Haddad</div><div class="member-role">Chief Strategy Officer</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=kaya-haddad" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('rita-nasser')">
       <img src="team/rita-nasser.png" alt="Rita Nasser">
-      <div class="member-info"><div class="member-name">Rita Nasser</div><div class="member-role">Head of Innovation</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Rita Nasser</div><div class="member-role">Head of Innovation</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=rita-nasser" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('rami-khalidi')">
       <img src="team/rami-khalidi.png" alt="Rami Al Khalidi">
-      <div class="member-info"><div class="member-name">Rami Al Khalidi</div><div class="member-role">Operations Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Rami Al Khalidi</div><div class="member-role">Operations Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=rami-khalidi" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('haya-kuwari')">
       <img src="team/haya-kuwari.png" alt="Haya Al Kuwari">
-      <div class="member-info"><div class="member-name">Haya Al Kuwari</div><div class="member-role">Business Development Lead</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Haya Al Kuwari</div><div class="member-role">Business Development Lead</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=haya-kuwari" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('laith-darwish')">
       <img src="team/laith-darwish.png" alt="Laith Darwish">
-      <div class="member-info"><div class="member-name">Laith Darwish</div><div class="member-role">AI & Technology Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Laith Darwish</div><div class="member-role">AI & Technology Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=laith-darwish" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('hani-masry')">
       <img src="team/hani-masry.png" alt="Hani El Masry">
-      <div class="member-info"><div class="member-name">Hani El Masry</div><div class="member-role">Chief Financial Officer</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Hani El Masry</div><div class="member-role">Chief Financial Officer</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=hani-masry" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('kamilia-fouad')">
       <img src="team/kamilia-fouad.png" alt="Kamilia Fouad">
-      <div class="member-info"><div class="member-name">Kamilia Fouad</div><div class="member-role">Marketing & Brand Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Kamilia Fouad</div><div class="member-role">Marketing & Brand Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=kamilia-fouad" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('yasin-sherif')">
       <img src="team/yasin-sherif.png" alt="Yasin El Sherif">
-      <div class="member-info"><div class="member-name">Yasin El Sherif</div><div class="member-role">Supply Chain Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Yasin El Sherif</div><div class="member-role">Supply Chain Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=yasin-sherif" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('mashari-otaibi')">
       <img src="team/mashari-otaibi.png" alt="Mashari Al Otaibi">
-      <div class="member-info"><div class="member-name">Mashari Al Otaibi</div><div class="member-role">Investment Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Mashari Al Otaibi</div><div class="member-role">Investment Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=mashari-otaibi" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('elhanouf-harbi')">
       <img src="team/elhanouf-harbi.png" alt="Elhanouf Al Harbi">
-      <div class="member-info"><div class="member-name">Elhanouf Al Harbi</div><div class="member-role">Sustainability Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Elhanouf Al Harbi</div><div class="member-role">Sustainability Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=elhanouf-harbi" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('mira-mansoori')">
       <img src="team/mira-mansoori.png" alt="Mira Al Mansoori">
-      <div class="member-info"><div class="member-name">Mira Al Mansoori</div><div class="member-role">Partnerships Director</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Mira Al Mansoori</div><div class="member-role">Partnerships Director</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=mira-mansoori" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('miral-hakimi')">
       <img src="team/miral-hakimi.png" alt="Miral Al Hakimi">
-      <div class="member-info"><div class="member-name">Miral Al Hakimi</div><div class="member-role">Regional Expansion Lead</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Miral Al Hakimi</div><div class="member-role">Regional Expansion Lead</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=miral-hakimi" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
     <div class="member-card" onclick="openModal('valeria-moreno')">
       <img src="team/valeria-moreno.png" alt="Valeria Moreno">
-      <div class="member-info"><div class="member-name">Valeria Moreno</div><div class="member-role">Executive Assistant</div><span class="view-btn">View Profile →</span></div>
+      <div class="member-info"><div class="member-name">Valeria Moreno</div><div class="member-role">Executive Assistant</div><div class="card-actions"><span class="view-btn">View Profile →</span><a href="https://app.base44.com/apps/69f9ba447b0710651d35d800/preview?member=valeria-moreno" target="_blank" class="chat-btn" onclick="event.stopPropagation()">Chat →</a></div></div>
     </div>
   </div>
 </div>
