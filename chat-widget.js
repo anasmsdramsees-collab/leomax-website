@@ -727,7 +727,9 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
     position:absolute;bottom:1px;right:1px;
     width:10px;height:10px;border-radius:50%;
     background:#34d399;border:2px solid #07101E;
+    transition:background .3s;
   }
+  #lm-chat-online.away{background:#6B7280}
   #lm-chat-info{flex:1;min-width:0}
   #lm-chat-name{font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #lm-chat-status{font-size:11px;color:#34d399;margin-top:1px}
@@ -892,6 +894,26 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
   document.body.appendChild(panel);
 
   /* ============================================================
+     ONLINE STATUS  (8 AM – 5 PM Riyadh = all online; after 5 PM = 2 daily)
+     ============================================================ */
+  function _riyadhNow() {
+    const utcMs = Date.now() + new Date().getTimezoneOffset() * 60000;
+    return new Date(utcMs + 3 * 3600000); // UTC+3
+  }
+  function getOnlineSlugs() {
+    const r = _riyadhNow();
+    const h = r.getHours();
+    const slugs = Object.keys(MEMBERS);
+    if (h >= 8 && h < 17) return new Set(slugs); // all online during business hours
+    // After hours: 2 advisors per day, rotated by date seed
+    const seed = r.getFullYear() * 10000 + (r.getMonth() + 1) * 100 + r.getDate();
+    const i1 = seed % slugs.length;
+    let i2 = (seed * 7 + 3) % slugs.length;
+    if (i2 === i1) i2 = (i2 + 1) % slugs.length;
+    return new Set([slugs[i1], slugs[i2]]);
+  }
+
+  /* ============================================================
      STATE
      ============================================================ */
   let currentMember  = null;
@@ -924,10 +946,21 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
       chatTurns      = 0;
       userLang       = 'en';
 
+      const online = getOnlineSlugs().has(slug);
       document.getElementById('lm-chat-avatar').src = BASE_IMG + slug + '.png';
-      document.getElementById('lm-chat-name').textContent  = m.name;
-      document.getElementById('lm-chat-role').textContent  = m.role;
+      document.getElementById('lm-chat-name').textContent = m.name;
       document.getElementById('lm-chat-messages').innerHTML = '';
+      const dot = document.getElementById('lm-chat-online');
+      const status = document.getElementById('lm-chat-status');
+      if (online) {
+        dot.classList.remove('away');
+        status.textContent = 'Online — ready to help';
+        status.style.color = '#34d399';
+      } else {
+        dot.classList.add('away');
+        status.textContent = 'Away — will respond soon';
+        status.style.color = '#9CA3AF';
+      }
 
       // Opening intro — English (user hasn\'t typed yet so we don\'t know language)
       const opening = m.intro + `\n\n` + `To start — what's your name?`;
@@ -938,8 +971,10 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
       document.body.style.overflow = 'hidden';
       setTimeout(() => document.getElementById('lm-chat-input').focus(), 380);
     },
-    close: function () { closeChat(); },
-    book:  function () { openCalendlyPopup(); }
+    close:    function () { closeChat(); },
+    book:     function () { openCalendlyPopup(); },
+    isOnline: function (slug) { return getOnlineSlugs().has(slug); },
+    onlineNow: function () { return Array.from(getOnlineSlugs()); }
   };
 
   function closeChat() {
