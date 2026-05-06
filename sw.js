@@ -1,6 +1,7 @@
-const CACHE_NAME = 'leomax-v28';
+const CACHE_NAME = 'leomax-v29';
 
 const ASSETS = [
+  './intake-chat.js',
   './motion.js',
   './chat-widget.js',
   './LEOMAX_Website_Design.html',
