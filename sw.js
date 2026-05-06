@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v29';
+const CACHE_NAME = 'leomax-v30';
 
 const ASSETS = [
   './intake-chat.js',
@@ -53,7 +53,20 @@ const ASSETS = [
   './clients/regional.png',
   './clients/kbc.png',
   './clients/jambak.png',
-  './clients/awc.png'
+  './clients/awc.png',
+  './blog.html',
+  './blog-strategy-why-most-strategic-plans-fail.html',
+  './blog-ai-what-businesses-get-wrong-about-ai.html',
+  './blog-finance-cash-flow-is-not-profit.html',
+  './blog-marketing-brand-before-campaigns.html',
+  './blog-operations-the-cost-of-undocumented-processes.html',
+  './blog-growth-pipeline-is-a-system-not-a-list.html',
+  './blog-investment-what-investors-look-for.html',
+  './blog-sustainability-esg-is-now-a-business-requirement.html',
+  './blog-expansion-why-regional-expansion-fails.html',
+  './blog-supply-chain-resilience-not-efficiency.html',
+  './blog-innovation-ideas-that-never-ship.html',
+  './blog-strategy-90-days-to-a-real-system.html'
 ];
 
 // Install: cache all assets

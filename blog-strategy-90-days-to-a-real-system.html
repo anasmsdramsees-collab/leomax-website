@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — 90 Days to a Real System: How We Build Inside Businesses</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>window.location.reload());
+  }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#888;--dgray:#3A3A3A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--silver)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-wordmark{font-size:18px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-back:hover{color:var(--white)}
+.art-hero{padding:140px 64px 60px;max-width:860px;margin:0 auto;position:relative}
+.art-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:24px}
+.art-title{font-size:clamp(32px,6vw,60px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:var(--white);margin-bottom:28px}
+.art-divider{width:40px;height:2px;background:rgba(184,184,184,.3);margin-bottom:32px}
+.art-byline{display:flex;align-items:center;gap:16px}
+.art-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top center;border:1px solid rgba(184,184,184,.2)}
+.art-author-name{font-size:13px;font-weight:700;color:var(--white)}
+.art-author-role{font-size:11px;color:#5B7FA6;margin-top:2px}
+.art-meta{font-size:11px;color:#3A4A5A;margin-top:3px;letter-spacing:.5px}
+.art-body{max-width:720px;margin:0 auto;padding:0 64px 100px}
+.art-body h2{font-size:22px;font-weight:800;color:var(--white);margin:52px 0 16px;letter-spacing:-.3px}
+.art-body p{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:20px}
+.art-body blockquote{border-left:2px solid rgba(184,184,184,.3);padding:16px 24px;margin:36px 0;font-size:17px;font-style:italic;color:var(--silver);line-height:1.7}
+.art-body ul{margin:20px 0 20px 20px}
+.art-body ul li{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:10px}
+.art-separator{width:40px;height:1px;background:rgba(184,184,184,.2);margin:60px auto}
+.art-cta{background:var(--white);text-align:center;padding:80px 64px}
+.art-cta h2{font-size:clamp(24px,4vw,44px);color:var(--black);margin-bottom:12px;letter-spacing:-1px;font-weight:900}
+.art-cta p{font-size:16px;color:#555;margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-dark{background:var(--black);color:var(--white);padding:14px 40px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-dark:hover{background:#111}
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .art-hero{padding:100px 24px 48px}
+  .art-body{padding:0 24px 80px}
+  .art-cta{padding:60px 24px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html">
+    <img src="logo.png" alt="LEOMAX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html">Home</a></li>
+    <li><a href="blog.html">Perspectives</a></li>
+  </ul>
+  <a class="nav-back" href="blog.html">← All Articles</a>
+</nav>
+
+<div class="art-hero">
+  <span class="art-cat" style="background:rgba(100,149,237,.12);color:#6495ED">Strategy</span>
+  <h1 class="art-title">90 Days to a Real System: How We Build Inside Businesses</h1>
+  <div class="art-divider"></div>
+  <div class="art-byline">
+    <img class="art-avatar" src="team/dr-anas.png" alt="Dr. Anas Elimam">
+    <div>
+      <div class="art-author-name">Dr. Anas Elimam</div>
+      <div class="art-author-role">Founder &amp; CEO</div>
+      <div class="art-meta">Jan 2026 · 9 min read</div>
+    </div>
+  </div>
+</div>
+
+<article class="art-body">
+
+  <h2>Why We Do Not Write Reports</h2>
+  <p>The standard consulting model produces a deliverable: a report, a deck, a strategy document. The document is comprehensive. It contains research, analysis, recommendations, and an implementation roadmap. It is handed over to the client, who thanks the team, files it carefully, and returns to running the business. Six months later, the document is still in the shared drive. The business looks the same as it did before the engagement. The consultant was paid to produce a document, and the document exists. The system that was supposed to result from it does not.</p>
+  <p>LEOMAX was built around a rejection of this model. The reason is straightforward: documents do not change how businesses operate. Systems do. A report that recommends a new sales process does not create a new sales process. A framework that defines the right decision-making structure does not change who makes decisions or how they are made. The gap between recommendation and implementation is precisely where value is lost — and it is a gap that conventional consulting fills with words rather than work.</p>
+  <p>Our model is embedded engagement: we work inside the business, alongside the team, for a defined period, and we leave behind a running system rather than a deliverable. The output is not a document — it is a changed way of operating that the business owns completely and can run without us. That standard changes what we do in an engagement, how we measure success, and what we are willing to commit to at the start. It also means we are selective about which engagements we take, because the model only works in businesses where leadership is genuinely committed to building something, not to receiving analysis.</p>
+
+  <h2>The First 30 Days: Diagnosis Without Assumptions</h2>
+  <p>Every engagement begins with diagnosis, and the first principle of good diagnosis is that we do not know what we are going to find. Walking into a business with a hypothesis and spending the first thirty days confirming it is not diagnosis — it is theater. The businesses we work with are complex, context-specific, and shaped by decisions made years before our arrival. The patterns that matter are often not the ones that leadership described in the initial conversation. The real constraints are often one layer below the presenting problem.</p>
+  <p>The diagnostic process runs across four dimensions simultaneously. Financial: what does the actual performance data say about where value is being created and destroyed? Operational: how does work actually get done, end to end, including the informal workarounds and personal dependencies that never appear in an org chart? Market: what do customers and prospects actually think, and how does that perception align or diverge with how the business describes itself? Leadership: how are decisions actually made, who has real authority and influence, and where are the blockers that prevent the organization from acting on what it already knows?</p>
+  <p>The outputs of the diagnostic month are specific, not broad. We are not producing a thirty-page assessment of the business. We are identifying the three to five highest-leverage points where a structural change will produce a measurable improvement in business performance. Those leverage points become the agenda for the next sixty days. The diagnosis does not end at day thirty — we continue learning throughout the engagement — but the initial diagnostic sprint establishes the direction with enough clarity to begin building.</p>
+
+  <blockquote>"We are not here to tell you what your business needs. We are here to understand it well enough to build what actually works — and to build it with you, not for you."</blockquote>
+
+  <h2>Days 30 to 60: Architecture and Decisions</h2>
+  <p>The second month is where the work becomes structural. The diagnostic findings translate into architectural decisions: what system needs to be built, what its components are, how it connects to existing processes and tools, and what needs to change in the organization for the system to function as designed. These decisions are made collaboratively — with the leadership team and the people who will run the system — not handed down from an external consultant who will leave before the consequences of a bad decision become visible.</p>
+  <p>The architecture phase involves the hardest conversations of the engagement. Structural changes require resources to be reallocated. They require some people to take on expanded responsibilities and others to change how they work. They sometimes require acknowledging that a current approach is not working, which means someone's decision to implement that approach is being implicitly critiqued. Managing these conversations well — with directness, with respect for what the business has built, and with a clear eye on what the outcome needs to be — is most of what determines whether the build phase succeeds or stalls.</p>
+  <p>By the end of month two, the engagement produces a specific set of decisions rather than options. We recommend. We do not present three paths and ask the client to choose. Presenting options is a way of avoiding accountability for the recommendation. If we have done the diagnosis properly and understand the business, we know what needs to happen. We say so clearly, we explain our reasoning, we absorb the pushback, and we adjust where the pushback reveals something we missed. But the output is a decision, not a menu.</p>
+
+  <h2>Days 60 to 90: Deployment and Ownership</h2>
+  <p>The third month is deployment: taking the architecture from design to operation. This is where most internal transformation efforts fail, because design and execution require different conditions and different skills. Design can happen in conference rooms and documents. Execution requires real data, real users, real problems that were not anticipated in the design phase, and real decisions made by real people under time pressure. The transition from design to execution always reveals gaps. How those gaps are handled determines whether the system survives or reverts to the old way of working.</p>
+  <p>Our presence in the deployment month is different from the diagnostic and architecture months. We are not leading — we are supporting. The internal team is running the system. We are available to troubleshoot, to help resolve unexpected problems, to provide perspective when a design decision needs to be revisited in light of what execution has revealed. The critical thing is that by week ten, we are not the most knowledgeable person in the room about how the system works. The people who will run it permanently should be. If they are not, the ownership transfer has not happened, and the system will not survive our departure.</p>
+  <p>Ownership transfer is not a ceremony at the end of the engagement. It is a design principle that shapes everything from day one. We document decisions as they are made, not after the fact. We train the people who will run the system on the logic behind the design choices, not just the operational steps. We review performance data together with the team so that they develop the analytical habits to manage the system going forward. The goal is that on day ninety, the team looks at the system as something they built — because they did build it, alongside us — rather than something installed by external consultants that they are now responsible for maintaining without understanding.</p>
+
+  <h2>What Gets Left Behind</h2>
+  <p>The question we answer at the end of every engagement is: what is different about how this business operates? The answer should be specific and measurable. A pipeline management system that produces a weekly report on stage conversion rates, run entirely by the BD team without our involvement. A cash flow forecasting process that generates a thirteen-week rolling projection every Monday, owned by the CFO, with a defined review cadence built into the leadership calendar. A product development process with clear stage gates, documented criteria for advancement, and a quarterly portfolio review that the product team facilitates without external support.</p>
+  <p>These are not aspirational descriptions. They are the actual systems that exist in businesses we have worked with — running today, producing value today, maintained by the teams who own them. The businesses did not need us to keep them running. That is the test. If the system requires our ongoing involvement to function, we have created dependency, not capability. Dependency is what conventional consulting produces. Capability is what LEOMAX is accountable for.</p>
+  <p>The other thing that gets left behind is organizational confidence — the experience of having built something difficult and seeing it work. This is less tangible but genuinely important. Organizations that have successfully built and deployed a system for one function have demonstrated to themselves that they can do it again. The second system is faster to build. The third is faster still. The accumulation of operational capability compounds: each system makes the organization better at building the next one. That compounding is what separates a business that is genuinely getting better at running from one that is periodically improved by external intervention and then gradually reverts. We are trying to build the first kind. Every engagement is a test of whether we succeeded.</p>
+
+</article>
+
+<div class="art-cta">
+  <h2>This sounds familiar?</h2>
+  <p>If this reflects a challenge you are dealing with, the next step is a conversation — not a proposal.</p>
+  <a class="btn-dark" href="company-contact.html">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="company-about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="blog.html">Perspectives</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>

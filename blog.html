@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — Perspectives</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>window.location.reload());
+  }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#888;--dgray:#3A3A3A;--lgray:#555;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--silver)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-wordmark{font-size:18px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.nav-cta:hover{background:var(--chrome)}
+
+/* HERO */
+.blog-hero{min-height:42vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 64px 70px;position:relative;overflow:hidden}
+.blog-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.025) 1px,transparent 1px);background-size:64px 64px}
+.blog-hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(80,80,80,.09) 0%,transparent 70%);pointer-events:none}
+.blog-hero-inner{position:relative;z-index:1}
+.blog-hero-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--silver);margin-bottom:20px;display:block}
+.blog-hero-title{font-size:clamp(42px,8vw,86px);font-weight:900;letter-spacing:4px;background:linear-gradient(180deg,#FFF 30%,#666 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.95;margin-bottom:18px}
+.blog-hero-divider{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--silver),transparent);margin:0 auto 22px}
+.blog-hero-desc{font-size:16px;line-height:1.8;color:var(--gray);max-width:500px;margin:0 auto}
+
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:32px 64px 0;justify-content:center}
+.filter-pill{padding:8px 20px;border:1px solid rgba(184,184,184,.18);background:transparent;color:var(--silver);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:40px;transition:.18s;font-family:inherit}
+.filter-pill:hover{border-color:rgba(184,184,184,.4);color:var(--white)}
+.filter-pill.active{background:var(--white);color:var(--black);border-color:var(--white)}
+
+/* ARTICLES GRID */
+.articles-section{padding:48px 64px 100px}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* ARTICLE CARD */
+.article-card{
+  background:#060E1A;border:1px solid rgba(184,184,184,.1);
+  border-radius:4px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color .22s, transform .22s;
+  cursor:pointer;text-decoration:none;color:inherit;
+}
+.article-card:hover{border-color:rgba(184,184,184,.32);transform:translateY(-3px)}
+.article-card[style*="display:none"]{display:none!important}
+
+.card-top{padding:28px 28px 22px}
+.card-cat{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:16px;
+}
+.card-title{font-size:18px;font-weight:800;color:var(--white);line-height:1.3;margin-bottom:12px}
+.card-excerpt{font-size:13px;color:#8A9BAE;line-height:1.7}
+
+.card-bottom{
+  margin-top:auto;padding:18px 28px;
+  border-top:1px solid rgba(184,184,184,.07);
+  display:flex;align-items:center;gap:12px;
+}
+.card-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top center;border:1px solid rgba(184,184,184,.15);flex-shrink:0}
+.card-author-name{font-size:12px;font-weight:700;color:var(--white)}
+.card-author-role{font-size:10px;color:#5B7FA6;margin-top:1px}
+.card-meta{margin-left:auto;text-align:right}
+.card-date{font-size:10px;color:#4A5568}
+.card-read{font-size:10px;color:#4A5568;margin-top:2px}
+
+/* Empty state */
+.no-articles{display:none;text-align:center;padding:80px 0;color:#3A4A5A;font-size:14px;grid-column:1/-1}
+
+/* CTA */
+.blog-cta{background:var(--white);text-align:center;padding:80px 64px}
+.blog-cta h2{font-size:clamp(28px,5vw,56px);color:var(--black);margin-bottom:12px;letter-spacing:-1px;font-weight:900}
+.blog-cta p{font-size:16px;color:#555;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-dark{background:var(--black);color:var(--white);padding:14px 40px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-dark:hover{background:#111}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+
+@media(max-width:900px){.articles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .blog-hero{padding:100px 24px 50px}
+  .filter-bar{padding:24px 20px 0}
+  .articles-section{padding:36px 20px 80px}
+  .articles-grid{grid-template-columns:1fr}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+  .blog-cta{padding:60px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html">
+    <img src="logo.png" alt="LEOMAX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html#about">About</a></li>
+    <li><a href="LEOMAX_Website_Design.html#systems">Systems</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="blog.html" class="active">Perspectives</a></li>
+  </ul>
+  <a class="nav-cta" href="company-contact.html">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-grid"></div>
+  <div class="blog-hero-glow"></div>
+  <div class="blog-hero-inner">
+    <span class="blog-hero-tag">LEOMAX Perspectives</span>
+    <h1 class="blog-hero-title">INSIGHTS</h1>
+    <div class="blog-hero-divider"></div>
+    <p class="blog-hero-desc">Practical thinking on strategy, growth, technology, and the systems that make businesses work.</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-pill active" data-cat="all">All</button>
+  <button class="filter-pill" data-cat="strategy">Strategy</button>
+  <button class="filter-pill" data-cat="ai">AI &amp; Tech</button>
+  <button class="filter-pill" data-cat="marketing">Marketing</button>
+  <button class="filter-pill" data-cat="finance">Finance</button>
+  <button class="filter-pill" data-cat="operations">Operations</button>
+  <button class="filter-pill" data-cat="growth">Growth</button>
+  <button class="filter-pill" data-cat="investment">Investment</button>
+  <button class="filter-pill" data-cat="sustainability">Sustainability</button>
+  <button class="filter-pill" data-cat="expansion">Expansion</button>
+  <button class="filter-pill" data-cat="supply-chain">Supply Chain</button>
+  <button class="filter-pill" data-cat="innovation">Innovation</button>
+</div>
+
+<!-- ARTICLES GRID -->
+<section class="articles-section">
+  <div class="articles-grid" id="grid">
+
+    <!-- Article 1 — Strategy -->
+    <a class="article-card" href="blog-strategy-why-most-strategic-plans-fail.html" data-cat="strategy">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(100,149,237,.12);color:#6495ED">Strategy</span>
+        <h2 class="card-title">Why Most Strategic Plans Fail Before They Start</h2>
+        <p class="card-excerpt">A strategy is not a document — it is a set of choices about where you compete and where you do not. Most plans fail because they avoid those choices entirely.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/kaya-haddad.png" alt="Kaya Haddad">
+        <div>
+          <div class="card-author-name">Kaya Haddad</div>
+          <div class="card-author-role">Chief Strategy Officer</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">May 2026</div>
+          <div class="card-read">6 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 2 — AI -->
+    <a class="article-card" href="blog-ai-what-businesses-get-wrong-about-ai.html" data-cat="ai">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(52,211,153,.1);color:#34D399">AI &amp; Tech</span>
+        <h2 class="card-title">What Businesses Get Wrong About AI Adoption</h2>
+        <p class="card-excerpt">The question is never which tool to buy. It is which process problem you are trying to solve — and whether AI is actually the right solution for it.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/laith-darwish.png" alt="Laith Darwish">
+        <div>
+          <div class="card-author-name">Laith Darwish</div>
+          <div class="card-author-role">AI &amp; Technology Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">May 2026</div>
+          <div class="card-read">7 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 3 — Finance -->
+    <a class="article-card" href="blog-finance-cash-flow-is-not-profit.html" data-cat="finance">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(251,191,36,.1);color:#FBBF24">Finance</span>
+        <h2 class="card-title">Cash Flow Is Not Profit — And the Difference Kills Businesses</h2>
+        <p class="card-excerpt">Profitable businesses run out of cash every day. Understanding why — and how to prevent it — is the most important financial skill a founder can develop.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/hani-masry.png" alt="Hani El Masry">
+        <div>
+          <div class="card-author-name">Hani El Masry</div>
+          <div class="card-author-role">Chief Financial Officer</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Apr 2026</div>
+          <div class="card-read">8 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 4 — Marketing -->
+    <a class="article-card" href="blog-marketing-brand-before-campaigns.html" data-cat="marketing">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(236,72,153,.1);color:#EC4899">Marketing</span>
+        <h2 class="card-title">Build the Brand Before You Run the Campaign</h2>
+        <p class="card-excerpt">Most marketing problems are brand problems in disguise. Investing in channels before establishing a clear position is one of the most common — and expensive — mistakes in business.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/kamilia-fouad.png" alt="Kamilia Fouad">
+        <div>
+          <div class="card-author-name">Kamilia Fouad</div>
+          <div class="card-author-role">Marketing &amp; Brand Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Apr 2026</div>
+          <div class="card-read">5 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 5 — Operations -->
+    <a class="article-card" href="blog-operations-the-cost-of-undocumented-processes.html" data-cat="operations">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(139,92,246,.1);color:#8B5CF6">Operations</span>
+        <h2 class="card-title">The Hidden Cost of Undocumented Processes</h2>
+        <p class="card-excerpt">When a business runs on institutional memory instead of documented systems, every departure, every error, and every growth phase becomes more expensive than it needs to be.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/rami-khalidi.png" alt="Rami Al Khalidi">
+        <div>
+          <div class="card-author-name">Rami Al Khalidi</div>
+          <div class="card-author-role">Operations Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Apr 2026</div>
+          <div class="card-read">6 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 6 — Growth -->
+    <a class="article-card" href="blog-growth-pipeline-is-a-system-not-a-list.html" data-cat="growth">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(16,185,129,.1);color:#10B981">Growth</span>
+        <h2 class="card-title">A Pipeline Is a System, Not a List of Names</h2>
+        <p class="card-excerpt">The businesses that grow consistently are not the ones with the most leads. They are the ones with the clearest process for turning relationships into revenue.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/haya-kuwari.png" alt="Haya Al Kuwari">
+        <div>
+          <div class="card-author-name">Haya Al Kuwari</div>
+          <div class="card-author-role">Business Development Lead</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Mar 2026</div>
+          <div class="card-read">5 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 7 — Investment -->
+    <a class="article-card" href="blog-investment-what-investors-look-for.html" data-cat="investment">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(245,158,11,.1);color:#F59E0B">Investment</span>
+        <h2 class="card-title">What Investors Actually Look For Before They Commit</h2>
+        <p class="card-excerpt">A compelling deck matters less than most founders think. What moves capital is confidence in the model, the team, and the numbers — and that requires preparation well before the first meeting.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/mashari-otaibi.png" alt="Mashari Al Otaibi">
+        <div>
+          <div class="card-author-name">Mashari Al Otaibi</div>
+          <div class="card-author-role">Investment Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Mar 2026</div>
+          <div class="card-read">7 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 8 — Sustainability -->
+    <a class="article-card" href="blog-sustainability-esg-is-now-a-business-requirement.html" data-cat="sustainability">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(52,211,153,.08);color:#6EE7B7">Sustainability</span>
+        <h2 class="card-title">ESG Is No Longer Optional — Here Is Where to Start</h2>
+        <p class="card-excerpt">Sustainability reporting has moved from a voluntary commitment to a business requirement. Regulation, investor expectations, and competitive positioning are all converging on the same point.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/elhanouf-harbi.png" alt="Elhanouf Al Harbi">
+        <div>
+          <div class="card-author-name">Elhanouf Al Harbi</div>
+          <div class="card-author-role">Sustainability Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Mar 2026</div>
+          <div class="card-read">6 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 9 — Expansion -->
+    <a class="article-card" href="blog-expansion-why-regional-expansion-fails.html" data-cat="expansion">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(99,102,241,.1);color:#818CF8">Expansion</span>
+        <h2 class="card-title">Why Regional Expansion Fails in the First Year</h2>
+        <p class="card-excerpt">Entering a new market without proper groundwork produces the same outcome every time: initial traction that does not hold. The failures are almost always predictable — and preventable.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/miral-hakimi.png" alt="Miral Al Hakimi">
+        <div>
+          <div class="card-author-name">Miral Al Hakimi</div>
+          <div class="card-author-role">Regional Expansion Lead</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Feb 2026</div>
+          <div class="card-read">8 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 10 — Supply Chain -->
+    <a class="article-card" href="blog-supply-chain-resilience-not-efficiency.html" data-cat="supply-chain">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(251,146,60,.1);color:#FB923C">Supply Chain</span>
+        <h2 class="card-title">Stop Optimizing for Efficiency. Start Building for Resilience.</h2>
+        <p class="card-excerpt">The most efficient supply chain is often the most fragile. The disruptions of the past few years have made one thing clear: resilience is not a cost — it is a competitive advantage.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/yasin-sherif.png" alt="Yasin El Sherif">
+        <div>
+          <div class="card-author-name">Yasin El Sherif</div>
+          <div class="card-author-role">Supply Chain Director</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Feb 2026</div>
+          <div class="card-read">7 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 11 — Innovation -->
+    <a class="article-card" href="blog-innovation-ideas-that-never-ship.html" data-cat="innovation">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(236,72,153,.08);color:#F472B6">Innovation</span>
+        <h2 class="card-title">Ideas That Never Ship Are Not Innovation</h2>
+        <p class="card-excerpt">Innovation is not about generating interesting ideas — it is about building the process that turns ideas into products that reach the market. Most businesses have the first problem solved. Almost none have the second.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/rita-nasser.png" alt="Rita Nasser">
+        <div>
+          <div class="card-author-name">Rita Nasser</div>
+          <div class="card-author-role">Head of Innovation</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Feb 2026</div>
+          <div class="card-read">6 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Article 12 — Strategy (Dr. Anas) -->
+    <a class="article-card" href="blog-strategy-90-days-to-a-real-system.html" data-cat="strategy">
+      <div class="card-top">
+        <span class="card-cat" style="background:rgba(100,149,237,.12);color:#6495ED">Strategy</span>
+        <h2 class="card-title">90 Days to a Real System: How We Build Inside Businesses</h2>
+        <p class="card-excerpt">Most consulting engagements end with a report. Ours end with a working system — deployed, staffed, and producing results inside the business. Here is how we think about the 90-day window.</p>
+      </div>
+      <div class="card-bottom">
+        <img class="card-avatar" src="team/dr-anas.png" alt="Dr. Anas Elimam">
+        <div>
+          <div class="card-author-name">Dr. Anas Elimam</div>
+          <div class="card-author-role">Founder &amp; CEO</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-date">Jan 2026</div>
+          <div class="card-read">9 min read</div>
+        </div>
+      </div>
+    </a>
+
+    <div class="no-articles" id="no-articles">No articles in this category yet.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="blog-cta">
+  <h2>Ready to talk?</h2>
+  <p>Every article here reflects real work with real businesses. If any of it sounds like what you are dealing with, the next step is a conversation.</p>
+  <a class="btn-dark" href="company-contact.html">Get in Touch</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="company-about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="blog.html">Perspectives</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="chat-widget.js"></script>
+<script>
+/* Category filter */
+const pills = document.querySelectorAll('.filter-pill');
+const cards = document.querySelectorAll('.article-card');
+const noArticles = document.getElementById('no-articles');
+
+pills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    pills.forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+
+    const cat = pill.dataset.cat;
+    let visible = 0;
+    cards.forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noArticles.style.display = visible === 0 ? 'block' : 'none';
+  });
+});
+</script>
+</body>
+</html>

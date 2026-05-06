@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — What Investors Actually Look For Before They Commit</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>window.location.reload());
+  }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#888;--dgray:#3A3A3A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--silver)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-wordmark{font-size:18px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-back:hover{color:var(--white)}
+.art-hero{padding:140px 64px 60px;max-width:860px;margin:0 auto;position:relative}
+.art-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:24px}
+.art-title{font-size:clamp(32px,6vw,60px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:var(--white);margin-bottom:28px}
+.art-divider{width:40px;height:2px;background:rgba(184,184,184,.3);margin-bottom:32px}
+.art-byline{display:flex;align-items:center;gap:16px}
+.art-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top center;border:1px solid rgba(184,184,184,.2)}
+.art-author-name{font-size:13px;font-weight:700;color:var(--white)}
+.art-author-role{font-size:11px;color:#5B7FA6;margin-top:2px}
+.art-meta{font-size:11px;color:#3A4A5A;margin-top:3px;letter-spacing:.5px}
+.art-body{max-width:720px;margin:0 auto;padding:0 64px 100px}
+.art-body h2{font-size:22px;font-weight:800;color:var(--white);margin:52px 0 16px;letter-spacing:-.3px}
+.art-body p{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:20px}
+.art-body blockquote{border-left:2px solid rgba(184,184,184,.3);padding:16px 24px;margin:36px 0;font-size:17px;font-style:italic;color:var(--silver);line-height:1.7}
+.art-body ul{margin:20px 0 20px 20px}
+.art-body ul li{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:10px}
+.art-separator{width:40px;height:1px;background:rgba(184,184,184,.2);margin:60px auto}
+.art-cta{background:var(--white);text-align:center;padding:80px 64px}
+.art-cta h2{font-size:clamp(24px,4vw,44px);color:var(--black);margin-bottom:12px;letter-spacing:-1px;font-weight:900}
+.art-cta p{font-size:16px;color:#555;margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-dark{background:var(--black);color:var(--white);padding:14px 40px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-dark:hover{background:#111}
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .art-hero{padding:100px 24px 48px}
+  .art-body{padding:0 24px 80px}
+  .art-cta{padding:60px 24px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html">
+    <img src="logo.png" alt="LEOMAX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html">Home</a></li>
+    <li><a href="blog.html">Perspectives</a></li>
+  </ul>
+  <a class="nav-back" href="blog.html">← All Articles</a>
+</nav>
+
+<div class="art-hero">
+  <span class="art-cat" style="background:rgba(245,158,11,.1);color:#F59E0B">Investment</span>
+  <h1 class="art-title">What Investors Actually Look For Before They Commit</h1>
+  <div class="art-divider"></div>
+  <div class="art-byline">
+    <img class="art-avatar" src="team/mashari-otaibi.png" alt="Mashari Al Otaibi">
+    <div>
+      <div class="art-author-name">Mashari Al Otaibi</div>
+      <div class="art-author-role">Investment Director</div>
+      <div class="art-meta">Mar 2026 · 7 min read</div>
+    </div>
+  </div>
+</div>
+
+<article class="art-body">
+
+  <h2>The Deck Is Not the Pitch</h2>
+  <p>The first thing most founders do when preparing for investor conversations is open a slide deck template and start filling it in. Market size. Problem. Solution. Team. Traction. Financials. Ask. The deck gets refined, the design gets polished, and the founder arrives at the meeting with a well-produced presentation that covers all the expected slides. Then the investor asks two questions that were not in the deck and the conversation falls apart.</p>
+  <p>The deck is not the pitch. It is the entry credential — the document that gets you from introduction to meeting. The pitch is the conversation. Investors are not evaluating your ability to make slides. They are evaluating your understanding of your own business: the assumptions your model rests on, the risks you have identified and the ones you have not, the specific reason your team is the right team to execute this, and the honest answer to why this works now when similar attempts may have failed before. These answers do not come from slides. They come from deep, repeated thinking about the business.</p>
+  <p>Founders who do well in investor conversations have typically spent more time stress-testing their own thinking than polishing their materials. They can answer questions they were not asked in the meeting because they have already asked those questions of themselves. They know the weaknesses of their model and can speak to them directly, which is far more reassuring than a deck that appears to have no weaknesses at all.</p>
+
+  <h2>Model Clarity Over Ambition</h2>
+  <p>Ambition is not differentiated in a fundraising room. Every founder in the room is ambitious — that is why they are there. What differentiates founders in investor evaluation is model clarity: the ability to explain, with precision, how the business creates value, captures a portion of it, and scales that capture over time. This is the business model, and many founders cannot articulate it clearly under questioning.</p>
+  <p>Model clarity means being able to answer: who pays, for what, how often, and what does the unit economics look like at the customer level? What does the cost of acquiring a customer actually include — not just media spend, but sales time, onboarding cost, and support burden in the first contract period? What is the lifetime value of a customer, based on actual retention data rather than optimistic assumptions? Where does the model break, and at what scale does it become profitable?</p>
+  <p>Investors who have seen hundreds of pitches can tell the difference between founders who have built the model and understand it, and founders who built it for the pitch and are defending it. The questions that reveal the difference are not adversarial — they are simply precise. "What is your gross margin on the enterprise contract you just mentioned?" "If your top two customers did not renew, what does the revenue look like?" "At what headcount does this become cash-flow positive?" If these questions produce hesitation or vague answers, the signal is clear: the model has not been interrogated to the depth required.</p>
+
+  <h2>The Team Evaluation</h2>
+  <p>The most-cited investor criterion — team quality — is also the most misunderstood by founders. Founders interpret team evaluation as a credentials check: what is the educational background, what companies have team members worked at, what titles have they held. These are inputs to the evaluation but they are not the evaluation itself. What investors are actually assessing is whether this specific team, with their specific combination of skills and knowledge, has a materially higher probability of executing this specific opportunity than any other team that could be assembled.</p>
+  <p>The relevant question is not whether the team is impressive in the abstract. It is whether the team has an unfair advantage in this particular market at this particular moment. That advantage might be industry-specific knowledge that took years to accumulate. It might be relationships with the buyer community that create distribution leverage. It might be a technical capability that is genuinely rare and directly relevant to the product. It might be a track record of executing in a comparable environment. Credentials can support these claims but cannot substitute for them.</p>
+  <p>Team evaluation also includes the dynamics between co-founders, where they exist. Investors who have seen businesses collapse know that most early-stage failures are team failures — not market failures or product failures, but relationship failures and execution misalignments between the people at the top. The questions around team composition, decision-making authority, and equity distribution are not bureaucratic — they are diagnostics for the durability of the leadership structure under pressure.</p>
+
+  <h2>What the Numbers Must Show</h2>
+  <p>Financial projections in investor decks are widely acknowledged to be inaccurate, and experienced investors do not evaluate them on their precision. They evaluate them on their logic. The question is not whether the SAR 50 million revenue number in year three is achievable — the question is whether the assumptions that produce it are coherent, clearly stated, and defensible under examination. What growth rate is assumed and what evidence supports that rate? What is the assumed sales cycle length and how does it compare to current performance? What headcount additions are baked into the cost structure, and are they sequenced appropriately relative to the revenue they are supposed to support?</p>
+  <p>The other thing the numbers must show is an honest current baseline. Investors need to see real historical performance — actual revenue figures, actual customer counts, actual retention rates — before they can trust the forward projections. Businesses that obscure current metrics by presenting them only in aggregate, or by framing them in ways that require multiple questions to unpack, create a trust problem that no quality of forward projection can undo. The starting point must be unambiguous.</p>
+  <p>Unit economics deserve particular attention because they reveal the fundamental health of the revenue model at the customer level. If customer acquisition cost is higher than lifetime value, the business is paying to acquire customers that cost more than they generate — and no amount of growth cures that problem. If gross margin is below the industry benchmark for comparable businesses, it requires explanation. If net revenue retention is below 100%, the business is losing value from its existing customer base even as it acquires new customers. Each of these metrics is a tell. Investors know what healthy looks like, and they notice when it is absent.</p>
+
+  <h2>Preparing Before the First Meeting</h2>
+  <p>Preparation for investor conversations is not the same as preparation for a presentation. It is preparation for interrogation by someone who wants to find the weaknesses in your business before committing capital to it. The best preparation is to conduct that interrogation yourself, or to have a trusted advisor conduct it on you, before the investor does.</p>
+  <p>Specifically: write down the ten hardest questions that could be asked about your business. Not the questions you have good answers to — the ones you have uncomfortable answers to. Then develop honest, clear responses to each. This process usually reveals one or two areas where the thinking needs to go deeper, where an assumption has been accepted without real examination, or where a risk has been acknowledged but not addressed. Resolving those is more valuable than any additional slide in the deck.</p>
+  <p>The businesses that raise capital efficiently are not the ones with the best decks. They are the ones where the founder can walk into a conversation and talk about their business with the same level of accuracy and candor that an investor would if they already knew the business well. That preparation is not about performing confidence — it is about having done the work. And investors, who make their living evaluating whether the work has been done, can tell the difference immediately.</p>
+
+</article>
+
+<div class="art-cta">
+  <h2>This sounds familiar?</h2>
+  <p>If this reflects a challenge you are dealing with, the next step is a conversation — not a proposal.</p>
+  <a class="btn-dark" href="company-contact.html">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="company-about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="blog.html">Perspectives</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>

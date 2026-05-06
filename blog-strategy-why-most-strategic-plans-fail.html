@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — Why Most Strategic Plans Fail Before They Start</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>window.location.reload());
+  }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#888;--dgray:#3A3A3A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--silver)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-wordmark{font-size:18px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-back:hover{color:var(--white)}
+.art-hero{padding:140px 64px 60px;max-width:860px;margin:0 auto;position:relative}
+.art-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:24px}
+.art-title{font-size:clamp(32px,6vw,60px);font-weight:900;line-height:1.05;letter-spacing:-1px;color:var(--white);margin-bottom:28px}
+.art-divider{width:40px;height:2px;background:rgba(184,184,184,.3);margin-bottom:32px}
+.art-byline{display:flex;align-items:center;gap:16px}
+.art-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top center;border:1px solid rgba(184,184,184,.2)}
+.art-author-name{font-size:13px;font-weight:700;color:var(--white)}
+.art-author-role{font-size:11px;color:#5B7FA6;margin-top:2px}
+.art-meta{font-size:11px;color:#3A4A5A;margin-top:3px;letter-spacing:.5px}
+.art-body{max-width:720px;margin:0 auto;padding:0 64px 100px}
+.art-body h2{font-size:22px;font-weight:800;color:var(--white);margin:52px 0 16px;letter-spacing:-.3px}
+.art-body p{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:20px}
+.art-body blockquote{border-left:2px solid rgba(184,184,184,.3);padding:16px 24px;margin:36px 0;font-size:17px;font-style:italic;color:var(--silver);line-height:1.7}
+.art-body ul{margin:20px 0 20px 20px}
+.art-body ul li{font-size:16px;line-height:1.85;color:#8A9BAE;margin-bottom:10px}
+.art-separator{width:40px;height:1px;background:rgba(184,184,184,.2);margin:60px auto}
+.art-cta{background:var(--white);text-align:center;padding:80px 64px}
+.art-cta h2{font-size:clamp(24px,4vw,44px);color:var(--black);margin-bottom:12px;letter-spacing:-1px;font-weight:900}
+.art-cta p{font-size:16px;color:#555;margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-dark{background:var(--black);color:var(--white);padding:14px 40px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-dark:hover{background:#111}
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .art-hero{padding:100px 24px 48px}
+  .art-body{padding:0 24px 80px}
+  .art-cta{padding:60px 24px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html">
+    <img src="logo.png" alt="LEOMAX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html">Home</a></li>
+    <li><a href="blog.html">Perspectives</a></li>
+  </ul>
+  <a class="nav-back" href="blog.html">← All Articles</a>
+</nav>
+
+<div class="art-hero">
+  <span class="art-cat" style="background:rgba(100,149,237,.12);color:#6495ED">Strategy</span>
+  <h1 class="art-title">Why Most Strategic Plans Fail Before They Start</h1>
+  <div class="art-divider"></div>
+  <div class="art-byline">
+    <img class="art-avatar" src="team/kaya-haddad.png" alt="Kaya Haddad">
+    <div>
+      <div class="art-author-name">Kaya Haddad</div>
+      <div class="art-author-role">Chief Strategy Officer</div>
+      <div class="art-meta">May 2026 · 6 min read</div>
+    </div>
+  </div>
+</div>
+
+<article class="art-body">
+
+  <h2>Strategy is a Set of Choices, Not a Document</h2>
+  <p>Every year, leadership teams spend weeks assembling strategy documents. They collect market data, run workshops, build slide decks, and present conclusions to the board. And then, almost universally, they return to doing what they were already doing. The document sits in a shared folder. The quarterly business review happens without referencing it. The strategy has failed — not in execution, but in conception.</p>
+  <p>The fundamental error is treating strategy as a planning exercise rather than a decision-making framework. A strategy document that contains everything — all the markets, all the priorities, all the initiatives — is not a strategy. It is a list of things the organization hopes will happen. Real strategy requires choosing some things and explicitly rejecting others. The rejection is what makes it real.</p>
+  <p>Roger Martin's framing is useful here: strategy is a set of integrated choices about where to play and how to win. The operative word is integrated. Each choice must reinforce the others. A company that says it competes on premium quality cannot simultaneously chase every price-sensitive segment. If the document contains that contradiction — and most do — it is not a strategy.</p>
+
+  <h2>The Comfort Trap</h2>
+  <p>Why do organizations write plans that avoid real choices? Because real choices create internal conflict. If leadership decides to focus on enterprise clients and deprioritize SMBs, someone in the room is responsible for the SMB segment. That person will push back. The path of least resistance is to include both — framed differently, weighted vaguely, with enough ambiguity that no one loses.</p>
+  <p>This is the comfort trap. Strategic documents are often the outcome of internal negotiations rather than external analysis. The final plan reflects what the leadership team could agree on, not what the market requires. You can identify this pattern quickly: if every business unit's priorities made it into the plan, it is not a strategy. It is a budget justification with aspirational language.</p>
+  <p>The cost of this comfort is significant. Resources get spread across too many fronts. Teams receive unclear signals about what actually matters. When a difficult decision arrives — a large opportunity that does not fit the stated direction, or a performance shortfall in a deprioritized segment — there is no clear framework to resolve it. The organization improvises, and the strategy becomes irrelevant by default.</p>
+
+  <h2>Where Most Plans Go Wrong</h2>
+  <p>There are three specific moments where strategic plans typically break down. The first is in the initial framing: when the process is designed to gather input rather than make decisions. Broad participation is valuable for diagnosis. It is counterproductive for strategy formulation, because consensus-seeking produces averaged positions, and averaged positions are strategically weak.</p>
+  <p>The second failure point is in the translation from strategic intent to operational priorities. Even well-conceived strategies collapse when they arrive at the operating level without clear implications for resource allocation. Teams receive the strategy as communication rather than as instruction. Nobody changes what they are working on because nobody has been told to stop doing anything.</p>
+  <p>The third failure is the absence of a decision filter. Strategy is most valuable not when conditions are stable, but when a difficult choice arrives. Does this acquisition fit? Should we enter this new market now? Does this partnership align? Organizations without a clear strategy answer these questions based on whoever argues hardest in the meeting. Organizations with a real strategy have a framework that can evaluate the question quickly and consistently.</p>
+
+  <h2>How Real Strategy Gets Made</h2>
+  <p>Effective strategy processes share a few characteristics. They start with an honest assessment of where the business has distinctive advantages — not where it aspires to compete, but where it genuinely outperforms alternatives available to the customer. That assessment is often uncomfortable because it requires acknowledging where the business is weak, which is precisely why it is valuable.</p>
+  <p>From that honest baseline, the process works outward: which customer segments are best served by those advantages? Which markets reward what this organization actually does well? The answer narrows the field considerably. A well-executed strategy defines a specific arena where the business has a credible path to being the best option available, not merely a good option among many.</p>
+  <p>The choices that follow from that definition are the strategy. Which capabilities to invest in. Which segments to prioritize. Which partnerships create leverage. Which initiatives to decline because they do not reinforce the core position. Written down, these choices should be specific enough that someone can read them and understand what the organization will not do — that constraint is the test of whether a real choice was made.</p>
+
+  <h2>The Commitment Test</h2>
+  <p>There is a simple test for whether a strategic plan contains real strategy: read the section on what the organization will not do. If that section is absent, or if it describes only obviously bad options that nobody wanted anyway, the plan has not made real choices. Real strategic choices are ones that some reasonable people inside the organization would have made differently — the fact that there was genuine internal disagreement, and a decision was made anyway, is what gives the strategy its teeth.</p>
+  <p>Commitment also shows up in resource allocation. The strategy should be legible in the budget. If the stated priority is building enterprise sales capability but the budget for it is unchanged from last year, the strategy is aspirational, not operational. Resources are the honest version of priorities. What the organization funds is what it actually intends to do.</p>
+  <p>The businesses that execute strategy well are not necessarily the ones with the best strategies on paper. They are the ones where leadership made a specific choice, communicated what it means to stop doing, aligned resources accordingly, and measured progress against the direction they chose. That process is harder than writing a document. But it is the only version that works.</p>
+
+</article>
+
+<div class="art-cta">
+  <h2>This sounds familiar?</h2>
+  <p>If this reflects a challenge you are dealing with, the next step is a conversation — not a proposal.</p>
+  <a class="btn-dark" href="company-contact.html">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="company-about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="blog.html">Perspectives</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>
