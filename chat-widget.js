@@ -685,87 +685,174 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
      CSS
      ============================================================ */
   const css = `
-  #lm-chat-overlay{position:fixed;inset:0;background:rgba(1,11,28,.72);z-index:9998;display:none;backdrop-filter:blur(4px)}
-  #lm-chat-overlay.open{display:block}
+  /* ── Overlay ── */
+  #lm-chat-overlay{
+    position:fixed;inset:0;background:rgba(1,8,20,.75);z-index:9998;
+    display:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    align-items:center;justify-content:center;
+  }
+  #lm-chat-overlay.open{display:flex}
+
+  /* ── Popup panel ── */
   #lm-chat-panel{
-    position:fixed;top:0;right:-490px;width:460px;max-width:100vw;height:100vh;
-    background:#010B1C;border-left:1px solid rgba(184,184,184,.15);
-    z-index:9999;display:flex;flex-direction:column;transition:right .35s cubic-bezier(.4,0,.2,1);
+    position:relative;
+    width:460px;max-width:calc(100vw - 32px);
+    height:600px;max-height:calc(100vh - 40px);
+    background:#07101E;
+    border:1px solid rgba(184,184,184,.13);
+    border-radius:20px;
+    box-shadow:0 32px 100px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.03);
+    display:flex;flex-direction:column;overflow:hidden;
+    transform:scale(.93) translateY(16px);opacity:0;
+    transition:transform .32s cubic-bezier(.34,1.2,.64,1), opacity .25s ease;
+    z-index:9999;
   }
-  #lm-chat-panel.open{right:0}
+  #lm-chat-overlay.open #lm-chat-panel{transform:scale(1) translateY(0);opacity:1}
+
+  /* ── Header ── */
   #lm-chat-header{
-    display:flex;align-items:center;gap:14px;padding:20px 20px 18px;
-    border-bottom:1px solid rgba(184,184,184,.12);background:#060F1F;flex-shrink:0;
+    display:flex;align-items:center;gap:12px;
+    padding:16px 18px 15px;
+    background:linear-gradient(180deg,#0C1729 0%,#07101E 100%);
+    border-bottom:1px solid rgba(184,184,184,.09);
+    flex-shrink:0;
   }
-  #lm-chat-avatar{width:48px;height:48px;object-fit:cover;object-position:top;border:1px solid rgba(184,184,184,.2);flex-shrink:0}
-  #lm-chat-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px}
-  #lm-chat-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#B8B8B8}
+  #lm-chat-avatar-wrap{position:relative;flex-shrink:0}
+  #lm-chat-avatar{
+    width:44px;height:44px;border-radius:50%;
+    object-fit:cover;object-position:top center;
+    border:2px solid rgba(184,184,184,.18);
+  }
+  #lm-chat-online{
+    position:absolute;bottom:1px;right:1px;
+    width:10px;height:10px;border-radius:50%;
+    background:#34d399;border:2px solid #07101E;
+  }
+  #lm-chat-info{flex:1;min-width:0}
+  #lm-chat-name{font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #lm-chat-status{font-size:11px;color:#34d399;margin-top:1px}
   #lm-chat-close{
-    margin-left:auto;width:34px;height:34px;background:rgba(184,184,184,.08);
-    border:1px solid rgba(184,184,184,.2);color:#B8B8B8;font-size:16px;
-    cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s;
+    flex-shrink:0;width:30px;height:30px;border-radius:50%;
+    background:rgba(184,184,184,.07);border:1px solid rgba(184,184,184,.15);
+    color:#9CA3AF;font-size:14px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.2s;
   }
-  #lm-chat-close:hover{background:rgba(184,184,184,.2);color:#fff}
+  #lm-chat-close:hover{background:rgba(184,184,184,.18);color:#fff}
+
+  /* ── Messages ── */
   #lm-chat-messages{
-    flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;
-    scrollbar-width:thin;scrollbar-color:rgba(184,184,184,.12) transparent;
+    flex:1;overflow-y:auto;padding:18px 16px;
+    display:flex;flex-direction:column;gap:14px;
+    scrollbar-width:thin;scrollbar-color:rgba(184,184,184,.1) transparent;
   }
-  .lm-msg{max-width:90%;line-height:1.7;font-size:14px;padding:12px 16px;word-break:break-word}
-  .lm-msg.user{align-self:flex-end;background:#0D1E35;color:#D4D4D4;border:1px solid rgba(184,184,184,.12)}
-  .lm-msg.bot{align-self:flex-start;background:#060F1F;color:#D4D4D4;border:1px solid rgba(184,184,184,.1)}
+
+  /* Bot row = avatar + bubble */
+  .lm-row-bot{display:flex;align-items:flex-end;gap:8px;max-width:88%}
+  .lm-row-user{display:flex;justify-content:flex-end;max-width:88%;align-self:flex-end}
+
+  .lm-avatar-sm{
+    width:28px;height:28px;border-radius:50%;flex-shrink:0;
+    object-fit:cover;object-position:top center;border:1px solid rgba(184,184,184,.15);
+  }
+
+  .lm-msg{line-height:1.65;font-size:13.5px;padding:11px 15px;word-break:break-word;border-radius:18px}
+  .lm-msg.bot{
+    background:#111D30;color:#D4D4D4;
+    border-radius:4px 18px 18px 18px;
+    border:1px solid rgba(184,184,184,.08);
+  }
   .lm-msg.bot strong{color:#fff}
-  .lm-typing{align-self:flex-start;padding:12px 16px;background:#060F1F;border:1px solid rgba(184,184,184,.1);display:flex;gap:5px;align-items:center}
-  .lm-dot{width:6px;height:6px;background:#B8B8B8;border-radius:50%;animation:lm-bounce .9s infinite}
-  .lm-dot:nth-child(2){animation-delay:.15s}
-  .lm-dot:nth-child(3){animation-delay:.3s}
-  @keyframes lm-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-  .lm-followup-card{
-    align-self:flex-start;background:#060F1F;border:1px solid rgba(184,184,184,.15);
-    padding:16px;max-width:92%;animation:lm-fadein .3s ease;
+  .lm-msg.user{
+    background:linear-gradient(135deg,#1B3154,#152540);
+    color:#E2E8F0;
+    border-radius:18px 18px 4px 18px;
+    border:1px solid rgba(100,150,220,.18);
   }
-  @keyframes lm-fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-  .lm-followup-card p{font-size:13px;color:#C4C4C4;margin:0 0 12px;line-height:1.6}
+
+  /* Typing indicator */
+  .lm-typing-row{display:flex;align-items:flex-end;gap:8px}
+  .lm-typing{
+    padding:12px 16px;background:#111D30;border:1px solid rgba(184,184,184,.08);
+    border-radius:4px 18px 18px 18px;display:flex;gap:4px;align-items:center;
+  }
+  .lm-dot{width:6px;height:6px;background:#5B7FA6;border-radius:50%;animation:lm-bounce .85s infinite}
+  .lm-dot:nth-child(2){animation-delay:.14s}
+  .lm-dot:nth-child(3){animation-delay:.28s}
+  @keyframes lm-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+
+  /* Follow-up card */
+  .lm-followup-card{
+    background:#0E1A2B;border:1px solid rgba(184,184,184,.13);
+    border-radius:14px;padding:15px;max-width:92%;
+    animation:lm-fadein .3s ease;align-self:flex-start;
+  }
+  @keyframes lm-fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .lm-followup-card p{font-size:12.5px;color:#B0BAC8;margin:0 0 11px;line-height:1.6}
   .lm-fu-btn{
-    display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:8px;
-    background:rgba(184,184,184,.06);border:1px solid rgba(184,184,184,.18);
-    color:#D4D4D4;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s;
+    display:flex;align-items:center;gap:8px;width:100%;
+    text-align:left;padding:10px 13px;margin-bottom:7px;
+    background:rgba(184,184,184,.05);border:1px solid rgba(184,184,184,.14);
+    border-radius:10px;color:#D4D4D4;font-size:12.5px;cursor:pointer;
+    font-family:inherit;transition:.18s;
   }
   .lm-fu-btn:last-child{margin-bottom:0}
-  .lm-fu-btn:hover{background:rgba(184,184,184,.14);color:#fff}
+  .lm-fu-btn:hover{background:rgba(184,184,184,.12);color:#fff;border-color:rgba(184,184,184,.28)}
+
+  /* Callback form */
   .lm-cb-form{margin-top:10px;display:flex;flex-direction:column;gap:8px}
   .lm-cb-input,.lm-cb-select{
     background:#0D1E35;border:1px solid rgba(184,184,184,.15);color:#fff;
-    padding:10px 12px;font-size:13px;outline:none;font-family:inherit;width:100%;box-sizing:border-box;
+    padding:10px 12px;font-size:13px;outline:none;font-family:inherit;
+    width:100%;box-sizing:border-box;border-radius:8px;
   }
   .lm-cb-input::placeholder{color:rgba(184,184,184,.3)}
   .lm-cb-select option{background:#0D1E35}
   .lm-cb-send{
     padding:10px;background:#B8B8B8;color:#010B1C;border:none;
-    font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-    cursor:pointer;font-family:inherit;transition:.2s;
+    border-radius:8px;font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;cursor:pointer;font-family:inherit;transition:.2s;
   }
   .lm-cb-send:hover{background:#fff}
-  #lm-chat-footer{padding:14px 18px 16px;border-top:1px solid rgba(184,184,184,.1);background:#010B1C;flex-shrink:0}
-  #lm-chat-form{display:flex;gap:10px;margin-bottom:10px}
-  #lm-chat-input{
-    flex:1;background:#0D1E35;border:1px solid rgba(184,184,184,.15);color:#fff;
-    padding:12px 14px;font-size:14px;outline:none;font-family:inherit;resize:none;height:46px;transition:border-color .2s;
+
+  /* ── Footer ── */
+  #lm-chat-footer{
+    padding:12px 14px 14px;
+    border-top:1px solid rgba(184,184,184,.08);
+    background:#07101E;flex-shrink:0;
   }
-  #lm-chat-input:focus{border-color:rgba(184,184,184,.4)}
-  #lm-chat-input::placeholder{color:rgba(184,184,184,.3)}
+  #lm-chat-form{
+    display:flex;gap:8px;align-items:flex-end;
+    background:#0E1B2C;border:1px solid rgba(184,184,184,.13);
+    border-radius:14px;padding:8px 8px 8px 14px;transition:border-color .2s;
+  }
+  #lm-chat-form:focus-within{border-color:rgba(184,184,184,.32)}
+  #lm-chat-input{
+    flex:1;background:transparent;border:none;color:#fff;
+    padding:4px 0;font-size:13.5px;outline:none;font-family:inherit;
+    resize:none;min-height:24px;max-height:100px;line-height:1.5;
+  }
+  #lm-chat-input::placeholder{color:rgba(184,184,184,.28)}
   #lm-chat-send{
-    background:#B8B8B8;color:#010B1C;border:none;width:46px;height:46px;
-    cursor:pointer;font-size:15px;flex-shrink:0;transition:.2s;display:flex;align-items:center;justify-content:center;
+    background:#B8B8B8;color:#010B1C;border:none;
+    width:36px;height:36px;border-radius:10px;
+    cursor:pointer;font-size:14px;flex-shrink:0;transition:.2s;
+    display:flex;align-items:center;justify-content:center;
   }
   #lm-chat-send:hover{background:#fff}
-  #lm-chat-send:disabled{opacity:.35;cursor:not-allowed}
+  #lm-chat-send:disabled{opacity:.3;cursor:not-allowed}
   #lm-chat-book{
-    display:block;width:100%;text-align:center;padding:9px;
-    font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-    color:#010B1C;background:#B8B8B8;border:none;cursor:pointer;transition:.2s;font-family:inherit;
+    display:block;width:100%;text-align:center;padding:8px;
+    margin-top:8px;font-size:10px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:#7B8FA6;background:transparent;
+    border:none;cursor:pointer;transition:.2s;font-family:inherit;
   }
-  #lm-chat-book:hover{background:#fff}
-  @media(max-width:500px){#lm-chat-panel{width:100vw}}
+  #lm-chat-book:hover{color:#B8B8B8}
+
+  /* Mobile */
+  @media(max-width:500px){
+    #lm-chat-panel{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;border:none}
+    #lm-chat-overlay.open{align-items:flex-end}
+  }
   `;
   const styleEl = document.createElement('style');
   styleEl.textContent = css;
@@ -776,23 +863,29 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
      ============================================================ */
   const overlay = document.createElement('div');
   overlay.id = 'lm-chat-overlay';
-  overlay.onclick = () => closeChat();
+  overlay.onclick = (e) => { if (e.target === overlay) closeChat(); };
 
   const panel = document.createElement('div');
   panel.id = 'lm-chat-panel';
   panel.innerHTML = `
     <div id="lm-chat-header">
-      <img id="lm-chat-avatar" src="" alt="">
-      <div><div id="lm-chat-name"></div><div id="lm-chat-role"></div></div>
+      <div id="lm-chat-avatar-wrap">
+        <img id="lm-chat-avatar" src="" alt="">
+        <div id="lm-chat-online"></div>
+      </div>
+      <div id="lm-chat-info">
+        <div id="lm-chat-name"></div>
+        <div id="lm-chat-status">Online — ready to help</div>
+      </div>
       <button id="lm-chat-close" onclick="window.LMChat.close()">✕</button>
     </div>
     <div id="lm-chat-messages"></div>
     <div id="lm-chat-footer">
       <form id="lm-chat-form">
-        <textarea id="lm-chat-input" placeholder="Type here..." rows="1"></textarea>
+        <textarea id="lm-chat-input" placeholder="Write your message…" rows="1"></textarea>
         <button type="submit" id="lm-chat-send">➤</button>
       </form>
-      <button id="lm-chat-book" onclick="window.LMChat.book()">📅 Book a Strategy Call</button>
+      <button id="lm-chat-book" onclick="window.LMChat.book()">📅 Schedule a strategy call</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -866,19 +959,43 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
   }
   function appendMsg(type, text) {
     const msgs = document.getElementById('lm-chat-messages');
-    const div  = document.createElement('div');
-    div.className = 'lm-msg ' + type;
-    div.innerHTML  = formatText(text);
-    msgs.appendChild(div);
+    const avatarSrc = currentMember ? BASE_IMG + Object.keys(MEMBERS).find(k => MEMBERS[k] === currentMember) + '.png' : '';
+
+    let row, bubble;
+    if (type === 'bot') {
+      row = document.createElement('div');
+      row.className = 'lm-row-bot';
+      const img = document.createElement('img');
+      img.src = avatarSrc; img.className = 'lm-avatar-sm'; img.alt = '';
+      bubble = document.createElement('div');
+      bubble.className = 'lm-msg bot';
+      bubble.innerHTML = formatText(text);
+      row.appendChild(img); row.appendChild(bubble);
+      msgs.appendChild(row);
+    } else {
+      row = document.createElement('div');
+      row.className = 'lm-row-user';
+      bubble = document.createElement('div');
+      bubble.className = 'lm-msg user';
+      bubble.innerHTML = formatText(text);
+      row.appendChild(bubble);
+      msgs.appendChild(row);
+    }
     msgs.scrollTop = msgs.scrollHeight;
-    return div;
+    return bubble;
   }
   function showTyping() {
     const msgs = document.getElementById('lm-chat-messages');
-    const div  = document.createElement('div');
-    div.className = 'lm-typing'; div.id = 'lm-typing';
-    div.innerHTML = '<div class="lm-dot"></div><div class="lm-dot"></div><div class="lm-dot"></div>';
-    msgs.appendChild(div); msgs.scrollTop = msgs.scrollHeight;
+    const avatarSrc = currentMember ? BASE_IMG + Object.keys(MEMBERS).find(k => MEMBERS[k] === currentMember) + '.png' : '';
+    const row = document.createElement('div');
+    row.className = 'lm-typing-row'; row.id = 'lm-typing';
+    const img = document.createElement('img');
+    img.src = avatarSrc; img.className = 'lm-avatar-sm'; img.alt = '';
+    const dots = document.createElement('div');
+    dots.className = 'lm-typing';
+    dots.innerHTML = '<div class="lm-dot"></div><div class="lm-dot"></div><div class="lm-dot"></div>';
+    row.appendChild(img); row.appendChild(dots);
+    msgs.appendChild(row); msgs.scrollTop = msgs.scrollHeight;
   }
   function hideTyping() { const el = document.getElementById('lm-typing'); if (el) el.remove(); }
 
