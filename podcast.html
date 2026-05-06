@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — نادي الأعمال بودكاست</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
+    navigator.serviceWorker.addEventListener('controllerchange',()=>window.location.reload());
+  }
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#888;--dgray:#3A3A3A;--lgray:#555;
+  --accent:#B8B8B8;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6;padding-bottom:100px}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--silver)}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.97);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(20px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-links{display:flex;list-style:none;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:.2s}
+.nav-cta:hover{background:var(--chrome)}
+
+/* ─── HERO ─── */
+.pod-hero{padding:130px 64px 0;position:relative;overflow:hidden}
+.pod-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.018) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.pod-hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(70,70,70,.07) 0%,transparent 70%);pointer-events:none}
+.pod-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;max-width:1100px;padding-bottom:64px;border-bottom:1px solid rgba(184,184,184,.07)}
+
+/* Artwork */
+.pod-artwork{position:relative;flex-shrink:0}
+.pod-artwork-img{width:280px;height:280px;border-radius:12px;object-fit:cover;display:block;background:linear-gradient(135deg,#0D1E35 0%,#010B1C 100%);border:1px solid rgba(184,184,184,.12);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pod-artwork-inner{width:280px;height:280px;border-radius:12px;border:1px solid rgba(184,184,184,.12);overflow:hidden;background:#060F1F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;flex-shrink:0}
+.pod-artwork-logo{font-size:28px;font-weight:900;letter-spacing:6px;color:var(--white)}
+.pod-artwork-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#3A5A7A}
+.pod-artwork-wave{display:flex;align-items:flex-end;gap:3px;height:32px}
+.pod-artwork-bar{width:3px;background:rgba(184,184,184,.25);border-radius:2px;animation:idle-wave 1.8s ease-in-out infinite}
+.pod-artwork-bar:nth-child(1){height:10px;animation-delay:0s}
+.pod-artwork-bar:nth-child(2){height:20px;animation-delay:.15s}
+.pod-artwork-bar:nth-child(3){height:28px;animation-delay:.3s}
+.pod-artwork-bar:nth-child(4){height:16px;animation-delay:.45s}
+.pod-artwork-bar:nth-child(5){height:24px;animation-delay:.6s}
+.pod-artwork-bar:nth-child(6){height:12px;animation-delay:.75s}
+.pod-artwork-bar:nth-child(7){height:22px;animation-delay:.9s}
+@keyframes idle-wave{0%,100%{transform:scaleY(1);opacity:.25}50%{transform:scaleY(1.5);opacity:.5}}
+
+.pod-hero-info{text-align:right}
+.pod-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#3A5A7A;display:block;margin-bottom:14px}
+.pod-title{font-size:clamp(36px,5vw,62px);font-weight:900;letter-spacing:2px;line-height:1;color:var(--white);margin-bottom:10px}
+.pod-title span{display:block;font-size:clamp(14px,2vw,18px);font-weight:400;letter-spacing:8px;color:var(--silver);margin-top:8px}
+.pod-divider{width:40px;height:1px;background:rgba(184,184,184,.25);margin:22px 0 22px auto}
+.pod-desc{font-size:15px;line-height:1.85;color:#5A7A9A;max-width:480px;margin-right:0;margin-left:auto}
+.pod-stats{display:flex;gap:36px;margin-top:32px;justify-content:flex-end}
+.pod-stat-num{font-size:26px;font-weight:900;color:var(--white);display:block}
+.pod-stat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#3A5A7A;margin-top:2px}
+
+/* ─── EPISODES LIST ─── */
+.eps-section{max-width:1100px;margin:0 auto;padding:52px 64px 40px}
+.eps-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px}
+.eps-title{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--silver)}
+.eps-count{font-size:11px;color:#3A5A7A;letter-spacing:1px}
+
+.ep-list{display:flex;flex-direction:column;gap:2px}
+
+.ep-item{
+  display:grid;
+  grid-template-columns:40px auto 1fr auto;
+  align-items:center;
+  gap:20px;
+  padding:18px 20px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:background .18s;
+  border:1px solid transparent;
+  text-align:right;
+}
+.ep-item:hover{background:rgba(184,184,184,.04);border-color:rgba(184,184,184,.07)}
+.ep-item.active{background:rgba(184,184,184,.06);border-color:rgba(184,184,184,.12)}
+
+.ep-num{font-size:13px;font-weight:700;color:#2A4060;text-align:center;transition:.2s;font-variant-numeric:tabular-nums}
+.ep-item:hover .ep-num,.ep-item.active .ep-num{opacity:0}
+.ep-play-icon{position:absolute;font-size:14px;color:var(--white);opacity:0;transition:.2s;text-align:center;width:40px}
+.ep-item:hover .ep-play-icon,.ep-item.active .ep-play-icon{opacity:1}
+.ep-num-wrap{position:relative;width:40px;display:flex;align-items:center;justify-content:center}
+
+.ep-thumb{width:52px;height:52px;border-radius:6px;background:#0D1E35;border:1px solid rgba(184,184,184,.1);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ep-thumb-inner{width:52px;height:52px;border-radius:6px;background:linear-gradient(135deg,#0D1E35,#060F1F);display:flex;align-items:center;justify-content:center}
+.ep-thumb-lbl{font-size:9px;font-weight:800;letter-spacing:2px;color:#2A4060}
+
+.ep-info{min-width:0}
+.ep-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ep-meta{font-size:12px;color:#3A5A7A}
+.ep-item.active .ep-title{color:var(--silver)}
+
+.ep-duration{font-size:12px;color:#2A4060;font-variant-numeric:tabular-nums;white-space:nowrap;padding-right:4px}
+.ep-item.active .ep-duration{color:#4A6A8A}
+
+/* Waveform for active */
+.ep-wave{display:none;align-items:flex-end;gap:2px;height:18px}
+.ep-item.active .ep-wave{display:flex}
+.ep-item.active .ep-duration{display:none}
+.ep-wbar{width:2px;border-radius:1px;background:var(--silver);animation:ep-wave-anim 1s ease-in-out infinite}
+.ep-wbar:nth-child(1){height:6px;animation-delay:0s}
+.ep-wbar:nth-child(2){height:12px;animation-delay:.12s}
+.ep-wbar:nth-child(3){height:18px;animation-delay:.24s}
+.ep-wbar:nth-child(4){height:9px;animation-delay:.36s}
+.ep-wbar:nth-child(5){height:15px;animation-delay:.48s}
+@keyframes ep-wave-anim{0%,100%{transform:scaleY(.5);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+.paused .ep-wbar{animation-play-state:paused}
+
+/* ─── FIXED PLAYER BAR ─── */
+#player-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:999;
+  height:88px;
+  background:rgba(6,10,20,.97);
+  border-top:1px solid rgba(184,184,184,.1);
+  backdrop-filter:blur(24px);
+  display:flex;align-items:center;
+  padding:0 32px;
+  gap:24px;
+  transform:translateY(100%);
+  transition:transform .36s cubic-bezier(.34,1.2,.64,1);
+}
+#player-bar.visible{transform:translateY(0)}
+
+/* Left: episode info */
+.pb-info{display:flex;align-items:center;gap:14px;min-width:240px;max-width:280px}
+.pb-thumb{width:48px;height:48px;border-radius:6px;background:#0D1E35;border:1px solid rgba(184,184,184,.1);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.pb-thumb-lbl{font-size:8px;font-weight:800;letter-spacing:1.5px;color:#2A4060;text-align:center;line-height:1.3}
+.pb-title{font-size:13px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;text-align:right}
+.pb-ep{font-size:11px;color:#3A5A7A;margin-top:2px;text-align:right}
+
+/* Center: controls + progress */
+.pb-center{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;max-width:520px;margin:0 auto}
+.pb-controls{display:flex;align-items:center;gap:20px}
+.pb-btn{background:none;border:none;cursor:pointer;color:var(--silver);transition:.2s;display:flex;align-items:center;padding:4px}
+.pb-btn:hover{color:var(--white)}
+.pb-btn svg{display:block}
+#pb-play-btn{
+  width:38px;height:38px;border-radius:50%;background:var(--white);color:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  transition:.18s;
+}
+#pb-play-btn:hover{background:var(--chrome);transform:scale(1.05)}
+
+.pb-progress{width:100%;display:flex;align-items:center;gap:10px}
+.pb-time{font-size:11px;color:#3A5A7A;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:36px}
+.pb-bar{flex:1;height:3px;background:rgba(184,184,184,.12);border-radius:2px;cursor:pointer;position:relative;overflow:visible}
+.pb-fill{height:100%;background:var(--silver);border-radius:2px;pointer-events:none;transition:width .25s linear;min-width:0}
+.pb-handle{position:absolute;right:0;top:50%;transform:translate(50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--white);opacity:0;transition:.15s;pointer-events:none;box-shadow:0 0 0 2px rgba(255,255,255,.2)}
+.pb-bar:hover .pb-handle{opacity:1}
+.pb-bar:hover .pb-fill{background:var(--white)}
+.pb-bar:hover{height:4px}
+
+/* Right: volume */
+.pb-right{display:flex;align-items:center;gap:8px;min-width:120px;justify-content:flex-end}
+.pb-vol-bar{width:80px;height:3px;background:rgba(184,184,184,.12);border-radius:2px;cursor:pointer;position:relative}
+.pb-vol-fill{height:100%;background:rgba(184,184,184,.5);border-radius:2px;pointer-events:none}
+
+/* Hidden YouTube iframe */
+#yt-iframe-wrap{position:fixed;bottom:-300px;left:-300px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+
+/* ─── FOOTER ─── */
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-top:40px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .pod-hero-inner{grid-template-columns:1fr;text-align:center}
+  .pod-artwork-inner{margin:0 auto}
+  .pod-desc{margin:0 auto}
+  .pod-stats{justify-content:center}
+  .pod-divider{margin:22px auto}
+  .ep-item{grid-template-columns:40px 1fr auto}
+  .ep-thumb{display:none}
+}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .pod-hero{padding:90px 20px 0}
+  .eps-section{padding:36px 20px 40px}
+  .pod-artwork-inner{width:220px;height:220px}
+  #player-bar{padding:0 16px;gap:12px}
+  .pb-info{min-width:0;max-width:140px}
+  .pb-right{display:none}
+  .pb-title{max-width:120px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HIDDEN YOUTUBE ── -->
+<div id="yt-iframe-wrap">
+  <div id="yt-player"></div>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html">
+    <img src="logo.png" alt="LEOMAX">
+  </a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html">Home</a></li>
+    <li><a href="blog.html">Perspectives</a></li>
+    <li><a href="podcast.html" class="active">Podcast</a></li>
+  </ul>
+  <a class="nav-cta" href="company-contact.html">Get in Touch</a>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="pod-hero">
+  <div class="pod-hero-grid"></div>
+  <div class="pod-hero-glow"></div>
+  <div class="pod-hero-inner">
+
+    <!-- Artwork -->
+    <div class="pod-artwork-inner">
+      <div class="pod-artwork-logo">نادي</div>
+      <div class="pod-artwork-logo" style="margin-top:-14px">الأعمال</div>
+      <div class="pod-artwork-sub">Business Podcast</div>
+      <div class="pod-artwork-wave">
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+        <div class="pod-artwork-bar"></div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="pod-hero-info">
+      <span class="pod-tag">LEOMAX — البودكاست</span>
+      <h1 class="pod-title">نادي الأعمال<span>BUSINESS PODCAST</span></h1>
+      <div class="pod-divider"></div>
+      <p class="pod-desc">حلقات متخصصة في الأعمال والاستراتيجية والنمو — يقودها فريق LEOMAX ومختصون من القطاع. بدون حشو، مباشرة للنقطة.</p>
+      <div class="pod-stats">
+        <div>
+          <span class="pod-stat-num" id="ep-total-count">6</span>
+          <div class="pod-stat-lbl">حلقة</div>
+        </div>
+        <div>
+          <span class="pod-stat-num">أسبوعي</span>
+          <div class="pod-stat-lbl">جدول النشر</div>
+        </div>
+        <div>
+          <span class="pod-stat-num">يوتيوب</span>
+          <div class="pod-stat-lbl">المنصة</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── EPISODES ── -->
+<section class="eps-section">
+  <div class="eps-header">
+    <span class="eps-title">الحلقات</span>
+    <span class="eps-count" id="eps-count-lbl">6 حلقات</span>
+  </div>
+
+  <div class="ep-list" id="ep-list">
+    <!-- Episodes injected by JS -->
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="company-about.html">About</a>
+    <a href="blog.html">Perspectives</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<!-- ── FIXED PLAYER BAR ── -->
+<div id="player-bar">
+  <!-- Left -->
+  <div class="pb-info">
+    <div class="pb-thumb">
+      <div class="pb-thumb-lbl" id="pb-ep-num">EP 1</div>
+    </div>
+    <div>
+      <div class="pb-title" id="pb-title">—</div>
+      <div class="pb-ep">نادي الأعمال بودكاست</div>
+    </div>
+  </div>
+
+  <!-- Center -->
+  <div class="pb-center">
+    <div class="pb-controls">
+      <!-- Rewind 15s -->
+      <button class="pb-btn" id="pb-rew" title="15 ثانية للخلف">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/><text x="8" y="20" font-size="6" fill="currentColor" stroke="none" font-weight="700">15</text></svg>
+      </button>
+
+      <!-- Play / Pause -->
+      <button class="pb-btn" id="pb-play-btn" title="تشغيل / إيقاف">
+        <svg id="pb-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        <svg id="pb-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </button>
+
+      <!-- Forward 15s -->
+      <button class="pb-btn" id="pb-fwd" title="15 ثانية للأمام">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-3.51"/><text x="8" y="20" font-size="6" fill="currentColor" stroke="none" font-weight="700">15</text></svg>
+      </button>
+    </div>
+
+    <!-- Progress -->
+    <div class="pb-progress">
+      <span class="pb-time" id="pb-elapsed">0:00</span>
+      <div class="pb-bar" id="pb-bar">
+        <div class="pb-fill" id="pb-fill" style="width:0%"></div>
+        <div class="pb-handle" id="pb-handle"></div>
+      </div>
+      <span class="pb-time" id="pb-total">—</span>
+    </div>
+  </div>
+
+  <!-- Right: volume -->
+  <div class="pb-right">
+    <button class="pb-btn" id="pb-vol-btn" title="صوت">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    </button>
+    <div class="pb-vol-bar" id="pb-vol-bar">
+      <div class="pb-vol-fill" id="pb-vol-fill" style="width:80%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── YouTube IFrame API ── -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+/* ═══════════════════════════════════════════
+   EPISODE DATA
+   To add episodes: copy the object format below.
+   ytId  = the YouTube video ID (part after ?v= in the URL)
+   dur   = duration string shown in list (e.g. "42:17")
+   durS  = duration in seconds (for progress bar math)
+═══════════════════════════════════════════ */
+const EPISODES = [
+  {
+    num: 6,
+    title: 'كيف تبني نظام مبيعات حقيقي لا يعتمد على الأشخاص',
+    guest: 'د. أنس إليمام — مؤسس LEOMAX',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_6'
+  },
+  {
+    num: 5,
+    title: 'الذكاء الاصطناعي في الشركات الصغيرة — أين تبدأ؟',
+    guest: 'ليث درويش — مدير تقنية LEOMAX',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_5'
+  },
+  {
+    num: 4,
+    title: 'التمويل بين الخيال والواقع — ما الذي يبحث عنه المستثمر؟',
+    guest: 'مشاري العتيبي — مدير الاستثمار',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_4'
+  },
+  {
+    num: 3,
+    title: 'التوسع الإقليمي — الأخطاء التي تكلف الشركات سنوات',
+    guest: 'ميرال الحاكمي — قائدة التوسع',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_3'
+  },
+  {
+    num: 2,
+    title: 'التسويق بلا هوية — لماذا تفشل الحملات؟',
+    guest: 'كاميليا فؤاد — مديرة التسويق والعلامة التجارية',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_2'
+  },
+  {
+    num: 1,
+    title: 'الاستراتيجية ليست خطة — هي قرارات صعبة',
+    guest: 'كايا حداد — كبيرة مسؤولي الاستراتيجية',
+    dur: '00:00',
+    durS: 0,
+    ytId: 'PLACEHOLDER_1'
+  }
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let ytPlayer = null;
+let ytReady = false;
+let currentEp = null;
+let isPlaying = false;
+let progressTimer = null;
+let volume = 80; // 0-100
+let isMuted = false;
+
+/* ═══════════════════════════════════════════
+   RENDER EPISODES
+═══════════════════════════════════════════ */
+function renderEpisodes() {
+  const list = document.getElementById('ep-list');
+  list.innerHTML = '';
+  const count = EPISODES.length;
+  document.getElementById('ep-total-count').textContent = count;
+  document.getElementById('eps-count-lbl').textContent = count + ' حلقة';
+
+  EPISODES.forEach(ep => {
+    const item = document.createElement('div');
+    item.className = 'ep-item';
+    item.dataset.num = ep.num;
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.innerHTML = `
+      <div class="ep-num-wrap">
+        <span class="ep-num">${String(ep.num).padStart(2,'0')}</span>
+        <span class="ep-play-icon">&#9654;</span>
+      </div>
+      <div class="ep-thumb-inner ep-thumb">
+        <span class="ep-thumb-lbl">EP<br>${ep.num}</span>
+      </div>
+      <div class="ep-info">
+        <div class="ep-title">${ep.title}</div>
+        <div class="ep-meta">${ep.guest}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
+        <div class="ep-wave">
+          <div class="ep-wbar"></div>
+          <div class="ep-wbar"></div>
+          <div class="ep-wbar"></div>
+          <div class="ep-wbar"></div>
+          <div class="ep-wbar"></div>
+        </div>
+        <span class="ep-duration">${ep.dur}</span>
+      </div>
+    `;
+    item.addEventListener('click', () => playEpisode(ep));
+    item.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') playEpisode(ep); });
+    list.appendChild(item);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   YOUTUBE PLAYER SETUP
+═══════════════════════════════════════════ */
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('yt-player', {
+    height: '1',
+    width: '1',
+    videoId: '',
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0,
+    },
+    events: {
+      onReady: () => { ytReady = true; ytPlayer.setVolume(volume); },
+      onStateChange: onYTStateChange,
+      onError: onYTError
+    }
+  });
+}
+
+function onYTStateChange(e) {
+  const S = YT.PlayerState;
+  if (e.data === S.PLAYING) {
+    setPlaying(true);
+    // Update duration once we know it
+    if (currentEp) {
+      const d = ytPlayer.getDuration();
+      if (d > 0) updateEpDuration(currentEp.num, d);
+    }
+    startProgressTimer();
+  } else if (e.data === S.PAUSED) {
+    setPlaying(false);
+    stopProgressTimer();
+  } else if (e.data === S.ENDED) {
+    setPlaying(false);
+    stopProgressTimer();
+    resetProgress();
+    playNext();
+  }
+}
+
+function onYTError(e) {
+  // Graceful: just show placeholder state
+  console.warn('YouTube player error:', e.data);
+}
+
+/* ═══════════════════════════════════════════
+   PLAY EPISODE
+═══════════════════════════════════════════ */
+function playEpisode(ep) {
+  // If same episode is playing, toggle play/pause
+  if (currentEp && currentEp.num === ep.num && isPlaying) {
+    pauseAudio();
+    return;
+  }
+  if (currentEp && currentEp.num === ep.num && !isPlaying) {
+    resumeAudio();
+    return;
+  }
+
+  // New episode
+  currentEp = ep;
+
+  // Update UI
+  updateActiveEp(ep.num);
+  showPlayerBar(ep);
+
+  // Load + play
+  if (ytReady && ytPlayer && !ep.ytId.startsWith('PLACEHOLDER')) {
+    ytPlayer.loadVideoById(ep.ytId);
+    ytPlayer.playVideo();
+  } else {
+    // Placeholder mode: simulate playing state
+    setPlaying(true);
+    startFakeProgress(ep.durS || 1800);
+  }
+}
+
+function pauseAudio() {
+  if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+    ytPlayer.pauseVideo();
+  } else {
+    setPlaying(false);
+    stopProgressTimer();
+    setEpWavePaused(true);
+  }
+}
+
+function resumeAudio() {
+  if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+    ytPlayer.playVideo();
+  } else {
+    setPlaying(true);
+    setEpWavePaused(false);
+  }
+}
+
+function playNext() {
+  if (!currentEp) return;
+  const idx = EPISODES.findIndex(e => e.num === currentEp.num);
+  if (idx > 0) playEpisode(EPISODES[idx - 1]); // list is reverse order (newest first)
+}
+
+/* ═══════════════════════════════════════════
+   PROGRESS TIMER
+═══════════════════════════════════════════ */
+function startProgressTimer() {
+  stopProgressTimer();
+  progressTimer = setInterval(updateProgress, 500);
+}
+
+function stopProgressTimer() {
+  if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
+}
+
+function updateProgress() {
+  if (!ytReady || !ytPlayer) return;
+  const cur = ytPlayer.getCurrentTime() || 0;
+  const dur = ytPlayer.getDuration() || 0;
+  renderProgress(cur, dur);
+}
+
+function renderProgress(cur, dur) {
+  document.getElementById('pb-elapsed').textContent = fmtTime(cur);
+  document.getElementById('pb-total').textContent = dur > 0 ? fmtTime(dur) : '—';
+  const pct = dur > 0 ? (cur / dur * 100) : 0;
+  document.getElementById('pb-fill').style.width = pct + '%';
+}
+
+function resetProgress() {
+  renderProgress(0, currentEp ? currentEp.durS : 0);
+}
+
+/* Fake progress for placeholder episodes */
+let fakeStart = 0;
+let fakeDur = 0;
+function startFakeProgress(durS) {
+  stopProgressTimer();
+  fakeStart = Date.now();
+  fakeDur = durS;
+  progressTimer = setInterval(() => {
+    const elapsed = (Date.now() - fakeStart) / 1000;
+    renderProgress(elapsed % fakeDur, fakeDur);
+  }, 500);
+}
+
+function updateEpDuration(num, durS) {
+  const ep = EPISODES.find(e => e.num === num);
+  if (ep && ep.durS === 0) {
+    ep.durS = durS;
+    ep.dur = fmtTime(durS);
+    // Update visible duration in list
+    const items = document.querySelectorAll('.ep-item');
+    items.forEach(item => {
+      if (parseInt(item.dataset.num) === num) {
+        const durEl = item.querySelector('.ep-duration');
+        if (durEl) durEl.textContent = fmtTime(durS);
+      }
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════
+   UI HELPERS
+═══════════════════════════════════════════ */
+function showPlayerBar(ep) {
+  document.getElementById('pb-title').textContent = ep.title;
+  document.getElementById('pb-ep-num').textContent = 'EP ' + ep.num;
+  document.getElementById('player-bar').classList.add('visible');
+}
+
+function setPlaying(state) {
+  isPlaying = state;
+  document.getElementById('pb-play-icon').style.display = state ? 'none' : 'block';
+  document.getElementById('pb-pause-icon').style.display = state ? 'block' : 'none';
+  setEpWavePaused(!state);
+}
+
+function setEpWavePaused(paused) {
+  const activeItem = document.querySelector('.ep-item.active');
+  if (activeItem) {
+    if (paused) activeItem.classList.add('paused');
+    else activeItem.classList.remove('paused');
+  }
+}
+
+function updateActiveEp(num) {
+  document.querySelectorAll('.ep-item').forEach(el => el.classList.remove('active', 'paused'));
+  document.querySelectorAll('.ep-item').forEach(el => {
+    if (parseInt(el.dataset.num) === num) el.classList.add('active');
+  });
+}
+
+function fmtTime(s) {
+  s = Math.floor(s);
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return m + ':' + String(sec).padStart(2,'0');
+}
+
+/* ═══════════════════════════════════════════
+   PLAYER BAR CONTROLS
+═══════════════════════════════════════════ */
+document.getElementById('pb-play-btn').addEventListener('click', () => {
+  if (!currentEp) return;
+  if (isPlaying) pauseAudio(); else resumeAudio();
+});
+
+document.getElementById('pb-rew').addEventListener('click', () => {
+  if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+    ytPlayer.seekTo(Math.max(0, ytPlayer.getCurrentTime() - 15), true);
+  }
+});
+
+document.getElementById('pb-fwd').addEventListener('click', () => {
+  if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+    ytPlayer.seekTo(ytPlayer.getCurrentTime() + 15, true);
+  }
+});
+
+/* Progress bar click to seek */
+document.getElementById('pb-bar').addEventListener('click', function(e) {
+  if (!ytReady || !ytPlayer || !currentEp || currentEp.ytId.startsWith('PLACEHOLDER')) return;
+  const rect = this.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  const dur = ytPlayer.getDuration();
+  ytPlayer.seekTo(pct * dur, true);
+});
+
+/* Volume bar click */
+document.getElementById('pb-vol-bar').addEventListener('click', function(e) {
+  if (!ytReady || !ytPlayer) return;
+  const rect = this.getBoundingClientRect();
+  volume = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+  volume = Math.max(0, Math.min(100, volume));
+  ytPlayer.setVolume(volume);
+  document.getElementById('pb-vol-fill').style.width = volume + '%';
+  isMuted = volume === 0;
+});
+
+/* ═══════════════════════════════════════════
+   KEYBOARD SHORTCUTS
+═══════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  const tag = document.activeElement.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (!currentEp) return;
+    if (isPlaying) pauseAudio(); else resumeAudio();
+  }
+  if (e.code === 'ArrowLeft') {
+    if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+      ytPlayer.seekTo(Math.max(0, ytPlayer.getCurrentTime() - 15), true);
+    }
+  }
+  if (e.code === 'ArrowRight') {
+    if (ytReady && ytPlayer && currentEp && !currentEp.ytId.startsWith('PLACEHOLDER')) {
+      ytPlayer.seekTo(ytPlayer.getCurrentTime() + 15, true);
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+renderEpisodes();
+
+/* Open chat widget if available */
+window.addEventListener('load', () => {
+  if (window.LMChat) {
+    // chat widget loaded
+  }
+});
+</script>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>

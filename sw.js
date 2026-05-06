@@ -1,4 +1,4 @@
-const CACHE_NAME = 'leomax-v30';
+const CACHE_NAME = 'leomax-v31';
 
 const ASSETS = [
   './intake-chat.js',
@@ -66,7 +66,8 @@ const ASSETS = [
   './blog-expansion-why-regional-expansion-fails.html',
   './blog-supply-chain-resilience-not-efficiency.html',
   './blog-innovation-ideas-that-never-ship.html',
-  './blog-strategy-90-days-to-a-real-system.html'
+  './blog-strategy-90-days-to-a-real-system.html',
+  './podcast.html'
 ];
 
 // Install: cache all assets
