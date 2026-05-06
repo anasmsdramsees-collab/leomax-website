@@ -890,8 +890,8 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
       <button id="lm-chat-book" onclick="window.LMChat.book()">📅 Schedule a strategy call</button>
     </div>
   `;
+  overlay.appendChild(panel);
   document.body.appendChild(overlay);
-  document.body.appendChild(panel);
 
   /* ============================================================
      ONLINE STATUS  (8 AM – 5 PM Riyadh = all online; after 5 PM = 2 daily)
