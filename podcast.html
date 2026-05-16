@@ -7,7 +7,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#010B1C">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translacent">
 <script>
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('./sw.js').then(reg=>{reg.update();});
@@ -22,11 +22,12 @@
   --gray:#888;--border:rgba(184,184,184,.1);
 }
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden;line-height:1.6;padding-bottom:0;transition:padding-bottom .36s}
+body.player-open{padding-bottom:430px}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:rgba(184,184,184,.3)}
 
 /* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .nav-logo img{height:36px;width:auto}
 .nav-links{display:flex;list-style:none;gap:36px}
@@ -36,68 +37,140 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .nav-cta:hover{background:var(--chrome)}
 
 /* ─── HERO ─── */
-.pod-hero{padding:130px 64px 70px;position:relative;overflow:hidden}
-.pod-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.pod-hero{padding:130px 64px 64px;position:relative;overflow:hidden}
+.pod-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.018) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
 .pod-hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(60,60,60,.07) 0%,transparent 70%);pointer-events:none}
 .pod-hero-inner{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center}
 .pod-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#3A5A7A;display:block;margin-bottom:18px}
 .pod-title{font-size:clamp(40px,8vw,88px);font-weight:900;line-height:.95;letter-spacing:2px;background:linear-gradient(180deg,#FFF 30%,#444 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-.pod-subtitle{font-size:clamp(13px,2vw,17px);font-weight:400;letter-spacing:6px;text-transform:uppercase;color:#3A5A7A;margin-bottom:22px}
+.pod-subtitle{font-size:clamp(13px,2vw,16px);font-weight:400;letter-spacing:7px;text-transform:uppercase;color:#3A5A7A;margin-bottom:22px}
 .pod-divider{width:40px;height:1px;background:rgba(184,184,184,.2);margin:0 auto 22px}
 .pod-desc{font-size:15px;line-height:1.85;color:#4A6A88;max-width:500px;margin:0 auto}
 
-/* ─── SECTION HEADER ─── */
+/* ─── SECTION ─── */
 .section{padding:0 64px 80px;max-width:1200px;margin:0 auto}
-.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;padding-top:64px;border-top:1px solid var(--border)}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:32px;padding-top:56px;border-top:1px solid var(--border)}
 .section-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--silver)}
-.section-count{font-size:11px;color:#2A4060;letter-spacing:1px}
-.section-lang{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border);color:#3A5A7A;border-radius:20px;margin-right:auto}
+.section-lang{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border);color:#3A5A7A;border-radius:20px}
+.section-count{font-size:11px;color:#2A4060;margin-right:auto}
 
-/* ─── PODCAST GRID ─── */
+/* ─── GRID ─── */
 .pod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 
-/* ─── PODCAST CARD ─── */
+/* ─── CARD ─── */
 .pod-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:8px;overflow:hidden;
   display:flex;flex-direction:column;
   transition:border-color .22s,transform .22s;
 }
-.pod-card:hover{border-color:rgba(184,184,184,.25);transform:translateY(-3px)}
+.pod-card:hover{border-color:rgba(184,184,184,.22);transform:translateY(-2px)}
+.pod-card.active{border-color:rgba(30,215,96,.3);box-shadow:0 0 0 1px rgba(30,215,96,.12)}
 
-.pod-card-top{padding:24px 24px 18px;flex:1}
-.pod-card-icon{
-  width:52px;height:52px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;letter-spacing:1px;
-  margin-bottom:16px;border:1px solid rgba(184,184,184,.1);
-  flex-shrink:0;
-}
+.pod-card-top{padding:24px 24px 16px;flex:1}
+.pod-card-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:14px;border:1px solid rgba(184,184,184,.08);flex-shrink:0}
+.pod-card-focus{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#2A4060;margin-bottom:8px}
 .pod-card-name{font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;line-height:1.3}
-.pod-card-focus{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#2A4060;margin-bottom:10px}
-.pod-card-desc{font-size:12.5px;color:#4A6070;line-height:1.7}
-
-.pod-card-bottom{
-  padding:14px 24px;border-top:1px solid rgba(184,184,184,.06);
-  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
-}
-.pod-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:5px 10px;border-radius:4px;text-decoration:none;
-  border:1px solid var(--border);color:var(--silver);
-  transition:.18s;flex-shrink:0;
-}
-.pod-badge:hover{border-color:rgba(184,184,184,.35);color:var(--white);background:rgba(184,184,184,.05)}
-.pod-badge svg{flex-shrink:0}
+.pod-card-desc{font-size:12.5px;color:#3A5060;line-height:1.7}
 
 /* Featured card */
-.pod-card.featured{grid-column:span 2;border-color:rgba(184,184,184,.18)}
+.pod-card.featured{grid-column:span 2;border-color:rgba(184,184,184,.14)}
 .pod-card.featured .pod-card-top{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
-.pod-card.featured .pod-card-icon{width:72px;height:72px;border-radius:14px;font-size:14px}
+.pod-card.featured .pod-card-icon{width:68px;height:68px;border-radius:12px;font-size:13px}
 .pod-card.featured .pod-card-name{font-size:18px}
 
-/* ─── DIVIDER ─── */
+.pod-card-bottom{
+  padding:12px 24px 16px;border-top:1px solid rgba(184,184,184,.05);
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+}
+
+/* Listen button */
+.btn-listen{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#1DB954;color:#000;
+  padding:7px 14px;border-radius:20px;
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  border:none;cursor:pointer;font-family:inherit;
+  transition:.18s;flex-shrink:0;
+}
+.btn-listen:hover{background:#1ed760;transform:scale(1.03)}
+.btn-listen svg{flex-shrink:0}
+.pod-card.active .btn-listen{background:#fff;color:#000}
+
+/* External badge */
+.pod-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 10px;border-radius:4px;text-decoration:none;
+  border:1px solid var(--border);color:#5A7A9A;
+  transition:.18s;flex-shrink:0;
+}
+.pod-badge:hover{border-color:rgba(184,184,184,.3);color:var(--silver)}
+.pod-badge svg{flex-shrink:0}
+
+/* ─── BOTTOM PLAYER PANEL ─── */
+#pod-player{
+  position:fixed;bottom:0;left:0;right:0;
+  height:430px;
+  background:rgba(4,9,18,.98);
+  border-top:1px solid rgba(184,184,184,.15);
+  backdrop-filter:blur(28px);
+  transform:translateY(100%);
+  transition:transform .36s cubic-bezier(.34,1.2,.64,1);
+  z-index:999;
+  display:flex;flex-direction:column;
+}
+#pod-player.open{transform:translateY(0)}
+
+#pod-player-header{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 28px;border-bottom:1px solid rgba(184,184,184,.08);
+  flex-shrink:0;
+}
+#pod-player-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#1DB954;flex-shrink:0;
+  animation:pod-pulse 2s ease-in-out infinite;
+}
+@keyframes pod-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+#pod-player-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#3A5A7A}
+#pod-player-name{font-size:13px;font-weight:700;color:var(--white);margin-right:auto}
+#pod-player-close{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(184,184,184,.07);border:1px solid rgba(184,184,184,.12);
+  color:#9CA3AF;font-size:13px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:.18s;font-family:inherit;
+  flex-shrink:0;
+}
+#pod-player-close:hover{background:rgba(184,184,184,.16);color:#fff}
+
+#pod-player-body{
+  flex:1;overflow:hidden;
+  padding:0 28px 28px;
+  display:flex;align-items:center;
+}
+#pod-player-body iframe{
+  width:100%;max-width:900px;
+  height:352px;
+  border:none;border-radius:10px;
+  margin:0 auto;display:block;
+}
+
+/* No embed fallback */
+#pod-player-fallback{
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;width:100%;
+}
+#pod-player-fallback p{font-size:14px;color:#4A6080;text-align:center;max-width:360px;line-height:1.7}
+.btn-ext{
+  background:var(--white);color:var(--black);padding:11px 28px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;display:inline-block;transition:.2s;border-radius:2px;
+}
+.btn-ext:hover{background:var(--chrome)}
+
+/* ─── SEPARATOR ─── */
 .pod-sep{height:1px;background:var(--border);margin:0 64px}
 
 /* ─── CTA ─── */
@@ -119,7 +192,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
 @media(max-width:1000px){.pod-grid{grid-template-columns:repeat(2,1fr)}.pod-card.featured{grid-column:span 2}}
 @media(max-width:768px){
   nav{padding:16px 20px}.nav-links{display:none}
-  .pod-hero{padding:100px 20px 50px}
+  .pod-hero{padding:100px 20px 48px}
   .section{padding:0 20px 60px}
   .pod-grid{grid-template-columns:1fr}
   .pod-card.featured{grid-column:span 1}
@@ -127,7 +200,133 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
   .pod-sep{margin:0 20px}
   footer{padding:28px 20px;flex-direction:column;text-align:center}
   .pod-cta{padding:60px 24px}
+  #pod-player{height:400px}
+  #pod-player-body{padding:0 16px 16px}
+  #pod-player-header{padding:12px 16px}
+  body.player-open{padding-bottom:400px}
 }
+
+/* ═══════════════════════════════════
+   LEOMAX LIGHT THEME OVERRIDE
+═══════════════════════════════════ */
+body{background:#EEF2F7!important;color:var(--black)!important}
+
+/* Scrollbar on light bg */
+::-webkit-scrollbar-track{background:#EEF2F7!important}
+
+/* ── KEEP DARK: nav, footer, hero, CTA ── */
+nav,header.nav,.site-nav{background:rgba(1,11,28,.92)!important}
+footer,footer *:is(a){background:inherit}
+footer{background:var(--black)!important}
+
+/* Every element with a hero / cta class stays dark */
+.hero,.hero-inner,.page-hero,.post-hero,.case-hero,.art-hero,
+.hero-section,.team-hero,.founder-hero,.pod-hero,
+.bottom-cta,.cta-section,.art-cta,.blog-cta,.pod-cta,.case-cta{
+  background:var(--black)!important;color:var(--white)!important
+}
+.hero h1,.hero h2,.hero p,.art-hero h1,.art-hero h2,.art-hero p,
+.case-hero h1,.team-hero h1,.founder-hero h1,.pod-hero h1,
+.bottom-cta h2,.cta-section h2,.art-cta h2,.blog-cta h2,.pod-cta h2,.case-cta h2{
+  color:inherit!important
+}
+
+/* ── LIGHT SECTIONS ── */
+section:not(.hero):not(.hero-section):not(.bottom-cta):not(.cta-section):not(.art-cta):not(.blog-cta):not(.pod-cta):not(.case-cta){
+  background:#F4F7FB
+}
+
+/* Section headings on light bg */
+section:not(.hero):not(.hero-section) h2,
+section:not(.hero):not(.hero-section) h3{color:var(--black)}
+
+/* ── WHITE CARDS ── */
+.sys-card,.service-card,.fw-card,.blog-card,.case-card,.team-card,
+.ep-card,.pod-card,.bio-card,.contact-card,.feature-card,.value-card,
+.pillar,.module,.track,.stat,.metric,.proc-step,
+.result-item,.approach-card,.timeline-card,.timeline-item,
+.form-wrap,.post-body,.article-body{
+  background:#FFFFFF!important;
+  border-color:#DDE4ED!important;
+  color:var(--black)!important
+}
+
+/* Featured / dark cards stay dark */
+.price-card.featured,.highlight-card,.dark-card,.featured{
+  background:var(--dark)!important;color:var(--white)!important
+}
+.price-card.featured .card-sub,
+.price-card.featured .card-note,
+.price-card.featured .card-price span,
+.price-card.featured .card-features li{color:var(--gray)!important}
+
+/* Section labels + dividers */
+.sec-label,.sec-tag,.tag,.overline,.label{color:var(--lgray)!important}
+.sec-divider{background:#C8D3DE!important}
+
+/* ── PROCESS STEPS ── */
+.process,.process-strip,.processes{background:#EEF2F7!important}
+.step,.proc-card{background:#FFFFFF!important;border-color:#DDE4ED!important}
+.step-desc,.proc-desc{color:var(--lgray)!important}
+
+/* ── FAQ ── */
+.faq,.faq-section{background:#F4F7FB!important}
+.faq-item{border-bottom-color:#DDE4ED!important}
+.faq-a{color:var(--lgray)!important}
+
+/* ── SYSTEMS GRID (index) ── */
+.systems{background:#EEF2F7!important}
+.sys-card{background:#FFFFFF!important;border-color:#DDE4ED!important;color:var(--black)!important}
+.sys-card:hover{background:#F4F7FB!important}
+.sys-card .sys-title{color:var(--black)!important}
+
+/* ── BLOG / CASE CARDS ── */
+.blog-grid .post-card,.blog-grid article,.blog-card,
+.case-grid .case-card,.case-card{
+  background:#FFFFFF!important;border-color:#DDE4ED!important;color:var(--black)!important
+}
+.post-tag,.case-tag{color:var(--lgray)!important}
+.post-title,.case-title{color:var(--black)!important}
+.post-excerpt,.case-excerpt{color:var(--lgray)!important}
+
+/* ── TEAM ── */
+.team-grid .team-card{background:#FFFFFF!important;border-color:#DDE4ED!important}
+.team-name{color:var(--black)!important}
+.team-role{color:var(--lgray)!important}
+
+/* ── FILTER PILLS (blog) ── */
+.filter-pill{border-color:#C8D3DE!important;color:var(--lgray)!important}
+.filter-pill.active{background:var(--black)!important;color:var(--white)!important;border-color:var(--black)!important}
+
+/* ── PM CARDS ── */
+.pm-card{border-color:#DDE4ED!important}
+.pm-card:hover{border-color:#8fa8be!important;box-shadow:0 4px 16px rgba(0,0,0,.08)!important}
+
+/* ── MODAL (apply) ── */
+.apply-modal,.modal{background:var(--charcoal)!important}
+
+/* ── ABOUT / COMPANY SECTIONS ── */
+.about-section,.mission-section,.values-section,.team-section,
+.founder-section,.process-section,.timeline-section,
+.contact-section,.approach-section{background:#F4F7FB!important}
+
+/* ── PODCAST ── */
+.episodes-section,.pod-section{background:#F4F7FB!important}
+
+/* ── SYSTEM PAGES ── */
+.system-section,.system-body,.modules-section,.outcomes-section,
+.tracks-section,.pillars-section,.phase-section,.overview-section{
+  background:#F4F7FB!important
+}
+
+/* ── CTA BUTTON on light bg fix ── */
+.btn-outline,.cta-outline{
+  color:var(--lgray)!important;border-color:#C8D3DE!important
+}
+.btn-outline:hover,.cta-outline:hover{
+  color:var(--black)!important;border-color:var(--black)!important
+}
+
 </style>
 </head>
 <body>
@@ -154,7 +353,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
     <h1 class="pod-title">BUSINESS</h1>
     <div class="pod-subtitle">PODCAST HUB</div>
     <div class="pod-divider"></div>
-    <p class="pod-desc">أفضل البودكاستات في الأعمال والاستراتيجية والنمو — مختارة بعناية للقادة والمؤسسين في المنطقة.</p>
+    <p class="pod-desc">أفضل البودكاستات في الأعمال — مختارة بعناية. استمع مباشرة من الموقع.</p>
   </div>
 </div>
 
@@ -168,54 +367,88 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
 
   <div class="pod-grid">
 
-    <!-- Featured: سوالف بزنس -->
-    <div class="pod-card featured">
+    <!-- سوالف بزنس — Featured -->
+    <div class="pod-card featured"
+         data-spotify="7qJ8BXDpiJBmYBpQXAeFmF"
+         data-name="سوالف بزنس">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(100,149,237,.1);color:#6495ED">سبز</div>
         <div>
-          <div class="pod-card-focus">أعمال سعودية · ريادة</div>
+          <div class="pod-card-focus">أعمال سعودية · ريادة · نمو</div>
           <div class="pod-card-name">سوالف بزنس</div>
-          <div class="pod-card-desc">واحد من أقوى البودكاستات العربية لفهم حالات الأعمال الحقيقية في السعودية والخليج — ريادة الأعمال، العمليات، النمو، وقصص المؤسسين على أرض الواقع.</div>
+          <div class="pod-card-desc">واحد من أقوى البودكاستات العربية لفهم حالات الأعمال الحقيقية في السعودية والخليج — ريادة، عمليات، نمو، وقصص مؤسسين على أرض الواقع.</div>
         </div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://thmanyah.com/podcasts/swalif" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
         <a class="pod-badge" href="https://www.youtube.com/playlist?list=PLeNNUmE-BlnE5GVCM_aZtWCLzCzHYA-ho" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.83 1.56V6.81a4.85 4.85 0 01-1.06-.12z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           YouTube
-        </a>
-        <a class="pod-badge" href="https://podcasts.apple.com/eg/podcast/%D8%B3%D9%88%D8%A7%D9%84%D9%81-%D8%A8%D8%B2%D9%86%D8%B3-%D9%85%D8%B9-%D9%85%D8%B4%D9%87%D9%88%D8%B1-%D8%A7%D9%84%D8%AF%D8%A8%D9%8A%D8%A7%D9%86/id1239234534" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Apple
-        </a>
-        <a class="pod-badge" href="https://open.spotify.com/show/7qJ8BXDpiJBmYBpQXAeFmF" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm4.58 14.43a.62.62 0 01-.86.21c-2.37-1.45-5.35-1.78-8.86-.97a.62.62 0 11-.28-1.21c3.84-.88 7.13-.5 9.79 1.12a.63.63 0 01.21.85zm1.22-2.72a.78.78 0 01-1.08.26c-2.71-1.67-6.84-2.15-10.04-1.18a.78.78 0 01-.45-1.49c3.66-1.12 8.21-.57 11.31 1.34a.79.79 0 01.26 1.07zm.1-2.83c-3.25-1.93-8.62-2.11-11.72-1.17a.94.94 0 11-.54-1.8c3.56-1.08 9.48-.87 13.22 1.35a.94.94 0 01-1 1.62z"/></svg>
-          Spotify
         </a>
       </div>
     </div>
 
     <!-- فنجان -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="44A5X2TBPrANGQO83s3AZZ"
+         data-name="فنجان من ثمانية">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(251,191,36,.08);color:#FBBF24">فنج</div>
         <div class="pod-card-focus">اقتصاد · مجتمع · قيادة</div>
         <div class="pod-card-name">فنجان من ثمانية</div>
-        <div class="pod-card-desc">حلقات قوية عن الاقتصاد والسعودية والقيادة والشركات وتحولات السوق — أعمق من معظم البودكاستات التجارية.</div>
+        <div class="pod-card-desc">حلقات معمّقة عن الاقتصاد والسعودية والقيادة وتحولات السوق — أعمق من معظم البودكاستات التجارية.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://thmanyah.com/podcasts/fnjan" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
+      </div>
+    </div>
+
+    <!-- خلاصة بزنس -->
+    <div class="pod-card"
+         data-spotify="6rZfe56ymcbr4PcYlLkAjB"
+         data-name="خلاصة بزنس">
+      <div class="pod-card-top">
+        <div class="pod-card-icon" style="background:rgba(52,211,153,.08);color:#34D399">خلص</div>
+        <div class="pod-card-focus">ريادة · كتب · استثمار</div>
+        <div class="pod-card-name">خلاصة بزنس</div>
+        <div class="pod-card-desc">أفكار بزنس سريعة ودروس من كتب الأعمال — مكثفة للمؤسسين المشغولين.</div>
+      </div>
+      <div class="pod-card-bottom">
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
+      </div>
+    </div>
+
+    <!-- صحاب الماركتينج -->
+    <div class="pod-card"
+         data-spotify="40ptmN6PZMohvdWoq3Vpgt"
+         data-name="صحاب الماركتينج">
+      <div class="pod-card-top">
+        <div class="pod-card-icon" style="background:rgba(236,72,153,.08);color:#EC4899">صحب</div>
+        <div class="pod-card-focus">تسويق · علامة تجارية · محتوى</div>
+        <div class="pod-card-name">صحاب الماركتينج</div>
+        <div class="pod-card-desc">التسويق والعلامة التجارية والإعلانات — مباشر وعملي لفرق التسويق في المنطقة.</div>
+      </div>
+      <div class="pod-card-bottom">
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- مدرسة الاستثمار -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-ext="https://podcasts.apple.com/dz/genre/1321?l=ar"
+         data-name="مدرسة الاستثمار">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(245,158,11,.08);color:#F59E0B">مدر</div>
         <div class="pod-card-focus">استثمار · ثروة · مال</div>
@@ -223,47 +456,17 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
         <div class="pod-card-desc">بناء الثروة، الأسواق، والقرارات المالية الذكية — مرجع للمؤسسين والمستثمرين في المنطقة.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://podcasts.apple.com/dz/genre/1321?l=ar" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Apple
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
-    <!-- خلاصة بزنس -->
-    <div class="pod-card">
-      <div class="pod-card-top">
-        <div class="pod-card-icon" style="background:rgba(52,211,153,.08);color:#34D399">خلص</div>
-        <div class="pod-card-focus">ريادة · كتب · استثمار</div>
-        <div class="pod-card-name">خلاصة بزنس</div>
-        <div class="pod-card-desc">أفكار بزنس سريعة، دروس من كتب الأعمال، وملخصات مكثفة للمؤسسين المشغولين.</div>
-      </div>
-      <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://open.spotify.com/show/6rZfe56ymcbr4PcYlLkAjB" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm4.58 14.43a.62.62 0 01-.86.21c-2.37-1.45-5.35-1.78-8.86-.97a.62.62 0 11-.28-1.21c3.84-.88 7.13-.5 9.79 1.12a.63.63 0 01.21.85zm1.22-2.72a.78.78 0 01-1.08.26c-2.71-1.67-6.84-2.15-10.04-1.18a.78.78 0 01-.45-1.49c3.66-1.12 8.21-.57 11.31 1.34a.79.79 0 01.26 1.07zm.1-2.83c-3.25-1.93-8.62-2.11-11.72-1.17a.94.94 0 11-.54-1.8c3.56-1.08 9.48-.87 13.22 1.35a.94.94 0 01-1 1.62z"/></svg>
-          Spotify
-        </a>
-      </div>
-    </div>
-
-    <!-- صحاب الماركتينج -->
-    <div class="pod-card">
-      <div class="pod-card-top">
-        <div class="pod-card-icon" style="background:rgba(236,72,153,.08);color:#EC4899">صحب</div>
-        <div class="pod-card-focus">تسويق · علامة تجارية · محتوى</div>
-        <div class="pod-card-name">صحاب الماركتينج</div>
-        <div class="pod-card-desc">التسويق والعلامة التجارية والإعلانات والنمو — مباشر وعملي لفرق التسويق في المنطقة.</div>
-      </div>
-      <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://ar-podcast.com/category/business/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
-      </div>
-    </div>
-
-    <!-- بودكاست أتمتة الأعمال -->
-    <div class="pod-card">
+    <!-- أتمتة الأعمال -->
+    <div class="pod-card"
+         data-ext="https://ar-podcast.com/category/business/"
+         data-name="بودكاست أتمتة الأعمال">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(99,102,241,.1);color:#818CF8">أتم</div>
         <div class="pod-card-focus">أتمتة · أنظمة · تحول رقمي</div>
@@ -271,15 +474,17 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
         <div class="pod-card-desc">الأتمتة وبناء الأنظمة والتحول الرقمي — ذو صلة مباشرة بما تبنيه LEOMAX داخل الشركات.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://ar-podcast.com/category/business/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- ريادتي -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-ext="https://www.riyadatipod.com/podcast"
+         data-name="ريادتي بودكاست">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(16,185,129,.08);color:#10B981">ريد</div>
         <div class="pod-card-focus">ستارتاب · مؤسسون · فرص</div>
@@ -287,15 +492,17 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
         <div class="pod-card-desc">أساسيات الستارتاب، اكتشاف العميل، وتفكير المؤسسين في مراحل النمو الأولى.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.riyadatipod.com/podcast" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- CEO LEVEL -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-ext="https://ar-podcast.com/category/business/"
+         data-name="CEO LEVEL">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(184,184,184,.07);color:#9CA3AF">CEO</div>
         <div class="pod-card-focus">قيادة · إدارة · قرارات</div>
@@ -303,10 +510,10 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
         <div class="pod-card-desc">القيادة التنفيذية وصنع القرار والإدارة على مستوى المدير التنفيذي.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://ar-podcast.com/category/business/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          الموقع
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
@@ -325,117 +532,131 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
 
   <div class="pod-grid">
 
-    <!-- Founders -->
-    <div class="pod-card featured">
+    <!-- Founders — Featured -->
+    <div class="pod-card featured"
+         data-spotify="7txiovdzPARhjm18NwMUYj"
+         data-name="Founders">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(100,149,237,.1);color:#6495ED">FND</div>
         <div>
           <div class="pod-card-focus">Founder Mindset · History · Strategy</div>
           <div class="pod-card-name">Founders</div>
-          <div class="pod-card-desc">Deep-dives into the lives of the world's greatest founders — Jobs, Bezos, Rockefeller, Disney, and more. Essential listening for understanding how enduring companies are built.</div>
+          <div class="pod-card-desc">Deep-dives into the lives of the world's greatest founders — Jobs, Bezos, Rockefeller, Disney, and more. Essential for understanding how enduring companies are built.</div>
         </div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.founderspodcast.com/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- Acquired -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="7Fj0XEuUQLUqoMZQdsLXqp"
+         data-name="Acquired">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(52,211,153,.08);color:#34D399">ACQ</div>
         <div class="pod-card-focus">Company Building · Strategy · Scale</div>
         <div class="pod-card-name">Acquired</div>
-        <div class="pod-card-desc">How great companies were built, how they scaled, and the strategic decisions behind their growth. One of the best shows for understanding business models in depth.</div>
+        <div class="pod-card-desc">How great companies were built, scaled, and the strategic decisions that shaped them. One of the best shows for understanding business models in depth.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.acquired.fm/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- My First Million -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="3mliji9352UAk3XnWElnDV"
+         data-name="My First Million">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(251,191,36,.08);color:#FBBF24">MFM</div>
         <div class="pod-card-focus">Ideas · Opportunities · Trends</div>
         <div class="pod-card-name">My First Million</div>
-        <div class="pod-card-desc">Practical business ideas, market opportunities, and conversations around building profitable ventures. Fast-paced and full of actionable thinking.</div>
+        <div class="pod-card-desc">Practical business ideas, market opportunities, and building profitable ventures. Fast-paced and full of actionable thinking.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.mfmpod.com/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- The Pitch -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="0L04op9D76TOfmzm7yOf9T"
+         data-name="The Pitch">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(245,158,11,.08);color:#F59E0B">PTC</div>
         <div class="pod-card-focus">Funding · Investors · Startups</div>
         <div class="pod-card-name">The Pitch</div>
-        <div class="pod-card-desc">Real startup pitches to real investors. The best way to understand how investors think, what moves capital, and how founders answer tough questions under pressure.</div>
+        <div class="pod-card-desc">Real startup pitches to real investors. The best way to understand how investors think, what moves capital, and how founders answer tough questions.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.thepitch.show/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- Decoder -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="47jQcyRcrM1EoV0sU39N9F"
+         data-name="Decoder">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(99,102,241,.1);color:#818CF8">DEC</div>
         <div class="pod-card-focus">AI · Tech · CEO Thinking</div>
         <div class="pod-card-name">Decoder</div>
-        <div class="pod-card-desc">CEO decision-making, AI, platforms, media, and modern business strategy. Nilay Patel presses the people building the future on how and why they make the choices they do.</div>
+        <div class="pod-card-desc">CEO decision-making, AI, platforms, and modern business strategy. Nilay Patel presses the people building the future on how and why they make the choices they do.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://www.theverge.com/decoder-podcast-with-nilay-patel" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- How I Built This -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="6E709HRH7XaiZrMfgtNCun"
+         data-name="How I Built This">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(236,72,153,.08);color:#EC4899">HIB</div>
         <div class="pod-card-focus">Brand Building · Founder Stories</div>
         <div class="pod-card-name">How I Built This</div>
-        <div class="pod-card-desc">Founder stories from the companies you know. How ideas became brands, what nearly killed them, and what kept them alive. Guy Raz at his best.</div>
+        <div class="pod-card-desc">Founder stories from the companies you know. How ideas became brands, what nearly killed them, and what kept them alive.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://podcasts.apple.com/us/podcast/how-i-built-this-with-guy-raz/id1150510297" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Apple
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
     <!-- Masters of Scale -->
-    <div class="pod-card">
+    <div class="pod-card"
+         data-spotify="1bJRgaFZHuzifad4IAApFR"
+         data-name="Masters of Scale">
       <div class="pod-card-top">
         <div class="pod-card-icon" style="background:rgba(16,185,129,.08);color:#10B981">MOS</div>
         <div class="pod-card-focus">Scaling · Leadership · Systems</div>
         <div class="pod-card-name">Masters of Scale</div>
-        <div class="pod-card-desc">How companies grow from zero to massive — teams, systems, leadership decisions, and the counterintuitive moves that separate companies that scale from those that stall.</div>
+        <div class="pod-card-desc">How companies grow from zero to massive — teams, systems, and the counterintuitive moves that separate companies that scale from those that stall.</div>
       </div>
       <div class="pod-card-bottom">
-        <a class="pod-badge" href="https://mastersofscale.com/" target="_blank" rel="noopener">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Website
-        </a>
+        <button class="btn-listen" onclick="playShow(this)">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>
+          Listen
+        </button>
       </div>
     </div>
 
@@ -462,6 +683,84 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:36px 6
   <div class="foot-copy">© 2026 LEOMAX</div>
 </footer>
 
+<!-- ─── EMBEDDED PLAYER PANEL ─── -->
+<div id="pod-player">
+  <div id="pod-player-header">
+    <div id="pod-player-dot"></div>
+    <span id="pod-player-label">NOW PLAYING</span>
+    <span id="pod-player-name">—</span>
+    <button id="pod-player-close" onclick="closePlayer()">✕</button>
+  </div>
+  <div id="pod-player-body">
+    <!-- iframe injected by JS -->
+    <div id="pod-player-fallback">
+      <p>هذا البودكاست غير متاح للتشغيل المباشر. اضغط لفتحه على منصته الأصلية.</p>
+      <a id="pod-fallback-link" class="btn-ext" href="#" target="_blank" rel="noopener">Open Podcast</a>
+    </div>
+  </div>
+</div>
+
 <script src="chat-widget.js"></script>
+<script>
+var activeCard = null;
+
+function playShow(btn) {
+  var card = btn.closest('.pod-card');
+  var spotifyId = card.dataset.spotify;
+  var extUrl    = card.dataset.ext;
+  var name      = card.dataset.name || '';
+
+  // Deactivate previous card
+  if (activeCard && activeCard !== card) {
+    activeCard.classList.remove('active');
+  }
+  activeCard = card;
+  card.classList.add('active');
+
+  // Update player name
+  document.getElementById('pod-player-name').textContent = name;
+
+  var body     = document.getElementById('pod-player-body');
+  var fallback = document.getElementById('pod-player-fallback');
+
+  // Clear previous iframe
+  var old = body.querySelector('iframe');
+  if (old) old.remove();
+  fallback.style.display = 'none';
+
+  if (spotifyId) {
+    // Inject Spotify embed
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://open.spotify.com/embed/show/' + spotifyId + '?utm_source=generator&theme=0';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+    iframe.setAttribute('loading', 'lazy');
+    body.insertBefore(iframe, fallback);
+  } else if (extUrl) {
+    // No embed available — show fallback
+    fallback.style.display = 'flex';
+    document.getElementById('pod-fallback-link').href = extUrl;
+  }
+
+  // Open panel
+  var player = document.getElementById('pod-player');
+  player.classList.add('open');
+  document.body.classList.add('player-open');
+}
+
+function closePlayer() {
+  document.getElementById('pod-player').classList.remove('open');
+  document.body.classList.remove('player-open');
+  if (activeCard) {
+    activeCard.classList.remove('active');
+    activeCard = null;
+  }
+  // Remove iframe to stop playback
+  var body = document.getElementById('pod-player-body');
+  var iframe = body.querySelector('iframe');
+  if (iframe) iframe.remove();
+}
+</script>
 </body>
 </html>
