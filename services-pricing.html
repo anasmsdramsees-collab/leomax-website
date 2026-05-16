@@ -442,7 +442,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">The exact system LEOMAX uses to identify bottlenecks and rebuild a business's operating foundation in one quarter.</div>
         <div class="fw-footer">
           <div class="fw-price">499 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-reset',499,'90-Day Reset Framework','Immediate PDF + Excel download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw01');return false;">Buy →</a>
         </div>
       </div>
 
@@ -452,7 +452,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">A structured assessment to identify where AI can replace manual processes in your business. Includes 40+ implementation prompts.</div>
         <div class="fw-footer">
           <div class="fw-price">699 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-ai',699,'AI Readiness Audit Toolkit','Immediate PDF + Notion template download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw02');return false;">Buy →</a>
         </div>
       </div>
 
@@ -462,7 +462,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">Brand strategy framework tailored for the Saudi SME market. Messaging, positioning, and audience definition in one workbook.</div>
         <div class="fw-footer">
           <div class="fw-price">549 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-brand',549,'Brand Positioning Kit','Immediate PDF download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw03');return false;">Buy →</a>
         </div>
       </div>
 
@@ -472,7 +472,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">Build a repeatable sales pipeline from scratch. CRM template, outreach scripts, and a 6-week ramp plan included.</div>
         <div class="fw-footer">
           <div class="fw-price">399 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-pipeline',399,'B2B Pipeline Builder','Immediate Excel + PDF download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw04');return false;">Buy →</a>
         </div>
       </div>
 
@@ -482,7 +482,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">12-week content calendar, LinkedIn post templates, and the LEOMAX Authority Framework for founders who want to build a personal brand.</div>
         <div class="fw-footer">
           <div class="fw-price">449 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-content',449,'Content System Framework','Immediate PDF + Notion download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw05');return false;">Buy →</a>
         </div>
       </div>
 
@@ -492,7 +492,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         <div class="fw-desc">60-day launch system for new products and services in the Saudi/GCC market. Includes pre-launch, launch day, and post-launch checklists.</div>
         <div class="fw-footer">
           <div class="fw-price">599 <span>SAR</span></div>
-          <a class="fw-btn" href="#" onclick="openModal('fw-launch',599,'Product Launch Playbook','Immediate PDF download')">Buy →</a>
+          <a class="fw-btn" href="#" onclick="openApply('fw06');return false;">Buy →</a>
         </div>
       </div>
 
@@ -911,7 +911,14 @@ const PRICES = {
   diagnostic:     { base: 1500,  vat: 225,  total: 1725,  label: '1,725 SAR'  },
   system:         { base: 6500,  vat: 975,  total: 7475,  label: '7,475 SAR'  },
   transformation: { base: 22000, vat: 3300, total: 25300, label: '25,300 SAR' },
-  retainer:       { base: 5000,  vat: 750,  total: 5750,  label: '5,750 SAR'  }
+  retainer:       { base: 5000,  vat: 750,  total: 5750,  label: '5,750 SAR'  },
+  // Frameworks
+  fw01: { base: 499,  vat: 75,  total: 574,  label: '574 SAR'  },
+  fw02: { base: 699,  vat: 105, total: 804,  label: '804 SAR'  },
+  fw03: { base: 549,  vat: 82,  total: 631,  label: '631 SAR'  },
+  fw04: { base: 399,  vat: 60,  total: 459,  label: '459 SAR'  },
+  fw05: { base: 449,  vat: 67,  total: 516,  label: '516 SAR'  },
+  fw06: { base: 599,  vat: 90,  total: 689,  label: '689 SAR'  }
 };
 
 function generateRef(type) {
@@ -944,15 +951,20 @@ function copyIban() {
 
 function sendWhatsAppReceipt() {
   const price = PRICES[currentApplyType];
+  const isFw = currentApplyType.startsWith('fw');
+  const fwEmail = document.getElementById('apply-fw-email2');
+  const emailLine = isFw && fwEmail ? `\nالإيميل لإرسال الفريم ورك: ${fwEmail.value}` : '';
+  const typeLabel = isFw ? '🛒 *شراء فريم ورك — LEOMAX*' : '🧾 *طلب خدمة — LEOMAX*';
   const msg = [
-    '🧾 *طلب خدمة — LEOMAX*',
+    typeLabel,
     '',
     `الاسم: ${currentApplyName}`,
-    `الخدمة: ${applyConfig[currentApplyType].heading}`,
+    `${isFw ? 'الفريم ورك' : 'الخدمة'}: ${applyConfig[currentApplyType].heading}`,
     `المبلغ: ${price.label} (شامل VAT)`,
     `رقم المرجع: ${currentRef}`,
+    emailLine,
     '',
-    'تم التحويل البنكي. مرفق صورة الإيصال.'
+    isFw ? 'تم التحويل. أرسل لي الفريم ورك على الإيميل أعلاه.' : 'تم التحويل البنكي. مرفق صورة الإيصال.'
   ].join('\n');
   window.open('https://wa.me/' + BANK.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
 
@@ -1070,6 +1082,56 @@ const applyConfig = {
         <label>Your goals for the next 6 months</label>
         <textarea id="apply-goals" placeholder="What does success look like for you in 6 months?"></textarea>
       </div>`
+  },
+
+  // ── FRAMEWORKS ──
+  fw01: {
+    badge: 'FRAMEWORK 01 — GROWTH',
+    heading: 'BUY: 90-DAY RESET',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '499 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
+  },
+  fw02: {
+    badge: 'FRAMEWORK 02 — AI',
+    heading: 'BUY: AI READINESS TOOLKIT',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '699 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
+  },
+  fw03: {
+    badge: 'FRAMEWORK 03 — BRAND',
+    heading: 'BUY: BRAND POSITIONING KIT',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '549 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
+  },
+  fw04: {
+    badge: 'FRAMEWORK 04 — SALES',
+    heading: 'BUY: B2B PIPELINE BUILDER',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '399 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
+  },
+  fw05: {
+    badge: 'FRAMEWORK 05 — CONTENT',
+    heading: 'BUY: CONTENT SYSTEM',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '449 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
+  },
+  fw06: {
+    badge: 'FRAMEWORK 06 — LAUNCH',
+    heading: 'BUY: LAUNCH PLAYBOOK',
+    subtext: 'Sent to your email within 24 hours of payment confirmation.',
+    price: '599 SAR + VAT',
+    fields: `<div class="form-field"><label>Email to receive the framework *</label><input type="email" id="apply-fw-email2" placeholder="you@email.com" required/></div>
+             <div class="form-field"><label>Your business (optional)</label><input type="text" id="apply-fw-biz" placeholder="What type of business do you run?"/></div>`
   }
 };
 
