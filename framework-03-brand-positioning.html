@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LMX-FW-03 | Saudi Market Brand Positioning Kit — LEOMAX</title>
+<style>
+  :root {
+    --black: #010B1C;
+    --charcoal: #0D1E35;
+    --dark: #060F1F;
+    --gold: #C9A84C;
+    --silver: #B8B8B8;
+    --white: #FFFFFF;
+    --gray: #8fa8be;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 0;
+    padding: 18mm 18mm 22mm;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: 12px;
+    color: rgba(201, 168, 76, 0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+    user-select: none;
+  }
+
+  .page > *:not(.watermark) { position: relative; z-index: 1; }
+
+  .footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 18mm;
+    right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.25);
+    padding-top: 6px;
+  }
+
+  .footer-left { font-size: 9px; color: var(--gray); direction: rtl; }
+  .footer-right { font-size: 9px; color: var(--gray); }
+  .footer-center { font-size: 9px; color: var(--gold); font-weight: 600; }
+
+  .cover {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20mm;
+  }
+
+  .logo-mark {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .cover-ref {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .cover-badge {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .cover-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10mm 0;
+  }
+
+  .cover-category {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 14px 0 20px;
+  }
+
+  .cover-title {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-size: 14px;
+    color: var(--gray);
+    max-width: 130mm;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .cover-arabic {
+    font-size: 18px;
+    color: rgba(201,168,76,0.6);
+    direction: rtl;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 30px;
+    margin-top: 14mm;
+    padding-top: 8mm;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-label { font-size: 9px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+  .cover-meta-value { font-size: 13px; color: var(--gold); font-weight: 600; }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .cover-bottom-left { font-size: 9px; color: var(--gray); direction: rtl; }
+  .cover-bottom-right { font-size: 9px; color: var(--gray); text-align: right; }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .page-header-left { display: flex; flex-direction: column; gap: 3px; }
+
+  .page-number {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  .page-logo {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--white);
+  }
+
+  .page-section-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-align: right;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .section-title-ar {
+    font-size: 14px;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 6mm;
+    font-weight: 600;
+  }
+
+  .gold-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.1));
+    margin: 5mm 0;
+  }
+
+  .content-block {
+    background: rgba(13, 30, 53, 0.7);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    padding: 5mm 6mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .content-block h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .content-block p, .content-block li {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  .content-block ul { padding-left: 16px; }
+  .content-block li { margin-bottom: 3px; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 4mm;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+
+  .four-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+
+  .highlight-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .highlight-box .label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .highlight-box p {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  .warning-box {
+    background: rgba(224,85,85,0.07);
+    border: 1px solid rgba(224,85,85,0.35);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .warning-box .label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #e05555;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .warning-box p, .warning-box li {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  .warning-box ul { padding-left: 16px; }
+  .warning-box li { margin-bottom: 3px; }
+
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4mm;
+  }
+
+  .score-table th {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 5px 8px;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .score-table td {
+    padding: 5px 8px;
+    border: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    vertical-align: top;
+  }
+
+  .score-table tr:nth-child(even) td {
+    background: rgba(13, 30, 53, 0.5);
+  }
+
+  .score-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(201,168,76,0.5);
+  }
+
+  .canvas-item {
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4mm 5mm;
+    margin-bottom: 3mm;
+    border-radius: 2px;
+  }
+
+  .canvas-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .canvas-item-num {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 900;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .canvas-item-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    flex: 1;
+    margin-left: 8px;
+  }
+
+  .canvas-item-ar {
+    font-size: 11px;
+    color: var(--gray);
+    direction: rtl;
+  }
+
+  .canvas-item ul {
+    padding-left: 14px;
+    margin-top: 4px;
+  }
+
+  .canvas-item li {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    margin-bottom: 2px;
+  }
+
+  .persona-card {
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-top: 3px solid var(--gold);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .persona-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .persona-desc {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    margin-bottom: 4mm;
+  }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+
+  .persona-field { }
+  .persona-field .pf-label {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .persona-field .pf-value {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.55;
+  }
+
+  .worksheet-page {
+    background: #070F20;
+  }
+
+  .ws-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+  }
+
+  .ws-subtitle {
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 5mm;
+  }
+
+  .ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5mm;
+  }
+
+  .ws-table th {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 5px 7px;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .ws-table td {
+    border: 1px dashed rgba(201,168,76,0.3);
+    padding: 8px 7px;
+    min-height: 28px;
+    vertical-align: top;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .ws-input-cell {
+    background: rgba(201,168,76,0.03);
+    min-height: 30px;
+  }
+
+  .ws-large-cell {
+    height: 50px;
+  }
+
+  .ws-section {
+    background: rgba(13,30,53,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    padding: 3mm 4mm;
+    margin-bottom: 3mm;
+  }
+
+  .ws-section h4 {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .ws-fill-line {
+    display: block;
+    width: 100%;
+    border-bottom: 1px dashed rgba(201,168,76,0.35);
+    margin: 7px 0;
+    height: 20px;
+  }
+
+  .score-band {
+    display: flex;
+    gap: 3mm;
+    margin-top: 3mm;
+  }
+
+  .score-band-item {
+    flex: 1;
+    padding: 3mm;
+    border: 1px solid;
+    border-radius: 2px;
+    text-align: center;
+  }
+
+  .score-band-item.red { border-color: #e05555; background: rgba(224,85,85,0.08); }
+  .score-band-item.yellow { border-color: #d4a017; background: rgba(212,160,23,0.08); }
+  .score-band-item.green { border-color: #3fa05d; background: rgba(63,160,93,0.08); }
+
+  .score-band-item .band-range { font-size: 14px; font-weight: 800; }
+  .score-band-item.red .band-range { color: #e05555; }
+  .score-band-item.yellow .band-range { color: #d4a017; }
+  .score-band-item.green .band-range { color: #3fa05d; }
+
+  .score-band-item .band-label { font-size: 10px; color: var(--white); margin-top: 3px; }
+  .score-band-item .band-action { font-size: 9px; color: var(--gray); margin-top: 2px; }
+
+  .layer-box {
+    display: flex;
+    gap: 3mm;
+    align-items: flex-start;
+    margin-bottom: 3mm;
+  }
+
+  .layer-num {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 900;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .layer-content { flex: 1; }
+
+  .layer-content .layer-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .layer-content .layer-template {
+    background: rgba(201,168,76,0.06);
+    border: 1px dashed rgba(201,168,76,0.25);
+    padding: 3mm 4mm;
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    border-radius: 2px;
+    font-style: italic;
+  }
+
+  .layer-content .layer-desc {
+    font-size: 10.5px;
+    color: var(--gray);
+    margin-bottom: 3px;
+  }
+
+  .matrix-container {
+    position: relative;
+    width: 100%;
+    height: 70mm;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(13,30,53,0.5);
+    margin: 3mm 0;
+  }
+
+  .matrix-axis-x {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: 1px;
+    background: rgba(201,168,76,0.4);
+  }
+
+  .matrix-axis-y {
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    height: 95%;
+    width: 1px;
+    background: rgba(201,168,76,0.4);
+  }
+
+  .matrix-label {
+    position: absolute;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .ml-top { top: 6px; left: 50%; transform: translateX(-50%); }
+  .ml-bottom { bottom: 6px; left: 50%; transform: translateX(-50%); }
+  .ml-left { left: 6px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+  .ml-right { right: 6px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+  .quadrant-label {
+    position: absolute;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+
+  .ql-tl { top: 12px; left: 12px; }
+  .ql-tr { top: 12px; right: 28px; text-align: right; }
+  .ql-bl { bottom: 16px; left: 12px; }
+  .ql-br { bottom: 16px; right: 28px; text-align: right; }
+
+  .matrix-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translate(-50%, -50%);
+    cursor: default;
+  }
+
+  .matrix-dot.you { background: #3fa05d; }
+  .matrix-dot-label {
+    position: absolute;
+    font-size: 8px;
+    color: var(--white);
+    white-space: nowrap;
+    margin-top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Roadmap / Phase boxes */
+  .phase-box {
+    background: rgba(13,30,53,0.7);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 4px solid var(--gold);
+    padding: 4mm 5mm;
+    margin-bottom: 3mm;
+    border-radius: 2px;
+  }
+
+  .phase-box .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .phase-badge {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .phase-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .phase-box ul {
+    padding-left: 16px;
+  }
+
+  .phase-box li {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 1px;
+  }
+
+  /* Strategy card */
+  .strategy-card {
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 4mm 5mm;
+    border-radius: 2px;
+  }
+
+  .strategy-card .strat-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .strategy-card .strat-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .strategy-card p {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .strategy-card .strat-example {
+    font-size: 10px;
+    color: var(--gray);
+    font-style: italic;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px dashed rgba(201,168,76,0.2);
+  }
+
+  /* KPI row */
+  .kpi-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .kpi-check-list li {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .kpi-check-list li::before {
+    content: '□';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: var(--black); }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      height: 297mm;
+      margin: 0;
+      padding: 18mm 18mm 22mm;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+    .page:last-child { page-break-after: auto; }
+  }
+
+  @media screen {
+    body { background: #000; padding: 10px 0; }
+    .page { box-shadow: 0 4px 40px rgba(0,0,0,0.6); margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="watermark">LEOMAX</div>
+  <div class="cover-top">
+    <div>
+      <div class="logo-mark">LEOMAX</div>
+      <div class="cover-ref">LMX-FW-03 &nbsp;·&nbsp; BRAND &amp; MARKETING SERIES</div>
+    </div>
+    <div class="cover-badge">549 SAR &nbsp;·&nbsp; PROFESSIONAL FRAMEWORK</div>
+  </div>
+  <div class="cover-main">
+    <div class="cover-category">Strategic Brand Framework</div>
+    <div class="cover-line"></div>
+    <div class="cover-title">Saudi Market<br><span>Brand Positioning</span><br>Kit</div>
+    <div class="cover-subtitle">
+      A Complete Brand Strategy Framework for Businesses Competing in the Saudi Market — From Audit to Messaging to Positioning Canvas
+    </div>
+    <div class="cover-arabic">مجموعة أدوات تموضع العلامة التجارية في السوق السعودي</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Pages</div>
+        <div class="cover-meta-value">11 Pages</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Category</div>
+        <div class="cover-meta-value">Marketing · Brand</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Framework</div>
+        <div class="cover-meta-value">LMX-FW-03</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Edition</div>
+        <div class="cover-meta-value">2025 / 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-bottom-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري وخاص</div>
+    <div class="cover-bottom-right">© 2026 LEOMAX Business Development | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 2: UNDERSTANDING THE SAUDI MARKET -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 02 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; BRAND POSITIONING KIT</div>
+  </div>
+  <div class="section-title">UNDERSTANDING THE SAUDI MARKET</div>
+  <div class="section-title-ar">فهم السوق السعودي — 2025</div>
+  <div class="gold-rule"></div>
+  <div class="two-col">
+    <div class="content-block">
+      <h3>Saudi Consumer Psychographic Profile</h3>
+      <ul>
+        <li><strong>Trust before transaction:</strong> Saudis buy from people and brands they trust — referrals outperform ads 4:1 in B2B.</li>
+        <li><strong>Quality signaling:</strong> Prestige markers (office location, visual polish, certifications) strongly influence perceived credibility.</li>
+        <li><strong>Community validation:</strong> WhatsApp groups, Twitter/X, and peer networks are primary discovery channels.</li>
+        <li><strong>Faith-aligned values:</strong> Halal compliance, ethical conduct, and community contribution are non-negotiable brand attributes.</li>
+        <li><strong>Speed and responsiveness:</strong> Fast WhatsApp replies signal professionalism — slow response kills deals.</li>
+        <li><strong>Arabic + English:</strong> Bilingual presence signals that you serve both local and international audiences seriously.</li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <h3>The 3 Market Segments</h3>
+      <ul>
+        <li><strong>Riyadh Core:</strong> Competitive, price-aware, digitally sophisticated. Requires strong differentiation and social proof. Influencers and peer status drive decisions.</li>
+        <li><strong>Regional (Jeddah, Dammam, others):</strong> Relationship-first, community-driven, often family-business dominated. Local reputation is critical. Word-of-mouth still king.</li>
+        <li><strong>Vision 2030 Sectors (tourism, entertainment, tech, giga-projects):</strong> Faster decision cycles, international standards expected, English fluency valued, data and ROI driven.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-block">
+    <h3>Key Buying Triggers in Saudi B2B</h3>
+    <div class="two-col" style="margin-bottom:0">
+      <ul>
+        <li><strong>Relationship (highest weight):</strong> Who introduced you? Do they know your work? Personal trust is the #1 deal accelerator in the Kingdom.</li>
+        <li><strong>Reputation:</strong> Online reviews, LinkedIn credibility, notable past clients, media mentions, and industry standing.</li>
+      </ul>
+      <ul>
+        <li><strong>Price:</strong> Saudis negotiate — but will pay premium for confidence. Price only becomes the issue when trust is absent.</li>
+        <li><strong>Compliance &amp; Localisation:</strong> CR registration, MISA licences, VAT compliance, Saudization, and ZATCA alignment are expected, not optional.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-block">
+    <h3>Why Western Brand Frameworks Fail in Saudi Arabia</h3>
+    <ul>
+      <li><strong>Built for anonymous markets:</strong> Western positioning assumes strangers buy from ads. Saudi markets run on networks — your brand must convert strangers into trusted contacts first.</li>
+      <li><strong>Ignore cultural codes:</strong> Frameworks that skip religious, tribal, or family dynamics misread the decision-making unit entirely.</li>
+      <li><strong>Separate digital from personal:</strong> In KSA, WhatsApp IS the CRM. Relationship management is inseparable from brand management.</li>
+      <li><strong>Undervalue founder brand:</strong> The founder's name, face, and reputation are often more valuable than the company brand in SME markets.</li>
+    </ul>
+  </div>
+  <div class="highlight-box">
+    <div class="label">The 5 Brand Mistakes Saudi SMEs Make Most — أكثر 5 أخطاء علامات تجارية</div>
+    <div class="three-col" style="margin-top:3mm; margin-bottom:0">
+      <div>
+        <div style="color:var(--gold);font-weight:700;font-size:11px;margin-bottom:3px;">1. Generic Arabic Name</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.75);">An Arabic name with no clear meaning, no visual identity, and no story. Memorable only if you can see the founder.</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-weight:700;font-size:11px;margin-bottom:3px;">2. No English Presence</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.75);">Arabic-only brands signal regional limitation. Even domestic Saudi clients now expect bilingual credibility.</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-weight:700;font-size:11px;margin-bottom:3px;">3. Copying Big Brands</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.75);">Imitating enterprise brand aesthetics without the budget or reputation makes an SME look like a cheap imitation.</div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:3mm; margin-bottom:0">
+      <div>
+        <div style="color:var(--gold);font-weight:700;font-size:11px;margin-bottom:3px;">4. No Founder Story</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.75);">People buy from people. A nameless, faceless brand in a relationship-driven market is an invisible brand. Put the founder front and centre.</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-weight:700;font-size:11px;margin-bottom:3px;">5. Weak Digital Trust Signals</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.75);">No Google Business profile, no testimonials, no case studies, no active social presence. Buyers Google you before they reply to your WhatsApp.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 3: BRAND AUDIT -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 03 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; BRAND AUDIT</div>
+  </div>
+  <div class="section-title">THE BRAND AUDIT</div>
+  <div class="section-title-ar">تدقيق العلامة التجارية — قيّم نفسك بصدق</div>
+  <div class="gold-rule"></div>
+  <div class="highlight-box" style="margin-bottom:4mm;">
+    <div class="label">Instructions — كيفية الاستخدام</div>
+    <p>Rate your brand honestly on each of the 8 dimensions below using a scale of <strong>1 to 5</strong> (1 = very weak, 5 = excellent). This is a diagnostic, not a report card — the point is to identify where to invest, not to feel good about where you are.</p>
+  </div>
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Dimension — البُعد</th>
+        <th>What It Measures</th>
+        <th>Score (1–5)</th>
+        <th>Key Question to Ask</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">01</td>
+        <td><strong>Clarity</strong><br><span style="font-size:10px;color:var(--gray);">الوضوح</span></td>
+        <td style="font-size:10.5px;">Can a stranger explain what you do and who you serve in 10 seconds after seeing your brand?</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Does your tagline describe the outcome you deliver — or just your category?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">02</td>
+        <td><strong>Differentiation</strong><br><span style="font-size:10px;color:var(--gray);">التميّز</span></td>
+        <td style="font-size:10.5px;">What makes you genuinely different from your 5 closest competitors in a way that matters to buyers?</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Could a buyer describe your unique mechanism in their own words?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">03</td>
+        <td><strong>Trust Signals</strong><br><span style="font-size:10px;color:var(--gray);">إشارات الثقة</span></td>
+        <td style="font-size:10.5px;">Testimonials, case studies, client logos, certifications, media mentions, audit reports.</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Does a new prospect find proof immediately on your digital channels?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">04</td>
+        <td><strong>Visual Identity</strong><br><span style="font-size:10px;color:var(--gray);">الهوية البصرية</span></td>
+        <td style="font-size:10.5px;">Professional logo, consistent colour palette, quality design across all materials — print and digital.</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Do your Instagram, website, and business card look like they belong to the same brand?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">05</td>
+        <td><strong>Digital Presence</strong><br><span style="font-size:10px;color:var(--gray);">الحضور الرقمي</span></td>
+        <td style="font-size:10.5px;">Website, active social media, Google Business Profile, LinkedIn company page — all complete and current.</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">If a buyer Googles your company right now, what do they find in the first 5 results?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">06</td>
+        <td><strong>Arabic / English Balance</strong><br><span style="font-size:10px;color:var(--gray);">التوازن اللغوي</span></td>
+        <td style="font-size:10.5px;">Both language audiences receive professional, native-quality content and communications.</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Is your Arabic as strong as your English — or is one a translation afterthought?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">07</td>
+        <td><strong>Founder Brand</strong><br><span style="font-size:10px;color:var(--gray);">علامة المؤسس</span></td>
+        <td style="font-size:10.5px;">Is the founder's personal reputation, story, and expertise actively working as a brand asset?</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Does the founder's LinkedIn/Twitter profile bring inbound leads to the business?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">08</td>
+        <td><strong>Content Authority</strong><br><span style="font-size:10px;color:var(--gray);">سلطة المحتوى</span></td>
+        <td style="font-size:10.5px;">Publishing consistently valuable insights, guides, case studies, or education in your field.</td>
+        <td><div class="score-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></td>
+        <td style="font-size:10.5px;">Do buyers come to you because of content they consumed — or only through direct referrals?</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="score-band">
+    <div class="score-band-item red">
+      <div class="band-range">8 – 20</div>
+      <div class="band-label">Rebrand Needed</div>
+      <div class="band-action">إعادة بناء العلامة التجارية ضرورية</div>
+    </div>
+    <div class="score-band-item yellow">
+      <div class="band-range">21 – 30</div>
+      <div class="band-label">Refresh Required</div>
+      <div class="band-action">تحديث وتطوير العلامة التجارية</div>
+    </div>
+    <div class="score-band-item green">
+      <div class="band-range">31 – 40</div>
+      <div class="band-label">Strong Brand — Optimise</div>
+      <div class="band-action">علامة تجارية قوية — ركّز على التحسين</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 4: BRAND AUDIT DEEP DIVE (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 04 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; AUDIT DEEP DIVE</div>
+  </div>
+  <div class="section-title">BRAND AUDIT DEEP DIVE</div>
+  <div class="section-title-ar">التعمق في تدقيق العلامة التجارية — ماذا تكشف درجتك</div>
+  <div class="gold-rule"></div>
+
+  <table class="score-table" style="font-size:10px;">
+    <thead>
+      <tr>
+        <th style="width:12%">Dimension</th>
+        <th style="width:24%">Score 1–2 — Critical</th>
+        <th style="width:24%">Score 3 — Developing</th>
+        <th style="width:24%">Score 4–5 — Strong</th>
+        <th style="width:16%">Priority Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Clarity<br><span style="color:var(--gray);font-weight:400;">الوضوح</span></td>
+        <td>Your audience can't explain what you do. Your tagline is about what you are, not what you do for clients.</td>
+        <td>Some clarity exists but varies by channel. Not consistent across website, social, and in-person.</td>
+        <td>Strangers understand you within seconds. Your tagline answers: Who + What outcome + For whom.</td>
+        <td style="font-size:10px;color:var(--gold);">Write a one-sentence positioning statement using the template on Canvas page.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Differentiation<br><span style="color:var(--gray);font-weight:400;">التميّز</span></td>
+        <td>You compete on price because nothing else stands out. You sound like everyone else in your category.</td>
+        <td>You have some differences but can't articulate them confidently or consistently.</td>
+        <td>You have a named unique mechanism. Buyers describe your difference in their words.</td>
+        <td style="font-size:10px;color:var(--gold);">Identify your Unique Mechanism — the thing only you do, the way only you do it. Name it.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Trust Signals<br><span style="color:var(--gray);font-weight:400;">إشارات الثقة</span></td>
+        <td>No case studies, no testimonials, no recognisable clients. Buyers take all the risk.</td>
+        <td>Some testimonials exist but not visible on key channels. No quantified results.</td>
+        <td>Case studies with numbers, recognisable client logos, active testimonials on website and LinkedIn.</td>
+        <td style="font-size:10px;color:var(--gold);">Contact your 3 best clients this week. Ask for a 3-sentence quote + one number result.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Visual Identity<br><span style="color:var(--gray);font-weight:400;">الهوية البصرية</span></td>
+        <td>Logo is generic or clip-art quality. Colours inconsistent. Business card different from website.</td>
+        <td>Decent design but not distinctive. Could belong to any business in your category.</td>
+        <td>Consistent, distinctive visual system. Instantly recognisable. Premium quality across all materials.</td>
+        <td style="font-size:10px;color:var(--gold);">Audit 5 touchpoints: business card, website, Instagram, WhatsApp profile, email signature. Same brand?</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Digital Presence<br><span style="color:var(--gray);font-weight:400;">الحضور الرقمي</span></td>
+        <td>No website or it's outdated. Google search returns nothing. Social media abandoned or inconsistent.</td>
+        <td>Basic website exists, some social presence, but not actively maintained. Gaps in Google profile.</td>
+        <td>Professional website, active LinkedIn and Instagram, Google Business complete, regular content.</td>
+        <td style="font-size:10px;color:var(--gold);">Claim and complete your Google Business Profile this week. It's free and takes 30 minutes.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Arabic / English<br><span style="color:var(--gray);font-weight:400;">التوازن اللغوي</span></td>
+        <td>Arabic is a translation afterthought. English-only or Arabic-only without native quality in either.</td>
+        <td>Both languages present but one is noticeably weaker. Arabic often reads like a translation.</td>
+        <td>Both languages are native quality. Arabic-speaking and English-speaking audiences feel equally served.</td>
+        <td style="font-size:10px;color:var(--gold);">Have a native Arabic speaker review your top 3 pieces of Arabic content for cultural resonance.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Founder Brand<br><span style="color:var(--gray);font-weight:400;">علامة المؤسس</span></td>
+        <td>Founder has no online presence. No LinkedIn, no Twitter/X, no authored content.</td>
+        <td>Founder exists online but not actively building authority. Sporadic posting, profile incomplete.</td>
+        <td>Founder's name brings inbound leads. Published content, speaking history, active thought leadership.</td>
+        <td style="font-size:10px;color:var(--gold);">Publish one LinkedIn post this week. Tell a client story with a real result. Tag your company page.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Content Authority<br><span style="color:var(--gray);font-weight:400;">سلطة المحتوى</span></td>
+        <td>No content strategy. No blog, no posts, no educational material. Brand is invisible between conversations.</td>
+        <td>Occasional posts but no system. Content reactive, not strategic. No content pillars defined.</td>
+        <td>Consistent publishing schedule, clear content pillars, growing engaged audience, content generates leads.</td>
+        <td style="font-size:10px;color:var(--gold);">Define your 3 content pillars this week. Then post one piece on each over the next 10 days.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <div class="label">Your Brand Anchor &amp; Brand Leak — مرساة علامتك وتسربها</div>
+    <p>Your <strong>highest-scoring dimension</strong> is your <strong style="color:var(--gold);">Brand Anchor</strong> — lead with it in every sales conversation, proposal, and content piece. It is your most defensible asset right now.</p>
+    <p style="margin-top:6px;">Your <strong>lowest-scoring dimension</strong> is your <strong style="color:#e05555;">Brand Leak</strong> — it is where you are losing credibility before you even realise it. Prospects who encounter your Brand Leak disengage silently. They do not tell you why.</p>
+    <p style="margin-top:6px;font-style:italic;color:var(--gray);">Fix the leak before you amplify the anchor. Investing in visibility on a leaking brand accelerates the damage.</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 5: BRAND POSITIONING CANVAS -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 05 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; POSITIONING CANVAS</div>
+  </div>
+  <div class="section-title">THE BRAND POSITIONING CANVAS</div>
+  <div class="section-title-ar">مخطط التموضع التجاري — ٦ عناصر أساسية</div>
+  <div class="gold-rule"></div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">1</div>
+      <div class="canvas-item-title">WHO YOU SERVE — من تخدم</div>
+      <div class="canvas-item-ar">تعريف الجمهور المستهدف بدقة</div>
+    </div>
+    <div class="two-col" style="margin-bottom:0;">
+      <ul>
+        <li><strong>Industry / Sector:</strong> Define the exact sector — avoid "all businesses"</li>
+        <li><strong>Company size or individual profile:</strong> SME (5–50 staff), enterprise, solopreneur?</li>
+        <li><strong>Geographic focus:</strong> Riyadh / KSA-wide / GCC / international</li>
+      </ul>
+      <ul>
+        <li><strong>Seniority &amp; decision-maker role:</strong> CEO, HR Manager, VP Operations, procurement?</li>
+        <li><strong>#1 pain point right now:</strong> The single biggest problem you solve for them — in their language, not yours</li>
+      </ul>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">2</div>
+      <div class="canvas-item-title">WHAT YOU DO — ماذا تفعل</div>
+      <div class="canvas-item-ar">وضوح العرض — لا غموض ولا تعميم</div>
+    </div>
+    <div class="two-col" style="margin-bottom:0;">
+      <ul>
+        <li><strong>Core offer (1 sentence):</strong> The primary product or service — expressed as an outcome, not a task</li>
+        <li><strong>Secondary offers:</strong> Complementary services that support or extend the core offer</li>
+      </ul>
+      <ul>
+        <li><strong>What you DON'T do (anti-positioning):</strong> Saying no to the wrong clients is as powerful as saying yes to the right ones. Clarity on exclusions builds trust with your ideal buyer.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">3</div>
+      <div class="canvas-item-title">HOW YOU'RE DIFFERENT — ما يميّزك</div>
+      <div class="canvas-item-ar">التمايز الوظيفي والعاطفي والآلية الفريدة</div>
+    </div>
+    <div class="three-col" style="margin-bottom:0;">
+      <ul><li><strong>Functional differentiation:</strong> Faster, more specialised, more affordable, higher quality, better service, unique methodology</li></ul>
+      <ul><li><strong>Emotional differentiation:</strong> The feeling buyers get from working with you — confidence, pride, safety, belonging</li></ul>
+      <ul><li><strong>Your Unique Mechanism:</strong> The proprietary system, process, or approach that only you do, the way only you do it — name it</li></ul>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">4</div>
+      <div class="canvas-item-title">PROOF YOU DELIVER — إثبات نتائجك</div>
+      <div class="canvas-item-ar">مجموعة المصداقية — قبل وبعد</div>
+    </div>
+    <div class="two-col" style="margin-bottom:0;">
+      <ul>
+        <li><strong>Experience credentials:</strong> Years in business, number of clients served, volume of work completed</li>
+        <li><strong>Case studies (before → after):</strong> Specific client situations with measurable outcomes — numbers win</li>
+      </ul>
+      <ul>
+        <li><strong>Notable clients, press, awards:</strong> Names people recognise. Even one well-known client validates dozens of unknown ones.</li>
+        <li><strong>Founder credentials:</strong> Academic background, certifications, speaking engagements, published work</li>
+      </ul>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">5</div>
+      <div class="canvas-item-title">YOUR BRAND VOICE — صوت علامتك التجارية</div>
+      <div class="canvas-item-ar">كيف تتحدث — الأسلوب واللهجة</div>
+    </div>
+    <div class="three-col" style="margin-bottom:0;">
+      <ul><li><strong>3 tone words you own:</strong> e.g. Authoritative, Direct, Human — or choose your own</li></ul>
+      <ul><li><strong>3 words you reject:</strong> e.g. Corporate, Vague, Salesy — what you actively avoid sounding like</li></ul>
+      <ul><li><strong>Language register:</strong> Formal or informal? Arabic-primary, English-primary, or bilingual with equal weight?</li></ul>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="canvas-item-header">
+      <div class="canvas-item-num">6</div>
+      <div class="canvas-item-title">THE BRAND PROMISE — وعد العلامة التجارية</div>
+      <div class="canvas-item-ar">جملة التموضع الرئيسية</div>
+    </div>
+    <div class="highlight-box" style="margin-bottom:0;">
+      <div class="label">Positioning Statement Template</div>
+      <p style="font-style:italic;font-size:12px;line-height:1.8;">"We help <strong>[WHO]</strong> to <strong>[ACHIEVE OUTCOME]</strong> through <strong>[YOUR METHOD]</strong>, unlike <strong>[ALTERNATIVE / COMPETITOR TYPE]</strong> who <strong>[THEIR WEAKNESS]</strong>."</p>
+      <p style="margin-top:6px;font-size:11px;color:var(--gray);">Example: "We help Saudi tech startups build investor-ready financial models through our 3-week rapid-build process, unlike general accountants who spend months producing backward-looking reports."</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 6: MESSAGING FRAMEWORK -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 06 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; MESSAGING FRAMEWORK</div>
+  </div>
+  <div class="section-title">THE MESSAGING FRAMEWORK</div>
+  <div class="section-title-ar">هيكل الرسائل التسويقية — ٥ طبقات</div>
+  <div class="gold-rule"></div>
+  <div class="layer-box">
+    <div class="layer-num">L1</div>
+    <div class="layer-content">
+      <div class="layer-name">HEADLINE — Used on website, ads, business card, LinkedIn banner</div>
+      <div class="layer-desc">One line. Maximum impact. Must communicate who, what, and outcome — not just a category name.</div>
+      <div class="layer-template">"The [category] for [audience] who want [outcome]"<br>
+      <span style="color:var(--gray);font-size:10px;">Example A (consulting): "The Growth Advisory for Saudi SMEs Ready to Scale"<br>
+      Example B (tech): "The CRM Platform for Saudi Real Estate Teams That Close Faster"<br>
+      Example C (training): "The Sales Training Programme That Pays for Itself in 60 Days"</span></div>
+    </div>
+  </div>
+  <div class="layer-box">
+    <div class="layer-num">L2</div>
+    <div class="layer-content">
+      <div class="layer-name">ELEVATOR PITCH — 30-second verbal or video format</div>
+      <div class="layer-desc">The go-to response when someone asks "so what do you do?" — at a conference, on a call, or in a video intro.</div>
+      <div class="layer-template">"You know how [audience] struggle with [specific pain]? What we do is [solution] so that [outcome]. Unlike [alternative], we [differentiation]."<br>
+      <span style="color:var(--gray);font-size:10px;">Example: "You know how Saudi service businesses lose leads because their follow-up is inconsistent? We build them a sales system — CRM, scripts, and a trained team — so they close 40% more deals without hiring more sales staff. Unlike CRM companies, we set it up and train the team for you."</span></div>
+    </div>
+  </div>
+  <div class="layer-box">
+    <div class="layer-num">L3</div>
+    <div class="layer-content">
+      <div class="layer-name">VALUE PROPOSITION — Website "About" section, company profile</div>
+      <div class="layer-desc">80–100 words. Full paragraph. Should be bilingual for Saudi market. Speaks to the decision-maker's world.</div>
+      <div class="layer-template">Structure: Open with the client's world → Name the problem → Introduce your approach → State the outcome → Assert your credibility → Make it feel inevitable.<br>
+      <span style="color:var(--gray);font-size:10px;">Tip: Write the Arabic version natively — never translate from English. Saudi Arabic-speaking buyers notice when a text was originally English and loses cultural resonance in translation.</span></div>
+    </div>
+  </div>
+  <div class="layer-box">
+    <div class="layer-num">L4</div>
+    <div class="layer-content">
+      <div class="layer-name">SOCIAL PROOF STATEMENT — Used in proposals, pitches, social media bio</div>
+      <div class="layer-desc">One credibility sentence. Quantified. References outcome, not just activity.</div>
+      <div class="layer-template">"Over [X] [Saudi/GCC] [clients / businesses / teams] have [achieved specific outcome] using our [product / method / programme]."<br>
+      <span style="color:var(--gray);font-size:10px;">Example: "Over 120 Saudi SMEs have cut their proposal time by 60% using our Business Toolkit."<br>
+      Avoid: "We have worked with many clients" — vague proof is no proof.</span></div>
+    </div>
+  </div>
+  <div class="layer-box">
+    <div class="layer-num">L5</div>
+    <div class="layer-content">
+      <div class="layer-name">CALL TO ACTION — Matched to buyer stage</div>
+      <div class="layer-desc">Your CTA must match where the buyer is in their decision journey. Use all three depending on context.</div>
+      <div class="two-col" style="margin-top:3px;">
+        <div class="layer-template" style="margin-bottom:0;">
+          <strong style="color:var(--gold);font-size:10px;">AWARENESS STAGE:</strong><br>
+          Low-commitment offer. "Download our free [resource]." / "اقرأ الدليل المجاني"<br>
+          Goal: earn the contact.
+        </div>
+        <div class="layer-template" style="margin-bottom:0;">
+          <strong style="color:var(--gold);font-size:10px;">CONSIDERATION STAGE:</strong><br>
+          "Book a free 20-min clarity call." / "احجز جلسة تشخيص مجانية"<br>
+          Goal: get on the phone.
+        </div>
+      </div>
+      <div class="layer-template" style="margin-top:3px;">
+        <strong style="color:var(--gold);font-size:10px;">DECISION STAGE:</strong><br>
+        "Start your project — request a proposal today." / "ابدأ الآن — اطلب عرض السعر"<br>
+        Goal: convert to paying client.
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 7: COMPETITIVE POSITIONING STRATEGY (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 07 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; COMPETITIVE POSITIONING</div>
+  </div>
+  <div class="section-title">COMPETITIVE POSITIONING STRATEGY</div>
+  <div class="section-title-ar">استراتيجية التموضع التنافسي — ٤ مسارات متاحة</div>
+  <div class="gold-rule"></div>
+
+  <div style="font-size:10px;color:var(--gray);margin-bottom:3mm;letter-spacing:1px;text-transform:uppercase;">The 4 Positioning Strategies Available to You — اختر مسار تموضعك</div>
+  <div class="four-col" style="margin-bottom:4mm;">
+    <div class="strategy-card">
+      <div class="strat-label">Strategy 1</div>
+      <div class="strat-name">CATEGORY KING</div>
+      <p>Be the only player in a new category you define. You don't compete — you create the game.</p>
+      <div class="strat-example">"The first dedicated HR technology consultancy for Saudi hospitality businesses." High reward, high effort.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strat-label">Strategy 2</div>
+      <div class="strat-name">NICHE DOMINATOR</div>
+      <p>Own the most specific version of your market. Be the only firm that exclusively serves one audience.</p>
+      <div class="strat-example">"The only accounting firm that specialises exclusively in Saudi e-commerce businesses." Fastest path to premium pricing.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strat-label">Strategy 3</div>
+      <div class="strat-name">OPPOSITE PLAYER</div>
+      <p>Position against the dominant player's weakness. Their size is your opportunity.</p>
+      <div class="strat-example">"Unlike the big consulting firms who send you a junior team, our founders work on every project." Requires a clear market leader to push against.</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strat-label">Strategy 4</div>
+      <div class="strat-name">OUTCOME SPECIALIST</div>
+      <p>Compete not on what you do but on the specific outcome you guarantee. Results-first positioning.</p>
+      <div class="strat-example">"We guarantee your first institutional investor meeting within 90 days — or we refund." Most compelling in Saudi market.</div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:4mm;">
+    <div class="label">Choosing Your Strategy Based on Your Brand Audit Score — اختر بناءً على درجتك</div>
+    <div class="three-col" style="margin-top:3mm;margin-bottom:0;">
+      <div style="border:1px solid rgba(224,85,85,0.4);padding:3mm;border-radius:2px;background:rgba(224,85,85,0.05);">
+        <div style="color:#e05555;font-weight:800;font-size:13px;margin-bottom:3px;">8 – 20</div>
+        <div style="font-size:10px;color:var(--white);font-weight:700;margin-bottom:2px;">Rebrand Needed</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.7);">Start with <strong>Niche Dominator</strong>. Pick one audience, one problem, go deep. Do not attempt visibility campaigns until your foundation is solid.</div>
+      </div>
+      <div style="border:1px solid rgba(212,160,23,0.4);padding:3mm;border-radius:2px;background:rgba(212,160,23,0.05);">
+        <div style="color:#d4a017;font-weight:800;font-size:13px;margin-bottom:3px;">21 – 30</div>
+        <div style="font-size:10px;color:var(--white);font-weight:700;margin-bottom:2px;">Refresh Required</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.7);">Move to <strong>Opposite Player</strong>. You have enough reputation to contrast against the market. Use your experience as proof.</div>
+      </div>
+      <div style="border:1px solid rgba(63,160,93,0.4);padding:3mm;border-radius:2px;background:rgba(63,160,93,0.05);">
+        <div style="color:#3fa05d;font-weight:800;font-size:13px;margin-bottom:3px;">31 – 40</div>
+        <div style="font-size:10px;color:var(--white);font-weight:700;margin-bottom:2px;">Strong Brand</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.7);">Ready for <strong>Category King</strong>. You can define your own space and attract market attention at scale.</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="score-table" style="margin-bottom:4mm;">
+    <thead>
+      <tr>
+        <th>Saudi-Specific Differentiation Factor</th>
+        <th>Why It Matters in KSA</th>
+        <th>How to Build It</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Saudi Nationality / CR Registration</td>
+        <td>Nationalisation requirements and "buy Saudi" sentiment are growing under Vision 2030</td>
+        <td>Display CR number, MISA licence, and founding story prominently on all materials</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Arabic-First Communication</td>
+        <td>Trust and cultural resonance — Arabic native content signals genuine commitment to the market</td>
+        <td>Produce primary content in Arabic first, translated to English — never the reverse</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Vision 2030 Alignment</td>
+        <td>Client FOMO of being left behind the transformation agenda drives urgency in decision-making</td>
+        <td>Explicitly link your offer to specific V2030 goals: diversification, digitalisation, Saudization</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Saudization Track Record</td>
+        <td>Critical for corporate buyers managing compliance obligations with Ministry of HR</td>
+        <td>Publish your Nitaqat rating and Saudization percentage in your company profile</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Local References from Respected Names</td>
+        <td>Community trust and peer validation — named references from well-known organisations convert faster</td>
+        <td>Collect named testimonials from clients in your target sector and display prominently</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Speed of WhatsApp Response</td>
+        <td>In KSA, response time is a professionalism signal — slow reply is interpreted as disinterest</td>
+        <td>Commit to under 2-hour WhatsApp response. Publish this commitment on your website</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="content-block">
+    <h3>Anti-Positioning — Who You Are NOT For — من لستَ مناسباً له</h3>
+    <p style="margin-bottom:6px;">In the Saudi market, clear client exclusions build premium positioning. When you say who you are not for, your ideal client feels more chosen — not filtered out. Strong anti-positioning language examples:</p>
+    <div class="two-col" style="margin-bottom:4px;">
+      <div style="font-style:italic;font-size:11px;color:rgba(255,255,255,0.7);background:rgba(201,168,76,0.05);border:1px dashed rgba(201,168,76,0.2);padding:3mm;border-radius:2px;">"We don't work with businesses that aren't ready to invest in growth."</div>
+      <div style="font-style:italic;font-size:11px;color:rgba(255,255,255,0.7);background:rgba(201,168,76,0.05);border:1px dashed rgba(201,168,76,0.2);padding:3mm;border-radius:2px;">"We're not the cheapest option — we're the one with the clearest results."</div>
+    </div>
+    <p style="margin-bottom:4px;"><strong>Your Anti-Positioning Template:</strong></p>
+    <p style="font-style:italic;color:rgba(255,255,255,0.7);">"We help <strong>[WHO]</strong> who are <strong>[QUALIFIER]</strong>. We are NOT the right fit for <strong>[EXCLUSION 1]</strong> or <strong>[EXCLUSION 2]</strong>."</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 8: SAUDI BUYER PERSONAS -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 08 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; BUYER PERSONAS</div>
+  </div>
+  <div class="section-title">AUDIENCE PERSONAS — SAUDI EDITION</div>
+  <div class="section-title-ar">شخصيات المشترين السعوديين — ٣ نماذج أساسية</div>
+  <div class="gold-rule"></div>
+  <div class="persona-card">
+    <div class="persona-name">PERSONA A: "The Ambitious Founder" — المؤسس الطموح</div>
+    <div class="persona-desc">Saudi National · 28–42 · Running a 2–5 year old business · 1M–10M SAR revenue</div>
+    <div class="persona-grid">
+      <div class="persona-field">
+        <div class="pf-label">Demographics</div>
+        <div class="pf-value">Saudi national, university-educated, Riyadh or Jeddah-based, tech-savvy, active on LinkedIn and Twitter/X, often has an MBA or studied abroad</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Goals</div>
+        <div class="pf-value">Scale fast, professionalise systems, attract top talent, expand beyond one city, raise investment or get bank financing</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Pain Points</div>
+        <div class="pf-value">Wearing too many hats, team not performing, revenue inconsistent, unsure what to invest in next, feels behind peers</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Buying Process</div>
+        <div class="pf-value">Researches options online, peer-influenced, moves fast once trust established — decides in 1–3 meetings</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Trust Signals</div>
+        <div class="pf-value">Peer testimonials, LinkedIn credibility of vendor, clear ROI case studies, fast and direct communication style</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Key Message · Best Channel</div>
+        <div class="pf-value">"Work with us and your business runs without you." · LinkedIn content + direct WhatsApp + referral network</div>
+      </div>
+    </div>
+  </div>
+  <div class="persona-card">
+    <div class="persona-name">PERSONA B: "The Family Business Heir" — وريث الأعمال العائلية</div>
+    <div class="persona-desc">Taking over or modernising a traditional family business · Must prove ROI internally · Conservative with new vendors</div>
+    <div class="persona-grid">
+      <div class="persona-field">
+        <div class="pf-label">Demographics</div>
+        <div class="pf-value">Saudi national, 25–45, managing a 10–50 year old business, often shares responsibility with older generation</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Goals</div>
+        <div class="pf-value">Modernise operations without disrupting legacy, introduce technology, prove competence to family elders, grow profitably</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Pain Points</div>
+        <div class="pf-value">Internal resistance to change, outdated systems, brand seen as "old", difficulty attracting young talent, family dynamics</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Buying Process</div>
+        <div class="pf-value">Slow, deliberate. Requires proposal in Arabic + English, needs internal sign-off, relationship must come first</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Trust Signals</div>
+        <div class="pf-value">References from other family businesses, meetings in person (not just online), company registration and Saudi presence</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Key Message · Best Channel</div>
+        <div class="pf-value">"We preserve your heritage while building your future." · WhatsApp + in-person meetings + referrals from trusted contacts</div>
+      </div>
+    </div>
+  </div>
+  <div class="persona-card">
+    <div class="persona-name">PERSONA C: "The Corporate Buyer" — المشتري المؤسسي</div>
+    <div class="persona-desc">HR / Marketing / Operations manager in a mid-size company · Buying on behalf of organisation · KPI-driven</div>
+    <div class="persona-grid">
+      <div class="persona-field">
+        <div class="pf-label">Demographics</div>
+        <div class="pf-value">Could be Saudi or expat, 30–50, mid–senior level, manages a department budget, answers to C-suite</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Goals</div>
+        <div class="pf-value">Solve a specific departmental problem, demonstrate value to leadership, manage vendor risk, meet quarterly KPIs</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Pain Points</div>
+        <div class="pf-value">Justifying spend, limited budget, multiple stakeholders to satisfy, risk of choosing wrong vendor, time pressure</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Buying Process</div>
+        <div class="pf-value">Formal RFQ or structured proposal process. Comparison shopping. Needs presentation-ready deliverables for internal approval.</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Trust Signals</div>
+        <div class="pf-value">Professional proposal with measurable outcomes, client list with recognisable names, case studies with numbers, clear SLA</div>
+      </div>
+      <div class="persona-field">
+        <div class="pf-label">Key Message · Best Channel</div>
+        <div class="pf-value">"Make you look like the smartest decision-maker in the room." · LinkedIn + email + referral from within their network</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 9: BRAND ACTIVATION ROADMAP (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 09 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; ACTIVATION ROADMAP</div>
+  </div>
+  <div class="section-title">BRAND ACTIVATION ROADMAP</div>
+  <div class="section-title-ar">خارطة طريق تفعيل العلامة التجارية — ٩٠ يوماً</div>
+  <div class="gold-rule"></div>
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge">DAYS 1–7</div>
+      <div class="phase-title">The Audit Week — أسبوع التدقيق</div>
+    </div>
+    <ul>
+      <li>Complete the Brand Audit Scorecard in this framework (p.3) — score every dimension honestly</li>
+      <li>Google your name and your company name — document the first 10 results you find</li>
+      <li>Review every digital touchpoint for consistency: website, social profiles, email signature, WhatsApp</li>
+      <li>List every place your brand name appears — offline (signage, stationery) and online (directories, press)</li>
+      <li>Identify 3 urgent fixes that can each be completed in under 1 hour — do them before Day 7 ends</li>
+    </ul>
+  </div>
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge">DAYS 8–21</div>
+      <div class="phase-title">The Foundation Phase — مرحلة التأسيس</div>
+    </div>
+    <ul>
+      <li>Write your Positioning Statement using the Canvas template (p.5) — get it reviewed by one trusted client</li>
+      <li>Finalise your 5-Layer Messaging Framework (p.6) — write all five layers before moving to visibility</li>
+      <li>Update your website home page hero section with your new headline and positioning statement</li>
+      <li>Update LinkedIn company page and founder personal profile with new messaging</li>
+      <li>Complete Google Business Profile to 100% — photos, services, description, opening hours, WhatsApp link</li>
+      <li>Collect 3 new client testimonials with specific results — name, company, number, and outcome</li>
+    </ul>
+  </div>
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge">DAYS 22–45</div>
+      <div class="phase-title">The Visibility Phase — مرحلة الظهور</div>
+    </div>
+    <ul>
+      <li>Define your 3 content pillars for the next 3 months — one educational, one authority, one social proof</li>
+      <li>Publish your first LinkedIn post for each pillar — measure which generates the most engagement</li>
+      <li>Set up or conduct a full audit of your Instagram and Twitter/X profile — align with new brand voice</li>
+      <li>Create or update your company one-pager with new positioning, testimonials, and contact details</li>
+      <li>Brief your entire team on the new messaging — verbal and written — so they represent the brand consistently</li>
+    </ul>
+  </div>
+
+  <div class="phase-box">
+    <div class="phase-header">
+      <div class="phase-badge">DAYS 46–90</div>
+      <div class="phase-title">The Authority Phase — مرحلة بناء السلطة</div>
+    </div>
+    <ul>
+      <li>Publish a minimum of 2 pieces of thought leadership content per week — consistency beats volume</li>
+      <li>Pitch at least 1 podcast, 1 speaking event, or 1 media mention — start with smaller platforms</li>
+      <li>Build or update your case study library — minimum 3 case studies with before/after numbers</li>
+      <li>Launch a client referral outreach to your top 10 most satisfied clients — ask for introductions</li>
+      <li>Review: which channel generated the most brand recognition this quarter? Double down on it in Q2</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:3mm;">
+    <div class="label">Brand Activation Budget Guide for Saudi SMEs — ميزانية تفعيل العلامة التجارية</div>
+    <div class="two-col" style="margin-top:3mm;margin-bottom:0;">
+      <div>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">Visual identity refresh</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">SAR 3,000 – 15,000</td></tr>
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">Website redesign</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">SAR 8,000 – 30,000</td></tr>
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">Professional photography</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">SAR 1,500 – 4,000</td></tr>
+        </table>
+      </div>
+      <div>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">Content creation (3 months)</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">SAR 2,000 – 6,000/mo</td></tr>
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">Paid advertising (brand support)</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);">SAR 3,000 – 10,000/mo</td></tr>
+          <tr><td style="font-size:10.5px;color:rgba(255,255,255,0.8);padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);font-weight:700;">Total Year 1 brand investment</td><td style="font-size:10.5px;color:var(--gold);text-align:right;padding:3px 0;border-bottom:1px dashed rgba(201,168,76,0.15);font-weight:700;">SAR 30,000 – 80,000</td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="margin-top:6px;font-size:10.5px;font-style:italic;color:var(--gray);">The ROI on brand investment is 3–5 years, not 3–5 months. Brand is infrastructure, not an expense. The businesses that invested in brand in 2021 are winning the market in 2026.</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 10: BRAND METRICS & PERFORMANCE DASHBOARD (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 10 OF 11</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; BRAND METRICS DASHBOARD</div>
+  </div>
+  <div class="section-title">BRAND METRICS &amp; PERFORMANCE DASHBOARD</div>
+  <div class="section-title-ar">مؤشرات العلامة التجارية — لوحة قياس الأداء</div>
+  <div class="gold-rule"></div>
+
+  <div style="font-size:10px;color:var(--gray);margin-bottom:3mm;letter-spacing:1px;text-transform:uppercase;">The 12 Brand Health KPIs — مؤشرات صحة العلامة التجارية الـ ١٢</div>
+  <table class="score-table" style="font-size:10px;margin-bottom:4mm;">
+    <thead>
+      <tr>
+        <th style="width:18%">KPI</th>
+        <th style="width:20%">What It Measures</th>
+        <th style="width:18%">How to Track</th>
+        <th style="width:22%">Saudi SME Benchmark</th>
+        <th style="width:22%">Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Inbound Lead Rate</td>
+        <td>% of leads who found you (vs. outbound)</td>
+        <td>CRM / WhatsApp inquiry log</td>
+        <td>20–30% for SME</td>
+        <td style="color:#3fa05d;">&gt;40%</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Brand Search Volume</td>
+        <td>How often your company name is searched online</td>
+        <td>Google Search Console</td>
+        <td>Baseline + 10% growth</td>
+        <td style="color:#3fa05d;">+20% per quarter</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">LinkedIn Profile Views</td>
+        <td>Weekly founder profile views</td>
+        <td>LinkedIn Analytics dashboard</td>
+        <td>200–500 for active SME</td>
+        <td style="color:#3fa05d;">+15% per month</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Content Engagement Rate</td>
+        <td>Likes + comments ÷ impressions</td>
+        <td>Platform analytics (LinkedIn, Instagram)</td>
+        <td>2–4% LinkedIn average</td>
+        <td style="color:#3fa05d;">&gt;5%</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Client Referral Rate</td>
+        <td>% of new clients who came via referral</td>
+        <td>CRM source tracking</td>
+        <td>40–60% in Saudi market</td>
+        <td style="color:#3fa05d;">&gt;50%</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">WhatsApp Inquiry Rate</td>
+        <td>Monthly inbound WhatsApp business inquiries</td>
+        <td>WhatsApp Business app analytics</td>
+        <td>Establish baseline first</td>
+        <td style="color:#3fa05d;">+10% per month</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Google Business Views</td>
+        <td>Weekly profile views and search appearances</td>
+        <td>Google Business dashboard</td>
+        <td>200–500/week for SME</td>
+        <td style="color:#3fa05d;">+20% per month</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Proposal Win Rate</td>
+        <td>% of proposals sent that result in signed contracts</td>
+        <td>CRM deal tracking</td>
+        <td>25–35% Saudi B2B</td>
+        <td style="color:#3fa05d;">&gt;35%</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Time to Trust</td>
+        <td>Average days from first contact to signed contract</td>
+        <td>CRM date fields</td>
+        <td>14–45 days typical</td>
+        <td style="color:#3fa05d;">Decreasing trend</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Content-to-Lead Ratio</td>
+        <td>% of leads generated by content vs. other sources</td>
+        <td>UTM tracking on all content links</td>
+        <td>10–20% for SME</td>
+        <td style="color:#3fa05d;">&gt;25%</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Net Promoter Score</td>
+        <td>How likely clients are to recommend you (0–10)</td>
+        <td>Quarterly client survey (3 questions)</td>
+        <td>40–50 for service businesses</td>
+        <td style="color:#3fa05d;">&gt;50</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gold);font-weight:700;">Brand Consistency Score</td>
+        <td>% of touchpoints aligned with brand guidelines</td>
+        <td>Monthly internal audit across 10 touchpoints</td>
+        <td>Track from your baseline</td>
+        <td style="color:#3fa05d;">&gt;90%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div class="content-block" style="margin-bottom:0;">
+      <h3>Monthly Brand Review Checklist — قائمة مراجعة شهرية</h3>
+      <ul class="kpi-check-list" style="list-style:none;padding:0;">
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Review last month's content — which post generated most engagement?</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Check Google Business for new reviews — respond to all within 24 hours</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Audit one new client touchpoint for brand consistency</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Count inbound leads vs. outbound leads this month</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Review LinkedIn analytics — track follower growth and profile views</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Ask one client: "How did you find out about us?"</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Publish at least one case study or testimonial this month</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Update any outdated information on website or social profiles</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Confirm team members are using correct email signature and brand templates</li>
+        <li style="font-size:10.5px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">□</span> Review: did your lowest Brand Audit dimension improve this month?</li>
+      </ul>
+    </div>
+    <div class="warning-box" style="margin-bottom:0;">
+      <div class="label">Warning Signs — Red Flags to Watch — إشارات التحذير</div>
+      <ul>
+        <li>More than 50% of leads come from just 1 source — this is fragile and vulnerable to disruption</li>
+        <li>You have not published any content in 30+ days — your brand is going silent in the market</li>
+        <li>Your last case study is more than 6 months old — your proof is stale</li>
+        <li>Nobody on your team can recite your brand positioning statement without reading it</li>
+        <li>You have lowered your price twice in the last 6 months without changing your offer</li>
+        <li>Competitors are growing visibly faster than you in your own defined niche</li>
+        <li>Your top 3 clients represent more than 60% of your total revenue — dangerous concentration</li>
+        <li>New prospects consistently ask you the same question your website should already be answering</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+<!-- PAGE 11: WORKSHEETS (EXPANDED) -->
+<div class="page worksheet-page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 11 OF 11 &nbsp;·&nbsp; WORKSHEETS</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-03 &nbsp;|&nbsp; FILL-IN TEMPLATES</div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <!-- WS1: Brand Audit Scorecard -->
+  <div class="ws-title">WORKSHEET 1 — Brand Audit Scorecard</div>
+  <div class="ws-subtitle">ورقة عمل: تدقيق العلامة التجارية — أعطِ كل بُعد درجة من ١ إلى ٥</div>
+  <table class="ws-table" style="margin-bottom:3mm;">
+    <thead>
+      <tr>
+        <th style="width:5%">#</th>
+        <th>Dimension</th>
+        <th style="width:22%">Your Score (circle) 1 · 2 · 3 · 4 · 5</th>
+        <th style="width:30%">What needs improvement?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Clarity — الوضوح</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>2</td><td>Differentiation — التميّز</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>3</td><td>Trust Signals — إشارات الثقة</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>4</td><td>Visual Identity — الهوية البصرية</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>5</td><td>Digital Presence — الحضور الرقمي</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>6</td><td>Arabic / English Balance</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>7</td><td>Founder Brand — علامة المؤسس</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td>8</td><td>Content Authority — سلطة المحتوى</td><td class="ws-input-cell" style="text-align:center;letter-spacing:4px;">1 · 2 · 3 · 4 · 5</td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr>
+        <td colspan="2" style="color:var(--gold);font-weight:700;text-align:right;padding-right:12px;">TOTAL SCORE / 40</td>
+        <td class="ws-input-cell" style="font-size:22px;text-align:center;color:rgba(201,168,76,0.3);">___</td>
+        <td class="ws-input-cell" style="font-style:italic;color:rgba(255,255,255,0.25);">8-20: Rebrand · 21-30: Refresh · 31-40: Optimise</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- WS2: Messaging Framework -->
+  <div class="ws-title">WORKSHEET 2 — My Messaging Framework</div>
+  <div class="ws-subtitle">ورقة عمل: رسائلي التسويقية — ٥ طبقات</div>
+  <div class="two-col">
+    <div class="ws-section">
+      <h4>Layer 1 — Headline</h4>
+      <span class="ws-fill-line"></span>
+      <span class="ws-fill-line"></span>
+    </div>
+    <div class="ws-section">
+      <h4>Layer 4 — Social Proof Statement</h4>
+      <span class="ws-fill-line"></span>
+      <span class="ws-fill-line"></span>
+    </div>
+  </div>
+  <div class="ws-section">
+    <h4>Layer 2 — Elevator Pitch (30 seconds)</h4>
+    <span class="ws-fill-line"></span>
+    <span class="ws-fill-line"></span>
+    <span class="ws-fill-line"></span>
+  </div>
+  <div class="ws-section">
+    <h4>Layer 3 — Value Proposition (80–100 words — bilingual)</h4>
+    <span class="ws-fill-line"></span>
+    <span class="ws-fill-line"></span>
+    <span class="ws-fill-line"></span>
+    <span class="ws-fill-line"></span>
+  </div>
+  <div class="ws-section" style="margin-bottom:3mm;">
+    <h4>Layer 5 — My 3 CTAs (Awareness / Consideration / Decision)</h4>
+    <div class="three-col" style="gap:3mm;margin-top:3px;margin-bottom:0;">
+      <div>
+        <div style="font-size:9px;color:var(--gray);margin-bottom:3px;">AWARENESS</div>
+        <span class="ws-fill-line"></span>
+        <span class="ws-fill-line"></span>
+      </div>
+      <div>
+        <div style="font-size:9px;color:var(--gray);margin-bottom:3px;">CONSIDERATION</div>
+        <span class="ws-fill-line"></span>
+        <span class="ws-fill-line"></span>
+      </div>
+      <div>
+        <div style="font-size:9px;color:var(--gray);margin-bottom:3px;">DECISION</div>
+        <span class="ws-fill-line"></span>
+        <span class="ws-fill-line"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WS3: Competitor Map -->
+  <div class="ws-title" style="margin-top:2mm;">WORKSHEET 3 — Competitor Positioning Map</div>
+  <div class="ws-subtitle">ورقة عمل: خريطة تموضع المنافسين — ضع نفسك والمنافسين على الخريطة</div>
+  <div class="matrix-container">
+    <div class="matrix-axis-x"></div>
+    <div class="matrix-axis-y"></div>
+    <div class="matrix-label ml-top">SPECIALISED — متخصص</div>
+    <div class="matrix-label ml-bottom">GENERIC — عام</div>
+    <div class="matrix-label ml-left">AFFORDABLE</div>
+    <div class="matrix-label ml-right">PREMIUM</div>
+    <div class="quadrant-label ql-tl">Specialised + Affordable</div>
+    <div class="quadrant-label ql-tr">Specialised + Premium</div>
+    <div class="quadrant-label ql-bl">Generic + Affordable</div>
+    <div class="quadrant-label ql-br">Generic + Premium</div>
+  </div>
+
+  <!-- WS4: Brand Activation 90-Day Checklist -->
+  <div class="ws-title" style="margin-top:3mm;">WORKSHEET 4 — My Brand Activation 90-Day Checklist</div>
+  <div class="ws-subtitle">ورقة عمل: قائمة تفعيل العلامة التجارية — ٩٠ يوماً</div>
+  <div class="three-col" style="margin-bottom:3mm;">
+    <div class="ws-section" style="margin-bottom:0;">
+      <h4>Week 1–4 (Foundation)</h4>
+      <div style="font-size:10px;color:rgba(255,255,255,0.55);line-height:2;">
+        <div>□ Complete Brand Audit scorecard</div>
+        <div>□ Google yourself — document results</div>
+        <div>□ Write positioning statement</div>
+        <div>□ Update website headline</div>
+        <div>□ Complete Google Business profile</div>
+        <div>□ Collect 3 client testimonials</div>
+        <div>□ Update LinkedIn company page</div>
+      </div>
+    </div>
+    <div class="ws-section" style="margin-bottom:0;">
+      <h4>Week 5–8 (Visibility)</h4>
+      <div style="font-size:10px;color:rgba(255,255,255,0.55);line-height:2;">
+        <div>□ Define 3 content pillars</div>
+        <div>□ Publish first post each pillar</div>
+        <div>□ Audit Instagram/Twitter profiles</div>
+        <div>□ Create updated company one-pager</div>
+        <div>□ Brief team on new messaging</div>
+        <div>□ Write 5-layer messaging framework</div>
+        <div>□ Review all digital touchpoints</div>
+      </div>
+    </div>
+    <div class="ws-section" style="margin-bottom:0;">
+      <h4>Week 9–12 (Authority)</h4>
+      <div style="font-size:10px;color:rgba(255,255,255,0.55);line-height:2;">
+        <div>□ Publish 2 thought leadership pieces/week</div>
+        <div>□ Pitch 1 podcast or speaking event</div>
+        <div>□ Build 3 case studies with numbers</div>
+        <div>□ Referral outreach to top 10 clients</div>
+        <div>□ Review: which channel works best?</div>
+        <div>□ Re-score Brand Audit — did you improve?</div>
+        <div>□ Plan Q2 brand investment budget</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WS5: Competitor Analysis Table -->
+  <div class="ws-title">WORKSHEET 5 — My Competitor Analysis Table</div>
+  <div class="ws-subtitle">ورقة عمل: تحليل المنافسين — ٥ منافسين رئيسيين</div>
+  <table class="ws-table">
+    <thead>
+      <tr>
+        <th>Competitor Name</th>
+        <th>Their Positioning Statement</th>
+        <th>Their Audience</th>
+        <th>Their Strength</th>
+        <th>Their Weakness</th>
+        <th>My Advantage vs. Them</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td></tr>
+      <tr><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td><td class="ws-input-cell ws-large-cell"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-03</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
+</div>
+
+</body>
+</html>

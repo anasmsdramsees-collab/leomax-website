@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90-Day Business Reset Framework | LEOMAX | LMX-FW-01</title>
+<style>
+  :root {
+    --black: #010B1C;
+    --charcoal: #0D1E35;
+    --dark: #060F1F;
+    --gold: #C9A84C;
+    --silver: #B8B8B8;
+    --white: #FFFFFF;
+    --gray: #8fa8be;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1a1a2e;
+    color: var(--white);
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--black);
+    margin: 0 auto 20px auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 120px;
+    font-weight: 900;
+    letter-spacing: 20px;
+    color: rgba(201, 168, 76, 0.04);
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .page-content { position: relative; z-index: 1; }
+
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 20px;
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7px;
+    color: var(--gray);
+    background: var(--black);
+    z-index: 2;
+  }
+
+  .footer-text { font-size: 7px; color: var(--gray); }
+  .footer-right { text-align: right; font-size: 7px; color: var(--gray); }
+
+  .gold-line {
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px 0;
+  }
+
+  .gold-line-solid {
+    width: 100%; height: 1px;
+    background: rgba(201, 168, 76, 0.35);
+    margin: 12px 0;
+  }
+
+  .gold-accent { width: 60px; height: 3px; background: var(--gold); margin: 8px 0 14px 0; }
+
+  /* COVER */
+  .cover-page { background: var(--black); display: flex; flex-direction: column; min-height: 297mm; }
+  .cover-top-bar { background: var(--gold); height: 6px; width: 100%; }
+  .cover-inner { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 60px 60px 80px 60px; }
+  .leomax-wordmark { font-size: 28px; font-weight: 900; letter-spacing: 10px; color: var(--gold); margin-bottom: 4px; }
+  .leomax-tagline { font-size: 10px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; margin-bottom: 70px; }
+  .cover-ref { font-size: 9px; letter-spacing: 2px; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); padding: 4px 12px; display: inline-block; margin-bottom: 24px; font-family: 'Courier New', monospace; }
+  .cover-category { font-size: 10px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; margin-bottom: 20px; }
+  .cover-title { font-size: 52px; font-weight: 900; color: var(--white); line-height: 1.05; letter-spacing: -1px; margin-bottom: 24px; max-width: 480px; }
+  .cover-title span { color: var(--gold); }
+  .cover-subtitle { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 420px; margin-bottom: 50px; }
+  .cover-price-box { display: flex; align-items: center; gap: 30px; margin-top: 10px; }
+  .price-label { font-size: 9px; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; margin-bottom: 4px; }
+  .price-value { font-size: 28px; font-weight: 900; color: var(--gold); }
+  .cover-divider { width: 1px; height: 50px; background: rgba(201,168,76,0.3); }
+  .cover-meta-item { font-size: 9px; color: var(--gray); letter-spacing: 1px; margin-bottom: 2px; }
+  .cover-meta-value { font-size: 12px; color: var(--white); font-weight: 600; }
+  .cover-bottom-bar { background: var(--charcoal); padding: 14px 60px; display: flex; justify-content: space-between; align-items: center; }
+  .cover-bottom-text { font-size: 8px; color: var(--gray); letter-spacing: 1px; }
+
+  /* CONTENT PAGES */
+  .content-page { padding: 30px 40px 55px 40px; min-height: 297mm; }
+  .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .page-header-logo { font-size: 14px; font-weight: 900; letter-spacing: 6px; color: var(--gold); }
+  .page-header-right { text-align: right; }
+  .page-header-ref { font-size: 8px; color: var(--gray); letter-spacing: 1px; font-family: 'Courier New', monospace; }
+  .page-header-title { font-size: 8px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+  .section-badge { display: inline-block; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); padding: 3px 10px; margin-bottom: 10px; }
+  .section-title { font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 6px; line-height: 1.2; }
+  .section-title-ar { font-size: 14px; color: var(--gray); font-weight: 400; margin-bottom: 16px; direction: rtl; }
+  .body-text { font-size: 9.5px; color: var(--silver); line-height: 1.75; }
+  .highlight-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--gold); padding: 12px 16px; margin: 14px 0; font-size: 9.5px; color: var(--silver); line-height: 1.65; }
+  .highlight-box strong { color: var(--gold); }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .phase-box { background: var(--charcoal); border: 1px solid rgba(201,168,76,0.2); border-top: 3px solid var(--gold); padding: 14px; }
+  .phase-num { font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+  .phase-title { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .phase-days { font-size: 8px; color: var(--gray); margin-bottom: 8px; }
+  .phase-desc { font-size: 8.5px; color: var(--silver); line-height: 1.6; }
+
+  .checklist { list-style: none; margin: 10px 0; }
+  .checklist li { font-size: 9px; color: var(--silver); padding: 4px 0 4px 18px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .checklist li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); font-size: 6px; top: 6px; }
+
+  .audit-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 8.5px; }
+  .audit-table th { background: rgba(201,168,76,0.15); color: var(--gold); padding: 7px 10px; text-align: left; font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2); }
+  .audit-table td { padding: 7px 10px; border: 1px solid rgba(255,255,255,0.06); color: var(--silver); vertical-align: top; font-size: 8.5px; line-height: 1.5; }
+  .audit-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .audit-number { color: var(--gold); font-weight: 700; font-size: 10px; white-space: nowrap; }
+  .score-boxes { display: flex; gap: 4px; }
+  .score-box { width: 16px; height: 16px; border: 1px dashed rgba(201,168,76,0.4); display: inline-block; }
+
+  .sub-section { margin: 14px 0; }
+  .sub-section-title { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid rgba(201,168,76,0.2); letter-spacing: 0.5px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+  .info-box { background: var(--charcoal); border: 1px solid rgba(255,255,255,0.07); padding: 12px; }
+  .info-box-title { font-size: 9px; font-weight: 700; color: var(--gold); margin-bottom: 6px; letter-spacing: 0.5px; }
+  .info-box p { font-size: 8.5px; color: var(--silver); line-height: 1.6; }
+
+  .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; margin: 12px 0; height: 180px; position: relative; }
+  .matrix-cell { border: 1px solid rgba(201,168,76,0.2); padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .matrix-cell.high-high { background: rgba(201,168,76,0.12); border-color: var(--gold); }
+  .matrix-cell.high-low { background: rgba(143,168,190,0.06); }
+  .matrix-cell.low-high { background: rgba(143,168,190,0.04); }
+  .matrix-cell.low-low { background: rgba(255,255,255,0.02); }
+  .matrix-cell-label { font-size: 9px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .matrix-cell-desc { font-size: 7.5px; color: var(--gray); }
+
+  .kpi-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 0; margin-bottom: 2px; }
+  .kpi-cell { padding: 7px 10px; font-size: 8.5px; border: 1px solid rgba(255,255,255,0.06); color: var(--silver); }
+  .kpi-header { background: rgba(201,168,76,0.12); color: var(--gold); font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
+  .kpi-metric { color: var(--white); font-weight: 600; }
+
+  .score-bands { display: flex; gap: 6px; margin: 10px 0; }
+  .score-band { flex: 1; padding: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.08); }
+  .score-band-range { font-size: 13px; font-weight: 900; color: var(--gold); margin-bottom: 2px; }
+  .score-band-label { font-size: 7.5px; color: var(--gray); letter-spacing: 0.5px; }
+  .score-band.critical { border-color: #c0392b; background: rgba(192,57,43,0.08); }
+  .score-band.critical .score-band-range { color: #e74c3c; }
+  .score-band.warning { border-color: #e67e22; background: rgba(230,126,34,0.06); }
+  .score-band.warning .score-band-range { color: #e67e22; }
+  .score-band.good { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); }
+  .score-band.excellent { border-color: #27ae60; background: rgba(39,174,96,0.06); }
+  .score-band.excellent .score-band-range { color: #2ecc71; }
+
+  /* WORKSHEET PAGE */
+  .worksheet-page { background: var(--charcoal); padding: 28px 36px 55px 36px; min-height: 297mm; }
+  .ws-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(201,168,76,0.25); }
+  .ws-title { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 2px; }
+  .ws-subtitle { font-size: 9px; color: var(--gray); letter-spacing: 1px; }
+  .ws-section { margin-bottom: 20px; }
+  .ws-section-title { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; padding: 4px 0; border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .ws-table { width: 100%; border-collapse: collapse; font-size: 8.5px; }
+  .ws-table th { background: rgba(201,168,76,0.12); color: var(--gold); padding: 7px 8px; text-align: left; font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2); }
+  .ws-table td { padding: 0; border: 1px dashed rgba(201,168,76,0.25); vertical-align: top; }
+  .ws-fill-cell { width: 100%; min-height: 28px; background: rgba(255,255,255,0.02); display: block; padding: 6px 8px; color: transparent; font-size: 8.5px; }
+  .ws-table td.label-cell { padding: 7px 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(201,168,76,0.15); color: var(--silver); font-size: 8.5px; vertical-align: middle; }
+  .ws-table td.num-cell { padding: 7px 8px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: var(--gold); font-weight: 700; font-size: 10px; text-align: center; width: 28px; vertical-align: middle; }
+  .rating-boxes { display: flex; gap: 3px; padding: 6px 8px; }
+  .rating-box { width: 18px; height: 18px; border: 1px dashed rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; font-size: 7px; color: rgba(201,168,76,0.4); }
+  .ws-matrix { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; height: 200px; margin: 10px 0; }
+  .ws-matrix-cell { border: 1px dashed rgba(201,168,76,0.3); padding: 8px; background: rgba(0,0,0,0.15); position: relative; }
+  .ws-matrix-cell-label { font-size: 7px; color: var(--gold); letter-spacing: 0.5px; font-weight: 700; margin-bottom: 4px; opacity: 0.7; }
+  .ws-line { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 14px; border-bottom: 1px dashed rgba(201,168,76,0.15); }
+  .scorecard-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 2fr; gap: 0; margin-bottom: 2px; }
+  .sc-cell { padding: 8px; border: 1px dashed rgba(201,168,76,0.2); font-size: 8px; color: var(--silver); background: rgba(0,0,0,0.15); }
+  .sc-header { background: rgba(201,168,76,0.1); color: var(--gold); font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 700; padding: 7px 8px; border: 1px solid rgba(201,168,76,0.2); }
+  .action-plan-row { display: grid; grid-template-columns: 1.2fr 2fr 1fr 1fr; gap: 0; margin-bottom: 2px; }
+  .ap-cell { padding: 8px; border: 1px dashed rgba(201,168,76,0.2); font-size: 8px; background: rgba(0,0,0,0.15); min-height: 36px; }
+  .ap-header { background: rgba(201,168,76,0.1); color: var(--gold); font-size: 7.5px; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 700; padding: 7px 8px; border: 1px solid rgba(201,168,76,0.2); }
+  .phase-label { background: rgba(201,168,76,0.08); color: var(--gold); font-size: 8px; font-weight: 700; padding: 6px 8px; border: 1px solid rgba(201,168,76,0.15); grid-column: 1 / -1; letter-spacing: 1px; }
+
+  /* ── NEW ELEMENTS ── */
+  .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 14px 0; }
+  .stat-box { background: var(--charcoal); border: 1px solid rgba(201,168,76,0.2); border-top: 2px solid var(--gold); padding: 12px 10px; text-align: center; }
+  .stat-number { font-size: 22px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 7.5px; color: var(--gray); letter-spacing: 0.5px; line-height: 1.4; }
+
+  .challenge-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+  .challenge-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07); border-left: 2px solid var(--gold); padding: 10px 12px; }
+  .challenge-num { font-size: 8px; color: var(--gold); letter-spacing: 2px; margin-bottom: 3px; }
+  .challenge-title { font-size: 10px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .challenge-desc { font-size: 8px; color: var(--silver); line-height: 1.55; }
+
+  .dim-table { width: 100%; border-collapse: collapse; font-size: 7.8px; margin: 10px 0; }
+  .dim-table th { background: rgba(201,168,76,0.15); color: var(--gold); padding: 6px 8px; text-align: left; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2); }
+  .dim-table td { padding: 6px 8px; border: 1px solid rgba(255,255,255,0.05); color: var(--silver); vertical-align: top; line-height: 1.5; }
+  .dim-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+  .dim-name { color: var(--white); font-weight: 700; font-size: 8px; }
+  .dim-red { color: #e74c3c; font-size: 7.5px; }
+  .dim-green { color: #2ecc71; font-size: 7.5px; }
+  .dim-fix { color: var(--gold); font-size: 7.5px; }
+
+  .week-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin: 10px 0; }
+  .week-card { background: var(--charcoal); border: 1px solid rgba(201,168,76,0.15); padding: 10px; }
+  .week-num { font-size: 8px; letter-spacing: 2px; color: var(--gold); margin-bottom: 4px; }
+  .week-title { font-size: 10px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .week-ceo { font-size: 7px; color: var(--gray); margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .week-actions { list-style: none; }
+  .week-actions li { font-size: 7.5px; color: var(--silver); padding: 2px 0 2px 12px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .week-actions li::before { content: '›'; position: absolute; left: 0; color: var(--gold); }
+
+  .milestone-bar { display: flex; gap: 0; margin: 10px 0; }
+  .milestone-item { flex: 1; padding: 8px; background: var(--charcoal); border: 1px solid rgba(201,168,76,0.15); text-align: center; }
+  .milestone-item:not(:last-child) { border-right: none; }
+  .milestone-week { font-size: 7px; color: var(--gold); letter-spacing: 1px; margin-bottom: 3px; }
+  .milestone-text { font-size: 8px; color: var(--white); font-weight: 600; }
+
+  .kpi-full { width: 100%; border-collapse: collapse; font-size: 7.8px; margin: 8px 0; }
+  .kpi-full th { background: rgba(201,168,76,0.15); color: var(--gold); padding: 6px 8px; text-align: left; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2); }
+  .kpi-full td { padding: 6px 8px; border: 1px solid rgba(255,255,255,0.05); color: var(--silver); vertical-align: middle; line-height: 1.4; }
+  .kpi-full tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+  .kpi-full td.kpi-name { color: var(--white); font-weight: 600; font-size: 8px; }
+  .kpi-full td.red { color: #e74c3c; }
+  .kpi-full td.green { color: #2ecc71; }
+  .kpi-full td.gold { color: var(--gold); }
+
+  .dash-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 10px 0; }
+  .dash-cell { background: var(--charcoal); border: 1px solid rgba(201,168,76,0.15); padding: 10px; min-height: 60px; }
+  .dash-cell-label { font-size: 7px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .dash-cell-value { font-size: 18px; font-weight: 900; color: var(--white); }
+  .dash-cell-sub { font-size: 7px; color: var(--gray); margin-top: 2px; }
+
+  .red-flag-list { list-style: none; margin: 8px 0; }
+  .red-flag-list li { font-size: 8.5px; color: var(--silver); padding: 5px 0 5px 20px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; }
+  .red-flag-list li::before { content: '⚠'; position: absolute; left: 0; color: #e74c3c; font-size: 9px; top: 5px; }
+
+  @media print {
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; margin: 0; page-break-after: always; page-break-inside: avoid; }
+    .worksheet-page { page-break-after: always; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover-page">
+  <div class="watermark">LEOMAX</div>
+  <div class="cover-top-bar"></div>
+  <div class="cover-inner page-content">
+    <div class="leomax-wordmark">LEOMAX</div>
+    <div class="leomax-tagline">Business Intelligence & AI Consultancy</div>
+    <div class="cover-ref">LMX-FW-01 &nbsp;·&nbsp; Framework Edition 2026</div>
+    <div class="cover-category">Growth &nbsp;·&nbsp; Strategy &nbsp;·&nbsp; الاستراتيجية</div>
+    <div style="width:80px;height:3px;background:var(--gold);margin-bottom:28px;"></div>
+    <div class="cover-title">90-DAY<br>BUSINESS<br><span>RESET</span></div>
+    <div class="cover-subtitle">A Structured System to Identify Bottlenecks, Rebuild Your Operating Foundation, and Activate Growth — From Diagnosis to Acceleration in 13 Weeks</div>
+    <div class="gold-line-solid" style="width:100%;max-width:420px;"></div>
+    <div class="cover-price-box">
+      <div><div class="price-label">Investment</div><div class="price-value">499 SAR</div></div>
+      <div class="cover-divider"></div>
+      <div><div class="cover-meta-item">FORMAT</div><div class="cover-meta-value">10-Page Framework + Worksheets</div></div>
+      <div class="cover-divider"></div>
+      <div><div class="cover-meta-item">DURATION</div><div class="cover-meta-value">90-Day System</div></div>
+      <div class="cover-divider"></div>
+      <div><div class="cover-meta-item">PAGES</div><div class="cover-meta-value">10 Pages · 6 Worksheets</div></div>
+    </div>
+  </div>
+  <div class="cover-bottom-bar">
+    <div class="cover-bottom-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="cover-bottom-text">Confidential — For purchaser use only</div>
+  </div>
+</div>
+
+<!-- PAGE 2: THE RESET PHILOSOPHY -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">90-Day Business Reset</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 2 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Foundation</div>
+    <div class="section-title">The Reset Philosophy</div>
+    <div class="section-title-ar">فلسفة إعادة الضبط — لماذا ٩٠ يوماً تحديداً</div>
+    <div class="gold-line"></div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Why 90 Days — The Science Behind the Quarter</div>
+      <p class="body-text">Ninety days is not arbitrary. It aligns with how human performance and organizational change actually work. Neuroscientists identify the 12-week window as the minimum cycle for new neural pathways to form and behavioral habits to solidify into default behavior. Six-month plans lose momentum after week eight — the urgency fades and execution drifts. Thirty-day sprints produce tactical fixes but rarely structural change. The quarter — 13 weeks — is the natural rhythm of business: how markets report, how investors measure, how focused teams produce their best output. For Saudi SMEs navigating the Vision 2030 transformation, 90 days is the window in which a clear decision, consistently executed, produces measurable and compounding results.</p>
+    </div>
+
+    <div class="highlight-box">
+      <strong>The LEOMAX Reset Principle:</strong> Most business problems are not strategy failures — they are operational clarity failures. Businesses stall not because they lack good ideas, but because they cannot see clearly which parts of their operation are bleeding resources, which are generating returns, and which are simply habits that no longer serve them. The Reset Framework provides that clarity, systematically, in 90 days.
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">The 3 Phases — النظام الثلاثي</div>
+      <div class="three-col">
+        <div class="phase-box">
+          <div class="phase-num">Phase 01</div>
+          <div class="phase-title">DIAGNOSE</div>
+          <div class="phase-days">Days 1–30 &nbsp;·&nbsp; الأسابيع ١–٤</div>
+          <div class="phase-desc">Conduct a comprehensive audit across all 10 business dimensions. Score each area ruthlessly. Separate real bottlenecks from perceived problems. Generate your baseline data — the foundation everything else is built on.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Phase 02</div>
+          <div class="phase-title">RESET</div>
+          <div class="phase-days">Days 31–60 &nbsp;·&nbsp; الأسابيع ٥–٨</div>
+          <div class="phase-desc">Use your audit data to stop what's draining you, fix what's critical, and redirect energy toward your highest-return activities. Apply the Priority Matrix. Execute the Stop/Start/Continue exercise. Build the minimum sustainable operational rhythm.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Phase 03</div>
+          <div class="phase-title">ACCELERATE</div>
+          <div class="phase-days">Days 61–90 &nbsp;·&nbsp; الأسابيع ٩–١٣</div>
+          <div class="phase-desc">With a clean operational foundation, activate your 3 growth levers. Build the cadence — daily, weekly, monthly rhythms — for sustainable expansion. Plan your next 90-day cycle before this one ends.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">How to Use This Framework</div>
+      <div class="two-col">
+        <ul class="checklist">
+          <li>Read all 10 pages before starting — understand the full arc first</li>
+          <li>Block 3 hours in Week 1 for the Business Audit — do not rush it</li>
+          <li>Involve one trusted advisor or senior team member in scoring</li>
+          <li>Complete worksheets on paper or dedicated document — not mental notes</li>
+          <li>Review your progress weekly using the Weekly Scorecard (WS-4)</li>
+        </ul>
+        <ul class="checklist">
+          <li>Do not skip phases or jump to Accelerate prematurely</li>
+          <li>You need last 3 months of financial data before starting Phase 1</li>
+          <li>Leadership must be aligned — not just the founder — before Day 1</li>
+          <li>Schedule your Phase 2 kickoff meeting before you finish Phase 1</li>
+          <li>On Day 85, begin planning your next 90-day cycle with real data</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Prerequisites — هل أنت جاهز للبدء؟</div>
+      <div class="two-col">
+        <ul class="checklist">
+          <li>Access to last 3 months of financial data (P&L minimum)</li>
+          <li>2–4 hours per week available for framework work</li>
+          <li>Decision-making authority or direct access to decision-maker</li>
+          <li>Willingness to stop activities that are not working</li>
+        </ul>
+        <ul class="checklist">
+          <li>Basic record of services offered and revenue per service</li>
+          <li>At least one team member as Reset accountability partner</li>
+          <li>Prepared to make structural changes within 30 days of audit</li>
+          <li>Budget allocated for minimum 1 operational improvement in Phase 2</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 3: SAUDI SME LANDSCAPE (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Saudi SME Context</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 3 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Context</div>
+    <div class="section-title">The Saudi SME Landscape — 2026</div>
+    <div class="section-title-ar">واقع المنشآت الصغيرة والمتوسطة في السوق السعودي</div>
+    <div class="gold-line"></div>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">of registered Saudi businesses are SMEs</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">20%</div>
+        <div class="stat-label">current SME contribution to Saudi GDP</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">35%</div>
+        <div class="stat-label">Vision 2030 GDP target for SMEs</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">62%</div>
+        <div class="stat-label">of Saudi SMEs report cash flow as #1 challenge</div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">The 6 Structural Challenges Unique to Saudi SMEs</div>
+      <div class="challenge-row">
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 01</div>
+          <div class="challenge-title">Founder Dependency Trap</div>
+          <div class="challenge-desc">The majority of Saudi SMEs are operationally dependent on the founder for decisions, client relationships, and delivery. This creates a ceiling on growth that no amount of strategy can overcome without structural delegation. The Reset Framework directly addresses this in Phase 2.</div>
+        </div>
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 02</div>
+          <div class="challenge-title">Extended Payment Cycles</div>
+          <div class="challenge-desc">Saudi B2B payment terms average 60–90 days, with government and semi-government clients sometimes reaching 120–180 days. This creates chronic cash flow pressure even for profitable businesses. The 90-Day Reset includes a Cash Flow Reset protocol specifically for this reality.</div>
+        </div>
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 03</div>
+          <div class="challenge-title">Client Concentration Risk</div>
+          <div class="challenge-desc">Over 60% of Saudi SMEs generate more than 50% of their revenue from 3 or fewer clients. This is an existential risk — not a growth problem. The Diagnose phase identifies this concentration and Phase 3 builds the pipeline to reduce it below 30% within 12 months.</div>
+        </div>
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 04</div>
+          <div class="challenge-title">Talent Acquisition & Saudization</div>
+          <div class="challenge-desc">Nitaqat compliance pressure creates hiring decisions driven by quota rather than capability. Many SMEs carry non-productive headcount while underinvesting in high-performers. The Team Reset in Phase 2 includes a RACI rebuild that addresses this directly.</div>
+        </div>
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 05</div>
+          <div class="challenge-title">Digital Infrastructure Gap</div>
+          <div class="challenge-desc">Saudi SMEs average 7+ disconnected tools with no integration layer. CRM, accounting, project management, and communication tools operate in silos, creating data blind spots that make strategic decisions almost impossible. The Digital Audit in Dimension 8 maps and fixes this.</div>
+        </div>
+        <div class="challenge-box">
+          <div class="challenge-num">CHALLENGE 06</div>
+          <div class="challenge-title">Seasonal Volatility</div>
+          <div class="challenge-desc">Saudi business operates on a calendar unlike any other market: Ramadan (25–40% revenue drop for many sectors), summer (June–August executive absence), and Q4 budget flush (government spending acceleration). The Reset timing framework accounts for all three cycles.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Vision 2030 — Where the 90-Day Reset Fits</div>
+      <div class="highlight-box">
+        <strong>The Strategic Opportunity:</strong> Vision 2030 has created the largest SME support infrastructure in Saudi history — Monsha'at (SME Authority), the SBLC (Saudi Business Leadership Center), Kafalah financing guarantees, and the National Entrepreneurship Institute. However, the majority of SMEs that qualify for these programs lack the operational documentation and financial clarity required to access them. The 90-Day Reset produces exactly that documentation as a byproduct of its diagnostic process.
+      </div>
+      <div class="three-col">
+        <div class="phase-box">
+          <div class="phase-num">Phase 01 Output</div>
+          <div class="phase-title">Bankable Audit Data</div>
+          <div class="phase-desc">The 10-Dimension Audit produces financial and operational documentation that satisfies Monsha'at eligibility requirements and Kafalah loan applications.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Phase 02 Output</div>
+          <div class="phase-title">Saudization Clarity</div>
+          <div class="phase-desc">The Team Reset produces RACI charts and role documentation that satisfies Nitaqat reporting requirements and creates defensible Saudization compliance records.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Phase 03 Output</div>
+          <div class="phase-title">Growth Plan Document</div>
+          <div class="phase-desc">The 90-Day KPI report becomes the business plan required for SIDF financing, Monsha'at grants, and Vision 2030 national program participation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 4: PHASE 1 — DIAGNOSE -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Phase 1: Diagnose</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 4 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Days 1–30</div>
+    <div class="section-title">Phase 1 — The 10-Dimension Business Audit</div>
+    <div class="section-title-ar">المرحلة الأولى — التشخيص الشامل عبر ١٠ أبعاد</div>
+    <div class="gold-line"></div>
+
+    <p class="body-text" style="margin-bottom:12px;">Rate each dimension from <strong style="color:var(--gold);">1 (critical — requires immediate intervention)</strong> to <strong style="color:var(--gold);">5 (excellent — competitive advantage)</strong>. Be ruthlessly honest. Involve at least one person who will challenge your scores. The accuracy of your diagnosis determines the effectiveness of your reset.</p>
+
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th style="width:24px;">#</th>
+          <th style="width:28%;">Dimension</th>
+          <th>What to Assess — الأسئلة التشخيصية</th>
+          <th style="width:80px;text-align:center;">Score (1–5)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="audit-number">01</td>
+          <td><strong style="color:var(--white);">Revenue Streams & Profitability</strong></td>
+          <td>Can you list every revenue source with gross margin? Which service/product makes money vs. loses money after real cost allocation?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">02</td>
+          <td><strong style="color:var(--white);">Customer Acquisition & LTV</strong></td>
+          <td>What does it cost to win a new client (CAC)? How much revenue does an average client generate over their lifetime (LTV)? Is LTV ≥ 3× CAC?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">03</td>
+          <td><strong style="color:var(--white);">Team Capacity & Skill Gaps</strong></td>
+          <td>Is your team fully utilized or over/under-loaded? Are critical skills missing or outsourced expensively? What would break if your top person left tomorrow?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">04</td>
+          <td><strong style="color:var(--white);">Operational Bottlenecks</strong></td>
+          <td>What are the top 3 processes that slow delivery, frustrate your team, or cause client complaints? Are any of them documented with SOPs?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">05</td>
+          <td><strong style="color:var(--white);">Cash Flow Health</strong></td>
+          <td>How many months of runway do you have? What is your monthly burn? Do you have a 90-day cash flow forecast? Are receivables over 60 days a recurring issue?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">06</td>
+          <td><strong style="color:var(--white);">Brand Awareness & Positioning</strong></td>
+          <td>Does your target market know you exist? Can you articulate why you're different from competitors in one clear sentence? Can your team repeat it consistently?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">07</td>
+          <td><strong style="color:var(--white);">Sales Pipeline & Conversion</strong></td>
+          <td>Do you have a documented sales process? What is your lead-to-client conversion rate? Where do most leads drop off? How long is your average sales cycle?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">08</td>
+          <td><strong style="color:var(--white);">Digital Infrastructure</strong></td>
+          <td>Do you have a functioning website, CRM, and core tools? Are they integrated or siloed? How many hours per week are lost to manual data entry or tool friction?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">09</td>
+          <td><strong style="color:var(--white);">Vendor & Supplier Risk</strong></td>
+          <td>Are you over-reliant on single vendors? Have supplier costs been benchmarked against market rates in the last 12 months? What is your vendor payment terms average?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+        <tr>
+          <td class="audit-number">10</td>
+          <td><strong style="color:var(--white);">Founder Time Allocation</strong></td>
+          <td>What percentage of your week is spent on high-value work (strategy, key client relationships, team development) vs. tasks that could be delegated, automated, or eliminated?</td>
+          <td style="text-align:center;"><div class="score-boxes"><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div><div class="score-box"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-section-title" style="margin-top:14px;">Score Interpretation — تفسير النتيجة</div>
+    <div class="score-bands">
+      <div class="score-band critical"><div class="score-band-range">10–24</div><div class="score-band-label">Critical Reset Needed — Start immediately, block 4hrs/week</div></div>
+      <div class="score-band warning"><div class="score-band-range">25–34</div><div class="score-band-label">Significant Issues — Reset is urgent, 3hrs/week minimum</div></div>
+      <div class="score-band good"><div class="score-band-range">35–42</div><div class="score-band-label">Moderate — Targeted reset, then growth phase</div></div>
+      <div class="score-band excellent"><div class="score-band-range">43–50</div><div class="score-band-label">Strong Foundation — Optimize and scale immediately</div></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 5: DIMENSION DEEP DIVE (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Dimension Deep Dive</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 5 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Diagnosis Tools</div>
+    <div class="section-title">Per-Dimension Fix Protocols</div>
+    <div class="section-title-ar">بروتوكول التحسين لكل بُعد — من الأسوأ إلى الأفضل</div>
+    <div class="gold-line"></div>
+
+    <table class="dim-table">
+      <thead>
+        <tr>
+          <th style="width:18%;">Dimension</th>
+          <th style="width:27%;">🔴 Score 1–2: Warning Signs</th>
+          <th style="width:27%;">🟢 Score 4–5: What Good Looks Like</th>
+          <th style="width:28%;">⚡ 30-Day Fix Protocol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="dim-name">01 Revenue & Profitability</div></td>
+          <td class="dim-red">Cannot state margin per service. Revenue growing but cash declining. Profitable on paper, negative in bank.</td>
+          <td class="dim-green">Margin per service known. Bottom 20% of services identified and eliminated or repriced. Top 3 revenue drivers clear.</td>
+          <td class="dim-fix">1) Build margin-per-service table (2hrs). 2) Eliminate or reprice any service under 25% margin. 3) Double marketing on highest-margin offering.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">02 CAC vs. LTV</div></td>
+          <td class="dim-red">No idea what a client costs to acquire. Spending on marketing with no ROI tracking. New clients cost more than they return.</td>
+          <td class="dim-green">CAC documented per channel. LTV ≥ 3× CAC. Highest-ROI acquisition channel receives 70%+ of marketing budget.</td>
+          <td class="dim-fix">1) Track last 10 clients: source + time spent closing. 2) Calculate average revenue per client × relationship length. 3) Stop all channels with CAC &gt; LTV/3.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">03 Team Capacity</div></td>
+          <td class="dim-red">Founder doing operational tasks daily. No documented roles. Team members unclear on priorities. Key knowledge in one person's head.</td>
+          <td class="dim-green">RACI chart exists. Founder working &gt;60% on strategy. Each team member has clear, measurable weekly outputs. Zero single-person dependencies.</td>
+          <td class="dim-fix">1) Map every task you did last week — categorize as delegate/automate/keep. 2) Write one SOP for highest-frequency process. 3) Assign one team member as operations lead.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">04 Operational Bottlenecks</div></td>
+          <td class="dim-red">Same problems recurring monthly. Client complaints about speed/quality. Delivery depends on who is available. No SOPs exist.</td>
+          <td class="dim-green">Top 5 processes documented. Delivery time predictable. Client escalations &lt;5% of projects. New team members can onboard from documentation.</td>
+          <td class="dim-fix">1) Time your top 3 delivery processes this week. 2) Write a 1-page SOP for the most repeated task. 3) Add one automation (template, checklist, or tool) to reduce manual steps.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">05 Cash Flow</div></td>
+          <td class="dim-red">No cash flow forecast. Receivables regularly over 90 days. Paying suppliers before collecting from clients. Runway under 2 months.</td>
+          <td class="dim-green">3-month rolling forecast updated weekly. Receivables average under 45 days. 3+ months runway at all times. Invoice-to-payment SOP followed for every client.</td>
+          <td class="dim-fix">1) Build a 90-day cash forecast in a spreadsheet (2hrs). 2) Call top 3 overdue accounts today. 3) Add 50% deposit requirement to all new contracts immediately.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">06 Brand & Positioning</div></td>
+          <td class="dim-red">Can't articulate differentiation clearly. Team gives different answers about what you do. Winning on price rather than value. Market doesn't know you exist.</td>
+          <td class="dim-green">One-sentence positioning statement everyone can repeat. Inbound leads reference your specific expertise. Win rate vs. known competitors above 40%.</td>
+          <td class="dim-fix">1) Write your one-sentence positioning statement. 2) Test it with 5 clients — do they confirm it? 3) Apply it to LinkedIn profile, website header, and WhatsApp bio this week.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">07 Sales Pipeline</div></td>
+          <td class="dim-red">No documented pipeline. Following up by memory. Deals "in discussion" for months with no progress. Conversion rate unknown.</td>
+          <td class="dim-green">All leads tracked in CRM. Follow-up sequence documented. Conversion rate known per stage. Average deal cycle time measured and improving.</td>
+          <td class="dim-fix">1) List every active prospect in a spreadsheet today. 2) Set a follow-up for each within 5 days. 3) Define 4 pipeline stages and move every deal into one.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">08 Digital Infrastructure</div></td>
+          <td class="dim-red">7+ tools not integrated. Data entered manually into multiple systems. No analytics on website or marketing. CRM not used consistently.</td>
+          <td class="dim-green">Max 5 core tools, all integrated. Data flows automatically. Weekly analytics reviewed. CRM updated by all team members within 24hrs of contact.</td>
+          <td class="dim-fix">1) Audit every tool subscription — cancel unused ones. 2) Implement one integration between your most-used tools. 3) Set Google Analytics as non-negotiable minimum.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">09 Vendor Risk</div></td>
+          <td class="dim-red">Single supplier for critical inputs. Never renegotiated terms. Vendor costs not compared to market in 12+ months. No contracts with key vendors.</td>
+          <td class="dim-green">2+ options for every critical input. Vendor costs benchmarked annually. Contracts in place with key vendors. Payment terms aligned with client receivables.</td>
+          <td class="dim-fix">1) List every vendor and monthly cost. 2) Identify top 3 by spend — get at least one competitive quote each. 3) Renegotiate terms with your largest vendor this month.</td>
+        </tr>
+        <tr>
+          <td><div class="dim-name">10 Founder Time</div></td>
+          <td class="dim-red">Founder in operations daily. Attending every meeting. Approving every decision. Working &gt;60hrs/week with no leverage. Business cannot run without founder present.</td>
+          <td class="dim-green">Founder spends 60%+ of week on high-value work: strategy, key relationships, product. Team empowered to make daily decisions. Business runs during founder travel.</td>
+          <td class="dim-fix">1) Track every hour for one week — categorize high/low value. 2) Identify 3 tasks to delegate this week. 3) Block 4hrs on your calendar weekly for strategic work — make it immovable.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 6: PHASE 2 — RESET -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Phase 2: Reset</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 6 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Days 31–60</div>
+    <div class="section-title">Phase 2 — Reset</div>
+    <div class="section-title-ar">المرحلة الثانية — إعادة الضبط الكاملة</div>
+    <div class="gold-line"></div>
+
+    <div class="two-col" style="margin-bottom:14px;">
+      <div>
+        <div class="sub-section-title">The Priority Matrix</div>
+        <p class="body-text" style="margin-bottom:8px;">Plot your 10 audit findings on this Impact vs. Effort matrix. Address High Impact / Low Effort items in Weeks 5–6. Tackle High Impact / High Effort in Weeks 7–8.</p>
+        <div style="position:relative;padding-left:28px;">
+          <div style="position:absolute;left:0;top:0;bottom:0;display:flex;align-items:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;">IMPACT →</div>
+          <div class="matrix-grid" style="height:150px;">
+            <div class="matrix-cell high-low"><div class="matrix-cell-label">HIGH IMPACT<br>LOW EFFORT</div><div class="matrix-cell-desc" style="color:var(--gold);font-weight:700;">DO FIRST — Weeks 5–6</div></div>
+            <div class="matrix-cell high-high"><div class="matrix-cell-label">HIGH IMPACT<br>HIGH EFFORT</div><div class="matrix-cell-desc">PLAN & SCHEDULE — Weeks 7–8</div></div>
+            <div class="matrix-cell low-low"><div class="matrix-cell-label">LOW IMPACT<br>LOW EFFORT</div><div class="matrix-cell-desc">DELEGATE OR BATCH</div></div>
+            <div class="matrix-cell low-high"><div class="matrix-cell-label">LOW IMPACT<br>HIGH EFFORT</div><div class="matrix-cell-desc" style="color:#e74c3c;">ELIMINATE — STOP NOW</div></div>
+          </div>
+          <div style="text-align:center;font-size:7px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">← EFFORT →</div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-section-title">Stop · Start · Continue</div>
+        <p class="body-text" style="margin-bottom:8px;">Complete with your leadership team. Be specific — "stop taking unprofitable clients under 10K SAR" is better than "be more selective."</p>
+        <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.07);padding:10px;margin-bottom:8px;">
+          <div style="font-size:8px;color:#e74c3c;letter-spacing:1px;font-weight:700;margin-bottom:4px;">STOP (Draining Resources — أوقف فوراً)</div>
+          <div style="height:50px;border-bottom:1px dashed rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+          <div style="height:14px;"></div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.07);padding:10px;margin-bottom:8px;">
+          <div style="font-size:8px;color:#2ecc71;letter-spacing:1px;font-weight:700;margin-bottom:4px;">START (High-Return Activity — ابدأ الآن)</div>
+          <div style="height:50px;border-bottom:1px dashed rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+          <div style="height:14px;"></div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.07);padding:10px;">
+          <div style="font-size:8px;color:var(--gold);letter-spacing:1px;font-weight:700;margin-bottom:4px;">CONTINUE (Already Working — واصل وقوّ)</div>
+          <div style="height:50px;border-bottom:1px dashed rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+          <div style="height:14px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-line-solid"></div>
+    <div class="sub-section-title">Key Reset Initiatives by Function — مبادرات إعادة الضبط</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="info-box">
+        <div class="info-box-title">Revenue Reset — إعادة ضبط الإيرادات</div>
+        <ul class="checklist">
+          <li>Calculate margin per product/service — kill the bottom 20%</li>
+          <li>Double marketing budget for your highest-margin offering</li>
+          <li>Introduce one upsell or retention offer for existing clients</li>
+          <li>Review pricing — most Saudi SMEs undercharge by 20–40%</li>
+          <li>Implement 50% deposit policy on all new contracts immediately</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">Operations Reset — إعادة ضبط العمليات</div>
+        <ul class="checklist">
+          <li>Map your top 5 delivery processes — time each one</li>
+          <li>Eliminate or automate the 3 most time-consuming manual tasks</li>
+          <li>Build one SOP for your highest-frequency process</li>
+          <li>Consolidate to maximum 5 core digital tools</li>
+          <li>Implement a weekly operational meeting (45 min, structured agenda)</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">Team Reset — إعادة ضبط الفريق</div>
+        <ul class="checklist">
+          <li>Create RACI chart for your core delivery process</li>
+          <li>Audit: who is over-capacity, who is under-utilized?</li>
+          <li>Identify your top performer — protect and reward their time</li>
+          <li>Replace ambiguous titles with accountable role descriptions</li>
+          <li>Set one measurable weekly output for every team member</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">Systems Reset — إعادة ضبط الأنظمة</div>
+        <ul class="checklist">
+          <li>Audit every tool subscription — eliminate unused platforms</li>
+          <li>Implement or clean up your CRM — every lead must be tracked</li>
+          <li>Set up automated follow-up for your top 3 lead sources</li>
+          <li>Ensure financial data flows into one dashboard weekly</li>
+          <li>Create one shared document: the company's single source of truth</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section" style="margin-top:12px;">
+      <div class="sub-section-title">Weekly Reset Rhythm — الإيقاع الأسبوعي</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div class="highlight-box" style="margin:0;"><strong>Daily — 10 Minutes</strong><br>Review 3 priorities. Note one blocker. Update task status. Same time every day.</div>
+        <div class="highlight-box" style="margin:0;"><strong>Weekly — 45 Minutes</strong><br>Review scorecard. Wins/blockers with team. Adjust next week's priorities. Non-negotiable.</div>
+        <div class="highlight-box" style="margin:0;"><strong>Monthly — 2 Hours</strong><br>Audit progress vs. milestones. Recalibrate next 4 weeks. Review KPIs. Celebrate wins.</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 7: WEEK-BY-WEEK CALENDAR (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Implementation Calendar</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 7 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Weeks 1–8</div>
+    <div class="section-title">Week-by-Week Action Calendar</div>
+    <div class="section-title-ar">التقويم الأسبوعي للتنفيذ — من اليوم الأول إلى اليوم الستين</div>
+    <div class="gold-line"></div>
+
+    <div class="week-grid">
+      <div class="week-card">
+        <div class="week-num">WEEK 01 · PHASE 1</div>
+        <div class="week-title">Audit Launch</div>
+        <ul class="week-actions">
+          <li>Block 3hrs: complete 10-Dimension Audit</li>
+          <li>Gather 3 months P&L and bank statements</li>
+          <li>List all active clients and revenue per client</li>
+          <li>Identify one accountability partner</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 4 hrs &nbsp;·&nbsp; Milestone: Audit scored</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 02 · PHASE 1</div>
+        <div class="week-title">Data Gathering</div>
+        <ul class="week-actions">
+          <li>Calculate margin per service (use WS-1)</li>
+          <li>List every tool subscription + monthly cost</li>
+          <li>Map last 10 clients: source + close time</li>
+          <li>Time your top 3 delivery processes</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 3 hrs &nbsp;·&nbsp; Milestone: Cost clarity</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 03 · PHASE 1</div>
+        <div class="week-title">Analysis</div>
+        <ul class="week-actions">
+          <li>Score all 10 dimensions with data (not gut)</li>
+          <li>Identify bottom 3 dimensions for immediate reset</li>
+          <li>Complete Priority Matrix with team</li>
+          <li>Document your top 3 operational bottlenecks</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 3 hrs &nbsp;·&nbsp; Milestone: Priorities set</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 04 · PHASE 1</div>
+        <div class="week-title">Diagnostic Close</div>
+        <ul class="week-actions">
+          <li>Complete Stop/Start/Continue exercise</li>
+          <li>Set 90-day KPI baselines (use WS-4)</li>
+          <li>Brief team on Reset plan and their roles</li>
+          <li>Schedule Phase 2 kickoff meeting</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 2 hrs &nbsp;·&nbsp; Milestone: Reset plan ready</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 05 · PHASE 2</div>
+        <div class="week-title">Quick Wins</div>
+        <ul class="week-actions">
+          <li>Execute all High Impact / Low Effort actions</li>
+          <li>Cancel unused tool subscriptions</li>
+          <li>Implement 50% deposit policy immediately</li>
+          <li>Call top 3 overdue receivables accounts</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 4 hrs &nbsp;·&nbsp; Milestone: First cash improvement</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 06 · PHASE 2</div>
+        <div class="week-title">Revenue Reset</div>
+        <ul class="week-actions">
+          <li>Eliminate or reprice services under 25% margin</li>
+          <li>Launch upsell offer to existing top 5 clients</li>
+          <li>Double marketing spend on best-margin service</li>
+          <li>Review and update pricing on all proposals</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 3 hrs &nbsp;·&nbsp; Milestone: Repricing done</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 07 · PHASE 2</div>
+        <div class="week-title">Operations Reset</div>
+        <ul class="week-actions">
+          <li>Write SOP for highest-frequency process</li>
+          <li>Set up CRM for all active leads</li>
+          <li>Implement daily 10-min team check-in</li>
+          <li>Automate one manual repeating task</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 3 hrs &nbsp;·&nbsp; Milestone: First SOP live</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">WEEK 08 · PHASE 2</div>
+        <div class="week-title">Team & Systems</div>
+        <ul class="week-actions">
+          <li>Complete RACI chart for core delivery</li>
+          <li>Reassign 3 tasks from founder to team</li>
+          <li>Hold Phase 2 review: what worked, what didn't</li>
+          <li>Set Phase 3 growth lever priorities</li>
+        </ul>
+        <div class="week-ceo">⏱ CEO time: 2 hrs &nbsp;·&nbsp; Milestone: RACI complete</div>
+      </div>
+    </div>
+
+    <div class="sub-section-title" style="margin-top:14px;">Phase Milestones — نقاط التحقق الرئيسية</div>
+    <div class="milestone-bar">
+      <div class="milestone-item"><div class="milestone-week">END OF WEEK 1</div><div class="milestone-text">10-Dimension Audit Complete</div></div>
+      <div class="milestone-item"><div class="milestone-week">END OF WEEK 4</div><div class="milestone-text">Reset Plan + KPI Baselines Set</div></div>
+      <div class="milestone-item"><div class="milestone-week">END OF WEEK 6</div><div class="milestone-text">Revenue Reset Implemented</div></div>
+      <div class="milestone-item"><div class="milestone-week">END OF WEEK 8</div><div class="milestone-text">RACI + SOPs + CRM Live</div></div>
+      <div class="milestone-item"><div class="milestone-week">END OF WEEK 13</div><div class="milestone-text">90-Day KPI Report + Next Cycle Plan</div></div>
+    </div>
+
+    <div class="sub-section-title" style="margin-top:14px;">Red Flags — When to Pause the Reset</div>
+    <ul class="red-flag-list">
+      <li>Cash runway drops below 6 weeks — stop all Reset work, focus entirely on receivables and new revenue generation</li>
+      <li>A key team member resigns during Phase 1 or 2 — pause Reset until operational continuity is restored (1–2 weeks)</li>
+      <li>A major client (representing &gt;30% of revenue) signals churn — immediately escalate to retention, then return to Reset</li>
+      <li>Founder is spending more than 6hrs/week on Reset work — the framework is being over-engineered, simplify immediately</li>
+      <li>Team resistance is high and morale is dropping — hold a Reset alignment session before continuing to Phase 2</li>
+    </ul>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 8: PHASE 3 — ACCELERATE -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">Phase 3: Accelerate</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 8 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Days 61–90</div>
+    <div class="section-title">Phase 3 — Accelerate</div>
+    <div class="section-title-ar">المرحلة الثالثة — التسريع نحو النمو</div>
+    <div class="gold-line"></div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">From Reset to Growth — الانتقال من الإصلاح إلى البناء</div>
+      <p class="body-text">By Day 60, your business has a cleaner operational foundation. You've stopped the revenue leaks, simplified your systems, and clarified team accountability. Phase 3 is where you shift from fixing to building. The energy that was consumed by firefighting is now available for deliberate growth. Do not start Phase 3 until your audit score has improved by at least 8 points from your Day 1 baseline — and until your cash runway exceeds 3 months.</p>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">The 3 Growth Levers — الروافع الثلاث للنمو</div>
+      <div class="three-col">
+        <div class="phase-box">
+          <div class="phase-num">Lever 01</div>
+          <div class="phase-title">More Customers</div>
+          <div class="phase-days">Customer Acquisition — كسب عملاء جدد</div>
+          <div class="phase-desc">Activate one new lead source you haven't used consistently: structured referral program, LinkedIn content, partnership with complementary business, or targeted paid search. Focus on one channel only — execute it properly before adding a second.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Lever 02</div>
+          <div class="phase-title">More Per Customer</div>
+          <div class="phase-days">Revenue Per Client — زيادة العائد لكل عميل</div>
+          <div class="phase-desc">Introduce a higher-tier package or premium add-on for existing clients. Increasing average deal value by 20% is 3–5x easier than acquiring new clients in the same timeframe. Start with your top 5 clients — they trust you and know your quality.</div>
+        </div>
+        <div class="phase-box">
+          <div class="phase-num">Lever 03</div>
+          <div class="phase-title">More Often</div>
+          <div class="phase-days">Purchase Frequency — زيادة تكرار الشراء</div>
+          <div class="phase-desc">Build a retention program: 60-day check-in calls, renewal incentives 30 days before contract end, seasonal campaigns, or a loyalty structure. A client who buys twice generates nearly as much value as two new clients at a fraction of the acquisition cost.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Weeks 9–13 Execution Priorities</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="info-box">
+          <div class="info-box-title">Weeks 9–10: Lever Selection</div>
+          <ul class="checklist">
+            <li>Select one growth lever only — resist doing all three simultaneously</li>
+            <li>Set the specific 30-day target for your chosen lever</li>
+            <li>Identify the one person responsible for executing it</li>
+            <li>Allocate a specific budget with clear ROI expectations</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <div class="info-box-title">Weeks 11–13: Measure & Compound</div>
+          <ul class="checklist">
+            <li>Review lever performance weekly against Day 1 baseline</li>
+            <li>Document what's working for replication in next 90-day cycle</li>
+            <li>Begin planning next 90-day cycle on Day 85</li>
+            <li>Produce your 90-Day KPI Report (use data from WS-4)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>The LEOMAX 90-Day Compounding Rule:</strong> Businesses that run structured 90-day planning cycles outperform businesses running annual plans in execution speed, team alignment, and revenue growth by an average of 2.3× over 3 years. After your first Reset, each subsequent cycle becomes faster and more effective — because the diagnosis becomes more accurate, the team becomes more adaptive, and the data becomes richer. Your second 90-day plan will take half the time to build and produce measurably better outcomes.
+    </div>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Planning Your Next 90-Day Cycle — On Day 85</div>
+      <div class="two-col">
+        <ul class="checklist">
+          <li>Re-run the 10-Dimension Audit — compare to Day 1 scores</li>
+          <li>Identify the 3 dimensions that moved the most — what drove them?</li>
+          <li>Identify the 3 dimensions that didn't improve — why not?</li>
+          <li>Select new Reset priorities based on updated scores</li>
+        </ul>
+        <ul class="checklist">
+          <li>Review KPI progress vs. benchmarks (see Page 9)</li>
+          <li>Activate a second growth lever in Cycle 2 alongside the first</li>
+          <li>Set a higher revenue target based on actual Q1 results</li>
+          <li>Share the 90-Day KPI Report with your accountability partner</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 9: KPIs & DASHBOARD (NEW) -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="content-page page-content">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-right">
+        <div class="page-header-title">KPIs & Dashboard</div>
+        <div class="page-header-ref">LMX-FW-01 &nbsp;·&nbsp; Page 9 of 10</div>
+      </div>
+    </div>
+
+    <div class="section-badge">Metrics</div>
+    <div class="section-title">KPIs, Benchmarks & Dashboard</div>
+    <div class="section-title-ar">مؤشرات الأداء والمعايير المرجعية — ما تقيسه ينمو</div>
+    <div class="gold-line"></div>
+
+    <table class="kpi-full">
+      <thead>
+        <tr>
+          <th style="width:24%;">KPI</th>
+          <th style="width:18%;">Saudi SME Benchmark</th>
+          <th style="width:14%;text-align:center;">🔴 Red</th>
+          <th style="width:14%;text-align:center;">🟢 Green</th>
+          <th style="width:30%;">How to Measure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="kpi-name">Monthly Revenue (SAR)</td><td>Varies by sector</td><td class="red" style="text-align:center;">Declining MoM</td><td class="green" style="text-align:center;">+5–10% MoM</td><td>Bank statement + invoices, monthly</td></tr>
+        <tr><td class="kpi-name">Gross Profit Margin</td><td>35–55% (services)</td><td class="red" style="text-align:center;">&lt;25%</td><td class="green" style="text-align:center;">&gt;40%</td><td>Revenue minus direct costs ÷ Revenue</td></tr>
+        <tr><td class="kpi-name">Cash Runway (months)</td><td>3+ months minimum</td><td class="red" style="text-align:center;">&lt;2 months</td><td class="green" style="text-align:center;">&gt;4 months</td><td>Cash on hand ÷ monthly burn rate</td></tr>
+        <tr><td class="kpi-name">Receivables Days (DSO)</td><td>30–60 days Saudi avg</td><td class="red" style="text-align:center;">&gt;90 days</td><td class="green" style="text-align:center;">&lt;45 days</td><td>Outstanding AR ÷ (Revenue ÷ 30)</td></tr>
+        <tr><td class="kpi-name">Lead-to-Client Conversion</td><td>15–25% (B2B services)</td><td class="red" style="text-align:center;">&lt;10%</td><td class="green" style="text-align:center;">&gt;20%</td><td>Closed deals ÷ total qualified leads × 100</td></tr>
+        <tr><td class="kpi-name">New Qualified Leads/Month</td><td>8–20 (B2B services)</td><td class="red" style="text-align:center;">&lt;5</td><td class="green" style="text-align:center;">&gt;15</td><td>CRM: count leads reaching "Qualified" stage</td></tr>
+        <tr><td class="kpi-name">Client Retention Rate</td><td>70–80% Saudi SME avg</td><td class="red" style="text-align:center;">&lt;60%</td><td class="green" style="text-align:center;">&gt;80%</td><td>Clients renewed ÷ total clients up for renewal</td></tr>
+        <tr><td class="kpi-name">Average Deal Value (SAR)</td><td>Sector-dependent</td><td class="red" style="text-align:center;">Declining</td><td class="green" style="text-align:center;">+10% vs. prior Q</td><td>Total revenue ÷ number of closed deals</td></tr>
+        <tr><td class="kpi-name">Revenue per Employee (SAR/yr)</td><td>120K–240K/year</td><td class="red" style="text-align:center;">&lt;100K</td><td class="green" style="text-align:center;">&gt;180K</td><td>Annual revenue ÷ total headcount</td></tr>
+        <tr><td class="kpi-name">Founder Hours on High-Value Work</td><td>Target: 60%+ of week</td><td class="red" style="text-align:center;">&lt;30%</td><td class="green" style="text-align:center;">&gt;60%</td><td>Weekly time log — categorize each hour</td></tr>
+        <tr><td class="kpi-name">Top Client Revenue Concentration</td><td">&lt;30% from one client</td><td class="red" style="text-align:center;">&gt;50% one client</td><td class="green" style="text-align:center;">&lt;25% any single client</td><td>Revenue per client ÷ total revenue</td></tr>
+        <tr><td class="kpi-name">Audit Score (10-Dimension)</td><td>Target: improve 8+ pts</td><td class="red" style="text-align:center;">&lt;25 total</td><td class="green" style="text-align:center;">&gt;40 total</td><td>Re-run audit on Day 30, 60, 90</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-section-title" style="margin-top:14px;">The 3 Numbers Every Saudi SME Owner Must Know Every Week</div>
+    <div class="dash-grid">
+      <div class="dash-cell">
+        <div class="dash-cell-label">Cash Runway</div>
+        <div class="dash-cell-value">___ months</div>
+        <div class="dash-cell-sub">Cash on hand ÷ monthly burn. Update every Monday morning.</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-cell-label">Pipeline Value (SAR)</div>
+        <div class="dash-cell-value">SAR ___</div>
+        <div class="dash-cell-sub">Total value of active qualified deals in CRM. Updated weekly.</div>
+      </div>
+      <div class="dash-cell">
+        <div class="dash-cell-label">Gross Margin %</div>
+        <div class="dash-cell-value">___%</div>
+        <div class="dash-cell-sub">Revenue minus direct costs ÷ Revenue. Non-negotiable minimum: 35%.</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:10px;">
+      <strong>The LEOMAX Dashboard Rule:</strong> A business dashboard with more than 7 metrics is not a management tool — it's a report. Pick your 3 weekly numbers, your 5 monthly KPIs, and your 3 quarterly targets. Review them in that order, at that frequency, without exception. Everything else is noise.
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+<!-- PAGE 10: WORKSHEETS -->
+<div class="page worksheet-page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-content">
+    <div class="ws-header">
+      <div><div class="ws-title">Worksheets</div><div class="ws-subtitle">PRINT · COMPLETE · REVIEW WEEKLY &nbsp;|&nbsp; LMX-FW-01 &nbsp;·&nbsp; 6 WORKSHEETS</div></div>
+      <div style="text-align:right;"><div class="page-header-logo">LEOMAX</div><div class="page-header-ref">Page 10 of 10</div></div>
+    </div>
+
+    <!-- WS1 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-1 — Business Audit Scorecard &nbsp;|&nbsp; بطاقة تشخيص العمل</div>
+      <table class="ws-table">
+        <thead><tr><th style="width:20px;">#</th><th>Business Dimension</th><th style="width:90px;text-align:center;">Rating (1–5)</th><th>Notes / Evidence</th></tr></thead>
+        <tbody>
+          <tr><td class="num-cell">1</td><td class="label-cell">Revenue Streams & Profitability</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">2</td><td class="label-cell">Customer Acquisition Cost vs. LTV</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">3</td><td class="label-cell">Team Capacity & Skill Gaps</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">4</td><td class="label-cell">Operational Bottlenecks</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">5</td><td class="label-cell">Cash Flow Health</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">6</td><td class="label-cell">Brand Awareness & Positioning</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">7</td><td class="label-cell">Sales Pipeline & Conversion Rate</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">8</td><td class="label-cell">Digital Infrastructure</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">9</td><td class="label-cell">Vendor & Supplier Risk</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">10</td><td class="label-cell">Founder Time Allocation</td><td><div class="rating-boxes"><div class="rating-box">1</div><div class="rating-box">2</div><div class="rating-box">3</div><div class="rating-box">4</div><div class="rating-box">5</div></div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td colspan="2" style="padding:7px 8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);color:var(--gold);font-weight:700;font-size:9px;text-align:right;">TOTAL SCORE (max 50):</td><td colspan="2" style="padding:7px 8px;border:1px dashed rgba(201,168,76,0.3);background:rgba(0,0,0,0.2);"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WS2 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-2 — Priority Matrix &nbsp;|&nbsp; مصفوفة الأولويات</div>
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:6px;align-items:center;">
+        <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;text-align:center;">IMPACT ↑</div>
+        <div>
+          <div class="ws-matrix">
+            <div class="ws-matrix-cell" style="border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.05);"><div class="ws-matrix-cell-label">HIGH IMPACT / LOW EFFORT — DO FIRST (Weeks 5–6)</div><div class="ws-line"></div><div class="ws-line"></div></div>
+            <div class="ws-matrix-cell" style="border-color:rgba(143,168,190,0.3);"><div class="ws-matrix-cell-label">HIGH IMPACT / HIGH EFFORT — PLAN IT (Weeks 7–8)</div><div class="ws-line"></div><div class="ws-line"></div></div>
+            <div class="ws-matrix-cell"><div class="ws-matrix-cell-label">LOW IMPACT / LOW EFFORT — DELEGATE OR BATCH</div><div class="ws-line"></div><div class="ws-line"></div></div>
+            <div class="ws-matrix-cell" style="border-color:rgba(231,76,60,0.25);"><div class="ws-matrix-cell-label">LOW IMPACT / HIGH EFFORT — ELIMINATE NOW</div><div class="ws-line"></div><div class="ws-line"></div></div>
+          </div>
+          <div style="text-align:center;font-size:7px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;">EFFORT →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WS3 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-3 — 90-Day Action Plan &nbsp;|&nbsp; خطة العمل</div>
+      <div class="action-plan-row"><div class="ap-header">Phase / Goal</div><div class="ap-header">Action Steps</div><div class="ap-header">Owner</div><div class="ap-header">Deadline</div></div>
+      <div class="action-plan-row"><div class="ap-cell phase-label" style="grid-column:1/-1;">PHASE 1: DIAGNOSE — Weeks 1–4</div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+      <div class="action-plan-row"><div class="ap-cell phase-label" style="grid-column:1/-1;">PHASE 2: RESET — Weeks 5–8</div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+      <div class="action-plan-row"><div class="ap-cell phase-label" style="grid-column:1/-1;">PHASE 3: ACCELERATE — Weeks 9–13</div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+      <div class="action-plan-row"><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div><div class="ap-cell"></div></div>
+    </div>
+
+    <!-- WS4 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-4 — Weekly KPI Scorecard &nbsp;|&nbsp; بطاقة المؤشرات الأسبوعية</div>
+      <div class="scorecard-row"><div class="sc-header">Metric</div><div class="sc-header">Target</div><div class="sc-header">Actual</div><div class="sc-header">Trend ↑↓</div><div class="sc-header">Notes</div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">Revenue (SAR)</div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">Cash Runway (months)</div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">New Qualified Leads</div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">Pipeline Value (SAR)</div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">Top Win This Week</div><div class="sc-cell" style="background:rgba(39,174,96,0.05);" colspan="2"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+      <div class="scorecard-row"><div class="sc-cell" style="color:var(--white);font-weight:600;">Top Blocker This Week</div><div class="sc-cell" style="background:rgba(231,76,60,0.05);" colspan="2"></div><div class="sc-cell"></div><div class="sc-cell"></div></div>
+    </div>
+
+    <!-- WS5 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-5 — 13-Week Revenue Tracker &nbsp;|&nbsp; متتبع الإيرادات</div>
+      <table class="ws-table">
+        <thead><tr><th style="width:60px;">Week</th><th>Revenue Target (SAR)</th><th>Revenue Actual (SAR)</th><th>Variance (SAR)</th><th>Top Revenue Driver This Week</th></tr></thead>
+        <tbody>
+          <tr><td class="num-cell">W1</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W2</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W3</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W4</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W5</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W6</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W7</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W8</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W9</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W10</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W11</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W12</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="num-cell">W13</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WS6 -->
+    <div class="ws-section">
+      <div class="ws-section-title">WS-6 — Team RACI Matrix &nbsp;|&nbsp; مصفوفة المسؤوليات</div>
+      <table class="ws-table">
+        <thead><tr><th>Core Process</th><th style="width:13%;">Responsible</th><th style="width:13%;">Accountable</th><th style="width:13%;">Consulted</th><th style="width:13%;">Informed</th></tr></thead>
+        <tbody>
+          <tr><td class="label-cell">Client Onboarding</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">Service Delivery</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">Invoicing & Collections</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">New Business / Sales</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">Vendor Management</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">Marketing & Content</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">HR & Team Management</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+          <tr><td class="label-cell">Financial Reporting</td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td><td><div class="ws-fill-cell">&nbsp;</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div class="footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال &nbsp;|&nbsp; leomaxglobal.com</div>
+    <div class="footer-right">Confidential — For purchaser use only &nbsp;|&nbsp; LMX-FW-01</div>
+  </div>
+</div>
+
+</body>
+</html>

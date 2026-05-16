@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — Product Launch Playbook | LMX-FW-06</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --black: #010B1C;
+    --charcoal: #0D1E35;
+    --dark: #060F1F;
+    --gold: #C9A84C;
+    --silver: #B8B8B8;
+    --white: #FFFFFF;
+    --gray: #8fa8be;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    background: var(--black);
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .page.worksheet-page {
+    background: var(--charcoal);
+  }
+
+  .page-inner {
+    padding: 18mm 16mm 14mm 16mm;
+    min-height: 297mm;
+    position: relative;
+    z-index: 2;
+  }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 100pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: rgba(201, 168, 76, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+  }
+
+  /* ─── COVER ─── */
+  .cover { background: var(--black); min-height: 297mm; }
+
+  .cover-inner {
+    padding: 20mm 18mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+  }
+
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+
+  .logo-wordmark {
+    font-size: 22pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .logo-sub {
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .cover-ref { font-size: 8pt; color: var(--gray); letter-spacing: 2px; text-align: right; }
+
+  .cover-center { text-align: center; padding: 8mm 0; }
+
+  .cover-category-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 10mm;
+  }
+
+  .cover-rule {
+    width: 60mm;
+    height: 1px;
+    background: var(--gold);
+    margin: 8mm auto;
+    opacity: 0.6;
+  }
+
+  .cover-title {
+    font-size: 32pt;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 6mm;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-size: 11pt;
+    color: var(--silver);
+    line-height: 1.6;
+    max-width: 140mm;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .cover-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 10mm;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .timeline-phase {
+    flex: 1;
+    padding: 4mm 3mm;
+    text-align: center;
+    border-right: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .timeline-phase:last-child { border-right: none; }
+  .timeline-phase.active { background: rgba(201, 168, 76, 0.08); }
+
+  .timeline-phase .days {
+    font-size: 13pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .timeline-phase .phase-name {
+    font-size: 7.5pt;
+    color: var(--silver);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .cover-price-row {
+    display: flex;
+    justify-content: center;
+    gap: 14mm;
+    margin-top: 8mm;
+  }
+
+  .cover-stat { text-align: center; }
+
+  .cover-stat-value {
+    font-size: 20pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .cover-stat-label {
+    font-size: 7.5pt;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .cover-bottom {
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-text { font-size: 7.5pt; color: var(--gray); letter-spacing: 1px; }
+
+  /* ─── PAGE STRUCTURE ─── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    margin-bottom: 7mm;
+  }
+
+  .page-header-logo {
+    font-size: 11pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+  }
+
+  .page-header-ref { font-size: 7.5pt; color: var(--gray); letter-spacing: 1.5px; }
+
+  .section-eyebrow {
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3mm;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-size: 17pt;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 5mm;
+  }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 4mm 0 6mm 0;
+    opacity: 0.5;
+  }
+
+  /* ─── CALLOUT ─── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: rgba(201, 168, 76, 0.05);
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  .callout p { font-size: 9pt; color: var(--silver); line-height: 1.5; }
+
+  /* ─── FAIL REASONS ─── */
+  .fail-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: fail-counter;
+  }
+
+  .fail-list li {
+    counter-increment: fail-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+    padding: 3mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 9pt;
+    color: var(--silver);
+    line-height: 1.45;
+  }
+
+  .fail-list li::before {
+    content: counter(fail-counter);
+    min-width: 6mm;
+    height: 6mm;
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+  }
+
+  .fail-list li strong { color: var(--white); }
+
+  /* ─── CALENDAR GRID ─── */
+  .calendar-row {
+    display: flex;
+    gap: 3mm;
+    margin: 3mm 0;
+  }
+
+  .calendar-cell {
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 3mm 4mm;
+    border-radius: 4px;
+  }
+
+  .calendar-cell.best { border-color: rgba(201, 168, 76, 0.4); background: rgba(201, 168, 76, 0.06); }
+  .calendar-cell.worst { border-color: rgba(143, 168, 190, 0.2); }
+  .calendar-cell.neutral { border-color: rgba(255,255,255,0.08); }
+
+  .cal-period { font-size: 7.5pt; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 1mm; }
+  .cal-name { font-size: 9pt; font-weight: 700; color: var(--white); margin-bottom: 1mm; }
+  .cal-desc { font-size: 8pt; color: var(--silver); line-height: 1.35; }
+
+  /* ─── DAY CARDS ─── */
+  .day-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+    padding: 2.5mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 8.5pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  .day-badge {
+    min-width: 14mm;
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 3px;
+    padding: 1.5mm 2.5mm;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  .day-content strong { color: var(--white); }
+
+  /* ─── TIMELINE (LAUNCH DAY) ─── */
+  .timeline-row {
+    display: flex;
+    gap: 3mm;
+    padding: 2.5mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start;
+  }
+
+  .timeline-time {
+    min-width: 16mm;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    padding-top: 0.5mm;
+  }
+
+  .timeline-action {
+    font-size: 8.5pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  .timeline-action strong { color: var(--white); }
+
+  /* ─── MESSAGE BLOCK ─── */
+  .message-block {
+    background: rgba(13, 30, 53, 0.8);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+
+  .message-block .msg-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  /* ─── OBJECTION CARDS ─── */
+  .objection-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3mm;
+    align-items: center;
+    padding: 2.5mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .objection-text {
+    font-size: 8.5pt;
+    color: var(--white);
+    font-weight: 600;
+    background: rgba(143, 168, 190, 0.07);
+    padding: 2.5mm 3.5mm;
+    border-radius: 4px;
+    border-left: 2px solid var(--gray);
+  }
+
+  .objection-arrow {
+    color: var(--gold);
+    font-size: 10pt;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .objection-response {
+    font-size: 8.5pt;
+    color: var(--silver);
+    background: rgba(201, 168, 76, 0.05);
+    padding: 2.5mm 3.5mm;
+    border-radius: 4px;
+    border-left: 2px solid var(--gold);
+    line-height: 1.4;
+  }
+
+  /* ─── METRICS TABLE ─── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3mm;
+    margin: 3mm 0;
+  }
+
+  .metric-card {
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 3.5mm 4mm;
+    border-radius: 4px;
+  }
+
+  .metric-name {
+    font-size: 7.5pt;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+
+  .metric-desc {
+    font-size: 8pt;
+    color: var(--silver);
+    line-height: 1.35;
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 5mm;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5mm;
+    padding: 1.5mm 0;
+    font-size: 8.5pt;
+    color: var(--silver);
+    break-inside: avoid;
+    line-height: 1.4;
+  }
+
+  .checklist li::before {
+    content: '☐';
+    color: var(--gold);
+    font-size: 9pt;
+    flex-shrink: 0;
+    margin-top: -1px;
+  }
+
+  /* ─── PHASE BANNER ─── */
+  .phase-banner {
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 4px;
+    padding: 3.5mm 5mm;
+    margin: 4mm 0 3mm;
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+  }
+
+  .phase-banner-days {
+    font-size: 18pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .phase-banner-info .name {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .phase-banner-info .desc {
+    font-size: 8pt;
+    color: var(--silver);
+  }
+
+  /* ─── STAT BLOCKS ─── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .stat-block {
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    background: rgba(201, 168, 76, 0.05);
+    border-radius: 4px;
+    padding: 4mm;
+    text-align: center;
+  }
+
+  .stat-block .stat-number {
+    font-size: 22pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 2mm;
+  }
+
+  .stat-block .stat-label {
+    font-size: 7.5pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  /* ─── PHASE BOX ─── */
+  .phase-box {
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+    background: rgba(13, 30, 53, 0.5);
+  }
+
+  .phase-box-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  .phase-box p {
+    font-size: 8.5pt;
+    color: var(--silver);
+    line-height: 1.5;
+    margin-bottom: 1.5mm;
+  }
+
+  .phase-box .timeline-tag {
+    font-size: 7.5pt;
+    color: var(--gray);
+    margin-top: 2mm;
+  }
+
+  .phase-box .timeline-tag span {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ─── MISTAKE TABLE ─── */
+  .mistake-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 8pt;
+  }
+
+  .mistake-table th {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--gold);
+    padding: 2.5mm 3mm;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .mistake-table td {
+    padding: 2.5mm 3mm;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+    color: var(--silver);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .mistake-table td:first-child {
+    color: var(--white);
+    font-weight: 600;
+    background: rgba(201, 168, 76, 0.03);
+  }
+
+  .mistake-table td:last-child {
+    color: var(--gold);
+  }
+
+  /* ─── WORKSHEET STYLES ─── */
+  .ws-title {
+    font-size: 13pt;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 2mm;
+    letter-spacing: 1px;
+  }
+
+  .ws-subtitle {
+    font-size: 8.5pt;
+    color: var(--silver);
+    margin-bottom: 4mm;
+  }
+
+  .ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2mm 0;
+    font-size: 8.5pt;
+  }
+
+  .ws-table th {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--gold);
+    padding: 3mm 3mm;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .ws-table td {
+    padding: 3mm 3mm;
+    border: 1px dashed rgba(201, 168, 76, 0.2);
+    color: var(--gray);
+    font-size: 8pt;
+    vertical-align: top;
+    height: 10mm;
+  }
+
+  .ws-section-divider {
+    margin: 5mm 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  /* ─── PAGE FOOTER ─── */
+  .page-footer {
+    margin-top: 6mm;
+    padding-top: 3mm;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-footer-text { font-size: 7pt; color: rgba(143, 168, 190, 0.6); letter-spacing: 0.5px; }
+  .page-number { font-size: 8pt; color: var(--gold); font-weight: 700; }
+
+  /* ─── UTILITY ─── */
+  ul.bullet-list { list-style: none; padding: 0; margin: 2mm 0; }
+
+  ul.bullet-list li {
+    font-size: 9pt;
+    color: var(--silver);
+    padding: 1.5mm 0 1.5mm 5mm;
+    position: relative;
+    line-height: 1.45;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  ul.bullet-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  ul.bullet-list li strong { color: var(--white); font-weight: 600; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+
+  h3.sub-heading {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--white);
+    margin: 4mm 0 2mm;
+    letter-spacing: 0.5px;
+  }
+
+  p.body-text {
+    font-size: 9pt;
+    color: var(--silver);
+    line-height: 1.6;
+    margin: 2mm 0;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: var(--black); }
+    .page { page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1 — COVER                                      -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <div>
+        <div class="logo-wordmark">LEOMAX</div>
+        <div class="logo-sub">Business Development Frameworks</div>
+      </div>
+      <div class="cover-ref">
+        REF: LMX-FW-06<br>
+        Launch &amp; Execution Series<br>
+        © 2026 مؤسسة ليوماكس
+      </div>
+    </div>
+
+    <div class="cover-center">
+      <div class="cover-category-badge">Launch · Execution · Saudi &amp; GCC Market</div>
+
+      <div class="cover-title">
+        PRODUCT<br><span>LAUNCH</span><br>PLAYBOOK
+      </div>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-subtitle">
+        The 60-Day Launch System for New Products &amp; Services in the Saudi/GCC Market — from zero audience to paying customers, with every template and checklist you need
+      </div>
+
+      <div class="cover-timeline">
+        <div class="timeline-phase active">
+          <div class="days">Days<br>1–20</div>
+          <div class="phase-name">Pre-Launch</div>
+        </div>
+        <div class="timeline-phase">
+          <div class="days">Day<br>21</div>
+          <div class="phase-name">Launch Day</div>
+        </div>
+        <div class="timeline-phase">
+          <div class="days">Days<br>22–60</div>
+          <div class="phase-name">Post-Launch</div>
+        </div>
+      </div>
+
+      <div class="cover-price-row">
+        <div class="cover-stat">
+          <div class="cover-stat-value">599</div>
+          <div class="cover-stat-label">Saudi Riyals</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">11</div>
+          <div class="cover-stat-label">Pages</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">60</div>
+          <div class="cover-stat-label">Day System</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">20+</div>
+          <div class="cover-stat-label">Templates</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-footer-text">leomaxglobal.com</div>
+      <div class="cover-footer-text">Confidential — For purchaser use only</div>
+      <div class="cover-footer-text">LMX-FW-06 · V2.0 · 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2 — THE SAUDI LAUNCH REALITY (NEW)             -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 2 of 11 · Market Reality</div>
+    <div class="section-title">THE SAUDI PRODUCT LAUNCH REALITY<br><span style="font-size:11pt;font-weight:400;color:var(--silver)">واقع إطلاق المنتجات في السعودية</span></div>
+    <div class="section-rule"></div>
+
+    <div class="stat-grid">
+      <div class="stat-block">
+        <div class="stat-number">72%</div>
+        <div class="stat-label">of Saudi product launches generate less than 25% of projected first-month revenue — due to lack of a launch system</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">Days<br>1–7</div>
+        <div class="stat-label">60% of launch success is determined in the pre-launch phase — before launch day arrives</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">3.5x</div>
+        <div class="stat-label">more first-week sales when products are seeded with influencers before launch day in KSA</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">SAR<br>50K+</div>
+        <div class="stat-label">average wasted budget in failed Saudi SME launches — the cost of having no launch system</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">Why Saudi Launches Are Different</h3>
+
+    <ul class="bullet-list">
+      <li><strong>RAMADAN TIMING:</strong> The most powerful and most dangerous launch window. High engagement but strong price sensitivity. Never launch during early Ramadan unless you have a well-established community already.</li>
+      <li><strong>NATIONAL DAY (September 23):</strong> The second biggest commercial opportunity after Eid. Plan 8 weeks ahead minimum. Saudi-positioned brands see a significant pride premium here.</li>
+      <li><strong>EID AL-FITR &amp; EID AL-ADHA:</strong> Consumer product peaks. B2B typically slows significantly during Eid. Know your category — the calendar affects each sector differently.</li>
+      <li><strong>SUMMER SLOWDOWN (July–August):</strong> Many Saudi decision-makers travel abroad. B2B launches in August rarely gain traction. Use this time to build, not launch.</li>
+      <li><strong>VISION 2030 ALIGNMENT:</strong> Products and services that explicitly tie to Vision 2030 themes command attention from government bodies, media, and enterprise buyers in ways that generic positioning does not.</li>
+      <li><strong>WORD-OF-MOUTH VELOCITY:</strong> Saudi professional and consumer networks are tight and high-trust. One well-connected early adopter can generate more launch momentum than a SAR 100K ad campaign.</li>
+    </ul>
+
+    <h3 class="sub-heading" style="margin-top:4mm">The 3 Types of Saudi Product Launch</h3>
+
+    <div class="phase-box">
+      <div class="phase-box-title">Type 1 — The Community Launch · for Consumer Products &amp; Services</div>
+      <p>Build an audience 60+ days before launch. Offer early access. Use influencers for seeding. Launch to a warm room that already wants what you are offering. The product itself becomes the reward.</p>
+      <div class="timeline-tag"><span>Timeline:</span> 60-day pre-launch community build → 2-week countdown → Launch day event or drop &nbsp;|&nbsp; <span>Best for:</span> Food &amp; beverage, fashion, lifestyle, apps, education programs</div>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-box-title">Type 2 — The B2B Launch · for Professional Services &amp; Software</div>
+      <p>Launch to your existing network first. Get 3–5 case studies before your public launch. Let results speak before advertising. B2B trust is built through evidence, not announcements.</p>
+      <div class="timeline-tag"><span>Timeline:</span> 30-day private beta with trusted clients → refine → 30-day graduated public launch &nbsp;|&nbsp; <span>Best for:</span> Consulting services, SaaS, professional tools, HR/finance technology</div>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-box-title">Type 3 — The Partnership Launch · when you have no existing audience</div>
+      <p>Partner with a brand or influencer who already owns your target audience. Co-create something of genuine value. Share the launch. The partner's credibility transfers to your product at launch velocity you cannot build alone.</p>
+      <div class="timeline-tag"><span>Timeline:</span> 45 days to find and onboard partner → 15 days of co-creation → Launch together &nbsp;|&nbsp; <span>Best for:</span> Any new brand entering a crowded market without existing audience</div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Common Saudi Launch Mistakes and Fixes</h3>
+
+    <table class="mistake-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Mistake</th>
+          <th style="width:36%">Why It Fails in KSA</th>
+          <th style="width:36%">The Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Spray and pray" advertising</td>
+          <td>Saudi buyers trust recommendations, not ads</td>
+          <td>Invest 70% of launch budget in seeding and influencers</td>
+        </tr>
+        <tr>
+          <td>Launching with no email/WhatsApp list</td>
+          <td>No owned audience to notify at launch</td>
+          <td>Build email and WhatsApp list 60 days before launch</td>
+        </tr>
+        <tr>
+          <td>Wrong timing (Ramadan, summer)</td>
+          <td>Saudi buyer attention is elsewhere</td>
+          <td>Use the Launch Calendar on Page 4</td>
+        </tr>
+        <tr>
+          <td>No Arabic content at launch</td>
+          <td>Signals you are not serious about the Saudi market</td>
+          <td>All launch assets must be fully bilingual</td>
+        </tr>
+        <tr>
+          <td>Price without context</td>
+          <td>Saudi buyers negotiate when value is unclear</td>
+          <td>Build value context and social proof before revealing price</td>
+        </tr>
+        <tr>
+          <td>No PR or media plan</td>
+          <td>Launch fades within 48 hours with no amplification</td>
+          <td>Secure at least 2 media mentions timed to launch day</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">2</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3 — THE SAUDI LAUNCH CONTEXT (shifted from P2) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 3 of 11 · Context &amp; Strategy</div>
+    <div class="section-title">THE SAUDI LAUNCH CONTEXT</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">Why Most Saudi Product Launches Fail</h3>
+
+    <ol class="fail-list">
+      <li><strong>They skip the pre-launch phase.</strong> They go from "product ready" to "buy now" with no audience warming, no anticipation, no trust built. The audience sees a promotion from a stranger.</li>
+      <li><strong>They rely on ads alone.</strong> Paid ads can drive traffic, but trust converts. No organic credibility means high ad cost and low conversion rate — a losing equation for most SME budgets.</li>
+      <li><strong>They launch at the wrong time.</strong> Summer slowdowns (July–August), wrong Ramadan approach for B2B, or competing with major market events. Timing is not a detail — it is a strategic decision.</li>
+      <li><strong>They don't localize.</strong> Western launch playbooks don't translate directly to the Saudi/GCC market. Relationship-based trust, WhatsApp as the primary sales channel, Arabic-language urgency — all of this requires specific adaptation.</li>
+      <li><strong>They have no follow-up system.</strong> One launch post, one email, then silence. The average B2B sale requires 5–12 touchpoints. Most Saudi founders stop after two.</li>
+    </ol>
+
+    <h3 class="sub-heading" style="margin-top:5mm">The Saudi Launch Calendar: Best &amp; Worst Windows</h3>
+
+    <div class="calendar-row">
+      <div class="calendar-cell best" style="flex:1.2">
+        <div class="cal-period">SEP — NOV</div>
+        <div class="cal-name">Q4 Momentum Window ★</div>
+        <div class="cal-desc">Best overall window. Decision-makers are back from summer, budgets are being finalized, and the market is most active. Launch B2B services here for highest conversion rates.</div>
+      </div>
+      <div class="calendar-cell best" style="flex:1">
+        <div class="cal-period">FEB — MAR</div>
+        <div class="cal-name">Pre-Ramadan Window ★</div>
+        <div class="cal-desc">Strong B2B window. Decision-making is fast, people want to close deals before Ramadan pace slows. Urgency is your ally.</div>
+      </div>
+    </div>
+
+    <div class="calendar-row">
+      <div class="calendar-cell neutral" style="flex:1">
+        <div class="cal-period">RAMADAN</div>
+        <div class="cal-name">Conditional</div>
+        <div class="cal-desc">Works for consumer, e-commerce, and community products. Difficult for B2B — decision-making slows. If you must launch, start week 1 of Ramadan, not mid-month.</div>
+      </div>
+      <div class="calendar-cell worst" style="flex:0.8">
+        <div class="cal-period">JUL — AUG</div>
+        <div class="cal-name">Avoid for B2B</div>
+        <div class="cal-desc">Summer slowdown. Many decision-makers traveling. Lower engagement, slower follow-ups. Use this period to build — not launch.</div>
+      </div>
+      <div class="calendar-cell neutral" style="flex:1">
+        <div class="cal-period">SEP 23</div>
+        <div class="cal-name">National Day Opportunity</div>
+        <div class="cal-desc">High national pride and brand awareness opportunity for Saudi-positioned products. Strong for consumer. Can anchor B2B content campaigns effectively.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">The 60-Day System Overview</h3>
+
+    <div style="display:flex;gap:3mm;margin-top:2mm">
+      <div style="flex:2;border:1px solid rgba(201,168,76,0.3);padding:4mm;border-radius:4px;background:rgba(201,168,76,0.05)">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2mm">PHASE 1: DAYS 1–20 · PRE-LAUNCH</div>
+        <div style="font-size:8.5pt;color:var(--silver)">Build anticipation. Grow your warm audience. Prime the market with problem-aware content. Create your waitlist. Have everything ready before Day 21.</div>
+      </div>
+      <div style="flex:0.8;border:1px solid rgba(201,168,76,0.4);padding:4mm;border-radius:4px;background:rgba(201,168,76,0.09)">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2mm">PHASE 2: DAY 21</div>
+        <div style="font-size:8.5pt;color:var(--silver)">Execute with precision. Maximum visibility across all channels. All-day communication cadence. No improvising.</div>
+      </div>
+      <div style="flex:2;border:1px solid rgba(201,168,76,0.15);padding:4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2mm">PHASE 3: DAYS 22–60 · POST-LAUNCH</div>
+        <div style="font-size:8.5pt;color:var(--silver)">Convert interest into revenue. Handle objections. Optimize the message. Close the fence-sitters. Document what worked for the next launch.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4 — PRE-LAUNCH PHASE (DAYS 1–20) shifted from P3 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 4 of 11 · Phase 1</div>
+    <div class="section-title">PRE-LAUNCH PHASE (Days 1–20)</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">The Pre-Launch Principle</div>
+      <p>Your launch succeeds or fails in the 20 days before Day 21 — not on launch day itself. Audience warmth, anticipation, and a built waitlist are the only things that make a launch predictably successful. Without this, you are cold-selling. With it, you are reminding interested people to buy.</p>
+    </div>
+
+    <div class="phase-banner">
+      <div class="phase-banner-days">WEEK 1<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 1–7</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Foundation — Build your infrastructure</div>
+        <div class="desc">Everything that must exist before you post a single piece of content. Get this right and the rest flows.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li>
+        <div class="day-badge">DAY 1</div>
+        <div class="day-content"><strong>Define your launch goal.</strong> ONE clear primary metric: a specific number (e.g., 20 sales, 100 signups, 500K SAR revenue). Write it down. Put it somewhere visible. All decisions for the next 60 days filter through this goal.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 2</div>
+        <div class="day-content"><strong>Write your core offer document.</strong> Full pricing, exact deliverables, who it's for, who it's not for, the transformation it delivers, the timeline, and your guarantee or risk-reversal statement.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 3</div>
+        <div class="day-content"><strong>Build or update your landing page.</strong> Must have: one powerful headline (who + what they get), three outcome-focused benefits (not features), social proof (even one credibility statement), one single CTA, and a visible WhatsApp button. Mobile-first.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 4</div>
+        <div class="day-content"><strong>Set up your CRM.</strong> Every lead gets tracked — name, source, date, stage, last contact, notes. A simple spreadsheet is fine. What matters is that no interested person falls through the cracks.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 5</div>
+        <div class="day-content"><strong>Create your waitlist or early access mechanism.</strong> A simple Google Form, a WhatsApp group named "Early Access — [Product Name]", or a dedicated landing page section. Make it feel exclusive, not just another form.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 6</div>
+        <div class="day-content"><strong>Write all 20 days of pre-launch content in advance.</strong> Do not write day-by-day during the launch — you will be too busy responding to leads. Batch-write everything today. Edit, schedule, or prepare to copy-paste.</div>
+      </li>
+      <li>
+        <div class="day-badge">DAY 7</div>
+        <div class="day-content"><strong>Brief your team.</strong> Every person involved knows their specific role on launch day, their communication responsibility, and what decisions they can make without you. Ambiguity on Day 21 costs sales.</div>
+      </li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 2<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 8–14</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Warm-Up — Build your audience, not your product</div>
+        <div class="desc">Your entire focus: create a warm, curious, trust-primed audience before you reveal the offer.</div>
+      </div>
+    </div>
+
+    <ul class="bullet-list">
+      <li><strong>Post daily</strong> on LinkedIn + Instagram/X. Theme: the problem your product solves. Pain points, statistics, cautionary stories. Never mention the product — just the problem.</li>
+      <li><strong>Personal outreach to 20 potential early buyers.</strong> Not a mass message — individual, thoughtful, specific outreach. "I thought of you because..." is the best opening.</li>
+      <li><strong>Ask 5 existing clients or contacts</strong> if they'll beta test or provide a testimonial before launch. One real voice is worth ten polished marketing claims.</li>
+      <li><strong>Run a "coming soon" teaser</strong> — do not reveal the full offer yet. Mystery combined with a clear problem statement is powerful pre-launch chemistry.</li>
+      <li><strong>Engage heavily:</strong> reply to every comment on your posts, start conversations, appear consistently visible to your target audience on their feed.</li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 3<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 15–20</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Anticipation — Build the countdown</div>
+        <div class="desc">Reveal progressively. Create genuine excitement without overdelivering before launch.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li><div class="day-badge">DAY 15</div><div class="day-content">"Big announcement in 6 days" — reveal the teaser without the full offer. The anticipation is the marketing.</div></li>
+      <li><div class="day-badge">DAY 16</div><div class="day-content">Share the backstory — why you created this product. The origin story creates emotional investment before anyone buys.</div></li>
+      <li><div class="day-badge">DAY 17</div><div class="day-content">Share a beta result or early testimonial. Real proof at this stage is extraordinarily powerful — it answers "does this actually work?" before they have to ask.</div></li>
+      <li><div class="day-badge">DAY 18</div><div class="day-content">"Launch in 4 days" — reveal your pricing or the headline benefit. Removes the uncertainty that prevents people from mentally committing.</div></li>
+      <li><div class="day-badge">DAY 19</div><div class="day-content">Early bird offer announcement — 20% off (or a bonus) for the first 48 hours only. Creates a real, specific, time-bounded reason to act on Day 21 instead of "later."</div></li>
+      <li><div class="day-badge">DAY 20</div><div class="day-content">"Tomorrow we launch" — final build-up across all channels. Remind your waitlist, post your countdown, reply to every "looking forward to it" comment.</div></li>
+    </ul>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5 — LAUNCH DAY (DAY 21) shifted from P4        -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 5 of 11 · Phase 2</div>
+    <div class="section-title">LAUNCH DAY (Day 21)</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">Launch Day Rule</div>
+      <p>Today is an execution day, not a creation day. Every post, message, and email should be written and ready before today begins. Your job today is to respond, engage, follow up, and close — not to write.</p>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">The Launch Day Timeline</h3>
+
+    <div class="timeline-row">
+      <div class="timeline-time">7:00 AM</div>
+      <div class="timeline-action"><strong>LinkedIn launch post</strong> — full announcement with all details, link, early bird offer, and a clear CTA. This is your flagship launch content. Do not compromise on quality here.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">7:30 AM</div>
+      <div class="timeline-action"><strong>Instagram/X/Snapchat</strong> — shorter version of the announcement adapted for each platform's format. Visual first, copy second. Link in bio.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">8:00 AM</div>
+      <div class="timeline-action"><strong>WhatsApp waitlist message</strong> — personal tone, NOT a mass blast feeling. Address them as early supporters. Exclusive framing. Your template is below.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">9:00 AM</div>
+      <div class="timeline-action"><strong>Email to your list</strong> (if you have one) — plain text, personal feel. Plain text outperforms designed emails for personal-brand offers. Write as if to a colleague.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">10:00 AM</div>
+      <div class="timeline-action"><strong>Story updates</strong> on all platforms — "We're live!" + link + early bird reminder. Stories are seen by your engaged followers — the highest-intent audience.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">12:00 PM</div>
+      <div class="timeline-action"><strong>DM and comment check</strong> — respond to every enquiry, question, and comment. Speed of response on launch day is a trust signal. Delays cost sales.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">2:00 PM</div>
+      <div class="timeline-action"><strong>"Day 1 update" post</strong> — share early momentum: "X people have already joined" or "Spots filling up." Real social proof from within the first hours creates urgency.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">5:00 PM</div>
+      <div class="timeline-action"><strong>Early bird reminder</strong> — "Offer ends tomorrow at midnight." Not aggressive — factual. The deadline is real. Announce it matter-of-factly.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">7:00 PM</div>
+      <div class="timeline-action"><strong>Evening engagement post</strong> — peak Saudi LinkedIn activity. Re-share the core offer. Different angle: focus on a specific benefit or client type you serve.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">9:00 PM</div>
+      <div class="timeline-action"><strong>Personal WhatsApp follow-ups</strong> — contact everyone who engaged with your content, replied to your stories, or showed clear interest but hasn't bought yet. Personal message only.</div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Launch Day Content Templates</h3>
+
+    <div class="message-block">
+      <div class="msg-label">LinkedIn Launch Post (Arabic)</div>
+شيء كنت أعمل عليه لـ [months] — الآن هو جاهز.
+
+[Problem statement — the pain your audience knows and feels. 2-3 sentences.]
+
+قدّمت [product name]:
+✦ [Benefit 1 — outcome-focused, specific]
+✦ [Benefit 2 — outcome-focused, specific]
+✦ [Benefit 3 — outcome-focused, specific]
+
+السعر: [price] — بخصم [X]% لأول [number] مشتري فقط، ينتهي العرض غداً.
+
+[Link / "اكتب في التعليقات أو تواصل معي مباشرة"]
+    </div>
+
+    <div class="message-block">
+      <div class="msg-label">WhatsApp Waitlist Message (Arabic)</div>
+[Name]، اليوم هو اليوم 🎉
+
+[Product] أصبح متاح رسمياً. أنت من الأوائل اللي أخبرتكم لأنك كنت في القائمة.
+
+السعر الخاص للعملاء الأوائل: [price] (ينتهي غداً الساعة 12 الليل)
+
+[Link / "رد هنا وأرسلك التفاصيل الكاملة خلال دقائق"]
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Objection Handling Scripts</h3>
+
+    <div class="objection-row">
+      <div class="objection-text">"السعر مرتفع"</div>
+      <div class="objection-arrow">→</div>
+      <div class="objection-response">"السؤال مش كم يكلف — السؤال كم ستوفر أو تكسب. [Client who had this concern — outcome they achieved]. هل تريد أن أشاركك كيف حسبنا العائد معهم؟"</div>
+    </div>
+    <div class="objection-row">
+      <div class="objection-text">"محتاج أفكر"</div>
+      <div class="objection-arrow">→</div>
+      <div class="objection-response">"بالطبع — قرار صحيح يستحق تفكيراً. خذ وقتك. فقط علّمك أن الخصم ينتهي غداً. هل أرسلك ملخصاً سريعاً يساعدك على التقييم؟"</div>
+    </div>
+    <div class="objection-row">
+      <div class="objection-text">"مش متأكد هل يناسبني"</div>
+      <div class="objection-arrow">→</div>
+      <div class="objection-response">"سؤال عندي — [qualifying question specific to your offer]. لو الإجابة نعم، هذا بالظبط صُمّم لك. لو لا، أكون صريح معك وأقترح البديل المناسب."</div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">5</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6 — POST-LAUNCH PHASE (DAYS 22–60) shifted P5  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 6 of 11 · Phase 3</div>
+    <div class="section-title">POST-LAUNCH PHASE (Days 22–60)</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">The Post-Launch Truth</div>
+      <p>Most founders mentally "finish" their launch on Day 21 and move on. This is where most revenue is left on the table. The 40 days after launch day are when you convert the curious, the hesitant, and the "almost" buyers — who often outnumber your Day 21 buyers by 3 to 1.</p>
+    </div>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 4<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 22–28</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Convert the Fence-Sitters</div>
+        <div class="desc">Early bird has ended — now objections become opportunities. Address them directly and publicly.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li><div class="day-badge">DAY 22</div><div class="day-content">Early bird closes — post "آخر يوم للخصم" and honor the deadline. Never extend deadlines you announced — it destroys all future urgency.</div></li>
+      <li><div class="day-badge">DAY 23–25</div><div class="day-content">Address the top 3 objections you received in 3 separate posts. Turn each objection into a piece of educational content: "I've heard this concern from several people — here's my honest answer."</div></li>
+      <li><div class="day-badge">DAY 24</div><div class="day-content">Share the first customer experience — a quick win story, a first reaction, a screenshot of a message you received. Early social proof from real buyers is conversion gold.</div></li>
+      <li><div class="day-badge">DAY 26</div><div class="day-content">FAQ post — compile the 5 questions you received most during the launch period and answer them completely in one post. This becomes a permanent sales asset.</div></li>
+      <li><div class="day-badge">DAY 27</div><div class="day-content">Limited bonus offer for this week only — an added element (bonus session, template, guide) available only through [date]. Fresh incentive for those who missed the early bird.</div></li>
+      <li><div class="day-badge">DAY 28</div><div class="day-content">Week 1 results recap — "One week in. Here's what's happening." Share numbers, momentum, early client wins. Social proof compounds.</div></li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEKS 5–6<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 29–42</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Content + Conversion</div>
+        <div class="desc">Stay visible. Stay selling. Stay converting warm leads with personal outreach.</div>
+      </div>
+    </div>
+
+    <ul class="bullet-list">
+      <li><strong>3× per week content:</strong> success stories from buyers, educational content related to your product's core topic, behind-the-scenes of delivery.</li>
+      <li><strong>Personal outreach</strong> to every warm lead who didn't convert. Not a mass blast — individual messages. "I noticed you engaged with my launch post — did you have any questions I could answer?"</li>
+      <li><strong>Free 15-minute call offer:</strong> announce that you're offering a short discovery call for anyone on the fence. Low commitment for them, high conversion for you.</li>
+      <li><strong>Referral push:</strong> "Refer a colleague or client who would benefit, and receive [specific bonus]." Your existing buyers are your best salespeople — activate them.</li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEKS 7–8<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 43–60</span></div>
+      <div class="phase-banner-info">
+        <div class="name">Optimize, Close, and Debrief</div>
+        <div class="desc">Double down on what worked. Close the last converts. Document everything.</div>
+      </div>
+    </div>
+
+    <ul class="bullet-list">
+      <li><strong>Analyze your data:</strong> which content piece drove the most DMs? Which channel brought the highest-quality leads? Which post got shared most? Invest more where results appeared.</li>
+      <li><strong>Final push:</strong> "The launch period ends [date] — after that, we return to regular pricing." Specific date, specific price increase. Real consequence, stated clearly.</li>
+      <li><strong>Day 60 — Launch Debrief:</strong> complete Worksheet 5. Document total revenue, best channel, conversion rate, average time to purchase, top 3 lessons, and specific changes for the next launch.</li>
+    </ul>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Post-Launch Metrics to Track</h3>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-name">Total Revenue</div>
+        <div class="metric-desc">vs. your stated launch goal. The gap tells you what to fix, not whether you failed.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">Conversion Rate</div>
+        <div class="metric-desc">Buyers ÷ total leads who expressed interest. Industry benchmark: 5–15% for service offers.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">Best Lead Source</div>
+        <div class="metric-desc">Which platform, post, or referral generated the most buyers — not just the most enquiries.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">Time to Purchase</div>
+        <div class="metric-desc">Days from first contact to paid. Long cycles suggest a trust gap. Short cycles suggest strong pre-launch work.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">Refund / Satisfaction</div>
+        <div class="metric-desc">Early indicator of product-market fit. High refund requests = misaligned expectations, not bad product.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-name">NPS Score</div>
+        <div class="metric-desc">Ask every buyer: "On a scale of 1–10, how likely are you to recommend this?" 9–10 = promoters. Track for trend.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">6</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 7 — LAUNCH TOOLKIT (shifted from P6)           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 7 of 11 · Toolkit</div>
+    <div class="section-title">LAUNCH TOOLKIT</div>
+    <div class="section-rule"></div>
+
+    <div class="two-col">
+      <div>
+        <h3 class="sub-heading">Landing Page Checklist</h3>
+
+        <ul class="checklist" style="columns:1">
+          <li>Clear headline — who it's for + what they get</li>
+          <li>3 key benefits — outcomes, not features</li>
+          <li>Price clearly visible — no "contact for pricing"</li>
+          <li>Social proof — 1+ testimonial or credibility statement</li>
+          <li>Single CTA — one action only (buy, sign up, or contact)</li>
+          <li>Mobile-optimized — most traffic is phone</li>
+          <li>WhatsApp button visible without scrolling</li>
+          <li>Arabic version or full bilingual text</li>
+          <li>Page loads in under 3 seconds</li>
+          <li>No dead links or placeholder text</li>
+        </ul>
+
+        <h3 class="sub-heading" style="margin-top:5mm">WhatsApp Sequence (5 Messages)</h3>
+
+        <div style="border:1px solid rgba(201,168,76,0.15);border-radius:4px;overflow:hidden">
+          <div style="padding:3mm 4mm;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:3mm;align-items:flex-start">
+            <div style="min-width:12mm;font-size:7pt;font-weight:700;color:var(--gold);text-align:center;margin-top:1px">MSG 1<br>Day 0</div>
+            <div style="font-size:8pt;color:var(--silver)">Launch announcement. Personal tone. Early bird offer details. Link. Keep under 100 words.</div>
+          </div>
+          <div style="padding:3mm 4mm;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:3mm;align-items:flex-start">
+            <div style="min-width:12mm;font-size:7pt;font-weight:700;color:var(--gold);text-align:center;margin-top:1px">MSG 2<br>Day 1</div>
+            <div style="font-size:8pt;color:var(--silver)">Early bird reminder. Deadline restatement. "Spots are filling" social proof if you have it.</div>
+          </div>
+          <div style="padding:3mm 4mm;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:3mm;align-items:flex-start">
+            <div style="min-width:12mm;font-size:7pt;font-weight:700;color:var(--gold);text-align:center;margin-top:1px">MSG 3<br>Day 3</div>
+            <div style="font-size:8pt;color:var(--silver)">A short case study or result from an early buyer. Real proof, specific metric, human story.</div>
+          </div>
+          <div style="padding:3mm 4mm;border-bottom:1px solid rgba(201,168,76,0.1);display:flex;gap:3mm;align-items:flex-start">
+            <div style="min-width:12mm;font-size:7pt;font-weight:700;color:var(--gold);text-align:center;margin-top:1px">MSG 4<br>Day 7</div>
+            <div style="font-size:8pt;color:var(--silver)">Address the most common objection you've heard. Offer a quick call for anyone still undecided.</div>
+          </div>
+          <div style="padding:3mm 4mm;display:flex;gap:3mm;align-items:flex-start">
+            <div style="min-width:12mm;font-size:7pt;font-weight:700;color:var(--gold);text-align:center;margin-top:1px">MSG 5<br>Day 14</div>
+            <div style="font-size:8pt;color:var(--silver)">"Final offer" message. Closing window, price change, or a wrap-up of results so far. Clean close.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-heading">Launch Email Sequence</h3>
+
+        <div style="list-style:none;padding:0">
+          <div style="padding:3mm 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+            <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1mm">EMAIL 1 · Day 20</div>
+            <div style="font-size:8.5pt;color:var(--white);font-weight:600;margin-bottom:1mm">"غداً نطلق [product]"</div>
+            <div style="font-size:8pt;color:var(--silver)">Tease the offer. Remind them of the problem it solves. Build anticipation. No full reveal yet.</div>
+          </div>
+          <div style="padding:3mm 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+            <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1mm">EMAIL 2 · Day 21</div>
+            <div style="font-size:8.5pt;color:var(--white);font-weight:600;margin-bottom:1mm">"[Product] is live — early bird ends tomorrow"</div>
+            <div style="font-size:8pt;color:var(--silver)">Full offer reveal. Benefits. Price. CTA. Early bird deadline. Plain text, personal feel.</div>
+          </div>
+          <div style="padding:3mm 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+            <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1mm">EMAIL 3 · Day 22</div>
+            <div style="font-size:8.5pt;color:var(--white);font-weight:600;margin-bottom:1mm">"آخر 24 ساعة للسعر الخاص"</div>
+            <div style="font-size:8pt;color:var(--silver)">Final early bird reminder. Answer top FAQ. Show early momentum if available.</div>
+          </div>
+          <div style="padding:3mm 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+            <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1mm">EMAIL 4 · Day 28</div>
+            <div style="font-size:8.5pt;color:var(--white);font-weight:600;margin-bottom:1mm">"إليك ما قاله العملاء الأوائل"</div>
+            <div style="font-size:8pt;color:var(--silver)">Social proof email. Real quotes from real buyers. Specific results. Minimal selling — let the proof speak.</div>
+          </div>
+          <div style="padding:3mm 0">
+            <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1mm">EMAIL 5 · Day 42</div>
+            <div style="font-size:8.5pt;color:var(--white);font-weight:600;margin-bottom:1mm">"Still available — but not for long"</div>
+            <div style="font-size:8pt;color:var(--silver)">Re-engagement for those who opened but didn't buy. Final closing window. Price or bonus change on [specific date].</div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:4mm">
+          <div class="callout-title">WhatsApp vs. Email vs. LinkedIn</div>
+          <p><strong style="color:var(--white)">WhatsApp:</strong> highest open rate (98%). Use for warm leads only — mass blasting destroys trust. <strong style="color:var(--white)">Email:</strong> slower, lower open rate, but professional. Good for formal follow-up. <strong style="color:var(--white)">LinkedIn DM:</strong> lower reach but feels personal for B2B. Don't ignore comments — they are public sales interactions seen by everyone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">7</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 8 — PRE-LAUNCH OPERATIONS MANUAL (NEW)         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 8 of 11 · Deep-Dive Operations</div>
+    <div class="section-title">PRE-LAUNCH OPERATIONS MANUAL<br><span style="font-size:11pt;font-weight:400;color:var(--silver)">دليل عمليات ما قبل الإطلاق</span></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">Day-by-Day — The Full Pre-Launch Breakdown</div>
+      <p>The 20 days before launch day are where launches are won or lost. This page gives you the exact daily task for each of the three pre-launch weeks — more granular than the summary on Page 4. Use this as your daily operating checklist.</p>
+    </div>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 1<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 1–7</span></div>
+      <div class="phase-banner-info">
+        <div class="name">The Strategy Week</div>
+        <div class="desc">No content, no outreach — only foundations. Build the platform before you launch from it.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li><div class="day-badge">DAY 1</div><div class="day-content"><strong>Define launch success metrics.</strong> What does a successful launch look like at Day 30? Name exact numbers: revenue, users, clients, media mentions, social followers, trial signups. Vague goals produce vague results.</div></li>
+      <li><div class="day-badge">DAY 2</div><div class="day-content"><strong>Define your launch audience.</strong> Write the name, role, pain, and specific trigger that would make them evangelize your product. Primary audience and secondary audience. Real profiles, not demographics.</div></li>
+      <li><div class="day-badge">DAY 3</div><div class="day-content"><strong>Audit your digital assets.</strong> Website, social profiles, WhatsApp Business, Google Business Profile — every touchpoint must be launch-ready. Broken links and outdated bios cost you trust at the worst moment.</div></li>
+      <li><div class="day-badge">DAY 4</div><div class="day-content"><strong>Competitive audit.</strong> Study what your 5 closest competitors' launches looked like. What content worked? What gap did they miss? What positioning is already overcrowded? Find your white space.</div></li>
+      <li><div class="day-badge">DAY 5</div><div class="day-content"><strong>Define your launch narrative.</strong> The "why now" story. Why is this product launching in 2025 specifically? Connect to Vision 2030, a market shift, or a clear triggering event in your sector. Context makes launches stick.</div></li>
+      <li><div class="day-badge">DAY 6</div><div class="day-content"><strong>Build your internal RACI.</strong> Who owns media? Who owns community? Who owns client success on launch day? Who has authority to approve a last-minute change? Every person needs one clear lane.</div></li>
+      <li><div class="day-badge">DAY 7</div><div class="day-content"><strong>Create your Launch Assets Inventory.</strong> List everything you will need: images, videos, copy, press kit, influencer briefs, email templates, WhatsApp broadcasts. Mark each as Ready / In Progress / Missing.</div></li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 2<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 8–14</span></div>
+      <div class="phase-banner-info">
+        <div class="name">The Build Week</div>
+        <div class="desc">Create every asset. Test every system. Build every list. Done before Day 15.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li><div class="day-badge">DAY 8</div><div class="day-content"><strong>Write all launch copy.</strong> Headline, tagline, positioning statement, elevator pitch — in Arabic and English. Copy must exist before any asset is built. The message shapes every visual decision.</div></li>
+      <li><div class="day-badge">DAY 9</div><div class="day-content"><strong>Create visual assets.</strong> Launch graphics for each platform, video thumbnail, press kit logo files. Every platform has a different format — build them correctly once, not hastily the night before launch.</div></li>
+      <li><div class="day-badge">DAY 10</div><div class="day-content"><strong>Finalize and test your landing page.</strong> Test every button, every form, every link. Mobile-first — 85% of Saudi traffic is mobile. A broken form on launch day is a revenue disaster, not a minor inconvenience.</div></li>
+      <li><div class="day-badge">DAY 11</div><div class="day-content"><strong>Build your pre-launch WhatsApp broadcast list.</strong> Everyone who has ever expressed interest, asked about the product, or signaled readiness to buy. These are your highest-probability launch day conversions.</div></li>
+      <li><div class="day-badge">DAY 12</div><div class="day-content"><strong>Identify 10–20 seed users.</strong> Real people who will test, validate, and evangelize. Not friends — people who genuinely match your target audience and have credibility within it.</div></li>
+      <li><div class="day-badge">DAY 13</div><div class="day-content"><strong>Reach out to all seed users individually.</strong> Offer early access in exchange for honest feedback and a testimonial. Frame it as a privilege, not a favor — because it is. Their early voice is worth more than any ad.</div></li>
+      <li><div class="day-badge">DAY 14</div><div class="day-content"><strong>Set up analytics tracking.</strong> Google Analytics, social media insights, UTM link parameters. You must know exactly where launch traffic comes from, or you cannot optimize what comes next.</div></li>
+    </ul>
+
+    <div class="phase-banner" style="margin-top:4mm">
+      <div class="phase-banner-days">WEEK 3<br><span style="font-size:9pt;font-weight:400;color:var(--silver)">Days 15–20</span></div>
+      <div class="phase-banner-info">
+        <div class="name">The Momentum Week</div>
+        <div class="desc">Build anticipation publicly. Seed privately. Run your final systems check.</div>
+      </div>
+    </div>
+
+    <ul class="day-list">
+      <li><div class="day-badge">DAY 15</div><div class="day-content"><strong>Onboard 3–5 micro-influencers.</strong> Brief them fully. Confirm post dates (Days 18–21). Provide tracking links. Their content goes up before or on launch day — not after. Timing is everything.</div></li>
+      <li><div class="day-badge">DAY 16</div><div class="day-content"><strong>Pre-launch email and WhatsApp sequence begins.</strong> 5-day countdown for subscribers. Build anticipation daily. Each message reveals something new — a feature, a result, a story. Earn the click before you ask for it.</div></li>
+      <li><div class="day-badge">DAY 17</div><div class="day-content"><strong>Media outreach.</strong> Pitch 3–5 relevant Saudi business media outlets with your press release (see Toolkit on Page 10). Attach the press kit. Follow up once on Day 19 if no reply.</div></li>
+      <li><div class="day-badge">DAY 18</div><div class="day-content"><strong>First influencer content goes live.</strong> Monitor every comment. Engage from your brand account with every reaction. The first 2 hours of influencer content is when momentum either builds or stalls.</div></li>
+      <li><div class="day-badge">DAY 19</div><div class="day-content"><strong>Behind-the-scenes content.</strong> Show the team, the product, the preparation. Human content performs better than polished promotion in the 48 hours before launch. Trust comes before transactions.</div></li>
+      <li><div class="day-badge">DAY 20</div><div class="day-content"><strong>FINAL CHECK DAY.</strong> Run through the Launch Readiness Checklist in Worksheet WS-4. Every single item must be confirmed. No items open going into launch night. Fix or escalate — do not defer.</div></li>
+    </ul>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">8</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 9 — LAUNCH DAY & POST-LAUNCH DEEP DIVE (NEW)   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 9 of 11 · Launch Day Operations</div>
+    <div class="section-title">LAUNCH DAY OPERATIONS<br><span style="font-size:11pt;font-weight:400;color:var(--silver)">يوم الإطلاق: كل دقيقة محسوبة</span></div>
+    <div class="section-rule"></div>
+
+    <p class="body-text" style="margin-bottom:3mm">The hour-by-hour plan for Day 21. Every action is pre-assigned. Every team member is at their station. Nothing is improvised.</p>
+
+    <div class="timeline-row">
+      <div class="timeline-time">06:00</div>
+      <div class="timeline-action"><strong>TEAM BRIEFING.</strong> All team members confirmed at their stations. Roles reviewed. Team WhatsApp group active. Fallback plans reviewed. Everyone knows what to do if a system fails.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">07:00</div>
+      <div class="timeline-action"><strong>SYSTEMS CHECK.</strong> Website load test. Payment system test. Email sequence confirmed active. WhatsApp broadcast queued. Analytics tracking confirmed firing correctly.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">08:00</div>
+      <div class="timeline-action"><strong>INFLUENCER CONFIRMATION.</strong> Confirm all 3–5 influencers are ready to post at their scheduled time. Provide any final copy adjustments. Re-confirm tracking links are correct.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">09:00</div>
+      <div class="timeline-action"><strong>SOFT ANNOUNCEMENT.</strong> Post on your own social channels the "it's today" teaser. Build anticipation for followers who don't know the exact launch time. Curiosity converts.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">10:00</div>
+      <div class="timeline-action"><strong>LAUNCH GOES LIVE.</strong> Website live. Product or service available for purchase. WhatsApp broadcast sent. Email sequence triggered. All team members ready for incoming inquiries.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">10:00–12:00</div>
+      <div class="timeline-action"><strong>RESPONSE BLITZ.</strong> The first 2 hours are critical for social proof velocity. Every comment, DM, and inquiry gets a response within 15 minutes. First customers must feel celebrated — not processed.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">12:00</div>
+      <div class="timeline-action"><strong>MIDDAY PUSH.</strong> Post an update with real numbers: "We're live and [X] people have already signed up / purchased / inquired." Real numbers create urgency. Round numbers signal fabrication.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">14:00</div>
+      <div class="timeline-action"><strong>INFLUENCER CHECK.</strong> Confirm all influencer posts are live and generating engagement. React and reshare all influencer content from your own accounts. Amplify the amplifiers.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">16:00</div>
+      <div class="timeline-action"><strong>MEDIA MONITORING.</strong> Check if any press pitches have landed coverage. Follow up personally with journalists who have not replied. One media mention on launch day multiplies reach significantly.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">18:00</div>
+      <div class="timeline-action"><strong>AFTERNOON PUSH.</strong> Second social post of the day — share a customer reaction, testimonial screenshot, or behind-the-scenes moment from launch day activity. Authentic beats polished.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">20:00</div>
+      <div class="timeline-action"><strong>EVENING FOLLOW-UP.</strong> After Maghreb prayer is peak Saudi social media time. Launch reminder post with a clear urgency element — early bird window, limited spots, or price change tomorrow.</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-time">23:00</div>
+      <div class="timeline-action"><strong>DAY 1 WRAP-UP.</strong> Team debrief. Document: total inquiries, signups, sales, media mentions, social reach. Identify the highest-performing content to amplify tomorrow. Close what can be closed tonight.</div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">Days 22–60: The Acceleration Milestones</h3>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:2mm">
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3.5mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">DAYS 22–30 · MOMENTUM PHASE</div>
+        <ul class="bullet-list" style="margin:0">
+          <li>Track one key metric daily and share internally</li>
+          <li>Focus entirely on converting launch traffic to paid</li>
+          <li>Publish first client success story within 7 days</li>
+          <li>Survey first 10 customers: what nearly stopped them?</li>
+          <li>A/B test: problem-focused vs. outcome-focused positioning</li>
+        </ul>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3.5mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">DAYS 31–60 · ACCELERATION PHASE</div>
+        <ul class="bullet-list" style="margin:0">
+          <li>Day 31: Full data review — reallocate budget to what worked</li>
+          <li>Day 35: First client case study published publicly</li>
+          <li>Day 40: Re-engage all "almost bought" leads — offer a call</li>
+          <li>Day 45: Launch referral program with clear incentive</li>
+          <li>Day 50: On-track check against Day 60 success metrics</li>
+          <li>Day 55: Scale planning — next market, product, or channel</li>
+          <li>Day 60: Team retrospective — document for next launch</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">9</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 10 — SAUDI LAUNCH TOOLKIT: TEMPLATES (NEW)     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Product Launch Playbook</div>
+    </div>
+
+    <div class="section-eyebrow">Page 10 of 11 · Templates &amp; Scripts</div>
+    <div class="section-title">SAUDI LAUNCH TOOLKIT<br><span style="font-size:11pt;font-weight:400;color:var(--silver)">أدوات الإطلاق في السوق السعودي</span></div>
+    <div class="section-rule"></div>
+
+    <div class="two-col" style="gap:5mm">
+      <div>
+        <h3 class="sub-heading">Press Release Template</h3>
+        <div class="message-block" style="font-size:7.5pt;line-height:1.55">
+          <div class="msg-label">Press Release · English</div>
+[FOR IMMEDIATE RELEASE]
+
+[Company Name] Launches [Product/Service Name]
+— [One-Line Impact Statement]
+
+[City, Date] — [Company Name], [one-line description],
+today announced the launch of [Product/Service],
+[positioning statement connecting to market need].
+
+"[CEO/Founder quote — reference Vision 2030 alignment
+or market opportunity]"
+
+[Para 1: The problem. Why this matters now.]
+[Para 2: The solution and key differentiator.]
+[Para 3: First customer results if available.]
+
+Pricing: [SAR amount] | Available at: [link]
+
+"[Second quote — customer, advisor, or partner]"
+
+About [Company Name]: [2 sentences. Include CR number
+and year established.]
+
+Contact: [Name] | [Email] | [WhatsApp] | [Website]
+        </div>
+
+        <h3 class="sub-heading" style="margin-top:4mm">Launch Day WhatsApp Broadcasts</h3>
+        <div class="message-block" style="font-size:7.5pt;line-height:1.55">
+          <div class="msg-label">Arabic Version</div>
+السلام عليكم [Name]،
+
+اليوم يوم الإطلاق! [Product] متاح الآن.
+
+[One-line benefit — specific outcome.]
+
+رابط التسجيل/الشراء: [link]
+
+لأي استفسار، تواصل معنا مباشرة على هذا الرقم.
+        </div>
+        <div class="message-block" style="font-size:7.5pt;line-height:1.55">
+          <div class="msg-label">English Version</div>
+Hi [Name], Today's the day!
+
+[Product] is now live — [one-line benefit].
+
+Register / purchase here: [link]
+
+Reach out directly with any questions.
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-heading">Influencer Brief Template</h3>
+        <div class="message-block" style="font-size:7.5pt;line-height:1.6">
+          <div class="msg-label">Influencer Brief</div>
+BRIEF FOR: [Influencer Name]
+Brand: [Company] | Product: [Product Name]
+Launch Date: [Date] | Your Post Date: [Date]
+
+FORMAT: [Instagram post / story / reel / LinkedIn post]
+
+KEY MESSAGES — include at least 2:
+• [Message 1]
+• [Message 2]
+• [Message 3]
+
+WHAT NOT TO SAY: [Brand guardrails]
+
+LINKS: [Tracking URL — unique per influencer]
+HASHTAGS: #[Primary] #[Secondary]
+
+COMPENSATION: SAR [amount] + product
+
+Submit content for approval by: [Date — 3 days prior]
+Questions: [WhatsApp of marketing lead]
+        </div>
+
+        <h3 class="sub-heading" style="margin-top:4mm">5-Day Countdown Content Series</h3>
+        <div style="border:1px solid rgba(201,168,76,0.15);border-radius:4px;overflow:hidden">
+          <div style="padding:2.5mm 3.5mm;border-bottom:1px solid rgba(201,168,76,0.08);display:flex;gap:2.5mm;align-items:flex-start">
+            <div style="min-width:11mm;font-size:7pt;font-weight:700;color:var(--gold);flex-shrink:0">Day −5</div>
+            <div style="font-size:7.5pt;color:var(--silver)">"In 5 days, we're launching something we've been building for [time]. Here's why it matters: [problem your product solves]."</div>
+          </div>
+          <div style="padding:2.5mm 3.5mm;border-bottom:1px solid rgba(201,168,76,0.08);display:flex;gap:2.5mm;align-items:flex-start">
+            <div style="min-width:11mm;font-size:7pt;font-weight:700;color:var(--gold);flex-shrink:0">Day −4</div>
+            <div style="font-size:7.5pt;color:var(--silver)">"3 things that will be different when [Product] launches: [1] [2] [3]"</div>
+          </div>
+          <div style="padding:2.5mm 3.5mm;border-bottom:1px solid rgba(201,168,76,0.08);display:flex;gap:2.5mm;align-items:flex-start">
+            <div style="min-width:11mm;font-size:7pt;font-weight:700;color:var(--gold);flex-shrink:0">Day −3</div>
+            <div style="font-size:7.5pt;color:var(--silver)">"Here's a sneak peek: [image or feature reveal]" — one clear visual, minimal text. Let the product speak.</div>
+          </div>
+          <div style="padding:2.5mm 3.5mm;border-bottom:1px solid rgba(201,168,76,0.08);display:flex;gap:2.5mm;align-items:flex-start">
+            <div style="min-width:11mm;font-size:7pt;font-weight:700;color:var(--gold);flex-shrink:0">Day −2</div>
+            <div style="font-size:7.5pt;color:var(--silver)">"Tomorrow's the eve. [Number] people are already on the waitlist. Are you?" — real number creates real pressure.</div>
+          </div>
+          <div style="padding:2.5mm 3.5mm;display:flex;gap:2.5mm;align-items:flex-start">
+            <div style="min-width:11mm;font-size:7pt;font-weight:700;color:var(--gold);flex-shrink:0">Day −1</div>
+            <div style="font-size:7.5pt;color:var(--silver)">"Last day before launch. After tomorrow, [urgency element — price changes / spots fill / early access ends]."</div>
+          </div>
+        </div>
+
+        <h3 class="sub-heading" style="margin-top:4mm">Launch Day Email Template</h3>
+        <div class="message-block" style="font-size:7.5pt;line-height:1.55">
+          <div class="msg-label">Subject Lines</div>
+Arabic: "[Product] متاح الآن — [Outcome statement]"
+English: "[Product] is live — [Outcome statement]"
+
+BODY STRUCTURE:
+[Personal greeting by first name]
+→ Why this exists / the problem it solves (2 sentences)
+→ What you get — 3 specific outcomes, not features
+→ Price + single CTA button or link
+→ Urgency element — deadline or limited spots
+→ PS: Personal note from founder (most-read line in any email)
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">10</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 11 — WORKSHEETS (expanded with WS-4 and WS-5) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page worksheet-page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-06 · Worksheets</div>
+    </div>
+
+    <div class="section-eyebrow">Page 11 of 11 · Action Worksheets</div>
+    <div class="section-title">WORKSHEETS</div>
+    <div class="section-rule"></div>
+
+    <div class="ws-section-divider">
+      <div class="ws-title">WS-1: Launch Goal Setting</div>
+      <div class="ws-subtitle">Complete before Day 1. Your goal makes every subsequent decision easier.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>Launch Goal (number)</th>
+          <th>Target Audience</th>
+          <th>Launch Date (Day 21)</th>
+          <th>Success Metric</th>
+          <th>30-Day Revenue Target</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="height:12mm"></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-2: Lead Tracker</div>
+      <div class="ws-subtitle">Track every interested person from first contact to close. No lead gets forgotten.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Source</th>
+          <th>Date</th>
+          <th>Stage</th>
+          <th>Notes</th>
+          <th>Follow-up Date</th>
+          <th>Converted?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="height:8mm"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:8mm"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:8mm"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-3: Launch Debrief</div>
+      <div class="ws-subtitle">Complete on Day 60. This document is your most valuable asset for the next launch.</div>
+    </div>
+
+    <div class="two-col" style="gap:4mm">
+      <table class="ws-table">
+        <thead>
+          <tr><th>Metric</th><th>Result</th><th>Goal</th><th>% Achieved</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Total Revenue</td><td></td><td></td><td></td></tr>
+          <tr><td>Total Buyers</td><td></td><td></td><td></td></tr>
+          <tr><td>Conversion Rate</td><td></td><td></td><td></td></tr>
+          <tr><td>Best Lead Source</td><td></td><td></td><td></td></tr>
+          <tr><td>NPS Score (avg)</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div>
+        <table class="ws-table">
+          <thead><tr><th>Top 3 Lessons for the Next Launch</th></tr></thead>
+          <tbody>
+            <tr><td style="height:10mm">1.</td></tr>
+            <tr><td style="height:10mm">2.</td></tr>
+            <tr><td style="height:10mm">3.</td></tr>
+          </tbody>
+        </table>
+        <table class="ws-table" style="margin-top:2mm">
+          <thead><tr><th>What I Will Change Next Time</th></tr></thead>
+          <tbody><tr><td style="height:11mm"></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-4: Launch Day Run Sheet</div>
+      <div class="ws-subtitle">Complete the night before. Every task, every owner, every status confirmed before Day 21 begins.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th style="width:12%">Time</th>
+          <th style="width:35%">Task</th>
+          <th style="width:18%">Owner</th>
+          <th style="width:12%">Status (✓/✗)</th>
+          <th style="width:23%">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">06:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">07:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">08:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">09:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">10:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">12:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">14:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">16:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">18:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">20:00</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">23:00</td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-5: 60-Day Launch Metrics Tracker</div>
+      <div class="ws-subtitle">Update weekly. Patterns that emerge here determine where you invest in the acceleration phase.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th style="width:10%">Week</th>
+          <th style="width:13%">Inquiries</th>
+          <th style="width:12%">Signups</th>
+          <th style="width:14%">Sales (SAR)</th>
+          <th style="width:14%">Social Reach</th>
+          <th style="width:15%">Media Mentions</th>
+          <th style="width:22%">Key Action This Week</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td style="height:7mm;color:var(--gold);font-weight:700">Wk 9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr style="background:rgba(201,168,76,0.06)"><td style="color:var(--gold);font-weight:700;font-size:8pt">TOTAL</td><td style="color:var(--white);font-weight:700"></td><td style="color:var(--white);font-weight:700"></td><td style="color:var(--white);font-weight:700"></td><td style="color:var(--white);font-weight:700"></td><td style="color:var(--white);font-weight:700"></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">11</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

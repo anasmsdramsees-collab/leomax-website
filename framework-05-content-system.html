@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEOMAX — Thought Leadership Content System | LMX-FW-05</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --black: #010B1C;
+    --charcoal: #0D1E35;
+    --dark: #060F1F;
+    --gold: #C9A84C;
+    --silver: #B8B8B8;
+    --white: #FFFFFF;
+    --gray: #8fa8be;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  /* ─── PAGE STRUCTURE ─── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    background: var(--black);
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .page.worksheet-page {
+    background: var(--charcoal);
+  }
+
+  .page-inner {
+    padding: 18mm 16mm 14mm 16mm;
+    min-height: 297mm;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── WATERMARK ─── */
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 100pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: rgba(201, 168, 76, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+  }
+
+  .cover-inner {
+    padding: 20mm 18mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .logo-wordmark {
+    font-size: 22pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .logo-sub {
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .cover-ref {
+    font-size: 8pt;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-align: right;
+  }
+
+  .cover-center {
+    text-align: center;
+    padding: 10mm 0;
+  }
+
+  .cover-category-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 12mm;
+  }
+
+  .cover-rule {
+    width: 60mm;
+    height: 1px;
+    background: var(--gold);
+    margin: 8mm auto;
+    opacity: 0.6;
+  }
+
+  .cover-title {
+    font-size: 30pt;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 6mm;
+  }
+
+  .cover-title span {
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-size: 11pt;
+    color: var(--silver);
+    line-height: 1.6;
+    max-width: 140mm;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .cover-price-block {
+    margin-top: 12mm;
+    display: flex;
+    justify-content: center;
+    gap: 20mm;
+  }
+
+  .cover-stat {
+    text-align: center;
+  }
+
+  .cover-stat-value {
+    font-size: 20pt;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .cover-stat-label {
+    font-size: 7.5pt;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .cover-bottom {
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-text {
+    font-size: 7.5pt;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* ─── CONTENT PAGE HEADER ─── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    margin-bottom: 7mm;
+  }
+
+  .page-header-logo {
+    font-size: 11pt;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+  }
+
+  .page-header-ref {
+    font-size: 7.5pt;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+  }
+
+  /* ─── SECTION TITLES ─── */
+  .section-eyebrow {
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3mm;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-size: 17pt;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 5mm;
+  }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 4mm 0 6mm 0;
+    opacity: 0.5;
+  }
+
+  /* ─── CALLOUT BOX ─── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: rgba(201, 168, 76, 0.05);
+    padding: 5mm 6mm;
+    margin: 4mm 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  .callout p {
+    font-size: 9pt;
+    color: var(--silver);
+    line-height: 1.5;
+  }
+
+  /* ─── STAT HIGHLIGHT ─── */
+  .stat-row {
+    display: flex;
+    gap: 4mm;
+    margin: 4mm 0;
+  }
+
+  .stat-box {
+    flex: 1;
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 4mm 5mm;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  .stat-box .num {
+    font-size: 18pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-box .lbl {
+    font-size: 7.5pt;
+    color: var(--gray);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  /* ─── LEVEL CARDS ─── */
+  .level-row {
+    display: flex;
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .level-card {
+    flex: 1;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 4mm;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .level-card.active {
+    border-color: var(--gold);
+    background: rgba(201, 168, 76, 0.06);
+  }
+
+  .level-num {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+
+  .level-name {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5mm;
+  }
+
+  .level-desc {
+    font-size: 8pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  /* ─── STACK PYRAMID ─── */
+  .stack-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+    padding: 3mm 4mm;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .stack-icon {
+    width: 7mm;
+    height: 7mm;
+    background: rgba(201, 168, 76, 0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .stack-content .title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .stack-content .desc {
+    font-size: 8pt;
+    color: var(--silver);
+    margin-top: 1px;
+    line-height: 1.4;
+  }
+
+  /* ─── PILLAR TABLE ─── */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .pillar-card {
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 4mm;
+    border-radius: 4px;
+    background: rgba(13, 30, 53, 0.6);
+  }
+
+  .pillar-number {
+    font-size: 20pt;
+    font-weight: 900;
+    color: rgba(201, 168, 76, 0.2);
+    line-height: 1;
+    margin-bottom: 1mm;
+  }
+
+  .pillar-name {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1.5mm;
+  }
+
+  .pillar-desc {
+    font-size: 8pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  /* ─── 70-20-10 BAR ─── */
+  .ratio-bar {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 8mm;
+    margin: 3mm 0;
+  }
+
+  .ratio-bar .seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .ratio-bar .seg-70 { width: 70%; background: var(--gold); }
+  .ratio-bar .seg-20 { width: 20%; background: rgba(201, 168, 76, 0.55); }
+  .ratio-bar .seg-10 { width: 10%; background: rgba(201, 168, 76, 0.25); color: var(--silver); }
+
+  /* ─── WEEK ARC CARDS ─── */
+  .arc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .arc-card {
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    padding: 4mm;
+    border-radius: 4px;
+  }
+
+  .arc-label {
+    font-size: 7pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5mm;
+    font-weight: 700;
+  }
+
+  .arc-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2mm;
+  }
+
+  .arc-posts {
+    list-style: none;
+    padding: 0;
+  }
+
+  .arc-posts li {
+    font-size: 7.5pt;
+    color: var(--silver);
+    padding: 1mm 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding-left: 3mm;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .arc-posts li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 6pt;
+    top: 2mm;
+  }
+
+  /* ─── TEMPLATE CARDS ─── */
+  .template-section {
+    margin: 3mm 0;
+  }
+
+  .template-section-title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .template-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .template-list li {
+    font-size: 8.5pt;
+    color: var(--silver);
+    padding: 2mm 0 2mm 6mm;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .template-list li::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 7.5pt;
+  }
+
+  .template-list li em {
+    color: rgba(201, 168, 76, 0.7);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ─── FULL TEMPLATE BLOCK ─── */
+  .full-template {
+    background: rgba(13, 30, 53, 0.7);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 4px;
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+  }
+
+  .full-template-header {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 2.5mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  .full-template-num {
+    font-size: 7pt;
+    font-weight: 900;
+    color: var(--black);
+    background: var(--gold);
+    width: 6mm;
+    height: 6mm;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .full-template-name {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .full-template-body {
+    font-size: 8pt;
+    color: var(--silver);
+    line-height: 1.55;
+    white-space: pre-line;
+  }
+
+  .full-template-body em {
+    color: rgba(201, 168, 76, 0.8);
+    font-style: normal;
+  }
+
+  /* ─── DATA TABLE ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 7.5pt;
+  }
+
+  .data-table th {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--gold);
+    padding: 2.5mm 3mm;
+    text-align: left;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: 2.5mm 3mm;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+    color: var(--silver);
+    font-size: 7.5pt;
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .data-table tr:nth-child(even) td {
+    background: rgba(13, 30, 53, 0.4);
+  }
+
+  .data-table td strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ─── WORKFLOW SECTION ─── */
+  .workflow-day {
+    display: flex;
+    gap: 4mm;
+    margin: 2.5mm 0;
+    align-items: flex-start;
+  }
+
+  .workflow-day-label {
+    width: 22mm;
+    flex-shrink: 0;
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--gold);
+    padding-top: 1px;
+  }
+
+  .workflow-day-content {
+    flex: 1;
+    font-size: 8.5pt;
+    color: var(--silver);
+    line-height: 1.5;
+  }
+
+  /* ─── IDEA GENERATOR ─── */
+  .idea-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .idea-item {
+    background: rgba(13, 30, 53, 0.7);
+    border: 1px solid rgba(201, 168, 76, 0.1);
+    padding: 3mm 4mm;
+    border-radius: 4px;
+    font-size: 8.5pt;
+    color: var(--silver);
+    line-height: 1.4;
+  }
+
+  .idea-item span {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 3mm 0;
+  }
+
+  .checklist li {
+    font-size: 8.5pt;
+    color: var(--silver);
+    padding: 1.5mm 0 1.5mm 6mm;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .checklist li::before {
+    content: '□';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 9pt;
+    top: 1mm;
+  }
+
+  /* ─── WORKSHEET TABLES ─── */
+  .ws-title {
+    font-size: 13pt;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 2mm;
+    letter-spacing: 1px;
+  }
+
+  .ws-subtitle {
+    font-size: 8.5pt;
+    color: var(--silver);
+    margin-bottom: 5mm;
+  }
+
+  .ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 8.5pt;
+  }
+
+  .ws-table th {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--gold);
+    padding: 3mm 3mm;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .ws-table td {
+    padding: 3.5mm 3mm;
+    border: 1px dashed rgba(201, 168, 76, 0.2);
+    color: var(--gray);
+    font-size: 8pt;
+    vertical-align: top;
+    min-height: 12mm;
+    height: 12mm;
+  }
+
+  .ws-table td.filled {
+    color: var(--silver);
+  }
+
+  .ws-section-divider {
+    margin: 5mm 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .ws-section-divider h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* ─── PAGE FOOTER ─── */
+  .page-footer {
+    margin-top: 6mm;
+    padding-top: 3mm;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-footer-text {
+    font-size: 7pt;
+    color: rgba(143, 168, 190, 0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .page-number {
+    font-size: 8pt;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: var(--black); }
+    .page { page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  /* ─── UTILITY ─── */
+  ul.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 2mm 0;
+  }
+
+  ul.bullet-list li {
+    font-size: 9pt;
+    color: var(--silver);
+    padding: 1.5mm 0 1.5mm 5mm;
+    position: relative;
+    line-height: 1.45;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  ul.bullet-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  ul.bullet-list li strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+  }
+
+  h3.sub-heading {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--white);
+    margin: 4mm 0 2mm;
+    letter-spacing: 0.5px;
+  }
+
+  p.body-text {
+    font-size: 9pt;
+    color: var(--silver);
+    line-height: 1.6;
+    margin: 2mm 0;
+  }
+
+  .phase-badge {
+    display: inline-block;
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--gold);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 3mm;
+  }
+
+  .numbered-list {
+    list-style: none;
+    padding: 0;
+    margin: 2mm 0;
+    counter-reset: numbered-list;
+  }
+
+  .numbered-list li {
+    font-size: 8.5pt;
+    color: var(--silver);
+    padding: 1.5mm 0 1.5mm 7mm;
+    position: relative;
+    line-height: 1.45;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    counter-increment: numbered-list;
+  }
+
+  .numbered-list li::before {
+    content: counter(numbered-list) ".";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 8pt;
+  }
+
+  .numbered-list li strong {
+    color: var(--white);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1 — COVER                                      -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <div>
+        <div class="logo-wordmark">LEOMAX</div>
+        <div class="logo-sub">Business Development Frameworks</div>
+      </div>
+      <div class="cover-ref">
+        REF: LMX-FW-05<br>
+        Content &amp; Authority Series<br>
+        © 2026 مؤسسة ليوماكس
+      </div>
+    </div>
+
+    <div class="cover-center">
+      <div class="cover-category-badge">Content · Authority · Personal Brand</div>
+
+      <div class="cover-title">
+        THOUGHT<br>LEADERSHIP<br><span>CONTENT SYSTEM</span>
+      </div>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-subtitle">
+        The LEOMAX Authority Framework: Build Your Personal Brand as the Go-To Expert in Your Industry — with a proven 12-week content engine designed for Saudi founders
+      </div>
+
+      <div class="cover-price-block">
+        <div class="cover-stat">
+          <div class="cover-stat-value">449</div>
+          <div class="cover-stat-label">Saudi Riyals</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">11</div>
+          <div class="cover-stat-label">Pages + Templates</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">35</div>
+          <div class="cover-stat-label">Templates</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">12</div>
+          <div class="cover-stat-label">Week System</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-footer-text">leomaxglobal.com</div>
+      <div class="cover-footer-text">Confidential — For purchaser use only</div>
+      <div class="cover-footer-text">LMX-FW-05 · V1.0 · 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2 — SAUDI/GCC CONTENT LANDSCAPE 2025-2026     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 2 of 11 · Market Intelligence</div>
+    <div class="section-title">THE SAUDI/GCC CONTENT LANDSCAPE 2025–2026<br><span style="font-size:12pt;color:var(--gold);font-weight:700">مشهد المحتوى الرقمي</span></div>
+    <div class="section-rule"></div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="num">34M+</div>
+        <div class="lbl">Saudi social media users in 2025 — GSMA data</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">95%</div>
+        <div class="lbl">Saudi internet penetration — among the world's highest</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">3.2 Hrs</div>
+        <div class="lbl">Average daily social media time for Saudi users</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">#1</div>
+        <div class="lbl">Saudi Arabia — world's highest Twitter/X usage per capita</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">Platform Performance by Content Type — Saudi Market</h3>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Saudi Monthly Active Users</th>
+          <th>Best Content Format</th>
+          <th>Best Post Time</th>
+          <th>Audience Mindset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>LinkedIn</strong></td>
+          <td>6M+ professionals</td>
+          <td>Long-form text + carousel</td>
+          <td>Tue–Thu 8–10am</td>
+          <td>Business / learning mode</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram</strong></td>
+          <td>14M+</td>
+          <td>Reels + carousel</td>
+          <td>Thu–Sat 7–10pm</td>
+          <td>Inspiration / entertainment</td>
+        </tr>
+        <tr>
+          <td><strong>Twitter/X</strong></td>
+          <td>12M+</td>
+          <td>Short threads + opinion</td>
+          <td>8–11pm daily</td>
+          <td>Opinion / news / debate</td>
+        </tr>
+        <tr>
+          <td><strong>YouTube</strong></td>
+          <td>22M+</td>
+          <td>Long tutorials + vlogs</td>
+          <td>Fri–Sat afternoon</td>
+          <td>Deep learning</td>
+        </tr>
+        <tr>
+          <td><strong>TikTok</strong></td>
+          <td>9M+</td>
+          <td>Short educational + behind-scenes</td>
+          <td>After Isha prayer</td>
+          <td>Discovery</td>
+        </tr>
+        <tr>
+          <td><strong>Snapchat</strong></td>
+          <td>20M+</td>
+          <td>Behind-scenes + Stories</td>
+          <td>Morning + evening</td>
+          <td>Personal / youth</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-heading" style="margin-top:4mm">The Arabic Content Advantage</h3>
+
+    <p class="body-text">Most Saudi professionals face weak Arabic content competition. Here's why going Arabic-first wins:</p>
+
+    <ol class="numbered-list">
+      <li>85% of Saudi professionals say they engage MORE with Arabic content on business topics</li>
+      <li>Arabic business content has 40–60% less competition than equivalent English content</li>
+      <li>Ramadan creates a massive content consumption surge — pre-schedule 30 days of content for Ramadan</li>
+      <li>Arabic educational content builds deeper community trust than English equivalents in KSA</li>
+      <li>Bilingual content (Arabic post + English caption) signals that you serve both local and international markets</li>
+    </ol>
+
+    <div class="callout" style="margin-top:3mm">
+      <div class="callout-title">Pro Tip</div>
+      <p>Write your Arabic content natively — never Google Translate from English. It shows. Your audience reads both languages and will notice the mechanical phrasing immediately. Authentic Arabic signals you belong to this market.</p>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">What Thought Leadership Actually Means in Saudi Arabia</h3>
+
+    <div class="callout">
+      <div class="callout-title">The Core Distinction</div>
+      <p>"In the West, thought leadership is about having original ideas. In Saudi Arabia, it's about being <strong style="color:var(--white)">trusted enough that people want to know what you think.</strong>"</p>
+    </div>
+
+    <p class="body-text" style="margin-top:2mm">The 3 pillars of Saudi thought leadership:</p>
+
+    <div class="level-row" style="margin-top:2mm">
+      <div class="level-card">
+        <div class="level-num">PILLAR 01</div>
+        <div class="level-name">Knowledge</div>
+        <div class="level-desc">You clearly know more than your audience about your topic. Demonstrated through depth, not just volume, of content.</div>
+      </div>
+      <div class="level-card">
+        <div class="level-num">PILLAR 02</div>
+        <div class="level-name">Track Record</div>
+        <div class="level-desc">You've done it, not just studied it. Your experience is visible and referenced. Results are specific and attributed.</div>
+      </div>
+      <div class="level-card active">
+        <div class="level-num">PILLAR 03</div>
+        <div class="level-name">Network</div>
+        <div class="level-desc">The people who know you validate your authority. In Saudi market, who endorses you matters as much as what you say.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:3mm"><strong style="color:var(--white)">What kills thought leadership fast:</strong></p>
+    <ul class="bullet-list">
+      <li>Posting about your awards instead of your insights</li>
+      <li>Content that is 100% promotional — people unfollow promotional-only accounts</li>
+      <li>No Arabic content while targeting a Saudi audience</li>
+      <li>Inconsistency — disappearing for 3 weeks and returning as if nothing happened</li>
+      <li>Copy-pasting generic motivational quotes that have no connection to your expertise</li>
+    </ul>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">2</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3 — THE AUTHORITY FRAMEWORK                    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 3 of 11 · Foundation</div>
+    <div class="section-title">THE AUTHORITY FRAMEWORK</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">Why Thought Leadership Matters for Saudi Founders in 2025</h3>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="num">73%</div>
+        <div class="lbl">of B2B buyers research the founder before engaging with the company</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">8M+</div>
+        <div class="lbl">Saudi LinkedIn users — highest professional engagement in MENA</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">3×</div>
+        <div class="lbl">higher close rate when the client already knows and trusts your content</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">The Core Principle</div>
+      <p>Content authority = inbound leads. Cheaper than ads. Higher trust. The "give to get" principle: share your expertise freely and consistently — attract the clients who pay for implementation and results.</p>
+    </div>
+
+    <h3 class="sub-heading">The 3 Levels of Content Authority</h3>
+
+    <div class="level-row">
+      <div class="level-card">
+        <div class="level-num">LEVEL 01</div>
+        <div class="level-name">Visibility</div>
+        <div class="level-desc">People know you exist in your field. They recognize your name. Your posts appear in their feed. First step — can't skip it.</div>
+      </div>
+      <div class="level-card">
+        <div class="level-num">LEVEL 02</div>
+        <div class="level-name">Credibility</div>
+        <div class="level-desc">People trust your perspective and expertise. They read your posts carefully. They start quoting you in conversations.</div>
+      </div>
+      <div class="level-card active">
+        <div class="level-num">LEVEL 03</div>
+        <div class="level-name">Authority</div>
+        <div class="level-desc">People seek you out before making decisions. Inbound leads arrive. You don't chase clients — clients find you. This is the goal.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">The LEOMAX Content Authority Stack</h3>
+
+    <div class="stack-item">
+      <div class="stack-icon">5</div>
+      <div class="stack-content">
+        <div class="title">Proof Content</div>
+        <div class="desc">Case studies, client testimonials, measurable results — converts curious readers into paying clients.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">4</div>
+      <div class="stack-content">
+        <div class="title">Engagement Content</div>
+        <div class="desc">Short posts, questions, reactions, polls — builds relationships and signals to LinkedIn's algorithm.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">3</div>
+      <div class="stack-content">
+        <div class="title">Bridge Content</div>
+        <div class="desc">Medium-length posts (300–600 words) — connects your expertise to real business scenarios your audience faces daily.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">2</div>
+      <div class="stack-content">
+        <div class="title">Pillar Content</div>
+        <div class="desc">Long-form posts and articles (800–2000 words) — establishes deep expertise and earns the "save" and "share" actions.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">1</div>
+      <div class="stack-content">
+        <div class="title">Foundation: Clear Positioning</div>
+        <div class="desc">Before any content: define precisely who you are, who you serve, what transformation you deliver, and what makes your perspective unique.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">3</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4 — PLATFORM STRATEGY                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 4 of 11 · Platform Playbook</div>
+    <div class="section-title">PLATFORM STRATEGY — LINKEDIN &amp; BEYOND<br><span style="font-size:12pt;color:var(--gold);font-weight:700">استراتيجية المنصات</span></div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">LinkedIn Mastery for Saudi Professionals</h3>
+
+    <p class="body-text">The LinkedIn algorithm in 2025 rewards:</p>
+    <ol class="numbered-list">
+      <li><strong>Native content</strong> — text posts and carousels outperform external links by 5–7×</li>
+      <li><strong>Conversation in comments</strong> — reply to every comment within 60 minutes of posting</li>
+      <li><strong>Consistency</strong> — post 3–5× per week for 90 days before expecting significant growth</li>
+      <li><strong>Personal perspective</strong> — LinkedIn punishes copy-paste content; write in your own voice</li>
+      <li><strong>Carousel posts</strong> (multi-slide image posts) — highest save and share rate on the platform</li>
+    </ol>
+
+    <h3 class="sub-heading" style="margin-top:3mm">The LinkedIn Post Anatomy</h3>
+    <p class="body-text">Breakdown of highest-performing Saudi professional posts:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2mm;margin:3mm 0">
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm">LINE 1</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">The Hook</div>
+        <div style="font-size:7.5pt;color:var(--silver)">One sentence that stops the scroll. Use numbers, a surprising claim, or a question.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm">LINES 2–3</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">The Tension</div>
+        <div style="font-size:7.5pt;color:var(--silver)">Build the problem or context — make them feel the pain or curiosity.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm">LINES 4–8</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">The Insight</div>
+        <div style="font-size:7.5pt;color:var(--silver)">Your perspective, story, or lesson — your authority zone. Be specific.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm">FINAL LINE</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">The Close</div>
+        <div style="font-size:7.5pt;color:var(--silver)">A question, lesson, or subtle CTA — invite response and signal completion.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">7 LinkedIn Hook Templates (the first line — the most important):</strong></p>
+    <ol class="numbered-list">
+      <li>"Most [target audience] make this mistake: [mistake]"</li>
+      <li>"I spent [time] learning [thing]. Here's what actually matters:"</li>
+      <li>"[Number] of my clients thought [wrong belief]. Here's the truth:"</li>
+      <li>"I lost [thing] because I didn't know this."</li>
+      <li>"Unpopular opinion: [contrarian take]"</li>
+      <li>"The difference between [level A] and [level B] is one thing:"</li>
+      <li>"[Arabic hook] — [3 words that create curiosity, then the reveal]"</li>
+    </ol>
+
+    <h3 class="sub-heading" style="margin-top:3mm">Instagram &amp; Twitter/X Strategy for Saudi Business Owners</h3>
+
+    <div class="two-col" style="margin-top:2mm">
+      <div>
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:1mm">Instagram — Best Content Types</div>
+        <ul class="bullet-list">
+          <li><strong>Carousel educational posts:</strong> Highest save rate. Use "Save this for later" CTA.</li>
+          <li><strong>Before/After case studies:</strong> High engagement in KSA — show transformation visually.</li>
+          <li><strong>Behind-the-scenes:</strong> Meetings, site visits, team moments — humanises the brand.</li>
+          <li><strong>Arabic quote graphics:</strong> High share rate, especially on Fridays.</li>
+          <li><strong>Client wins/testimonials:</strong> With client permission — strong social proof format.</li>
+        </ul>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">Caption Formula:</strong> Hook → Context → 3–5 value bullets → CTA → 5–10 relevant hashtags (Arabic + English)</p>
+      </div>
+      <div>
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:1mm">Twitter/X — Thread Template</div>
+        <p class="body-text">Saudi Twitter/X is uniquely opinion-driven. For business thought leadership:</p>
+        <ul class="bullet-list">
+          <li>Post during peak hours: 8–10pm is peak Saudi Twitter activity</li>
+          <li>Join trending conversations with a professional business angle</li>
+          <li>Thread format performs extremely well (10-tweet structure below)</li>
+          <li>Quote tweeting with your commentary builds reach fast</li>
+        </ul>
+        <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.1);border-radius:4px;padding:3mm;margin-top:2mm">
+          <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1.5mm">10-TWEET THREAD STRUCTURE</div>
+          <div style="font-size:7.5pt;color:var(--silver);line-height:1.6">
+            Tweet 1: Controversial/surprising claim — Thread on why 👇<br>
+            Tweets 2–8: One point + specific example per tweet<br>
+            Tweet 9: "The biggest insight:" — your main takeaway<br>
+            Tweet 10: Follow CTA + reply invitation
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5 — YOUR 5 CONTENT PILLARS                     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 5 of 11 · Content Strategy</div>
+    <div class="section-title">YOUR 5 CONTENT PILLARS</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">How to Define Your Content Pillars</div>
+      <p>Pick 5 topics at the intersection of three circles: <strong style="color:var(--white)">your expertise</strong> + <strong style="color:var(--white)">your audience's pain</strong> + <strong style="color:var(--white)">your business offer</strong>. Every post should serve at least two of these three purposes simultaneously.</p>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">Example Pillars: Business Consultant</h3>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-name">Business Strategy</div>
+        <div class="pillar-desc">Your core expertise. Frameworks, decision models, growth strategy. This is where you demonstrate the depth that justifies your fees.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-name">AI &amp; Technology</div>
+        <div class="pillar-desc">The future your clients need to understand but don't yet. Position yourself as the translator between technology and real business results.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-name">Saudi Market Insights</div>
+        <div class="pillar-desc">Local relevance builds local trust. Vision 2030, regulatory shifts, sector-specific dynamics. What the global frameworks miss about Saudi.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <div class="pillar-name">Founder Mindset</div>
+        <div class="pillar-desc">Personal stories, lessons, beliefs. Creates emotional connection. The pillar that turns followers into advocates — and advocates into clients.</div>
+      </div>
+    </div>
+
+    <div class="pillar-card" style="margin-top:3mm">
+      <div class="pillar-number">05</div>
+      <div class="pillar-name">Client Results</div>
+      <div class="pillar-desc">Case studies, testimonials, before/after transformations, specific metrics. Proof that you don't just talk about results — you deliver them.</div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">Content Pillar Planning Framework</h3>
+
+    <p class="body-text">For each of your 5 pillars, work through these four questions before you write a single post:</p>
+
+    <div class="arc-grid" style="margin-top:2mm">
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">TOPIC</div>
+        <div style="font-size:8.5pt;color:var(--silver)">What is the specific subject? Be narrow — "AI in Saudi retail" beats "technology."</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">AUDIENCE PAIN</div>
+        <div style="font-size:8.5pt;color:var(--silver)">What specific frustration does this address? Write it in your client's exact words, not yours.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">10 POST IDEAS</div>
+        <div style="font-size:8.5pt;color:var(--silver)">List 10 post angles before you feel ready. The 10th idea is always better than the 1st. Don't filter yet — generate.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">LINKED OFFER</div>
+        <div style="font-size:8.5pt;color:var(--silver)">Which of your services does this pillar ultimately support? Every pillar should have a clear commercial purpose.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">The 70-20-10 Content Rule</h3>
+
+    <div class="ratio-bar">
+      <div class="seg seg-70">70% — Educational</div>
+      <div class="seg seg-20">20% — Personal</div>
+      <div class="seg seg-10">10%</div>
+    </div>
+
+    <div class="stat-row" style="margin-top:2mm">
+      <div class="stat-box" style="text-align:left;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">70% EDUCATIONAL</div>
+        <div style="font-size:8pt;color:var(--silver)">Teach something valuable. Frameworks, how-tos, analysis, insights. This builds credibility and earns saves and shares — the highest-value LinkedIn signals.</div>
+      </div>
+      <div class="stat-box" style="text-align:left;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">20% PERSONAL</div>
+        <div style="font-size:8pt;color:var(--silver)">Stories, opinions, behind-the-scenes, honest reflections. Builds trust and emotional connection. People buy from humans, not content machines.</div>
+      </div>
+      <div class="stat-box" style="text-align:left;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">10% PROMOTIONAL</div>
+        <div style="font-size:8pt;color:var(--silver)">Services, offers, case studies, direct CTAs. Keep this rare — the moment your audience feels sold to constantly, they stop engaging.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">5</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6 — THE 12-WEEK CONTENT CALENDAR              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 6 of 11 · Content Calendar</div>
+    <div class="section-title">THE 12-WEEK CONTENT CALENDAR</div>
+    <div class="section-rule"></div>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">Publishing Rhythm: 3× Per Week on LinkedIn</div>
+      <p>Post Monday, Wednesday, Friday. Optimal times: <strong style="color:var(--white)">8–9 AM</strong> (morning commute) or <strong style="color:var(--white)">7–8 PM</strong> (evening engagement peak) Saudi time. Consistency beats perfection — showing up reliably matters more than any single viral post.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:4mm">
+      <div style="border:1px solid rgba(201,168,76,0.3);padding:3mm 4mm;border-radius:4px;background:rgba(201,168,76,0.05)">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm">WEEKS 1–4</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">Foundation Month</div>
+        <div style="font-size:8pt;color:var(--silver)">Establish your positioning and expertise pillars. Let your audience know who you are and what you stand for.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.2);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm">WEEKS 5–8</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">Build Month</div>
+        <div style="font-size:8pt;color:var(--silver)">Go deeper on each pillar. Share case studies. Grow engagement. Start receiving inbound messages.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.2);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5mm">WEEKS 9–12</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">Authority Month</div>
+        <div style="font-size:8pt;color:var(--silver)">Thought leadership pieces, industry insights, lead conversion. You're now a recognized voice — act like one.</div>
+      </div>
+    </div>
+
+    <div class="arc-grid">
+      <div class="arc-card">
+        <div class="arc-label">Week 1</div>
+        <div class="arc-title">Introduction Arc</div>
+        <ul class="arc-posts">
+          <li><strong style="color:var(--white)">Mon:</strong> Who I am + what I stand for (Personal)</li>
+          <li><strong style="color:var(--white)">Wed:</strong> The biggest mistake [your audience] makes (Educational)</li>
+          <li><strong style="color:var(--white)">Fri:</strong> A result I'm proud of — one client story (Proof)</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">Week 2</div>
+        <div class="arc-title">Problem-Awareness Arc</div>
+        <ul class="arc-posts">
+          <li>The problem nobody talks about in your industry</li>
+          <li>5 signs your business needs [your service]</li>
+          <li>How I think about [key concept] differently than most</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">Week 3</div>
+        <div class="arc-title">Expertise Arc</div>
+        <ul class="arc-posts">
+          <li>Step-by-step: How to [solve common problem]</li>
+          <li>The framework I use with every client</li>
+          <li>My honest take on [current industry trend]</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">Week 4</div>
+        <div class="arc-title">Trust-Building Arc</div>
+        <ul class="arc-posts">
+          <li>A mistake I made early in my career (vulnerability + lesson)</li>
+          <li>What [N] clients taught me about [topic]</li>
+          <li>Weekend reflection — what I'm reading/thinking about</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Weeks 5–12: Go Deeper</h3>
+    <p class="body-text">Repeat the four-week structure with variation — each cycle you go deeper on each pillar, introduce more specific case studies, and engage more actively with comments. By week 8, you should be receiving inbound enquiries. By week 12, you have 36 published posts, a documented audience, and proof of what resonates.</p>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Monthly Milestone Posts</h3>
+
+    <ul class="bullet-list">
+      <li><strong>End of Month 1:</strong> Summary post — what you've learned from writing publicly. Transparency builds trust.</li>
+      <li><strong>End of Month 2:</strong> A bold opinion piece — "I disagree with the conventional wisdom on [topic]." Bold stances attract engaged followers.</li>
+      <li><strong>End of Month 3:</strong> Comprehensive guide — your best educational content yet. Pin it to your profile. This becomes your flagship authority piece.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:4mm">
+      <div class="callout-title">The Critical Truth About Consistency</div>
+      <p>Most consultants give up between weeks 3 and 6 — when they're posting consistently but engagement is still low. <strong style="color:var(--white)">This is the exact moment when you must not stop.</strong> LinkedIn's algorithm rewards sustained consistency. Your audience compounds. The accounts that "blow up overnight" are almost always accounts that quietly showed up for 6–12 months first.</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">6</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 7 — 35 LINKEDIN POST TEMPLATES (Part 1)       -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 7 of 11 · Post Templates — Full Text</div>
+    <div class="section-title">35 LINKEDIN POST TEMPLATES<br><span style="font-size:12pt;color:var(--gold);font-weight:700">٣٥ قالب للنشر على لينكدإن</span></div>
+    <div class="section-rule"></div>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">How to Use These Templates</div>
+      <p>Replace <em style="color:rgba(201,168,76,0.8)">[bracketed text]</em> with your specific content. Never post verbatim — make it yours. Write in your own voice: how you speak in a client meeting is how you should write on LinkedIn. The template is the structure; your experience is the content.</p>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin-bottom:3mm">GROUP A — EDUCATIONAL POSTS (Templates 1–5)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">1</div>
+        <div class="full-template-name">The List Post</div>
+      </div>
+      <div class="full-template-body">"<em>[Number]</em> things I wish someone told me about <em>[topic]</em> when I was starting:
+1. <em>[Lesson]</em>
+2. <em>[Lesson]</em>
+3. <em>[Lesson]</em>
+<em>[3–5 more lessons]</em>
+The most important? <em>[Final lesson]</em>.
+Which one resonated with you?"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">2</div>
+        <div class="full-template-name">The Myth Buster</div>
+      </div>
+      <div class="full-template-body">"<em>[Common belief about your industry]</em> — this is completely wrong.
+Here's the truth:
+<em>[Truth 1]</em>
+<em>[Truth 2]</em>
+<em>[Truth 3]</em>
+I learned this after <em>[personal experience / number of clients]</em>.
+What misconception in <em>[your field]</em> frustrates you most?"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">3</div>
+        <div class="full-template-name">The Framework Post</div>
+      </div>
+      <div class="full-template-body">"I use this simple framework with every <em>[client / project / situation]</em>:
+<em>[Framework Name]</em> — <em>[3–5 steps]</em>:
+Step 1: <em>[Action]</em> — <em>[why it matters]</em>
+Step 2: <em>[Action]</em> — <em>[why it matters]</em>
+Step 3: <em>[Action]</em> — <em>[why it matters]</em>
+<em>[2–3 more steps]</em>
+Most <em>[audience]</em> skip step <em>[X]</em>. That's where they lose.
+Save this if you found it useful."</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">4</div>
+        <div class="full-template-name">The Data Post</div>
+      </div>
+      <div class="full-template-body">"<em>[Surprising statistic]</em> — this changed how I think about <em>[topic]</em>.
+Here's what the data says and what it means for <em>[audience]</em>:
+<em>[Data point 1]</em>: This means <em>[implication]</em>
+<em>[Data point 2]</em>: This means <em>[implication]</em>
+<em>[Data point 3]</em>: This means <em>[implication]</em>
+The bottom line: <em>[Your conclusion]</em>.
+What does this change for you?"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">5</div>
+        <div class="full-template-name">The How-To Post</div>
+      </div>
+      <div class="full-template-body">"How to <em>[achieve specific outcome]</em> in <em>[timeframe]</em>:
+Most <em>[audience]</em> <em>[do it the wrong way]</em>. Here's the better approach:
+1. <em>[Step]</em> — <em>[specific action]</em>
+2. <em>[Step]</em> — <em>[specific action]</em>
+3. <em>[Step]</em> — <em>[specific action]</em>
+<em>[2–3 more steps]</em>
+Result: <em>[What they'll achieve]</em>.
+DM me <em>[keyword]</em> if you want the full guide."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">GROUP B — STORY POSTS (Templates 6–8)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">6</div>
+        <div class="full-template-name">The Failure Story</div>
+      </div>
+      <div class="full-template-body">"I made a <em>[SAR X / years / clients]</em> mistake last year.
+<em>[What happened — 2–3 sentences describing the situation]</em>
+What I should have done: <em>[lesson]</em>
+The reason I'm sharing this: <em>[why it matters to them]</em>
+<em>[Closing question or lesson]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">7</div>
+        <div class="full-template-name">The Client Win Story</div>
+      </div>
+      <div class="full-template-body">"Six months ago, <em>[client type without naming]</em> came to us with <em>[specific problem]</em>.
+<em>[1–2 sentences: what the situation looked like]</em>
+What we did: <em>[brief description of solution — no jargon]</em>
+The result: <em>[Specific, quantified outcome — revenue, time, percentage]</em> in <em>[timeframe]</em>.
+The lesson: <em>[What this teaches about your space]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">8</div>
+        <div class="full-template-name">The Behind-the-Scenes</div>
+      </div>
+      <div class="full-template-body">"What a typical <em>[day / week / project]</em> looks like for us:
+<em>[Time/Stage]</em>: <em>[What happens — specific and honest]</em>
+<em>[Time/Stage]</em>: <em>[What happens]</em>
+<em>[Time/Stage]</em>: <em>[What happens]</em>
+The part no one shows you: <em>[Something real and unexpected]</em>
+What do you think? Does this match how you imagined <em>[your type of work]</em>?"</div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">7</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 8 — 35 LINKEDIN POST TEMPLATES (Part 2)       -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Post Templates Continued</div>
+    </div>
+
+    <div class="section-eyebrow">Page 8 of 11 · Post Templates — Arabic &amp; Engagement</div>
+    <div class="section-title" style="font-size:14pt">35 POST TEMPLATES — CONTINUED</div>
+    <div class="section-rule"></div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin-bottom:3mm">GROUP C — ARABIC-FIRST POSTS (Templates 9–11)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">9</div>
+        <div class="full-template-name">Arabic Educational Post — منشور تعليمي بالعربية</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"كل يوم أسمع نفس الخطأ:
+<em>[خطأ شائع بصيغة مباشرة]</em>
+الحقيقة؟
+<em>[النقطة الأولى]</em>
+<em>[النقطة الثانية]</em>
+<em>[النقطة الثالثة]</em>
+الدرس: <em>[جملة واحدة قوية]</em>
+شاركني: ما أكثر خطأ تسمعه في <em>[مجالك]</em>؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">10</div>
+        <div class="full-template-name">Arabic Story Post — قصة بالعربية</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"قبل <em>[مدة زمنية]</em>، كنت <em>[الوضع السابق]</em>.
+<em>[جملتان: ما الذي تغيّر وكيف؟]</em>
+الدرس الذي تعلمته: <em>[ما تريد مشاركته]</em>
+لو كنت في نفس الموقف اليوم، سأفعل <em>[ما تعلمته]</em>.
+ما القرار الذي غيّر مسار مشروعك؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">11</div>
+        <div class="full-template-name">Bilingual Power Post — منشور ثنائي اللغة</div>
+      </div>
+      <div class="full-template-body">"<em>[Arabic hook — one punchy line / سطر عربي قوي]</em>
+<em>[English translation or complementary insight]</em>
+<em>[3 Arabic bullet points / نقاط عربية]</em>
+<em>[English summary sentence]</em>
+إيش رأيكم؟ / What's your take?"</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">GROUP D — ENGAGEMENT POSTS (Templates 12–13)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">12</div>
+        <div class="full-template-name">The Opinion Poll</div>
+      </div>
+      <div class="full-template-body">"Hot take: <em>[Your contrarian or strong opinion about your industry]</em>.
+I've seen <em>[evidence / experience]</em> that proves this.
+The argument against it: <em>[Steel-man the counterargument]</em>
+My response: <em>[Your stronger point]</em>
+Do you agree or disagree? Tell me in the comments."</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">13</div>
+        <div class="full-template-name">The Question Post</div>
+      </div>
+      <div class="full-template-body">"Quick question for <em>[target audience]</em>:
+<em>[Direct, specific question relevant to their world]</em>
+I'm asking because <em>[genuine reason — research, curiosity, client pattern]</em>.
+Drop your answer below — I'll share the results in a follow-up post."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">GROUP E — AUTHORITY POSTS (Templates 14–15)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">14</div>
+        <div class="full-template-name">The Case Study Post</div>
+      </div>
+      <div class="full-template-body">"Client challenge: <em>[Specific problem in 1 sentence]</em>
+What they'd tried before: <em>[1–2 failed attempts]</em>
+What we did differently: <em>[Your unique approach]</em>
+The result: <em>[Quantified outcome]</em> in <em>[timeframe]</em>
+The key insight: <em>[What made the difference]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">15</div>
+        <div class="full-template-name">The Thought Leadership Opinion</div>
+      </div>
+      <div class="full-template-body">"<em>[Statement that industry professionals debate]</em>
+My position: <em>[Your clear stance]</em>
+Here's why I believe this:
+1. <em>[Specific reason with evidence]</em>
+2. <em>[Specific reason with evidence]</em>
+3. <em>[Specific reason with evidence]</em>
+The implication for <em>[audience]</em>: <em>[What they should do differently]</em>
+Disagree? I'd genuinely love to hear your case."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">GROUP F — EXTENDED LIBRARY (Templates 16–35 — Reference Format)</div>
+
+    <div class="two-col" style="gap:4mm;margin-top:2mm">
+      <ul class="template-list">
+        <li data-num="16"><em>Listicle Post</em> — "[N] resources / tools / books every [audience] should know about — with why each matters."</li>
+        <li data-num="17"><em>Resource Share</em> — "The [tool/framework/book] that changed how I work: [what it is + why it matters to your audience]"</li>
+        <li data-num="18"><em>Milestone Post</em> — "Today marks [X] years / [N]th client / [milestone]. What I know now that I wish I knew then:"</li>
+        <li data-num="19"><em>Prediction Post</em> — "[Your field] in 2026: 3 things I believe will change, and what to do about each right now."</li>
+        <li data-num="20"><em>Tool Review Post</em> — "I tested [tool] for [time]. Honest review for [audience]: what works, what doesn't, verdict."</li>
+        <li data-num="21"><em>Event Takeaway Post</em> — "I just attended [event]. The one insight nobody else is talking about: [insight + implication]"</li>
+        <li data-num="22"><em>Book Insight Post</em> — "One idea from [book] that changed my approach to [topic] — and how to apply it in [context]."</li>
+        <li data-num="23"><em>Process Post</em> — "How we actually [deliver service / run project / onboard clients] — step by step, no fluff."</li>
+        <li data-num="24"><em>Partnership Announcement</em> — "[Partner] and I are working together on [initiative]. Here's why this matters for [audience]."</li>
+        <li data-num="25"><em>Hiring Post (Authority Builder)</em> — "We're looking for [role]. More importantly, here's what we believe about [topic] and why it shapes who we hire."</li>
+      </ul>
+      <ul class="template-list">
+        <li data-num="26"><em>Client Testimonial Share</em> — "[Quote from client] — this message arrived last week and I want to share it because [lesson it illustrates]."</li>
+        <li data-num="27"><em>Week in Review</em> — "This week: [1 win + 1 challenge + 1 lesson]. Sharing because [audience] asked me to be more transparent."</li>
+        <li data-num="28"><em>Monthly Reflection</em> — "[Month] is done. What worked, what didn't, and what I'm changing going into [next month]."</li>
+        <li data-num="29"><em>Collaboration Ask</em> — "I'm researching [topic] for [purpose]. If you have experience with [specific thing], I'd love 10 minutes."</li>
+        <li data-num="30"><em>Community Building Post</em> — "If you work in [field] in Saudi Arabia / GCC, drop a comment — let's connect and build a smarter network."</li>
+        <li data-num="31"><em>Challenge Post</em> — "I'm doing [challenge] for [timeframe]. Here's why, what I expect to learn, and I'll report back on Day [X]."</li>
+        <li data-num="32"><em>Ramadan Special Format</em> — "رمضان كريم — In this month of reflection, here's the one business lesson that's shaped my approach to [topic]."</li>
+        <li data-num="33"><em>National Day Special</em> — "On Saudi National Day, a reflection on [aspect of Saudi business/opportunity/transformation] I'm proud to witness."</li>
+        <li data-num="34"><em>Vision 2030 Angle Post</em> — "Vision 2030 is changing [specific sector/aspect]. Here's what it means practically for [audience] right now."</li>
+        <li data-num="35"><em>Direct Offer Post (use sparingly — max 1× per month)</em> — "If you've been following my posts on [topic] and want to go deeper, I'm opening [N] spots for [service]. Here's who it's for:"</li>
+      </ul>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">8</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 9 — CONTENT CREATION WORKFLOW                  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 9 of 11 · Workflow &amp; Systems</div>
+    <div class="section-title">CONTENT CREATION WORKFLOW</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">The Weekly Content Ritual (2 Hours / Week)</h3>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">The Core Principle</div>
+      <p>2 focused hours per week is enough to build a significant LinkedIn presence. The problem is never time — it's the absence of a system. This ritual creates the system.</p>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">SUNDAY<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">30 min · Plan</span></div>
+      <div class="workflow-day-content">
+        Choose your 3 posts for the week from your content calendar. Write a working headline for each. Note any current events, news, or client conversations worth referencing. Open a blank doc and drop rough bullets for each post — not finished writing, just seeds. Done. Close the doc.
+      </div>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">MON · WED · FRI<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">20 min each · Write + Post</span></div>
+      <div class="workflow-day-content">
+        Pick up the rough bullets from Sunday. Write the post in full. Use one template from Pages 7–8 as a structure if needed. <strong style="color:var(--white)">Write in your voice, not AI-polished — authentic beats perfect every time.</strong> Add 3–5 relevant hashtags mixing Arabic and English. Post at the optimal time: 8–9 AM or 7–8 PM Saudi time. Do not obsessively check likes for 2 hours after posting.
+      </div>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">DAILY<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">10 min · Engage</span></div>
+      <div class="workflow-day-content">
+        Reply to every comment on your posts — even a simple acknowledgment signals to the algorithm that your content drives conversations. Comment thoughtfully on 5 posts from people in your target audience or industry. Connect with 3 new people who fit your ideal client profile. This 10-minute daily investment compounds significantly over 12 weeks.
+      </div>
+    </div>
+
+    <div class="section-rule" style="margin-top:5mm"></div>
+
+    <h3 class="sub-heading">The Content Idea Generator</h3>
+    <p class="body-text" style="margin-bottom:3mm">Never run out of ideas. Apply these six questions to any topic from your content pillars:</p>
+
+    <div class="idea-grid">
+      <div class="idea-item">
+        <span>Question 1 —</span> What is the most common mistake my clients make in this area? The answer is always a post.
+      </div>
+      <div class="idea-item">
+        <span>Question 2 —</span> What is counterintuitive about this topic? What do most people get backwards? Contrarian takes perform extremely well.
+      </div>
+      <div class="idea-item">
+        <span>Question 3 —</span> What would I tell my younger self — or a client starting from zero — about this? Experience creates insight.
+      </div>
+      <div class="idea-item">
+        <span>Question 4 —</span> What question do clients always ask me about this? If they ask it repeatedly, your audience is asking it too.
+      </div>
+      <div class="idea-item">
+        <span>Question 5 —</span> What result am I most proud of in this area? Behind every result is a story. Stories are the best content.
+      </div>
+      <div class="idea-item">
+        <span>Question 6 —</span> What has changed in this field in the last 12 months? Recency is relevance. Be the person who explains what changed.
+      </div>
+    </div>
+
+    <div class="section-rule" style="margin-top:5mm"></div>
+
+    <h3 class="sub-heading">Brand Voice: What Makes Your Content "Yours"</h3>
+
+    <div class="two-col" style="margin-top:2mm">
+      <div>
+        <p class="body-text"><strong style="color:var(--white)">Write as if to one person.</strong> Not "business owners" — imagine your single best client. Write to them. Everything else is just picking the right words.</p>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">Short paragraphs win on mobile.</strong> Most LinkedIn reading happens on phones. 1–2 sentences per paragraph. White space is not wasted space.</p>
+      </div>
+      <div>
+        <p class="body-text"><strong style="color:var(--white)">Your unique angle comes from your story.</strong> You have lived and worked experiences that no one else has. Specific details — real numbers, real client situations, real places — make generic advice unforgettable.</p>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">End with a hook or a question.</strong> Every post should close with either a clear takeaway, a question for your audience, or a call to the next action.</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">9</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 10 — CONTENT CALENDAR + PERFORMANCE SYSTEM    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
+    </div>
+
+    <div class="section-eyebrow">Page 10 of 11 · Performance Tracking</div>
+    <div class="section-title">12-WEEK CALENDAR &amp; PERFORMANCE SYSTEM<br><span style="font-size:11pt;color:var(--gold);font-weight:700">التقويم وقياس الأداء</span></div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">Weekly Content Planner — Reference Guide</h3>
+
+    <table class="data-table" style="font-size:7pt">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Phase</th>
+          <th>Monday Post Type</th>
+          <th>Wednesday Post Type</th>
+          <th>Friday Post Type</th>
+          <th>Template #</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Foundation</td>
+          <td>Personal intro story</td>
+          <td>Educational list post</td>
+          <td>Client win (proof)</td>
+          <td>11, 1, 7</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>Foundation</td>
+          <td>Myth buster</td>
+          <td>Framework post</td>
+          <td>Question / engagement</td>
+          <td>2, 3, 13</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Foundation</td>
+          <td>How-to (Educational)</td>
+          <td>Arabic educational</td>
+          <td>Industry opinion</td>
+          <td>5, 9, 15</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Foundation</td>
+          <td>Failure story</td>
+          <td>Data post</td>
+          <td>Week in review</td>
+          <td>6, 4, 27</td>
+        </tr>
+        <tr>
+          <td><strong>5–6</strong></td>
+          <td>Build</td>
+          <td>Case study</td>
+          <td>Behind-the-scenes</td>
+          <td>Bilingual post</td>
+          <td>14, 8, 11</td>
+        </tr>
+        <tr>
+          <td><strong>7–8</strong></td>
+          <td>Build</td>
+          <td>Prediction post</td>
+          <td>Arabic story</td>
+          <td>Opinion poll</td>
+          <td>19, 10, 12</td>
+        </tr>
+        <tr>
+          <td><strong>9–10</strong></td>
+          <td>Authority</td>
+          <td>Thought leadership opinion</td>
+          <td>Resource share</td>
+          <td>Client testimonial</td>
+          <td>15, 17, 26</td>
+        </tr>
+        <tr>
+          <td><strong>11</strong></td>
+          <td>Authority</td>
+          <td>Vision 2030 angle post</td>
+          <td>Community building</td>
+          <td>Monthly reflection</td>
+          <td>34, 30, 28</td>
+        </tr>
+        <tr>
+          <td><strong>12</strong></td>
+          <td>Authority</td>
+          <td>Comprehensive guide (pin)</td>
+          <td>Milestone post</td>
+          <td>Direct offer (1× only)</td>
+          <td>3+5, 18, 35</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-heading" style="margin-top:4mm">Content Performance Tracking Table — جدول قياس الأداء</h3>
+
+    <table class="ws-table" style="font-size:7.5pt">
+      <thead>
+        <tr>
+          <th style="width:5%">Wk</th>
+          <th style="width:18%">Post Topic</th>
+          <th style="width:10%">Platform</th>
+          <th style="width:10%">Impressions</th>
+          <th style="width:10%">Engagement %</th>
+          <th style="width:8%">Comments</th>
+          <th style="width:8%">Saves</th>
+          <th style="width:10%">Leads</th>
+          <th style="width:21%">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-heading" style="margin-top:4mm">The Monthly Content Review — 30 Minutes at Month End</h3>
+
+    <div class="two-col" style="gap:4mm">
+      <ul class="checklist">
+        <li>Which post got the most impressions? Why?</li>
+        <li>Which post got the most engagement (comments + saves)? Why?</li>
+        <li>Did any post generate a DM or inquiry? What was the topic?</li>
+        <li>What content pillar performed best this month?</li>
+      </ul>
+      <ul class="checklist">
+        <li>What should I do MORE of next month?</li>
+        <li>What should I stop posting?</li>
+        <li>Am I on track with the 12-week calendar?</li>
+        <li>Is my Arabic content getting engagement from Saudi audience?</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:3mm">Content-to-Lead Conversion Tracking</h3>
+
+    <ol class="numbered-list">
+      <li>Add UTM parameters to any link in bio or content to track traffic source</li>
+      <li>Ask every new lead: "How did you find out about us?" — record in your CRM or spreadsheet</li>
+      <li>Tag posts in your CRM when a lead mentions a specific piece of content by name</li>
+      <li>Calculate: <strong>Content-generated leads ÷ total new leads = Content Conversion Rate</strong></li>
+    </ol>
+
+    <div class="callout" style="margin-top:3mm">
+      <div class="callout-title">Your Content Conversion Rate Target</div>
+      <p>Start at 5% (content contributes to 5% of new business). Aim for <strong style="color:var(--white)">20% within 12 months</strong> of consistent posting. World-class content-led businesses attribute 40–60% of their pipeline to content. That starts with tracking from Day 1.</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">10</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 11 — WORKSHEETS                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page worksheet-page">
+  <div class="watermark">LEOMAX</div>
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="page-header-logo">LEOMAX</div>
+      <div class="page-header-ref">LMX-FW-05 · Worksheets</div>
+    </div>
+
+    <div class="section-eyebrow">Page 11 of 11 · Action Worksheets</div>
+    <div class="section-title">WORKSHEETS</div>
+    <div class="section-rule"></div>
+
+    <div class="ws-section-divider">
+      <div class="ws-title">WS-1: My 5 Content Pillars</div>
+      <div class="ws-subtitle">Define the 5 topics you will own. Be specific — narrow topics build stronger authority than broad ones.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th style="width:5%">#</th>
+          <th style="width:20%">Pillar Topic</th>
+          <th style="width:30%">Audience Pain It Addresses</th>
+          <th style="width:30%">5 Post Ideas</th>
+          <th style="width:15%">Related Service Offer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-2: My Brand Voice Guide</div>
+      <div class="ws-subtitle">Define your content identity before you write your first post.</div>
+    </div>
+
+    <div class="two-col" style="gap:4mm">
+      <table class="ws-table">
+        <thead>
+          <tr><th>3 Words I AM</th><th>3 Words I'm NOT</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="height:9mm"></td><td></td></tr>
+          <tr><td style="height:9mm"></td><td></td></tr>
+          <tr><td style="height:9mm"></td><td></td></tr>
+        </tbody>
+      </table>
+      <div>
+        <table class="ws-table">
+          <thead><tr><th>Example of a GOOD post for my brand</th></tr></thead>
+          <tbody><tr><td style="height:16mm"></td></tr></tbody>
+        </table>
+        <table class="ws-table" style="margin-top:2mm">
+          <thead><tr><th>Example of a BAD post for my brand (what to avoid)</th></tr></thead>
+          <tbody><tr><td style="height:16mm"></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-3: Monthly Content Review</div>
+      <div class="ws-subtitle">Complete at the end of each month. 12 of these create a clear picture of what works for your audience.</div>
+    </div>
+
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Posts Published</th>
+          <th>Best-Performing Post</th>
+          <th>Worst-Performing Post</th>
+          <th>Followers Gained</th>
+          <th>Leads Generated</th>
+          <th>Key Lesson</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Month 1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Month 2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Month 3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-4: My Content Pillar Definition Sheet</div>
+      <div class="ws-subtitle">Go deeper on each pillar before you start posting — clarity here saves weeks of unfocused content.</div>
+    </div>
+
+    <table class="ws-table" style="font-size:7.5pt">
+      <thead>
+        <tr>
+          <th style="width:8%">Pillar #</th>
+          <th style="width:22%">Pillar Name</th>
+          <th style="width:35%">Core Topics (list 3–5 specific sub-topics)</th>
+          <th style="width:35%">Target Audience Reaction (what should they feel/think/do?)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td></td><td></td></tr>
+        <tr><td>2</td><td></td><td></td><td></td></tr>
+        <tr><td>3</td><td></td><td></td><td></td></tr>
+        <tr><td>4</td><td></td><td></td><td></td></tr>
+        <tr><td>5</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="ws-section-divider" style="margin-top:4mm">
+      <div class="ws-title">WS-5: 12-Month Content Goal Setting</div>
+      <div class="ws-subtitle">Set measurable goals before you begin. Review quarterly and adjust based on what the data shows.</div>
+    </div>
+
+    <table class="ws-table" style="font-size:7.5pt">
+      <thead>
+        <tr>
+          <th style="width:18%">Period</th>
+          <th style="width:27%">Impressions Target</th>
+          <th style="width:27%">Followers Target</th>
+          <th style="width:28%">Leads from Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Q1 (end of March)</td><td></td><td></td><td></td></tr>
+        <tr><td>Q2 (end of June)</td><td></td><td></td><td></td></tr>
+        <tr><td>Q3 (end of September)</td><td></td><td></td><td></td></tr>
+        <tr><td>Q4 (end of December)</td><td></td><td></td><td></td></tr>
+        <tr><td><strong style="color:var(--gold)">Annual Total</strong></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-footer">
+      <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
+      <div class="page-number">11</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
