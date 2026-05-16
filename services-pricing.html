@@ -6,7 +6,6 @@
 <title>Work With LEOMAX — Services & Pricing</title>
 <meta name="description" content="Choose the right LEOMAX engagement — from a single advisory session to a full AI-powered business transformation."/>
 <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -174,6 +173,32 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
 .apply-step-dot span{width:22px;height:22px;border-radius:50%;border:1px solid rgba(184,184,184,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
 .apply-step-dot.active span{background:var(--white);color:var(--black);border-color:var(--white)}
 .apply-step-line{flex:1;height:1px;background:rgba(184,184,184,.2);margin:0 10px;align-self:center}
+
+/* ── BANK TRANSFER CARD ── */
+.bank-card{background:rgba(0,0,0,.25);border:1px solid rgba(184,184,184,.12);padding:24px;margin-bottom:16px}
+.bank-card-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px;display:block}
+.ref-box{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.ref-number{font-size:16px;font-weight:800;letter-spacing:3px;color:var(--gold);font-family:monospace}
+.copy-btn{background:none;border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:10px;letter-spacing:1px;padding:5px 12px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.copy-btn:hover{background:rgba(201,168,76,.15)}
+.copy-btn.copied{color:#4ade80;border-color:#4ade80}
+.bank-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(184,184,184,.07)}
+.bank-row:last-child{border:none}
+.bank-row-label{font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+.bank-row-val{font-size:13px;font-weight:600;color:var(--white);text-align:right;max-width:65%}
+.iban-val{font-family:monospace;letter-spacing:2px;font-size:12px}
+.amount-total{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-1px}
+.amount-vat{font-size:11px;color:var(--gray);margin-top:3px}
+.transfer-note{background:rgba(250,200,0,.06);border-left:3px solid rgba(250,200,0,.4);padding:12px 16px;margin:16px 0;font-size:12px;color:rgba(250,200,0,.8);line-height:1.6}
+.wa-pay-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#25D366;color:#fff;border:none;padding:16px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:opacity .2s;text-decoration:none}
+.wa-pay-btn:hover{opacity:.88}
+.wa-pay-btn svg{flex-shrink:0}
+.success-screen{text-align:center;padding:20px 0}
+.success-icon{font-size:48px;margin-bottom:16px}
+.success-title{font-size:18px;font-weight:800;letter-spacing:2px;margin-bottom:8px;color:var(--white)}
+.success-sub{font-size:13px;color:var(--gray);line-height:1.7;max-width:360px;margin:0 auto 24px}
+.success-ref{font-size:11px;color:var(--gold);letter-spacing:2px;font-family:monospace;margin-bottom:24px}
+
 .form-field{margin-bottom:16px}
 .form-field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:7px}
 .form-field input,.form-field select,.form-field textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,184,184,.18);color:var(--white);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;border-radius:0}
@@ -713,7 +738,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
       <div class="apply-steps">
         <div class="apply-step-dot active" id="step-dot-1"><span>1</span> Your Info</div>
         <div class="apply-step-line"></div>
-        <div class="apply-step-dot" id="step-dot-2"><span>2</span> Pick a Time</div>
+        <div class="apply-step-dot" id="step-dot-2"><span>2</span> Payment</div>
       </div>
 
       <!-- Step 1: Form -->
@@ -734,24 +759,79 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
         </div>
         <!-- Service-specific fields injected here -->
         <div id="apply-specific"></div>
-        <button class="apply-btn" id="apply-next-btn" onclick="applyNext()">Continue to Scheduling →</button>
+        <button class="apply-btn" id="apply-next-btn" onclick="applyNext()">Proceed to Payment →</button>
       </div>
 
-      <!-- Step 2: Calendly -->
+      <!-- Step 2: Bank Transfer -->
       <div id="apply-step2" style="display:none">
-        <div class="calendly-wrap">
-          <div class="calendly-inline-widget" id="apply-calendly-widget" style="min-width:280px;height:520px"></div>
+
+        <!-- Amount box -->
+        <div class="bank-card">
+          <span class="bank-card-label">Amount Due</span>
+          <div class="amount-total" id="pay-total">—</div>
+          <div class="amount-vat" id="pay-vat-note">Includes 15% VAT</div>
         </div>
+
+        <!-- Reference number -->
+        <div class="bank-card">
+          <span class="bank-card-label">Your Payment Reference — Include in transfer</span>
+          <div class="ref-box">
+            <span class="ref-number" id="pay-ref">LMX-000-000000</span>
+            <button class="copy-btn" id="copy-ref-btn" onclick="copyRef()">Copy</button>
+          </div>
+          <div class="transfer-note">
+            ⚠️ يجب كتابة رقم المرجع في خانة "ملاحظات التحويل" حتى نتمكن من تأكيد طلبك
+          </div>
+        </div>
+
+        <!-- Bank Details -->
+        <div class="bank-card">
+          <span class="bank-card-label">Bank Account Details</span>
+          <div class="bank-row">
+            <span class="bank-row-label">Bank</span>
+            <span class="bank-row-val" id="bank-name-display">البنك الأهلي السعودي</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-row-label">Beneficiary</span>
+            <span class="bank-row-val" id="bank-beneficiary-display">مؤسسة ليوماكس لتطوير الأعمال</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-row-label">IBAN</span>
+            <span class="bank-row-val">
+              <span class="iban-val" id="bank-iban-display">SA00 0000 0000 0000 0000 00</span>
+            </span>
+          </div>
+          <div style="margin-top:14px">
+            <button class="copy-btn" style="width:100%;justify-content:center;display:block;text-align:center" onclick="copyIban()">Copy IBAN</button>
+          </div>
+        </div>
+
+        <!-- WhatsApp button -->
+        <a class="wa-pay-btn" id="wa-receipt-btn" href="#" onclick="sendWhatsAppReceipt(); return false;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Confirm Transfer via WhatsApp
+        </a>
+
         <button class="apply-back" onclick="applyBack()">← Back</button>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div id="apply-step3" style="display:none">
+        <div class="success-screen">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Transfer Confirmed!</div>
+          <div class="success-ref" id="success-ref-display"></div>
+          <div class="success-sub">
+            تم إرسال تفاصيل طلبك عبر واتساب.<br/>
+            سنتواصل معك خلال <strong style="color:var(--white)">24 ساعة</strong> لتأكيد الاستلام وتحديد موعد البداية.
+          </div>
+          <button class="apply-btn" onclick="closeApplyModal()" style="max-width:240px;margin:0 auto">Close</button>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
-
-<!-- MOYASAR SDK -->
-<link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css"/>
-<script src="https://cdn.moyasar.com/mpf/1.14.0/moyasar.js"></script>
 
 <script>
 // ── FAQ accordion ──
@@ -815,7 +895,75 @@ document.getElementById('payModal').addEventListener('click', function(e) {
 });
 
 // ── Apply Modal ──
-const CALENDLY_URL = 'https://calendly.com/YOUR_CALENDLY_LINK/consultation'; // 🔗 Replace with your Calendly link
+
+// ═══════════════════════════════════════════════════════
+// 🏦 BANK DETAILS — عدّل هذه المعلومات بمعلوماتك البنكية
+// ═══════════════════════════════════════════════════════
+const BANK = {
+  name:        'البنك الأهلي السعودي',          // اسم البنك
+  beneficiary: 'مؤسسة ليوماكس لتطوير الأعمال',  // اسم المستفيد
+  iban:        'SA00 0000 0000 0000 0000 00',    // 🔑 IBAN الحساب — غيّر هذا
+  whatsapp:    '966533826009'                    // رقم الواتساب
+};
+// ═══════════════════════════════════════════════════════
+
+const PRICES = {
+  diagnostic:     { base: 1500,  vat: 225,  total: 1725,  label: '1,725 SAR'  },
+  system:         { base: 6500,  vat: 975,  total: 7475,  label: '7,475 SAR'  },
+  transformation: { base: 22000, vat: 3300, total: 25300, label: '25,300 SAR' },
+  retainer:       { base: 5000,  vat: 750,  total: 5750,  label: '5,750 SAR'  }
+};
+
+function generateRef(type) {
+  const codes = { diagnostic:'DIA', system:'SYS', transformation:'TRF', retainer:'RTN' };
+  const d = new Date();
+  const ds = String(d.getFullYear()).slice(2) + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  const rnd = Math.floor(1000 + Math.random() * 9000);
+  return 'LMX-' + codes[type] + '-' + ds + '-' + rnd;
+}
+
+let currentRef = '';
+let currentApplyName = '';
+let currentApplyPhone = '';
+
+function copyRef() {
+  navigator.clipboard.writeText(currentRef).then(() => {
+    const btn = document.getElementById('copy-ref-btn');
+    btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function copyIban() {
+  const raw = BANK.iban.replace(/\s/g,'');
+  navigator.clipboard.writeText(raw).then(() => {
+    const btns = document.querySelectorAll('.copy-btn');
+    btns.forEach(b => { if(b.textContent.includes('IBAN')) { b.textContent = 'Copied ✓'; setTimeout(()=>{ b.textContent='Copy IBAN'; },2000); }});
+  });
+}
+
+function sendWhatsAppReceipt() {
+  const price = PRICES[currentApplyType];
+  const msg = [
+    '🧾 *طلب خدمة — LEOMAX*',
+    '',
+    `الاسم: ${currentApplyName}`,
+    `الخدمة: ${applyConfig[currentApplyType].heading}`,
+    `المبلغ: ${price.label} (شامل VAT)`,
+    `رقم المرجع: ${currentRef}`,
+    '',
+    'تم التحويل البنكي. مرفق صورة الإيصال.'
+  ].join('\n');
+  window.open('https://wa.me/' + BANK.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
+
+  // Show success screen
+  setTimeout(() => {
+    document.getElementById('apply-step2').style.display = 'none';
+    document.getElementById('apply-step3').style.display = 'block';
+    document.getElementById('success-ref-display').textContent = 'Ref: ' + currentRef;
+  }, 400);
+}
+
 
 const applyConfig = {
   diagnostic: {
@@ -937,6 +1085,7 @@ function openApply(type) {
   // Reset to step 1
   document.getElementById('apply-step1').style.display = 'block';
   document.getElementById('apply-step2').style.display = 'none';
+  document.getElementById('apply-step3').style.display = 'none';
   document.getElementById('step-dot-1').classList.add('active');
   document.getElementById('step-dot-2').classList.remove('active');
   // Clear name/email/phone
@@ -963,31 +1112,31 @@ function applyNext() {
     alert('Please enter a valid email address.');
     return;
   }
+
+  // Store for WhatsApp message
+  currentApplyName  = name;
+  currentApplyPhone = phone;
+
+  // Generate reference number
+  currentRef = generateRef(currentApplyType);
+  document.getElementById('pay-ref').textContent = currentRef;
+
+  // Show amount
+  const price = PRICES[currentApplyType];
+  document.getElementById('pay-total').textContent = price.label;
+  document.getElementById('pay-vat-note').textContent =
+    'Base: ' + price.base.toLocaleString() + ' SAR + VAT 15% (' + price.vat.toLocaleString() + ' SAR)';
+
+  // Populate bank details
+  document.getElementById('bank-name-display').textContent = BANK.name;
+  document.getElementById('bank-beneficiary-display').textContent = BANK.beneficiary;
+  document.getElementById('bank-iban-display').textContent = BANK.iban;
+
   // Go to step 2
   document.getElementById('apply-step1').style.display = 'none';
   document.getElementById('apply-step2').style.display = 'block';
   document.getElementById('step-dot-1').classList.remove('active');
   document.getElementById('step-dot-2').classList.add('active');
-  // Load Calendly with prefilled info
-  const calUrl = CALENDLY_URL
-    + '?name=' + encodeURIComponent(name)
-    + '&email=' + encodeURIComponent(email)
-    + '&a1=' + encodeURIComponent(currentApplyType.toUpperCase() + ' | ' + phone)
-    + '&hide_gdpr_banner=1&background_color=0D1E35&text_color=ffffff&primary_color=ffffff';
-  const widget = document.getElementById('apply-calendly-widget');
-  widget.setAttribute('data-url', calUrl);
-  widget.innerHTML = '';
-  // Load or reload Calendly widget
-  if (window.Calendly) {
-    Calendly.initInlineWidget({ url: calUrl, parentElement: widget });
-  } else {
-    const s = document.createElement('script');
-    s.src = 'https://assets.calendly.com/assets/external/widget.js';
-    s.async = true;
-    s.onload = () => { Calendly.initInlineWidget({ url: calUrl, parentElement: widget }); };
-    document.head.appendChild(s);
-  }
-  // Scroll modal to top
   document.querySelector('.apply-modal').scrollTop = 0;
 }
 
@@ -996,7 +1145,6 @@ function applyBack() {
   document.getElementById('apply-step2').style.display = 'none';
   document.getElementById('step-dot-1').classList.add('active');
   document.getElementById('step-dot-2').classList.remove('active');
-  document.getElementById('apply-calendly-widget').innerHTML = '';
 }
 
 // Close apply modal on overlay click
