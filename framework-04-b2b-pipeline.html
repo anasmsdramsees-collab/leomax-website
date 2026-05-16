@@ -4,7 +4,799 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LMX-FW-04 | B2B Pipeline Builder — LEOMAX</title>
-<style> :root { --black: #010B1C; --charcoal: #0D1E35; --dark: #060F1F; --gold: #C9A84C; --silver: #B8B8B8; --white: #FFFFFF; --gray: #8fa8be; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--black); color: var(--white); font-size: 13px; line-height: 1.65; } /* ========== PAGE STRUCTURE ========== */ .page { width: 297mm; min-height: 210mm; margin: 0 auto 0; padding: 12mm 16mm 18mm; background: var(--dark); position: relative; overflow: hidden; page-break-after: always; } .page:last-child { page-break-after: auto; } /* ========== WATERMARK ========== */ .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg); font-size: 90px; font-weight: 900; letter-spacing: 12px; color: rgba(201, 168, 76, 0.04); pointer-events: none; white-space: nowrap; z-index: 0; user-select: none; } .page > *:not(.watermark) { position: relative; z-index: 1; } /* ========== FOOTER ========== */ .footer { position: absolute; bottom: 10mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(201,168,76,0.25); padding-top: 6px; } .footer-left { font-size: 9px; color: var(--gray); direction: rtl; } .footer-right { font-size: 9px; color: var(--gray); } .footer-center { font-size: 9px; color: var(--gold); font-weight: 600; } /* ========== COVER PAGE ========== */ .cover { background: var(--black); display: flex; flex-direction: column; justify-content: space-between; min-height: 210mm; } .cover-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20mm; } .logo-mark { font-size: 22px; font-weight: 900; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; } .cover-ref { font-size: 10px; color: var(--gray); letter-spacing: 2px; margin-top: 4px; } .cover-badge { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.4); padding: 6px 14px; border-radius: 2px; font-size: 10px; color: var(--gold); letter-spacing: 1px; } .cover-main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0; } .cover-category { font-size: 10px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; } .cover-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); margin: 14px 0 20px; } .cover-title { font-size: 40px; font-weight: 900; letter-spacing: 3px; color: var(--white); line-height: 1.1; text-transform: uppercase; margin-bottom: 14px; } .cover-title span { color: var(--gold); } .cover-subtitle { font-size: 14px; color: var(--gray); max-width: 130mm; line-height: 1.6; margin-bottom: 20px; } .cover-arabic { font-size: 18px; color: rgba(201,168,76,0.6); direction: rtl; letter-spacing: 1px; margin-top: 6px; } .cover-meta { display: flex; gap: 30px; margin-top: 14mm; padding-top: 8mm; border-top: 1px solid rgba(201,168,76,0.2); } .cover-meta-item { display: flex; flex-direction: column; gap: 4px; } .cover-meta-label { font-size: 9px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; } .cover-meta-value { font-size: 13px; color: var(--gold); font-weight: 600; } .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; } /* ========== CONTENT PAGES ========== */ .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6mm; padding-bottom: 4mm; border-bottom: 1px solid rgba(201,168,76,0.3); } .page-header-left { display: flex; flex-direction: column; gap: 3px; } .page-number { font-size: 9px; color: var(--gold); letter-spacing: 2px; font-weight: 600; } .page-logo { font-size: 13px; font-weight: 900; letter-spacing: 6px; color: var(--white); } .page-section-label { font-size: 9px; letter-spacing: 2px; color: var(--gray); text-align: right; } /* ========== SECTION TITLES ========== */ .section-title { font-size: 20px; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 2px; line-height: 1.2; margin-bottom: 2px; } .section-title-ar { font-size: 14px; color: var(--gold); direction: rtl; margin-bottom: 6mm; font-weight: 600; } .gold-rule { width: 100%; height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.1)); margin: 5mm 0; } /* ========== CONTENT BLOCKS ========== */ .content-block { background: rgba(13, 30, 53, 0.7); border: 1px solid rgba(201,168,76,0.15); border-left: 3px solid var(--gold); padding: 5mm 6mm; margin-bottom: 4mm; border-radius: 2px; } .content-block h3 { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; } .content-block p, .content-block li { font-size: 11.5px; color: rgba(255,255,255,0.85); line-height: 1.7; } .content-block ul { padding-left: 16px; } .content-block li { margin-bottom: 3px; } .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 4mm; } .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin-bottom: 4mm; } /* ========== HIGHLIGHT BOX ========== */ .highlight-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.35); padding: 4mm 5mm; margin-bottom: 4mm; border-radius: 2px; } .highlight-box .label { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; } .highlight-box p { font-size: 12px; color: var(--white); line-height: 1.6; } /* ========== PIPELINE STAGES ========== */ .pipeline-flow { display: flex; align-items: stretch; gap: 0; margin: 4mm 0; overflow: hidden; } .pipe-stage { flex: 1; padding: 4mm 3mm; text-align: center; position: relative; background: rgba(13,30,53,0.7); border: 1px solid rgba(201,168,76,0.15); border-right: none; } .pipe-stage:last-child { border-right: 1px solid rgba(201,168,76,0.15); background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.35); } .pipe-stage::after { content: ''; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 10px solid rgba(13,30,53,0.9); border-top: 22px solid transparent; border-bottom: 22px solid transparent; z-index: 2; } .pipe-stage:last-child::after { display: none; } .pipe-stage-num { font-size: 20px; font-weight: 900; color: rgba(201,168,76,0.3); line-height: 1; margin-bottom: 3px; } .pipe-stage:last-child .pipe-stage-num { color: var(--gold); } .pipe-stage-name { font-size: 9px; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; } .pipe-stage-ar { font-size: 9px; color: var(--gray); direction: rtl; margin-bottom: 3px; } .pipe-stage-pct { font-size: 10px; color: var(--gold); font-weight: 600; } /* ========== CRM TABLE ========== */ .crm-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; font-size: 10.5px; } .crm-table th { background: rgba(201,168,76,0.15); color: var(--gold); font-size: 9px; letter-spacing: 1px; padding: 4px 6px; text-align: left; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.2); } .crm-table td { padding: 4px 6px; border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); vertical-align: top; line-height: 1.5; } .crm-table tr:nth-child(even) td { background: rgba(13,30,53,0.45); } .crm-section-header td { background: rgba(201,168,76,0.07) !important; color: var(--gold); font-weight: 700; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid rgba(201,168,76,0.25); } /* ========== SCRIPT BLOCKS ========== */ .script-block { background: var(--charcoal); border: 1px solid rgba(201,168,76,0.2); border-top: 2px solid var(--gold); padding: 4mm 5mm; margin-bottom: 4mm; border-radius: 2px; } .script-block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; } .script-block-title { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; } .script-block-tag { font-size: 9px; color: var(--gray); letter-spacing: 1px; direction: rtl; } .script-body { font-size: 12px; color: var(--white); line-height: 1.7; direction: rtl; font-style: italic; background: rgba(201,168,76,0.04); padding: 3mm 4mm; border: 1px dashed rgba(201,168,76,0.2); border-radius: 2px; margin-bottom: 3px; } .script-body-en { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-top: 3px; font-style: italic; } /* ========== WEEK PLAN ========== */ .week-row { display: flex; gap: 0; margin-bottom: 3mm; align-items: stretch; } .week-label { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); padding: 3mm 4mm; min-width: 24mm; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: none; } .week-label .wn { font-size: 20px; font-weight: 900; color: var(--gold); line-height: 1; } .week-label .wt { font-size: 8px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; } .week-content { flex: 1; background: rgba(13,30,53,0.5); border: 1px solid rgba(201,168,76,0.15); padding: 3mm 4mm; } .week-content h4 { font-size: 11px; font-weight: 700; color: var(--white); margin-bottom: 3px; letter-spacing: 1px; } .week-content ul { padding-left: 14px; margin-bottom: 0; } .week-content li { font-size: 11px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1px; } .week-goal { display: flex; align-items: center; gap: 6px; margin-top: 4px; padding: 2px 6px; background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2); width: fit-content; border-radius: 2px; } .week-goal .goal-label { font-size: 9px; color: var(--gold); letter-spacing: 1px; font-weight: 700; text-transform: uppercase; } .week-goal .goal-text { font-size: 10px; color: var(--white); } /* ========== FORMULA BOX ========== */ .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.3); padding: 4mm 5mm; margin: 3mm 0; display: flex; align-items: center; gap: 4mm; border-radius: 2px; flex-wrap: wrap; } .formula-item { display: flex; flex-direction: column; align-items: center; gap: 2px; } .formula-item .fi-top { font-size: 11px; color: var(--white); font-weight: 600; text-align: center; } .formula-item .fi-bottom { font-size: 9px; color: var(--gray); text-align: center; letter-spacing: 1px; } .formula-op { font-size: 20px; color: var(--gold); font-weight: 900; flex-shrink: 0; } .formula-eq { font-size: 14px; color: var(--gold); font-weight: 900; flex-shrink: 0; } /* ========== TOUCH SEQUENCE ========== */ .touch-timeline { position: relative; padding-left: 12mm; margin: 3mm 0; } .touch-timeline::before { content: ''; position: absolute; left: 5mm; top: 8px; bottom: 8px; width: 1px; background: rgba(201,168,76,0.25); } .touch-item { position: relative; margin-bottom: 3mm; display: flex; gap: 3mm; align-items: flex-start; } .touch-dot { position: absolute; left: -8mm; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; } .touch-day { min-width: 20mm; font-size: 10px; color: var(--gold); font-weight: 700; flex-shrink: 0; } .touch-body { flex: 1; } .touch-body .touch-name { font-size: 11px; font-weight: 700; color: var(--white); margin-bottom: 1px; } .touch-body .touch-action { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.5; } .touch-body .touch-ar { font-size: 10px; color: var(--gray); direction: rtl; font-style: italic; margin-top: 1px; } /* ========== DISCOVERY CALL ========== */ .call-phase { display: flex; gap: 3mm; margin-bottom: 2mm; align-items: flex-start; } .call-phase-time { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); padding: 2px 5px; font-size: 9px; color: var(--gold); font-weight: 700; min-width: 14mm; text-align: center; border-radius: 2px; flex-shrink: 0; margin-top: 1px; } .call-phase-body { flex: 1; } .call-phase-body .cp-name { font-size: 11px; font-weight: 700; color: var(--white); margin-bottom: 1px; } .call-phase-body .cp-q { font-size: 11px; color: rgba(255,255,255,0.75); font-style: italic; direction: rtl; } .call-phase-body .cp-goal { font-size: 10px; color: var(--gray); margin-top: 1px; } /* ========== WORKSHEET STYLES ========== */ .worksheet-page { background: #070F20; } .ws-title { font-size: 14px; font-weight: 800; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1mm; } .ws-subtitle { font-size: 11px; color: var(--gray); margin-bottom: 4mm; } .ws-table { width: 100%; border-collapse: collapse; margin-bottom: 4mm; } .ws-table th { background: rgba(201,168,76,0.12); color: var(--gold); font-size: 9px; letter-spacing: 2px; padding: 4px 6px; text-align: left; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.25); } .ws-table td { border: 1px dashed rgba(201,168,76,0.3); padding: 7px 6px; min-height: 24px; vertical-align: top; font-size: 10.5px; color: rgba(255,255,255,0.35); background: rgba(201,168,76,0.02); } .ws-section { background: rgba(13,30,53,0.5); border: 1px solid rgba(201,168,76,0.15); border-left: 3px solid var(--gold); padding: 3mm 4mm; margin-bottom: 3mm; } .ws-section h4 { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; } .ws-fill-line { display: block; width: 100%; border-bottom: 1px dashed rgba(201,168,76,0.35); margin: 7px 0; height: 18px; } /* ========== PRINT ========== */ @media print { @page { size: A4 landscape landscape; margin: 0; } body { background: var(--black); } .page { width: 297mm; min-height: 210mm; height: 210mm; margin: 0; padding: 12mm 16mm 18mm; page-break-after: always; page-break-inside: avoid; } .page:last-child { page-break-after: auto; } } @media screen { body { background: #000; padding: 10px 0; } .page { box-shadow: 0 4px 40px rgba(0,0,0,0.6); margin-bottom: 10px; } }
+<style>
+  :root {
+    --black: #010B1C;
+    --charcoal: #0D1E35;
+    --dark: #060F1F;
+    --gold: #C9A84C;
+    --silver: #B8B8B8;
+    --white: #FFFFFF;
+    --gray: #8fa8be;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* ========== PAGE STRUCTURE ========== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 0;
+    padding: 18mm 18mm 22mm;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* ========== WATERMARK ========== */
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: 12px;
+    color: rgba(201, 168, 76, 0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+    user-select: none;
+  }
+
+  .page > *:not(.watermark) { position: relative; z-index: 1; }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 18mm;
+    right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.25);
+    padding-top: 6px;
+  }
+
+  .footer-left { font-size: 9px; color: var(--gray); direction: rtl; }
+  .footer-right { font-size: 9px; color: var(--gray); }
+  .footer-center { font-size: 9px; color: var(--gold); font-weight: 600; }
+
+  /* ========== COVER PAGE ========== */
+  .cover {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20mm;
+  }
+
+  .logo-mark {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .cover-ref {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .cover-badge {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 14px;
+    border-radius: 2px;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .cover-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10mm 0;
+  }
+
+  .cover-category {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 14px 0 20px;
+  }
+
+  .cover-title {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--white);
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-size: 14px;
+    color: var(--gray);
+    max-width: 130mm;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .cover-arabic {
+    font-size: 18px;
+    color: rgba(201,168,76,0.6);
+    direction: rtl;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 30px;
+    margin-top: 14mm;
+    padding-top: 8mm;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-label { font-size: 9px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+  .cover-meta-value { font-size: 13px; color: var(--gold); font-weight: 600; }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  /* ========== CONTENT PAGES ========== */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .page-header-left { display: flex; flex-direction: column; gap: 3px; }
+
+  .page-number {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  .page-logo {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--white);
+  }
+
+  .page-section-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-align: right;
+  }
+
+  /* ========== SECTION TITLES ========== */
+  .section-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .section-title-ar {
+    font-size: 14px;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 6mm;
+    font-weight: 600;
+  }
+
+  .gold-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.1));
+    margin: 5mm 0;
+  }
+
+  /* ========== CONTENT BLOCKS ========== */
+  .content-block {
+    background: rgba(13, 30, 53, 0.7);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    padding: 5mm 6mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .content-block h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .content-block p, .content-block li {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+
+  .content-block ul { padding-left: 16px; }
+  .content-block li { margin-bottom: 3px; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 4mm;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+
+  /* ========== HIGHLIGHT BOX ========== */
+  .highlight-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .highlight-box .label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .highlight-box p {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ========== PIPELINE STAGES ========== */
+  .pipeline-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 4mm 0;
+    overflow: hidden;
+  }
+
+  .pipe-stage {
+    flex: 1;
+    padding: 4mm 3mm;
+    text-align: center;
+    position: relative;
+    background: rgba(13,30,53,0.7);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-right: none;
+  }
+
+  .pipe-stage:last-child {
+    border-right: 1px solid rgba(201,168,76,0.15);
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.35);
+  }
+
+  .pipe-stage::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid rgba(13,30,53,0.9);
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    z-index: 2;
+  }
+
+  .pipe-stage:last-child::after { display: none; }
+
+  .pipe-stage-num {
+    font-size: 20px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.3);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .pipe-stage:last-child .pipe-stage-num { color: var(--gold); }
+
+  .pipe-stage-name {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .pipe-stage-ar {
+    font-size: 9px;
+    color: var(--gray);
+    direction: rtl;
+    margin-bottom: 3px;
+  }
+
+  .pipe-stage-pct {
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ========== CRM TABLE ========== */
+  .crm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3mm;
+    font-size: 10.5px;
+  }
+
+  .crm-table th {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 4px 6px;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .crm-table td {
+    padding: 4px 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.8);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .crm-table tr:nth-child(even) td {
+    background: rgba(13,30,53,0.45);
+  }
+
+  .crm-section-header td {
+    background: rgba(201,168,76,0.07) !important;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(201,168,76,0.25);
+  }
+
+  /* ========== SCRIPT BLOCKS ========== */
+  .script-block {
+    background: var(--charcoal);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-top: 2px solid var(--gold);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+  }
+
+  .script-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .script-block-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .script-block-tag {
+    font-size: 9px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    direction: rtl;
+  }
+
+  .script-body {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.7;
+    direction: rtl;
+    font-style: italic;
+    background: rgba(201,168,76,0.04);
+    padding: 3mm 4mm;
+    border: 1px dashed rgba(201,168,76,0.2);
+    border-radius: 2px;
+    margin-bottom: 3px;
+  }
+
+  .script-body-en {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* ========== WEEK PLAN ========== */
+  .week-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 3mm;
+    align-items: stretch;
+  }
+
+  .week-label {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 3mm 4mm;
+    min-width: 24mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: none;
+  }
+
+  .week-label .wn {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .week-label .wt {
+    font-size: 8px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .week-content {
+    flex: 1;
+    background: rgba(13,30,53,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 3mm 4mm;
+  }
+
+  .week-content h4 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+  }
+
+  .week-content ul {
+    padding-left: 14px;
+    margin-bottom: 0;
+  }
+
+  .week-content li {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 1px;
+  }
+
+  .week-goal {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    padding: 2px 6px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.2);
+    width: fit-content;
+    border-radius: 2px;
+  }
+
+  .week-goal .goal-label {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .week-goal .goal-text {
+    font-size: 10px;
+    color: var(--white);
+  }
+
+  /* ========== FORMULA BOX ========== */
+  .formula-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    border-radius: 2px;
+    flex-wrap: wrap;
+  }
+
+  .formula-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .formula-item .fi-top {
+    font-size: 11px;
+    color: var(--white);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .formula-item .fi-bottom {
+    font-size: 9px;
+    color: var(--gray);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .formula-op {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .formula-eq {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ========== TOUCH SEQUENCE ========== */
+  .touch-timeline {
+    position: relative;
+    padding-left: 12mm;
+    margin: 3mm 0;
+  }
+
+  .touch-timeline::before {
+    content: '';
+    position: absolute;
+    left: 5mm;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  .touch-item {
+    position: relative;
+    margin-bottom: 3mm;
+    display: flex;
+    gap: 3mm;
+    align-items: flex-start;
+  }
+
+  .touch-dot {
+    position: absolute;
+    left: -8mm;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .touch-day {
+    min-width: 20mm;
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .touch-body { flex: 1; }
+
+  .touch-body .touch-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1px;
+  }
+
+  .touch-body .touch-action {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+
+  .touch-body .touch-ar {
+    font-size: 10px;
+    color: var(--gray);
+    direction: rtl;
+    font-style: italic;
+    margin-top: 1px;
+  }
+
+  /* ========== DISCOVERY CALL ========== */
+  .call-phase {
+    display: flex;
+    gap: 3mm;
+    margin-bottom: 2mm;
+    align-items: flex-start;
+  }
+
+  .call-phase-time {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 2px 5px;
+    font-size: 9px;
+    color: var(--gold);
+    font-weight: 700;
+    min-width: 14mm;
+    text-align: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .call-phase-body { flex: 1; }
+  .call-phase-body .cp-name { font-size: 11px; font-weight: 700; color: var(--white); margin-bottom: 1px; }
+  .call-phase-body .cp-q { font-size: 11px; color: rgba(255,255,255,0.75); font-style: italic; direction: rtl; }
+  .call-phase-body .cp-goal { font-size: 10px; color: var(--gray); margin-top: 1px; }
+
+  /* ========== WORKSHEET STYLES ========== */
+  .worksheet-page { background: #070F20; }
+
+  .ws-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+  }
+
+  .ws-subtitle {
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 4mm;
+  }
+
+  .ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4mm;
+  }
+
+  .ws-table th {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 6px;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .ws-table td {
+    border: 1px dashed rgba(201,168,76,0.3);
+    padding: 7px 6px;
+    min-height: 24px;
+    vertical-align: top;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.35);
+    background: rgba(201,168,76,0.02);
+  }
+
+  .ws-section {
+    background: rgba(13,30,53,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    padding: 3mm 4mm;
+    margin-bottom: 3mm;
+  }
+
+  .ws-section h4 {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .ws-fill-line {
+    display: block;
+    width: 100%;
+    border-bottom: 1px dashed rgba(201,168,76,0.35);
+    margin: 7px 0;
+    height: 18px;
+  }
+
+  /* ========== PRINT ========== */
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: var(--black); }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      height: 297mm;
+      margin: 0;
+      padding: 18mm 18mm 22mm;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+    .page:last-child { page-break-after: auto; }
+  }
+
+  @media screen {
+    body { background: #000; padding: 10px 0; }
+    .page {
+      box-shadow: 0 4px 40px rgba(0,0,0,0.6);
+      margin-bottom: 10px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -12,61 +804,1094 @@
 <!-- ============================================================ -->
 <!-- COVER PAGE -->
 <!-- ============================================================ -->
-<div class="page cover"> <div class="watermark">LEOMAX</div> <div class="cover-top"> <div> <div class="logo-mark">LEOMAX</div> <div class="cover-ref">LMX-FW-04 &nbsp;·&nbsp; SALES &amp; PIPELINE SERIES</div> </div> <div class="cover-badge">399 SAR &nbsp;·&nbsp; PROFESSIONAL FRAMEWORK</div> </div> <div class="cover-main"> <div class="cover-category">B2B Sales Framework</div> <div class="cover-line"></div> <div class="cover-title"><span>B2B Pipeline</span><br>Builder</div> <div class="cover-subtitle"> Build a Repeatable Sales System — CRM Setup Template, WhatsApp &amp; Email Outreach Scripts, 7-Touch Follow-Up Sequence &amp; 6-Week Sales Ramp Plan </div> <div class="cover-meta"> <div class="cover-meta-item"> <div class="cover-meta-label">Pages</div> <div class="cover-meta-value">10 Pages + Scripts</div> </div> <div class="cover-meta-item"> <div class="cover-meta-label">Category</div> <div class="cover-meta-value">Sales · Pipeline</div> </div> <div class="cover-meta-item"> <div class="cover-meta-label">Framework</div> <div class="cover-meta-value">LMX-FW-04</div> </div> <div class="cover-meta-item"> <div class="cover-meta-label">Market</div> <div class="cover-meta-value">Saudi Arabia / GCC</div> </div> </div> </div> <div class="cover-bottom"> <div style="font-size:9px;color:var(--gray);text-align:right;">© 2026 LEOMAX Business Development | leomaxglobal.com | Confidential</div> </div>
+<div class="page cover">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="cover-top">
+    <div>
+      <div class="logo-mark">LEOMAX</div>
+      <div class="cover-ref">LMX-FW-04 &nbsp;·&nbsp; SALES &amp; PIPELINE SERIES</div>
+    </div>
+    <div class="cover-badge">399 SAR &nbsp;·&nbsp; PROFESSIONAL FRAMEWORK</div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-category">B2B Sales Framework</div>
+    <div class="cover-line"></div>
+    <div class="cover-title"><span>B2B Pipeline</span><br>Builder</div>
+    <div class="cover-subtitle">
+      Build a Repeatable Sales System — CRM Setup Template, WhatsApp &amp; Email Outreach Scripts, 7-Touch Follow-Up Sequence &amp; 6-Week Sales Ramp Plan
+    </div>
+    <div class="cover-arabic">بناء منظومة مبيعات B2B قابلة للتكرار — من الاستهداف إلى الإغلاق</div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Pages</div>
+        <div class="cover-meta-value">10 Pages + Scripts</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Category</div>
+        <div class="cover-meta-value">Sales · Pipeline</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Framework</div>
+        <div class="cover-meta-value">LMX-FW-04</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Market</div>
+        <div class="cover-meta-value">Saudi Arabia / GCC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div style="font-size:9px;color:var(--gray);direction:rtl;">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري وخاص</div>
+    <div style="font-size:9px;color:var(--gray);text-align:right;">© 2026 LEOMAX Business Development | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 2: B2B SALES REALITY IN SAUDI ARABIA -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 02</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; B2B PIPELINE BUILDER</div> </div> <div class="section-title">THE B2B SALES REALITY IN SAUDI ARABIA</div> <div class="gold-rule"></div> <div class="two-col"> <div class="content-block"> <h3>The Saudi B2B Sales Cycle</h3> <ul> <li><strong>Average duration: 2–8 weeks</strong> depending on deal size, relationship depth, and buyer type.</li> <li><strong>Relationship-accelerated:</strong> A warm intro from a mutual contact can compress a 6-week cycle to 10 days.</li> <li><strong>Ramadan &amp; summer slowdowns:</strong> Buying decisions slow significantly during Ramadan and July–August. Plan pipeline fill accordingly.</li> <li><strong>WhatsApp is the real CRM:</strong> Most Saudi B2B communication happens on WhatsApp — not email. Treat your WhatsApp professionally.</li> <li><strong>Decision makers require meetings:</strong> Larger deals almost always require at least one in-person or video call — proposals alone rarely close deals.</li> </ul> </div> <div class="content-block"> <h3>The 3 Saudi B2B Buyer Types</h3> <ul> <li><strong>Relationship Buyers (most common):</strong> Buy from people they know and trust. Referral is king. Price is secondary. Long sales cycles but high lifetime value. Invest heavily in being introduced.</li> <li><strong>Price Buyers:</strong> Compare multiple vendors, primarily on cost. Respond to clear ROI arguments. Shorter cycles but lower margins. Win them with value quantification — "we cost more but you get X more".</li> <li><strong>Value Buyers:</strong> Evaluate outcomes and ROI analytically. Need data, case studies, and structured proposals. Decision is slower but rational — once convinced, they commit. Invest in proof and proposals.</li> </ul> </div> </div> <div class="content-block"> <h3>Why Saudi SME Salespeople Have No Pipeline — </h3> <ul> <li><strong>No systematic prospecting:</strong> Most rely entirely on inbound referrals. When the referral tap slows, revenue drops. A pipeline requires active, consistent outreach.</li> <li><strong>No CRM discipline:</strong> Leads live in WhatsApp chats, notebooks, and memory. Without a system, follow-ups are forgotten, and hot leads go cold.</li> <li><strong>Fear of follow-up:</strong> Saudi culture's politeness sometimes makes salespeople reluctant to follow up more than twice, worried about seeming pushy. Most deals close after 5+ touches.</li> <li><strong>Quoting too early:</strong> Many send a price before qualifying the lead — this leads to "too expensive" objections before value is established.</li> <li><strong>No defined pipeline stages:</strong> Without clear stage definitions, there's no way to forecast revenue or identify where deals are getting stuck.</li> </ul> </div> <!-- Pipeline flow --> <div class="pipeline-flow"> <div class="pipe-stage"> <div class="pipe-stage-num">1</div> <div class="pipe-stage-name">Prospect</div> <div class="pipe-stage-ar"></div> <div class="pipe-stage-pct">10%</div> </div> <div class="pipe-stage"> <div class="pipe-stage-num">2</div> <div class="pipe-stage-name">Contact</div> <div class="pipe-stage-ar"> </div> <div class="pipe-stage-pct">20%</div> </div> <div class="pipe-stage"> <div class="pipe-stage-num">3</div> <div class="pipe-stage-name">Qualify</div> <div class="pipe-stage-ar"></div> <div class="pipe-stage-pct">40%</div> </div> <div class="pipe-stage"> <div class="pipe-stage-num">4</div> <div class="pipe-stage-name">Propose</div> <div class="pipe-stage-ar">  </div> <div class="pipe-stage-pct">65%</div> </div> <div class="pipe-stage"> <div class="pipe-stage-num">5</div> <div class="pipe-stage-name">Close</div> <div class="pipe-stage-ar"></div> <div class="pipe-stage-pct">80-100%</div> </div> </div> <div class="highlight-box" style="margin-bottom:0;"> <div class="label">Pipeline Health Formula — </div> <div class="formula-box" style="margin:2mm 0 0;"> <div class="formula-item"> <div class="fi-top">Closing Goal (SAR)</div> <div class="fi-bottom"> </div> </div> <div class="formula-op">÷</div> <div class="formula-item"> <div class="fi-top">Close Rate %</div> <div class="fi-bottom"> </div> </div> <div class="formula-eq">=</div> <div class="formula-item"> <div class="fi-top">Proposals Needed</div> <div class="fi-bottom"> </div> </div> <div class="formula-op">÷</div> <div class="formula-item"> <div class="fi-top">Qualify Rate %</div> <div class="fi-bottom"> </div> </div> <div class="formula-eq">=</div> <div class="formula-item"> <div class="fi-top">Qualified Calls Needed</div> <div class="fi-bottom"> </div> </div> <div class="formula-op">÷</div> <div class="formula-item"> <div class="fi-top">Contact Rate %</div> <div class="fi-bottom"> </div> </div> <div class="formula-eq">=</div> <div class="formula-item" style="background:rgba(201,168,76,0.1);padding:3px 6px;border:1px solid rgba(201,168,76,0.3);border-radius:2px;"> <div class="fi-top" style="color:var(--gold);">Total Contacts Required</div> <div class="fi-bottom">  </div> </div> </div> <p style="font-size:10.5px;color:var(--gray);margin-top:4px;">Example: Goal 50,000 SAR ÷ 30% close rate = 167 proposals needed. 167 ÷ 50% qualify = 334 qualified calls. 334 ÷ 20% response = <strong style="color:var(--white);">1,670 outreach contacts needed.</strong> Work backwards from your goal.</p> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 02</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; B2B PIPELINE BUILDER</div>
+  </div>
+
+  <div class="section-title">THE B2B SALES REALITY IN SAUDI ARABIA</div>
+  <div class="section-title-ar">واقع المبيعات B2B في السوق السعودي — ماذا يعمل فعلاً</div>
+  <div class="gold-rule"></div>
+
+  <div class="two-col">
+    <div class="content-block">
+      <h3>The Saudi B2B Sales Cycle</h3>
+      <ul>
+        <li><strong>Average duration: 2–8 weeks</strong> depending on deal size, relationship depth, and buyer type.</li>
+        <li><strong>Relationship-accelerated:</strong> A warm intro from a mutual contact can compress a 6-week cycle to 10 days.</li>
+        <li><strong>Ramadan &amp; summer slowdowns:</strong> Buying decisions slow significantly during Ramadan and July–August. Plan pipeline fill accordingly.</li>
+        <li><strong>WhatsApp is the real CRM:</strong> Most Saudi B2B communication happens on WhatsApp — not email. Treat your WhatsApp professionally.</li>
+        <li><strong>Decision makers require meetings:</strong> Larger deals almost always require at least one in-person or video call — proposals alone rarely close deals.</li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <h3>The 3 Saudi B2B Buyer Types</h3>
+      <ul>
+        <li><strong>Relationship Buyers (most common):</strong> Buy from people they know and trust. Referral is king. Price is secondary. Long sales cycles but high lifetime value. Invest heavily in being introduced.</li>
+        <li><strong>Price Buyers:</strong> Compare multiple vendors, primarily on cost. Respond to clear ROI arguments. Shorter cycles but lower margins. Win them with value quantification — "we cost more but you get X more".</li>
+        <li><strong>Value Buyers:</strong> Evaluate outcomes and ROI analytically. Need data, case studies, and structured proposals. Decision is slower but rational — once convinced, they commit. Invest in proof and proposals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>Why Saudi SME Salespeople Have No Pipeline — وليس فقط عدم المتابعة</h3>
+    <ul>
+      <li><strong>No systematic prospecting:</strong> Most rely entirely on inbound referrals. When the referral tap slows, revenue drops. A pipeline requires active, consistent outreach.</li>
+      <li><strong>No CRM discipline:</strong> Leads live in WhatsApp chats, notebooks, and memory. Without a system, follow-ups are forgotten, and hot leads go cold.</li>
+      <li><strong>Fear of follow-up:</strong> Saudi culture's politeness sometimes makes salespeople reluctant to follow up more than twice, worried about seeming pushy. Most deals close after 5+ touches.</li>
+      <li><strong>Quoting too early:</strong> Many send a price before qualifying the lead — this leads to "too expensive" objections before value is established.</li>
+      <li><strong>No defined pipeline stages:</strong> Without clear stage definitions, there's no way to forecast revenue or identify where deals are getting stuck.</li>
+    </ul>
+  </div>
+
+  <!-- Pipeline flow -->
+  <div class="pipeline-flow">
+    <div class="pipe-stage">
+      <div class="pipe-stage-num">1</div>
+      <div class="pipe-stage-name">Prospect</div>
+      <div class="pipe-stage-ar">مستهدف</div>
+      <div class="pipe-stage-pct">10%</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-stage-num">2</div>
+      <div class="pipe-stage-name">Contact</div>
+      <div class="pipe-stage-ar">تم التواصل</div>
+      <div class="pipe-stage-pct">20%</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-stage-num">3</div>
+      <div class="pipe-stage-name">Qualify</div>
+      <div class="pipe-stage-ar">مؤهَّل</div>
+      <div class="pipe-stage-pct">40%</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-stage-num">4</div>
+      <div class="pipe-stage-name">Propose</div>
+      <div class="pipe-stage-ar">تم تقديم عرض</div>
+      <div class="pipe-stage-pct">65%</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-stage-num">5</div>
+      <div class="pipe-stage-name">Close</div>
+      <div class="pipe-stage-ar">مُغلق</div>
+      <div class="pipe-stage-pct">80-100%</div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:0;">
+    <div class="label">Pipeline Health Formula — معادلة صحة خط المبيعات</div>
+    <div class="formula-box" style="margin:2mm 0 0;">
+      <div class="formula-item">
+        <div class="fi-top">Closing Goal (SAR)</div>
+        <div class="fi-bottom">هدف الإغلاق</div>
+      </div>
+      <div class="formula-op">÷</div>
+      <div class="formula-item">
+        <div class="fi-top">Close Rate %</div>
+        <div class="fi-bottom">معدل الإغلاق</div>
+      </div>
+      <div class="formula-eq">=</div>
+      <div class="formula-item">
+        <div class="fi-top">Proposals Needed</div>
+        <div class="fi-bottom">العروض المطلوبة</div>
+      </div>
+      <div class="formula-op">÷</div>
+      <div class="formula-item">
+        <div class="fi-top">Qualify Rate %</div>
+        <div class="fi-bottom">معدل التأهيل</div>
+      </div>
+      <div class="formula-eq">=</div>
+      <div class="formula-item">
+        <div class="fi-top">Qualified Calls Needed</div>
+        <div class="fi-bottom">مكالمات مؤهَّلة</div>
+      </div>
+      <div class="formula-op">÷</div>
+      <div class="formula-item">
+        <div class="fi-top">Contact Rate %</div>
+        <div class="fi-bottom">معدل الرد</div>
+      </div>
+      <div class="formula-eq">=</div>
+      <div class="formula-item" style="background:rgba(201,168,76,0.1);padding:3px 6px;border:1px solid rgba(201,168,76,0.3);border-radius:2px;">
+        <div class="fi-top" style="color:var(--gold);">Total Contacts Required</div>
+        <div class="fi-bottom">إجمالي جهات الاتصال</div>
+      </div>
+    </div>
+    <p style="font-size:10.5px;color:var(--gray);margin-top:4px;">Example: Goal 50,000 SAR ÷ 30% close rate = 167 proposals needed. 167 ÷ 50% qualify = 334 qualified calls. 334 ÷ 20% response = <strong style="color:var(--white);">1,670 outreach contacts needed.</strong> Work backwards from your goal.</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 3: CRM SETUP TEMPLATE -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 03</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; CRM SETUP TEMPLATE</div> </div> <div class="section-title">THE CRM SETUP TEMPLATE</div> <div class="gold-rule"></div> <table class="crm-table"> <thead> <tr> <th style="width:22%">Field — </th> <th style="width:8%">Type</th> <th style="width:45%">What to enter — Description</th> <th style="width:25%">Notes / Options</th> </tr> </thead> <tbody> <tr class="crm-section-header"><td colspan="4">CONTACT INFO —  </td></tr> <tr><td>Full Name — </td><td>Text</td><td>First and last name, including preferred name ()</td><td>Include title if formal</td></tr> <tr><td>Job Title — </td><td>Text</td><td>Exact title from LinkedIn or business card</td><td>Signals decision authority</td></tr> <tr><td>Company — </td><td>Text</td><td>Legal company name and trade name</td><td>Link to company record</td></tr> <tr><td>WhatsApp — </td><td>Phone</td><td>Saudi mobile number — primary business channel</td><td>+966 format</td></tr> <tr><td>Email — </td><td>Email</td><td>Business email preferred; personal if B2B-SME</td><td>Verify before bulk send</td></tr> <tr><td>LinkedIn — </td><td>URL</td><td>Profile URL for research and connection</td><td>Note connection status</td></tr> <tr><td>City — </td><td>Dropdown</td><td>Riyadh / Jeddah / Dammam / Khobar / Other</td><td>Affects meeting logistics</td></tr> <tr class="crm-section-header"><td colspan="4">COMPANY INFO —  </td></tr> <tr><td>Industry — </td><td>Dropdown</td><td>Primary industry sector (max 2)</td><td>Use standard Saudi GICS codes</td></tr> <tr><td>Company Size — </td><td>Dropdown</td><td>1–10 / 11–50 / 51–200 / 200+</td><td>Affects pricing and effort</td></tr> <tr><td>Est. Annual Revenue</td><td>SAR Range</td><td>&lt;1M / 1–5M / 5–20M / 20–100M / 100M+</td><td>Estimate from context/research</td></tr> <tr><td>Decision Maker? —  </td><td>Y / N / Influencer</td><td>Can this person sign the contract alone?</td><td>If N — find the DM</td></tr> <tr><td>Budget Authority —  </td><td>Y / N / Shared</td><td>Does this person have budget authority for this purchase?</td><td>Ask during discovery</td></tr> <tr class="crm-section-header"><td colspan="4">SALES TRACKING —  </td></tr> <tr><td>Stage — </td><td>Dropdown</td><td>Prospect / Contacted / Qualified / Proposal / Negotiation / Won / Lost</td><td>Update after every interaction</td></tr> <tr><td>Lead Source —  </td><td>Dropdown</td><td>Referral / LinkedIn / Event / Inbound / WhatsApp / Cold Outreach / Other</td><td>Track to optimise channels</td></tr> <tr><td>First Contact Date</td><td>Date</td><td>The date you first sent a message or made contact</td><td>Measures cycle length</td></tr> <tr><td>Last Activity Date</td><td>Date</td><td>The date of last meaningful interaction</td><td>Alert if &gt;7 days old</td></tr> <tr><td>Next Follow-Up Date</td><td>Date</td><td>The specific date you will follow up next — set every time</td><td>Never leave blank</td></tr> <tr><td>Deal Value —  </td><td>SAR</td><td>Estimated contract value (be conservative)</td><td>Weighted by probability %</td></tr> <tr><td>Probability % —  </td><td>%</td><td>Prospect 10% · Contacted 20% · Qualified 40% · Proposal 65% · Negotiation 80%</td><td>Auto-set by stage</td></tr> <tr><td>Expected Close Date</td><td>Date</td><td>Realistic date the deal will be signed or paid</td><td>Used in revenue forecast</td></tr> <tr class="crm-section-header"><td colspan="4">RELATIONSHIP NOTES —  </td></tr> <tr><td>Meeting Notes</td><td>Long text</td><td>Summary of what was discussed, what matters to them, decisions made</td><td>Update same day</td></tr> <tr><td>Objections Heard</td><td>Text</td><td>Any pricing, timing, trust, or competitor objections raised</td><td>Prep counter-response</td></tr> <tr><td>Personal Details</td><td>Text</td><td>Family info, hobbies, hometown — relationship signals for personalised follow-up</td><td>Saudi culture values this</td></tr> <tr><td>Lost Reason (if applicable)</td><td>Dropdown</td><td>Price / Timing / Chose competitor / No budget / No need / No response</td><td>Review monthly for patterns</td></tr> </tbody> </table> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 03</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; CRM SETUP TEMPLATE</div>
+  </div>
+
+  <div class="section-title">THE CRM SETUP TEMPLATE</div>
+  <div class="section-title-ar">نموذج إعداد إدارة علاقات العملاء — الحقول الأساسية لكل عميل محتمل</div>
+  <div class="gold-rule"></div>
+
+  <table class="crm-table">
+    <thead>
+      <tr>
+        <th style="width:22%">Field — الحقل</th>
+        <th style="width:8%">Type</th>
+        <th style="width:45%">What to enter — Description</th>
+        <th style="width:25%">Notes / Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="crm-section-header"><td colspan="4">CONTACT INFO — معلومات التواصل</td></tr>
+      <tr><td>Full Name — الاسم</td><td>Text</td><td>First and last name, including preferred name (كنية)</td><td>Include title if formal</td></tr>
+      <tr><td>Job Title — المسمى</td><td>Text</td><td>Exact title from LinkedIn or business card</td><td>Signals decision authority</td></tr>
+      <tr><td>Company — الشركة</td><td>Text</td><td>Legal company name and trade name</td><td>Link to company record</td></tr>
+      <tr><td>WhatsApp — واتساب</td><td>Phone</td><td>Saudi mobile number — primary business channel</td><td>+966 format</td></tr>
+      <tr><td>Email — البريد</td><td>Email</td><td>Business email preferred; personal if B2B-SME</td><td>Verify before bulk send</td></tr>
+      <tr><td>LinkedIn — لينكدإن</td><td>URL</td><td>Profile URL for research and connection</td><td>Note connection status</td></tr>
+      <tr><td>City — المدينة</td><td>Dropdown</td><td>Riyadh / Jeddah / Dammam / Khobar / Other</td><td>Affects meeting logistics</td></tr>
+
+      <tr class="crm-section-header"><td colspan="4">COMPANY INFO — معلومات الشركة</td></tr>
+      <tr><td>Industry — القطاع</td><td>Dropdown</td><td>Primary industry sector (max 2)</td><td>Use standard Saudi GICS codes</td></tr>
+      <tr><td>Company Size — الحجم</td><td>Dropdown</td><td>1–10 / 11–50 / 51–200 / 200+</td><td>Affects pricing and effort</td></tr>
+      <tr><td>Est. Annual Revenue</td><td>SAR Range</td><td>&lt;1M / 1–5M / 5–20M / 20–100M / 100M+</td><td>Estimate from context/research</td></tr>
+      <tr><td>Decision Maker? — صاحب القرار؟</td><td>Y / N / Influencer</td><td>Can this person sign the contract alone?</td><td>If N — find the DM</td></tr>
+      <tr><td>Budget Authority — صلاحية الميزانية</td><td>Y / N / Shared</td><td>Does this person have budget authority for this purchase?</td><td>Ask during discovery</td></tr>
+
+      <tr class="crm-section-header"><td colspan="4">SALES TRACKING — متابعة المبيعات</td></tr>
+      <tr><td>Stage — المرحلة</td><td>Dropdown</td><td>Prospect / Contacted / Qualified / Proposal / Negotiation / Won / Lost</td><td>Update after every interaction</td></tr>
+      <tr><td>Lead Source — مصدر العميل</td><td>Dropdown</td><td>Referral / LinkedIn / Event / Inbound / WhatsApp / Cold Outreach / Other</td><td>Track to optimise channels</td></tr>
+      <tr><td>First Contact Date</td><td>Date</td><td>The date you first sent a message or made contact</td><td>Measures cycle length</td></tr>
+      <tr><td>Last Activity Date</td><td>Date</td><td>The date of last meaningful interaction</td><td>Alert if &gt;7 days old</td></tr>
+      <tr><td>Next Follow-Up Date</td><td>Date</td><td>The specific date you will follow up next — set every time</td><td>Never leave blank</td></tr>
+      <tr><td>Deal Value — قيمة الصفقة</td><td>SAR</td><td>Estimated contract value (be conservative)</td><td>Weighted by probability %</td></tr>
+      <tr><td>Probability % — احتمال الإغلاق</td><td>%</td><td>Prospect 10% · Contacted 20% · Qualified 40% · Proposal 65% · Negotiation 80%</td><td>Auto-set by stage</td></tr>
+      <tr><td>Expected Close Date</td><td>Date</td><td>Realistic date the deal will be signed or paid</td><td>Used in revenue forecast</td></tr>
+
+      <tr class="crm-section-header"><td colspan="4">RELATIONSHIP NOTES — ملاحظات العلاقة</td></tr>
+      <tr><td>Meeting Notes</td><td>Long text</td><td>Summary of what was discussed, what matters to them, decisions made</td><td>Update same day</td></tr>
+      <tr><td>Objections Heard</td><td>Text</td><td>Any pricing, timing, trust, or competitor objections raised</td><td>Prep counter-response</td></tr>
+      <tr><td>Personal Details</td><td>Text</td><td>Family info, hobbies, hometown — relationship signals for personalised follow-up</td><td>Saudi culture values this</td></tr>
+      <tr><td>Lost Reason (if applicable)</td><td>Dropdown</td><td>Price / Timing / Chose competitor / No budget / No need / No response</td><td>Review monthly for patterns</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 4: OUTREACH SCRIPTS -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 04</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; OUTREACH SCRIPTS</div> </div> <div class="section-title">OUTREACH SCRIPTS —  </div> <div class="gold-rule"></div> <!-- WhatsApp Scripts --> <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">WhatsApp First Message — ( )</div> <div class="three-col"> <div class="script-block"> <div class="script-block-header"> <div class="script-block-title">Version A — Referral</div> <div class="script-block-tag"> </div> </div> <div class="script-body">  []  []  []. [ ] []. — </div> <div class="script-body-en">Hi [Name], I'm [Your Name] from [Company]. [Referrer] suggested I reach out — mentioned you're working on [topic]. I have something that might be useful — would it be okay if I send a brief overview?</div> </div> <div class="script-block"> <div class="script-block-header"> <div class="script-block-title">Version B — Cold / Pain-based</div> <div class="script-block-tag"> </div> </div> <div class="script-body"> []  []. [ / ] — [] [ ]. [X] . </div> <div class="script-body-en">Hi [Name], I'm [Your Name]. I came across your work on [platform/event] — companies in [sector] typically face [pain point]. We've built a solution that's helped [X] businesses with exactly this. Would you have 15 minutes to chat?</div> </div> <div class="script-block"> <div class="script-block-header"> <div class="script-block-title">Version C — LinkedIn → WhatsApp</div> <div class="script-block-tag"> ← </div> </div> <div class="script-body"> [] .  []  LEOMAX. [ ]. — </div> <div class="script-body-en">Hi [Name], we connected on LinkedIn. I'm [Your Name] from LEOMAX, specialising in [brief description]. I'd love to introduce you to how we work — are you available this week for a quick call?</div> </div> </div> <!-- Email --> <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">Email Outreach — </div> <div class="content-block" style="margin-bottom:3mm;"> <h3>Subject Line Options —  </h3> <div class="three-col" style="margin-bottom:0;"> <div> <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option A — Collaboration Hook</div> </div> <div> <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option B — Social Proof</div> </div> <div> <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option C — Personalised Question</div> </div> </div> </div> <div class="content-block" style="margin-bottom:4mm;"> <h3>Email Body Template (≤140 words) — </h3> <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;font-size:11px;"> <div> <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">① HOOK — </div> <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">Open with a specific observation about their business — not a generic compliment. Shows you did research.</div> <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">② CREDIBILITY — </div> <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">One sentence: who you are and one proof point ("we've helped 80+ Saudi SMEs...")</div> </div> <div> <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">③ SPECIFIC VALUE —  </div> <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">Exactly what you could do for them — tied to their situation, not a generic list of services.</div> <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">④ SOFT CTA —  </div> <div style="color:rgba(255,255,255,0.75);">One low-commitment ask: "Would a 15-min call be useful?" — not "buy from us".</div> </div> </div> </div> <!-- 7-Touch Follow-Up --> <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">7-Touch Follow-Up Sequence — </div> <div class="touch-timeline"> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 0</div> <div class="touch-body"> <div class="touch-name">Touch 1 — Initial Outreach</div> <div class="touch-action">First message (use WhatsApp template above). Personalised, short, low-commitment ask.</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 3</div> <div class="touch-body"> <div class="touch-name">Touch 2 — Value Add</div> <div class="touch-action">Share a relevant article, insight, or data point about their industry. No ask. Pure value.</div> <div class="touch-ar">" — [  ]"</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 7</div> <div class="touch-body"> <div class="touch-name">Touch 3 — Case Study / Result</div> <div class="touch-action">Share a specific client result relevant to their situation. Before → After format with numbers.</div> <div class="touch-ar">" []  []"</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 12</div> <div class="touch-body"> <div class="touch-name">Touch 4 — Objection Angle</div> <div class="touch-action">Address the most likely objection preemptively. "Most people in your situation initially wonder about X — here's how we handle it."</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 18</div> <div class="touch-body"> <div class="touch-name">Touch 5 — Direct Ask</div> <div class="touch-action">Ask directly whether this is relevant — give them permission to say no.</div> <div class="touch-ar">" — ."</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 25</div> <div class="touch-body"> <div class="touch-name">Touch 6 — Free Offer</div> <div class="touch-action">Offer something genuinely free — a mini audit, a free session, a customised report.</div> <div class="touch-ar">" [ ] — —  "</div> </div> </div> <div class="touch-item"> <div class="touch-dot"></div> <div class="touch-day">Day 32</div> <div class="touch-body"> <div class="touch-name">Touch 7 — Breakup Message</div> <div class="touch-action">Final message. Respectful. Leaves the door open. Often generates replies because it's genuine and respectful.</div> <div class="touch-ar">" — ."</div> </div> </div> </div> <!-- Discovery Call Script --> <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin:3mm 0 3mm;">Discovery Call Script — ( )</div> <div class="two-col" style="margin-bottom:0;"> <div> <div class="call-phase"> <div class="call-phase-time">2 MIN</div> <div class="call-phase-body"> <div class="cp-name">Opening — </div> <div class="cp-goal">Build rapport, set agenda, confirm available time</div> </div> </div> <div class="call-phase"> <div class="call-phase-time">5 MIN</div> <div class="call-phase-body"> <div class="cp-name">Situation —  </div> <div class="cp-q">" []"</div> <div class="cp-goal">Understand their current state, team, and processes</div> </div> </div> <div class="call-phase"> <div class="call-phase-time">5 MIN</div> <div class="call-phase-body"> <div class="cp-name">Problem — </div> <div class="cp-q">" "</div> <div class="cp-goal">Get them to name the pain in their own words — never assume</div> </div> </div> </div> <div> <div class="call-phase"> <div class="call-phase-time">3 MIN</div> <div class="call-phase-body"> <div class="cp-name">Impact — </div> <div class="cp-q">" — "</div> <div class="cp-goal">Quantify the cost of inaction — makes your solution worth more</div> </div> </div> <div class="call-phase"> <div class="call-phase-time">5 MIN</div> <div class="call-phase-body"> <div class="cp-name">Solution Fit —  </div> <div class="cp-q">" —  []. "</div> <div class="cp-goal">Present your solution as a direct answer to their stated problem</div> </div> </div> <div class="call-phase"> <div class="call-phase-time">5 MIN</div> <div class="call-phase-body"> <div class="cp-name">Next Step —  </div> <div class="cp-q">" "</div> <div class="cp-goal">Always end with a specific, time-bound next step — never "I'll send you something"</div> </div> </div> </div> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 04</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; OUTREACH SCRIPTS</div>
+  </div>
+
+  <div class="section-title">OUTREACH SCRIPTS — نصوص التواصل</div>
+  <div class="section-title-ar">واتساب · بريد إلكتروني · متابعة ٧ نقاط تواصل · نص مكالمة الاستكشاف</div>
+  <div class="gold-rule"></div>
+
+  <!-- WhatsApp Scripts -->
+  <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">WhatsApp First Message — رسائل واتساب الأولى (٣ نسخ)</div>
+
+  <div class="three-col">
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">Version A — Referral</div>
+        <div class="script-block-tag">عبر توصية</div>
+      </div>
+      <div class="script-body">السلام عليكم [الاسم]، أنا [اسمك] من [الشركة]. تواصلت معي [الشخص المحيل] وذكر أنك تعمل على [الموضوع]. عندي شيء قد يفيدكم — هل مناسب أرسل لك ملخص؟</div>
+      <div class="script-body-en">Hi [Name], I'm [Your Name] from [Company]. [Referrer] suggested I reach out — mentioned you're working on [topic]. I have something that might be useful — would it be okay if I send a brief overview?</div>
+    </div>
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">Version B — Cold / Pain-based</div>
+        <div class="script-block-tag">تواصل بارد</div>
+      </div>
+      <div class="script-body">مرحبا [الاسم]، أنا [اسمك]. شفت عملكم في [المنصة / الحدث] — أنتم تشتغلون في [القطاع] وعادةً الشركات في هذا المجال تواجه [نقطة الألم]. عندنا نظام يحل هذا لـ [X] شركة. هل تبي نتكلم ١٥ دقيقة؟</div>
+      <div class="script-body-en">Hi [Name], I'm [Your Name]. I came across your work on [platform/event] — companies in [sector] typically face [pain point]. We've built a solution that's helped [X] businesses with exactly this. Would you have 15 minutes to chat?</div>
+    </div>
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">Version C — LinkedIn → WhatsApp</div>
+        <div class="script-block-tag">لينكدإن ← واتساب</div>
+      </div>
+      <div class="script-body">مرحبا [الاسم]، تواصلنا على لينكدإن. أنا [اسمك] من LEOMAX. نتخصص في [وصف موجز]. أود أعرّفكم على طريقة عملنا — هل أنت متاح هذا الأسبوع؟</div>
+      <div class="script-body-en">Hi [Name], we connected on LinkedIn. I'm [Your Name] from LEOMAX, specialising in [brief description]. I'd love to introduce you to how we work — are you available this week for a quick call?</div>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">Email Outreach — التواصل بالبريد الإلكتروني</div>
+
+  <div class="content-block" style="margin-bottom:3mm;">
+    <h3>Subject Line Options — عناوين البريد</h3>
+    <div class="three-col" style="margin-bottom:0;">
+      <div>
+        <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option A — Collaboration Hook</div>
+        <div style="font-size:11px;direction:rtl;color:rgba(255,255,255,0.8);">[اسم شركتهم] + LEOMAX — فكرة للتعاون</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option B — Social Proof</div>
+        <div style="font-size:11px;direction:rtl;color:rgba(255,255,255,0.8);">كيف ساعدنا [شركة مشابهة] تحقق [النتيجة] في ٩٠ يوم</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">Option C — Personalised Question</div>
+        <div style="font-size:11px;direction:rtl;color:rgba(255,255,255,0.8);">سؤال سريع عن [شيء محدد في عملهم]</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block" style="margin-bottom:4mm;">
+    <h3>Email Body Template (≤140 words) — بنية البريد الإلكتروني</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;font-size:11px;">
+      <div>
+        <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">① HOOK — الخطاف</div>
+        <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">Open with a specific observation about their business — not a generic compliment. Shows you did research.</div>
+        <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">② CREDIBILITY — المصداقية</div>
+        <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">One sentence: who you are and one proof point ("we've helped 80+ Saudi SMEs...")</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">③ SPECIFIC VALUE — القيمة المحددة</div>
+        <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">Exactly what you could do for them — tied to their situation, not a generic list of services.</div>
+        <div style="color:var(--gold);margin-bottom:2px;font-size:10px;font-weight:700;">④ SOFT CTA — الدعوة للتصرف</div>
+        <div style="color:rgba(255,255,255,0.75);">One low-commitment ask: "Would a 15-min call be useful?" — not "buy from us".</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7-Touch Follow-Up -->
+  <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">7-Touch Follow-Up Sequence — تسلسل المتابعة بـ ٧ نقاط تواصل</div>
+
+  <div class="touch-timeline">
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 0</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 1 — Initial Outreach</div>
+        <div class="touch-action">First message (use WhatsApp template above). Personalised, short, low-commitment ask.</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 3</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 2 — Value Add</div>
+        <div class="touch-action">Share a relevant article, insight, or data point about their industry. No ask. Pure value.</div>
+        <div class="touch-ar">"شاركت معك هذا المقال — أظن قد يفيدك في [الموضوع ذي الصلة]"</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 7</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 3 — Case Study / Result</div>
+        <div class="touch-action">Share a specific client result relevant to their situation. Before → After format with numbers.</div>
+        <div class="touch-ar">"شاركت نتيجة عميل في نفس قطاعكم حقق [النتيجة] خلال [المدة]"</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 12</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 4 — Objection Angle</div>
+        <div class="touch-action">Address the most likely objection preemptively. "Most people in your situation initially wonder about X — here's how we handle it."</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 18</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 5 — Direct Ask</div>
+        <div class="touch-action">Ask directly whether this is relevant — give them permission to say no.</div>
+        <div class="touch-ar">"هل هذا مناسب لوضعكم الحالي — أم لا؟ لا مشكلة في الحالتين."</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 25</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 6 — Free Offer</div>
+        <div class="touch-action">Offer something genuinely free — a mini audit, a free session, a customised report.</div>
+        <div class="touch-ar">"أقدر أعمل لكم تقييم مجاني لـ [الجانب المحدد] — بدون التزام — هل تبي؟"</div>
+      </div>
+    </div>
+    <div class="touch-item">
+      <div class="touch-dot"></div>
+      <div class="touch-day">Day 32</div>
+      <div class="touch-body">
+        <div class="touch-name">Touch 7 — Breakup Message</div>
+        <div class="touch-action">Final message. Respectful. Leaves the door open. Often generates replies because it's genuine and respectful.</div>
+        <div class="touch-ar">"سأترككم مساحة من الآن — ولكن إذا تغيّر الوضع في أي وقت وأردتم التحدث، لا تترددون في التواصل."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Discovery Call Script -->
+  <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;margin:3mm 0 3mm;">Discovery Call Script — نص مكالمة الاستكشاف (٢٠ دقيقة)</div>
+
+  <div class="two-col" style="margin-bottom:0;">
+    <div>
+      <div class="call-phase">
+        <div class="call-phase-time">2 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Opening — البداية</div>
+          <div class="cp-goal">Build rapport, set agenda, confirm available time</div>
+        </div>
+      </div>
+      <div class="call-phase">
+        <div class="call-phase-time">5 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Situation — الوضع الراهن</div>
+          <div class="cp-q">"صفلي وضعكم الحالي في [المجال]"</div>
+          <div class="cp-goal">Understand their current state, team, and processes</div>
+        </div>
+      </div>
+      <div class="call-phase">
+        <div class="call-phase-time">5 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Problem — التحدي</div>
+          <div class="cp-q">"إيش أكبر تحدي تواجهونه في هذا الجانب الآن؟"</div>
+          <div class="cp-goal">Get them to name the pain in their own words — never assume</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="call-phase">
+        <div class="call-phase-time">3 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Impact — الأثر</div>
+          <div class="cp-q">"لو ما حلّيتم هذا — إيش الأثر على العمل؟"</div>
+          <div class="cp-goal">Quantify the cost of inaction — makes your solution worth more</div>
+        </div>
+      </div>
+      <div class="call-phase">
+        <div class="call-phase-time">5 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Solution Fit — مطابقة الحل</div>
+          <div class="cp-q">"بناءً على ما قلته — عندنا [الحل]. هل هذا يلامس المشكلة؟"</div>
+          <div class="cp-goal">Present your solution as a direct answer to their stated problem</div>
+        </div>
+      </div>
+      <div class="call-phase">
+        <div class="call-phase-time">5 MIN</div>
+        <div class="call-phase-body">
+          <div class="cp-name">Next Step — الخطوة التالية</div>
+          <div class="cp-q">"هل نحدد موعد لعرض مفصّل هذا الأسبوع؟"</div>
+          <div class="cp-goal">Always end with a specific, time-bound next step — never "I'll send you something"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 5: 6-WEEK SALES RAMP PLAN -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 05</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; 6-WEEK RAMP PLAN</div> </div> <div class="section-title">6-WEEK SALES RAMP PLAN</div> <div class="gold-rule"></div> <div class="week-row"> <div class="week-label"> <div class="wn">W1</div> <div class="wt">Foundation</div> </div> <div class="week-content"> <h4>Foundation —  </h4> <ul> <li>Set up your CRM system — use the template from page 3. Whether it's a spreadsheet, Notion, or a dedicated tool, consistency matters more than the platform.</li> <li>Define your ICP (Ideal Client Profile) — maximum 5 criteria: sector, size, location, pain point, buying authority. Be specific — "any Saudi company" is not an ICP.</li> <li>Build a list of 50 target companies from LinkedIn, Google, trade directories, and referral networks.</li> <li>Write your 3 WhatsApp outreach templates (Referral / Cold / LinkedIn follow-up) — personalise the variables for your business.</li> </ul> <div class="week-goal"> <div class="goal-label">Week 1 Goal</div> <div class="goal-text">CRM ready · ICP defined · 50 companies listed · 3 templates written</div> </div> </div> </div> <div class="week-row"> <div class="week-label"> <div class="wn">W2</div> <div class="wt">Prospect</div> </div> <div class="week-content"> <h4>Prospecting —  </h4> <ul> <li>Add all 50 companies to CRM as "Prospect" stage with full contact details.</li> <li>Research top 20 deeply — LinkedIn, company website, recent news, social media. Find the decision maker's name and role.</li> <li>Send first outreach to top 20 targets using your WhatsApp or email templates. Personalise each message with one specific detail about their business.</li> <li>Log every outreach in CRM with date and channel. Set next follow-up date (Day 3).</li> </ul> <div class="week-goal"> <div class="goal-label">Week 2 Goal</div> <div class="goal-text">20 outreach messages sent · 5 responses received · All logged in CRM</div> </div> </div> </div> <div class="week-row"> <div class="week-label"> <div class="wn">W3</div> <div class="wt">Contact</div> </div> <div class="week-content"> <h4>Contact &amp; Qualify —  </h4> <ul> <li>Follow up Week 2 outreach (Touch 2 — value-add message). Do not send price. Build interest first.</li> <li>Send outreach to 20 new targets. You now have 40 active in pipeline.</li> <li>For any response, reply within 2 hours. Aim to book a discovery call — use the call script from page 4.</li> <li>Conduct first discovery calls using the SPIN-style script. Qualify using BANT: Budget, Authority, Need, Timeline.</li> </ul> <div class="week-goal"> <div class="goal-label">Week 3 Goal</div> <div class="goal-text">3 discovery calls scheduled · 1–2 calls completed · Qualified leads identified</div> </div> </div> </div> <div class="week-row"> <div class="week-label"> <div class="wn">W4</div> <div class="wt">Propose</div> </div> <div class="week-content"> <h4>Qualify &amp; Propose —  </h4> <ul> <li>Send proposals for qualified leads within 24 hours of discovery call. Strike while interest is hot.</li> <li>Each proposal must include: problem summary (their words), your solution, 3 deliverables, timeline, investment (not "cost"), next step.</li> <li>Continue follow-up sequences for Week 2 contacts (Touch 3–4).</li> <li>Add 20 new prospects to keep top-of-funnel full. Always be filling the pipeline.</li> </ul> <div class="week-goal"> <div class="goal-label">Week 4 Goal</div> <div class="goal-text">2 proposals sent · Follow-up sequence running · Pipeline at 60+ contacts</div> </div> </div> </div> <div class="week-row"> <div class="week-label"> <div class="wn">W5</div> <div class="wt">Close</div> </div> <div class="week-content"> <h4>Negotiate &amp; Close —  </h4> <ul> <li>Follow up every sent proposal within 48 hours if no response. The proposal is the start of a conversation — not the end.</li> <li>Handle objections using your Objection Handler sheet (Worksheet 5). Most objections are requests for more confidence — give them proof, not discounts.</li> <li>For stalled deals, use Touch 5–6 from the follow-up sequence. Create urgency through scarcity (available slots) or added value (bonus), not pressure.</li> <li>Ask for the close directly: " " — don't wait for them to ask.</li> </ul> <div class="week-goal"> <div class="goal-label">Week 5 Goal</div> <div class="goal-text">1 deal closed (Won) · All proposals followed up · Clear next steps on all active leads</div> </div> </div> </div> <div class="week-row"> <div class="week-label"> <div class="wn">W6</div> <div class="wt">Review</div> </div> <div class="week-content"> <h4>Review &amp; Scale —  </h4> <ul> <li>Full pipeline review: count total contacts, responses, qualified, proposals, won, lost. Calculate your conversion rates at each stage.</li> <li>Identify your best lead source: which channel produced the most qualified leads? Double down on that.</li> <li>Identify your most common lost reason: price, timing, competitor, no response? That is your next training focus.</li> <li>Plan the next 6 weeks with updated targets based on actual conversion rates — not guesses.</li> </ul> <div class="week-goal"> <div class="goal-label">Week 6 Goal</div> <div class="goal-text">Conversion rates calculated · Best channel identified · Next 6-week plan written</div> </div> </div> </div> <div class="highlight-box" style="margin-top:3mm;margin-bottom:0;"> <div class="label">The One Rule of Pipeline Building — </div> <p>Your pipeline will always shrink faster than you expect. The only sustainable system is one where you are <strong>always adding new prospects</strong> — even when you're busy with existing clients. Build prospecting into your calendar as a non-negotiable daily or weekly block.</p> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 05</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; 6-WEEK RAMP PLAN</div>
+  </div>
+
+  <div class="section-title">6-WEEK SALES RAMP PLAN</div>
+  <div class="section-title-ar">خطة الانطلاق في المبيعات — ٦ أسابيع من الصفر إلى الإغلاق الأول</div>
+  <div class="gold-rule"></div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W1</div>
+      <div class="wt">Foundation</div>
+    </div>
+    <div class="week-content">
+      <h4>Foundation — بناء الأساس</h4>
+      <ul>
+        <li>Set up your CRM system — use the template from page 3. Whether it's a spreadsheet, Notion, or a dedicated tool, consistency matters more than the platform.</li>
+        <li>Define your ICP (Ideal Client Profile) — maximum 5 criteria: sector, size, location, pain point, buying authority. Be specific — "any Saudi company" is not an ICP.</li>
+        <li>Build a list of 50 target companies from LinkedIn, Google, trade directories, and referral networks.</li>
+        <li>Write your 3 WhatsApp outreach templates (Referral / Cold / LinkedIn follow-up) — personalise the variables for your business.</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 1 Goal</div>
+        <div class="goal-text">CRM ready · ICP defined · 50 companies listed · 3 templates written</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W2</div>
+      <div class="wt">Prospect</div>
+    </div>
+    <div class="week-content">
+      <h4>Prospecting — بدء الاستهداف</h4>
+      <ul>
+        <li>Add all 50 companies to CRM as "Prospect" stage with full contact details.</li>
+        <li>Research top 20 deeply — LinkedIn, company website, recent news, social media. Find the decision maker's name and role.</li>
+        <li>Send first outreach to top 20 targets using your WhatsApp or email templates. Personalise each message with one specific detail about their business.</li>
+        <li>Log every outreach in CRM with date and channel. Set next follow-up date (Day 3).</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 2 Goal</div>
+        <div class="goal-text">20 outreach messages sent · 5 responses received · All logged in CRM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W3</div>
+      <div class="wt">Contact</div>
+    </div>
+    <div class="week-content">
+      <h4>Contact &amp; Qualify — التواصل والتأهيل</h4>
+      <ul>
+        <li>Follow up Week 2 outreach (Touch 2 — value-add message). Do not send price. Build interest first.</li>
+        <li>Send outreach to 20 new targets. You now have 40 active in pipeline.</li>
+        <li>For any response, reply within 2 hours. Aim to book a discovery call — use the call script from page 4.</li>
+        <li>Conduct first discovery calls using the SPIN-style script. Qualify using BANT: Budget, Authority, Need, Timeline.</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 3 Goal</div>
+        <div class="goal-text">3 discovery calls scheduled · 1–2 calls completed · Qualified leads identified</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W4</div>
+      <div class="wt">Propose</div>
+    </div>
+    <div class="week-content">
+      <h4>Qualify &amp; Propose — التأهيل والعروض</h4>
+      <ul>
+        <li>Send proposals for qualified leads within 24 hours of discovery call. Strike while interest is hot.</li>
+        <li>Each proposal must include: problem summary (their words), your solution, 3 deliverables, timeline, investment (not "cost"), next step.</li>
+        <li>Continue follow-up sequences for Week 2 contacts (Touch 3–4).</li>
+        <li>Add 20 new prospects to keep top-of-funnel full. Always be filling the pipeline.</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 4 Goal</div>
+        <div class="goal-text">2 proposals sent · Follow-up sequence running · Pipeline at 60+ contacts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W5</div>
+      <div class="wt">Close</div>
+    </div>
+    <div class="week-content">
+      <h4>Negotiate &amp; Close — التفاوض والإغلاق</h4>
+      <ul>
+        <li>Follow up every sent proposal within 48 hours if no response. The proposal is the start of a conversation — not the end.</li>
+        <li>Handle objections using your Objection Handler sheet (Worksheet 5). Most objections are requests for more confidence — give them proof, not discounts.</li>
+        <li>For stalled deals, use Touch 5–6 from the follow-up sequence. Create urgency through scarcity (available slots) or added value (bonus), not pressure.</li>
+        <li>Ask for the close directly: "هل تقدر نبدأ هذا الأسبوع؟" — don't wait for them to ask.</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 5 Goal</div>
+        <div class="goal-text">1 deal closed (Won) · All proposals followed up · Clear next steps on all active leads</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label">
+      <div class="wn">W6</div>
+      <div class="wt">Review</div>
+    </div>
+    <div class="week-content">
+      <h4>Review &amp; Scale — المراجعة والتوسع</h4>
+      <ul>
+        <li>Full pipeline review: count total contacts, responses, qualified, proposals, won, lost. Calculate your conversion rates at each stage.</li>
+        <li>Identify your best lead source: which channel produced the most qualified leads? Double down on that.</li>
+        <li>Identify your most common lost reason: price, timing, competitor, no response? That is your next training focus.</li>
+        <li>Plan the next 6 weeks with updated targets based on actual conversion rates — not guesses.</li>
+      </ul>
+      <div class="week-goal">
+        <div class="goal-label">Week 6 Goal</div>
+        <div class="goal-text">Conversion rates calculated · Best channel identified · Next 6-week plan written</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:3mm;margin-bottom:0;">
+    <div class="label">The One Rule of Pipeline Building — القاعدة الأساسية الواحدة</div>
+    <p>Your pipeline will always shrink faster than you expect. The only sustainable system is one where you are <strong>always adding new prospects</strong> — even when you're busy with existing clients. Build prospecting into your calendar as a non-negotiable daily or weekly block.</p>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 7: DISCOVERY CALL MASTERY (NEW) -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 07</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; DISCOVERY CALL MASTERY</div> </div> <div class="section-title">THE DISCOVERY CALL MASTERY</div> <div class="gold-rule"></div> <div class="highlight-box"> <div class="label">The Purpose of the Discovery Call — </div> <p>The discovery call is <strong>NOT to sell</strong>. It is to qualify. Your goal: determine if this prospect has the <strong>Budget, Authority, Need, and Timeline</strong> to work with you — and if they're a FIT for how you operate. A good discovery call ends with the prospect saying "so when can we start?" A bad one ends with you sending a proposal that never gets answered.</p> </div> <div class="two-col"> <div class="content-block"> <h3>BANT+ Framework — Saudi Edition</h3> <ul> <li><strong>Budget ():</strong> Do they have money allocated? Is this budgeted or aspirational? What have they spent on similar initiatives before?</li> <li><strong>Authority ():</strong> Is the person you're speaking with a decision-maker or an influencer? Who else needs to say yes?</li> <li><strong>Need ():</strong> How painful is this problem right now? What happens if nothing changes in 6 months?</li> <li><strong>Timeline ( ):</strong> Is there a natural deadline driving urgency? Any external event (launch, audit, board meeting)?</li> <li><strong>+ FIT ():</strong> Do they value quality over lowest price? Are they a client who will implement and get results — or one who buys and then does nothing?</li> </ul> </div> <div class="content-block"> <h3>Saudi Cultural Cues to Read —  </h3> <ul> <li><strong>Arabic coffee / tea offered:</strong> Trust signal — don't rush to business. Let them set the pace.</li> <li><strong>"Inshallah" on timeline:</strong> Probe gently — what needs to happen before they can commit?</li> <li><strong>Founder's name or tribe mentioned:</strong> That person matters in the decision. Ask directly how they're involved.</li> <li><strong>Price is their first question:</strong> They're comparing to cheap alternatives. Reframe to outcome before answering.</li> <li><strong>Silence after your answer:</strong> Not discomfort — thinking space. Don't fill it. Wait.</li> <li><strong>They mention a mutual contact:</strong> Acknowledge it warmly — this is how trust transfers in KSA.</li> </ul> </div> </div> <div class="content-block"> <h3>The 7 Discovery Questions — in Order — </h3> <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;"> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q1 — Let them talk first</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Before I tell you anything about us — can you walk me through what's going on in the business right now with [problem area]?"</div> </div> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q2 — Gauge seriousness</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"How long has this been a challenge? What have you tried before to solve it?"</div> </div> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q3 — Build outcome vision</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"What does success look like for you — what would be different in your business in 6 months if this was fully solved?"</div> </div> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q4 — Quantify the pain</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"If you had to put a number on it — what does this problem cost the business right now, per month?"</div> </div> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q5 — Check the budget</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Have you already budgeted for this, or are we still at the exploration stage? Either answer is fine — it helps me tailor what I show you."</div> </div> <div> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q6 — Map the committee</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Who else on your team would be involved in a decision like this — and what would their concerns typically be?"</div> </div> <div style="grid-column:1/-1;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q7 — Test close (the most important question)</div> <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Assuming our conversation today goes well and you feel we're the right fit — what would the next step look like on your side? And what's your timeline for making a decision?"</div> </div> </div> </div> <div class="content-block"> <h3>Post-Call Protocol — </h3> <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px;"> <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">WITHIN 2 HRS</div> <div style="font-size:8px;color:var(--silver);line-height:1.5;">WhatsApp thank-you + 3-bullet summary of what you discussed</div> </div> <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">WITHIN 24 HRS</div> <div style="font-size:8px;color:var(--silver);line-height:1.5;">Email with your most relevant case study to their situation</div> </div> <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 3</div> <div style="font-size:8px;color:var(--silver);line-height:1.5;">Light follow-up: "Just checking you received the case study — any questions?"</div> </div> <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 7</div> <div style="font-size:8px;color:var(--silver);line-height:1.5;">Different angle: new insight or article relevant to their stated challenge</div> </div> <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 14</div> <div style="font-size:8px;color:var(--silver);line-height:1.5;">Offer a different format: in-person meeting if you haven't met, or a short demo</div> </div> </div> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 07</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; DISCOVERY CALL MASTERY</div>
+  </div>
+
+  <div class="section-title">THE DISCOVERY CALL MASTERY</div>
+  <div class="section-title-ar">إتقان مكالمة الاكتشاف — BANT+ للسوق السعودي</div>
+  <div class="gold-rule"></div>
+
+  <div class="highlight-box">
+    <div class="label">The Purpose of the Discovery Call — الهدف من مكالمة الاكتشاف</div>
+    <p>The discovery call is <strong>NOT to sell</strong>. It is to qualify. Your goal: determine if this prospect has the <strong>Budget, Authority, Need, and Timeline</strong> to work with you — and if they're a FIT for how you operate. A good discovery call ends with the prospect saying "so when can we start?" A bad one ends with you sending a proposal that never gets answered.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="content-block">
+      <h3>BANT+ Framework — Saudi Edition</h3>
+      <ul>
+        <li><strong>Budget (الميزانية):</strong> Do they have money allocated? Is this budgeted or aspirational? What have they spent on similar initiatives before?</li>
+        <li><strong>Authority (الصلاحية):</strong> Is the person you're speaking with a decision-maker or an influencer? Who else needs to say yes?</li>
+        <li><strong>Need (الحاجة):</strong> How painful is this problem right now? What happens if nothing changes in 6 months?</li>
+        <li><strong>Timeline (الجدول الزمني):</strong> Is there a natural deadline driving urgency? Any external event (launch, audit, board meeting)?</li>
+        <li><strong>+ FIT (التوافق):</strong> Do they value quality over lowest price? Are they a client who will implement and get results — or one who buys and then does nothing?</li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <h3>Saudi Cultural Cues to Read — إشارات ثقافية</h3>
+      <ul>
+        <li><strong>Arabic coffee / tea offered:</strong> Trust signal — don't rush to business. Let them set the pace.</li>
+        <li><strong>"Inshallah" on timeline:</strong> Probe gently — what needs to happen before they can commit?</li>
+        <li><strong>Founder's name or tribe mentioned:</strong> That person matters in the decision. Ask directly how they're involved.</li>
+        <li><strong>Price is their first question:</strong> They're comparing to cheap alternatives. Reframe to outcome before answering.</li>
+        <li><strong>Silence after your answer:</strong> Not discomfort — thinking space. Don't fill it. Wait.</li>
+        <li><strong>They mention a mutual contact:</strong> Acknowledge it warmly — this is how trust transfers in KSA.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>The 7 Discovery Questions — in Order — الأسئلة السبع بالترتيب</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q1 — Let them talk first</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Before I tell you anything about us — can you walk me through what's going on in the business right now with [problem area]?"</div>
+      </div>
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q2 — Gauge seriousness</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"How long has this been a challenge? What have you tried before to solve it?"</div>
+      </div>
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q3 — Build outcome vision</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"What does success look like for you — what would be different in your business in 6 months if this was fully solved?"</div>
+      </div>
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q4 — Quantify the pain</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"If you had to put a number on it — what does this problem cost the business right now, per month?"</div>
+      </div>
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q5 — Check the budget</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Have you already budgeted for this, or are we still at the exploration stage? Either answer is fine — it helps me tailor what I show you."</div>
+      </div>
+      <div>
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q6 — Map the committee</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Who else on your team would be involved in a decision like this — and what would their concerns typically be?"</div>
+      </div>
+      <div style="grid-column:1/-1;">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Q7 — Test close (the most important question)</div>
+        <div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-left:2px solid var(--gold);">"Assuming our conversation today goes well and you feel we're the right fit — what would the next step look like on your side? And what's your timeline for making a decision?"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>Post-Call Protocol — الخطوات المحددة بعد المكالمة</h3>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px;">
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">WITHIN 2 HRS</div>
+        <div style="font-size:8px;color:var(--silver);line-height:1.5;">WhatsApp thank-you + 3-bullet summary of what you discussed</div>
+      </div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">WITHIN 24 HRS</div>
+        <div style="font-size:8px;color:var(--silver);line-height:1.5;">Email with your most relevant case study to their situation</div>
+      </div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 3</div>
+        <div style="font-size:8px;color:var(--silver);line-height:1.5;">Light follow-up: "Just checking you received the case study — any questions?"</div>
+      </div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 7</div>
+        <div style="font-size:8px;color:var(--silver);line-height:1.5;">Different angle: new insight or article relevant to their stated challenge</div>
+      </div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+        <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">DAY 14</div>
+        <div style="font-size:8px;color:var(--silver);line-height:1.5;">Offer a different format: in-person meeting if you haven't met, or a short demo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 8: 7-TOUCHPOINT FOLLOW-UP SYSTEM (NEW) -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 08</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; 7-TOUCHPOINT FOLLOW-UP SYSTEM</div> </div> <div class="section-title">THE 7-TOUCHPOINT FOLLOW-UP SYSTEM</div> <div class="gold-rule"></div> <p style="font-size:9.5px;color:var(--silver);line-height:1.7;margin-bottom:12px;">80% of Saudi salespeople give up after 2 follow-ups. Most deals close between contacts 5–8. This is the complete 7-touchpoint sequence — with exact messages for each channel. <strong style="color:var(--gold);">Rule: never follow up without bringing new value. Every touch must earn the next one.</strong></p> <div style="display:grid;grid-template-columns:60px 1fr;gap:0;margin-bottom:8px;"> <div style="background:var(--gold);color:var(--black);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 1</div> <div style="background:rgba(13,30,53,0.8);border:1px solid rgba(201,168,76,0.2);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — Confirm interest + set next step</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"  [Name] . [resource  ]. "<br><span style="color:var(--gray);font-style:normal;">EN: "Hi [Name], great connecting today. I've shared [resource] relevant to what we discussed. Are you open to a follow-up call next week to discuss next steps?"</span></div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 3</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Email — Value delivery: relevant case study</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Subject: "One thing I forgot to mention..." | Open with a specific result from a similar client. Connect it to their stated problem. Soft CTA: "Does this feel relevant to what you're dealing with?"</div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 7</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp Voice Note — Human connection (30 seconds)</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">" [Name] [ ] — ." In Saudi market: a 30-second voice note outperforms 3 text messages. Record a genuine, specific message — not a script.</div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 14</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">LinkedIn + Email — Social proof signal</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Comment genuinely on their LinkedIn post (not "great post" — an actual insight). Then email: "I noticed [their recent post/achievement] — this connects to [your service] in an interesting way I'd like to share."</div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 21</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — Direct, respectful urgency</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">" — : [solution] —  ." | EN: "I understand you're busy — I just want to ask directly: are you still interested in exploring [solution]? If not, no problem at all — just let me know."</div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 30</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Email — New angle: market / industry update</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Share a new development (competitor news, regulatory update, market stat) relevant to their business. Don't mention your service directly. Just: "Thought this was relevant given what you're working on — no agenda, just sharing."</div> </div> <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 45</div> <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — The Graceful Breakup (highest-converting final message)</div> <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">" — . . . [their specific goal]." | Note: 30–40% of "breakup" messages in Saudi B2B generate a reply and re-engagement. This is statistically the highest-converting message in the sequence.</div> </div> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 08</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; 7-TOUCHPOINT FOLLOW-UP SYSTEM</div>
+  </div>
+
+  <div class="section-title">THE 7-TOUCHPOINT FOLLOW-UP SYSTEM</div>
+  <div class="section-title-ar">نظام المتابعة بـ ٧ نقاط اتصال — النصوص الكاملة</div>
+  <div class="gold-rule"></div>
+
+  <p style="font-size:9.5px;color:var(--silver);line-height:1.7;margin-bottom:12px;">80% of Saudi salespeople give up after 2 follow-ups. Most deals close between contacts 5–8. This is the complete 7-touchpoint sequence — with exact messages for each channel. <strong style="color:var(--gold);">Rule: never follow up without bringing new value. Every touch must earn the next one.</strong></p>
+
+  <div style="display:grid;grid-template-columns:60px 1fr;gap:0;margin-bottom:8px;">
+
+    <div style="background:var(--gold);color:var(--black);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 1</div>
+    <div style="background:rgba(13,30,53,0.8);border:1px solid rgba(201,168,76,0.2);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — Confirm interest + set next step</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"السلام عليكم [Name]، شكراً على وقتك اليوم. يسعدني أشارك معك [resource ذو صلة]. هل يناسبك نتواصل الأسبوع القادم لمناقشة الخطوات التالية؟"<br><span style="color:var(--gray);font-style:normal;">EN: "Hi [Name], great connecting today. I've shared [resource] relevant to what we discussed. Are you open to a follow-up call next week to discuss next steps?"</span></div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 3</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Email — Value delivery: relevant case study</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Subject: "One thing I forgot to mention..." | Open with a specific result from a similar client. Connect it to their stated problem. Soft CTA: "Does this feel relevant to what you're dealing with?"</div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 7</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp Voice Note — Human connection (30 seconds)</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"مرحباً [Name]، تذكرت إنك ذكرت [شيء محدد من المحادثة] — لقيت هذا المحتوى يتعلق بموضوعك مباشرة وأردت أشاركك إياه." In Saudi market: a 30-second voice note outperforms 3 text messages. Record a genuine, specific message — not a script.</div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 14</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">LinkedIn + Email — Social proof signal</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Comment genuinely on their LinkedIn post (not "great post" — an actual insight). Then email: "I noticed [their recent post/achievement] — this connects to [your service] in an interesting way I'd like to share."</div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 21</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — Direct, respectful urgency</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"أنا أتفهم إن الأمور مشغولة — فقط أريد أسألك بصراحة: هل ما زلت مهتماً بمناقشة [solution]؟ إذا لا، لا مشكلة — بس أخبرني." | EN: "I understand you're busy — I just want to ask directly: are you still interested in exploring [solution]? If not, no problem at all — just let me know."</div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 30</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">Email — New angle: market / industry update</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">Share a new development (competitor news, regulatory update, market stat) relevant to their business. Don't mention your service directly. Just: "Thought this was relevant given what you're working on — no agenda, just sharing."</div>
+    </div>
+
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">DAY 45</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">WhatsApp — The Graceful Breakup (highest-converting final message)</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"هذه ستكون آخر رسالة مني — لا أريد أن أكون مصدر إزعاج. إذا لم يكن الوقت مناسباً، أتفهم تماماً. إذا تغيّر شيء، أنتم تعرفون كيف تتواصلون معي. أتمنى لكم التوفيق في [their specific goal]." | Note: 30–40% of "breakup" messages in Saudi B2B generate a reply and re-engagement. This is statistically the highest-converting message in the sequence.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 9: PIPELINE METRICS & KPI DASHBOARD (NEW) -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 09</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; PIPELINE METRICS & KPI DASHBOARD</div> </div> <div class="section-title">PIPELINE METRICS & KPI DASHBOARD</div> <div class="gold-rule"></div> <div class="sub-section-title" style="margin-bottom:8px;">The 12 Pipeline KPIs Every Saudi B2B Business Must Track</div> <table class="score-table" style="font-size:8.5px;margin-bottom:14px;"> <thead> <tr> <th style="width:22%;">KPI</th> <th>Definition</th> <th style="width:18%;">How to Measure</th> <th style="width:18%;">Saudi SME Benchmark</th> </tr> </thead> <tbody> <tr><td><strong style="color:var(--gold);">Lead Volume</strong></td><td>New leads entering pipeline per month</td><td>CRM count</td><td>15–30 leads/month</td></tr> <tr><td><strong style="color:var(--gold);">Lead Source Mix</strong></td><td>% from referral vs. content vs. outbound</td><td>CRM source tags</td><td>50%+ from referral</td></tr> <tr><td><strong style="color:var(--gold);">Discovery Call Rate</strong></td><td>% of leads who take a discovery call</td><td>Calls ÷ Leads</td><td>25–40%</td></tr> <tr><td><strong style="color:var(--gold);">Proposal Win Rate</strong></td><td>% of proposals that close to a deal</td><td>Closes ÷ Proposals</td><td>25–40%</td></tr> <tr><td><strong style="color:var(--gold);">Average Deal Value</strong></td><td>Average revenue per closed deal</td><td>Total revenue ÷ deals</td><td>Varies by sector</td></tr> <tr><td><strong style="color:var(--gold);">Sales Cycle Length</strong></td><td>Days from first contact to signed deal</td><td>CRM date tracking</td><td>30–90 days</td></tr> <tr><td><strong style="color:var(--gold);">Follow-Up Touches</strong></td><td>Avg contacts before close or loss</td><td>CRM activity log</td><td>5–8 touches</td></tr> <tr><td><strong style="color:var(--gold);">Referral Rate</strong></td><td>% of clients who refer at least once</td><td>CRM tag tracking</td><td>30–50% in KSA</td></tr> <tr><td><strong style="color:var(--gold);">Pipeline Coverage</strong></td><td>Total pipeline value ÷ monthly target</td><td>CRM value field</td><td>3× monthly target</td></tr> <tr><td><strong style="color:var(--gold);">Proposal-to-Call Rate</strong></td><td>% of discovery calls that become proposals</td><td>Proposals ÷ Calls</td><td>50–70%</td></tr> <tr><td><strong style="color:var(--gold);">Client Lifetime Value</strong></td><td>Average total revenue per client relationship</td><td>Revenue ÷ client cohort</td><td>2–4× first deal value</td></tr> <tr><td><strong style="color:var(--gold);">Churn Rate</strong></td><td>% of clients lost per quarter</td><td>Client count tracking</td><td>&lt;10%/quarter</td></tr> </tbody> </table> <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"> <div> <div class="sub-section-title" style="margin-bottom:8px;">Weekly Pipeline Review — 15 Minutes Every Monday</div> <ul style="list-style:none;"> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> How many new leads entered the pipeline this week?</li> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Which leads moved forward? Which went cold?</li> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> What follow-up actions are due this week (from 7-touchpoint system)?</li> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Any proposals at risk? What's the recovery plan?</li> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Are we at 3× pipeline coverage vs. monthly target?</li> <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;" ><span style="position:absolute;left:0;color:var(--gold);">□</span> What ONE action has the biggest pipeline impact this week?</li> </ul> </div> <div> <div class="sub-section-title" style="margin-bottom:8px;">Pipeline Health Formula — </div> <div class="highlight-box" style="margin-bottom:8px;"> <strong>Healthy Pipeline =</strong> (Monthly Revenue Target × 3) worth of active deals across all stages.<br><br> <strong>Example:</strong> Monthly target = SAR 100,000 → You need SAR 300,000 in your active pipeline at all times.<br><br> <strong style="color:#e74c3c;">🔴 If pipeline &lt; 2× target:</strong> Stop all delivery work. 80% of your time goes to new business now.<br> <strong style="color:#e67e22;">🟡 If pipeline = 2–3× target:</strong> Balanced. Maintain current split of delivery + sales.<br> <strong style="color:#2ecc71;">🟢 If pipeline &gt; 5× target:</strong> Capacity problem. Hire or subcontract before accepting new work. </div> </div> </div> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 09</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; PIPELINE METRICS & KPI DASHBOARD</div>
+  </div>
+
+  <div class="section-title">PIPELINE METRICS & KPI DASHBOARD</div>
+  <div class="section-title-ar">مؤشرات خط أنابيب المبيعات — قِس ما يهم</div>
+  <div class="gold-rule"></div>
+
+  <div class="sub-section-title" style="margin-bottom:8px;">The 12 Pipeline KPIs Every Saudi B2B Business Must Track</div>
+  <table class="score-table" style="font-size:8.5px;margin-bottom:14px;">
+    <thead>
+      <tr>
+        <th style="width:22%;">KPI</th>
+        <th>Definition</th>
+        <th style="width:18%;">How to Measure</th>
+        <th style="width:18%;">Saudi SME Benchmark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold);">Lead Volume</strong></td><td>New leads entering pipeline per month</td><td>CRM count</td><td>15–30 leads/month</td></tr>
+      <tr><td><strong style="color:var(--gold);">Lead Source Mix</strong></td><td>% from referral vs. content vs. outbound</td><td>CRM source tags</td><td>50%+ from referral</td></tr>
+      <tr><td><strong style="color:var(--gold);">Discovery Call Rate</strong></td><td>% of leads who take a discovery call</td><td>Calls ÷ Leads</td><td>25–40%</td></tr>
+      <tr><td><strong style="color:var(--gold);">Proposal Win Rate</strong></td><td>% of proposals that close to a deal</td><td>Closes ÷ Proposals</td><td>25–40%</td></tr>
+      <tr><td><strong style="color:var(--gold);">Average Deal Value</strong></td><td>Average revenue per closed deal</td><td>Total revenue ÷ deals</td><td>Varies by sector</td></tr>
+      <tr><td><strong style="color:var(--gold);">Sales Cycle Length</strong></td><td>Days from first contact to signed deal</td><td>CRM date tracking</td><td>30–90 days</td></tr>
+      <tr><td><strong style="color:var(--gold);">Follow-Up Touches</strong></td><td>Avg contacts before close or loss</td><td>CRM activity log</td><td>5–8 touches</td></tr>
+      <tr><td><strong style="color:var(--gold);">Referral Rate</strong></td><td>% of clients who refer at least once</td><td>CRM tag tracking</td><td>30–50% in KSA</td></tr>
+      <tr><td><strong style="color:var(--gold);">Pipeline Coverage</strong></td><td>Total pipeline value ÷ monthly target</td><td>CRM value field</td><td>3× monthly target</td></tr>
+      <tr><td><strong style="color:var(--gold);">Proposal-to-Call Rate</strong></td><td>% of discovery calls that become proposals</td><td>Proposals ÷ Calls</td><td>50–70%</td></tr>
+      <tr><td><strong style="color:var(--gold);">Client Lifetime Value</strong></td><td>Average total revenue per client relationship</td><td>Revenue ÷ client cohort</td><td>2–4× first deal value</td></tr>
+      <tr><td><strong style="color:var(--gold);">Churn Rate</strong></td><td>% of clients lost per quarter</td><td>Client count tracking</td><td>&lt;10%/quarter</td></tr>
+    </tbody>
+  </table>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div>
+      <div class="sub-section-title" style="margin-bottom:8px;">Weekly Pipeline Review — 15 Minutes Every Monday</div>
+      <ul style="list-style:none;">
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> How many new leads entered the pipeline this week?</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Which leads moved forward? Which went cold?</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> What follow-up actions are due this week (from 7-touchpoint system)?</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Any proposals at risk? What's the recovery plan?</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);" ><span style="position:absolute;left:0;color:var(--gold);">□</span> Are we at 3× pipeline coverage vs. monthly target?</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;" ><span style="position:absolute;left:0;color:var(--gold);">□</span> What ONE action has the biggest pipeline impact this week?</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sub-section-title" style="margin-bottom:8px;">Pipeline Health Formula — معادلة صحة خط المبيعات</div>
+      <div class="highlight-box" style="margin-bottom:8px;">
+        <strong>Healthy Pipeline =</strong> (Monthly Revenue Target × 3) worth of active deals across all stages.<br><br>
+        <strong>Example:</strong> Monthly target = SAR 100,000 → You need SAR 300,000 in your active pipeline at all times.<br><br>
+        <strong style="color:#e74c3c;">🔴 If pipeline &lt; 2× target:</strong> Stop all delivery work. 80% of your time goes to new business now.<br>
+        <strong style="color:#e67e22;">🟡 If pipeline = 2–3× target:</strong> Balanced. Maintain current split of delivery + sales.<br>
+        <strong style="color:#2ecc71;">🟢 If pipeline &gt; 5× target:</strong> Capacity problem. Hire or subcontract before accepting new work.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 10: PROPOSAL BEST PRACTICES & RACI (NEW) -->
 <!-- ============================================================ -->
-<div class="page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 10</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; PROPOSALS & SALES RACI</div> </div> <div class="section-title">PROPOSAL MASTERY & SALES RACI</div> <div class="gold-rule"></div> <div class="sub-section-title" style="margin-bottom:8px;">10 Proposal Rules for Saudi B2B — </div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;"> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">01 · Always Bilingual</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Arabic first if client is Arabic-speaking. English first if client is expat or international company. Never one language only.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">02 · CR Number on Cover</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Always display your Commercial Registration number. It signals legitimacy and legal standing — critical for Saudi corporate buyers.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">03 · Price on Page 4+</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Never put price on page 1. Build the value case first. The prospect should feel the investment is obvious before they see the number.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">04 · Include "What Happens Next"</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Not just what you'll deliver — but how the first week starts. Clients fear starting. Remove the ambiguity with a clear onboarding path.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">05 · Saudi Client Reference</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include at least one specific testimonial or case study from a Saudi client. Regional social proof outweighs global credentials.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">06 · SAR + VAT Breakdown</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Price in SAR with 15% VAT clearly labelled separately. ZATCA compliance is non-negotiable. Ambiguous pricing kills deals.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">07 · 50% Upfront Minimum</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include payment terms that protect your cash flow. 50% on signing, 50% on delivery is the Saudi professional services standard.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">08 · "Valid for 30 Days" Clause</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Creates natural urgency without pressure. Forces a decision timeline and prevents proposals from sitting indefinitely.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">09 · Your WhatsApp on the Last Page</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include your personal WhatsApp with: "Call or message me directly with any questions." Accessibility signals confidence.</div> </div> <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);"> <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">10 · Voice Note Within 1 Hour of Sending</div> <div style="font-size:8px;color:var(--silver);line-height:1.55;">"I just sent the proposal — happy to walk you through it on a call." A personal voice note after proposal submission doubles response rates.</div> </div> </div> <div class="sub-section-title" style="margin-bottom:8px;">Sales RACI Matrix — </div> <table class="score-table" style="font-size:8px;"> <thead> <tr> <th>Activity</th> <th style="width:18%;">Responsible (Does It)</th> <th style="width:18%;">Accountable (Owns It)</th> <th style="width:18%;">Consulted</th> <th style="width:18%;">Informed</th> </tr> </thead> <tbody> <tr><td>Lead Generation & Prospecting</td><td>Sales / Founder</td><td>Founder</td><td>Marketing</td><td>Operations</td></tr> <tr><td>Lead Qualification</td><td>Sales / Founder</td><td>Founder</td><td>—</td><td>Finance (for budget checks)</td></tr> <tr><td>Discovery Call</td><td>Founder / Sales Lead</td><td>Founder</td><td>Delivery Lead</td><td>Admin</td></tr> <tr><td>Proposal Creation</td><td>Sales + Delivery Lead</td><td>Founder</td><td>Finance</td><td>Operations</td></tr> <tr><td>Proposal Presentation</td><td>Founder</td><td>Founder</td><td>Delivery Lead</td><td>Admin</td></tr> <tr><td>Negotiation & Pricing</td><td>Founder</td><td>Founder</td><td>Finance</td><td>Delivery Lead</td></tr> <tr><td>Contract Signing</td><td>Founder</td><td>Founder</td><td>Finance / Legal</td><td>Operations</td></tr> <tr><td>Client Onboarding</td><td>Delivery Lead</td><td>Founder</td><td>Sales</td><td>Finance</td></tr> <tr><td>Account Management</td><td>Delivery Lead</td><td>Founder</td><td>Sales</td><td>Finance</td></tr> <tr><td>Referral Request</td><td>Founder / Account Manager</td><td>Founder</td><td>—</td><td>Marketing</td></tr> </tbody> </table> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 10</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; PROPOSALS & SALES RACI</div>
+  </div>
+
+  <div class="section-title">PROPOSAL MASTERY & SALES RACI</div>
+  <div class="section-title-ar">إتقان العروض ومصفوفة مسؤوليات المبيعات</div>
+  <div class="gold-rule"></div>
+
+  <div class="sub-section-title" style="margin-bottom:8px;">10 Proposal Rules for Saudi B2B — قواعد العروض التجارية</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">01 · Always Bilingual</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Arabic first if client is Arabic-speaking. English first if client is expat or international company. Never one language only.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">02 · CR Number on Cover</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Always display your Commercial Registration number. It signals legitimacy and legal standing — critical for Saudi corporate buyers.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">03 · Price on Page 4+</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Never put price on page 1. Build the value case first. The prospect should feel the investment is obvious before they see the number.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">04 · Include "What Happens Next"</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Not just what you'll deliver — but how the first week starts. Clients fear starting. Remove the ambiguity with a clear onboarding path.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">05 · Saudi Client Reference</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include at least one specific testimonial or case study from a Saudi client. Regional social proof outweighs global credentials.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">06 · SAR + VAT Breakdown</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Price in SAR with 15% VAT clearly labelled separately. ZATCA compliance is non-negotiable. Ambiguous pricing kills deals.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">07 · 50% Upfront Minimum</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include payment terms that protect your cash flow. 50% on signing, 50% on delivery is the Saudi professional services standard.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">08 · "Valid for 30 Days" Clause</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Creates natural urgency without pressure. Forces a decision timeline and prevents proposals from sitting indefinitely.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">09 · Your WhatsApp on the Last Page</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">Include your personal WhatsApp with: "Call or message me directly with any questions." Accessibility signals confidence.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-left:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">10 · Voice Note Within 1 Hour of Sending</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">"I just sent the proposal — happy to walk you through it on a call." A personal voice note after proposal submission doubles response rates.</div>
+    </div>
+  </div>
+
+  <div class="sub-section-title" style="margin-bottom:8px;">Sales RACI Matrix — من يفعل ماذا في عملية المبيعات</div>
+  <table class="score-table" style="font-size:8px;">
+    <thead>
+      <tr>
+        <th>Activity</th>
+        <th style="width:18%;">Responsible (Does It)</th>
+        <th style="width:18%;">Accountable (Owns It)</th>
+        <th style="width:18%;">Consulted</th>
+        <th style="width:18%;">Informed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Lead Generation & Prospecting</td><td>Sales / Founder</td><td>Founder</td><td>Marketing</td><td>Operations</td></tr>
+      <tr><td>Lead Qualification</td><td>Sales / Founder</td><td>Founder</td><td>—</td><td>Finance (for budget checks)</td></tr>
+      <tr><td>Discovery Call</td><td>Founder / Sales Lead</td><td>Founder</td><td>Delivery Lead</td><td>Admin</td></tr>
+      <tr><td>Proposal Creation</td><td>Sales + Delivery Lead</td><td>Founder</td><td>Finance</td><td>Operations</td></tr>
+      <tr><td>Proposal Presentation</td><td>Founder</td><td>Founder</td><td>Delivery Lead</td><td>Admin</td></tr>
+      <tr><td>Negotiation & Pricing</td><td>Founder</td><td>Founder</td><td>Finance</td><td>Delivery Lead</td></tr>
+      <tr><td>Contract Signing</td><td>Founder</td><td>Founder</td><td>Finance / Legal</td><td>Operations</td></tr>
+      <tr><td>Client Onboarding</td><td>Delivery Lead</td><td>Founder</td><td>Sales</td><td>Finance</td></tr>
+      <tr><td>Account Management</td><td>Delivery Lead</td><td>Founder</td><td>Sales</td><td>Finance</td></tr>
+      <tr><td>Referral Request</td><td>Founder / Account Manager</td><td>Founder</td><td>—</td><td>Marketing</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 <!-- ============================================================ -->
 <!-- PAGE 11: WORKSHEETS -->
 <!-- ============================================================ -->
-<div class="page worksheet-page"> <div class="watermark">LEOMAX</div> <div class="page-header"> <div class="page-header-left"> <div class="page-number">PAGE 06 &nbsp;·&nbsp; WORKSHEETS</div> <div class="page-logo">LEOMAX</div> </div> <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; FILL-IN TEMPLATES</div> </div> <div class="gold-rule"></div> <!-- WS1: ICP Definition --> <div class="ws-title">WORKSHEET 1 — ICP Definition (Ideal Client Profile)</div> <div class="ws-subtitle"> : — </div> <table class="ws-table" style="margin-bottom:4mm;"> <thead> <tr> <th style="width:5%">#</th> <th style="width:35%">Criterion — </th> <th>Your Answer — </th> </tr> </thead> <tbody> <tr><td>1</td><td>Industry / Sector — </td><td style="height:28px;"></td></tr> <tr><td>2</td><td>Company size —  </td><td></td></tr> <tr><td>3</td><td>Geographic focus —  </td><td></td></tr> <tr><td>4</td><td>Decision-maker role / title</td><td></td></tr> <tr><td>5</td><td>Their #1 pain point right now</td><td></td></tr> <tr><td>6</td><td>Estimated budget range (SAR)</td><td></td></tr> <tr><td>7</td><td>Best lead source for this buyer</td><td></td></tr> <tr><td>8</td><td>What triggers them to buy? (urgency)</td><td></td></tr> <tr><td>9</td><td>Who is NOT your ideal client?</td><td></td></tr> <tr><td>10</td><td>What does success look like for them in 90 days?</td><td></td></tr> </tbody> </table> <!-- WS2: Weekly Pipeline Review --> <div class="ws-title">WORKSHEET 2 — Weekly Pipeline Review (Monday Ritual)</div> <div class="ws-subtitle"> : — </div> <table class="ws-table" style="margin-bottom:4mm;"> <thead> <tr> <th>Metric</th> <th>Week 1</th> <th>Week 2</th> <th>Week 3</th> <th>Week 4</th> <th>Week 5</th> <th>Week 6</th> </tr> </thead> <tbody> <tr><td>New contacts added</td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td>Discovery calls held</td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td>Proposals sent</td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td>Deals closed (SAR)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td>Total pipeline value (SAR)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td style="color:var(--gold);">Actions this week</td><td colspan="6"></td></tr> </tbody> </table> <!-- WS3: Outreach Tracker --> <div class="ws-title">WORKSHEET 3 — Outreach Tracker</div> <div class="ws-subtitle"> : — </div> <table class="ws-table" style="margin-bottom:4mm;"> <thead> <tr> <th>Name</th> <th>Company</th> <th>Channel</th> <th>Date Sent</th> <th>Response?</th> <th>Next Step</th> <th>Stage</th> </tr> </thead> <tbody> <tr><td style="height:22px;color:rgba(255,255,255,0.2);">Example: Ahmed Al-Otaibi</td><td style="color:rgba(255,255,255,0.2);">Al-Rashid Co.</td><td style="color:rgba(255,255,255,0.2);">WhatsApp</td><td style="color:rgba(255,255,255,0.2);">Jan 5</td><td style="color:rgba(255,255,255,0.2);">Yes — interested</td><td style="color:rgba(255,255,255,0.2);">Book call Jan 8</td><td style="color:rgba(255,255,255,0.2);">Qualified</td></tr> <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> </tbody> </table> <!-- WS4: Objection Handler --> <div class="ws-title">WORKSHEET 4 — Objection Handler</div> <div class="ws-subtitle"> : — </div> <table class="ws-table" style="margin-bottom:0;"> <thead> <tr> <th style="width:30%">Objection — </th> <th>Your Prepared Response —  </th> </tr> </thead> <tbody> <tr><td style="color:rgba(255,255,255,0.4);">" " — Too expensive</td><td style="height:32px;"></td></tr> <tr><td style="color:rgba(255,255,255,0.4);">"  " — Bad timing</td><td style="height:32px;"></td></tr> <tr><td style="color:rgba(255,255,255,0.4);">"  " — Have a supplier</td><td style="height:32px;"></td></tr> <tr><td style="color:rgba(255,255,255,0.4);">" " — Need to think</td><td style="height:32px;"></td></tr> <tr><td style="color:rgba(255,255,255,0.4);">"  " — Need approval</td><td style="height:32px;"></td></tr> </tbody> </table> <div class="footer"> <div class="footer-left">© 2026 LEOMAX Business Development | leomaxglobal.com</div> <div class="footer-center">LMX-FW-04</div> <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div> </div>
+<div class="page worksheet-page">
+  <div class="watermark">LEOMAX</div>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">PAGE 06 &nbsp;·&nbsp; WORKSHEETS</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label">LMX-FW-04 &nbsp;|&nbsp; FILL-IN TEMPLATES</div>
+  </div>
+
+  <div class="gold-rule"></div>
+
+  <!-- WS1: ICP Definition -->
+  <div class="ws-title">WORKSHEET 1 — ICP Definition (Ideal Client Profile)</div>
+  <div class="ws-subtitle">ورقة عمل: تعريف العميل المثالي — اجب عن هذه الأسئلة العشرة لتحديد هدفك بدقة</div>
+
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead>
+      <tr>
+        <th style="width:5%">#</th>
+        <th style="width:35%">Criterion — المعيار</th>
+        <th>Your Answer — إجابتك</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Industry / Sector — القطاع</td><td style="height:28px;"></td></tr>
+      <tr><td>2</td><td>Company size — حجم الشركة</td><td></td></tr>
+      <tr><td>3</td><td>Geographic focus — التركيز الجغرافي</td><td></td></tr>
+      <tr><td>4</td><td>Decision-maker role / title</td><td></td></tr>
+      <tr><td>5</td><td>Their #1 pain point right now</td><td></td></tr>
+      <tr><td>6</td><td>Estimated budget range (SAR)</td><td></td></tr>
+      <tr><td>7</td><td>Best lead source for this buyer</td><td></td></tr>
+      <tr><td>8</td><td>What triggers them to buy? (urgency)</td><td></td></tr>
+      <tr><td>9</td><td>Who is NOT your ideal client?</td><td></td></tr>
+      <tr><td>10</td><td>What does success look like for them in 90 days?</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <!-- WS2: Weekly Pipeline Review -->
+  <div class="ws-title">WORKSHEET 2 — Weekly Pipeline Review (Monday Ritual)</div>
+  <div class="ws-subtitle">ورقة عمل: مراجعة خط المبيعات الأسبوعية — الاثنين الساعة ٩ صباحاً</div>
+
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Week 1</th>
+        <th>Week 2</th>
+        <th>Week 3</th>
+        <th>Week 4</th>
+        <th>Week 5</th>
+        <th>Week 6</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>New contacts added</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Discovery calls held</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Proposals sent</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Deals closed (SAR)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Total pipeline value (SAR)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="color:var(--gold);">Actions this week</td><td colspan="6"></td></tr>
+    </tbody>
+  </table>
+
+  <!-- WS3: Outreach Tracker -->
+  <div class="ws-title">WORKSHEET 3 — Outreach Tracker</div>
+  <div class="ws-subtitle">ورقة عمل: متابعة التواصل — سجّل كل رسالة وكل رد</div>
+
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Channel</th>
+        <th>Date Sent</th>
+        <th>Response?</th>
+        <th>Next Step</th>
+        <th>Stage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="height:22px;color:rgba(255,255,255,0.2);">Example: Ahmed Al-Otaibi</td><td style="color:rgba(255,255,255,0.2);">Al-Rashid Co.</td><td style="color:rgba(255,255,255,0.2);">WhatsApp</td><td style="color:rgba(255,255,255,0.2);">Jan 5</td><td style="color:rgba(255,255,255,0.2);">Yes — interested</td><td style="color:rgba(255,255,255,0.2);">Book call Jan 8</td><td style="color:rgba(255,255,255,0.2);">Qualified</td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <!-- WS4: Objection Handler -->
+  <div class="ws-title">WORKSHEET 4 — Objection Handler</div>
+  <div class="ws-subtitle">ورقة عمل: معالج الاعتراضات — أكتب ردك المُعدّ لكل اعتراض شائع</div>
+
+  <table class="ws-table" style="margin-bottom:0;">
+    <thead>
+      <tr>
+        <th style="width:30%">Objection — الاعتراض</th>
+        <th>Your Prepared Response — ردّك الجاهز</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="color:rgba(255,255,255,0.4);">"السعر غالي" — Too expensive</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);">"مو وقته الحين" — Bad timing</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);">"عندنا مزوّد حالي" — Have a supplier</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);">"أحتاج أفكّر" — Need to think</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);">"أحتاج موافقة رئيسي" — Need approval</td><td style="height:32px;"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
+    <div class="footer-center">LMX-FW-04</div>
+    <div class="footer-right">© 2026 LEOMAX | leomaxglobal.com | Confidential</div>
+  </div>
 </div>
 
 </body>
