@@ -6,6 +6,7 @@
 <title>Work With LEOMAX — Services & Pricing</title>
 <meta name="description" content="Choose the right LEOMAX engagement — from a single advisory session to a full AI-powered business transformation."/>
 <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -144,6 +145,38 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
 .bank-transfer-info p{font-size:12px;color:var(--gray);line-height:1.9}
 .bank-transfer-info strong{color:var(--white)}
 
+/* ── APPLY MODAL ── */
+.apply-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 20px}
+.apply-overlay.active{display:flex}
+.apply-modal{background:var(--charcoal);border:1px solid rgba(184,184,184,.12);width:100%;max-width:580px;position:relative;margin:auto}
+.apply-modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--silver);font-size:26px;cursor:pointer;z-index:10;line-height:1}
+.apply-header{padding:36px 40px 24px;border-bottom:1px solid rgba(184,184,184,.1)}
+.apply-service-badge{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-bottom:10px;display:block}
+.apply-header h3{font-size:20px;font-weight:800;letter-spacing:2px;color:var(--white);margin-bottom:4px}
+.apply-header p{font-size:12px;color:var(--gray);line-height:1.6}
+.apply-body{padding:28px 40px 36px}
+.apply-steps{display:flex;gap:0;margin-bottom:28px}
+.apply-step-dot{display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)}
+.apply-step-dot.active{color:var(--white)}
+.apply-step-dot span{width:22px;height:22px;border-radius:50%;border:1px solid rgba(184,184,184,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.apply-step-dot.active span{background:var(--white);color:var(--black);border-color:var(--white)}
+.apply-step-line{flex:1;height:1px;background:rgba(184,184,184,.2);margin:0 10px;align-self:center}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:7px}
+.form-field input,.form-field select,.form-field textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(184,184,184,.18);color:var(--white);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;border-radius:0}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(184,184,184,.35)}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:rgba(184,184,184,.5)}
+.form-field select option{background:#0D1E35;color:var(--white)}
+.form-field textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.apply-btn{width:100%;background:var(--white);color:var(--black);border:none;padding:15px;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:opacity .2s}
+.apply-btn:hover{opacity:.88}
+.apply-btn:disabled{opacity:.4;cursor:not-allowed}
+.apply-back{background:none;border:none;color:var(--gray);font-size:11px;cursor:pointer;margin-top:12px;display:block;text-align:center;letter-spacing:1px;text-transform:uppercase;width:100%}
+.apply-back:hover{color:var(--white)}
+.calendly-wrap{min-height:500px;margin-top:8px}
+.calendly-wrap iframe,.calendly-inline-widget{min-height:500px!important;width:100%!important;border:none}
+
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   nav{padding:14px 20px}
@@ -273,7 +306,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
         <li><span class="feat-dot"></span>Recorded session + written action plan</li>
         <li><span class="feat-dot"></span>Follow-up Q&A via WhatsApp (48h)</li>
       </ul>
-      <a class="card-cta cta-outline" href="#" onclick="openModal('diagnostic',1500,'DIAGNOSTIC SESSION','90-min deep-dive + action plan')">Book Now →</a>
+      <a class="card-cta cta-outline" href="#" onclick="openApply('diagnostic'); return false;">Book Now →</a>
     </div>
 
     <!-- Tier 2 -->
@@ -292,7 +325,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
         <li><span class="feat-dot"></span>30-day support window post-launch</li>
         <li><span class="feat-dot"></span>Includes diagnostic session</li>
       </ul>
-      <a class="card-cta cta-gold" href="#" onclick="openModal('system',6500,'SINGLE SYSTEM','30-day implementation of one LEOMAX system')">Get Started →</a>
+      <a class="card-cta cta-gold" href="#" onclick="openApply('system'); return false;">Get Started →</a>
     </div>
 
     <!-- Tier 3 -->
@@ -310,7 +343,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
         <li><span class="feat-dot"></span>Team training & SOP library</li>
         <li><span class="feat-dot"></span>90-day ongoing support</li>
       </ul>
-      <a class="card-cta cta-outline" href="https://wa.me/966533826009?text=I'm interested in the Full Transformation package" target="_blank">Apply Now →</a>
+      <a class="card-cta cta-outline" href="#" onclick="openApply('transformation'); return false;">Apply Now →</a>
     </div>
 
     <!-- Tier 4 -->
@@ -328,7 +361,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
         <li><span class="feat-dot"></span>Priority access to new frameworks</li>
         <li><span class="feat-dot"></span>Quarterly deep-dive (half day)</li>
       </ul>
-      <a class="card-cta cta-outline" href="https://wa.me/966533826009?text=I'd like to discuss the Monthly Advisory retainer" target="_blank">Inquire →</a>
+      <a class="card-cta cta-outline" href="#" onclick="openApply('retainer'); return false;">Inquire →</a>
     </div>
 
   </div>
@@ -561,7 +594,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
   <h2>READY TO<br/>BUILD?</h2>
   <p>Book your Diagnostic Session and get clarity on your next 90 days.</p>
   <div class="cta-group">
-    <a class="btn-white" href="#" onclick="openModal('diagnostic',1500,'DIAGNOSTIC SESSION','90-min deep-dive + written action plan')">Book Diagnostic — 1,500 SAR →</a>
+    <a class="btn-white" href="#" onclick="openApply('diagnostic'); return false;">Book Diagnostic — 1,500 SAR →</a>
     <a class="btn-outline" href="https://wa.me/966533826009?text=Hi, I'd like to learn more about LEOMAX services" target="_blank">WhatsApp Us →</a>
   </div>
 </div>
@@ -630,6 +663,59 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
   </div>
 </div>
 
+<!-- APPLY MODAL -->
+<div class="apply-overlay" id="applyModal">
+  <div class="apply-modal">
+    <button class="apply-modal-close" onclick="closeApplyModal()">×</button>
+
+    <div class="apply-header">
+      <span class="apply-service-badge" id="apply-badge">Engagement</span>
+      <h3 id="apply-heading">Apply Now</h3>
+      <p id="apply-subtext">Tell us about your business and we'll get back to you within 24 hours.</p>
+    </div>
+
+    <div class="apply-body">
+
+      <!-- Step indicators -->
+      <div class="apply-steps">
+        <div class="apply-step-dot active" id="step-dot-1"><span>1</span> Your Info</div>
+        <div class="apply-step-line"></div>
+        <div class="apply-step-dot" id="step-dot-2"><span>2</span> Pick a Time</div>
+      </div>
+
+      <!-- Step 1: Form -->
+      <div id="apply-step1">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Full Name *</label>
+            <input type="text" id="apply-name" placeholder="Your full name" required/>
+          </div>
+          <div class="form-field">
+            <label>WhatsApp *</label>
+            <input type="tel" id="apply-phone" placeholder="+966 5X XXX XXXX" required/>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Email Address *</label>
+          <input type="email" id="apply-email" placeholder="you@company.com" required/>
+        </div>
+        <!-- Service-specific fields injected here -->
+        <div id="apply-specific"></div>
+        <button class="apply-btn" id="apply-next-btn" onclick="applyNext()">Continue to Scheduling →</button>
+      </div>
+
+      <!-- Step 2: Calendly -->
+      <div id="apply-step2" style="display:none">
+        <div class="calendly-wrap">
+          <div class="calendly-inline-widget" id="apply-calendly-widget" style="min-width:280px;height:520px"></div>
+        </div>
+        <button class="apply-back" onclick="applyBack()">← Back</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- MOYASAR SDK -->
 <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css"/>
 <script src="https://cdn.moyasar.com/mpf/1.14.0/moyasar.js"></script>
@@ -693,6 +779,196 @@ function closeModal() {
 // Close on overlay click
 document.getElementById('payModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
+});
+
+// ── Apply Modal ──
+const CALENDLY_URL = 'https://calendly.com/YOUR_CALENDLY_LINK/consultation'; // 🔗 Replace with your Calendly link
+
+const applyConfig = {
+  diagnostic: {
+    badge: '01 — SESSION',
+    heading: 'BOOK DIAGNOSTIC',
+    subtext: 'A 90-minute deep-dive into your business. Fill in your details and pick a time.',
+    price: '1,500 SAR + VAT',
+    fields: `
+      <div class="form-field">
+        <label>Business / Company Name</label>
+        <input type="text" id="apply-company" placeholder="Your business name"/>
+      </div>
+      <div class="form-field">
+        <label>What is your main business challenge right now? *</label>
+        <textarea id="apply-challenge" placeholder="Describe the main challenge you want to work on..." required></textarea>
+      </div>`
+  },
+  system: {
+    badge: '02 — SYSTEM BUILD',
+    heading: 'GET STARTED',
+    subtext: 'One LEOMAX AI system, fully deployed in 30 days. Tell us which system and let\'s schedule a kick-off call.',
+    price: 'From 6,500 SAR + VAT',
+    fields: `
+      <div class="form-field">
+        <label>Company Name</label>
+        <input type="text" id="apply-company" placeholder="Your company name"/>
+      </div>
+      <div class="form-field">
+        <label>Which system are you most interested in? *</label>
+        <select id="apply-system" required>
+          <option value="">— Select a system —</option>
+          <option>Growth Engine System</option>
+          <option>AI Operations System</option>
+          <option>Marketing Stack System</option>
+          <option>Content Engine System</option>
+          <option>Launch Playbook System</option>
+          <option>Not sure — help me decide</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Briefly describe your current situation</label>
+        <textarea id="apply-situation" placeholder="What's working, what's not, and what you're trying to achieve..."></textarea>
+      </div>`
+  },
+  transformation: {
+    badge: '03 — FULL BUILD',
+    heading: 'APPLY: TRANSFORMATION',
+    subtext: 'All 5 systems over 90 days. This is for founders ready to fully transform their business.',
+    price: '22,000 SAR + VAT',
+    fields: `
+      <div class="form-field">
+        <label>Company Name *</label>
+        <input type="text" id="apply-company" placeholder="Your company name" required/>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Annual Revenue</label>
+          <select id="apply-revenue">
+            <option value="">— Select range —</option>
+            <option>Under 500K SAR</option>
+            <option>500K – 2M SAR</option>
+            <option>2M – 10M SAR</option>
+            <option>Over 10M SAR</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Team Size</label>
+          <select id="apply-team">
+            <option value="">— Select —</option>
+            <option>Solo founder</option>
+            <option>2 – 5 people</option>
+            <option>6 – 20 people</option>
+            <option>20+ people</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>What is your biggest growth blocker? *</label>
+        <textarea id="apply-blocker" placeholder="Be as specific as possible — this helps us prepare the right approach..." required></textarea>
+      </div>`
+  },
+  retainer: {
+    badge: '04 — RETAINER',
+    heading: 'INQUIRE: ADVISORY',
+    subtext: 'Ongoing monthly partnership. Tell us about your business and schedule an intro call.',
+    price: '5,000 SAR/mo + VAT',
+    fields: `
+      <div class="form-field">
+        <label>Company Name *</label>
+        <input type="text" id="apply-company" placeholder="Your company name" required/>
+      </div>
+      <div class="form-field">
+        <label>What kind of support do you need most? *</label>
+        <select id="apply-support" required>
+          <option value="">— Select area —</option>
+          <option>Business Strategy & Growth</option>
+          <option>AI & Automation</option>
+          <option>Marketing & Brand</option>
+          <option>Sales & Pipeline</option>
+          <option>All of the above</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Your goals for the next 6 months</label>
+        <textarea id="apply-goals" placeholder="What does success look like for you in 6 months?"></textarea>
+      </div>`
+  }
+};
+
+let currentApplyType = 'diagnostic';
+
+function openApply(type) {
+  currentApplyType = type;
+  const cfg = applyConfig[type];
+  document.getElementById('apply-badge').textContent = cfg.badge + '  ·  ' + cfg.price;
+  document.getElementById('apply-heading').textContent = cfg.heading;
+  document.getElementById('apply-subtext').textContent = cfg.subtext;
+  document.getElementById('apply-specific').innerHTML = cfg.fields;
+  // Reset to step 1
+  document.getElementById('apply-step1').style.display = 'block';
+  document.getElementById('apply-step2').style.display = 'none';
+  document.getElementById('step-dot-1').classList.add('active');
+  document.getElementById('step-dot-2').classList.remove('active');
+  // Clear name/email/phone
+  document.getElementById('apply-name').value = '';
+  document.getElementById('apply-phone').value = '';
+  document.getElementById('apply-email').value = '';
+  document.getElementById('applyModal').classList.add('active');
+  return false;
+}
+
+function closeApplyModal() {
+  document.getElementById('applyModal').classList.remove('active');
+}
+
+function applyNext() {
+  const name  = document.getElementById('apply-name').value.trim();
+  const phone = document.getElementById('apply-phone').value.trim();
+  const email = document.getElementById('apply-email').value.trim();
+  if (!name || !phone || !email) {
+    alert('Please fill in your name, WhatsApp number, and email address.');
+    return;
+  }
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // Go to step 2
+  document.getElementById('apply-step1').style.display = 'none';
+  document.getElementById('apply-step2').style.display = 'block';
+  document.getElementById('step-dot-1').classList.remove('active');
+  document.getElementById('step-dot-2').classList.add('active');
+  // Load Calendly with prefilled info
+  const calUrl = CALENDLY_URL
+    + '?name=' + encodeURIComponent(name)
+    + '&email=' + encodeURIComponent(email)
+    + '&a1=' + encodeURIComponent(currentApplyType.toUpperCase() + ' | ' + phone)
+    + '&hide_gdpr_banner=1&background_color=0D1E35&text_color=ffffff&primary_color=ffffff';
+  const widget = document.getElementById('apply-calendly-widget');
+  widget.setAttribute('data-url', calUrl);
+  widget.innerHTML = '';
+  // Load or reload Calendly widget
+  if (window.Calendly) {
+    Calendly.initInlineWidget({ url: calUrl, parentElement: widget });
+  } else {
+    const s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = () => { Calendly.initInlineWidget({ url: calUrl, parentElement: widget }); };
+    document.head.appendChild(s);
+  }
+  // Scroll modal to top
+  document.querySelector('.apply-modal').scrollTop = 0;
+}
+
+function applyBack() {
+  document.getElementById('apply-step1').style.display = 'block';
+  document.getElementById('apply-step2').style.display = 'none';
+  document.getElementById('step-dot-1').classList.add('active');
+  document.getElementById('step-dot-2').classList.remove('active');
+  document.getElementById('apply-calendly-widget').innerHTML = '';
+}
+
+// Close apply modal on overlay click
+document.getElementById('applyModal').addEventListener('click', function(e) {
+  if (e.target === this) closeApplyModal();
 });
 </script>
 
