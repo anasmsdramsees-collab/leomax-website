@@ -386,6 +386,67 @@
     .page { width: 210mm; min-height: 297mm; margin: 0; page-break-after: always; page-break-inside: avoid; }
     .worksheet-page { page-break-after: always; page-break-inside: avoid; }
   }
+
+  /* ========== LANGUAGE TOGGLE ========== */
+  .lang-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    background: #010B1C;
+    border: 1px solid #C9A84C;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .lang-btn {
+    padding: 8px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #8fa8be;
+    background: transparent;
+    border: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+  .lang-btn:hover { color: #C9A84C; }
+  .lang-btn.active {
+    background: #C9A84C;
+    color: #010B1C;
+  }
+  .lang-divider {
+    width: 1px;
+    background: rgba(201,168,76,0.3);
+    margin: 6px 0;
+  }
+  @media print { .lang-toggle { display: none !important; } }
+
+  /* ========== LANGUAGE VISIBILITY ========== */
+  /* EN mode: hide Arabic-specific elements */
+  body.lang-en [class*="-ar"],
+  body.lang-en .cover-arabic,
+  body.lang-en .ar-only,
+  body.lang-en [dir="rtl"],
+  body.lang-en .footer-left { display: none !important; }
+
+  /* AR mode: hide English-specific elements, show Arabic */
+  body.lang-ar .en-only { display: none !important; }
+  body.lang-ar [class*="-ar"],
+  body.lang-ar .cover-arabic,
+  body.lang-ar .ar-only { display: block !important; }
+  body.lang-ar .section-title { display: none !important; }
+  body.lang-ar .section-title-ar { display: block !important; font-size: 20px !important; font-weight: 800 !important; color: #fff !important; margin-bottom: 6px !important; }
+  body.lang-ar .page { direction: rtl; }
+  body.lang-ar .footer-left { display: flex !important; }
+  body.lang-ar .footer-right { display: none !important; }
+
+  /* Default (no class): show both (bilingual) */
+  body:not(.lang-en):not(.lang-ar) [class*="-ar"] { display: block; }
+
 </style>
 </head>
 <body>
