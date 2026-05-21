@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MADAR Logistics — Case Study · LEOMAX</title>
+<meta name="description" content="From idea to revenue in 90 days. How LEOMAX built MADAR Logistics from research through launch with operational integrations live on Day 1."/>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
+  --gold:#C9A84C;
+  --madar-purple:#481DBC;--madar-orange:#FF6A00;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 64px;border-bottom:1px solid rgba(184,184,184,.08);position:sticky;top:0;z-index:100;background:rgba(1,11,28,.92);backdrop-filter:blur(12px)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+
+/* CASE HEADER */
+.case-header{background:var(--black);color:var(--white);padding:80px 64px 60px;text-align:center;border-bottom:1px solid rgba(201,168,76,.15)}
+.case-meta{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:20px}
+.case-meta span{padding:6px 14px;border:1px solid rgba(184,184,184,.15)}
+.case-header h1{font-size:clamp(40px,7vw,86px);font-weight:900;letter-spacing:5px;line-height:1.05;margin-bottom:18px;background:linear-gradient(135deg,var(--white),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.case-tagline{font-size:18px;color:var(--gray);max-width:600px;margin:0 auto 38px;line-height:1.7;font-style:italic}
+
+/* KEY STATS HERO */
+.key-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));max-width:1100px;margin:40px auto 0;border:1px solid rgba(201,168,76,.2)}
+.stat-cell{padding:28px 18px;text-align:center;border-right:1px solid rgba(201,168,76,.12)}
+.stat-cell:last-child{border-right:none}
+.stat-cell .num{font-size:36px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1;display:block}
+.stat-cell .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-top:8px;display:block}
+
+/* CONTENT */
+.case-body{max-width:920px;margin:80px auto;padding:0 64px}
+.case-section{margin-bottom:64px}
+.case-section .label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;display:block}
+.case-section h2{font-size:30px;font-weight:900;letter-spacing:2px;margin-bottom:20px;color:var(--black);line-height:1.15}
+.case-section p{font-size:15.5px;line-height:1.85;color:var(--dgray);margin-bottom:18px}
+.case-section p:last-child{margin-bottom:0}
+
+/* TIMELINE TABLE */
+.timeline-table{margin-top:36px;border:1px solid #DDE4ED;background:var(--white)}
+.timeline-row{display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid #DDE4ED}
+.timeline-row:last-child{border-bottom:none}
+.timeline-row .month{background:#F4F7FB;padding:24px 22px;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--black);border-right:1px solid #DDE4ED}
+.timeline-row .deliver{padding:24px 28px;font-size:14px;color:var(--dgray);line-height:1.75}
+
+/* DEAL SHEET */
+.deal-sheet{background:var(--dark);padding:44px;font-family:'SF Mono',Monaco,monospace;color:var(--gray);margin-top:36px;border:1px solid rgba(201,168,76,.15)}
+.deal-sheet .deal-title{color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,.2);display:block}
+.deal-sheet .section-head{color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:24px;margin-bottom:10px;display:block;font-weight:700}
+.deal-sheet .section-head:first-of-type{margin-top:0}
+.deal-row{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;border-bottom:1px dashed rgba(201,168,76,.08)}
+.deal-row:last-child{border-bottom:none}
+.deal-row .val{color:var(--white);font-weight:600}
+.deal-row .ok{color:var(--gold)}
+.flag-verify{color:#FFB84D;font-size:10px;font-style:italic;font-family:-apple-system,sans-serif;letter-spacing:.5px}
+
+/* INFLECTION CALLOUT */
+.inflection{background:#F4F7FB;border-left:4px solid var(--gold);padding:32px 36px;margin-top:36px}
+.inflection h3{font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:var(--black)}
+.inflection p{font-size:15px;line-height:1.85;color:var(--dgray);margin-bottom:14px}
+.inflection p:last-child{margin-bottom:0}
+
+/* FOUNDER QUOTE */
+.founder-quote{background:linear-gradient(135deg,var(--madar-purple) 0%,#2E0F73 100%);padding:60px 56px;margin-top:48px;color:var(--white);position:relative}
+.founder-quote::before{content:'"';position:absolute;top:18px;left:36px;font-size:96px;color:var(--madar-orange);font-family:Georgia,serif;line-height:1;opacity:.5}
+.founder-quote .quote-text{font-size:22px;line-height:1.55;font-style:italic;margin-bottom:28px;padding-left:48px;font-weight:300}
+.founder-quote .attribution{padding-left:48px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.founder-quote .attribution strong{color:var(--white);font-weight:700}
+
+/* ENGAGEMENT MODEL */
+.engagement-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:36px}
+.engagement-col{background:var(--white);padding:32px 28px;border:1px solid #DDE4ED}
+.engagement-col h4{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:var(--gold)}
+.engagement-col p{font-size:14px;color:var(--dgray);line-height:1.75;margin-bottom:0}
+
+/* CTA SECTION */
+.case-cta{background:var(--charcoal);color:var(--white);padding:90px 64px;text-align:center}
+.case-cta .sec-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--silver);margin-bottom:14px;display:block}
+.case-cta h2{font-size:clamp(34px,5vw,60px);font-weight:900;letter-spacing:4px;line-height:1.1;margin-bottom:18px;color:var(--white)}
+.case-cta p{font-size:16px;color:var(--gray);max-width:560px;margin:0 auto 36px;line-height:1.75}
+.cta-btn-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold)}
+.btn-primary:hover{background:var(--white);border-color:var(--white)}
+.btn-ghost{background:transparent;color:var(--white);padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 36px}
+.footer-brand img{height:36px;margin-bottom:16px}
+.footer-brand p{font-size:13px;color:var(--gray);line-height:1.75;max-width:280px}
+.footer-col h4{font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;margin-bottom:18px;font-weight:700}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--gray);text-decoration:none;font-size:13px}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(184,184,184,.08);font-size:11px;letter-spacing:1.5px;color:var(--dgray);text-align:center}
+
+@media(max-width:900px){
+  nav{padding:18px 24px;flex-wrap:wrap;gap:16px}
+  .nav-links{order:3;width:100%;justify-content:center;gap:20px;flex-wrap:wrap}
+  .case-header,.case-cta,footer{padding-left:24px;padding-right:24px}
+  .case-body{padding:0 24px}
+  .timeline-row{grid-template-columns:1fr}
+  .timeline-row .month{border-right:none;border-bottom:1px solid #DDE4ED}
+  .engagement-grid{grid-template-columns:1fr}
+  .deal-sheet{padding:28px 22px}
+  .founder-quote{padding:48px 28px}
+  .founder-quote .quote-text,.founder-quote .attribution{padding-left:0}
+  .founder-quote::before{left:18px;top:8px;font-size:72px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX" style="height:36px;width:auto"></a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html#about">About</a></li>
+    <li><a href="services-pricing.html">Services</a></li>
+    <li><a href="bd-services.html">BD &amp; Access</a></li>
+    <li><a href="investor-services.html">Investor</a></li>
+    <li><a href="strategy-os.html">Strategy OS</a></li>
+    <li><a href="company-case-studies.html">Cases</a></li>
+  </ul>
+  <a class="nav-cta" href="#cta">Book a Call →</a>
+</nav>
+
+<!-- CASE HEADER -->
+<div class="case-header">
+  <div class="case-meta">
+    <span>Saudi Arabia</span>
+    <span>Logistics</span>
+    <span>Q1 2026</span>
+    <span>90 Days · End-to-End</span>
+  </div>
+  <h1>MADAR LOGISTICS</h1>
+  <p class="case-tagline">From idea to revenue in 90 days.</p>
+
+  <div class="key-stats">
+    <div class="stat-cell">
+      <span class="num">90d</span>
+      <span class="lbl">To Market</span>
+    </div>
+    <div class="stat-cell">
+      <span class="num">9–12m</span>
+      <span class="lbl">Sector Average</span>
+    </div>
+    <div class="stat-cell">
+      <span class="num">6</span>
+      <span class="lbl">Integrations Live</span>
+    </div>
+    <div class="stat-cell">
+      <span class="num">98%</span>
+      <span class="lbl">On-Time Rate</span>
+    </div>
+    <div class="stat-cell">
+      <span class="num">29</span>
+      <span class="lbl">Pages Delivered</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="case-body">
+
+  <!-- STARTING POSITION -->
+  <div class="case-section">
+    <span class="label">Starting Position</span>
+    <h2>Zero Brand. Zero Market Study. Zero Website. Clear Idea.</h2>
+    <p>A Saudi logistics startup with no brand identity, no company profile, no website, no market study, and no pricing structure. What it did have: a clear founding thesis and the commitment to build seriously.</p>
+    <p>The category itself was crowded — incumbents with budget, startups with funding, and a complex buyer cycle running between retailers and the major e-commerce platforms. Walking into that market half-built was not an option.</p>
+  </div>
+
+  <!-- THE MANDATE -->
+  <div class="case-section">
+    <span class="label">The Mandate</span>
+    <h2>One Criterion: When Does Real Revenue Start?</h2>
+    <p>Stand up a market-ready company in a single quarter. Not "ready to launch" — operationally functional, with paying customers in flow. Success measured by one criterion: <strong>when does real revenue start.</strong></p>
+  </div>
+
+  <!-- SCOPE TIMELINE -->
+  <div class="case-section">
+    <span class="label">Scope</span>
+    <h2>End-to-End — Three Months, Three Phases</h2>
+
+    <div class="timeline-table">
+      <div class="timeline-row">
+        <div class="month">Month 1</div>
+        <div class="deliver">
+          KSA logistics market study · 3-year feasibility with real numbers · licensing &amp; incorporation roadmap
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="month">Month 2</div>
+        <div class="deliver">
+          Complete brand system (15-page guideline · #481DBC + #FF6A00 · Sora + Tajawal) · 14-page company profile · 6 service lines · 3 pricing plans · corporate website · 6 operational integrations live
+        </div>
+      </div>
+      <div class="timeline-row">
+        <div class="month">Month 3</div>
+        <div class="deliver">
+          Live in market · first customer cohort onboarded · pricing structure validated · operational metrics in flow
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEAL SHEET -->
+  <div class="case-section">
+    <span class="label">Deal Sheet</span>
+    <h2>The Numbers</h2>
+
+    <div class="deal-sheet">
+      <span class="deal-title">MADAR Logistics Solutions · Q1 2026 Engagement</span>
+
+      <span class="section-head">Engagement</span>
+      <div class="deal-row"><span>Period</span><span class="val">Q1 2026 · 90 days</span></div>
+      <div class="deal-row"><span>LEOMAX scope</span><span class="val">End-to-end build (research → launch)</span></div>
+      <div class="deal-row"><span>Engagement value</span><span class="val flag-verify">[verify with MADAR]</span></div>
+
+      <span class="section-head">Deliverables — Locked &amp; Live</span>
+      <div class="deal-row"><span>Market &amp; feasibility study</span><span class="val ok">3-year projection ✓</span></div>
+      <div class="deal-row"><span>Brand system</span><span class="val ok">15 pages · Hex locked ✓</span></div>
+      <div class="deal-row"><span>Typography</span><span class="val">Sora + Tajawal</span></div>
+      <div class="deal-row"><span>Company profile</span><span class="val ok">14 pages · 6 lines ✓</span></div>
+      <div class="deal-row"><span>Pricing structure</span><span class="val">From SAR 4,200 / month</span></div>
+      <div class="deal-row"><span>Corporate website</span><span class="val ok">Multi-page · live tracking ✓</span></div>
+      <div class="deal-row"><span>Day-1 integrations</span><span class="val">Salla · Zid · Shopify · Amazon KSA · +2</span></div>
+
+      <span class="section-head">Operational Outcomes</span>
+      <div class="deal-row"><span>Time to market</span><span class="val">90 days</span></div>
+      <div class="deal-row"><span>Sector average</span><span class="val">9–12 months</span></div>
+      <div class="deal-row"><span>On-time delivery rate</span><span class="val ok">98%</span></div>
+      <div class="deal-row"><span>Phase 1 — operating breakeven</span><span class="val flag-verify">[verify month]</span></div>
+      <div class="deal-row"><span>Phase 2 — revenue scale</span><span class="val ok">In progress ▸</span></div>
+    </div>
+  </div>
+
+  <!-- INFLECTION POINT -->
+  <div class="case-section">
+    <span class="label">Inflection Point</span>
+    <h2>What Made This Work Was Sequencing</h2>
+
+    <div class="inflection">
+      <h3>The Deliverables Aren't What Made This Engagement Work</h3>
+      <p>Most of what we delivered is replicable — every consultancy can build a brand system, write a feasibility study, ship a website. What made this engagement different was <strong>the order</strong>.</p>
+      <p>Market before brand. Feasibility before website. Operational integrations before launch. Every deliverable fed the next instead of standing alone. The result was a company that walked into the market with an operational stack — not just a visual identity.</p>
+      <p>That sequencing decision is what we now call the <strong>90-Day Sequence</strong>, and it's the spine of the LEOMAX engagement model.</p>
+    </div>
+  </div>
+
+  <!-- FOUNDER QUOTE -->
+  <div class="case-section">
+    <span class="label">Founder Statement</span>
+    <h2>In Their Words</h2>
+
+    <div class="founder-quote">
+      <div class="quote-text">
+        [Pull quote from Mohammed Kamal — to be added after verification. One line on speed, sequencing, or what made the engagement different.]
+      </div>
+      <div class="attribution"><strong>Mohammed Kamal</strong> · Founder, MADAR Logistics</div>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENT MODEL -->
+  <div class="case-section">
+    <span class="label">The Engagement Model</span>
+    <h2>Not a Retainer. Not a Project. A Sprint-Based Engagement.</h2>
+    <p>MADAR was built on a model we now apply across LEOMAX engagements — two phases, each with locked deliverables and a decision gate before moving forward.</p>
+
+    <div class="engagement-grid">
+      <div class="engagement-col">
+        <h4>Phase 1 — Foundation</h4>
+        <p>Market, feasibility, brand, profile. Fixed-scope, fixed-fee, fixed-timeline. Decision gate at end: continue or close.</p>
+      </div>
+      <div class="engagement-col">
+        <h4>Phase 2 — Build &amp; Launch</h4>
+        <p>Website, integrations, go-to-market, first customer cohort. Same fixed-scope discipline. Goal: revenue, not deliverables.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="case-cta" id="cta">
+  <span class="sec-label">Want This Kind of Engagement?</span>
+  <h2>BUILD YOUR<br/>OWN 90 DAYS</h2>
+  <p>If you're building something for the Saudi market and want a partner from day one through revenue — let's talk about whether the model fits.</p>
+  <div class="cta-btn-row">
+    <a href="account-brief.html" class="btn-primary">Start with a Free Brief →</a>
+    <a href="https://calendly.com/anas-msd-ramsees/30min" class="btn-ghost" target="_blank">Book a 30-Min Call →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo.png" alt="LEOMAX">
+      <p>LEOMAX is a Saudi business development firm building enterprise access systems for serious companies.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services-pricing.html">Overview</a></li>
+        <li><a href="bd-services.html">BD &amp; Access</a></li>
+        <li><a href="investor-services.html">Investor Layer</a></li>
+        <li><a href="strategy-os.html">Strategy OS</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="company-about.html">About</a></li>
+        <li><a href="company-founder.html">Founder</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="company-case-studies.html">Case Studies</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/966500000000">WhatsApp</a></li>
+        <li><a href="mailto:info@leomax.sa">info@leomax.sa</a></li>
+        <li><a href="company-contact.html">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© LEOMAX 2026 · Riyadh, Saudi Arabia</div>
+</footer>
+
+<script src="valeria.js"></script>
+</body>
+</html>

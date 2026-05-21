@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BD & Enterprise Access — LEOMAX</title>
+<meta name="description" content="Open doors to Saudi Arabia's hardest-to-reach buyers. Account intelligence, sprints, and BD-as-a-Service for serious companies."/>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
+  --gold:#C9A84C;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 64px;border-bottom:1px solid rgba(184,184,184,.08);position:sticky;top:0;z-index:100;background:rgba(1,11,28,.92);backdrop-filter:blur(12px)}
+.nav-wordmark{font-size:20px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--chrome)}
+
+/* HERO */
+.hero{padding:110px 64px 90px;text-align:center;border-bottom:1px solid rgba(184,184,184,.06);background:var(--black);color:var(--white)}
+.sec-tag{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--silver);margin-bottom:16px;display:block}
+.hero h1{font-size:clamp(40px,7vw,84px);font-weight:900;letter-spacing:5px;line-height:1.05;margin-bottom:22px;background:linear-gradient(135deg,var(--white),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:17px;color:var(--gray);max-width:620px;margin:0 auto 38px;line-height:1.75}
+.hero-stat-row{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:36px}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:34px;font-weight:900;color:var(--gold);letter-spacing:-1px;display:block;line-height:1}
+.hero-stat .lbl{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-top:8px;display:block}
+
+/* SECTION COMMON */
+section{padding:90px 64px}
+section.light{background:#F4F7FB}
+.sec-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--lgray);margin-bottom:12px;display:block}
+.sec-title{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.1;margin-bottom:12px;color:var(--black)}
+.sec-divider{width:40px;height:2px;background:#C8D3DE;margin:18px auto 48px}
+.sec-desc{font-size:15px;color:var(--lgray);line-height:1.75;max-width:600px;margin:0 auto}
+
+/* PROBLEM SECTION */
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-top:56px;max-width:1200px;margin-left:auto;margin-right:auto}
+.problem-card{background:var(--white);padding:36px 32px;border:1px solid #DDE4ED;position:relative}
+.problem-card .num{position:absolute;top:18px;right:24px;font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700}
+.problem-card h3{font-size:18px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:var(--black)}
+.problem-card p{font-size:14px;color:var(--lgray);line-height:1.75}
+
+/* PRICING CARDS */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;margin-top:48px}
+.price-card{background:var(--white);padding:42px 36px;position:relative;transition:transform .25s,background .25s;border:1px solid #DDE4ED;color:var(--black)}
+.price-card:hover{background:#F4F7FB;transform:translateY(-4px)}
+.price-card.featured{background:var(--dark);border:1px solid rgba(201,168,76,.3);color:var(--white)}
+.featured-badge{position:absolute;top:20px;right:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);padding:4px 10px;border:1px solid rgba(201,168,76,.25)}
+.card-num{font-size:9px;letter-spacing:2px;color:#8fa8be;margin-bottom:20px;display:block}
+.card-title{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
+.card-sub{font-size:12px;color:var(--lgray);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.card-price{font-size:38px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
+.card-price span{font-size:14px;font-weight:400;color:var(--lgray);letter-spacing:1px}
+.price-card.featured .card-sub,.price-card.featured .card-price span,.price-card.featured .card-note{color:var(--gray)}
+.card-note{font-size:12px;color:var(--lgray);margin-bottom:18px;line-height:1.6}
+.card-divider{height:1px;background:#DDE4ED;margin:18px 0 22px}
+.price-card.featured .card-divider{background:rgba(255,255,255,.08)}
+.card-features{list-style:none;margin-bottom:32px}
+.card-features li{font-size:13px;color:var(--black);padding:11px 0;border-bottom:1px solid #EEF2F7;line-height:1.55;display:flex;align-items:flex-start;gap:10px}
+.price-card.featured .card-features li{color:var(--gray);border-bottom-color:rgba(255,255,255,.06)}
+.feat-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:7px}
+.card-cta{display:block;text-align:center;padding:13px 22px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s;border:1px solid;cursor:pointer}
+.cta-outline{color:var(--black);border-color:#C8D3DE}
+.cta-outline:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+.price-card.featured .cta-outline{color:var(--silver);border-color:rgba(184,184,184,.2)}
+.price-card.featured .cta-outline:hover{border-color:var(--gold);color:var(--gold);background:transparent}
+.cta-gold{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.cta-gold:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+
+/* HOW IT WORKS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto}
+.process-step{text-align:left;padding:0 12px;position:relative}
+.process-step .step-num{font-size:48px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1;display:block;margin-bottom:14px;opacity:.4}
+.process-step h3{font-size:16px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;color:var(--black)}
+.process-step p{font-size:14px;color:var(--lgray);line-height:1.75}
+
+/* WHO IT'S FOR */
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.who-card{background:var(--white);padding:34px 30px;border-left:3px solid var(--gold)}
+.who-card h3{font-size:15px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;color:var(--black)}
+.who-card p{font-size:14px;color:var(--lgray);line-height:1.75}
+
+/* CASE TEASER */
+.case-teaser{background:var(--dark);padding:64px;margin:80px auto;max-width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.case-teaser .case-content h2{font-size:32px;font-weight:900;letter-spacing:3px;color:var(--white);margin-bottom:16px;line-height:1.1}
+.case-teaser .case-content p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:24px}
+.case-teaser .case-stats{display:flex;gap:32px;margin-bottom:28px}
+.case-teaser .case-stat .num{font-size:32px;font-weight:900;color:var(--gold);display:block}
+.case-teaser .case-stat .lbl{font-size:10px;letter-spacing:2px;color:var(--silver);text-transform:uppercase}
+.case-link{display:inline-block;color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.case-visual{background:#0a1729;padding:36px;border:1px solid rgba(201,168,76,.15);font-family:'SF Mono',Monaco,monospace;font-size:12px;color:var(--gray);line-height:1.9}
+.case-visual .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed rgba(201,168,76,.08)}
+.case-visual .row:last-child{border-bottom:none}
+.case-visual .val{color:var(--gold);font-weight:700}
+
+/* BOTTOM CTA */
+.bottom-cta{background:var(--charcoal);color:var(--white);text-align:center;padding:100px 64px}
+.bottom-cta h2{font-size:clamp(34px,5vw,64px);font-weight:900;letter-spacing:5px;margin-bottom:18px;color:var(--white);line-height:1.05}
+.bottom-cta p{font-size:16px;color:var(--gray);max-width:520px;margin:0 auto 36px;line-height:1.75}
+.cta-btn-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);transition:all .2s}
+.btn-primary:hover{background:var(--white);border-color:var(--white)}
+.btn-ghost{background:transparent;color:var(--white);padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--black);color:var(--gray);padding:60px 64px 36px;border-top:1px solid rgba(184,184,184,.06)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 36px}
+.footer-brand img{height:36px;margin-bottom:16px}
+.footer-brand p{font-size:13px;color:var(--gray);line-height:1.75;max-width:280px}
+.footer-col h4{font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;margin-bottom:18px;font-weight:700}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--gray);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(184,184,184,.08);font-size:11px;letter-spacing:1.5px;color:var(--dgray);text-align:center}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:18px 24px;flex-wrap:wrap;gap:16px}
+  .nav-links{order:3;width:100%;justify-content:center;gap:20px;flex-wrap:wrap}
+  .hero,section,.bottom-cta{padding-left:24px;padding-right:24px}
+  .hero{padding-top:80px;padding-bottom:60px}
+  section{padding-top:60px;padding-bottom:60px}
+  .pricing-grid{grid-template-columns:1fr}
+  .case-teaser{grid-template-columns:1fr;padding:40px 28px;margin:60px 16px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:540px){
+  .hero h1{letter-spacing:3px}
+  .hero-stat-row{gap:24px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX" style="height:36px;width:auto"></a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html#about">About</a></li>
+    <li><a href="services-pricing.html">Services</a></li>
+    <li><a href="bd-services.html" class="active">BD &amp; Access</a></li>
+    <li><a href="investor-services.html">Investor</a></li>
+    <li><a href="strategy-os.html">Strategy OS</a></li>
+    <li><a href="company-case-studies.html">Cases</a></li>
+  </ul>
+  <a class="nav-cta" href="#book">Book a Call →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="sec-tag">BD &amp; Enterprise Access</span>
+  <h1>ENTERPRISE ACCESS,<br/>ENGINEERED</h1>
+  <p>Saudi Arabia rewards relationships — but you don't have ten years to build them. We open doors to the country's hardest-to-reach buyers using account intelligence, structured outreach, and BD systems that compound.</p>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <span class="num">10</span>
+      <span class="lbl">Briefs / Sprint</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">4w</span>
+      <span class="lbl">From Cold to Conversation</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">3x</span>
+      <span class="lbl">Faster Than In-House</span>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<section>
+  <div style="text-align:center">
+    <span class="sec-label">The Problem</span>
+    <h2 class="sec-title">Why BD in KSA is Broken for Outsiders</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-desc">The market isn't closed — it's gated. Every gate looks like a person. And every person needs a reason to open it.</p>
+  </div>
+  <div class="problem-grid">
+
+    <div class="problem-card">
+      <span class="num">01</span>
+      <h3>The Wrong People</h3>
+      <p>Most outreach lands at procurement or marketing. The decision-maker is somewhere else — and they don't reply to cold emails.</p>
+    </div>
+
+    <div class="problem-card">
+      <span class="num">02</span>
+      <h3>The Wrong Message</h3>
+      <p>Generic pitches get ignored. Saudi enterprise buyers expect a brief that already understands their business — before the first call.</p>
+    </div>
+
+    <div class="problem-card">
+      <span class="num">03</span>
+      <h3>The Wrong Pace</h3>
+      <p>In-house BD takes months to map an account. By the time you're ready to talk, the buyer's budget cycle has already closed.</p>
+    </div>
+
+    <div class="problem-card">
+      <span class="num">04</span>
+      <h3>The Wrong Channel</h3>
+      <p>LinkedIn DMs and cold email don't move enterprise deals in KSA. The conversation has to start somewhere warmer — and we know where.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE OFFERS -->
+<section class="light" id="services">
+  <div style="text-align:center">
+    <span class="sec-label">Three Ways In</span>
+    <h2 class="sec-title">Pick Your Entry Point</h2>
+    <div class="sec-divider"></div>
+    <p class="sec-desc">From a free intelligence brief to a full BD partnership — choose the depth that matches your stage.</p>
+  </div>
+  <div class="pricing-grid">
+
+    <!-- Tier 1 — Free Account Brief -->
+    <div class="price-card">
+      <span class="card-num">01 — INTELLIGENCE</span>
+      <div class="card-title">ACCOUNT BRIEF</div>
+      <div class="card-sub">Free · Delivered in 24h</div>
+      <div class="card-price">FREE <span></span></div>
+      <div class="card-note">One brief per visitor · 1 target company</div>
+      <div class="card-divider"></div>
+      <ul class="card-features">
+        <li><span class="feat-dot"></span>Full intel on any Saudi target company</li>
+        <li><span class="feat-dot"></span>Decision-makers mapped (LinkedIn + open sources)</li>
+        <li><span class="feat-dot"></span>Recent news, funding, regulatory shifts</li>
+        <li><span class="feat-dot"></span>Custom entry angle &amp; conversation starter</li>
+        <li><span class="feat-dot"></span>Delivered as PDF + WhatsApp summary</li>
+      </ul>
+      <a class="card-cta cta-outline" href="account-brief.html">Request Brief →</a>
+    </div>
+
+    <!-- Tier 2 — Account Access Sprint -->
+    <div class="price-card featured">
+      <span class="featured-badge">Most Popular</span>
+      <span class="card-num">02 — SPRINT</span>
+      <div class="card-title">ACCOUNT ACCESS SPRINT</div>
+      <div class="card-sub">4-Week Engagement</div>
+      <div class="card-price">35,000 <span>SAR</span></div>
+      <div class="card-note">Fixed-scope · 10 target accounts · Outcome-focused</div>
+      <div class="card-divider"></div>
+      <ul class="card-features">
+        <li><span class="feat-dot"></span>10 Account Briefs for accounts you choose</li>
+        <li><span class="feat-dot"></span>Custom outreach in 3 tones (formal AR · business EN · Saudi casual)</li>
+        <li><span class="feat-dot"></span>Warm-path mapping &amp; intro strategy per account</li>
+        <li><span class="feat-dot"></span>Weekly WhatsApp working session with Anas</li>
+        <li><span class="feat-dot"></span>Pipeline review at week 4 with next-quarter plan</li>
+      </ul>
+      <a class="card-cta cta-outline" href="#book">Start Sprint →</a>
+    </div>
+
+    <!-- Tier 3 — BD-as-a-Service -->
+    <div class="price-card">
+      <span class="card-num">03 — PARTNERSHIP</span>
+      <div class="card-title">BD-AS-A-SERVICE</div>
+      <div class="card-sub">Hybrid Retainer + Commission</div>
+      <div class="card-price">12,000 <span>SAR / mo</span></div>
+      <div class="card-note">+ 5–8% on closed deals · Min. 6-month commitment</div>
+      <div class="card-divider"></div>
+      <ul class="card-features">
+        <li><span class="feat-dot"></span>Full ownership of your BD pipeline</li>
+        <li><span class="feat-dot"></span>20 active accounts under intelligence at all times</li>
+        <li><span class="feat-dot"></span>Outreach drafted &amp; sent under your name (approved)</li>
+        <li><span class="feat-dot"></span>Monthly strategic review with C-suite</li>
+        <li><span class="feat-dot"></span>Commission on closed deals aligns incentives</li>
+      </ul>
+      <a class="card-cta cta-outline" href="#book">Apply Now →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div style="text-align:center">
+    <span class="sec-label">The Method</span>
+    <h2 class="sec-title">How an Account Goes from Cold to Conversation</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="process-grid">
+
+    <div class="process-step">
+      <span class="step-num">01</span>
+      <h3>Intelligence</h3>
+      <p>We profile the target — leadership, recent moves, budget cycle, current vendors, pressure points. Sources: open data, LinkedIn, press, Tadawul filings, regulatory bodies.</p>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num">02</span>
+      <h3>Angle</h3>
+      <p>We design your specific way in — the problem the buyer is already paying for that you solve better. Not a pitch. A reason for them to reply.</p>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num">03</span>
+      <h3>Path</h3>
+      <p>Warm intros where they exist. Direct outreach where they don't. WhatsApp, LinkedIn, or majlis — whichever channel matches the buyer's habit.</p>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num">04</span>
+      <h3>Handoff</h3>
+      <p>When the conversation is qualified, we hand it to you — with full context, the buyer's stated priorities, and a recommended next move.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="light">
+  <div style="text-align:center">
+    <span class="sec-label">Fit Check</span>
+    <h2 class="sec-title">Who This Is For</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="who-grid" style="max-width:1100px;margin:48px auto 0">
+
+    <div class="who-card">
+      <h3>Founders Entering KSA</h3>
+      <p>You have a product that works elsewhere and want enterprise traction in Saudi without burning 18 months on relationship-building.</p>
+    </div>
+
+    <div class="who-card">
+      <h3>Saudi SMEs Scaling Up</h3>
+      <p>You've grown on word-of-mouth — but you need a repeatable system to land Fortune-500-of-KSA accounts.</p>
+    </div>
+
+    <div class="who-card">
+      <h3>Series A &amp; Beyond</h3>
+      <p>Your investors expect enterprise revenue. Hiring a VP Sales takes 6 months. We move now while you recruit.</p>
+    </div>
+
+    <div class="who-card">
+      <h3>Consulting &amp; Services</h3>
+      <p>You sell expertise. Cold outreach degrades the brand. We open doors warmly — without your team ever sending a cold email.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CASE TEASER -->
+<section style="background:#EEF2F7">
+  <div class="case-teaser">
+    <div class="case-content">
+      <span class="sec-label" style="color:var(--silver)">Recent Engagement</span>
+      <h2>MADAR<br/>LOGISTICS</h2>
+      <p>From idea to revenue in 90 days. End-to-end build — research, brand, profile, website, 6 operational integrations live on Day 1.</p>
+      <div class="case-stats">
+        <div class="case-stat">
+          <span class="num">90d</span>
+          <span class="lbl">To Market</span>
+        </div>
+        <div class="case-stat">
+          <span class="num">98%</span>
+          <span class="lbl">On-Time Rate</span>
+        </div>
+        <div class="case-stat">
+          <span class="num">6</span>
+          <span class="lbl">Integrations Live</span>
+        </div>
+      </div>
+      <a href="case-madar.html" class="case-link">Read the Full Case →</a>
+    </div>
+    <div class="case-visual">
+      <div class="row"><span>Sector</span><span class="val">Logistics</span></div>
+      <div class="row"><span>Engagement</span><span class="val">90 days · end-to-end</span></div>
+      <div class="row"><span>Scope</span><span class="val">Research → Launch</span></div>
+      <div class="row"><span>Brand system</span><span class="val">15 pages · locked</span></div>
+      <div class="row"><span>Company profile</span><span class="val">14 pages · 6 lines</span></div>
+      <div class="row"><span>Integrations</span><span class="val">Salla · Zid · Shopify · +3</span></div>
+      <div class="row"><span>Phase 1</span><span class="val">Breakeven ✓</span></div>
+      <div class="row"><span>Phase 2</span><span class="val">Revenue scale ▸</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta" id="book">
+  <span class="sec-label" style="color:var(--silver)">Ready?</span>
+  <h2>OPEN THE<br/>FIRST DOOR</h2>
+  <p>Start with a free Account Brief on any Saudi company you want to reach. We deliver in 24 hours — no obligation, no pitch.</p>
+  <div class="cta-btn-row">
+    <a href="account-brief.html" class="btn-primary">Request a Brief →</a>
+    <a href="https://calendly.com/anas-msd-ramsees/30min" class="btn-ghost" target="_blank">Book a 30-Min Call →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo.png" alt="LEOMAX">
+      <p>LEOMAX is a Saudi business development firm building enterprise access systems for serious companies.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services-pricing.html">Overview</a></li>
+        <li><a href="bd-services.html">BD &amp; Access</a></li>
+        <li><a href="investor-services.html">Investor Layer</a></li>
+        <li><a href="strategy-os.html">Strategy OS</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="company-about.html">About</a></li>
+        <li><a href="company-founder.html">Founder</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="company-case-studies.html">Case Studies</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/966500000000">WhatsApp</a></li>
+        <li><a href="mailto:info@leomax.sa">info@leomax.sa</a></li>
+        <li><a href="company-contact.html">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© LEOMAX 2026 · Riyadh, Saudi Arabia</div>
+</footer>
+
+<script src="valeria.js"></script>
+</body>
+</html>

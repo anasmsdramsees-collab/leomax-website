@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <title>LEOMAX — Thought Leadership Content System | LMX-FW-05</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
@@ -885,65 +886,19 @@
     color: var(--white);
   }
 
-  /* ========== LANGUAGE TOGGLE ========== */
   .lang-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 9999;
-    display: flex;
-    background: #010B1C;
-    border: 1px solid #C9A84C;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    position: fixed; top: 16px; right: 16px; z-index: 9999;
+    display: flex; background: #010B1C; border: 1px solid #C9A84C;
+    border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
-  .lang-btn {
-    padding: 8px 18px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    color: #8fa8be;
-    background: transparent;
-    border: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: all 0.15s;
-  }
-  .lang-btn:hover { color: #C9A84C; }
-  .lang-btn.active {
-    background: #C9A84C;
-    color: #010B1C;
-  }
-  .lang-divider {
-    width: 1px;
-    background: rgba(201,168,76,0.3);
-    margin: 6px 0;
-  }
+  .lang-btn { padding: 8px 18px; font-size: 11px; font-weight: 700; cursor: pointer; color: #8fa8be; background: transparent; border: none; letter-spacing: 2px; }
+  .lang-btn.active { background: #C9A84C; color: #010B1C; }
+  .lang-divider { width: 1px; background: rgba(201,168,76,0.3); }
   @media print { .lang-toggle { display: none !important; } }
-
-  /* ========== LANGUAGE VISIBILITY ========== */
-  /* EN mode: hide Arabic-specific elements */
-  body.lang-en [class*="-ar"],
-  body.lang-en .cover-arabic,
-  body.lang-en .ar-only,
-  body.lang-en [dir="rtl"],
-  body.lang-en .footer-left { display: none !important; }
-
-  /* AR mode: hide English-specific elements, show Arabic */
-  body.lang-ar .en-only { display: none !important; }
-  body.lang-ar [class*="-ar"],
-  body.lang-ar .cover-arabic,
-  body.lang-ar .ar-only { display: block !important; }
-  body.lang-ar .section-title { display: none !important; }
-  body.lang-ar .section-title-ar { display: block !important; font-size: 20px !important; font-weight: 800 !important; color: #fff !important; margin-bottom: 6px !important; }
-  body.lang-ar .page { direction: rtl; }
-  body.lang-ar .footer-left { display: flex !important; }
-  body.lang-ar .footer-right { display: none !important; }
-
-  /* Default (no class): show both (bilingual) */
-  body:not(.lang-en):not(.lang-ar) [class*="-ar"] { display: block; }
+  body.lang-en .ver-ar { display: none !important; }
+  body.lang-ar .ver-en { display: none !important; }
+  body.lang-ar .ver-ar { display: block !important; }
+  body.lang-ar .page { direction: rtl; font-family: 'Tajawal', sans-serif; }
 
 </style>
 </head>
@@ -953,7 +908,8 @@
 <!-- PAGE 1 — COVER                                      -->
 <!-- ═══════════════════════════════════════════════════ -->
 <div class="page cover">
-  <div class="cover-inner">
+  <!-- EN Cover -->
+  <div class="ver-en cover-inner">
     <div class="cover-top">
       <div>
         <div class="logo-wordmark">LEOMAX</div>
@@ -1005,6 +961,60 @@
       <div class="cover-footer-text">LMX-FW-05 · V1.0 · 2026</div>
     </div>
   </div>
+
+  <!-- AR Cover -->
+  <div class="ver-ar cover-inner" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="cover-top">
+      <div>
+        <div class="logo-wordmark">LEOMAX</div>
+        <div class="logo-sub">أُطر تطوير الأعمال</div>
+      </div>
+      <div class="cover-ref" style="text-align:left">
+        المرجع: LMX-FW-05<br>
+        سلسلة المحتوى والسلطة<br>
+        © 2026 مؤسسة ليوماكس
+      </div>
+    </div>
+
+    <div class="cover-center">
+      <div class="cover-category-badge">المحتوى · السلطة · العلامة الشخصية</div>
+
+      <div class="cover-title">
+        نظام<br>محتوى<br><span>قيادة الفكر</span>
+      </div>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-subtitle">
+        إطار LEOMAX للسلطة: ابنِ علامتك الشخصية كخبير مرجعي في مجالك — بمحرك محتوى مُجرَّب لـ 12 أسبوعاً، مُصمَّم خصيصاً للمؤسسين السعوديين
+      </div>
+
+      <div class="cover-price-block">
+        <div class="cover-stat">
+          <div class="cover-stat-value">449</div>
+          <div class="cover-stat-label">ريال سعودي</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">11</div>
+          <div class="cover-stat-label">صفحة + قوالب</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">35</div>
+          <div class="cover-stat-label">قالب جاهز</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-value">12</div>
+          <div class="cover-stat-label">نظام أسبوعي</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-footer-text">leomaxglobal.com</div>
+      <div class="cover-footer-text">سري — للمشتري فقط</div>
+      <div class="cover-footer-text">LMX-FW-05 · V1.0 · 2026</div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════ -->
@@ -1018,8 +1028,10 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 2 of 11 · Market Intelligence</div>
-    <div class="section-title">THE SAUDI/GCC CONTENT LANDSCAPE 2025–2026<br><span style="font-size:12pt;color:var(--gold);font-weight:700">مشهد المحتوى الرقمي</span></div>
+    <div class="section-title">THE SAUDI/GCC CONTENT LANDSCAPE 2025–2026</div>
     <div class="section-rule"></div>
 
     <div class="stat-row">
@@ -1100,9 +1112,7 @@
     </table>
 
     <h3 class="sub-heading" style="margin-top:4mm">The Arabic Content Advantage</h3>
-
     <p class="body-text">Most Saudi professionals face weak Arabic content competition. Here's why going Arabic-first wins:</p>
-
     <ol class="numbered-list">
       <li>85% of Saudi professionals say they engage MORE with Arabic content on business topics</li>
       <li>Arabic business content has 40–60% less competition than equivalent English content</li>
@@ -1117,14 +1127,12 @@
     </div>
 
     <h3 class="sub-heading" style="margin-top:4mm">What Thought Leadership Actually Means in Saudi Arabia</h3>
-
     <div class="callout">
       <div class="callout-title">The Core Distinction</div>
       <p>"In the West, thought leadership is about having original ideas. In Saudi Arabia, it's about being <strong style="color:var(--white)">trusted enough that people want to know what you think.</strong>"</p>
     </div>
 
     <p class="body-text" style="margin-top:2mm">The 3 pillars of Saudi thought leadership:</p>
-
     <div class="level-row" style="margin-top:2mm">
       <div class="level-card">
         <div class="level-num">PILLAR 01</div>
@@ -1151,6 +1159,140 @@
       <li>Inconsistency — disappearing for 3 weeks and returning as if nothing happened</li>
       <li>Copy-pasting generic motivational quotes that have no connection to your expertise</li>
     </ul>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 2 من 11 · استخبارات السوق</div>
+    <div class="section-title">مشهد المحتوى في السعودية ودول الخليج 2025–2026</div>
+    <div class="section-rule"></div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="num">34M+</div>
+        <div class="lbl">مستخدم سعودي لوسائل التواصل الاجتماعي في 2025 — بيانات GSMA</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">95%</div>
+        <div class="lbl">نسبة انتشار الإنترنت في السعودية — من أعلى المعدلات عالمياً</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">3.2 ساعة</div>
+        <div class="lbl">متوسط الوقت اليومي على وسائل التواصل للمستخدم السعودي</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">#1</div>
+        <div class="lbl">السعودية — الأعلى عالمياً في استخدام Twitter/X نسبةً للفرد</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">أداء المنصات حسب نوع المحتوى — السوق السعودي</h3>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>المنصة</th>
+          <th>المستخدمون الشهريون النشطون في السعودية</th>
+          <th>أفضل صيغة للمحتوى</th>
+          <th>أفضل وقت للنشر</th>
+          <th>ذهنية الجمهور</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>LinkedIn</strong></td>
+          <td>+6 مليون متخصص</td>
+          <td>نص مطوّل + كاروسيل</td>
+          <td>الثلاثاء–الخميس 8–10 ص</td>
+          <td>وضع الأعمال / التعلم</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram</strong></td>
+          <td>+14 مليون</td>
+          <td>ريلز + كاروسيل</td>
+          <td>الخميس–السبت 7–10 م</td>
+          <td>الإلهام / الترفيه</td>
+        </tr>
+        <tr>
+          <td><strong>Twitter/X</strong></td>
+          <td>+12 مليون</td>
+          <td>خيوط قصيرة + آراء</td>
+          <td>8–11 م يومياً</td>
+          <td>الرأي / الأخبار / النقاش</td>
+        </tr>
+        <tr>
+          <td><strong>YouTube</strong></td>
+          <td>+22 مليون</td>
+          <td>شروحات مطوّلة + فلوق</td>
+          <td>الجمعة–السبت بعد الظهر</td>
+          <td>التعلم المعمّق</td>
+        </tr>
+        <tr>
+          <td><strong>TikTok</strong></td>
+          <td>+9 مليون</td>
+          <td>تعليمي قصير + كواليس</td>
+          <td>بعد صلاة العشاء</td>
+          <td>الاكتشاف</td>
+        </tr>
+        <tr>
+          <td><strong>Snapchat</strong></td>
+          <td>+20 مليون</td>
+          <td>كواليس + قصص</td>
+          <td>الصباح + المساء</td>
+          <td>شخصي / الشباب</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-heading" style="margin-top:4mm">ميزة المحتوى العربي</h3>
+    <p class="body-text">يواجه معظم المتخصصين السعوديين منافسةً ضعيفة في المحتوى العربي. إليك لماذا يُحقق المحتوى العربي أولاً نتائج متفوقة:</p>
+    <ol class="numbered-list">
+      <li>85% من المتخصصين السعوديين يقولون إنهم يتفاعلون أكثر مع المحتوى العربي في موضوعات الأعمال</li>
+      <li>المحتوى التجاري العربي يواجه منافسة أقل بنسبة 40–60% مقارنةً بالمحتوى الإنجليزي المماثل</li>
+      <li>رمضان يُحدث ارتفاعاً هائلاً في استهلاك المحتوى — جهِّز 30 يوماً من المحتوى مسبقاً لرمضان</li>
+      <li>المحتوى التعليمي العربي يبني ثقة مجتمعية أعمق من نظيره الإنجليزي داخل المملكة</li>
+      <li>المحتوى ثنائي اللغة (منشور عربي + تعليق إنجليزي) يُشير إلى أنك تخدم السوقَين المحلي والدولي</li>
+    </ol>
+
+    <div class="callout" style="margin-top:3mm">
+      <div class="callout-title">نصيحة احترافية</div>
+      <p>اكتب محتواك العربي بشكل أصيل — لا تعتمد على الترجمة الآلية من الإنجليزية. جمهورك يقرأ اللغتين وسيلاحظ الصياغة الميكانيكية فوراً. العربية الأصيلة تُثبت انتماءك لهذا السوق.</p>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">ما الذي تعنيه قيادة الفكر فعلاً في المملكة العربية السعودية</h3>
+    <div class="callout">
+      <div class="callout-title">الفارق الجوهري</div>
+      <p>"في الغرب، قيادة الفكر تعني امتلاك أفكار مبتكرة. في السعودية، تعني <strong style="color:var(--white)">أن تكون موثوقاً بما يكفي لجعل الناس يرغبون في معرفة رأيك.</strong>"</p>
+    </div>
+
+    <p class="body-text" style="margin-top:2mm">ركائز قيادة الفكر الثلاث في السوق السعودي:</p>
+    <div class="level-row" style="margin-top:2mm">
+      <div class="level-card">
+        <div class="level-num">الركيزة 01</div>
+        <div class="level-name">المعرفة</div>
+        <div class="level-desc">أنت تعرف أكثر من جمهورك بوضوح في موضوعك. يتجلى ذلك في العمق لا في حجم المحتوى فحسب.</div>
+      </div>
+      <div class="level-card">
+        <div class="level-num">الركيزة 02</div>
+        <div class="level-name">السجل الحافل</div>
+        <div class="level-desc">طبّقت ذلك ولم تكتفِ بدراسته. تجربتك ظاهرة ومُستشهَد بها. النتائج محددة ومنسوبة إليك.</div>
+      </div>
+      <div class="level-card active">
+        <div class="level-num">الركيزة 03</div>
+        <div class="level-name">الشبكة</div>
+        <div class="level-desc">من يعرفك يُثبت سلطتك. في السوق السعودي، من يُزكّيك يُساوي أهميةً ما تقوله.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:3mm"><strong style="color:var(--white)">ما يُدمر قيادة الفكر بسرعة:</strong></p>
+    <ul class="bullet-list">
+      <li>النشر عن جوائزك بدلاً من مشاركة رؤاك</li>
+      <li>محتوى ترويجي 100% — الناس يتركون الحسابات ذات الطابع الترويجي الدائم</li>
+      <li>غياب المحتوى العربي بينما جمهورك المستهدف سعودي</li>
+      <li>عدم الانتظام — الاختفاء لـ 3 أسابيع والعودة كأن شيئاً لم يحدث</li>
+      <li>نسخ اقتباسات تحفيزية عامة لا صلة لها بمجال خبرتك</li>
+    </ul>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1170,6 +1312,8 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 3 of 11 · Foundation</div>
     <div class="section-title">THE AUTHORITY FRAMEWORK</div>
     <div class="section-rule"></div>
@@ -1253,6 +1397,94 @@
         <div class="desc">Before any content: define precisely who you are, who you serve, what transformation you deliver, and what makes your perspective unique.</div>
       </div>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 3 من 11 · الأسس</div>
+    <div class="section-title">إطار بناء السلطة</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">لماذا تهمّ قيادة الفكر للمؤسسين السعوديين في 2025</h3>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="num">73%</div>
+        <div class="lbl">من مشتري B2B يبحثون عن المؤسس قبل التعامل مع الشركة</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">8M+</div>
+        <div class="lbl">مستخدم سعودي على LinkedIn — أعلى تفاعل مهني في منطقة الشرق الأوسط وشمال أفريقيا</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">3×</div>
+        <div class="lbl">معدل إغلاق أعلى حين يعرف العميل محتواك ويثق به مسبقاً</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">المبدأ الجوهري</div>
+      <p>سلطة المحتوى = عملاء يأتون إليك. أرخص من الإعلانات. أعلى ثقة. مبدأ "العطاء للأخذ": شارك خبرتك بحرية وانتظام — تجذب العملاء الذين يدفعون مقابل التنفيذ والنتائج.</p>
+    </div>
+
+    <h3 class="sub-heading">المستويات الثلاثة لسلطة المحتوى</h3>
+
+    <div class="level-row">
+      <div class="level-card">
+        <div class="level-num">المستوى 01</div>
+        <div class="level-name">الظهور</div>
+        <div class="level-desc">يعرف الناس أنك موجود في مجالك. يتعرفون على اسمك. تظهر منشوراتك في تغذيتهم. الخطوة الأولى — لا يمكن تجاوزها.</div>
+      </div>
+      <div class="level-card">
+        <div class="level-num">المستوى 02</div>
+        <div class="level-name">المصداقية</div>
+        <div class="level-desc">يثق الناس بوجهة نظرك وخبرتك. يقرؤون منشوراتك باهتمام. يبدؤون بالاستشهاد بك في محادثاتهم.</div>
+      </div>
+      <div class="level-card active">
+        <div class="level-num">المستوى 03</div>
+        <div class="level-name">السلطة</div>
+        <div class="level-desc">يبحث الناس عنك قبل اتخاذ القرارات. تصلك عملاء دون جهد. لا تطارد العملاء — العملاء يجدونك. هذا هو الهدف.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">هرم سلطة المحتوى من LEOMAX</h3>
+
+    <div class="stack-item">
+      <div class="stack-icon">5</div>
+      <div class="stack-content">
+        <div class="title">محتوى الإثبات</div>
+        <div class="desc">دراسات حالة، شهادات عملاء، نتائج قابلة للقياس — يحوّل القراء الفضوليين إلى عملاء يدفعون.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">4</div>
+      <div class="stack-content">
+        <div class="title">محتوى التفاعل</div>
+        <div class="desc">منشورات قصيرة، أسئلة، تعليقات، استطلاعات — يبني العلاقات ويُشير إلى خوارزمية LinkedIn.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">3</div>
+      <div class="stack-content">
+        <div class="title">محتوى الجسر</div>
+        <div class="desc">منشورات متوسطة الطول (300–600 كلمة) — يربط خبرتك بالسيناريوهات التجارية الحقيقية التي يواجهها جمهورك يومياً.</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">2</div>
+      <div class="stack-content">
+        <div class="title">المحتوى الركيزة</div>
+        <div class="desc">منشورات ومقالات مطوّلة (800–2000 كلمة) — يُرسّخ الخبرة العميقة ويكسب إجراءَي "الحفظ" و"المشاركة".</div>
+      </div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-icon">1</div>
+      <div class="stack-content">
+        <div class="title">الأساس: تحديد الموقع بوضوح</div>
+        <div class="desc">قبل أي محتوى: حدِّد بدقة مَن أنت، مَن تخدم، ما التحوّل الذي تُحدثه، وما الذي يجعل وجهة نظرك فريدة.</div>
+      </div>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1272,12 +1504,13 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 4 of 11 · Platform Playbook</div>
-    <div class="section-title">PLATFORM STRATEGY — LINKEDIN &amp; BEYOND<br><span style="font-size:12pt;color:var(--gold);font-weight:700">استراتيجية المنصات</span></div>
+    <div class="section-title">PLATFORM STRATEGY — LINKEDIN &amp; BEYOND</div>
     <div class="section-rule"></div>
 
     <h3 class="sub-heading">LinkedIn Mastery for Saudi Professionals</h3>
-
     <p class="body-text">The LinkedIn algorithm in 2025 rewards:</p>
     <ol class="numbered-list">
       <li><strong>Native content</strong> — text posts and carousels outperform external links by 5–7×</li>
@@ -1289,7 +1522,6 @@
 
     <h3 class="sub-heading" style="margin-top:3mm">The LinkedIn Post Anatomy</h3>
     <p class="body-text">Breakdown of highest-performing Saudi professional posts:</p>
-
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2mm;margin:3mm 0">
       <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);padding:3mm;border-radius:4px;text-align:center">
         <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm">LINE 1</div>
@@ -1325,7 +1557,6 @@
     </ol>
 
     <h3 class="sub-heading" style="margin-top:3mm">Instagram &amp; Twitter/X Strategy for Saudi Business Owners</h3>
-
     <div class="two-col" style="margin-top:2mm">
       <div>
         <div style="font-size:8pt;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:1mm">Instagram — Best Content Types</div>
@@ -1358,6 +1589,94 @@
         </div>
       </div>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 4 من 11 · دليل المنصات</div>
+    <div class="section-title">استراتيجية المنصات — LinkedIn وما بعده</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">إتقان LinkedIn للمتخصصين السعوديين</h3>
+    <p class="body-text">خوارزمية LinkedIn في 2025 تكافئ:</p>
+    <ol class="numbered-list">
+      <li><strong>المحتوى المحلي</strong> — المنشورات النصية والكاروسيل تتفوق على الروابط الخارجية بـ 5–7 أضعاف</li>
+      <li><strong>الحوار في التعليقات</strong> — ردَّ على كل تعليق خلال 60 دقيقة من النشر</li>
+      <li><strong>الانتظام</strong> — انشر 3–5 مرات أسبوعياً لمدة 90 يوماً قبل توقع نمو ملحوظ</li>
+      <li><strong>وجهة النظر الشخصية</strong> — LinkedIn يعاقب المحتوى المنسوخ؛ اكتب بصوتك الخاص</li>
+      <li><strong>منشورات الكاروسيل</strong> (منشورات متعددة الشرائح) — أعلى معدل حفظ ومشاركة على المنصة</li>
+    </ol>
+
+    <h3 class="sub-heading" style="margin-top:3mm">تشريح منشور LinkedIn</h3>
+    <p class="body-text">تحليل أعلى المنشورات أداءً بين المتخصصين السعوديين:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2mm;margin:3mm 0">
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">السطر 1</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">الخطّاف</div>
+        <div style="font-size:7.5pt;color:var(--silver)">جملة واحدة توقف التمرير. استخدم أرقاماً أو ادّعاءً مفاجئاً أو سؤالاً.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">السطران 2–3</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">التوتر</div>
+        <div style="font-size:7.5pt;color:var(--silver)">ابنِ المشكلة أو السياق — اجعلهم يشعرون بالألم أو الفضول.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">الأسطر 4–8</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">الرؤية</div>
+        <div style="font-size:7.5pt;color:var(--silver)">وجهة نظرك أو قصتك أو درسك — منطقة سلطتك. كن محدداً.</div>
+      </div>
+      <div style="background:rgba(13,30,53,0.6);border:1px solid rgba(201,168,76,0.15);padding:3mm;border-radius:4px;text-align:center">
+        <div style="font-size:7pt;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:1.5mm">السطر الأخير</div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);margin-bottom:1mm">الختام</div>
+        <div style="font-size:7.5pt;color:var(--silver)">سؤال أو درس أو CTA خفيف — ادعُ للرد وأشِر إلى الاكتمال.</div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">7 قوالب لخطّاف LinkedIn (السطر الأول — الأهم):</strong></p>
+    <ol class="numbered-list">
+      <li>"معظم [جمهورك المستهدف] يقعون في هذا الخطأ: [الخطأ]"</li>
+      <li>"أمضيت [مدة] أتعلم [الشيء]. إليك ما يهم فعلاً:"</li>
+      <li>"[عدد] من عملائي اعتقدوا [المعتقد الخاطئ]. إليك الحقيقة:"</li>
+      <li>"خسرت [الشيء] لأنني لم أكن أعرف هذا."</li>
+      <li>"رأي غير شائع: [موقف مخالف للسائد]"</li>
+      <li>"الفرق بين [المستوى أ] و[المستوى ب] شيء واحد:"</li>
+      <li>"[خطّاف عربي] — [3 كلمات تُثير الفضول، ثم الكشف]"</li>
+    </ol>
+
+    <h3 class="sub-heading" style="margin-top:3mm">استراتيجية Instagram و Twitter/X لأصحاب الأعمال السعوديين</h3>
+    <div class="two-col" style="margin-top:2mm">
+      <div>
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:1mm">Instagram — أفضل أنواع المحتوى</div>
+        <ul class="bullet-list">
+          <li><strong>منشورات كاروسيل تعليمية:</strong> أعلى معدل حفظ. استخدم CTA "احفظ هذا لاحقاً".</li>
+          <li><strong>دراسات حالة قبل/بعد:</strong> تفاعل عالٍ في السعودية — أظهر التحوّل بصرياً.</li>
+          <li><strong>كواليس العمل:</strong> اجتماعات، زيارات ميدانية، لحظات الفريق — يُضفي إنسانية على العلامة.</li>
+          <li><strong>تصاميم اقتباسات عربية:</strong> معدل مشاركة عالٍ، خاصة أيام الجمعة.</li>
+          <li><strong>إنجازات العملاء / الشهادات:</strong> بإذن العميل — صيغة إثبات اجتماعي قوية.</li>
+        </ul>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">معادلة التعليق:</strong> خطّاف ← سياق ← 3–5 نقاط قيمة ← CTA ← 5–10 هاشتاق (عربي + إنجليزي)</p>
+      </div>
+      <div>
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5mm;border-bottom:1px solid rgba(201,168,76,0.2);padding-bottom:1mm">Twitter/X — قالب الخيط</div>
+        <p class="body-text">Twitter/X السعودي يتميز بطابعه الرأيي الفريد. لقيادة الفكر في الأعمال:</p>
+        <ul class="bullet-list">
+          <li>انشر في ساعات الذروة: 8–10 م هي ذروة نشاط Twitter السعودي</li>
+          <li>شارك في المحادثات الرائجة بزاوية أعمال مهنية</li>
+          <li>صيغة الخيط تحقق أداءً ممتازاً (هيكل 10 تغريدات أدناه)</li>
+          <li>إعادة التغريد مع تعليقك تبني الوصول بسرعة</li>
+        </ul>
+        <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.1);border-radius:4px;padding:3mm;margin-top:2mm">
+          <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:1.5mm">هيكل خيط 10 تغريدات</div>
+          <div style="font-size:7.5pt;color:var(--silver);line-height:1.6">
+            التغريدة 1: ادّعاء مثير للجدل — خيط يشرح السبب 👇<br>
+            التغريدات 2–8: نقطة واحدة + مثال محدد لكل تغريدة<br>
+            التغريدة 9: "أهم ما تعلمته:" — خلاصتك الرئيسية<br>
+            التغريدة 10: CTA للمتابعة + دعوة للرد
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1377,6 +1696,8 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 5 of 11 · Content Strategy</div>
     <div class="section-title">YOUR 5 CONTENT PILLARS</div>
     <div class="section-rule"></div>
@@ -1387,7 +1708,6 @@
     </div>
 
     <h3 class="sub-heading" style="margin-top:5mm">Example Pillars: Business Consultant</h3>
-
     <div class="pillar-grid">
       <div class="pillar-card">
         <div class="pillar-number">01</div>
@@ -1410,7 +1730,6 @@
         <div class="pillar-desc">Personal stories, lessons, beliefs. Creates emotional connection. The pillar that turns followers into advocates — and advocates into clients.</div>
       </div>
     </div>
-
     <div class="pillar-card" style="margin-top:3mm">
       <div class="pillar-number">05</div>
       <div class="pillar-name">Client Results</div>
@@ -1418,9 +1737,7 @@
     </div>
 
     <h3 class="sub-heading" style="margin-top:5mm">Content Pillar Planning Framework</h3>
-
     <p class="body-text">For each of your 5 pillars, work through these four questions before you write a single post:</p>
-
     <div class="arc-grid" style="margin-top:2mm">
       <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
         <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">TOPIC</div>
@@ -1441,13 +1758,11 @@
     </div>
 
     <h3 class="sub-heading" style="margin-top:5mm">The 70-20-10 Content Rule</h3>
-
     <div class="ratio-bar">
       <div class="seg seg-70">70% — Educational</div>
       <div class="seg seg-20">20% — Personal</div>
       <div class="seg seg-10">10%</div>
     </div>
-
     <div class="stat-row" style="margin-top:2mm">
       <div class="stat-box" style="text-align:left;padding:3mm 4mm">
         <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">70% EDUCATIONAL</div>
@@ -1462,6 +1777,90 @@
         <div style="font-size:8pt;color:var(--silver)">Services, offers, case studies, direct CTAs. Keep this rare — the moment your audience feels sold to constantly, they stop engaging.</div>
       </div>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 5 من 11 · استراتيجية المحتوى</div>
+    <div class="section-title">ركائزك الخمس للمحتوى</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      <div class="callout-title">كيف تُحدّد ركائز محتواك</div>
+      <p>اختر 5 موضوعات عند تقاطع ثلاث دوائر: <strong style="color:var(--white)">خبرتك</strong> + <strong style="color:var(--white)">ألم جمهورك</strong> + <strong style="color:var(--white)">عرضك التجاري</strong>. كل منشور يجب أن يخدم هدفَين من هذه الأهداف الثلاثة في آنٍ واحد.</p>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">مثال على الركائز: مستشار أعمال</h3>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-name">استراتيجية الأعمال</div>
+        <div class="pillar-desc">خبرتك الجوهرية. الأطر ونماذج القرار واستراتيجيات النمو. هنا تُبرهن على العمق الذي يُبرر أتعابك.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-name">الذكاء الاصطناعي والتقنية</div>
+        <div class="pillar-desc">المستقبل الذي يحتاج عملاؤك لفهمه لكنهم لم يفعلوا بعد. ضع نفسك مترجماً بين التقنية ونتائج الأعمال الحقيقية.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-name">رؤى السوق السعودي</div>
+        <div class="pillar-desc">الصلة المحلية تبني الثقة المحلية. رؤية 2030، التحولات التنظيمية، ديناميكيات القطاعات. ما تفتقده الأطر العالمية عن السعودية.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <div class="pillar-name">عقلية المؤسس</div>
+        <div class="pillar-desc">قصص شخصية ودروس ومعتقدات. تخلق ارتباطاً عاطفياً. الركيزة التي تحوّل المتابعين إلى مؤيدين — والمؤيدين إلى عملاء.</div>
+      </div>
+    </div>
+    <div class="pillar-card" style="margin-top:3mm">
+      <div class="pillar-number">05</div>
+      <div class="pillar-name">نتائج العملاء</div>
+      <div class="pillar-desc">دراسات حالة وشهادات وتحولات قبل/بعد ومقاييس محددة. إثبات أنك لا تتحدث فقط عن النتائج — بل تُحققها.</div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">إطار تخطيط ركائز المحتوى</h3>
+    <p class="body-text">لكل ركيزة من ركائزك الخمس، أجب عن هذه الأسئلة الأربعة قبل كتابة أي منشور:</p>
+    <div class="arc-grid" style="margin-top:2mm">
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">الموضوع</div>
+        <div style="font-size:8.5pt;color:var(--silver)">ما الموضوع المحدد؟ كن ضيقاً — "الذكاء الاصطناعي في تجزئة السعودية" أفضل من "التقنية".</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">ألم الجمهور</div>
+        <div style="font-size:8.5pt;color:var(--silver)">ما الإحباط المحدد الذي يعالجه هذا؟ اكتبه بالكلمات الحرفية لعميلك، لا بكلماتك.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">10 أفكار لمنشورات</div>
+        <div style="font-size:8.5pt;color:var(--silver)">اكتب 10 زوايا للمنشور قبل أن تشعر بالاستعداد. الفكرة العاشرة دائماً أفضل من الأولى. لا تُصفِّ الآن — ولِّد.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.15);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;margin-bottom:2mm">العرض المرتبط</div>
+        <div style="font-size:8.5pt;color:var(--silver)">أي خدماتك تدعم هذه الركيزة في نهاية المطاف؟ لكل ركيزة غرض تجاري واضح.</div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:5mm">قاعدة المحتوى 70-20-10</h3>
+    <div class="ratio-bar">
+      <div class="seg seg-70">70% — تعليمي</div>
+      <div class="seg seg-20">20% — شخصي</div>
+      <div class="seg seg-10">10%</div>
+    </div>
+    <div class="stat-row" style="margin-top:2mm">
+      <div class="stat-box" style="text-align:right;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">70% تعليمي</div>
+        <div style="font-size:8pt;color:var(--silver)">علِّم شيئاً ذا قيمة. أطر، شروحات، تحليلات، رؤى. يبني المصداقية ويكسب الحفظ والمشاركة — أعلى إشارات LinkedIn قيمةً.</div>
+      </div>
+      <div class="stat-box" style="text-align:right;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">20% شخصي</div>
+        <div style="font-size:8pt;color:var(--silver)">قصص وآراء وكواليس وتأملات صادقة. يبني الثقة والارتباط العاطفي. الناس يشترون من بشر لا من آلات محتوى.</div>
+      </div>
+      <div class="stat-box" style="text-align:right;padding:3mm 4mm">
+        <div style="font-size:8pt;font-weight:700;color:var(--gold);margin-bottom:1.5mm">10% ترويجي</div>
+        <div style="font-size:8pt;color:var(--silver)">خدمات وعروض ودراسات حالة وCTA مباشر. أبقِه نادراً — لحظة شعور جمهورك بالبيع المستمر يتوقفون عن التفاعل.</div>
+      </div>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1481,6 +1880,8 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 6 of 11 · Content Calendar</div>
     <div class="section-title">THE 12-WEEK CONTENT CALENDAR</div>
     <div class="section-rule"></div>
@@ -1551,7 +1952,6 @@
     <p class="body-text">Repeat the four-week structure with variation — each cycle you go deeper on each pillar, introduce more specific case studies, and engage more actively with comments. By week 8, you should be receiving inbound enquiries. By week 12, you have 36 published posts, a documented audience, and proof of what resonates.</p>
 
     <h3 class="sub-heading" style="margin-top:4mm">Monthly Milestone Posts</h3>
-
     <ul class="bullet-list">
       <li><strong>End of Month 1:</strong> Summary post — what you've learned from writing publicly. Transparency builds trust.</li>
       <li><strong>End of Month 2:</strong> A bold opinion piece — "I disagree with the conventional wisdom on [topic]." Bold stances attract engaged followers.</li>
@@ -1562,6 +1962,91 @@
       <div class="callout-title">The Critical Truth About Consistency</div>
       <p>Most consultants give up between weeks 3 and 6 — when they're posting consistently but engagement is still low. <strong style="color:var(--white)">This is the exact moment when you must not stop.</strong> LinkedIn's algorithm rewards sustained consistency. Your audience compounds. The accounts that "blow up overnight" are almost always accounts that quietly showed up for 6–12 months first.</p>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 6 من 11 · تقويم المحتوى</div>
+    <div class="section-title">تقويم المحتوى لـ 12 أسبوعاً</div>
+    <div class="section-rule"></div>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">إيقاع النشر: 3 مرات أسبوعياً على LinkedIn</div>
+      <p>انشر الاثنين والأربعاء والجمعة. الأوقات المثلى: <strong style="color:var(--white)">8–9 ص</strong> (التنقل الصباحي) أو <strong style="color:var(--white)">7–8 م</strong> (ذروة التفاعل المسائي) بالتوقيت السعودي. الانتظام يتفوق على الكمال — الحضور الموثوق أهم من أي منشور فيروسي منفرد.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-bottom:4mm">
+      <div style="border:1px solid rgba(201,168,76,0.3);padding:3mm 4mm;border-radius:4px;background:rgba(201,168,76,0.05)">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:1.5mm">الأسابيع 1–4</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">شهر الأسس</div>
+        <div style="font-size:8pt;color:var(--silver)">أرسِّخ تموضعك وركائز خبرتك. دع جمهورك يعرف مَن أنت وما الذي تقف من أجله.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.2);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:1.5mm">الأسابيع 5–8</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">شهر البناء</div>
+        <div style="font-size:8pt;color:var(--silver)">تعمَّق في كل ركيزة. شارك دراسات الحالة. نمِّ التفاعل. ابدأ في تلقي رسائل العملاء.</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,0.2);padding:3mm 4mm;border-radius:4px">
+        <div style="font-size:7.5pt;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:1.5mm">الأسابيع 9–12</div>
+        <div style="font-size:9pt;font-weight:700;color:var(--white);margin-bottom:1.5mm">شهر السلطة</div>
+        <div style="font-size:8pt;color:var(--silver)">مقالات قيادة الفكر ورؤى الصناعة وتحويل العملاء. أنت الآن صوت معترف به — تصرَّف على هذا الأساس.</div>
+      </div>
+    </div>
+
+    <div class="arc-grid">
+      <div class="arc-card">
+        <div class="arc-label">الأسبوع 1</div>
+        <div class="arc-title">قوس التعريف</div>
+        <ul class="arc-posts">
+          <li><strong style="color:var(--white)">الاثنين:</strong> مَن أنا + ما الذي أؤمن به (شخصي)</li>
+          <li><strong style="color:var(--white)">الأربعاء:</strong> أكبر خطأ يقع فيه [جمهورك] (تعليمي)</li>
+          <li><strong style="color:var(--white)">الجمعة:</strong> نتيجة أفخر بها — قصة عميل واحد (إثبات)</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">الأسبوع 2</div>
+        <div class="arc-title">قوس الوعي بالمشكلة</div>
+        <ul class="arc-posts">
+          <li>المشكلة التي لا يتحدث عنها أحد في مجالك</li>
+          <li>5 علامات تدل أن عملك يحتاج [خدمتك]</li>
+          <li>كيف أفكر في [مفهوم رئيسي] بشكل مختلف عن معظم الناس</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">الأسبوع 3</div>
+        <div class="arc-title">قوس الخبرة</div>
+        <ul class="arc-posts">
+          <li>خطوة بخطوة: كيف [تحل مشكلة شائعة]</li>
+          <li>الإطار الذي أستخدمه مع كل عميل</li>
+          <li>رأيي الصريح في [اتجاه صناعي حالي]</li>
+        </ul>
+      </div>
+      <div class="arc-card">
+        <div class="arc-label">الأسبوع 4</div>
+        <div class="arc-title">قوس بناء الثقة</div>
+        <ul class="arc-posts">
+          <li>خطأ ارتكبته في بداية مسيرتي (هشاشة + درس)</li>
+          <li>ما علّمني إياه [عدد] عملاء عن [موضوع]</li>
+          <li>تأمل نهاية الأسبوع — ما أقرأه وأفكر فيه</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-heading" style="margin-top:4mm">الأسابيع 5–12: تعمَّق أكثر</h3>
+    <p class="body-text">كرِّر هيكل الأربعة أسابيع مع التنويع — في كل دورة تتعمق أكثر في كل ركيزة وتُقدم دراسات حالة أكثر تحديداً وتتفاعل بشكل أنشط مع التعليقات. بحلول الأسبوع 8 يجب أن تتلقى استفسارات. بحلول الأسبوع 12 يكون لديك 36 منشوراً منشوراً وجمهور موثق وإثبات لما يلقى صدى.</p>
+
+    <h3 class="sub-heading" style="margin-top:4mm">منشورات المراحل الشهرية</h3>
+    <ul class="bullet-list">
+      <li><strong>نهاية الشهر 1:</strong> منشور ملخص — ما تعلمته من الكتابة العلنية. الشفافية تبني الثقة.</li>
+      <li><strong>نهاية الشهر 2:</strong> مقالة رأي جريئة — "أختلف مع الحكمة السائدة في [موضوع]." المواقف الجريئة تجذب المتابعين المتفاعلين.</li>
+      <li><strong>نهاية الشهر 3:</strong> دليل شامل — أفضل محتواك التعليمي حتى الآن. ثبِّته على ملفك. هذا يصبح قطعة سلطتك الرائدة.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:4mm">
+      <div class="callout-title">الحقيقة الحاسمة عن الانتظام</div>
+      <p>معظم المستشارين يستسلمون بين الأسبوع 3 والأسبوع 6 — حين ينشرون بانتظام لكن التفاعل لا يزال منخفضاً. <strong style="color:var(--white)">هذه هي اللحظة بالذات التي يجب ألا تتوقف فيها.</strong> خوارزمية LinkedIn تكافئ الانتظام المستدام. جمهورك يتراكم. الحسابات التي "تنفجر بين ليلة وضحاها" هي دائماً تقريباً حسابات ظهرت بهدوء لمدة 6–12 شهراً أولاً.</p>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1581,8 +2066,10 @@
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 7 of 11 · Post Templates — Full Text</div>
-    <div class="section-title">35 LINKEDIN POST TEMPLATES<br><span style="font-size:12pt;color:var(--gold);font-weight:700">٣٥ قالب للنشر على لينكدإن</span></div>
+    <div class="section-title">35 LINKEDIN POST TEMPLATES</div>
     <div class="section-rule"></div>
 
     <div class="callout" style="margin-bottom:4mm">
@@ -1702,6 +2189,132 @@ The lesson: <em>[What this teaches about your space]</em>"</div>
 The part no one shows you: <em>[Something real and unexpected]</em>
 What do you think? Does this match how you imagined <em>[your type of work]</em>?"</div>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 7 من 11 · قوالب المنشورات — النص الكامل</div>
+    <div class="section-title">٣٥ قالب للنشر على LinkedIn</div>
+    <div class="section-rule"></div>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">كيف تستخدم هذه القوالب</div>
+      <p>استبدل <em style="color:rgba(201,168,76,0.8)">[النص بين الأقواس]</em> بمحتواك الخاص. لا تنشر الكلام حرفياً — اجعله بصوتك. اكتب كما تتحدث في اجتماع مع عميل. القالب هو الهيكل؛ تجربتك هي المحتوى.</p>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin-bottom:3mm">المجموعة أ — منشورات تعليمية (القوالب 1–5)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">1</div>
+        <div class="full-template-name">منشور القائمة</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"<em>[عدد]</em> أشياء أتمنى أن يخبرني بها أحد عن <em>[الموضوع]</em> حين كنت أبدأ:
+1. <em>[درس]</em>
+2. <em>[درس]</em>
+3. <em>[درس]</em>
+<em>[3–5 دروس إضافية]</em>
+الأهم؟ <em>[الدرس الأخير]</em>.
+أيها وجدت أكثر صدىً معك؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">2</div>
+        <div class="full-template-name">كاسر الخرافات</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"<em>[معتقد شائع عن مجالك]</em> — هذا خطأ تماماً.
+إليك الحقيقة:
+<em>[الحقيقة 1]</em>
+<em>[الحقيقة 2]</em>
+<em>[الحقيقة 3]</em>
+تعلمت هذا بعد <em>[تجربة شخصية / عدد العملاء]</em>.
+ما المفهوم الخاطئ في <em>[مجالك]</em> الذي يُحبطك أكثر؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">3</div>
+        <div class="full-template-name">منشور الإطار</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"أستخدم هذا الإطار البسيط مع كل <em>[عميل / مشروع / موقف]</em>:
+<em>[اسم الإطار]</em> — <em>[3–5 خطوات]</em>:
+الخطوة 1: <em>[إجراء]</em> — <em>[سبب الأهمية]</em>
+الخطوة 2: <em>[إجراء]</em> — <em>[سبب الأهمية]</em>
+الخطوة 3: <em>[إجراء]</em> — <em>[سبب الأهمية]</em>
+<em>[2–3 خطوات إضافية]</em>
+معظم <em>[الجمهور]</em> يتجاوزون الخطوة <em>[X]</em>. هنا يخسرون.
+احفظ هذا إذا وجدته مفيداً."</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">4</div>
+        <div class="full-template-name">منشور البيانات</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"<em>[إحصاء مفاجئ]</em> — هذا غيّر طريقة تفكيري في <em>[الموضوع]</em>.
+إليك ما تقوله البيانات وما تعنيه لـ <em>[الجمهور]</em>:
+<em>[نقطة بيانات 1]</em>: هذا يعني <em>[الانعكاس]</em>
+<em>[نقطة بيانات 2]</em>: هذا يعني <em>[الانعكاس]</em>
+<em>[نقطة بيانات 3]</em>: هذا يعني <em>[الانعكاس]</em>
+الخلاصة: <em>[استنتاجك]</em>.
+ما الذي يغيره هذا بالنسبة لك؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">5</div>
+        <div class="full-template-name">منشور كيف تفعل</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"كيف <em>[تحقق نتيجة محددة]</em> في <em>[إطار زمني]</em>:
+معظم <em>[الجمهور]</em> <em>[يفعلونها بالطريقة الخاطئة]</em>. إليك النهج الأفضل:
+1. <em>[خطوة]</em> — <em>[إجراء محدد]</em>
+2. <em>[خطوة]</em> — <em>[إجراء محدد]</em>
+3. <em>[خطوة]</em> — <em>[إجراء محدد]</em>
+<em>[2–3 خطوات إضافية]</em>
+النتيجة: <em>[ما سيحققونه]</em>.
+راسلني <em>[كلمة مفتاحية]</em> إذا أردت الدليل الكامل."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">المجموعة ب — منشورات القصص (القوالب 6–8)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">6</div>
+        <div class="full-template-name">قصة الفشل</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"ارتكبت خطأً بتكلفة <em>[X ريال / سنوات / عملاء]</em> العام الماضي.
+<em>[ما حدث — 2–3 جمل تصف الموقف]</em>
+ما كان ينبغي أن أفعله: <em>[الدرس]</em>
+سبب مشاركتي لهذا: <em>[لماذا يهمهم]</em>
+<em>[سؤال ختامي أو درس]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">7</div>
+        <div class="full-template-name">قصة إنجاز العميل</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"قبل ستة أشهر، جاءنا <em>[نوع العميل دون تسمية]</em> بمشكلة <em>[مشكلة محددة]</em>.
+<em>[1–2 جملة: كيف بدا الوضع]</em>
+ما فعلناه: <em>[وصف موجز للحل — بلا مصطلحات تقنية]</em>
+النتيجة: <em>[نتيجة محددة وقابلة للقياس — إيرادات، وقت، نسبة]</em> في <em>[إطار زمني]</em>.
+الدرس: <em>[ما يعلّمه هذا عن مجالك]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">8</div>
+        <div class="full-template-name">خلف الكواليس</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"كيف يبدو <em>[يوم / أسبوع / مشروع]</em> نموذجي لدينا:
+<em>[الوقت/المرحلة]</em>: <em>[ما يحدث — محدد وصادق]</em>
+<em>[الوقت/المرحلة]</em>: <em>[ما يحدث]</em>
+<em>[الوقت/المرحلة]</em>: <em>[ما يحدث]</em>
+الجزء الذي لا يُظهره أحد: <em>[شيء حقيقي وغير متوقع]</em>
+ما رأيك؟ هل هذا يتطابق مع تصورك لـ <em>[نوع عملك]</em>؟"</div>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1721,6 +2334,8 @@ What do you think? Does this match how you imagined <em>[your type of work]</em>
       <div class="page-header-ref">LMX-FW-05 · Post Templates Continued</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 8 of 11 · Post Templates — Arabic &amp; Engagement</div>
     <div class="section-title" style="font-size:14pt">35 POST TEMPLATES — CONTINUED</div>
     <div class="section-rule"></div>
@@ -1848,6 +2463,138 @@ Disagree? I'd genuinely love to hear your case."</div>
         <li data-num="35"><em>Direct Offer Post (use sparingly — max 1× per month)</em> — "If you've been following my posts on [topic] and want to go deeper, I'm opening [N] spots for [service]. Here's who it's for:"</li>
       </ul>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 8 من 11 · قوالب المنشورات — العربية والتفاعل</div>
+    <div class="section-title" style="font-size:14pt">٣٥ قالب — تابع</div>
+    <div class="section-rule"></div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin-bottom:3mm">المجموعة ج — منشورات عربية أولاً (القوالب 9–11)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">9</div>
+        <div class="full-template-name">منشور تعليمي بالعربية</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"كل يوم أسمع نفس الخطأ:
+<em>[خطأ شائع بصيغة مباشرة]</em>
+الحقيقة؟
+<em>[النقطة الأولى]</em>
+<em>[النقطة الثانية]</em>
+<em>[النقطة الثالثة]</em>
+الدرس: <em>[جملة واحدة قوية]</em>
+شاركني: ما أكثر خطأ تسمعه في <em>[مجالك]</em>؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">10</div>
+        <div class="full-template-name">قصة بالعربية</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"قبل <em>[مدة زمنية]</em>، كنت <em>[الوضع السابق]</em>.
+<em>[جملتان: ما الذي تغيّر وكيف؟]</em>
+الدرس الذي تعلمته: <em>[ما تريد مشاركته]</em>
+لو كنت في نفس الموقف اليوم، سأفعل <em>[ما تعلمته]</em>.
+ما القرار الذي غيّر مسار مشروعك؟"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">11</div>
+        <div class="full-template-name">منشور ثنائي اللغة</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"<em>[سطر عربي قوي كخطّاف]</em>
+<em>[ترجمة إنجليزية أو رؤية تكميلية]</em>
+<em>[3 نقاط عربية]</em>
+<em>[جملة ملخص إنجليزية]</em>
+إيش رأيكم؟ / What's your take?"</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">المجموعة د — منشورات التفاعل (القوالب 12–13)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">12</div>
+        <div class="full-template-name">استطلاع الرأي</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"رأي جريء: <em>[رأيك المخالف للسائد أو الموقف القوي عن مجالك]</em>.
+رأيت <em>[دليلاً / تجربة]</em> يُثبت هذا.
+الحجة المضادة: <em>[قدِّم الحجة المعارضة بقوة]</em>
+ردي: <em>[نقطتك الأقوى]</em>
+هل توافق أم تختلف؟ أخبرني في التعليقات."</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">13</div>
+        <div class="full-template-name">منشور السؤال</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"سؤال سريع لـ <em>[الجمهور المستهدف]</em>:
+<em>[سؤال مباشر ومحدد ذو صلة بعالمهم]</em>
+أسأل لأن <em>[سبب حقيقي — بحث، فضول، نمط لدى العملاء]</em>.
+ضع إجابتك أدناه — سأشارك النتائج في منشور متابعة."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">المجموعة هـ — منشورات السلطة (القوالب 14–15)</div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">14</div>
+        <div class="full-template-name">منشور دراسة الحالة</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"تحدي العميل: <em>[مشكلة محددة في جملة واحدة]</em>
+ما جرَّبوه من قبل: <em>[1–2 محاولة فاشلة]</em>
+ما فعلناه بشكل مختلف: <em>[نهجك الفريد]</em>
+النتيجة: <em>[نتيجة مقيسة]</em> في <em>[إطار زمني]</em>
+الرؤية الأساسية: <em>[ما صنع الفارق]</em>"</div>
+    </div>
+
+    <div class="full-template">
+      <div class="full-template-header">
+        <div class="full-template-num">15</div>
+        <div class="full-template-name">رأي قيادة الفكر</div>
+      </div>
+      <div class="full-template-body" dir="rtl" style="text-align:right">"<em>[قضية يتجادل حولها متخصصو الصناعة]</em>
+موقفي: <em>[موقفك الواضح]</em>
+إليك سبب إيماني بهذا:
+1. <em>[سبب محدد مع دليل]</em>
+2. <em>[سبب محدد مع دليل]</em>
+3. <em>[سبب محدد مع دليل]</em>
+الانعكاس على <em>[الجمهور]</em>: <em>[ما يجب أن يفعلوه بشكل مختلف]</em>
+تختلف معي؟ أودّ سماع حجتك بصدق."</div>
+    </div>
+
+    <div class="template-section-title" style="font-size:8.5pt;margin:3mm 0">المجموعة و — المكتبة الموسعة (القوالب 16–35 — صيغة مرجعية)</div>
+
+    <div class="two-col" style="gap:4mm;margin-top:2mm">
+      <ul class="template-list">
+        <li data-num="16"><em>منشور قائمة موارد</em> — "[عدد] مورد / أداة / كتاب يجب أن يعرفها كل [جمهور] — مع سبب أهمية كل منها."</li>
+        <li data-num="17"><em>مشاركة مورد</em> — "[الأداة/الإطار/الكتاب] الذي غيّر طريقة عملي: [ما هو + لماذا يهم جمهورك]"</li>
+        <li data-num="18"><em>منشور إنجاز</em> — "اليوم يمر [X] سنة / العميل [N] / [الإنجاز]. ما أعرفه الآن وأتمنى أن أكون عرفته آنذاك:"</li>
+        <li data-num="19"><em>منشور التوقعات</em> — "[مجالك] في 2026: 3 أشياء أؤمن بأنها ستتغير، وما يجب فعله حيال كل منها الآن."</li>
+        <li data-num="20"><em>منشور مراجعة أداة</em> — "جرّبت [أداة] لمدة [مدة]. مراجعة صادقة لـ [جمهور]: ما يعمل، ما لا يعمل، الحكم."</li>
+        <li data-num="21"><em>منشور درس من فعالية</em> — "حضرت للتو [فعالية]. الرؤية الوحيدة التي لا يتحدث عنها أحد: [الرؤية + الانعكاس]"</li>
+        <li data-num="22"><em>منشور فكرة من كتاب</em> — "فكرة واحدة من [كتاب] غيّرت نهجي في [موضوع] — وكيفية تطبيقها في [السياق]."</li>
+        <li data-num="23"><em>منشور العملية</em> — "كيف نقوم فعلياً بـ [تسليم الخدمة / إدارة المشروع / استقبال العملاء] — خطوة بخطوة، بلا حشو."</li>
+        <li data-num="24"><em>إعلان شراكة</em> — "[الشريك] وأنا نتعاون في [مبادرة]. إليك سبب أهمية هذا لـ [الجمهور]."</li>
+        <li data-num="25"><em>منشور توظيف (بناء سلطة)</em> — "نبحث عن [دور]. والأهم، إليك ما نؤمن به حول [موضوع] ولماذا يشكّل معيار توظيفنا."</li>
+      </ul>
+      <ul class="template-list">
+        <li data-num="26"><em>مشاركة شهادة عميل</em> — "[اقتباس من العميل] — وصلتني هذه الرسالة الأسبوع الماضي وأريد مشاركتها لأن [الدرس الذي تُجسّده]."</li>
+        <li data-num="27"><em>مراجعة الأسبوع</em> — "هذا الأسبوع: [إنجاز 1 + تحدٍّ 1 + درس 1]. أشارك لأن [الجمهور] طلب مني مزيداً من الشفافية."</li>
+        <li data-num="28"><em>تأمل شهري</em> — "انتهى [الشهر]. ما نجح، ما لم ينجح، وما سأغيّره في [الشهر القادم]."</li>
+        <li data-num="29"><em>طلب تعاون</em> — "أبحث في [موضوع] لـ [غرض]. إذا كانت لديك تجربة مع [شيء محدد]، أودّ 10 دقائق."</li>
+        <li data-num="30"><em>منشور بناء مجتمع</em> — "إذا كنت تعمل في [مجال] في السعودية / الخليج، ضع تعليقاً — لنتواصل ونبني شبكة أذكى."</li>
+        <li data-num="31"><em>منشور تحدٍّ</em> — "أقوم بـ [التحدي] لمدة [إطار زمني]. إليك السبب وما أتوقع تعلمه، وسأُفيد بالنتائج في اليوم [X]."</li>
+        <li data-num="32"><em>صيغة رمضان الخاصة</em> — "رمضان كريم — في هذا الشهر الفضيل، إليك الدرس التجاري الواحد الذي شكّل نهجي في [موضوع]."</li>
+        <li data-num="33"><em>منشور اليوم الوطني</em> — "في اليوم الوطني السعودي، تأمل في [جانب من جوانب الأعمال/الفرص/التحول السعودي] أفخر بمشاهدته."</li>
+        <li data-num="34"><em>منشور زاوية رؤية 2030</em> — "رؤية 2030 تغيّر [قطاعاً/جانباً محدداً]. إليك ما يعنيه ذلك عملياً لـ [الجمهور] الآن."</li>
+        <li data-num="35"><em>منشور العرض المباشر (استخدم بحذر — مرة واحدة كحد أقصى شهرياً)</em> — "إذا كنت تتابع منشوراتي عن [موضوع] وتريد التعمق أكثر، أفتح [عدد] مقعداً لـ [الخدمة]. إليك لمن هو:"</li>
+      </ul>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -1867,6 +2614,8 @@ Disagree? I'd genuinely love to hear your case."</div>
       <div class="page-header-ref">LMX-FW-05 · Thought Leadership Content System</div>
     </div>
 
+    <!-- EN -->
+    <div class="ver-en content-page page-content">
     <div class="section-eyebrow">Page 9 of 11 · Workflow &amp; Systems</div>
     <div class="section-title">CONTENT CREATION WORKFLOW</div>
     <div class="section-rule"></div>
@@ -1905,30 +2654,17 @@ Disagree? I'd genuinely love to hear your case."</div>
     <p class="body-text" style="margin-bottom:3mm">Never run out of ideas. Apply these six questions to any topic from your content pillars:</p>
 
     <div class="idea-grid">
-      <div class="idea-item">
-        <span>Question 1 —</span> What is the most common mistake my clients make in this area? The answer is always a post.
-      </div>
-      <div class="idea-item">
-        <span>Question 2 —</span> What is counterintuitive about this topic? What do most people get backwards? Contrarian takes perform extremely well.
-      </div>
-      <div class="idea-item">
-        <span>Question 3 —</span> What would I tell my younger self — or a client starting from zero — about this? Experience creates insight.
-      </div>
-      <div class="idea-item">
-        <span>Question 4 —</span> What question do clients always ask me about this? If they ask it repeatedly, your audience is asking it too.
-      </div>
-      <div class="idea-item">
-        <span>Question 5 —</span> What result am I most proud of in this area? Behind every result is a story. Stories are the best content.
-      </div>
-      <div class="idea-item">
-        <span>Question 6 —</span> What has changed in this field in the last 12 months? Recency is relevance. Be the person who explains what changed.
-      </div>
+      <div class="idea-item"><span>Question 1 —</span> What is the most common mistake my clients make in this area? The answer is always a post.</div>
+      <div class="idea-item"><span>Question 2 —</span> What is counterintuitive about this topic? What do most people get backwards? Contrarian takes perform extremely well.</div>
+      <div class="idea-item"><span>Question 3 —</span> What would I tell my younger self — or a client starting from zero — about this? Experience creates insight.</div>
+      <div class="idea-item"><span>Question 4 —</span> What question do clients always ask me about this? If they ask it repeatedly, your audience is asking it too.</div>
+      <div class="idea-item"><span>Question 5 —</span> What result am I most proud of in this area? Behind every result is a story. Stories are the best content.</div>
+      <div class="idea-item"><span>Question 6 —</span> What has changed in this field in the last 12 months? Recency is relevance. Be the person who explains what changed.</div>
     </div>
 
     <div class="section-rule" style="margin-top:5mm"></div>
 
     <h3 class="sub-heading">Brand Voice: What Makes Your Content "Yours"</h3>
-
     <div class="two-col" style="margin-top:2mm">
       <div>
         <p class="body-text"><strong style="color:var(--white)">Write as if to one person.</strong> Not "business owners" — imagine your single best client. Write to them. Everything else is just picking the right words.</p>
@@ -1939,6 +2675,70 @@ Disagree? I'd genuinely love to hear your case."</div>
         <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">End with a hook or a question.</strong> Every post should close with either a clear takeaway, a question for your audience, or a call to the next action.</p>
       </div>
     </div>
+    </div><!-- end ver-en -->
+
+    <!-- AR -->
+    <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;display:none">
+    <div class="section-eyebrow">الصفحة 9 من 11 · سير العمل والأنظمة</div>
+    <div class="section-title">سير عمل إنشاء المحتوى</div>
+    <div class="section-rule"></div>
+
+    <h3 class="sub-heading">طقوس المحتوى الأسبوعية (ساعتان / أسبوع)</h3>
+
+    <div class="callout" style="margin-bottom:4mm">
+      <div class="callout-title">المبدأ الجوهري</div>
+      <p>ساعتان مركّزتان أسبوعياً كافيتان لبناء حضور مؤثر على LinkedIn. المشكلة ليست الوقت أبداً — بل غياب النظام. هذه الطقوس تُنشئ النظام.</p>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">الأحد<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">30 دقيقة · تخطيط</span></div>
+      <div class="workflow-day-content">
+        اختر منشوراتك الثلاثة للأسبوع من تقويم المحتوى. اكتب عنواناً أولياً لكل منشور. لاحظ أي أحداث جارية أو أخبار أو محادثات مع عملاء تستحق الإشارة. افتح مستنداً فارغاً وضع نقاطاً مبدئية لكل منشور — لا كتابة مكتملة، مجرد بذور. انتهيت. أغلق المستند.
+      </div>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">الاثنين · الأربعاء · الجمعة<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">20 دقيقة لكل · كتابة + نشر</span></div>
+      <div class="workflow-day-content">
+        التقط النقاط المبدئية من الأحد. اكتب المنشور كاملاً. استخدم قالباً من الصفحات 7–8 كهيكل إذا احتجت. <strong style="color:var(--white)">اكتب بصوتك لا بصقل الذكاء الاصطناعي — الأصالة تتفوق على الكمال في كل مرة.</strong> أضف 3–5 هاشتاق ذات صلة تمزج العربية والإنجليزية. انشر في الوقت الأمثل: 8–9 ص أو 7–8 م بالتوقيت السعودي. لا تتحقق من الإعجابات بهوس لمدة ساعتين بعد النشر.
+      </div>
+    </div>
+
+    <div class="workflow-day">
+      <div class="workflow-day-label">يومياً<br><span style="color:var(--gray);font-size:7.5pt;font-weight:400">10 دقائق · تفاعل</span></div>
+      <div class="workflow-day-content">
+        ردَّ على كل تعليق على منشوراتك — حتى الإقرار البسيط يُشير للخوارزمية أن محتواك يُولّد محادثات. علِّق بتأمل على 5 منشورات من جمهورك المستهدف أو صناعتك. تواصل مع 3 أشخاص جدد يناسبون ملف عميلك المثالي. هذا الاستثمار اليومي لـ 10 دقائق يتراكم بشكل ملحوظ على مدى 12 أسبوعاً.
+      </div>
+    </div>
+
+    <div class="section-rule" style="margin-top:5mm"></div>
+
+    <h3 class="sub-heading">مولّد أفكار المحتوى</h3>
+    <p class="body-text" style="margin-bottom:3mm">لا تنفد أفكارك أبداً. طبِّق هذه الأسئلة الستة على أي موضوع من ركائز محتواك:</p>
+
+    <div class="idea-grid">
+      <div class="idea-item"><span>السؤال 1 —</span> ما أكثر خطأ شائع يقع فيه عملائي في هذا المجال؟ الإجابة دائماً منشور.</div>
+      <div class="idea-item"><span>السؤال 2 —</span> ما الجانب غير البديهي في هذا الموضوع؟ ما الذي يفهمه معظم الناس بشكل معكوس؟ المواقف المخالفة للسائد تحقق أداءً ممتازاً.</div>
+      <div class="idea-item"><span>السؤال 3 —</span> ماذا سأقول لنفسي الأصغر — أو لعميل يبدأ من الصفر — عن هذا؟ التجربة تُولّد الرؤية.</div>
+      <div class="idea-item"><span>السؤال 4 —</span> ما السؤال الذي يسألني العملاء دائماً عن هذا؟ إذا كرّروا السؤال، جمهورك يسأله أيضاً.</div>
+      <div class="idea-item"><span>السؤال 5 —</span> ما النتيجة التي أفخر بها أكثر في هذا المجال؟ وراء كل نتيجة قصة. القصص هي أفضل محتوى.</div>
+      <div class="idea-item"><span>السؤال 6 —</span> ما الذي تغيّر في هذا المجال خلال 12 شهراً الماضية؟ الحداثة هي الصلة. كن الشخص الذي يشرح ما تغيّر.</div>
+    </div>
+
+    <div class="section-rule" style="margin-top:5mm"></div>
+
+    <h3 class="sub-heading">صوت العلامة: ما الذي يجعل محتواك "محتواك أنت"</h3>
+    <div class="two-col" style="margin-top:2mm">
+      <div>
+        <p class="body-text"><strong style="color:var(--white)">اكتب كأنك تخاطب شخصاً واحداً.</strong> ليس "أصحاب الأعمال" — تخيّل أفضل عميل لديك. اكتب إليه. كل شيء آخر مجرد اختيار الكلمات المناسبة.</p>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">الفقرات القصيرة تفوز على الهاتف.</strong> معظم قراءة LinkedIn تحدث على الهواتف. جملة إلى جملتين للفقرة. المسافة البيضاء ليست هدراً.</p>
+      </div>
+      <div>
+        <p class="body-text"><strong style="color:var(--white)">زاويتك الفريدة تأتي من قصتك.</strong> لديك تجارب حياتية ومهنية لا يملكها أحد غيرك. التفاصيل المحددة — أرقام حقيقية، مواقف عملاء حقيقية، أماكن حقيقية — تجعل النصائح العامة لا تُنسى.</p>
+        <p class="body-text" style="margin-top:2mm"><strong style="color:var(--white)">اختم بخطّاف أو سؤال.</strong> كل منشور يجب أن يُختتم بإما خلاصة واضحة أو سؤال لجمهورك أو دعوة للإجراء التالي.</p>
+      </div>
+    </div>
+    </div><!-- end ver-ar -->
 
     <div class="page-footer">
       <div class="page-footer-text">© 2026 مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | Confidential — For purchaser use only</div>
@@ -2265,5 +3065,20 @@ Disagree? I'd genuinely love to hear your case."</div>
   </div>
 </div>
 
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <div class="lang-divider"></div>
+  <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">AR</button>
+</div>
+<script>
+  function setLang(lang) {
+    document.body.classList.remove('lang-en', 'lang-ar');
+    document.body.classList.add('lang-' + lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+  }
+  setLang('en');
+</script>
+<script src="valeria.js"></script>
 </body>
 </html>

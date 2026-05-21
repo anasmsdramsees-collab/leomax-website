@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Free Account Brief — LEOMAX</title>
+<meta name="description" content="Get a full intelligence brief on any Saudi company in 24 hours. Free, no obligation. Decision-makers, recent moves, entry angle — delivered by WhatsApp."/>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
+  --gold:#C9A84C;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 64px;border-bottom:1px solid rgba(184,184,184,.08);position:sticky;top:0;z-index:100;background:rgba(1,11,28,.92);backdrop-filter:blur(12px)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a.active{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none}
+
+.hero{padding:90px 64px 60px;text-align:center;background:var(--black);color:var(--white)}
+.sec-tag{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--silver);margin-bottom:16px;display:block}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:4px;line-height:1.05;margin-bottom:20px;background:linear-gradient(135deg,var(--white),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:17px;color:var(--gray);max-width:620px;margin:0 auto;line-height:1.75}
+
+.main-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;max-width:1200px;margin:80px auto;padding:0 64px;align-items:start}
+
+/* WHAT YOU GET */
+.what{}
+.what h2{font-size:30px;font-weight:900;letter-spacing:2px;margin-bottom:14px;color:var(--black)}
+.what .sub{font-size:14px;color:var(--lgray);margin-bottom:36px;line-height:1.75}
+.feature-list{list-style:none;margin-bottom:40px}
+.feature-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #DDE4ED;font-size:14px;color:var(--black);line-height:1.6}
+.feature-list li:last-child{border-bottom:none}
+.feature-num{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:var(--black);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-top:1px}
+
+.sample-brief{background:var(--dark);padding:28px;color:var(--gray);font-family:'SF Mono',Monaco,monospace;font-size:11.5px;line-height:1.9;margin-top:28px;border:1px solid rgba(201,168,76,.15)}
+.sample-brief .title{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:10px;text-transform:uppercase;margin-bottom:14px;display:block;border-bottom:1px solid rgba(201,168,76,.15);padding-bottom:10px}
+.sample-brief .row{display:flex;justify-content:space-between;padding:5px 0}
+.sample-brief .val{color:var(--white)}
+.sample-brief .section{color:var(--gold);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:14px;margin-bottom:8px;display:block;font-weight:700}
+
+/* FORM */
+.form-card{background:var(--white);padding:48px 40px;border:1px solid #DDE4ED;position:sticky;top:120px}
+.form-card .label-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
+.form-card h3{font-size:24px;font-weight:900;letter-spacing:2px;margin-bottom:8px;color:var(--black)}
+.form-card .form-sub{font-size:13px;color:var(--lgray);margin-bottom:32px;line-height:1.65}
+.field{margin-bottom:20px}
+.field label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);font-weight:700;margin-bottom:8px;display:block}
+.field input,.field textarea,.field select{width:100%;padding:13px 16px;background:#F4F7FB;border:1px solid #DDE4ED;font-size:14px;color:var(--black);font-family:inherit;transition:border-color .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);background:var(--white)}
+.field textarea{resize:vertical;min-height:80px}
+.submit-btn{width:100%;background:var(--black);color:var(--white);padding:16px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;margin-top:8px}
+.submit-btn:hover{background:var(--gold);color:var(--black)}
+.fineprint{font-size:11px;color:var(--lgray);line-height:1.7;margin-top:16px;text-align:center}
+
+/* PROCESS BAR */
+.process-bar{background:var(--white);padding:60px 64px;border-top:1px solid #DDE4ED;border-bottom:1px solid #DDE4ED}
+.process-bar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1200px;margin:0 auto;text-align:center}
+.process-bar-item .step{font-size:32px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1;display:block;margin-bottom:10px}
+.process-bar-item h4{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--black);margin-bottom:8px}
+.process-bar-item p{font-size:12px;color:var(--lgray);line-height:1.6}
+
+/* TRUST */
+.trust-section{padding:80px 64px;background:#F4F7FB;text-align:center}
+.trust-section .sec-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--lgray);margin-bottom:12px;display:block}
+.trust-section h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.15;margin-bottom:14px}
+.trust-section .sec-divider{width:40px;height:2px;background:#C8D3DE;margin:18px auto 40px}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.trust-item{background:var(--white);padding:32px 26px;border:1px solid #DDE4ED;text-align:left}
+.trust-item h3{font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;color:var(--black)}
+.trust-item p{font-size:13px;color:var(--lgray);line-height:1.75}
+
+footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 36px}
+.footer-brand img{height:36px;margin-bottom:16px}
+.footer-brand p{font-size:13px;color:var(--gray);line-height:1.75;max-width:280px}
+.footer-col h4{font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;margin-bottom:18px;font-weight:700}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--gray);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(184,184,184,.08);font-size:11px;letter-spacing:1.5px;color:var(--dgray);text-align:center}
+
+@media(max-width:900px){
+  nav{padding:18px 24px;flex-wrap:wrap;gap:16px}
+  .nav-links{order:3;width:100%;justify-content:center;gap:20px;flex-wrap:wrap}
+  .hero,.process-bar,.trust-section{padding-left:24px;padding-right:24px}
+  .main-grid{grid-template-columns:1fr;padding:0 24px;margin:60px auto;gap:40px}
+  .form-card{position:static}
+  .process-bar-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX" style="height:36px;width:auto"></a>
+  <ul class="nav-links">
+    <li><a href="LEOMAX_Website_Design.html#about">About</a></li>
+    <li><a href="services-pricing.html">Services</a></li>
+    <li><a href="bd-services.html">BD &amp; Access</a></li>
+    <li><a href="investor-services.html">Investor</a></li>
+    <li><a href="strategy-os.html">Strategy OS</a></li>
+    <li><a href="company-case-studies.html">Cases</a></li>
+  </ul>
+  <a class="nav-cta" href="#form">Request Brief →</a>
+</nav>
+
+<div class="hero">
+  <span class="sec-tag">Free · 24-Hour Delivery</span>
+  <h1>INTEL ON ANY<br/>SAUDI COMPANY</h1>
+  <p>Tell us which company you want to reach. We deliver a full intelligence brief — decision-makers, recent moves, budget cycle, entry angle — within 24 hours. No obligation. No pitch.</p>
+</div>
+
+<div class="main-grid">
+
+  <div class="what">
+    <h2>WHAT YOU GET</h2>
+    <p class="sub">A working document — not a marketing PDF. The same brief our team uses internally before any enterprise outreach.</p>
+
+    <ul class="feature-list">
+      <li><span class="feature-num">1</span><div><strong>Decision-Maker Map</strong> — names, titles, tenure, recent moves. Identified via LinkedIn + open sources, not guessed.</div></li>
+      <li><span class="feature-num">2</span><div><strong>Recent Activity</strong> — funding rounds, leadership changes, regulatory shifts, major contracts, public statements from the last 90 days.</div></li>
+      <li><span class="feature-num">3</span><div><strong>Budget Cycle &amp; Buying Signals</strong> — when they buy, who signs off, where the gaps in their current stack are.</div></li>
+      <li><span class="feature-num">4</span><div><strong>Entry Angle</strong> — a specific reason for them to reply. Not "we'd like to introduce ourselves." A working hypothesis they care about.</div></li>
+      <li><span class="feature-num">5</span><div><strong>Warm-Path Mapping</strong> — who in our network or yours could open the door, and how.</div></li>
+    </ul>
+
+    <div class="sample-brief">
+      <span class="title">SAMPLE — ABRIDGED</span>
+      <div class="row"><span>Target</span><span class="val">[Saudi Tech Co.]</span></div>
+      <div class="row"><span>Sector</span><span class="val">Fintech · Regulated</span></div>
+      <div class="row"><span>Revenue (est.)</span><span class="val">SAR 80–120M</span></div>
+      <div class="row"><span>Stage</span><span class="val">Post-Series B</span></div>
+
+      <span class="section">Decision-makers</span>
+      <div class="row"><span>CEO</span><span class="val">[Name] · 6 yr tenure</span></div>
+      <div class="row"><span>CTO</span><span class="val">[Name] · joined Q1 2026</span></div>
+      <div class="row"><span>VP Procurement</span><span class="val">[Name] · ex-STC</span></div>
+
+      <span class="section">Recent moves</span>
+      <div class="row"><span>Last raise</span><span class="val">SAR 45M · Oct 2025</span></div>
+      <div class="row"><span>New office</span><span class="val">Riyadh HQ · Mar 2026</span></div>
+      <div class="row"><span>Hiring</span><span class="val">8 eng · 2 BD · KSA</span></div>
+
+      <span class="section">Entry angle</span>
+      <div class="row"><span>Hypothesis</span><span class="val">[redacted in sample]</span></div>
+      <div class="row"><span>Warm path</span><span class="val">2 connectors mapped</span></div>
+    </div>
+  </div>
+
+  <form class="form-card" id="form" method="POST" action="https://api.web3forms.com/submit">
+    <span class="label-tag">Request Brief</span>
+    <h3>SUBMIT YOUR TARGET</h3>
+    <p class="form-sub">Tell us which Saudi company you want intel on. We deliver within 24 hours by email + WhatsApp.</p>
+
+    <input type="hidden" name="access_key" value="8cbff62d-1c1b-4bea-affb-7947492e14be">
+    <input type="hidden" name="subject" value="New Account Brief Request — LEOMAX">
+    <input type="hidden" name="from_name" value="LEOMAX Account Brief Form">
+
+    <div class="field">
+      <label>Target Company (Required)</label>
+      <input type="text" name="target_company" required placeholder="e.g. STC, Aramco, Saudia, Bupa…">
+    </div>
+
+    <div class="field">
+      <label>Why This Company?</label>
+      <textarea name="reason" placeholder="One sentence on what you'd want from them — partnership, customer, supplier, investor, etc."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Your Name</label>
+      <input type="text" name="name" required>
+    </div>
+
+    <div class="field">
+      <label>Your Company</label>
+      <input type="text" name="company" required>
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+
+    <div class="field">
+      <label>WhatsApp (Preferred)</label>
+      <input type="tel" name="whatsapp" placeholder="+966…">
+    </div>
+
+    <button type="submit" class="submit-btn">Send Request →</button>
+    <p class="fineprint">One brief per visitor · No spam · We reply within 24 hours</p>
+  </form>
+
+</div>
+
+<!-- PROCESS BAR -->
+<div class="process-bar">
+  <div class="process-bar-grid">
+    <div class="process-bar-item">
+      <span class="step">01</span>
+      <h4>You Submit</h4>
+      <p>Tell us the target company in 30 seconds.</p>
+    </div>
+    <div class="process-bar-item">
+      <span class="step">02</span>
+      <h4>We Research</h4>
+      <p>Our team profiles the account using open sources, LinkedIn, press, filings.</p>
+    </div>
+    <div class="process-bar-item">
+      <span class="step">03</span>
+      <h4>We Deliver</h4>
+      <p>PDF brief + WhatsApp summary within 24 hours.</p>
+    </div>
+    <div class="process-bar-item">
+      <span class="step">04</span>
+      <h4>You Decide</h4>
+      <p>Use the intel however you want. Optional 30-min call if useful.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <span class="sec-label">Why Free</span>
+  <h2>Because the Brief Speaks for Itself</h2>
+  <div class="sec-divider"></div>
+
+  <div class="trust-grid">
+    <div class="trust-item">
+      <h3>No Catch</h3>
+      <p>We don't sell your data. We don't add you to a drip campaign. We deliver the brief and stop. If you want more, you come to us.</p>
+    </div>
+    <div class="trust-item">
+      <h3>The Sample Is Real</h3>
+      <p>Every brief is built fresh, by a person. We use AI to accelerate research — not replace judgment. Your brief reflects current data, not a template.</p>
+    </div>
+    <div class="trust-item">
+      <h3>One Per Visitor</h3>
+      <p>We deliver one free brief per company. If your team needs 10 accounts profiled, that's the Account Access Sprint — a different product.</p>
+    </div>
+    <div class="trust-item">
+      <h3>What We Won't Do</h3>
+      <p>No scraping behind logins. No buying leaked data. No targeting individuals personally. We work within the open intelligence frame — that's enough.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo.png" alt="LEOMAX">
+      <p>LEOMAX is a Saudi business development firm building enterprise access systems for serious companies.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services-pricing.html">Overview</a></li>
+        <li><a href="bd-services.html">BD &amp; Access</a></li>
+        <li><a href="investor-services.html">Investor Layer</a></li>
+        <li><a href="strategy-os.html">Strategy OS</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="company-about.html">About</a></li>
+        <li><a href="company-founder.html">Founder</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="company-case-studies.html">Case Studies</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/966500000000">WhatsApp</a></li>
+        <li><a href="mailto:info@leomax.sa">info@leomax.sa</a></li>
+        <li><a href="company-contact.html">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© LEOMAX 2026 · Riyadh, Saudi Arabia</div>
+</footer>
+
+<script src="valeria.js"></script>
+</body>
+</html>

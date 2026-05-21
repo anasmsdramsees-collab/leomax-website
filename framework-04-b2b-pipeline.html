@@ -858,7 +858,21 @@
   /* Default (no class): show both (bilingual) */
   body:not(.lang-en):not(.lang-ar) [class*="-ar"] { display: block; }
 
+
+  /* ===== DUAL-LANGUAGE VISIBILITY ===== */
+  body.lang-en .ver-ar { display: none !important; }
+  body.lang-ar .ver-en { display: none !important; }
+  body.lang-ar .ver-ar { display: block !important; }
+  body.lang-ar .page   { direction: rtl; font-family: 'Tajawal', sans-serif; }
+  .ver-ar { display: none; }
+
+
+  /* Hide EN-only direct page children when AR mode is active */
+  body.lang-ar .page > *:not(.ver-ar):not(.watermark):not(.footer) { display: none !important; }
+  body.lang-en .page > .ver-ar { display: none !important; }
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -917,6 +931,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 02</div>
@@ -1035,6 +1050,71 @@
     </div>
     <p style="font-size:10.5px;color:var(--gray);margin-top:4px;">Example: Goal 50,000 SAR ÷ 30% close rate = 167 proposals needed. 167 ÷ 50% qualify = 334 qualified calls. 334 ÷ 20% response = <strong style="color:var(--white);">1,670 outreach contacts needed.</strong> Work backwards from your goal.</p>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٢</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; بناء مسار المبيعات B2B</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">واقع المبيعات B2B في السوق السعودي</div>
+  <div class="gold-rule"></div>
+  <div class="two-col">
+    <div class="content-block">
+      <h3 style="letter-spacing:0;">دورة المبيعات B2B في السعودية</h3>
+      <ul>
+        <li><strong>المدة المتوسطة: ٢–٨ أسابيع</strong> تبعاً لحجم الصفقة وعمق العلاقة ونوع المشتري.</li>
+        <li><strong>التوصية تُسرّع الدورة:</strong> تعريف دافئ من جهة مشتركة يمكنه اختصار دورة ٦ أسابيع إلى ١٠ أيام.</li>
+        <li><strong>تباطؤ رمضان والصيف:</strong> تتأخر قرارات الشراء بشكل ملحوظ في رمضان ويوليو–أغسطس. خطّط لملء المسار مسبقاً.</li>
+        <li><strong>واتساب هو نظام CRM الفعلي:</strong> معظم التواصل التجاري B2B يجري عبر واتساب لا البريد الإلكتروني. تعامل مع واتساب باحترافية تامة.</li>
+        <li><strong>أصحاب القرار يتطلبون اجتماعات:</strong> الصفقات الكبيرة تستلزم في الغالب لقاءً شخصياً أو مكالمة فيديو — العروض وحدها نادراً ما تُغلق صفقة.</li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <h3 style="letter-spacing:0;">الأنواع الثلاثة للمشترين في B2B السعودي</h3>
+      <ul>
+        <li><strong>مشترو العلاقة (الأكثر شيوعاً):</strong> يشترون ممن يعرفون ويثقون بهم. التوصية هي الملك. السعر ثانوي. دورات مبيعات طويلة لكن قيمة عمرية عالية.</li>
+        <li><strong>مشترو السعر:</strong> يقارنون بين موردين متعددين بناءً على التكلفة. يستجيبون لحجج العائد على الاستثمار. دورات أقصر لكن هوامش أدنى.</li>
+        <li><strong>مشترو القيمة:</strong> يقيّمون النتائج والعائد بمنهجية. يحتاجون بيانات ودراسات حالة ومقترحات منظّمة. يتخذون قرارات أبطأ لكنهم يلتزمون بحزم عند الاقتناع.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-block">
+    <h3 style="letter-spacing:0;">لماذا لا يملك معظم رجال المبيعات السعوديين مساراً حقيقياً؟</h3>
+    <ul>
+      <li><strong>لا استهداف منهجي:</strong> معظمهم يعتمدون كلياً على التوصيات الواردة. حين يتوقف التوصيات، ينهار الإيراد. المسار يتطلب تواصلاً نشطاً ومستمراً.</li>
+      <li><strong>لا نظام CRM:</strong> العملاء المحتملون يعيشون في محادثات واتساب ودفاتر وذاكرة. بدون نظام، تُنسى المتابعات وتبرد الفرص الساخنة.</li>
+      <li><strong>الخوف من المتابعة:</strong> أدب الثقافة السعودية أحياناً يجعل رجال المبيعات يتحاشون المتابعة أكثر من مرتين. معظم الصفقات تُغلق بعد ٥ لمسات أو أكثر.</li>
+      <li><strong>إرسال السعر مبكراً:</strong> كثيرون يرسلون السعر قبل تأهيل العميل — ما يؤدي إلى اعتراض "السعر غالي" قبل أن تُبنى القيمة.</li>
+      <li><strong>لا تعريف لمراحل المسار:</strong> بدون تعريف واضح للمراحل، لا توقع للإيرادات ولا تحديد لأين تتعثر الصفقات.</li>
+    </ul>
+  </div>
+  <div class="pipeline-flow">
+    <div class="pipe-stage"><div class="pipe-stage-num">١</div><div class="pipe-stage-name">مستهدف</div><div class="pipe-stage-pct">10%</div></div>
+    <div class="pipe-stage"><div class="pipe-stage-num">٢</div><div class="pipe-stage-name">تم التواصل</div><div class="pipe-stage-pct">20%</div></div>
+    <div class="pipe-stage"><div class="pipe-stage-num">٣</div><div class="pipe-stage-name">مؤهَّل</div><div class="pipe-stage-pct">40%</div></div>
+    <div class="pipe-stage"><div class="pipe-stage-num">٤</div><div class="pipe-stage-name">تم تقديم عرض</div><div class="pipe-stage-pct">65%</div></div>
+    <div class="pipe-stage"><div class="pipe-stage-num">٥</div><div class="pipe-stage-name">مُغلق</div><div class="pipe-stage-pct">80-100%</div></div>
+  </div>
+  <div class="highlight-box" style="margin-bottom:0;">
+    <div class="label">معادلة صحة مسار المبيعات</div>
+    <div class="formula-box" style="margin:2mm 0 0;">
+      <div class="formula-item"><div class="fi-top">هدف الإغلاق (ريال)</div><div class="fi-bottom">Closing Goal</div></div>
+      <div class="formula-op">÷</div>
+      <div class="formula-item"><div class="fi-top">معدل الإغلاق %</div><div class="fi-bottom">Close Rate</div></div>
+      <div class="formula-eq">=</div>
+      <div class="formula-item"><div class="fi-top">العروض المطلوبة</div><div class="fi-bottom">Proposals Needed</div></div>
+      <div class="formula-op">÷</div>
+      <div class="formula-item"><div class="fi-top">معدل التأهيل %</div><div class="fi-bottom">Qualify Rate</div></div>
+      <div class="formula-eq">=</div>
+      <div class="formula-item" style="background:rgba(201,168,76,0.1);padding:3px 6px;border:1px solid rgba(201,168,76,0.3);border-radius:2px;"><div class="fi-top" style="color:var(--gold);">إجمالي جهات الاتصال المطلوبة</div><div class="fi-bottom">Total Contacts Required</div></div>
+    </div>
+    <p style="font-size:10.5px;color:var(--gray);margin-top:4px;">مثال: هدف ٥٠٬٠٠٠ ريال ÷ معدل إغلاق ٣٠٪ = ١٦٧ عرضاً مطلوباً. ١٦٧ ÷ تأهيل ٥٠٪ = ٣٣٤ مكالمة مؤهَّلة. ٣٣٤ ÷ معدل رد ٢٠٪ = <strong style="color:var(--white);">١٬٦٧٠ جهة اتصال مطلوبة.</strong> ابدأ من هدفك واعمل بشكل عكسي.</p>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1049,6 +1129,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 03</div>
@@ -1104,6 +1185,59 @@
       <tr><td>Lost Reason (if applicable)</td><td>Dropdown</td><td>Price / Timing / Chose competitor / No budget / No need / No response</td><td>Review monthly for patterns</td></tr>
     </tbody>
   </table>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٣</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; نموذج إعداد CRM</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">نموذج إعداد نظام إدارة علاقات العملاء</div>
+  <div class="gold-rule"></div>
+  <table class="crm-table">
+    <thead>
+      <tr>
+        <th style="width:22%;text-align:right;">الحقل</th>
+        <th style="width:8%">النوع</th>
+        <th style="width:45%;text-align:right;">ما تُدخله — الوصف</th>
+        <th style="text-align:right;">ملاحظات / خيارات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="crm-section-header"><td colspan="4" style="text-align:right;">معلومات التواصل</td></tr>
+      <tr><td style="text-align:right;">الاسم الكامل</td><td>نص</td><td style="text-align:right;">الاسم الأول والأخير بما يشمل الكنية المفضّلة</td><td style="text-align:right;">أضف اللقب إن كان التواصل رسمياً</td></tr>
+      <tr><td style="text-align:right;">المسمى الوظيفي</td><td>نص</td><td style="text-align:right;">المسمى الدقيق من لينكدإن أو البطاقة التجارية</td><td style="text-align:right;">يُشير إلى مستوى صلاحية القرار</td></tr>
+      <tr><td style="text-align:right;">الشركة</td><td>نص</td><td style="text-align:right;">الاسم القانوني والاسم التجاري للشركة</td><td style="text-align:right;">اربطه بسجل الشركة</td></tr>
+      <tr><td style="text-align:right;">واتساب</td><td>هاتف</td><td style="text-align:right;">الرقم السعودي — القناة التجارية الأساسية</td><td style="text-align:right;">صيغة +966</td></tr>
+      <tr><td style="text-align:right;">البريد الإلكتروني</td><td>بريد</td><td style="text-align:right;">البريد المهني مفضَّل؛ الشخصي للمنشآت الصغيرة</td><td style="text-align:right;">تحقق قبل الإرسال الجماعي</td></tr>
+      <tr><td style="text-align:right;">لينكدإن</td><td>رابط</td><td style="text-align:right;">رابط الملف الشخصي للبحث والتواصل</td><td style="text-align:right;">سجّل حالة التواصل</td></tr>
+      <tr><td style="text-align:right;">المدينة</td><td>قائمة</td><td style="text-align:right;">الرياض / جدة / الدمام / الخبر / أخرى</td><td style="text-align:right;">يؤثر على لوجستيات الاجتماعات</td></tr>
+      <tr class="crm-section-header"><td colspan="4" style="text-align:right;">معلومات الشركة</td></tr>
+      <tr><td style="text-align:right;">القطاع</td><td>قائمة</td><td style="text-align:right;">القطاع الرئيسي (حتى ٢ قطاعات)</td><td style="text-align:right;">استخدم رموز GICS السعودية</td></tr>
+      <tr><td style="text-align:right;">حجم الشركة</td><td>قائمة</td><td style="text-align:right;">١–١٠ / ١١–٥٠ / ٥١–٢٠٠ / ٢٠٠+</td><td style="text-align:right;">يؤثر على التسعير والجهد</td></tr>
+      <tr><td style="text-align:right;">الإيراد السنوي التقديري</td><td>نطاق ريال</td><td style="text-align:right;">&lt;١م / ١–٥م / ٥–٢٠م / ٢٠–١٠٠م / ١٠٠م+</td><td style="text-align:right;">قدّر من السياق والبحث</td></tr>
+      <tr><td style="text-align:right;">صاحب القرار؟</td><td>نعم/لا/مؤثر</td><td style="text-align:right;">هل يستطيع هذا الشخص التوقيع بمفرده؟</td><td style="text-align:right;">إن لا — ابحث عن صاحب القرار</td></tr>
+      <tr><td style="text-align:right;">صلاحية الميزانية</td><td>نعم/لا/مشترك</td><td style="text-align:right;">هل يملك صلاحية الميزانية لهذا الشراء؟</td><td style="text-align:right;">اسأل أثناء مكالمة الاستكشاف</td></tr>
+      <tr class="crm-section-header"><td colspan="4" style="text-align:right;">متابعة المبيعات</td></tr>
+      <tr><td style="text-align:right;">المرحلة</td><td>قائمة</td><td style="text-align:right;">مستهدف / تواصل / مؤهَّل / عرض / تفاوض / مُغلق-رابح / مُغلق-خاسر</td><td style="text-align:right;">حدّث بعد كل تفاعل</td></tr>
+      <tr><td style="text-align:right;">مصدر العميل</td><td>قائمة</td><td style="text-align:right;">توصية / لينكدإن / فعالية / واتساب / تواصل بارد / أخرى</td><td style="text-align:right;">تتبّع لتحسين القنوات</td></tr>
+      <tr><td style="text-align:right;">تاريخ أول تواصل</td><td>تاريخ</td><td style="text-align:right;">تاريخ إرسال أول رسالة أو إجراء أول اتصال</td><td style="text-align:right;">يقيس طول دورة المبيعات</td></tr>
+      <tr><td style="text-align:right;">تاريخ آخر نشاط</td><td>تاريخ</td><td style="text-align:right;">تاريخ آخر تفاعل ذي معنى</td><td style="text-align:right;">تنبيه إن مضى أكثر من ٧ أيام</td></tr>
+      <tr><td style="text-align:right;">تاريخ المتابعة التالية</td><td>تاريخ</td><td style="text-align:right;">التاريخ المحدد لمتابعتك القادمة — حدّده دائماً</td><td style="text-align:right;">لا تتركه فارغاً أبداً</td></tr>
+      <tr><td style="text-align:right;">قيمة الصفقة (ريال)</td><td>ريال</td><td style="text-align:right;">القيمة التقديرية للعقد (كن محافظاً)</td><td style="text-align:right;">موزونة بنسبة الاحتمال %</td></tr>
+      <tr><td style="text-align:right;">احتمال الإغلاق %</td><td>%</td><td style="text-align:right;">مستهدف ١٠٪ · تواصل ٢٠٪ · مؤهَّل ٤٠٪ · عرض ٦٥٪ · تفاوض ٨٠٪</td><td style="text-align:right;">يُضبط تلقائياً حسب المرحلة</td></tr>
+      <tr><td style="text-align:right;">تاريخ الإغلاق المتوقع</td><td>تاريخ</td><td style="text-align:right;">التاريخ الواقعي المتوقع للتوقيع أو الدفع</td><td style="text-align:right;">يُستخدم في توقع الإيرادات</td></tr>
+      <tr class="crm-section-header"><td colspan="4" style="text-align:right;">ملاحظات العلاقة</td></tr>
+      <tr><td style="text-align:right;">ملاحظات الاجتماع</td><td>نص طويل</td><td style="text-align:right;">ملخص ما نوقش وما يهمهم والقرارات المتخذة</td><td style="text-align:right;">حدّث في نفس اليوم</td></tr>
+      <tr><td style="text-align:right;">الاعتراضات المسموعة</td><td>نص</td><td style="text-align:right;">أي اعتراضات تسعيرية أو توقيتية أو ثقة أو منافسين</td><td style="text-align:right;">جهّز رداً مضاداً</td></tr>
+      <tr><td style="text-align:right;">التفاصيل الشخصية</td><td>نص</td><td style="text-align:right;">معلومات العائلة والهوايات والمدينة الأصلية — للمتابعة الشخصية</td><td style="text-align:right;">الثقافة السعودية تُعلي قيمة هذا</td></tr>
+      <tr><td style="text-align:right;">سبب الخسارة (إن وُجد)</td><td>قائمة</td><td style="text-align:right;">السعر / التوقيت / اختار منافساً / لا ميزانية / لا حاجة / لا رد</td><td style="text-align:right;">راجع شهرياً للأنماط</td></tr>
+    </tbody>
+  </table>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1118,6 +1252,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 04</div>
@@ -1322,6 +1457,96 @@
       </div>
     </div>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٤</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; نصوص التواصل</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">نصوص التواصل — واتساب · بريد إلكتروني · متابعة ٧ نقاط</div>
+  <div class="gold-rule"></div>
+
+  <div style="font-size:10px;letter-spacing:0;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">رسائل واتساب الأولى — ٣ نسخ</div>
+  <div class="three-col">
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">نسخة أ — عبر توصية</div>
+        <div class="script-block-tag">Referral</div>
+      </div>
+      <div class="script-body">السلام عليكم [الاسم]، أنا [اسمك] من [الشركة]. تواصلت معي [الشخص المحيل] وذكر أنك تعمل على [الموضوع]. عندي شيء قد يفيدكم — هل مناسب أرسل لك ملخص؟</div>
+    </div>
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">نسخة ب — تواصل بارد</div>
+        <div class="script-block-tag">Cold</div>
+      </div>
+      <div class="script-body">مرحبا [الاسم]، أنا [اسمك]. شفت عملكم في [المنصة/الحدث] — أنتم تشتغلون في [القطاع] وعادةً الشركات في هذا المجال تواجه [نقطة الألم]. عندنا نظام يحل هذا لـ[X] شركة. هل تبي نتكلم ١٥ دقيقة؟</div>
+    </div>
+    <div class="script-block">
+      <div class="script-block-header">
+        <div class="script-block-title">نسخة ج — لينكدإن ← واتساب</div>
+        <div class="script-block-tag">LinkedIn</div>
+      </div>
+      <div class="script-body">مرحبا [الاسم]، تواصلنا على لينكدإن. أنا [اسمك] من LEOMAX. نتخصص في [وصف موجز]. أود أعرّفكم على طريقة عملنا — هل أنت متاح هذا الأسبوع؟</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;letter-spacing:0;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">التواصل بالبريد الإلكتروني</div>
+  <div class="content-block" style="margin-bottom:3mm;">
+    <h3 style="letter-spacing:0;">خيارات سطر الموضوع</h3>
+    <div class="three-col" style="margin-bottom:0;">
+      <div><div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">خيار أ — خطاف التعاون</div><div style="font-size:11px;color:rgba(255,255,255,0.8);">[اسم شركتهم] + LEOMAX — فكرة للتعاون</div></div>
+      <div><div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">خيار ب — إثبات اجتماعي</div><div style="font-size:11px;color:rgba(255,255,255,0.8);">كيف ساعدنا [شركة مشابهة] تحقق [النتيجة] في ٩٠ يوم</div></div>
+      <div><div style="color:var(--gold);font-size:10px;font-weight:700;margin-bottom:3px;">خيار ج — سؤال مخصّص</div><div style="font-size:11px;color:rgba(255,255,255,0.8);">سؤال سريع عن [شيء محدد في عملهم]</div></div>
+    </div>
+  </div>
+  <div class="content-block" style="margin-bottom:4mm;">
+    <h3 style="letter-spacing:0;">بنية البريد الإلكتروني (١٤٠ كلمة كحد أقصى)</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;font-size:11px;">
+      <div>
+        <div style="color:var(--gold);margin-bottom:2px;font-weight:700;">① الخطاف</div>
+        <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">ابدأ بملاحظة محددة عن عملهم — لا مجاملة عامة. يُظهر أنك بحثت.</div>
+        <div style="color:var(--gold);margin-bottom:2px;font-weight:700;">② المصداقية</div>
+        <div style="color:rgba(255,255,255,0.75);">جملة واحدة: من أنت وإثبات واحد ("ساعدنا أكثر من ٨٠ منشأة سعودية...")</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);margin-bottom:2px;font-weight:700;">③ القيمة المحددة</div>
+        <div style="color:rgba(255,255,255,0.75);margin-bottom:4px;">ما تستطيع فعله لهم تحديداً — مرتبط بوضعهم، لا قائمة خدمات عامة.</div>
+        <div style="color:var(--gold);margin-bottom:2px;font-weight:700;">④ دعوة للتصرف خفيفة</div>
+        <div style="color:rgba(255,255,255,0.75);">طلب منخفض الالتزام: "هل ١٥ دقيقة ستفيدك؟" — لا "اشترِ منا".</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;letter-spacing:0;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:3mm;">تسلسل المتابعة بـ ٧ نقاط تواصل</div>
+  <div class="touch-timeline">
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ٠</div><div class="touch-body"><div class="touch-name">اللمسة ١ — التواصل الأولي</div><div class="touch-action">الرسالة الأولى (استخدم قالب واتساب أعلاه). مخصّصة ومختصرة وطلب منخفض الالتزام.</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ٣</div><div class="touch-body"><div class="touch-name">اللمسة ٢ — إضافة قيمة</div><div class="touch-action">شارك مقالاً أو رؤية أو بيانات ذات صلة بقطاعهم. لا طلب. قيمة خالصة.</div><div class="touch-ar">"شاركت معك هذا المقال — أظن قد يفيدك في [الموضوع ذي الصلة]"</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ٧</div><div class="touch-body"><div class="touch-name">اللمسة ٣ — دراسة حالة / نتيجة</div><div class="touch-action">شارك نتيجة عميل محددة ذات صلة بوضعهم. صيغة قبل ← بعد بأرقام.</div><div class="touch-ar">"شاركت نتيجة عميل في نفس قطاعكم حقق [النتيجة] خلال [المدة]"</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ١٢</div><div class="touch-body"><div class="touch-name">اللمسة ٤ — معالجة الاعتراض</div><div class="touch-action">عالج الاعتراض الأكثر احتمالاً مسبقاً. "معظم الناس في وضعك يتساءلون عن X — إليك كيف نتعامل معه."</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ١٨</div><div class="touch-body"><div class="touch-name">اللمسة ٥ — السؤال المباشر</div><div class="touch-action">اسأل مباشرة عما إذا كان هذا ملائماً — أعطهم إذناً بالرفض.</div><div class="touch-ar">"هل هذا مناسب لوضعكم الحالي — أم لا؟ لا مشكلة في الحالتين."</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ٢٥</div><div class="touch-body"><div class="touch-name">اللمسة ٦ — عرض مجاني</div><div class="touch-action">قدّم شيئاً مجانياً حقيقياً — تقييم مصغّر أو جلسة مجانية أو تقرير مخصّص.</div><div class="touch-ar">"أقدر أعمل لكم تقييم مجاني لـ[الجانب المحدد] — بدون التزام — هل تبي؟"</div></div></div>
+    <div class="touch-item"><div class="touch-dot"></div><div class="touch-day">اليوم ٣٢</div><div class="touch-body"><div class="touch-name">اللمسة ٧ — رسالة الوداع</div><div class="touch-action">الرسالة الأخيرة. محترمة. تترك الباب مفتوحاً. تولّد ردوداً كثيراً لأنها صادقة ومحترمة.</div><div class="touch-ar">"سأترككم مساحة من الآن — ولكن إذا تغيّر الوضع في أي وقت وأردتم التحدث، لا تترددون في التواصل."</div></div></div>
+  </div>
+
+  <div style="font-size:10px;letter-spacing:0;color:var(--gold);text-transform:uppercase;font-weight:700;margin:3mm 0 3mm;">نص مكالمة الاستكشاف (٢٠ دقيقة)</div>
+  <div class="two-col" style="margin-bottom:0;">
+    <div>
+      <div class="call-phase"><div class="call-phase-time">٢ د</div><div class="call-phase-body"><div class="cp-name">البداية</div><div class="cp-goal">بناء الألفة وتحديد جدول الأعمال وتأكيد الوقت المتاح</div></div></div>
+      <div class="call-phase"><div class="call-phase-time">٥ د</div><div class="call-phase-body"><div class="cp-name">الوضع الراهن</div><div class="cp-q">"صفلي وضعكم الحالي في [المجال]"</div><div class="cp-goal">افهم حالتهم الراهنة وفريقهم وعملياتهم</div></div></div>
+      <div class="call-phase"><div class="call-phase-time">٥ د</div><div class="call-phase-body"><div class="cp-name">التحدي</div><div class="cp-q">"إيش أكبر تحدي تواجهونه في هذا الجانب الآن؟"</div><div class="cp-goal">دعهم يُسمّون الألم بكلماتهم — لا تفترض أبداً</div></div></div>
+    </div>
+    <div>
+      <div class="call-phase"><div class="call-phase-time">٣ د</div><div class="call-phase-body"><div class="cp-name">الأثر</div><div class="cp-q">"لو ما حلّيتم هذا — إيش الأثر على العمل؟"</div><div class="cp-goal">قدِّر تكلفة التقاعس — يجعل حلّك أكثر قيمة</div></div></div>
+      <div class="call-phase"><div class="call-phase-time">٥ د</div><div class="call-phase-body"><div class="cp-name">مطابقة الحل</div><div class="cp-q">"بناءً على ما قلته — عندنا [الحل]. هل هذا يلامس المشكلة؟"</div><div class="cp-goal">قدّم حلّك كإجابة مباشرة لمشكلتهم المُعلنة</div></div></div>
+      <div class="call-phase"><div class="call-phase-time">٥ د</div><div class="call-phase-body"><div class="cp-name">الخطوة التالية</div><div class="cp-q">"هل نحدد موعد لعرض مفصّل هذا الأسبوع؟"</div><div class="cp-goal">أنهِ دائماً بخطوة تالية محددة زمنياً — لا "سأرسل لك شيئاً"</div></div></div>
+    </div>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1336,6 +1561,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 05</div>
@@ -1472,6 +1698,108 @@
     <div class="label">The One Rule of Pipeline Building — القاعدة الأساسية الواحدة</div>
     <p>Your pipeline will always shrink faster than you expect. The only sustainable system is one where you are <strong>always adding new prospects</strong> — even when you're busy with existing clients. Build prospecting into your calendar as a non-negotiable daily or weekly block.</p>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٥</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; خطة الانطلاق ٦ أسابيع</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">خطة الانطلاق في المبيعات — ٦ أسابيع من الصفر إلى الإغلاق الأول</div>
+  <div class="gold-rule"></div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ١</div><div class="wt">الأساس</div></div>
+    <div class="week-content">
+      <h4>بناء الأساس</h4>
+      <ul>
+        <li>أعدَّ نظام CRM — استخدم النموذج من صفحة ٣. سواء أكان جدول بيانات أو Notion أو أداة متخصصة، الاتساق أهم من المنصة.</li>
+        <li>حدَّد ملف عميلك المثالي (ICP) — بحد أقصى ٥ معايير: القطاع والحجم والموقع ونقطة الألم وصلاحية الشراء. كن محدداً — "أي شركة سعودية" ليس ICP.</li>
+        <li>ابنِ قائمة بـ٥٠ شركة مستهدفة من لينكدإن وجوجل والدلائل التجارية وشبكات التوصيات.</li>
+        <li>اكتب ٣ قوالب تواصل واتساب (توصية / بارد / لينكدإن) — خصّص المتغيرات لعملك.</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ١</div><div class="goal-text">CRM جاهز · ICP محدَّد · ٥٠ شركة مدرجة · ٣ قوالب مكتوبة</div></div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ٢</div><div class="wt">الاستهداف</div></div>
+    <div class="week-content">
+      <h4>بدء الاستهداف</h4>
+      <ul>
+        <li>أضف الـ٥٠ شركة إلى CRM كمرحلة "مستهدف" مع كامل بيانات التواصل.</li>
+        <li>ابحث معمقاً في أفضل ٢٠ — لينكدإن وموقع الشركة والأخبار الحديثة. ابحث عن اسم صاحب القرار ودوره.</li>
+        <li>أرسل التواصل الأول للـ٢٠ المستهدف باستخدام قوالبك. خصّص كل رسالة بتفصيلة محددة عن عملهم.</li>
+        <li>سجّل كل تواصل في CRM بالتاريخ والقناة. حدّد تاريخ المتابعة التالية (اليوم ٣).</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ٢</div><div class="goal-text">٢٠ رسالة مُرسلة · ٥ ردود مستلمة · جميعها مسجّلة في CRM</div></div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ٣</div><div class="wt">التواصل</div></div>
+    <div class="week-content">
+      <h4>التواصل والتأهيل</h4>
+      <ul>
+        <li>تابع تواصل الأسبوع ٢ (اللمسة ٢ — رسالة إضافة قيمة). لا ترسل السعر. ابنِ الاهتمام أولاً.</li>
+        <li>أرسل تواصلاً لـ٢٠ مستهدفاً جديداً. أصبح لديك الآن ٤٠ نشطاً في المسار.</li>
+        <li>لأي رد، ردّ خلال ساعتين. اهدف لحجز مكالمة استكشاف — استخدم النص من صفحة ٤.</li>
+        <li>أجرِ أول مكالمات الاستكشاف باستخدام نص SPIN. أهّل باستخدام BANT: ميزانية وصلاحية وحاجة وتوقيت.</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ٣</div><div class="goal-text">٣ مكالمات استكشاف محجوزة · ١–٢ مكالمة مكتملة · عملاء مؤهَّلون محدَّدون</div></div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ٤</div><div class="wt">العروض</div></div>
+    <div class="week-content">
+      <h4>التأهيل والعروض</h4>
+      <ul>
+        <li>أرسل عروضاً للعملاء المؤهَّلين خلال ٢٤ ساعة من مكالمة الاستكشاف. اضرب الحديد وهو ساخن.</li>
+        <li>كل عرض يجب أن يتضمن: ملخص المشكلة (بكلماتهم)، حلّك، ٣ مخرجات، جدول زمني، الاستثمار (لا "التكلفة")، الخطوة التالية.</li>
+        <li>استمر في تسلسل المتابعة لتواصلات الأسبوع ٢ (اللمسات ٣–٤).</li>
+        <li>أضف ٢٠ عميلاً محتملاً جديداً للحفاظ على امتلاء أعلى القمع. دائماً أملأ المسار.</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ٤</div><div class="goal-text">٢ عرض مُرسَل · تسلسل المتابعة يعمل · المسار بـ٦٠+ جهة اتصال</div></div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ٥</div><div class="wt">الإغلاق</div></div>
+    <div class="week-content">
+      <h4>التفاوض والإغلاق</h4>
+      <ul>
+        <li>تابع كل عرض مُرسَل خلال ٤٨ ساعة إن لم يكن هناك رد. العرض بداية محادثة — لا نهايتها.</li>
+        <li>عالج الاعتراضات باستخدام ورقة معالج الاعتراضات (ورقة عمل ٥). معظم الاعتراضات طلبات لمزيد من الثقة — أعطهم دليلاً لا خصماً.</li>
+        <li>للصفقات المتعثرة، استخدم اللمسات ٥–٦. أنشئ إلحاحية بالندرة (مقاعد متاحة) أو قيمة مضافة (مكافأة) لا بضغط.</li>
+        <li>اطلب الإغلاق مباشرة: "هل تقدر نبدأ هذا الأسبوع؟" — لا تنتظر منهم السؤال.</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ٥</div><div class="goal-text">صفقة واحدة مُغلقة (رابحة) · جميع العروض متابَعة · خطوات واضحة لجميع الفرص النشطة</div></div>
+    </div>
+  </div>
+
+  <div class="week-row">
+    <div class="week-label"><div class="wn">أ٦</div><div class="wt">المراجعة</div></div>
+    <div class="week-content">
+      <h4>المراجعة والتوسع</h4>
+      <ul>
+        <li>مراجعة كاملة للمسار: أحصِ إجمالي جهات الاتصال والردود والمؤهَّلين والعروض والرابحين والخاسرين. احسب معدلات التحويل في كل مرحلة.</li>
+        <li>حدَّد أفضل مصدر للعملاء: أي قناة أنتجت أكثر العملاء المؤهَّلين؟ ضاعف الجهد فيها.</li>
+        <li>حدَّد أكثر أسباب الخسارة شيوعاً: سعر، توقيت، منافس، لا رد؟ هذا هو محور تدريبك القادم.</li>
+        <li>خطّط للـ٦ أسابيع القادمة بأهداف محدَّثة بناءً على معدلات التحويل الفعلية — لا تخمينات.</li>
+      </ul>
+      <div class="week-goal"><div class="goal-label">هدف الأسبوع ٦</div><div class="goal-text">معدلات التحويل محسوبة · أفضل قناة محدَّدة · خطة الـ٦ أسابيع القادمة مكتوبة</div></div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:3mm;margin-bottom:0;">
+    <div class="label">القاعدة الأساسية الواحدة لبناء المسار</div>
+    <p>مسار مبيعاتك سيتقلص دائماً أسرع مما تتوقع. النظام المستدام الوحيد هو الذي تكون فيه <strong>دائماً تُضيف عملاء محتملين جدداً</strong> — حتى حين تكون مشغولاً بالعملاء الحاليين. أدرج الاستهداف في تقويمك كوقت ثابت يومي أو أسبوعي لا يُتفاوت عليه.</p>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1486,6 +1814,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 07</div>
@@ -1586,6 +1915,68 @@
       </div>
     </div>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٧</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; إتقان مكالمة الاكتشاف</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">إتقان مكالمة الاكتشاف — BANT+ للسوق السعودي</div>
+  <div class="gold-rule"></div>
+  <div class="highlight-box">
+    <div class="label">الهدف من مكالمة الاكتشاف</div>
+    <p>مكالمة الاكتشاف <strong>ليست للبيع</strong>. هي للتأهيل. هدفك: تحديد ما إذا كان هذا العميل يملك <strong>الميزانية والصلاحية والحاجة والتوقيت</strong> للعمل معك — وما إذا كان <strong>مناسباً</strong> لطريقة عملك. مكالمة اكتشاف جيدة تنتهي بالعميل يقول "إذن متى نبدأ؟" مكالمة سيئة تنتهي بإرسال عرض لا يُجاب عليه أبداً.</p>
+  </div>
+  <div class="two-col">
+    <div class="content-block">
+      <h3 style="letter-spacing:0;">إطار BANT+ — النسخة السعودية</h3>
+      <ul>
+        <li><strong>الميزانية (B):</strong> هل لديهم تخصيص مالي؟ هل هو مُدرَج في الميزانية أم تطلعي؟ ماذا أنفقوا على مبادرات مشابهة من قبل؟</li>
+        <li><strong>الصلاحية (A):</strong> هل الشخص الذي تتحدث معه صاحب قرار أم مؤثر؟ من يحتاج أيضاً للموافقة؟</li>
+        <li><strong>الحاجة (N):</strong> كم تؤلم هذه المشكلة الآن؟ ماذا سيحدث إن لم يتغير شيء خلال ٦ أشهر؟</li>
+        <li><strong>التوقيت (T):</strong> هل هناك موعد نهائي طبيعي يدفع الإلحاحية؟ أي حدث خارجي (إطلاق، تدقيق، اجتماع مجلس)؟</li>
+        <li><strong>+ التوافق (F):</strong> هل يُقدّرون الجودة على أدنى سعر؟ هل سينفّذون ويحصلون على نتائج — أم يشترون ثم يتركون؟</li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <h3 style="letter-spacing:0;">إشارات ثقافية يجب قراءتها</h3>
+      <ul>
+        <li><strong>تقديم القهوة/الشاي:</strong> إشارة ثقة — لا تتعجل للأعمال. دعهم يحددون الإيقاع.</li>
+        <li><strong>"إن شاء الله" على التوقيت:</strong> استفسر بلطف — ماذا يحتاج أن يحدث قبل التزامهم؟</li>
+        <li><strong>ذكر اسم المؤسس أو القبيلة:</strong> هذا الشخص مهم في القرار. اسأل مباشرة كيف يُشارك.</li>
+        <li><strong>السعر هو سؤالهم الأول:</strong> يقارنون ببدائل رخيصة. أعد تأطير الحوار نحو النتيجة قبل الإجابة.</li>
+        <li><strong>الصمت بعد إجابتك:</strong> ليس انزعاجاً — بل مساحة تفكير. لا تملأها. انتظر.</li>
+        <li><strong>يذكرون جهة اتصال مشتركة:</strong> أقرّها بدفء — هكذا تنتقل الثقة في السعودية.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-block">
+    <h3 style="letter-spacing:0;">الأسئلة السبع بالترتيب</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س١ — دعهم يتحدثون أولاً</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"قبل أن أحدثك عنّا — ممكن تحدثني عما يجري في الشركة الآن في [مجال المشكلة]؟"</div></div>
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٢ — قِس مدى الجدية</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"منذ متى وهذا تحدياً؟ ماذا جربتم لحلّه من قبل؟"</div></div>
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٣ — ابنِ رؤية النتيجة</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"كيف يبدو النجاح لكم — ماذا سيختلف في شركتكم خلال ٦ أشهر لو حُلَّت هذه المشكلة بالكامل؟"</div></div>
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٤ — قدِّر الألم بأرقام</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"لو وضعت رقماً — كم تكلّف هذه المشكلة الشركة الآن شهرياً؟"</div></div>
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٥ — تحقق من الميزانية</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"هل رصدتم ميزانية لهذا، أم لا زلنا في مرحلة الاستكشاف؟ كلا الجوابين مقبول — يساعدني في تخصيص ما أعرضه."</div></div>
+      <div><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٦ — رسّم لجنة القرار</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"من في فريقك سيشارك في قرار كهذا — وما الذي يشغل تفكيره عادةً؟"</div></div>
+      <div style="grid-column:1/-1;"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">س٧ — الإغلاق التجريبي (أهم سؤال)</div><div style="font-size:8.5px;color:var(--silver);line-height:1.6;background:rgba(0,0,0,0.2);padding:8px;border-right:2px solid var(--gold);">"بافتراض أن محادثتنا اليوم جيدة وشعرت أننا المناسبون — كيف ستبدو الخطوة التالية من جانبكم؟ وما هو إطار وقتك لاتخاذ القرار؟"</div></div>
+    </div>
+  </div>
+  <div class="content-block">
+    <h3 style="letter-spacing:0;">الخطوات المحددة بعد المكالمة</h3>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px;">
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">خلال ٢ ساعة</div><div style="font-size:8px;color:var(--silver);line-height:1.5;">رسالة شكر على واتساب + ملخص ٣ نقاط لما نوقش</div></div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">خلال ٢٤ ساعة</div><div style="font-size:8px;color:var(--silver);line-height:1.5;">بريد إلكتروني بدراسة الحالة الأكثر صلة بوضعهم</div></div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">اليوم ٣</div><div style="font-size:8px;color:var(--silver);line-height:1.5;">متابعة خفيفة: "تأكدت أنك استلمت دراسة الحالة — أي أسئلة؟"</div></div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">اليوم ٧</div><div style="font-size:8px;color:var(--silver);line-height:1.5;">زاوية مختلفة: رؤية أو مقال جديد ذو صلة بتحديهم</div></div>
+      <div style="text-align:center;padding:8px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:4px;">اليوم ١٤</div><div style="font-size:8px;color:var(--silver);line-height:1.5;">اقترح صيغة مختلفة: لقاء شخصي إن لم تلتقِ، أو عرض توضيحي قصير</div></div>
+    </div>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1600,6 +1991,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 08</div>
@@ -1658,6 +2050,57 @@
       <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"هذه ستكون آخر رسالة مني — لا أريد أن أكون مصدر إزعاج. إذا لم يكن الوقت مناسباً، أتفهم تماماً. إذا تغيّر شيء، أنتم تعرفون كيف تتواصلون معي. أتمنى لكم التوفيق في [their specific goal]." | Note: 30–40% of "breakup" messages in Saudi B2B generate a reply and re-engagement. This is statistically the highest-converting message in the sequence.</div>
     </div>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٨</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; نظام المتابعة ٧ نقاط</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">نظام المتابعة بـ ٧ نقاط اتصال — النصوص الكاملة</div>
+  <div class="gold-rule"></div>
+  <p style="font-size:9.5px;color:var(--silver);line-height:1.7;margin-bottom:12px;">٨٠٪ من رجال المبيعات السعوديين يستسلمون بعد ٢ متابعتين. معظم الصفقات تُغلق بين اللمسة ٥–٨. هذا هو التسلسل الكامل لـ٧ نقاط اتصال — بنصوص دقيقة لكل قناة. <strong style="color:var(--gold);">القاعدة: لا تتابع أبداً دون إحضار قيمة جديدة. كل لمسة يجب أن تكسب اللمسة التالية.</strong></p>
+  <div style="display:grid;grid-template-columns:60px 1fr;gap:0;margin-bottom:8px;">
+    <div style="background:var(--gold);color:var(--black);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ١</div>
+    <div style="background:rgba(13,30,53,0.8);border:1px solid rgba(201,168,76,0.2);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">واتساب — تأكيد الاهتمام + تحديد الخطوة التالية</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"السلام عليكم [الاسم]، شكراً على وقتك اليوم. يسعدني أشارك معك [مورد ذو صلة]. هل يناسبك نتواصل الأسبوع القادم لمناقشة الخطوات التالية؟"</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ٣</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">بريد إلكتروني — تسليم قيمة: دراسة حالة ذات صلة</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">الموضوع: "شيء نسيت ذكره..." | ابدأ بنتيجة محددة لعميل مشابه. اربطها بمشكلتهم المُعلنة. دعوة للتصرف خفيفة: "هل هذا يبدو وثيق الصلة بما تواجهونه؟"</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ٧</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">رسالة صوتية واتساب — تواصل إنساني (٣٠ ثانية)</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"مرحباً [الاسم]، تذكرت إنك ذكرت [شيء محدد من المحادثة] — لقيت هذا المحتوى يتعلق بموضوعك مباشرة وأردت أشاركك إياه." في السوق السعودي: رسالة صوتية ٣٠ ثانية تتفوق على ٣ رسائل نصية. سجّل رسالة حقيقية ومحددة — لا نصاً مكتوباً.</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ١٤</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">لينكدإن + بريد إلكتروني — إشارة إثبات اجتماعي</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">علّق بصدق على منشورهم في لينكدإن (ليس "منشور رائع" — بل رؤية حقيقية). ثم بريد: "لاحظت [منشورهم/إنجازهم الأخير] — يرتبط هذا بـ[خدمتك] بطريقة مثيرة للاهتمام أودّ مشاركتها."</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ٢١</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">واتساب — إلحاحية مباشرة ومحترمة</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"أنا أتفهم إن الأمور مشغولة — فقط أريد أسألك بصراحة: هل ما زلت مهتماً بمناقشة [الحل]؟ إذا لا، لا مشكلة — بس أخبرني."</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ٣٠</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">بريد إلكتروني — زاوية جديدة: تحديث سوقي/قطاعي</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">شارك تطوراً جديداً (أخبار منافس، تحديث تنظيمي، إحصاء سوقي) ذا صلة بعملهم. لا تذكر خدمتك مباشرة. فقط: "اعتقدت أن هذا ذو صلة بما تعملون عليه — لا أجندة، مجرد مشاركة."</div>
+    </div>
+    <div style="background:rgba(201,168,76,0.15);color:var(--gold);font-weight:900;font-size:10px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;">اليوم ٤٥</div>
+    <div style="background:rgba(13,30,53,0.5);border:1px solid rgba(201,168,76,0.15);padding:8px 12px;">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">واتساب — الوداع الراقي (الرسالة الأعلى تحويلاً في التسلسل)</div>
+      <div style="font-size:8.5px;color:var(--silver);font-style:italic;line-height:1.6;">"هذه ستكون آخر رسالة مني — لا أريد أن أكون مصدر إزعاج. إذا لم يكن الوقت مناسباً، أتفهم تماماً. إذا تغيّر شيء، أنتم تعرفون كيف تتواصلون معي. أتمنى لكم التوفيق في [هدفهم المحدد]." ملاحظة: ٣٠–٤٠٪ من رسائل "الوداع" في B2B السعودي تولّد رداً وإعادة تواصل. هي إحصائياً الرسالة الأعلى تحويلاً في التسلسل.</div>
+    </div>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1672,6 +2115,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 09</div>
@@ -1733,6 +2177,67 @@
       </div>
     </div>
   </div>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٩</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; مؤشرات الأداء ولوحة KPI</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">مؤشرات خط أنابيب المبيعات — قِس ما يهم</div>
+  <div class="gold-rule"></div>
+  <div style="margin-bottom:8px;font-size:10px;color:var(--gold);font-weight:700;">الـ ١٢ مؤشر أداء رئيسي التي يجب على كل شركة B2B سعودية تتبّعها</div>
+  <table class="score-table" style="font-size:8.5px;margin-bottom:14px;">
+    <thead>
+      <tr>
+        <th style="width:22%;text-align:right;">مؤشر الأداء</th>
+        <th style="text-align:right;">التعريف</th>
+        <th style="width:18%;text-align:right;">طريقة القياس</th>
+        <th style="width:18%;text-align:right;">معيار المنشآت السعودية</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">حجم العملاء المحتملين</strong></td><td style="text-align:right;">عملاء محتملون جدد يدخلون المسار شهرياً</td><td style="text-align:right;">إحصاء CRM</td><td style="text-align:right;">١٥–٣٠ عميل/شهر</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">مزيج مصادر العملاء</strong></td><td style="text-align:right;">% من توصية مقابل محتوى مقابل تواصل خارجي</td><td style="text-align:right;">وسوم مصدر CRM</td><td style="text-align:right;">٥٠٪+ من التوصيات</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">معدل مكالمة الاستكشاف</strong></td><td style="text-align:right;">% من العملاء الذين يقبلون مكالمة الاستكشاف</td><td style="text-align:right;">مكالمات ÷ عملاء</td><td style="text-align:right;">٢٥–٤٠٪</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">معدل فوز العروض</strong></td><td style="text-align:right;">% من العروض المقدمة التي تُغلق صفقات</td><td style="text-align:right;">إغلاقات ÷ عروض</td><td style="text-align:right;">٢٥–٤٠٪</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">متوسط قيمة الصفقة</strong></td><td style="text-align:right;">متوسط الإيراد لكل صفقة مُغلقة</td><td style="text-align:right;">إجمالي الإيراد ÷ الصفقات</td><td style="text-align:right;">يتفاوت حسب القطاع</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">طول دورة المبيعات</strong></td><td style="text-align:right;">أيام من أول تواصل إلى الصفقة الموقّعة</td><td style="text-align:right;">تتبّع تواريخ CRM</td><td style="text-align:right;">٣٠–٩٠ يوم</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">لمسات المتابعة</strong></td><td style="text-align:right;">متوسط التواصلات قبل الإغلاق أو الخسارة</td><td style="text-align:right;">سجل نشاط CRM</td><td style="text-align:right;">٥–٨ لمسات</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">معدل التوصيات</strong></td><td style="text-align:right;">% من العملاء الذين يُحيلون على الأقل مرة</td><td style="text-align:right;">وسوم CRM</td><td style="text-align:right;">٣٠–٥٠٪ في السعودية</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">تغطية المسار</strong></td><td style="text-align:right;">إجمالي قيمة المسار ÷ الهدف الشهري</td><td style="text-align:right;">حقل قيمة CRM</td><td style="text-align:right;">٣× الهدف الشهري</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">معدل العرض/المكالمة</strong></td><td style="text-align:right;">% من مكالمات الاستكشاف التي تُفضي إلى عروض</td><td style="text-align:right;">عروض ÷ مكالمات</td><td style="text-align:right;">٥٠–٧٠٪</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">قيمة عمر العميل</strong></td><td style="text-align:right;">متوسط إجمالي الإيراد لكل علاقة عميل</td><td style="text-align:right;">إيراد ÷ مجموعة العملاء</td><td style="text-align:right;">٢–٤× قيمة الصفقة الأولى</td></tr>
+      <tr><td style="text-align:right;"><strong style="color:var(--gold);">معدل الاستنزاف</strong></td><td style="text-align:right;">% من العملاء المفقودين ربع سنوياً</td><td style="text-align:right;">تتبّع عدد العملاء</td><td style="text-align:right;">&lt;١٠٪/ربع</td></tr>
+    </tbody>
+  </table>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div>
+      <div style="margin-bottom:8px;font-size:10px;color:var(--gold);font-weight:700;">مراجعة المسار الأسبوعية — ١٥ دقيقة كل اثنين</div>
+      <ul style="list-style:none;">
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> كم عميلاً محتملاً جديداً دخل المسار هذا الأسبوع؟</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> أي الفرص تقدّمت؟ أيها بردت؟</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> ما إجراءات المتابعة المستحقة هذا الأسبوع (من نظام ٧ نقاط)؟</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> أي عروض في خطر؟ ما خطة الإنقاذ؟</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> هل نحن عند ٣× تغطية المسار مقابل الهدف الشهري؟</li>
+        <li style="font-size:8.5px;color:var(--silver);padding:4px 0 4px 16px;position:relative;"><span style="position:absolute;right:0;left:auto;color:var(--gold);">□</span> ما الإجراء الواحد الذي سيحقق أكبر تأثير على المسار هذا الأسبوع؟</li>
+      </ul>
+    </div>
+    <div>
+      <div style="margin-bottom:8px;font-size:10px;color:var(--gold);font-weight:700;">معادلة صحة مسار المبيعات</div>
+      <div class="highlight-box" style="margin-bottom:8px;">
+        <strong>المسار الصحي =</strong> (هدف الإيراد الشهري × ٣) من الصفقات النشطة عبر جميع المراحل.<br><br>
+        <strong>مثال:</strong> الهدف الشهري = ١٠٠,٠٠٠ ريال ← تحتاج ٣٠٠,٠٠٠ ريال في مسارك النشط في جميع الأوقات.<br><br>
+        <strong style="color:#e74c3c;">🔴 إذا كان المسار &lt; ٢× الهدف:</strong> أوقف جميع أعمال التنفيذ. ٨٠٪ من وقتك للأعمال الجديدة الآن.<br>
+        <strong style="color:#e67e22;">🟡 إذا كان المسار = ٢–٣× الهدف:</strong> متوازن. حافظ على التقسيم الحالي بين التنفيذ والمبيعات.<br>
+        <strong style="color:#2ecc71;">🟢 إذا كان المسار &gt; ٥× الهدف:</strong> مشكلة طاقة. وظّف أو أسندِ قبل قبول أعمال جديدة.
+      </div>
+    </div>
+  </div>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1747,6 +2252,7 @@
 <div class="page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 10</div>
@@ -1827,6 +2333,86 @@
       <tr><td>Referral Request</td><td>Founder / Account Manager</td><td>Founder</td><td>—</td><td>Marketing</td></tr>
     </tbody>
   </table>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ١٠</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; إتقان العروض ومصفوفة RACI</div>
+  </div>
+  <div class="section-title" style="letter-spacing:0;">إتقان العروض ومصفوفة مسؤوليات المبيعات</div>
+  <div class="gold-rule"></div>
+  <div style="margin-bottom:8px;font-size:10px;color:var(--gold);font-weight:700;">١٠ قواعد عروض تجارية للـ B2B السعودي</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠١ · دائماً ثنائي اللغة</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">العربية أولاً إذا كان العميل عربياً. الإنجليزية أولاً إذا كان وافداً أو شركة دولية. لا لغة واحدة فقط أبداً.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٢ · رقم السجل التجاري على الغلاف</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">اعرض رقم سجلك التجاري دائماً. يُشير إلى الشرعية والوضع القانوني — ضروري للمشترين المؤسسيين السعوديين.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٣ · السعر في الصفحة ٤+</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">لا تضع السعر في الصفحة الأولى أبداً. ابنِ حجة القيمة أولاً. يجب أن يشعر العميل أن الاستثمار منطقي قبل رؤية الرقم.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٤ · أضف "ماذا سيحدث بعد ذلك"</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">ليس فقط ما ستُسلّمه — بل كيف يبدأ الأسبوع الأول. العملاء يخشون البدء. أزل الغموض بمسار إعداد واضح.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٥ · مرجع عميل سعودي</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">أضف توصية محددة أو دراسة حالة من عميل سعودي. الإثبات الاجتماعي الإقليمي يفوق الاعتمادات العالمية.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٦ · ريال + تفصيل ضريبة القيمة المضافة</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">سعّر بالريال مع ضريبة قيمة مضافة ١٥٪ مُصنّفة بوضوح. الامتثال لـ ZATCA غير قابل للتفاوض. التسعير الغامض يقتل الصفقات.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٧ · دفعة مقدمة بحد أدنى ٥٠٪</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">أضف شروط دفع تحمي تدفقك النقدي. ٥٠٪ عند التوقيع و٥٠٪ عند التسليم هو معيار الخدمات المهنية السعودية.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٨ · شرط "صالح لمدة ٣٠ يوماً"</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">يخلق إلحاحية طبيعية دون ضغط. يفرض جدولاً زمنياً للقرار ويمنع العروض من الجلوس إلى أجل غير مسمى.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">٠٩ · رقم واتساب في الصفحة الأخيرة</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">أضف واتساب الشخصي مع: "تواصل معي مباشرة بأي أسئلة." سهولة الوصول تُعبّر عن الثقة.</div>
+    </div>
+    <div style="background:rgba(13,30,53,0.7);border:1px solid rgba(201,168,76,0.15);padding:10px 12px;border-right:2px solid var(--gold);">
+      <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:3px;">١٠ · رسالة صوتية خلال ساعة من الإرسال</div>
+      <div style="font-size:8px;color:var(--silver);line-height:1.55;">"للتو أرسلت العرض — يسعدني أشرحه لك في مكالمة." رسالة صوتية شخصية بعد الإرسال تضاعف معدلات الاستجابة.</div>
+    </div>
+  </div>
+  <div style="margin-bottom:8px;font-size:10px;color:var(--gold);font-weight:700;">مصفوفة RACI للمبيعات — من يفعل ماذا</div>
+  <table class="score-table" style="font-size:8px;">
+    <thead>
+      <tr>
+        <th style="text-align:right;">النشاط</th>
+        <th style="width:18%;text-align:right;">المسؤول (يُنفّذ)</th>
+        <th style="width:18%;text-align:right;">المحاسَب (يمتلك)</th>
+        <th style="width:18%;text-align:right;">يُستشار</th>
+        <th style="width:18%;text-align:right;">يُبلَّغ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:right;">توليد العملاء المحتملين والاستهداف</td><td style="text-align:right;">المبيعات / المؤسس</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">التسويق</td><td style="text-align:right;">العمليات</td></tr>
+      <tr><td style="text-align:right;">تأهيل العملاء المحتملين</td><td style="text-align:right;">المبيعات / المؤسس</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">—</td><td style="text-align:right;">المالية (لفحوص الميزانية)</td></tr>
+      <tr><td style="text-align:right;">مكالمة الاستكشاف</td><td style="text-align:right;">المؤسس / قائد المبيعات</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">قائد التنفيذ</td><td style="text-align:right;">الإدارة</td></tr>
+      <tr><td style="text-align:right;">إعداد العرض</td><td style="text-align:right;">المبيعات + قائد التنفيذ</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المالية</td><td style="text-align:right;">العمليات</td></tr>
+      <tr><td style="text-align:right;">تقديم العرض</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">قائد التنفيذ</td><td style="text-align:right;">الإدارة</td></tr>
+      <tr><td style="text-align:right;">التفاوض والتسعير</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المالية</td><td style="text-align:right;">قائد التنفيذ</td></tr>
+      <tr><td style="text-align:right;">توقيع العقد</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المالية / القانونية</td><td style="text-align:right;">العمليات</td></tr>
+      <tr><td style="text-align:right;">إعداد العميل</td><td style="text-align:right;">قائد التنفيذ</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المبيعات</td><td style="text-align:right;">المالية</td></tr>
+      <tr><td style="text-align:right;">إدارة الحساب</td><td style="text-align:right;">قائد التنفيذ</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">المبيعات</td><td style="text-align:right;">المالية</td></tr>
+      <tr><td style="text-align:right;">طلب التوصية</td><td style="text-align:right;">المؤسس / مدير الحساب</td><td style="text-align:right;">المؤسس</td><td style="text-align:right;">—</td><td style="text-align:right;">التسويق</td></tr>
+    </tbody>
+  </table>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1841,6 +2427,7 @@
 <div class="page worksheet-page">
   <div class="watermark">LEOMAX</div>
 
+  <div class="ver-en content-page page-content">
   <div class="page-header">
     <div class="page-header-left">
       <div class="page-number">PAGE 06 &nbsp;·&nbsp; WORKSHEETS</div>
@@ -1947,6 +2534,75 @@
       <tr><td style="color:rgba(255,255,255,0.4);">"أحتاج موافقة رئيسي" — Need approval</td><td style="height:32px;"></td></tr>
     </tbody>
   </table>
+  </div><!-- end ver-en -->
+
+  <div class="ver-ar content-page page-content" dir="rtl" style="font-family:'Tajawal',sans-serif;">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="page-number">صفحة ٠٦ · أوراق العمل</div>
+      <div class="page-logo">LEOMAX</div>
+    </div>
+    <div class="page-section-label" style="text-align:left;">LMX-FW-04 &nbsp;|&nbsp; نماذج قابلة للتعبئة</div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="ws-title" style="text-align:right;">ورقة عمل ١ — تعريف العميل المثالي (ICP)</div>
+  <div class="ws-subtitle" style="text-align:right;">أجب عن هذه الأسئلة العشرة لتحديد هدفك بدقة</div>
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead><tr><th style="width:5%;text-align:right;">#</th><th style="width:35%;text-align:right;">المعيار</th><th style="text-align:right;">إجابتك</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:right;">١</td><td style="text-align:right;">القطاع / المجال</td><td style="height:28px;"></td></tr>
+      <tr><td style="text-align:right;">٢</td><td style="text-align:right;">حجم الشركة</td><td></td></tr>
+      <tr><td style="text-align:right;">٣</td><td style="text-align:right;">التركيز الجغرافي</td><td></td></tr>
+      <tr><td style="text-align:right;">٤</td><td style="text-align:right;">دور/مسمى صاحب القرار</td><td></td></tr>
+      <tr><td style="text-align:right;">٥</td><td style="text-align:right;">نقطة ألمهم الأولى الآن</td><td></td></tr>
+      <tr><td style="text-align:right;">٦</td><td style="text-align:right;">نطاق الميزانية التقديري (ريال)</td><td></td></tr>
+      <tr><td style="text-align:right;">٧</td><td style="text-align:right;">أفضل مصدر عملاء لهذا المشتري</td><td></td></tr>
+      <tr><td style="text-align:right;">٨</td><td style="text-align:right;">ما الذي يدفعهم للشراء؟ (الإلحاحية)</td><td></td></tr>
+      <tr><td style="text-align:right;">٩</td><td style="text-align:right;">من ليس عميلك المثالي؟</td><td></td></tr>
+      <tr><td style="text-align:right;">١٠</td><td style="text-align:right;">كيف يبدو النجاح لهم خلال ٩٠ يوماً؟</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ws-title" style="text-align:right;">ورقة عمل ٢ — المراجعة الأسبوعية (طقوس الاثنين)</div>
+  <div class="ws-subtitle" style="text-align:right;">مراجعة أسبوعية — الاثنين الساعة ٩ صباحاً</div>
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead><tr><th style="text-align:right;">المؤشر</th><th>أ١</th><th>أ٢</th><th>أ٣</th><th>أ٤</th><th>أ٥</th><th>أ٦</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:right;">جهات اتصال جديدة مُضافة</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:right;">مكالمات استكشاف مُجراة</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:right;">عروض مُرسَلة</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:right;">صفقات مُغلقة (ريال)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:right;">إجمالي قيمة المسار (ريال)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="color:var(--gold);text-align:right;">إجراءات هذا الأسبوع</td><td colspan="6"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ws-title" style="text-align:right;">ورقة عمل ٣ — متابعة التواصل</div>
+  <div class="ws-subtitle" style="text-align:right;">سجّل كل رسالة وكل رد</div>
+  <table class="ws-table" style="margin-bottom:4mm;">
+    <thead><tr><th style="text-align:right;">الاسم</th><th style="text-align:right;">الشركة</th><th style="text-align:right;">القناة</th><th style="text-align:right;">تاريخ الإرسال</th><th style="text-align:right;">رد؟</th><th style="text-align:right;">الخطوة التالية</th><th style="text-align:right;">المرحلة</th></tr></thead>
+    <tbody>
+      <tr><td style="height:22px;color:rgba(255,255,255,0.2);text-align:right;">مثال: أحمد العتيبي</td><td style="color:rgba(255,255,255,0.2);text-align:right;">شركة الراشد</td><td style="color:rgba(255,255,255,0.2);text-align:right;">واتساب</td><td style="color:rgba(255,255,255,0.2);text-align:right;">٥ يناير</td><td style="color:rgba(255,255,255,0.2);text-align:right;">نعم — مهتم</td><td style="color:rgba(255,255,255,0.2);text-align:right;">حجز مكالمة ٨ يناير</td><td style="color:rgba(255,255,255,0.2);text-align:right;">مؤهَّل</td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="height:22px;"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ws-title" style="text-align:right;">ورقة عمل ٤ — معالج الاعتراضات</div>
+  <div class="ws-subtitle" style="text-align:right;">اكتب ردّك المُعدّ لكل اعتراض شائع</div>
+  <table class="ws-table" style="margin-bottom:0;">
+    <thead><tr><th style="width:30%;text-align:right;">الاعتراض</th><th style="text-align:right;">ردّك الجاهز</th></tr></thead>
+    <tbody>
+      <tr><td style="color:rgba(255,255,255,0.4);text-align:right;">"السعر غالي"</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);text-align:right;">"مو وقته الحين"</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);text-align:right;">"عندنا مزوّد حالي"</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);text-align:right;">"أحتاج أفكّر"</td><td style="height:32px;"></td></tr>
+      <tr><td style="color:rgba(255,255,255,0.4);text-align:right;">"أحتاج موافقة رئيسي"</td><td style="height:32px;"></td></tr>
+    </tbody>
+  </table>
+</div>
 
   <div class="footer">
     <div class="footer-left">© ٢٠٢٦ مؤسسة ليوماكس لتطوير الأعمال | leomaxglobal.com | سري</div>
@@ -1955,5 +2611,21 @@
   </div>
 </div>
 
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <div class="lang-divider"></div>
+  <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">AR</button>
+</div>
+<script>
+  function setLang(lang) {
+    document.body.classList.remove('lang-en', 'lang-ar');
+    document.body.classList.add('lang-' + lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+  }
+  setLang('en');
+</script>
+
+<script src="valeria.js"></script>
 </body>
 </html>

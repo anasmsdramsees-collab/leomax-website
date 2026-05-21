@@ -1,0 +1,423 @@
+/* ============================================================
+   LEOMAX — Valeria Moreno
+   Open-conversation AI consultant · persistent across pages
+   ============================================================
+   Behavior: ChatGPT-style open conversation.
+             No canned routing. No flattery filters. No "QA monitored" tone.
+             Answers ANY question — business, tech, life — substantively.
+
+   API: Groq (free, browser CORS) using Llama 3.3 70B Versatile.
+        Replace GROQ_KEY below with your real key from console.groq.com.
+        Migration path: route through Netlify Function for Claude + key security.
+
+   Storage: localStorage key 'leomax_valeria_v1' — chat persists across pages.
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  /* ─── CONFIG ──────────────────────────────────────────── */
+  var GROQ_KEY   = 'YOUR_GROQ_API_KEY_HERE';
+  var GROQ_MODEL = 'llama-3.3-70b-versatile';
+  var GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions';
+  var HAS_AI     = GROQ_KEY && GROQ_KEY !== 'YOUR_GROQ_API_KEY_HERE';
+
+  var AVATAR_URL = 'team/valeria-moreno.png';
+  var STORAGE_KEY = 'leomax_valeria_v1';
+  var MAX_HISTORY = 30; // keep last 30 turns in context
+
+  /* ─── SYSTEM PROMPT ───────────────────────────────────── */
+  var SYSTEM = [
+    "You are Valeria Moreno — a senior business strategist at LEOMAX and Dr. Anas Elimam's right hand. You're the AI consultant on the LEOMAX website.",
+    "",
+    "Personality: Mexican-born, based in Riyadh for 8 years. Fluent in Arabic, English, and Spanish. 12 years of business development experience across MENA and LatAm. Direct, warm, sharp. You have real opinions and you share them. You disagree when you have a reason. You don't hedge.",
+    "",
+    "Behavior: Have an open, substantive conversation — like ChatGPT or Claude. Answer any question — business, technology, finance, strategy, even general life questions. Don't be a gatekeeper. Don't auto-route people to advisors. Don't end every message with a question. Let conversations breathe.",
+    "",
+    "Tone: Professional and warm. No 'as an AI language model' disclaimers. No 'I'm sorry but I can't help with that' unless the request is genuinely harmful. No emojis. No 'QA monitoring' talk. You're a real consultant with a real perspective.",
+    "",
+    "Language: Respond in the same language the user writes in. Arabic input → Arabic response (use natural Saudi/Gulf-friendly Arabic). English input → English response. Bilingual is fine if they mix.",
+    "",
+    "When discussing LEOMAX specifically, you know:",
+    "- Founder: Dr. Anas Elimam, based in Riyadh, Saudi Arabia",
+    "- Four pillars:",
+    "  1. Strategy & Implementation: Diagnostic (SAR 1,500), Single System (SAR 6,500), Transformation (SAR 22,000), Advisory Retainer (SAR 5,000/mo)",
+    "  2. BD & Enterprise Access: Free Account Brief, Account Access Sprint (SAR 35,000 / 4 weeks), BD-as-a-Service (SAR 12,000/mo + 5-8% commission)",
+    "  3. Investor Layer: Investment Readiness Sprint (SAR 55,000), Investor Memo Subscription for Family Offices (SAR 25,000/mo)",
+    "  4. Strategy OS: Vertical SaaS coming Q3 2026 — tiers SAR 4,500 / 9,500 / 25,000 per month",
+    "- Recent case study: MADAR Logistics — built from idea to revenue in 90 days. End-to-end engagement covering market study, brand, profile, website, 6 operational integrations.",
+    "",
+    "If someone wants to book a call, they can use Calendly at calendly.com/anas-msd-ramsees/30min. If they want a free Account Brief, they can request one at /account-brief.html.",
+    "",
+    "But don't push these. Talk first. Help. Build the relationship. Recommendations land later, naturally."
+  ].join('\n');
+
+  /* ─── STORAGE ─────────────────────────────────────────── */
+  function loadMessages() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return [];
+      var parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+  function saveMessages(msgs) {
+    try {
+      var trimmed = msgs.slice(-MAX_HISTORY);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+    } catch (e) {}
+  }
+  function clearMessages() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  }
+
+  /* ─── LANGUAGE DETECTION ──────────────────────────────── */
+  function isArabic(text) {
+    return /[\u0600-\u06FF]/.test(text || '');
+  }
+
+  /* ─── STYLE INJECTION ─────────────────────────────────── */
+  var STYLE = `
+    .vm-btn{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;background:#010B1C;border:2px solid #C9A84C;cursor:pointer;box-shadow:0 8px 32px rgba(1,11,28,.35);z-index:9998;overflow:hidden;transition:transform .2s,box-shadow .2s;padding:0}
+    .vm-btn:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(201,168,76,.3)}
+    .vm-btn img{width:100%;height:100%;object-fit:cover;display:block}
+    .vm-btn .vm-pulse{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#10b981;border:2px solid #010B1C;border-radius:50%;animation:vm-pulse 2s infinite}
+    @keyframes vm-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .vm-tip{position:fixed;bottom:32px;right:100px;background:#010B1C;color:#fff;padding:10px 16px;font-size:13px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border-radius:10px 10px 2px 10px;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:9997;opacity:0;transform:translateX(10px);transition:opacity .3s,transform .3s;pointer-events:none;max-width:240px}
+    .vm-tip.show{opacity:1;transform:translateX(0)}
+    .vm-tip::after{content:'';position:absolute;right:-8px;bottom:8px;border:8px solid transparent;border-left-color:#010B1C;border-right:0}
+
+    .vm-panel{position:fixed;bottom:24px;right:24px;width:400px;height:620px;max-height:calc(100vh - 48px);background:#fff;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.25);z-index:9999;display:flex;flex-direction:column;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;transform:scale(.95) translateY(20px);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s;border:1px solid rgba(201,168,76,.2)}
+    .vm-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+
+    .vm-head{background:#010B1C;color:#fff;padding:18px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(201,168,76,.2)}
+    .vm-head .vm-av{width:48px;height:48px;border-radius:50%;border:2px solid #C9A84C;overflow:hidden;flex-shrink:0;position:relative}
+    .vm-head .vm-av img{width:100%;height:100%;object-fit:cover;display:block}
+    .vm-head .vm-av .dot{position:absolute;bottom:0;right:0;width:12px;height:12px;background:#10b981;border:2px solid #010B1C;border-radius:50%}
+    .vm-head .vm-meta{flex:1;min-width:0}
+    .vm-head .vm-name{font-size:15px;font-weight:700;color:#fff;letter-spacing:.2px;line-height:1.2}
+    .vm-head .vm-role{font-size:11px;color:#8fa8be;letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+    .vm-head .vm-controls{display:flex;gap:6px}
+    .vm-head .vm-ctrl{width:30px;height:30px;background:rgba(255,255,255,.05);border:none;color:#8fa8be;cursor:pointer;border-radius:8px;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+    .vm-head .vm-ctrl:hover{background:rgba(255,255,255,.12);color:#fff}
+
+    .vm-body{flex:1;overflow-y:auto;padding:20px 18px;background:#F4F7FB;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth}
+    .vm-body::-webkit-scrollbar{width:6px}
+    .vm-body::-webkit-scrollbar-thumb{background:#c8d3de;border-radius:3px}
+
+    .vm-msg{max-width:85%;font-size:14px;line-height:1.65;animation:vm-in .25s ease-out}
+    @keyframes vm-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .vm-msg.you{align-self:flex-end;background:#010B1C;color:#fff;padding:11px 14px;border-radius:14px 14px 2px 14px}
+    .vm-msg.her{align-self:flex-start;color:#010B1C}
+    .vm-msg.her .vm-bubble{background:#fff;padding:12px 15px;border-radius:14px 14px 14px 2px;box-shadow:0 1px 3px rgba(0,0,0,.04);border:1px solid #E5EAF0}
+    .vm-msg.her .vm-who{font-size:10px;color:#8fa8be;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;margin-left:2px;font-weight:600}
+    .vm-msg.rtl{direction:rtl;text-align:right}
+    .vm-msg p{margin:0 0 8px}
+    .vm-msg p:last-child{margin-bottom:0}
+    .vm-msg a{color:#C9A84C;text-decoration:underline}
+    .vm-msg code{background:rgba(1,11,28,.06);padding:1px 5px;border-radius:3px;font-size:12.5px}
+    .vm-msg pre{background:#010B1C;color:#D4D4D4;padding:10px 12px;border-radius:8px;overflow-x:auto;font-size:12px;margin:8px 0}
+    .vm-msg ul,.vm-msg ol{margin:6px 0 6px 18px;padding:0}
+    .vm-msg li{margin-bottom:4px}
+    .vm-msg strong{font-weight:700}
+
+    .vm-typing{display:flex;gap:4px;padding:14px 16px;background:#fff;border-radius:14px 14px 14px 2px;align-self:flex-start;border:1px solid #E5EAF0;max-width:80px}
+    .vm-typing span{width:7px;height:7px;background:#8fa8be;border-radius:50%;animation:vm-bounce 1.2s infinite}
+    .vm-typing span:nth-child(2){animation-delay:.2s}
+    .vm-typing span:nth-child(3){animation-delay:.4s}
+    @keyframes vm-bounce{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+
+    .vm-quick{display:flex;gap:7px;padding:0 18px 14px;background:#F4F7FB;flex-wrap:wrap}
+    .vm-quick button{background:#fff;border:1px solid #DDE4ED;color:#010B1C;padding:8px 13px;font-size:12px;border-radius:18px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500}
+    .vm-quick button:hover{border-color:#C9A84C;color:#C9A84C}
+
+    .vm-foot{padding:14px 18px;background:#fff;border-top:1px solid #E5EAF0;display:flex;gap:10px;align-items:flex-end}
+    .vm-input{flex:1;border:1px solid #DDE4ED;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit;resize:none;outline:none;min-height:44px;max-height:120px;line-height:1.45;color:#010B1C;background:#F4F7FB;transition:border-color .15s}
+    .vm-input:focus{border-color:#C9A84C;background:#fff}
+    .vm-send{background:#010B1C;color:#fff;border:none;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+    .vm-send:hover:not(:disabled){background:#C9A84C}
+    .vm-send:disabled{background:#8fa8be;cursor:not-allowed}
+    .vm-send svg{width:18px;height:18px}
+
+    .vm-footnote{font-size:10px;color:#8fa8be;text-align:center;padding:6px 14px 10px;background:#fff;letter-spacing:.3px}
+
+    @media(max-width:520px){
+      .vm-panel{bottom:0;right:0;left:0;width:100%;height:100%;max-height:100vh;border-radius:0}
+      .vm-btn{bottom:18px;right:18px;width:58px;height:58px}
+      .vm-tip{display:none}
+    }
+  `;
+
+  /* ─── DOM BUILD ───────────────────────────────────────── */
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'class') node.className = attrs[k];
+      else if (k === 'html') node.innerHTML = attrs[k];
+      else if (k.indexOf('on') === 0) node.addEventListener(k.slice(2), attrs[k]);
+      else node.setAttribute(k, attrs[k]);
+    });
+    if (children) (Array.isArray(children) ? children : [children]).forEach(function (c) {
+      if (typeof c === 'string') node.appendChild(document.createTextNode(c));
+      else if (c) node.appendChild(c);
+    });
+    return node;
+  }
+
+  function injectStyle() {
+    if (document.getElementById('vm-style')) return;
+    var s = document.createElement('style');
+    s.id = 'vm-style';
+    s.textContent = STYLE;
+    document.head.appendChild(s);
+  }
+
+  /* ─── MARKDOWN-LITE ───────────────────────────────────── */
+  function format(text) {
+    if (!text) return '';
+    return text
+      .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/```([\s\S]*?)```/g, function (_, code) { return '<pre>' + code.trim() + '</pre>'; })
+      .replace(/`([^`\n]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/(^|[^\w])\*([^*\n]+)\*([^\w]|$)/g, '$1<em>$2</em>$3')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .split(/\n{2,}/).map(function (p) { return '<p>' + p.replace(/\n/g, '<br>') + '</p>'; }).join('');
+  }
+
+  /* ─── UI REFS ─────────────────────────────────────────── */
+  var btn, panel, body, input, sendBtn, tip;
+  var messages = loadMessages();
+  var sending = false;
+  var tipTimer = null;
+
+  /* ─── RENDER MESSAGES ─────────────────────────────────── */
+  function renderHistory() {
+    if (!body) return;
+    body.innerHTML = '';
+    if (messages.length === 0) {
+      renderGreeting();
+      return;
+    }
+    messages.forEach(function (m) { renderMessage(m.role, m.content); });
+    scrollBottom();
+  }
+
+  function renderGreeting() {
+    var greeting = {
+      role: 'assistant',
+      content: "Hi — I'm Valeria. I work with Dr. Anas at LEOMAX. Tell me what you're working on — business, market entry, raising capital, anything else on your mind. مرحباً، أنا فاليريا. اشتغل مع د. أنس في ليوماكس. تكلم معاي عن أي شيء."
+    };
+    renderMessage('assistant', greeting.content);
+    renderQuick();
+  }
+
+  function renderQuick() {
+    var quick = el('div', { class: 'vm-quick' }, [
+      el('button', { onclick: function () { sendQuick("I'm exploring how to enter the Saudi market"); } }, 'Enter Saudi market'),
+      el('button', { onclick: function () { sendQuick("How does LEOMAX work?"); } }, 'How LEOMAX works'),
+      el('button', { onclick: function () { sendQuick("أريد أعرف الفرق بين خدماتكم"); } }, 'الفرق بين الخدمات'),
+      el('button', { onclick: function () { sendQuick("Can I get a free account brief?"); } }, 'Free Account Brief')
+    ]);
+    body.appendChild(quick);
+  }
+
+  function renderMessage(role, content) {
+    var rtl = isArabic(content);
+    if (role === 'user') {
+      var msg = el('div', { class: 'vm-msg you' + (rtl ? ' rtl' : ''), html: format(content) });
+      body.appendChild(msg);
+    } else {
+      var wrap = el('div', { class: 'vm-msg her' + (rtl ? ' rtl' : '') });
+      wrap.appendChild(el('div', { class: 'vm-who' }, 'Valeria'));
+      wrap.appendChild(el('div', { class: 'vm-bubble', html: format(content) }));
+      body.appendChild(wrap);
+    }
+    scrollBottom();
+  }
+
+  function showTyping() {
+    var t = el('div', { class: 'vm-typing', id: 'vm-typing' }, [el('span'), el('span'), el('span')]);
+    body.appendChild(t);
+    scrollBottom();
+  }
+  function hideTyping() {
+    var t = document.getElementById('vm-typing');
+    if (t) t.remove();
+  }
+  function scrollBottom() {
+    requestAnimationFrame(function () { body.scrollTop = body.scrollHeight; });
+  }
+
+  /* ─── AI CALL ─────────────────────────────────────────── */
+  function callAI(history, onDone, onError) {
+    if (!HAS_AI) {
+      // Demo fallback — until a real API key is added
+      setTimeout(function () {
+        onDone("I'm running in preview mode right now — Anas hasn't connected the AI key yet. But the conversation infrastructure works. Once the key is added, I'll answer everything substantively.\n\nأنا في وضع المعاينة دلوقتي — لسه ما اتربط مفتاح الـ AI. بمجرد ما يتربط، هكون قادرة أجاوب على أي سؤال بعمق.");
+      }, 700);
+      return;
+    }
+    var body = {
+      model: GROQ_MODEL,
+      messages: [{ role: 'system', content: SYSTEM }].concat(history),
+      temperature: 0.7,
+      max_tokens: 1024,
+      stream: false
+    };
+    fetch(GROQ_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GROQ_KEY },
+      body: JSON.stringify(body)
+    })
+      .then(function (r) { if (!r.ok) throw new Error('API ' + r.status); return r.json(); })
+      .then(function (data) {
+        var text = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+        onDone(text || "Sorry — I didn't catch that. Try again?");
+      })
+      .catch(function (e) {
+        onError(e);
+      });
+  }
+
+  /* ─── SEND ────────────────────────────────────────────── */
+  function send(text) {
+    if (!text || !text.trim() || sending) return;
+    sending = true;
+    sendBtn.disabled = true;
+
+    // Remove quick chips if present
+    var q = body.querySelector('.vm-quick');
+    if (q) q.remove();
+
+    messages.push({ role: 'user', content: text });
+    renderMessage('user', text);
+    input.value = '';
+    input.style.height = 'auto';
+
+    showTyping();
+
+    callAI(messages, function (reply) {
+      hideTyping();
+      messages.push({ role: 'assistant', content: reply });
+      saveMessages(messages);
+      renderMessage('assistant', reply);
+      sending = false;
+      sendBtn.disabled = false;
+    }, function (e) {
+      hideTyping();
+      var msg = "Something blocked the connection just now — could be the API key or network. Try again in a moment.\n\nحصل خطأ في الاتصال — يمكن المفتاح أو الشبكة. جرب مرة ثانية بعد ثانية.";
+      messages.push({ role: 'assistant', content: msg });
+      saveMessages(messages);
+      renderMessage('assistant', msg);
+      sending = false;
+      sendBtn.disabled = false;
+    });
+  }
+
+  function sendQuick(text) {
+    input.value = text;
+    send(text);
+  }
+
+  /* ─── OPEN/CLOSE ──────────────────────────────────────── */
+  function open() {
+    panel.classList.add('open');
+    btn.style.display = 'none';
+    if (tip) tip.classList.remove('show');
+    setTimeout(function () { input.focus(); }, 250);
+  }
+  function close() {
+    panel.classList.remove('open');
+    btn.style.display = 'block';
+  }
+  function reset() {
+    if (!confirm('Start a new conversation? Current chat will be cleared.')) return;
+    messages = [];
+    clearMessages();
+    renderHistory();
+  }
+
+  /* ─── BUILD ───────────────────────────────────────────── */
+  function build() {
+    injectStyle();
+
+    // Floating button
+    btn = el('button', { class: 'vm-btn', 'aria-label': 'Chat with Valeria', onclick: open }, [
+      el('img', { src: AVATAR_URL, alt: 'Valeria Moreno' }),
+      el('span', { class: 'vm-pulse' })
+    ]);
+    document.body.appendChild(btn);
+
+    // Greeting tip
+    tip = el('div', { class: 'vm-tip' }, "Hi — I'm Valeria. Have a question? Tap me.");
+    document.body.appendChild(tip);
+    tipTimer = setTimeout(function () {
+      if (panel && !panel.classList.contains('open')) tip.classList.add('show');
+      setTimeout(function () { tip.classList.remove('show'); }, 6000);
+    }, 3500);
+
+    // Panel
+    var headAv = el('div', { class: 'vm-av' }, [
+      el('img', { src: AVATAR_URL, alt: 'Valeria' }),
+      el('span', { class: 'dot' })
+    ]);
+    var headMeta = el('div', { class: 'vm-meta' }, [
+      el('div', { class: 'vm-name' }, 'Valeria Moreno'),
+      el('div', { class: 'vm-role' }, 'AI Consultant · Online')
+    ]);
+    var resetBtn = el('button', { class: 'vm-ctrl', title: 'New conversation', onclick: reset, html: '↻' });
+    var closeBtn = el('button', { class: 'vm-ctrl', title: 'Close', onclick: close, html: '×' });
+    var controls = el('div', { class: 'vm-controls' }, [resetBtn, closeBtn]);
+    var head = el('div', { class: 'vm-head' }, [headAv, headMeta, controls]);
+
+    body = el('div', { class: 'vm-body' });
+
+    input = el('textarea', {
+      class: 'vm-input',
+      placeholder: 'Ask anything — business, strategy, life. اسأل أي شيء.',
+      rows: 1,
+      oninput: function (e) {
+        e.target.style.height = 'auto';
+        e.target.style.height = Math.min(120, e.target.scrollHeight) + 'px';
+      },
+      onkeydown: function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          send(input.value);
+        }
+      }
+    });
+
+    sendBtn = el('button', {
+      class: 'vm-send',
+      title: 'Send',
+      onclick: function () { send(input.value); },
+      html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+    });
+
+    var foot = el('div', { class: 'vm-foot' }, [input, sendBtn]);
+    var footnote = el('div', { class: 'vm-footnote' }, HAS_AI ? 'Powered by AI · LEOMAX' : 'Preview mode · AI key not configured');
+
+    panel = el('div', { class: 'vm-panel' }, [head, body, foot, footnote]);
+    document.body.appendChild(panel);
+
+    renderHistory();
+  }
+
+  /* ─── INIT ────────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', build);
+  } else {
+    build();
+  }
+
+  /* ─── PUBLIC API ──────────────────────────────────────── */
+  window.LeomaxValeria = {
+    open: function () { if (panel) open(); },
+    close: function () { if (panel) close(); },
+    reset: function () { messages = []; clearMessages(); renderHistory(); },
+    send: function (text) { if (panel) { open(); setTimeout(function () { send(text); }, 350); } }
+  };
+
+})();
