@@ -12,7 +12,7 @@
   --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
   --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
   --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
-  --gold:#C9A84C;
+  --gold:#B8B8B8;
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
@@ -25,10 +25,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 6
 .nav-cta{background:var(--gold);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
 
 /* HERO with badge */
-.hero{padding:90px 64px 80px;text-align:center;background:var(--black);color:var(--white);border-bottom:1px solid rgba(201,168,76,.15);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,transparent 60%);pointer-events:none}
+.hero{padding:90px 64px 80px;text-align:center;background:var(--black);color:var(--white);border-bottom:1px solid rgba(0,0,0,.15);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(ellipse at center,rgba(0,0,0,.06) 0%,transparent 60%);pointer-events:none}
 .hero-inner{position:relative;z-index:1}
-.coming-badge{display:inline-block;background:rgba(201,168,76,.1);color:var(--gold);padding:8px 18px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;border:1px solid rgba(201,168,76,.3);margin-bottom:24px}
+.coming-badge{display:inline-block;background:rgba(0,0,0,.1);color:var(--gold);padding:8px 18px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;border:1px solid rgba(0,0,0,.3);margin-bottom:24px}
 .hero h1{font-size:clamp(40px,7vw,86px);font-weight:900;letter-spacing:5px;line-height:1.05;margin-bottom:22px;background:linear-gradient(135deg,var(--white),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{font-size:18px;color:var(--gray);max-width:680px;margin:0 auto 38px;line-height:1.75}
 .hero .hero-cta{display:inline-block;background:var(--gold);color:var(--black);padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);transition:all .2s}
@@ -53,9 +53,9 @@ section.light{background:#F4F7FB}
 .widgets-section .sec-label{color:var(--silver)}
 .widgets-section .sec-title{color:var(--white)}
 .widgets-section .sec-desc{color:var(--gray)}
-.widgets-section .sec-divider{background:rgba(201,168,76,.3)}
+.widgets-section .sec-divider{background:rgba(0,0,0,.3)}
 .widget-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:48px auto 0}
-.widget-card{background:rgba(255,255,255,.02);padding:36px 30px;border:1px solid rgba(201,168,76,.15);position:relative}
+.widget-card{background:rgba(255,255,255,.02);padding:36px 30px;border:1px solid rgba(0,0,0,.15);position:relative}
 .widget-card .icon-num{font-size:42px;font-weight:900;color:var(--gold);letter-spacing:-1px;line-height:1;opacity:.5;margin-bottom:18px;display:block}
 .widget-card h3{font-size:18px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);margin-bottom:14px}
 .widget-card p{font-size:14px;color:var(--gray);line-height:1.75;margin-bottom:18px}
@@ -68,8 +68,8 @@ section.light{background:#F4F7FB}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto}
 .price-card{background:var(--white);padding:42px 36px;position:relative;transition:transform .25s,background .25s;border:1px solid #DDE4ED;color:var(--black)}
 .price-card:hover{background:#F4F7FB;transform:translateY(-4px)}
-.price-card.featured{background:var(--dark);border:1px solid rgba(201,168,76,.3);color:var(--white)}
-.featured-badge{position:absolute;top:20px;right:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);padding:4px 10px;border:1px solid rgba(201,168,76,.25)}
+.price-card.featured{background:var(--dark);border:1px solid rgba(0,0,0,.3);color:var(--white)}
+.featured-badge{position:absolute;top:20px;right:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(0,0,0,.1);padding:4px 10px;border:1px solid rgba(0,0,0,.25)}
 .card-num{font-size:9px;letter-spacing:2px;color:#8fa8be;margin-bottom:20px;display:block}
 .card-title{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .card-sub{font-size:12px;color:var(--lgray);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
@@ -135,6 +135,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
 }
 </style>
+<link rel="stylesheet" href="monochrome.css">
 </head>
 <body>
 
@@ -251,7 +252,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
       <span class="card-num">01 — ESSENTIAL</span>
       <div class="card-title">DASHBOARD</div>
       <div class="card-sub">Core Scorecard Only</div>
-      <div class="card-price">4,500 <span>SAR / mo</span></div>
+      <div class="card-price">2,500 <span>SAR / mo</span></div>
       <div class="card-note">Single org · up to 5 seats</div>
       <div class="card-divider"></div>
       <ul class="card-features">
@@ -269,7 +270,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
       <span class="card-num">02 — GROWTH</span>
       <div class="card-title">DASHBOARD + AI</div>
       <div class="card-sub">Insights &amp; Alerts</div>
-      <div class="card-price">9,500 <span>SAR / mo</span></div>
+      <div class="card-price">5,500 <span>SAR / mo</span></div>
       <div class="card-note">Single org · up to 15 seats</div>
       <div class="card-divider"></div>
       <ul class="card-features">
@@ -287,7 +288,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
       <span class="card-num">03 — STRATEGIC</span>
       <div class="card-title">DASHBOARD + AGENT</div>
       <div class="card-sub">Decision Recommendation Layer</div>
-      <div class="card-price">25,000 <span>SAR / mo</span></div>
+      <div class="card-price">12,000 <span>SAR / mo</span></div>
       <div class="card-note">Single org · unlimited seats · LEOMAX advisory included</div>
       <div class="card-divider"></div>
       <ul class="card-features">
@@ -353,9 +354,9 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
         <label>Tier You're Interested In</label>
         <select name="tier" required>
           <option value="" disabled selected>Pick one…</option>
-          <option>Essential (SAR 4,500/mo)</option>
-          <option>Growth (SAR 9,500/mo)</option>
-          <option>Strategic (SAR 25,000/mo)</option>
+          <option>Essential (SAR 2,500/mo)</option>
+          <option>Growth (SAR 5,500/mo)</option>
+          <option>Strategic (SAR 12,000/mo)</option>
           <option>Not sure yet</option>
         </select>
       </div>

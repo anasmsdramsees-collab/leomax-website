@@ -1,0 +1,154 @@
+/* ============================================================
+   LEOMAX — Monochrome palette
+   White · Navy-Black · Silver
+   ============================================================
+   Logic:
+   - PRIMARY text/CTAs on light bg = navy-black (#010B1C)
+   - PRIMARY text/CTAs on dark bg = white (#FFFFFF)
+   - DECORATIVE accents (borders, dividers, hover lines) = silver (#B8B8B8)
+   ============================================================ */
+
+/* ── PRIMARY CTAs — always strong contrast ── */
+.btn-primary,
+.nav-cta,
+.submit-btn,
+.cta-gold,
+.card-cta.cta-gold {
+  background: #010B1C !important;
+  color: #FFFFFF !important;
+  border-color: #010B1C !important;
+}
+.btn-primary:hover,
+.nav-cta:hover,
+.submit-btn:hover,
+.cta-gold:hover,
+.card-cta.cta-gold:hover {
+  background: #FFFFFF !important;
+  color: #010B1C !important;
+  border: 1px solid #010B1C !important;
+}
+
+/* Hero CTAs on dark hero — invert: white bg, black text */
+.hero .hero-cta,
+.hero .btn-primary,
+.case-cta .btn-primary,
+.bottom-cta .btn-primary {
+  background: #FFFFFF !important;
+  color: #010B1C !important;
+  border-color: #FFFFFF !important;
+}
+.hero .hero-cta:hover,
+.hero .btn-primary:hover,
+.case-cta .btn-primary:hover,
+.bottom-cta .btn-primary:hover {
+  background: #B8B8B8 !important;
+  color: #010B1C !important;
+  border-color: #B8B8B8 !important;
+}
+
+/* Ghost buttons on dark sections */
+.btn-ghost { border-color: rgba(255,255,255,.25) !important; color: #FFFFFF !important; }
+.btn-ghost:hover { border-color: #FFFFFF !important; color: #FFFFFF !important; background: rgba(255,255,255,.05) !important; }
+
+/* ── DARK-SECTION ACCENTS — silver/white instead of black ── */
+.hero, .case-header, .case-teaser, .deal-sheet, .case-visual,
+.price-card.featured, .pillar-card.featured,
+.fo-section, .widgets-section, .memo-preview, .how-section,
+.widget-card, .widget-mock, .bottom-cta, .case-cta,
+.coming-badge, .featured-badge, .audience-pill {
+  --gold: #B8B8B8;
+}
+
+/* Force readable color on dark-context accent elements */
+.hero-stat .num, .stat-cell .num, .case-stat .num,
+.case-link,
+.deal-sheet .deal-title, .deal-sheet .section-head, .deal-sheet .ok,
+.case-visual .val,
+.memo-preview .h,
+.fo-card .num,
+.widget-card .icon-num, .widget-mock .mock-val,
+.case-section .label,
+.pillar-card.featured .who,
+.featured-badge,
+.audience-pill,
+.coming-badge { color: #FFFFFF !important; }
+
+/* Dark-context borders — subtle silver/white */
+.case-teaser, .deal-sheet, .case-visual, .memo-preview,
+.fo-card, .widget-card,
+.price-card.featured, .pillar-card.featured,
+.featured-badge, .audience-pill, .coming-badge,
+.key-stats, .stat-cell {
+  border-color: rgba(255,255,255,.15) !important;
+}
+
+.featured-badge, .audience-pill, .coming-badge {
+  background: rgba(255,255,255,.06) !important;
+}
+
+.case-link { border-bottom-color: #FFFFFF !important; }
+.widget-mock { border-left-color: #FFFFFF !important; }
+.memo-preview .verdict {
+  background: rgba(255,255,255,.06) !important;
+  border-left-color: #FFFFFF !important;
+}
+
+/* ── LIGHT-SECTION ACCENTS — black for primary, silver for decorative ── */
+.feature-num {
+  background: #010B1C !important;
+  color: #FFFFFF !important;
+}
+
+/* Numbered process step counters — silver works as subtle decoration */
+.process-step .step-num,
+.how-card .num,
+.process-bar-item .step,
+.problem-card .num { color: #B8B8B8 !important; }
+
+/* Light-section decorative borders */
+.readiness-card { border-top-color: #010B1C !important; }
+.inflection { border-left-color: #010B1C !important; }
+.who-card { border-left-color: #010B1C !important; }
+
+/* Section labels stay readable */
+.sec-label,
+.form-card .label-tag,
+.sample-brief .title,
+.sample-brief .section { color: #4a7090; }
+
+/* Dark-bg section labels = silver */
+.hero .sec-label, .case-cta .sec-label, .bottom-cta .sec-label,
+.fo-section .sec-label, .widgets-section .sec-label,
+.how-section .sec-label, .case-header .sec-label,
+.case-teaser .sec-label,
+.sample-brief .title, .sample-brief .section { color: #B8B8B8 !important; }
+
+/* ── HOVER STATES & FOCUS ── */
+.vm-input:focus { border-color: #010B1C !important; background: #fff !important; }
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: #010B1C !important;
+  background: #fff !important;
+}
+
+/* Hover lift effects — silver borders on light cards */
+.advisor-card:hover { border-color: #B8B8B8 !important; }
+.advisor-cta:hover { background: #010B1C !important; color: #FFFFFF !important; border-color: #010B1C !important; }
+
+/* Outline cards' hover */
+.cta-outline:hover { border-color: #010B1C !important; color: #010B1C !important; background: transparent !important; }
+.price-card.featured .cta-outline:hover {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,.05) !important;
+}
+
+/* Valeria — silver border on avatar, black input focus */
+.vm-btn { border-color: #B8B8B8 !important; }
+.vm-head .vm-av { border-color: #B8B8B8 !important; }
+.vm-quick button:hover { border-color: #010B1C !important; color: #010B1C !important; }
+.vm-send:hover:not(:disabled) { background: #B8B8B8 !important; color: #010B1C !important; }
+.vm-msg a { color: #010B1C !important; }
+
+/* Tip bubble */
+.vm-tip { background: #010B1C !important; color: #FFFFFF !important; }
+.vm-tip::after { border-left-color: #010B1C !important; }

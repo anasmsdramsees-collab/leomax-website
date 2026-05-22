@@ -17,10 +17,10 @@
   'use strict';
 
   /* ─── CONFIG ──────────────────────────────────────────── */
-  var GROQ_KEY   = 'YOUR_GROQ_API_KEY_HERE';
-  var GROQ_MODEL = 'llama-3.3-70b-versatile';
-  var GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions';
-  var HAS_AI     = GROQ_KEY && GROQ_KEY !== 'YOUR_GROQ_API_KEY_HERE';
+  // Cloudflare Worker endpoint — routes to Claude (primary) + GPT-4o-mini (fallback)
+  // Deploy worker from /chat-worker/ folder, then paste the URL here.
+  var CHAT_WORKER_URL = 'https://leomax-valeria-chat.anas-msd-ramsees.workers.dev';
+  var HAS_AI = CHAT_WORKER_URL && CHAT_WORKER_URL !== 'PASTE_YOUR_WORKER_URL_HERE';
 
   var AVATAR_URL = 'team/valeria-moreno.png';
   var STORAGE_KEY = 'leomax_valeria_v1';
@@ -42,9 +42,9 @@
     "- Founder: Dr. Anas Elimam, based in Riyadh, Saudi Arabia",
     "- Four pillars:",
     "  1. Strategy & Implementation: Diagnostic (SAR 1,500), Single System (SAR 6,500), Transformation (SAR 22,000), Advisory Retainer (SAR 5,000/mo)",
-    "  2. BD & Enterprise Access: Free Account Brief, Account Access Sprint (SAR 35,000 / 4 weeks), BD-as-a-Service (SAR 12,000/mo + 5-8% commission)",
-    "  3. Investor Layer: Investment Readiness Sprint (SAR 55,000), Investor Memo Subscription for Family Offices (SAR 25,000/mo)",
-    "  4. Strategy OS: Vertical SaaS coming Q3 2026 — tiers SAR 4,500 / 9,500 / 25,000 per month",
+    "  2. BD & Enterprise Access: Free Account Brief, Account Access Sprint (SAR 15,000 / 4 weeks), BD-as-a-Service (SAR 7,500/mo + 8% commission)",
+    "  3. Investor Layer: Investment Readiness Sprint (SAR 18,000), Investor Memo Subscription for Family Offices (SAR 12,000/mo)",
+    "  4. Strategy OS: Vertical SaaS coming Q3 2026 — tiers SAR 2,500 / 5,500 / 12,000 per month",
     "- Recent case study: MADAR Logistics — built from idea to revenue in 90 days. End-to-end engagement covering market study, brand, profile, website, 6 operational integrations.",
     "",
     "If someone wants to book a call, they can use Calendly at calendly.com/anas-msd-ramsees/30min. If they want a free Account Brief, they can request one at /account-brief.html.",
@@ -78,8 +78,8 @@
 
   /* ─── STYLE INJECTION ─────────────────────────────────── */
   var STYLE = `
-    .vm-btn{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;background:#010B1C;border:2px solid #C9A84C;cursor:pointer;box-shadow:0 8px 32px rgba(1,11,28,.35);z-index:9998;overflow:hidden;transition:transform .2s,box-shadow .2s;padding:0}
-    .vm-btn:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(201,168,76,.3)}
+    .vm-btn{position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;background:#010B1C;border:2px solid #B8B8B8;cursor:pointer;box-shadow:0 8px 32px rgba(1,11,28,.35);z-index:9998;overflow:hidden;transition:transform .2s,box-shadow .2s;padding:0}
+    .vm-btn:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(0,0,0,.3)}
     .vm-btn img{width:100%;height:100%;object-fit:cover;display:block}
     .vm-btn .vm-pulse{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#10b981;border:2px solid #010B1C;border-radius:50%;animation:vm-pulse 2s infinite}
     @keyframes vm-pulse{0%,100%{opacity:1}50%{opacity:.5}}
@@ -87,11 +87,11 @@
     .vm-tip.show{opacity:1;transform:translateX(0)}
     .vm-tip::after{content:'';position:absolute;right:-8px;bottom:8px;border:8px solid transparent;border-left-color:#010B1C;border-right:0}
 
-    .vm-panel{position:fixed;bottom:24px;right:24px;width:400px;height:620px;max-height:calc(100vh - 48px);background:#fff;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.25);z-index:9999;display:flex;flex-direction:column;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;transform:scale(.95) translateY(20px);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s;border:1px solid rgba(201,168,76,.2)}
+    .vm-panel{position:fixed;bottom:24px;right:24px;width:400px;height:620px;max-height:calc(100vh - 48px);background:#fff;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.25);z-index:9999;display:flex;flex-direction:column;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;transform:scale(.95) translateY(20px);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s;border:1px solid rgba(0,0,0,.2)}
     .vm-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
 
-    .vm-head{background:#010B1C;color:#fff;padding:18px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(201,168,76,.2)}
-    .vm-head .vm-av{width:48px;height:48px;border-radius:50%;border:2px solid #C9A84C;overflow:hidden;flex-shrink:0;position:relative}
+    .vm-head{background:#010B1C;color:#fff;padding:18px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(0,0,0,.2)}
+    .vm-head .vm-av{width:48px;height:48px;border-radius:50%;border:2px solid #B8B8B8;overflow:hidden;flex-shrink:0;position:relative}
     .vm-head .vm-av img{width:100%;height:100%;object-fit:cover;display:block}
     .vm-head .vm-av .dot{position:absolute;bottom:0;right:0;width:12px;height:12px;background:#10b981;border:2px solid #010B1C;border-radius:50%}
     .vm-head .vm-meta{flex:1;min-width:0}
@@ -114,7 +114,7 @@
     .vm-msg.rtl{direction:rtl;text-align:right}
     .vm-msg p{margin:0 0 8px}
     .vm-msg p:last-child{margin-bottom:0}
-    .vm-msg a{color:#C9A84C;text-decoration:underline}
+    .vm-msg a{color:#B8B8B8;text-decoration:underline}
     .vm-msg code{background:rgba(1,11,28,.06);padding:1px 5px;border-radius:3px;font-size:12.5px}
     .vm-msg pre{background:#010B1C;color:#D4D4D4;padding:10px 12px;border-radius:8px;overflow-x:auto;font-size:12px;margin:8px 0}
     .vm-msg ul,.vm-msg ol{margin:6px 0 6px 18px;padding:0}
@@ -129,13 +129,13 @@
 
     .vm-quick{display:flex;gap:7px;padding:0 18px 14px;background:#F4F7FB;flex-wrap:wrap}
     .vm-quick button{background:#fff;border:1px solid #DDE4ED;color:#010B1C;padding:8px 13px;font-size:12px;border-radius:18px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500}
-    .vm-quick button:hover{border-color:#C9A84C;color:#C9A84C}
+    .vm-quick button:hover{border-color:#B8B8B8;color:#B8B8B8}
 
     .vm-foot{padding:14px 18px;background:#fff;border-top:1px solid #E5EAF0;display:flex;gap:10px;align-items:flex-end}
     .vm-input{flex:1;border:1px solid #DDE4ED;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit;resize:none;outline:none;min-height:44px;max-height:120px;line-height:1.45;color:#010B1C;background:#F4F7FB;transition:border-color .15s}
-    .vm-input:focus{border-color:#C9A84C;background:#fff}
+    .vm-input:focus{border-color:#B8B8B8;background:#fff}
     .vm-send{background:#010B1C;color:#fff;border:none;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
-    .vm-send:hover:not(:disabled){background:#C9A84C}
+    .vm-send:hover:not(:disabled){background:#B8B8B8}
     .vm-send:disabled{background:#8fa8be;cursor:not-allowed}
     .vm-send svg{width:18px;height:18px}
 
@@ -252,28 +252,25 @@
   /* ─── AI CALL ─────────────────────────────────────────── */
   function callAI(history, onDone, onError) {
     if (!HAS_AI) {
-      // Demo fallback — until a real API key is added
+      // Demo fallback — until the worker URL is set
       setTimeout(function () {
-        onDone("I'm running in preview mode right now — Anas hasn't connected the AI key yet. But the conversation infrastructure works. Once the key is added, I'll answer everything substantively.\n\nأنا في وضع المعاينة دلوقتي — لسه ما اتربط مفتاح الـ AI. بمجرد ما يتربط، هكون قادرة أجاوب على أي سؤال بعمق.");
+        onDone("I'm running in preview mode right now — the chat worker URL hasn't been connected yet. Once it's set in valeria.js, I'll answer everything substantively using Claude + GPT.\n\nأنا في وضع المعاينة دلوقتي — لسه ما اتربط الـ worker. بمجرد ما يتربط، هكون قادرة أجاوب على أي سؤال بعمق باستخدام Claude و GPT.");
       }, 700);
       return;
     }
     var body = {
-      model: GROQ_MODEL,
-      messages: [{ role: 'system', content: SYSTEM }].concat(history),
-      temperature: 0.7,
-      max_tokens: 1024,
-      stream: false
+      system: SYSTEM,
+      messages: history
     };
-    fetch(GROQ_URL, {
+    fetch(CHAT_WORKER_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GROQ_KEY },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     })
-      .then(function (r) { if (!r.ok) throw new Error('API ' + r.status); return r.json(); })
+      .then(function (r) { if (!r.ok) throw new Error('Worker ' + r.status); return r.json(); })
       .then(function (data) {
-        var text = data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
-        onDone(text || "Sorry — I didn't catch that. Try again?");
+        if (data.error) throw new Error(data.error);
+        onDone(data.reply || "Sorry — I didn't catch that. Try again?");
       })
       .catch(function (e) {
         onError(e);

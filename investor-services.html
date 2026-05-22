@@ -12,7 +12,7 @@
   --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
   --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
   --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
-  --gold:#C9A84C;
+  --gold:#B8B8B8;
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
@@ -29,7 +29,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 6
 .hero h1{font-size:clamp(40px,7vw,82px);font-weight:900;letter-spacing:5px;line-height:1.05;margin-bottom:22px;background:linear-gradient(135deg,var(--white),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{font-size:17px;color:var(--gray);max-width:640px;margin:0 auto 38px;line-height:1.75}
 .audience-pills{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
-.audience-pill{padding:10px 20px;border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.audience-pill{padding:10px 20px;border:1px solid rgba(0,0,0,.3);color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
 
 section{padding:90px 64px}
 section.light{background:#F4F7FB}
@@ -41,7 +41,7 @@ section.light{background:#F4F7FB}
 /* TWO-COLUMN PILLARS */
 .two-pillars{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .pillar-card{background:var(--white);padding:48px 40px;border:1px solid #DDE4ED;position:relative}
-.pillar-card.featured{background:var(--dark);color:var(--white);border-color:rgba(201,168,76,.3)}
+.pillar-card.featured{background:var(--dark);color:var(--white);border-color:rgba(0,0,0,.3)}
 .pillar-card .who{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;display:block}
 .pillar-card h3{font-size:26px;font-weight:900;letter-spacing:2px;margin-bottom:8px;color:inherit;line-height:1.1}
 .pillar-card .pillar-sub{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lgray);margin-bottom:24px;display:block}
@@ -68,9 +68,9 @@ section.light{background:#F4F7FB}
 .fo-section .sec-label{color:var(--silver)}
 .fo-section .sec-title{color:var(--white)}
 .fo-section .sec-desc{color:var(--gray)}
-.fo-section .sec-divider{background:rgba(201,168,76,.3)}
+.fo-section .sec-divider{background:rgba(0,0,0,.3)}
 .fo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto}
-.fo-card{padding:32px 28px;border:1px solid rgba(201,168,76,.15);background:rgba(255,255,255,.02)}
+.fo-card{padding:32px 28px;border:1px solid rgba(0,0,0,.15);background:rgba(255,255,255,.02)}
 .fo-card .num{font-size:11px;letter-spacing:2.5px;color:var(--gold);font-weight:700;margin-bottom:14px;display:block}
 .fo-card h3{font-size:17px;font-weight:800;letter-spacing:1px;margin-bottom:14px;color:var(--white);line-height:1.3}
 .fo-card p{font-size:14px;color:var(--gray);line-height:1.75}
@@ -83,12 +83,12 @@ section.light{background:#F4F7FB}
 .memo-left ul{list-style:none;margin-top:20px}
 .memo-left ul li{padding:10px 0;font-size:13.5px;color:var(--black);border-bottom:1px solid #DDE4ED;display:flex;gap:10px;align-items:flex-start}
 .memo-left ul li:last-child{border-bottom:none}
-.memo-preview{background:var(--dark);padding:36px;color:var(--gray);font-family:'SF Mono',Monaco,monospace;font-size:12px;line-height:1.85;border:1px solid rgba(201,168,76,.15)}
+.memo-preview{background:var(--dark);padding:36px;color:var(--gray);font-family:'SF Mono',Monaco,monospace;font-size:12px;line-height:1.85;border:1px solid rgba(0,0,0,.15)}
 .memo-preview .h{color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin:18px 0 10px;display:block;font-weight:700}
 .memo-preview .h:first-child{margin-top:0}
 .memo-preview .row{display:flex;justify-content:space-between;padding:5px 0}
 .memo-preview .val{color:var(--white)}
-.memo-preview .verdict{background:rgba(201,168,76,.08);padding:12px 14px;margin-top:8px;border-left:2px solid var(--gold);color:var(--white);font-size:12px;line-height:1.7}
+.memo-preview .verdict{background:rgba(0,0,0,.08);padding:12px 14px;margin-top:8px;border-left:2px solid var(--gold);color:var(--white);font-size:12px;line-height:1.7}
 
 /* READINESS CHECKLIST */
 .readiness-section{padding:90px 64px;background:#F4F7FB}
@@ -125,6 +125,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
 }
 </style>
+<link rel="stylesheet" href="monochrome.css">
 </head>
 <body>
 
@@ -168,7 +169,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
       <span class="who">For Founders Raising</span>
       <h3>INVESTMENT<br/>READINESS SPRINT</h3>
       <span class="pillar-sub">2–3 Weeks · Pre-Round Diligence</span>
-      <div class="pillar-price">55,000 <span>SAR</span></div>
+      <div class="pillar-price">18,000 <span>SAR</span></div>
       <div class="pillar-note">Per company · scope locked · single decision gate</div>
       <div class="pillar-divider"></div>
       <ul class="pillar-features">
@@ -187,7 +188,7 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
       <span class="who">For Family Offices</span>
       <h3>INVESTOR MEMO<br/>SUBSCRIPTION</h3>
       <span class="pillar-sub">Monthly · Curated Deal Flow</span>
-      <div class="pillar-price">25,000 <span>SAR / mo</span></div>
+      <div class="pillar-price">12,000 <span>SAR / mo</span></div>
       <div class="pillar-note">Limited to 12 subscriber seats · NDA per subscriber</div>
       <div class="pillar-divider"></div>
       <ul class="pillar-features">

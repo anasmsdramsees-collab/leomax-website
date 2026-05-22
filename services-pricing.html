@@ -12,7 +12,7 @@
   --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
   --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
   --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
-  --gold:#C9A84C;
+  --gold:#B8B8B8;
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
@@ -52,8 +52,8 @@ section{padding:80px 64px}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;margin-top:48px}
 .price-card{background:#FFFFFF;padding:40px 36px;position:relative;transition:transform .25s,background .25s;border:1px solid #DDE4ED;color:var(--black)}
 .price-card:hover{background:#F4F7FB;transform:translateY(-4px)}
-.price-card.featured{background:var(--dark);border:1px solid rgba(201,168,76,.3);color:var(--white)}
-.featured-badge{position:absolute;top:20px;left:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);padding:4px 10px;border:1px solid rgba(201,168,76,.25)}
+.price-card.featured{background:var(--dark);border:1px solid rgba(0,0,0,.3);color:var(--white)}
+.featured-badge{position:absolute;top:20px;left:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(0,0,0,.1);padding:4px 10px;border:1px solid rgba(0,0,0,.25)}
 .card-num{font-size:9px;letter-spacing:2px;color:#8fa8be;margin-bottom:20px;display:block}
 .card-title{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .card-sub{font-size:12px;color:var(--lgray);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
@@ -73,8 +73,8 @@ section{padding:80px 64px}
 .card-cta{display:block;width:100%;text-align:center;padding:14px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
 .cta-primary{background:var(--white);color:var(--black)}
 .cta-primary:hover{background:var(--chrome)}
-.cta-gold{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
-.cta-gold:hover{background:rgba(201,168,76,.25)}
+.cta-gold{background:rgba(0,0,0,.15);color:var(--gold);border:1px solid rgba(0,0,0,.3)}
+.cta-gold:hover{background:rgba(0,0,0,.25)}
 .cta-outline{background:transparent;color:var(--lgray);border:1px solid #C8D3DE}
 .cta-outline:hover{border-color:var(--lgray);color:var(--black)}
 .price-card.featured .cta-outline{color:var(--silver);border-color:rgba(184,184,184,.2)}
@@ -177,10 +177,10 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
 /* ── BANK TRANSFER CARD ── */
 .bank-card{background:rgba(0,0,0,.25);border:1px solid rgba(184,184,184,.12);padding:24px;margin-bottom:16px}
 .bank-card-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px;display:block}
-.ref-box{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.ref-box{background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.25);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .ref-number{font-size:16px;font-weight:800;letter-spacing:3px;color:var(--gold);font-family:monospace}
-.copy-btn{background:none;border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:10px;letter-spacing:1px;padding:5px 12px;cursor:pointer;transition:all .2s;text-transform:uppercase}
-.copy-btn:hover{background:rgba(201,168,76,.15)}
+.copy-btn{background:none;border:1px solid rgba(0,0,0,.3);color:var(--gold);font-size:10px;letter-spacing:1px;padding:5px 12px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.copy-btn:hover{background:rgba(0,0,0,.15)}
 .copy-btn.copied{color:#4ade80;border-color:#4ade80}
 .bank-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(184,184,184,.07)}
 .bank-row:last-child{border:none}
@@ -248,6 +248,7 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
 .apply-modal,.modal{background:var(--charcoal)!important}
 
 </style>
+<link rel="stylesheet" href="monochrome.css">
 </head>
 <body>
 
@@ -355,43 +356,43 @@ section:not(.hero) h2,section:not(.hero) h3{color:var(--black)}
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1200px;margin:56px auto 0">
 
     <!-- Pillar 1 — Strategy & Implementation -->
-    <a href="#pricing" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#C9A84C';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
-      <span style="font-size:11px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase">Pillar 01</span>
+    <a href="#pricing" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#B8B8B8';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
+      <span style="font-size:11px;letter-spacing:2.5px;color:#B8B8B8;font-weight:700;text-transform:uppercase">Pillar 01</span>
       <h3 style="font-size:18px;font-weight:900;letter-spacing:1.5px;margin:14px 0 10px;line-height:1.2;color:#010B1C;text-transform:uppercase">Strategy &amp; Implementation</h3>
       <p style="font-size:13px;color:#4a7090;line-height:1.7;margin-bottom:18px">Diagnostic sessions, single-system implementations, full 90-day transformations, and advisory retainers. The core of what we do.</p>
       <div style="font-size:11px;color:#8fa8be;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">From</div>
       <div style="font-size:22px;font-weight:900;color:#010B1C;letter-spacing:-.5px">1,500 <span style="font-size:11px;font-weight:400;color:#4a7090;letter-spacing:1px">SAR</span></div>
-      <div style="margin-top:18px;font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:700">See engagements ↓</div>
+      <div style="margin-top:18px;font-size:11px;color:#B8B8B8;letter-spacing:2px;text-transform:uppercase;font-weight:700">See engagements ↓</div>
     </a>
 
     <!-- Pillar 2 — BD & Access -->
-    <a href="bd-services.html" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#C9A84C';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
-      <span style="font-size:11px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase">Pillar 02</span>
+    <a href="bd-services.html" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#B8B8B8';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
+      <span style="font-size:11px;letter-spacing:2.5px;color:#B8B8B8;font-weight:700;text-transform:uppercase">Pillar 02</span>
       <h3 style="font-size:18px;font-weight:900;letter-spacing:1.5px;margin:14px 0 10px;line-height:1.2;color:#010B1C;text-transform:uppercase">BD &amp; Enterprise Access</h3>
       <p style="font-size:13px;color:#4a7090;line-height:1.7;margin-bottom:18px">Account intelligence briefs, 4-week access sprints, and BD-as-a-Service with commission. Open doors to KSA's hardest-to-reach buyers.</p>
       <div style="font-size:11px;color:#8fa8be;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">Starting</div>
       <div style="font-size:22px;font-weight:900;color:#010B1C;letter-spacing:-.5px">FREE <span style="font-size:11px;font-weight:400;color:#4a7090;letter-spacing:1px">Account Brief</span></div>
-      <div style="margin-top:18px;font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:700">Explore Pillar →</div>
+      <div style="margin-top:18px;font-size:11px;color:#B8B8B8;letter-spacing:2px;text-transform:uppercase;font-weight:700">Explore Pillar →</div>
     </a>
 
     <!-- Pillar 3 — Investor -->
-    <a href="investor-services.html" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#C9A84C';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
-      <span style="font-size:11px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase">Pillar 03</span>
+    <a href="investor-services.html" style="text-decoration:none;color:inherit;background:#fff;padding:36px 30px;border:1px solid #DDE4ED;display:block;transition:all .2s" onmouseover="this.style.borderColor='#B8B8B8';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#DDE4ED';this.style.transform='translateY(0)'">
+      <span style="font-size:11px;letter-spacing:2.5px;color:#B8B8B8;font-weight:700;text-transform:uppercase">Pillar 03</span>
       <h3 style="font-size:18px;font-weight:900;letter-spacing:1.5px;margin:14px 0 10px;line-height:1.2;color:#010B1C;text-transform:uppercase">Investor Layer</h3>
       <p style="font-size:13px;color:#4a7090;line-height:1.7;margin-bottom:18px">Investment Readiness Sprints for founders raising. Curated investor memo subscription for Family Offices. Two sides, one diligence discipline.</p>
       <div style="font-size:11px;color:#8fa8be;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">From</div>
-      <div style="font-size:22px;font-weight:900;color:#010B1C;letter-spacing:-.5px">25,000 <span style="font-size:11px;font-weight:400;color:#4a7090;letter-spacing:1px">SAR / mo</span></div>
-      <div style="margin-top:18px;font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:700">Explore Pillar →</div>
+      <div style="font-size:22px;font-weight:900;color:#010B1C;letter-spacing:-.5px">12,000 <span style="font-size:11px;font-weight:400;color:#4a7090;letter-spacing:1px">SAR / mo</span></div>
+      <div style="margin-top:18px;font-size:11px;color:#B8B8B8;letter-spacing:2px;text-transform:uppercase;font-weight:700">Explore Pillar →</div>
     </a>
 
     <!-- Pillar 4 — Strategy OS -->
-    <a href="strategy-os.html" style="text-decoration:none;color:inherit;background:#060F1F;padding:36px 30px;border:1px solid rgba(201,168,76,.3);display:block;transition:all .2s;color:#fff" onmouseover="this.style.borderColor='#C9A84C';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.3)';this.style.transform='translateY(0)'">
-      <span style="font-size:11px;letter-spacing:2.5px;color:#C9A84C;font-weight:700;text-transform:uppercase">Pillar 04 · Coming Q3 2026</span>
+    <a href="strategy-os.html" style="text-decoration:none;color:inherit;background:#060F1F;padding:36px 30px;border:1px solid rgba(0,0,0,.3);display:block;transition:all .2s;color:#fff" onmouseover="this.style.borderColor='#B8B8B8';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(0,0,0,.3)';this.style.transform='translateY(0)'">
+      <span style="font-size:11px;letter-spacing:2.5px;color:#B8B8B8;font-weight:700;text-transform:uppercase">Pillar 04 · Coming Q3 2026</span>
       <h3 style="font-size:18px;font-weight:900;letter-spacing:1.5px;margin:14px 0 10px;line-height:1.2;color:#fff;text-transform:uppercase">Strategy OS</h3>
       <p style="font-size:13px;color:#8fa8be;line-height:1.7;margin-bottom:18px">Vertical strategy operating system for Saudi businesses. Dashboard, AI insights, decision-recommendation agent. SaaS subscription.</p>
       <div style="font-size:11px;color:#8fa8be;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">From</div>
-      <div style="font-size:22px;font-weight:900;color:#fff;letter-spacing:-.5px">4,500 <span style="font-size:11px;font-weight:400;color:#8fa8be;letter-spacing:1px">SAR / mo</span></div>
-      <div style="margin-top:18px;font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:700">Join Waitlist →</div>
+      <div style="font-size:22px;font-weight:900;color:#fff;letter-spacing:-.5px">2,500 <span style="font-size:11px;font-weight:400;color:#8fa8be;letter-spacing:1px">SAR / mo</span></div>
+      <div style="margin-top:18px;font-size:11px;color:#B8B8B8;letter-spacing:2px;text-transform:uppercase;font-weight:700">Join Waitlist →</div>
     </a>
 
   </div>
