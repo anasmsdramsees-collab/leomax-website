@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Valeria Chat Dashboard — LEOMAX (Admin)</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;
+  --silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;
+  --gray:#8fa8be;--lgray:#4a7090;--dgray:#2a3a4a;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden}
+
+/* TOP BAR */
+.bar{background:var(--black);color:#fff;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:50}
+.bar .brand{display:flex;align-items:center;gap:14px}
+.bar .brand img{height:32px}
+.bar .brand-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--silver)}
+.bar .brand-text strong{color:#fff;font-weight:700}
+.bar .actions{display:flex;gap:10px;align-items:center}
+.bar button{background:transparent;color:var(--silver);border:1px solid rgba(255,255,255,.12);padding:7px 14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:0;transition:all .15s}
+.bar button:hover{border-color:#fff;color:#fff}
+.bar .meta{font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+
+/* AUTH MODAL */
+.auth-overlay{position:fixed;inset:0;background:rgba(1,11,28,.92);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
+.auth-card{background:#fff;padding:48px 44px;width:100%;max-width:440px;border:1px solid #DDE4ED}
+.auth-card h1{font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;color:var(--black)}
+.auth-card .sub{font-size:13px;color:var(--lgray);margin-bottom:28px;line-height:1.6}
+.auth-card label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);font-weight:700;margin-bottom:10px;display:block}
+.auth-card input{width:100%;padding:13px 14px;font-size:14px;border:1px solid #DDE4ED;background:#F4F7FB;font-family:inherit;color:var(--black);outline:none;transition:border-color .15s;font-family:'SF Mono',Monaco,monospace}
+.auth-card input:focus{border-color:var(--black);background:#fff}
+.auth-card button{width:100%;background:var(--black);color:#fff;padding:14px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;margin-top:18px;transition:background .15s}
+.auth-card button:hover{background:var(--dgray)}
+.auth-card .help{font-size:11px;color:var(--lgray);margin-top:16px;line-height:1.6;text-align:center}
+
+/* FILTERS BAR */
+.filters{background:#fff;padding:16px 32px;border-bottom:1px solid #DDE4ED;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.filters input,.filters select{padding:9px 12px;font-size:13px;border:1px solid #DDE4ED;background:#fff;color:var(--black);font-family:inherit;outline:none;border-radius:0}
+.filters input:focus,.filters select:focus{border-color:var(--black)}
+.filters input[type="search"]{min-width:260px}
+.filters .clear{background:transparent;border:1px solid #DDE4ED;color:var(--lgray);padding:9px 14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+.filters .clear:hover{border-color:var(--black);color:var(--black)}
+.filters .count{margin-left:auto;font-size:11px;color:var(--lgray);letter-spacing:1.5px;text-transform:uppercase}
+.filters .count strong{color:var(--black);font-weight:700}
+
+/* TABLE */
+.table-wrap{padding:0 32px 60px;max-width:1400px;margin:0 auto}
+table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border:1px solid #DDE4ED}
+thead{background:#F4F7FB}
+th{text-align:left;padding:13px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lgray);font-weight:700;border-bottom:1px solid #DDE4ED;white-space:nowrap}
+td{padding:14px 16px;font-size:13px;border-bottom:1px solid #EEF2F7;vertical-align:top;color:var(--black);line-height:1.5}
+tbody tr{cursor:pointer;transition:background .12s}
+tbody tr:hover{background:#F4F7FB}
+.col-time{width:160px;font-family:'SF Mono',Monaco,monospace;font-size:12px;color:var(--lgray);white-space:nowrap}
+.col-page{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;color:var(--lgray)}
+.col-turns{width:60px;text-align:center;font-weight:700}
+.col-lang{width:90px}
+.col-action{width:140px}
+.col-msg{font-size:13px;color:var(--black)}
+
+.tag{display:inline-block;padding:3px 9px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid #DDE4ED;color:var(--lgray);font-weight:700;border-radius:0}
+.tag.action-CALL{background:var(--black);color:#fff;border-color:var(--black)}
+.tag.action-BRIEF{background:var(--dark);color:#fff;border-color:var(--dark)}
+.tag.action-WHATSAPP{background:#10b981;color:#fff;border-color:#10b981}
+.tag.action-ADVISOR{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.tag.lang-AR{background:#FAFAF0;color:#7a6b00;border-color:#E5DD9F}
+.tag.lang-EN{background:#F0F7FA;color:#005a7a;border-color:#A3D2E0}
+
+.empty{padding:80px 32px;text-align:center;color:var(--lgray);font-size:14px}
+.loading{padding:60px;text-align:center;color:var(--lgray)}
+.loading::after{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--lgray);margin-left:8px;animation:loadpulse 1s infinite}
+@keyframes loadpulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* DETAIL MODAL */
+.modal{position:fixed;inset:0;background:rgba(1,11,28,.85);backdrop-filter:blur(6px);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:40px 24px;overflow-y:auto}
+.modal.open{display:flex}
+.modal-card{background:#fff;width:100%;max-width:760px;max-height:calc(100vh - 80px);overflow:hidden;display:flex;flex-direction:column;border:1px solid #DDE4ED}
+.modal-head{padding:24px 28px;border-bottom:1px solid #DDE4ED;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-shrink:0}
+.modal-head .meta{font-size:11px;color:var(--lgray);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.modal-head h2{font-size:18px;font-weight:800;letter-spacing:.5px;line-height:1.4;color:var(--black)}
+.modal-head .tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.modal-close{background:transparent;border:none;color:var(--lgray);font-size:28px;line-height:1;cursor:pointer;padding:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-close:hover{color:var(--black)}
+.modal-body{padding:24px 28px;overflow-y:auto;flex:1}
+.modal-info{background:#F4F7FB;padding:14px 16px;font-size:12px;color:var(--lgray);margin-bottom:24px;line-height:1.7;font-family:'SF Mono',Monaco,monospace}
+.modal-info .row{display:flex;justify-content:space-between;padding:2px 0}
+.modal-info .row span:last-child{color:var(--black);font-weight:600}
+.bubble-row{margin-bottom:14px;display:flex;flex-direction:column;gap:4px}
+.bubble-row.user{align-items:flex-end}
+.bubble-who{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);font-weight:700}
+.bubble-row.user .bubble-who{color:var(--black)}
+.bubble{padding:11px 15px;font-size:13.5px;line-height:1.65;max-width:85%;white-space:pre-wrap;word-wrap:break-word}
+.bubble-row.user .bubble{background:var(--black);color:#fff;border-radius:12px 12px 2px 12px}
+.bubble-row.assistant .bubble{background:#F4F7FB;color:var(--black);border:1px solid #DDE4ED;border-radius:12px 12px 12px 2px}
+.bubble.rtl{direction:rtl;text-align:right}
+
+@media(max-width:760px){
+  .bar{padding:14px 18px;flex-wrap:wrap;gap:10px}
+  .bar .meta{display:none}
+  .filters{padding:12px 18px;gap:8px}
+  .filters input[type="search"]{min-width:0;flex:1}
+  .table-wrap{padding:0 0 60px}
+  table{border:none}
+  th,td{padding:10px 12px}
+  .col-page,.col-lang{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- AUTH OVERLAY -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-card">
+    <h1>ADMIN ACCESS</h1>
+    <p class="sub">Valeria Chat Dashboard — internal LEOMAX use only. Enter your admin token to continue.</p>
+    <label>Admin Token</label>
+    <input type="password" id="tokenInput" autocomplete="off" placeholder="Bearer token from Cloudflare secret">
+    <button onclick="auth()">Unlock →</button>
+    <p class="help">Token is stored in this browser only. Logout clears it.</p>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="bar" id="bar" style="display:none">
+  <div class="brand">
+    <img src="logo.png" alt="LEOMAX">
+    <div class="brand-text">VALERIA <strong>DASHBOARD</strong></div>
+  </div>
+  <div class="actions">
+    <span class="meta" id="lastUpdated"></span>
+    <button onclick="refresh()">↻ Refresh</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters" id="filters" style="display:none">
+  <input type="search" id="search" placeholder="Search messages…">
+  <select id="actionFilter">
+    <option value="">All actions</option>
+    <option value="none">No action</option>
+    <option value="CALL">CALL</option>
+    <option value="BRIEF">BRIEF</option>
+    <option value="WHATSAPP">WHATSAPP</option>
+    <option value="ADVISOR">ADVISOR (any)</option>
+  </select>
+  <select id="langFilter">
+    <option value="">All languages</option>
+    <option value="Arabic">Arabic / mixed</option>
+    <option value="English">English</option>
+  </select>
+  <button class="clear" onclick="clearFilters()">Clear</button>
+  <span class="count" id="count"></span>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap" id="tableWrap" style="display:none">
+  <table>
+    <thead>
+      <tr>
+        <th class="col-time">Time</th>
+        <th class="col-page">Page</th>
+        <th class="col-lang">Language</th>
+        <th class="col-turns">Turns</th>
+        <th class="col-action">Action</th>
+        <th class="col-msg">First message</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div id="status"></div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div>
+        <div class="meta" id="modalMeta"></div>
+        <h2 id="modalTitle"></h2>
+        <div class="tags" id="modalTags"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ADMIN DASHBOARD JS
+   ============================================================ */
+
+var WORKER_URL = 'https://leomax-valeria-chat.anas-msd-ramsees.workers.dev';
+var TOKEN_KEY = 'leomax_admin_token';
+var conversations = [];
+
+function getToken() { try { return localStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; } }
+function setToken(t) { try { localStorage.setItem(TOKEN_KEY, t); } catch (e) {} }
+function clearToken() { try { localStorage.removeItem(TOKEN_KEY); } catch (e) {} }
+
+function isArabic(text) { return /[\u0600-\u06FF]/.test(text || ''); }
+
+/* ─── Auth ───────────────────────────────────────────── */
+function auth() {
+  var input = document.getElementById('tokenInput');
+  var t = input.value.trim();
+  if (!t) { input.focus(); return; }
+  setToken(t);
+  showApp();
+  loadConversations();
+}
+function logout() {
+  clearToken();
+  conversations = [];
+  document.getElementById('bar').style.display = 'none';
+  document.getElementById('filters').style.display = 'none';
+  document.getElementById('tableWrap').style.display = 'none';
+  document.getElementById('authOverlay').style.display = 'flex';
+  document.getElementById('tokenInput').value = '';
+}
+function showApp() {
+  document.getElementById('authOverlay').style.display = 'none';
+  document.getElementById('bar').style.display = 'flex';
+  document.getElementById('filters').style.display = 'flex';
+  document.getElementById('tableWrap').style.display = 'block';
+}
+
+/* ─── Load conversations ─────────────────────────────── */
+async function loadConversations() {
+  var tbody = document.getElementById('tbody');
+  var status = document.getElementById('status');
+  tbody.innerHTML = '';
+  status.innerHTML = '<div class="loading">Loading conversations</div>';
+  try {
+    var res = await fetch(WORKER_URL + '/list?limit=500', {
+      headers: { 'Authorization': 'Bearer ' + getToken() }
+    });
+    if (res.status === 401) {
+      status.innerHTML = '<div class="empty">Invalid or missing admin token. Logout and try again.</div>';
+      return;
+    }
+    if (!res.ok) {
+      status.innerHTML = '<div class="empty">Worker error: ' + res.status + '. Check Cloudflare deploy status.</div>';
+      return;
+    }
+    var data = await res.json();
+    conversations = data.items || [];
+    status.innerHTML = '';
+    document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    renderTable();
+  } catch (e) {
+    status.innerHTML = '<div class="empty">Network error: ' + (e.message || 'unknown') + '</div>';
+  }
+}
+
+function renderTable() {
+  var tbody = document.getElementById('tbody');
+  var search = (document.getElementById('search').value || '').toLowerCase().trim();
+  var actionFilter = document.getElementById('actionFilter').value;
+  var langFilter = document.getElementById('langFilter').value;
+  var filtered = conversations.filter(function (c) {
+    if (search && (c.firstMessage || '').toLowerCase().indexOf(search) === -1 && (c.id || '').toLowerCase().indexOf(search) === -1) return false;
+    if (actionFilter) {
+      if (actionFilter === 'none' && c.action) return false;
+      if (actionFilter === 'ADVISOR' && (!c.action || c.action.indexOf('ADVISOR') !== 0)) return false;
+      if (actionFilter !== 'none' && actionFilter !== 'ADVISOR' && c.action !== actionFilter) return false;
+    }
+    if (langFilter && (c.language || '').indexOf(langFilter) === -1) return false;
+    return true;
+  });
+
+  document.getElementById('count').innerHTML = '<strong>' + filtered.length + '</strong> / ' + conversations.length + ' conversations';
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">' + (conversations.length === 0 ? 'No conversations yet. Once visitors chat with Valeria, they\'ll appear here.' : 'No conversations match your filters.') + '</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(function (c) {
+    var pageShort = (c.page || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+    pageShort = pageShort.split('/').slice(0, 2).join('/');
+    var date = new Date(c.timestamp);
+    var time = date.toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    var lang = (c.language || '').indexOf('Arabic') !== -1 ? 'AR' : 'EN';
+    var actionTag = '';
+    if (c.action) {
+      var actionShort = c.action.indexOf('ADVISOR:') === 0 ? 'ADVISOR' : c.action;
+      actionTag = '<span class="tag action-' + actionShort + '">' + actionShort + '</span>';
+    }
+    var firstRtl = isArabic(c.firstMessage) ? ' style="direction:rtl;text-align:right"' : '';
+    return '<tr onclick="openConversation(\'' + encodeURIComponent(c.id) + '\')">' +
+      '<td class="col-time">' + time + '</td>' +
+      '<td class="col-page" title="' + (c.page || '') + '">' + (pageShort || '—') + '</td>' +
+      '<td class="col-lang"><span class="tag lang-' + lang + '">' + lang + '</span></td>' +
+      '<td class="col-turns">' + (c.turns || 0) + '</td>' +
+      '<td class="col-action">' + (actionTag || '<span style="color:#c8d3de">—</span>') + '</td>' +
+      '<td class="col-msg"' + firstRtl + '>' + escapeHtml((c.firstMessage || '').slice(0, 120)) + (c.firstMessage && c.firstMessage.length > 120 ? '…' : '') + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function escapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+/* ─── Conversation detail ────────────────────────────── */
+async function openConversation(id) {
+  id = decodeURIComponent(id);
+  var modal = document.getElementById('modal');
+  document.getElementById('modalTitle').textContent = 'Loading…';
+  document.getElementById('modalBody').innerHTML = '<div class="loading">Loading conversation</div>';
+  document.getElementById('modalMeta').textContent = '';
+  document.getElementById('modalTags').innerHTML = '';
+  modal.classList.add('open');
+  try {
+    var res = await fetch(WORKER_URL + '/get?id=' + encodeURIComponent(id), {
+      headers: { 'Authorization': 'Bearer ' + getToken() }
+    });
+    if (!res.ok) { document.getElementById('modalBody').innerHTML = '<div class="empty">Failed to load: ' + res.status + '</div>'; return; }
+    var c = await res.json();
+    var date = new Date(c.timestamp);
+    document.getElementById('modalMeta').textContent = date.toLocaleString();
+    document.getElementById('modalTitle').textContent = c.firstMessage || '(no first message)';
+    if (isArabic(c.firstMessage)) document.getElementById('modalTitle').style.direction = 'rtl';
+    else document.getElementById('modalTitle').style.direction = 'ltr';
+
+    var tagsHTML = '';
+    var lang = (c.language || '').indexOf('Arabic') !== -1 ? 'AR' : 'EN';
+    tagsHTML += '<span class="tag lang-' + lang + '">' + lang + '</span>';
+    tagsHTML += '<span class="tag">' + (c.turns || 0) + ' turns</span>';
+    if (c.action) {
+      var actionShort = c.action.indexOf('ADVISOR:') === 0 ? 'ADVISOR' : c.action;
+      tagsHTML += '<span class="tag action-' + actionShort + '">' + c.action + '</span>';
+    }
+    document.getElementById('modalTags').innerHTML = tagsHTML;
+
+    var infoHTML = '<div class="row"><span>Page</span><span>' + escapeHtml(c.page || '—') + '</span></div>';
+    infoHTML += '<div class="row"><span>ID</span><span>' + escapeHtml(c.id) + '</span></div>';
+    var bubblesHTML = (c.messages || []).map(function (m) {
+      var role = m.role === 'user' ? 'user' : 'assistant';
+      var who = m.role === 'user' ? 'Visitor' : 'Valeria';
+      var rtl = isArabic(m.content) ? ' rtl' : '';
+      return '<div class="bubble-row ' + role + '"><div class="bubble-who">' + who + '</div><div class="bubble' + rtl + '">' + escapeHtml(m.content) + '</div></div>';
+    }).join('');
+    document.getElementById('modalBody').innerHTML = '<div class="modal-info">' + infoHTML + '</div>' + bubblesHTML;
+  } catch (e) {
+    document.getElementById('modalBody').innerHTML = '<div class="empty">Error: ' + (e.message || 'unknown') + '</div>';
+  }
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+/* ─── Misc ───────────────────────────────────────────── */
+function refresh() { loadConversations(); }
+function clearFilters() {
+  document.getElementById('search').value = '';
+  document.getElementById('actionFilter').value = '';
+  document.getElementById('langFilter').value = '';
+  renderTable();
+}
+
+/* Events */
+document.getElementById('search').addEventListener('input', renderTable);
+document.getElementById('actionFilter').addEventListener('change', renderTable);
+document.getElementById('langFilter').addEventListener('change', renderTable);
+document.getElementById('modal').addEventListener('click', function (e) { if (e.target.id === 'modal') closeModal(); });
+document.getElementById('tokenInput').addEventListener('keydown', function (e) { if (e.key === 'Enter') auth(); });
+
+/* On load */
+(function init() {
+  var t = getToken();
+  if (t) { showApp(); loadConversations(); }
+  else { document.getElementById('tokenInput').focus(); }
+})();
+</script>
+
+</body>
+</html>

@@ -111,6 +111,17 @@
     });
     return lines.join('\n');
   }
+  function getSessionId() {
+    try {
+      var sid = sessionStorage.getItem('leomax_valeria_sid');
+      if (!sid) {
+        sid = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+        sessionStorage.setItem('leomax_valeria_sid', sid);
+      }
+      return sid;
+    } catch (e) { return 'anon-' + Date.now(); }
+  }
+
   function maybeSendReport(actionClicked) {
     if (!messages || messages.length < 4) return; // need at least 2 turns each side
     if (alreadyReported() && !actionClicked) return;
@@ -120,6 +131,9 @@
       if (messages[i].role === 'user') { firstUserMsg = messages[i].content.slice(0, 60); break; }
     }
     var subject = '🎯 LEOMAX Chat' + (actionClicked ? ' [' + actionClicked + ']' : '') + ' — ' + firstUserMsg;
+    var language = messages.some(function (m) { return isArabic(m.content); }) ? 'Arabic / mixed' : 'English';
+
+    // 1. Email notification via Web3Forms (instant inbox alert)
     var formData = new FormData();
     formData.append('access_key', WEB3FORMS_KEY);
     formData.append('subject', subject);
@@ -128,10 +142,24 @@
     formData.append('page_url', location.href);
     formData.append('action_clicked', actionClicked || 'none');
     formData.append('turns', String(messages.length));
-
     fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
       .then(function () { markReported(); })
       .catch(function () {});
+
+    // 2. Persistent log to worker KV (for the admin dashboard)
+    if (HAS_AI && CHAT_WORKER_URL) {
+      fetch(CHAT_WORKER_URL.replace(/\/$/, '') + '/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: messages,
+          page: location.href,
+          language: language,
+          action: actionClicked || null,
+          sessionId: getSessionId()
+        })
+      }).catch(function () {});
+    }
   }
 
   /* ─── STORAGE ─────────────────────────────────────────── */
