@@ -77,6 +77,63 @@
     "Don't push these. Talk first. Help. Build the relationship. Routing happens later, naturally."
   ].join('\n');
 
+  /* ─── REPORTING ────────────────────────────────────────
+     Sends a transcript snapshot to Anas via Web3Forms when:
+     - Conversation reaches 3+ exchanges (meaningful intent), OR
+     - User clicks an action button (high intent)
+     Once per session — sessionStorage flag prevents duplicates.
+  */
+  var REPORT_KEY = 'leomax_valeria_reported';
+  var WEB3FORMS_KEY = '8cbff62d-1c1b-4bea-affb-7947492e14be';
+
+  function alreadyReported() {
+    try { return sessionStorage.getItem(REPORT_KEY) === '1'; } catch (e) { return false; }
+  }
+  function markReported() {
+    try { sessionStorage.setItem(REPORT_KEY, '1'); } catch (e) {}
+  }
+  function buildTranscript(msgs, actionClicked) {
+    var lines = [];
+    lines.push('=== VALERIA CONVERSATION SUMMARY ===');
+    lines.push('Page: ' + location.href);
+    lines.push('Date: ' + new Date().toString());
+    lines.push('Language: ' + (msgs.some(function (m) { return isArabic(m.content); }) ? 'Arabic / mixed' : 'English'));
+    lines.push('Turns: ' + msgs.length);
+    if (actionClicked) lines.push('Action clicked: ' + actionClicked);
+    lines.push('User agent: ' + navigator.userAgent.slice(0, 100));
+    lines.push('');
+    lines.push('--- TRANSCRIPT ---');
+    msgs.forEach(function (m) {
+      var who = m.role === 'user' ? 'VISITOR' : 'VALERIA';
+      lines.push('');
+      lines.push('[' + who + ']');
+      lines.push(m.content);
+    });
+    return lines.join('\n');
+  }
+  function maybeSendReport(actionClicked) {
+    if (!messages || messages.length < 4) return; // need at least 2 turns each side
+    if (alreadyReported() && !actionClicked) return;
+
+    var firstUserMsg = '';
+    for (var i = 0; i < messages.length; i++) {
+      if (messages[i].role === 'user') { firstUserMsg = messages[i].content.slice(0, 60); break; }
+    }
+    var subject = '🎯 LEOMAX Chat' + (actionClicked ? ' [' + actionClicked + ']' : '') + ' — ' + firstUserMsg;
+    var formData = new FormData();
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('subject', subject);
+    formData.append('from_name', 'Valeria AI Chat');
+    formData.append('message', buildTranscript(messages, actionClicked));
+    formData.append('page_url', location.href);
+    formData.append('action_clicked', actionClicked || 'none');
+    formData.append('turns', String(messages.length));
+
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+      .then(function () { markReported(); })
+      .catch(function () {});
+  }
+
   /* ─── STORAGE ─────────────────────────────────────────── */
   function loadMessages() {
     try {
@@ -350,6 +407,10 @@
       // Unknown action — render nothing
       return document.createElement('span');
     }
+    // Send a high-intent report when the user clicks any action button
+    btn.addEventListener('click', function () {
+      maybeSendReport(action);
+    });
     return btn;
   }
 
@@ -418,6 +479,8 @@
       renderMessage('assistant', reply);
       sending = false;
       sendBtn.disabled = false;
+      // Send report email to Anas after meaningful exchange
+      maybeSendReport(null);
     }, function (e) {
       hideTyping();
       var msg = "Something blocked the connection just now — could be the API key or network. Try again in a moment.\n\nحصل خطأ في الاتصال — يمكن المفتاح أو الشبكة. جرب مرة ثانية بعد ثانية.";
