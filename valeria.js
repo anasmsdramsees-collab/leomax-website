@@ -47,9 +47,34 @@
     "  4. Strategy OS: Vertical SaaS coming Q3 2026 — tiers SAR 2,500 / 5,500 / 12,000 per month",
     "- Recent case study: MADAR Logistics — built from idea to revenue in 90 days. End-to-end engagement covering market study, brand, profile, website, 6 operational integrations.",
     "",
-    "If someone wants to book a call, they can use Calendly at calendly.com/anas-msd-ramsees/30min. If they want a free Account Brief, they can request one at /account-brief.html.",
+    "ACTION TOKENS — when the conversation naturally calls for it, you can emit ONE action token at the very end of your message (on its own line, after all your text). The UI will render this as a button the user can click. Available tokens:",
     "",
-    "But don't push these. Talk first. Help. Build the relationship. Recommendations land later, naturally."
+    "  [[CALL]] — book a 30-min discovery call with Dr. Anas via Calendly. Use when they're ready to talk to a human about a specific engagement.",
+    "  [[BRIEF]] — request a free Account Brief on any Saudi company. Use when they mention a specific target company they want to reach or research.",
+    "  [[WHATSAPP]] — quick WhatsApp contact with Anas. Use when they want a fast, informal channel.",
+    "  [[ADVISOR:slug]] — hand off to a specialist on the LEOMAX Advisory Board. Use when their question is deeply domain-specific and a specialist intake would help more than open chat. Available slugs:",
+    "    - kaya-haddad (Chief Strategy Officer — strategy, positioning, restructuring)",
+    "    - laith-darwish (AI & Tech Director — AI integration, automation, ERP/CRM)",
+    "    - hani-masry (CFO — cash flow, unit economics, financial modeling)",
+    "    - kamilia-fouad (Marketing & Brand — campaigns, positioning, content, SEO)",
+    "    - rami-khalidi (Operations — SOPs, hiring, org design)",
+    "    - haya-kuwari (Business Development — B2B, pipeline, enterprise deals)",
+    "    - mashari-otaibi (Investment Director — funding, valuation, M&A)",
+    "    - elhanouf-harbi (Sustainability — ESG, Vision 2030, green frameworks)",
+    "    - miral-hakimi (Regional Expansion — GCC entry, licensing, cross-border)",
+    "    - yasin-sherif (Supply Chain — logistics, procurement, fulfillment)",
+    "    - rita-nasser (Innovation — R&D, MVP, product development)",
+    "    - mira-mansoori (Partnerships — JVs, MOUs, distribution)",
+    "    - dr-anas (Founder & CEO — multi-domain, complex transformations)",
+    "",
+    "Token rules:",
+    "  - ONLY emit a token when it genuinely helps the user, not on every message",
+    "  - NEVER emit a token on the first reply — get context first",
+    "  - Emit AT MOST one token per response",
+    "  - Place it on its own line at the very end, no other text after it",
+    "  - The user can ignore the button. Don't pressure or ask 'did you click?'",
+    "",
+    "Don't push these. Talk first. Help. Build the relationship. Routing happens later, naturally."
   ].join('\n');
 
   /* ─── STORAGE ─────────────────────────────────────────── */
@@ -130,6 +155,15 @@
     .vm-quick{display:flex;gap:7px;padding:0 18px 14px;background:#F4F7FB;flex-wrap:wrap}
     .vm-quick button{background:#fff;border:1px solid #DDE4ED;color:#010B1C;padding:8px 13px;font-size:12px;border-radius:18px;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500}
     .vm-quick button:hover{border-color:#B8B8B8;color:#B8B8B8}
+
+    /* Action button (rendered when Valeria emits a token) */
+    .vm-action{display:flex;align-items:center;gap:10px;background:#010B1C;color:#fff;border:none;padding:11px 16px;font-size:13px;border-radius:12px;cursor:pointer;font-family:inherit;font-weight:600;text-decoration:none;margin-top:10px;transition:transform .15s,box-shadow .15s}
+    .vm-action:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(1,11,28,.25)}
+    .vm-action .vm-action-icon{font-size:15px;line-height:1}
+    .vm-action .vm-action-meta{font-size:10px;letter-spacing:1px;text-transform:uppercase;opacity:.7;display:block;margin-top:2px}
+    .vm-action.green{background:#10b981}
+    .vm-action.green:hover{box-shadow:0 4px 12px rgba(16,185,129,.35)}
+    .vm-msg.rtl .vm-action{flex-direction:row-reverse}
 
     .vm-foot{padding:14px 18px;background:#fff;border-top:1px solid #E5EAF0;display:flex;gap:10px;align-items:flex-end}
     .vm-input{flex:1;border:1px solid #DDE4ED;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit;resize:none;outline:none;min-height:44px;max-height:120px;line-height:1.45;color:#010B1C;background:#F4F7FB;transition:border-color .15s}
@@ -228,12 +262,95 @@
       var msg = el('div', { class: 'vm-msg you' + (rtl ? ' rtl' : ''), html: format(content) });
       body.appendChild(msg);
     } else {
+      // Extract action token if present (assistant messages only)
+      var parsed = extractAction(content);
       var wrap = el('div', { class: 'vm-msg her' + (rtl ? ' rtl' : '') });
       wrap.appendChild(el('div', { class: 'vm-who' }, 'Valeria'));
-      wrap.appendChild(el('div', { class: 'vm-bubble', html: format(content) }));
+      wrap.appendChild(el('div', { class: 'vm-bubble', html: format(parsed.text) }));
+      if (parsed.action) {
+        wrap.appendChild(buildActionButton(parsed.action, rtl));
+      }
       body.appendChild(wrap);
     }
     scrollBottom();
+  }
+
+  /* ─── ACTION TOKEN PARSING ────────────────────────────── */
+  // Matches [[CALL]], [[BRIEF]], [[WHATSAPP]], [[ADVISOR:slug]] anywhere in the text
+  var ACTION_RE = /\[\[(CALL|BRIEF|WHATSAPP|ADVISOR:[a-z0-9-]+)\]\]/i;
+  function extractAction(text) {
+    if (!text) return { text: '', action: null };
+    var match = text.match(ACTION_RE);
+    if (!match) return { text: text, action: null };
+    var token = match[1].toUpperCase();
+    var cleaned = text.replace(ACTION_RE, '').replace(/\n{3,}/g, '\n\n').trim();
+    return { text: cleaned, action: token };
+  }
+
+  // Map of advisor slugs to display names/roles
+  var ADVISORS = {
+    'kaya-haddad':    { name: 'Kaya Haddad',       role: 'Chief Strategy Officer' },
+    'laith-darwish':  { name: 'Laith Darwish',     role: 'AI & Tech Director' },
+    'hani-masry':     { name: 'Hani El Masry',     role: 'CFO' },
+    'kamilia-fouad':  { name: 'Kamilia Fouad',     role: 'Marketing &amp; Brand' },
+    'rami-khalidi':   { name: 'Rami Al Khalidi',   role: 'Operations Director' },
+    'haya-kuwari':    { name: 'Haya Al Kuwari',    role: 'Business Development' },
+    'mashari-otaibi': { name: 'Mashari Al Otaibi', role: 'Investment Director' },
+    'elhanouf-harbi': { name: 'Elhanouf Al Harbi', role: 'Sustainability Director' },
+    'miral-hakimi':   { name: 'Miral Al Hakimi',   role: 'Regional Expansion' },
+    'yasin-sherif':   { name: 'Yasin El Sherif',   role: 'Supply Chain' },
+    'rita-nasser':    { name: 'Rita Nasser',       role: 'Head of Innovation' },
+    'mira-mansoori':  { name: 'Mira Al Mansoori',  role: 'Partnerships Director' },
+    'dr-anas':        { name: 'Dr. Anas Elimam',   role: 'Founder &amp; CEO' }
+  };
+
+  function buildActionButton(action, rtl) {
+    var ar = rtl;
+    var btn;
+    if (action === 'CALL') {
+      btn = el('a', {
+        class: 'vm-action',
+        href: 'https://calendly.com/anas-msd-ramsees/30min',
+        target: '_blank',
+        rel: 'noopener'
+      });
+      btn.innerHTML = '<span class="vm-action-icon">📅</span><span><span class="vm-action-meta">' +
+        (ar ? 'احجز مكالمة' : 'BOOK A CALL') + '</span>' +
+        (ar ? '٣٠ دقيقة مع د. أنس' : '30 minutes with Dr. Anas') + '</span>';
+    } else if (action === 'BRIEF') {
+      btn = el('a', { class: 'vm-action', href: 'account-brief.html' });
+      btn.innerHTML = '<span class="vm-action-icon">📋</span><span><span class="vm-action-meta">' +
+        (ar ? 'تقرير مجاني' : 'FREE BRIEF') + '</span>' +
+        (ar ? 'احصل على Account Brief مجاناً' : 'Get an Account Brief on any KSA company') + '</span>';
+    } else if (action === 'WHATSAPP') {
+      btn = el('a', {
+        class: 'vm-action green',
+        href: 'https://wa.me/966500000000',
+        target: '_blank',
+        rel: 'noopener'
+      });
+      btn.innerHTML = '<span class="vm-action-icon">💬</span><span><span class="vm-action-meta">WHATSAPP</span>' +
+        (ar ? 'كلّم أنس مباشرة' : 'Message Anas directly') + '</span>';
+    } else if (action.indexOf('ADVISOR:') === 0) {
+      var slug = action.slice('ADVISOR:'.length).toLowerCase();
+      var advisor = ADVISORS[slug];
+      if (!advisor) {
+        // Unknown slug — fallback to general advisory board
+        btn = el('a', { class: 'vm-action', href: 'advisory-board.html' });
+        btn.innerHTML = '<span class="vm-action-icon">🎯</span><span><span class="vm-action-meta">' +
+          (ar ? 'مستشار متخصص' : 'SPECIALIST') + '</span>' +
+          (ar ? 'تكلّم مع Advisory Board' : 'Talk to the Advisory Board') + '</span>';
+      } else {
+        btn = el('a', { class: 'vm-action', href: 'advisory-board.html#' + slug });
+        btn.innerHTML = '<span class="vm-action-icon">🎯</span><span><span class="vm-action-meta">' +
+          (ar ? 'تكلّم مع ' + advisor.name : 'TALK TO ' + advisor.name.toUpperCase()) + '</span>' +
+          advisor.role + '</span>';
+      }
+    } else {
+      // Unknown action — render nothing
+      return document.createElement('span');
+    }
+    return btn;
   }
 
   function showTyping() {

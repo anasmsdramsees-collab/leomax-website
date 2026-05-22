@@ -329,5 +329,25 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
 
 <!-- Advisory Board uses the 13-advisor widget, NOT Valeria -->
 <script src="chat-widget.js"></script>
+<script>
+  // Auto-open a specific advisor if a hash is in the URL
+  // e.g. advisory-board.html#kaya-haddad opens that advisor's chat directly
+  (function () {
+    function autoOpen() {
+      var slug = (location.hash || '').replace(/^#/, '').toLowerCase().trim();
+      if (!slug) return;
+      if (window.LMChat && typeof window.LMChat.open === 'function') {
+        try { window.LMChat.open(slug); } catch (e) {}
+      } else {
+        setTimeout(autoOpen, 500);
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', autoOpen);
+    } else {
+      setTimeout(autoOpen, 300);
+    }
+  })();
+</script>
 </body>
 </html>
