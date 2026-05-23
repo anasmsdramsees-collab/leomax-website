@@ -1,154 +1,488 @@
 /* ============================================================
-   LEOMAX — Monochrome palette
-   White · Navy-Black · Silver
+   LEOMAX — Apple-inspired monochrome system
    ============================================================
-   Logic:
-   - PRIMARY text/CTAs on light bg = navy-black (#010B1C)
-   - PRIMARY text/CTAs on dark bg = white (#FFFFFF)
-   - DECORATIVE accents (borders, dividers, hover lines) = silver (#B8B8B8)
+   Tokens:
+   --apple-black:    #000000   true black (dark sections)
+   --apple-dark:     #1d1d1f   dark text on light bg
+   --apple-white:    #FFFFFF   light primary
+   --apple-gray-1:   #f5f5f7   light secondary section bg (Apple's signature gray)
+   --apple-gray-2:   #d2d2d7   borders / dividers on light
+   --apple-gray-3:   #86868b   muted text on light
+   --apple-dim:      #6e6e73   slightly darker muted
+   --apple-on-dark:  #f5f5f7   text on dark sections
+   --apple-dim-dark: #a1a1a6   muted on dark
+
+   Shape:
+   - Cards: border-radius 18px, subtle shadow instead of borders
+   - Buttons: pill (border-radius 980px) — Apple's signature
+   - Big bold headlines
+   - Generous whitespace
    ============================================================ */
 
-/* ── PRIMARY CTAs — always strong contrast ── */
-.btn-primary,
-.nav-cta,
-.submit-btn,
-.cta-gold,
-.card-cta.cta-gold {
-  background: #010B1C !important;
-  color: #FFFFFF !important;
-  border-color: #010B1C !important;
+/* ── COLOR OVERRIDES — flatten the palette ── */
+:root,
+:root[class] {
+  --black: #000000 !important;
+  --charcoal: #000000 !important;
+  --dark: #000000 !important;
+  --dgray: #1d1d1f !important;
+  --lgray: #6e6e73 !important;
+  --gray: #86868b !important;
+  --silver: #d2d2d7 !important;
+  --chrome: #d2d2d7 !important;
+  --white: #FFFFFF !important;
+  --gold: #000000 !important;
 }
-.btn-primary:hover,
-.nav-cta:hover,
-.submit-btn:hover,
-.cta-gold:hover,
-.card-cta.cta-gold:hover {
+
+/* ── BODY / GLOBAL BG ── */
+body {
   background: #FFFFFF !important;
-  color: #010B1C !important;
-  border: 1px solid #010B1C !important;
+  color: #1d1d1f !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hero CTAs on dark hero — invert: white bg, black text */
-.hero .hero-cta,
-.hero .btn-primary,
-.case-cta .btn-primary,
-.bottom-cta .btn-primary {
+/* All grayish light section backgrounds → Apple gray */
+[style*="background:#EEF2F7"],
+[style*="background:#F4F7FB"],
+[style*="background:#eef2f7"],
+[style*="background:#f4f7fb"],
+section.light,
+.frameworks-section,
+.faq-section,
+.trust-section,
+.process-bar,
+.readiness-section,
+section:not(.hero):not(.bottom-cta):not(.cta-section):not(.widgets-section):not(.fo-section):not(.case-cta):not(.how-section):not(.case-header):not(.dark) {
+  background: #f5f5f7 !important;
+}
+
+/* All dark sections → pure black */
+.hero, .case-header, .bottom-cta, .case-cta,
+.how-section, .widgets-section, .fo-section,
+section[style*="background:var(--black)"],
+section[style*="background:var(--dark)"],
+section[style*="background:var(--charcoal)"],
+[style*="background:#010B1C"],
+[style*="background:#0D1E35"],
+[style*="background:#060F1F"],
+[style*="background:#0a1729"],
+footer {
+  background: #000000 !important;
+}
+
+/* CASE TEASER + DEAL SHEET + memo-preview + widget-mock (inside dark sections) */
+.case-teaser, .deal-sheet, .memo-preview {
+  background: #1d1d1f !important;
+}
+.case-visual, .widget-mock {
+  background: #000000 !important;
+}
+
+/* ── CARDS — white, rounded, soft shadow ── */
+.price-card, .pillar-card, .who-card, .fo-card, .widget-card,
+.advisor-card, .problem-card, .trust-item, .faq-item,
+.member-card, .sys-card, .fw-card, .blog-card, .readiness-card,
+.form-card, .timeline-table, .inflection {
   background: #FFFFFF !important;
-  color: #010B1C !important;
-  border-color: #FFFFFF !important;
+  border: 1px solid #e5e5ea !important;
+  border-radius: 18px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  transition: transform .25s, box-shadow .25s, border-color .25s;
 }
-.hero .hero-cta:hover,
-.hero .btn-primary:hover,
-.case-cta .btn-primary:hover,
-.bottom-cta .btn-primary:hover {
-  background: #B8B8B8 !important;
-  color: #010B1C !important;
-  border-color: #B8B8B8 !important;
-}
-
-/* Ghost buttons on dark sections */
-.btn-ghost { border-color: rgba(255,255,255,.25) !important; color: #FFFFFF !important; }
-.btn-ghost:hover { border-color: #FFFFFF !important; color: #FFFFFF !important; background: rgba(255,255,255,.05) !important; }
-
-/* ── DARK-SECTION ACCENTS — silver/white instead of black ── */
-.hero, .case-header, .case-teaser, .deal-sheet, .case-visual,
-.price-card.featured, .pillar-card.featured,
-.fo-section, .widgets-section, .memo-preview, .how-section,
-.widget-card, .widget-mock, .bottom-cta, .case-cta,
-.coming-badge, .featured-badge, .audience-pill {
-  --gold: #B8B8B8;
+.price-card:hover, .pillar-card:hover, .who-card:hover, .fo-card:hover,
+.advisor-card:hover, .problem-card:hover, .trust-item:hover, .faq-item:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.08) !important;
+  transform: translateY(-2px);
+  border-color: #d2d2d7 !important;
 }
 
-/* Force readable color on dark-context accent elements */
-.hero-stat .num, .stat-cell .num, .case-stat .num,
-.case-link,
-.deal-sheet .deal-title, .deal-sheet .section-head, .deal-sheet .ok,
-.case-visual .val,
-.memo-preview .h,
-.fo-card .num,
-.widget-card .icon-num, .widget-mock .mock-val,
-.case-section .label,
-.pillar-card.featured .who,
-.featured-badge,
-.audience-pill,
-.coming-badge { color: #FFFFFF !important; }
-
-/* Dark-context borders — subtle silver/white */
-.case-teaser, .deal-sheet, .case-visual, .memo-preview,
-.fo-card, .widget-card,
-.price-card.featured, .pillar-card.featured,
-.featured-badge, .audience-pill, .coming-badge,
-.key-stats, .stat-cell {
-  border-color: rgba(255,255,255,.15) !important;
+/* Featured/dark cards stay dark */
+.price-card.featured, .pillar-card.featured {
+  background: #1d1d1f !important;
+  border-color: #000 !important;
+  color: #f5f5f7 !important;
 }
-
-.featured-badge, .audience-pill, .coming-badge {
-  background: rgba(255,255,255,.06) !important;
+.price-card.featured *, .pillar-card.featured * {
+  color: inherit !important;
 }
-
-.case-link { border-bottom-color: #FFFFFF !important; }
-.widget-mock { border-left-color: #FFFFFF !important; }
-.memo-preview .verdict {
-  background: rgba(255,255,255,.06) !important;
-  border-left-color: #FFFFFF !important;
-}
-
-/* ── LIGHT-SECTION ACCENTS — black for primary, silver for decorative ── */
-.feature-num {
-  background: #010B1C !important;
+.price-card.featured .card-title,
+.pillar-card.featured h3 {
   color: #FFFFFF !important;
 }
 
-/* Numbered process step counters — silver works as subtle decoration */
-.process-step .step-num,
-.how-card .num,
-.process-bar-item .step,
-.problem-card .num { color: #B8B8B8 !important; }
+/* Section dividers — subtle */
+.sec-divider, .card-divider, .pillar-divider {
+  background: #d2d2d7 !important;
+}
 
-/* Light-section decorative borders */
-.readiness-card { border-top-color: #010B1C !important; }
-.inflection { border-left-color: #010B1C !important; }
-.who-card { border-left-color: #010B1C !important; }
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, .sec-title, .hero h1, .card-title, .pillar-card h3 {
+  color: #1d1d1f;
+  letter-spacing: -0.5px !important;
+  font-weight: 700 !important;
+}
+.hero h1, .case-header h1 {
+  color: #FFFFFF;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+}
 
-/* Section labels stay readable */
-.sec-label,
-.form-card .label-tag,
-.sample-brief .title,
-.sample-brief .section { color: #4a7090; }
+/* Body / muted text */
+p, .sec-desc, .hero-desc, .card-features li, .pillar-features li,
+.card-note, .pillar-note, .form-sub {
+  color: #6e6e73 !important;
+}
 
-/* Dark-bg section labels = silver */
-.hero .sec-label, .case-cta .sec-label, .bottom-cta .sec-label,
+/* Text on dark sections */
+.hero p, .hero-tagline, .hero-desc, .hero-by,
+.bottom-cta p, .case-cta p,
+.how-section p, .widgets-section p, .fo-section p,
+.case-teaser .case-content p,
+.case-header .case-tagline,
+.price-card.featured .card-features li,
+.price-card.featured .card-note,
+.price-card.featured .card-sub,
+.pillar-card.featured .pillar-features li,
+.pillar-card.featured .pillar-note,
+.pillar-card.featured .pillar-sub,
+footer p, .footer-bottom, .footer-col a {
+  color: #a1a1a6 !important;
+}
+
+/* Section labels — Apple uses small caps muted */
+.sec-label, .sec-tag, .featured-badge, .audience-pill, .coming-badge,
+.case-section .label, .form-card .label-tag, .nav-links a,
+.hero-badge, .case-meta span {
+  color: #86868b !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Dark-section section labels — use lighter muted */
+.hero .sec-label, .hero .sec-tag, .hero-badge,
+.bottom-cta .sec-label, .case-cta .sec-label,
 .fo-section .sec-label, .widgets-section .sec-label,
 .how-section .sec-label, .case-header .sec-label,
-.case-teaser .sec-label,
-.sample-brief .title, .sample-brief .section { color: #B8B8B8 !important; }
-
-/* ── HOVER STATES & FOCUS ── */
-.vm-input:focus { border-color: #010B1C !important; background: #fff !important; }
-.field input:focus, .field textarea:focus, .field select:focus {
-  border-color: #010B1C !important;
-  background: #fff !important;
+.featured-badge, .audience-pill, .coming-badge,
+.case-meta span, .case-header .case-meta span {
+  color: #a1a1a6 !important;
 }
 
-/* Hover lift effects — silver borders on light cards */
-.advisor-card:hover { border-color: #B8B8B8 !important; }
-.advisor-cta:hover { background: #010B1C !important; color: #FFFFFF !important; border-color: #010B1C !important; }
+/* Numbered stats / big numbers on dark */
+.hero-stat .num, .stat-cell .num, .case-stat .num,
+.case-link, .deal-sheet .deal-title, .deal-sheet .section-head,
+.deal-sheet .ok, .case-visual .val, .memo-preview .h,
+.fo-card .num, .widget-card .icon-num, .widget-mock .mock-val,
+.pillar-card.featured .who, .stat-v {
+  color: #FFFFFF !important;
+}
 
-/* Outline cards' hover */
-.cta-outline:hover { border-color: #010B1C !important; color: #010B1C !important; background: transparent !important; }
-.price-card.featured .cta-outline:hover {
+/* ── BUTTONS — Apple pills ── */
+.btn-primary, .nav-cta, .submit-btn, .cta-gold,
+.card-cta.cta-gold, .card-cta, .pillar-cta,
+.btn-white, .hero-cta {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 980px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-size: 14px !important;
+  transition: background .15s, transform .15s !important;
+  cursor: pointer;
+}
+.btn-primary:hover, .nav-cta:hover, .submit-btn:hover, .cta-gold:hover,
+.card-cta:hover, .pillar-cta:hover, .btn-white:hover, .hero-cta:hover {
+  background: #424245 !important;
+  color: #FFFFFF !important;
+  transform: none !important;
+}
+
+/* Outline buttons (secondary) */
+.cta-outline, .btn-outline, .btn-ghost {
+  background: transparent !important;
+  color: #1d1d1f !important;
+  border: 1px solid #1d1d1f !important;
+  border-radius: 980px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-size: 14px !important;
+  transition: background .15s, color .15s !important;
+}
+.cta-outline:hover, .btn-outline:hover, .btn-ghost:hover {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+}
+
+/* Buttons on dark sections — invert */
+.hero .btn-primary, .hero .hero-cta, .hero .btn-white,
+.bottom-cta .btn-primary, .case-cta .btn-primary {
+  background: #FFFFFF !important;
+  color: #1d1d1f !important;
+}
+.hero .btn-primary:hover, .hero .hero-cta:hover, .hero .btn-white:hover,
+.bottom-cta .btn-primary:hover, .case-cta .btn-primary:hover {
+  background: #d2d2d7 !important;
+}
+.hero .btn-outline, .hero .btn-ghost,
+.bottom-cta .btn-ghost, .case-cta .btn-ghost {
+  border-color: rgba(255,255,255,.3) !important;
+  color: #FFFFFF !important;
+}
+.hero .btn-outline:hover, .hero .btn-ghost:hover,
+.bottom-cta .btn-ghost:hover, .case-cta .btn-ghost:hover {
+  background: rgba(255,255,255,.1) !important;
   border-color: #FFFFFF !important;
   color: #FFFFFF !important;
-  background: rgba(255,255,255,.05) !important;
 }
 
-/* Valeria — silver border on avatar, black input focus */
-.vm-btn { border-color: #B8B8B8 !important; }
-.vm-head .vm-av { border-color: #B8B8B8 !important; }
-.vm-quick button:hover { border-color: #010B1C !important; color: #010B1C !important; }
-.vm-send:hover:not(:disabled) { background: #B8B8B8 !important; color: #010B1C !important; }
-.vm-msg a { color: #010B1C !important; }
+/* Featured price card CTA — invert */
+.price-card.featured .cta-outline,
+.pillar-card.featured .cta-outline {
+  border-color: rgba(255,255,255,.3) !important;
+  color: #FFFFFF !important;
+  background: transparent !important;
+}
+.price-card.featured .cta-outline:hover,
+.pillar-card.featured .cta-outline:hover {
+  background: #FFFFFF !important;
+  color: #1d1d1f !important;
+  border-color: #FFFFFF !important;
+}
 
-/* Tip bubble */
-.vm-tip { background: #010B1C !important; color: #FFFFFF !important; }
-.vm-tip::after { border-left-color: #010B1C !important; }
+/* ── NAV ── */
+nav {
+  background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid #e5e5ea !important;
+}
+.nav-links a {
+  color: #1d1d1f !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-size: 13px !important;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+.nav-wordmark {
+  color: #1d1d1f !important;
+}
+.nav-cta {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  border-radius: 980px !important;
+  padding: 7px 16px !important;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+.nav-cta:hover {
+  background: #424245 !important;
+  color: #FFFFFF !important;
+}
+
+/* ── FORM INPUTS ── */
+.field input, .field textarea, .field select,
+input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+  background: #f5f5f7 !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  color: #1d1d1f !important;
+  font-size: 14px !important;
+  transition: border-color .15s, background .15s !important;
+}
+.field input:focus, .field textarea:focus, .field select:focus,
+input:focus, textarea:focus, select:focus {
+  background: #FFFFFF !important;
+  border-color: #1d1d1f !important;
+  outline: none !important;
+}
+
+/* ── ACCENT ELEMENTS (no gold!) ── */
+.feat-dot {
+  background: #86868b !important;
+}
+.feature-num {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+}
+.process-step .step-num, .how-card .num,
+.process-bar-item .step, .problem-card .num,
+.icon-num {
+  color: #d2d2d7 !important;
+}
+.who-card, .readiness-card, .inflection {
+  border-left-width: 0 !important;
+  border-top-width: 0 !important;
+  position: relative;
+}
+.who-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px; height: 100%;
+  background: #1d1d1f;
+  border-radius: 2px;
+}
+
+/* Dark-context borders */
+.case-teaser, .deal-sheet, .case-visual, .memo-preview,
+.fo-card, .widget-card, .price-card.featured, .pillar-card.featured,
+.featured-badge, .audience-pill, .coming-badge,
+.key-stats, .stat-cell {
+  border-color: rgba(255,255,255,.12) !important;
+}
+.case-link {
+  border-bottom-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.widget-mock { border-left-color: #FFFFFF !important; }
+.memo-preview .verdict {
+  background: rgba(255,255,255,.08) !important;
+  border-left-color: #FFFFFF !important;
+}
+.featured-badge, .audience-pill, .coming-badge {
+  background: rgba(255,255,255,.1) !important;
+  border-radius: 980px !important;
+  padding: 4px 12px !important;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #000000 !important;
+  color: #a1a1a6 !important;
+}
+.footer-col h4 {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+.footer-col a {
+  color: #a1a1a6 !important;
+  font-size: 13px !important;
+}
+.footer-col a:hover {
+  color: #FFFFFF !important;
+}
+.footer-brand p { color: #a1a1a6 !important; }
+.footer-bottom {
+  color: #6e6e73 !important;
+  border-top-color: rgba(255,255,255,.1) !important;
+}
+
+/* ── VALERIA — Apple-style ── */
+.vm-btn {
+  background: #1d1d1f !important;
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15) !important;
+}
+.vm-btn:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,.25) !important;
+}
+.vm-head { background: #1d1d1f !important; }
+.vm-head .vm-av { border-color: rgba(255,255,255,.2) !important; }
+.vm-head .vm-name { color: #FFFFFF !important; }
+.vm-head .vm-role { color: #a1a1a6 !important; }
+.vm-panel {
+  border-radius: 18px !important;
+  border: 1px solid #e5e5ea !important;
+  box-shadow: 0 24px 64px rgba(0,0,0,.2) !important;
+}
+.vm-msg.you {
+  background: #1d1d1f !important;
+  border-radius: 18px 18px 4px 18px !important;
+}
+.vm-msg.her .vm-bubble {
+  background: #f5f5f7 !important;
+  border: none !important;
+  border-radius: 18px 18px 18px 4px !important;
+  color: #1d1d1f !important;
+}
+.vm-msg.her .vm-who { color: #86868b !important; }
+.vm-quick button {
+  border-radius: 980px !important;
+  background: #FFFFFF !important;
+  border-color: #d2d2d7 !important;
+  color: #1d1d1f !important;
+}
+.vm-quick button:hover {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  border-color: #1d1d1f !important;
+}
+.vm-input {
+  background: #f5f5f7 !important;
+  border: 1px solid transparent !important;
+  border-radius: 18px !important;
+}
+.vm-input:focus {
+  background: #FFFFFF !important;
+  border-color: #1d1d1f !important;
+}
+.vm-send {
+  background: #1d1d1f !important;
+  border-radius: 18px !important;
+}
+.vm-send:hover:not(:disabled) {
+  background: #424245 !important;
+  color: #FFFFFF !important;
+}
+.vm-msg a { color: #1d1d1f !important; }
+.vm-tip {
+  background: #1d1d1f !important;
+  border-radius: 18px !important;
+}
+.vm-tip::after { border-left-color: #1d1d1f !important; }
+
+/* Valeria action buttons (CALL / BRIEF / WHATSAPP / ADVISOR) */
+.vm-action {
+  background: #1d1d1f !important;
+  border-radius: 18px !important;
+  padding: 12px 16px !important;
+}
+.vm-action:hover {
+  background: #424245 !important;
+}
+.vm-action.green {
+  background: #34c759 !important;
+}
+.vm-action.green:hover {
+  background: #30b350 !important;
+  box-shadow: 0 4px 12px rgba(52,199,89,.35) !important;
+}
+
+/* ── ADMIN DASHBOARD ── */
+.bar { background: #000000 !important; }
+.auth-card { border-radius: 18px !important; }
+.auth-card input { border-radius: 12px !important; background: #f5f5f7 !important; }
+.auth-card button {
+  background: #1d1d1f !important;
+  border-radius: 980px !important;
+  padding: 12px 24px !important;
+}
+.tag {
+  border-radius: 980px !important;
+  padding: 3px 10px !important;
+}
+.modal-card { border-radius: 18px !important; }
+.bubble {
+  border-radius: 18px !important;
+}
+.bubble-row.user .bubble { background: #1d1d1f !important; border-radius: 18px 18px 4px 18px !important; }
+.bubble-row.assistant .bubble { background: #f5f5f7 !important; border: none !important; border-radius: 18px 18px 18px 4px !important; }
