@@ -1002,3 +1002,248 @@ footer {
   display: none !important;
 }
 
+
+/* ============================================================
+   APPLE FIX — Story timeline + Team photos
+   ============================================================ */
+
+/* ── Story timeline number nodes ── */
+.story-node {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;     /* fully round, Apple-style */
+  border: none !important;
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15) !important;
+}
+
+.story-timeline::before {
+  background: linear-gradient(#1d1d1f, rgba(29,29,31,0)) !important;
+}
+
+.story-chapter-title {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.4px !important;
+  margin-bottom: 12px !important;
+}
+.story-year {
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  margin-bottom: 8px !important;
+}
+.story-chapter-text {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #a1a1a6 !important;
+}
+
+/* Story closing quote */
+.story-closing {
+  max-width: 800px !important;
+  margin: 80px auto 0 !important;
+  text-align: center !important;
+  padding: 40px 32px !important;
+  background: rgba(255,255,255,.04) !important;
+  border-radius: 18px !important;
+}
+.story-closing-quote {
+  font-size: clamp(22px, 2.2vw, 28px) !important;
+  line-height: 1.45 !important;
+  color: #f5f5f7 !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  letter-spacing: -0.3px !important;
+  margin-bottom: 20px !important;
+}
+.story-closing-attr {
+  font-size: 13px !important;
+  color: #86868b !important;
+  letter-spacing: 0 !important;
+  font-weight: 500 !important;
+}
+
+/* ── Team section ── */
+#team {
+  background: #f5f5f7 !important;
+  color: #1d1d1f !important;
+}
+#team h2, #team .sec-title { color: #1d1d1f !important; }
+#team .sec-desc, #team p { color: #6e6e73 !important; }
+#team .sec-tag {
+  display: inline-block !important;
+  background: #FFFFFF !important;
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Team office group photo at top */
+#team > div > img,
+#team img[src*="team-office"],
+#team img[src*="team-group"] {
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* Team grid — Apple-style rounded photo tiles */
+.team-grid > div, .team-grid > a {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  position: relative;
+  background: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  transition: transform .25s cubic-bezier(.22,.61,.36,1),
+              box-shadow .25s cubic-bezier(.22,.61,.36,1) !important;
+}
+.team-grid > div:hover, .team-grid > a:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+.team-grid img {
+  border-radius: 18px 18px 0 0 !important;
+  display: block !important;
+}
+/* Standalone team photos (not wrapped) */
+.team-grid > img {
+  border-radius: 18px !important;
+}
+
+/* Team overlay — fix gradient color match */
+.team-overlay {
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.85) 100%) !important;
+  border-radius: 18px !important;
+}
+.team-overlay h4, .team-overlay .member-name {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  letter-spacing: -0.2px !important;
+}
+.team-overlay p, .team-overlay .member-role {
+  color: rgba(255,255,255,.85) !important;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Member modal — rounded */
+.member-modal, .modal, #memberModal {
+  border-radius: 24px !important;
+}
+.member-modal img, .modal img {
+  border-radius: 18px !important;
+}
+
+/* ── Clients row — Apple feel ── */
+.clients {
+  background: #FFFFFF !important;
+  padding: 60px 64px !important;
+}
+.clients-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 40px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+.client-name, .client-link {
+  color: #86868b !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  transition: color .15s ease, opacity .15s ease !important;
+}
+.client-link:hover {
+  color: #1d1d1f !important;
+}
+.client-logo {
+  max-height: 36px !important;
+  opacity: .6 !important;
+  transition: opacity .15s ease, filter .15s ease !important;
+  filter: grayscale(100%) !important;
+}
+.client-logo:hover {
+  opacity: 1 !important;
+  filter: grayscale(0%) !important;
+}
+
+/* ── Process section steps ── */
+.proc-step {
+  background: #FFFFFF !important;
+  border: 1px solid #e5e5ea !important;
+  border-radius: 18px !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+}
+.proc-step:hover {
+  border-color: #d2d2d7 !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+.proc-circle {
+  border: none !important;
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 auto 18px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15) !important;
+}
+.proc-name {
+  color: #1d1d1f !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+  margin-bottom: 8px !important;
+}
+.proc-desc {
+  color: #6e6e73 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+.section.process {
+  background: #f5f5f7 !important;
+}
+.section.process .sec-tag {
+  display: inline-block !important;
+  background: #FFFFFF !important;
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* ── Final CTA section (bottom) ── */
+.cta-section {
+  background: #000000 !important;
+  padding: clamp(80px, 12vh, 140px) 64px !important;
+  text-align: center !important;
+}
+.cta-section h2 {
+  font-size: clamp(40px, 5vw, 64px) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 32px !important;
+}
+
