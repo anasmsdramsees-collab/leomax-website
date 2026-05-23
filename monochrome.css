@@ -706,3 +706,299 @@ footer {
 }
 .bubble-row.user .bubble { background: #1d1d1f !important; border-radius: 18px 18px 4px 18px !important; }
 .bubble-row.assistant .bubble { background: #f5f5f7 !important; border: none !important; border-radius: 18px 18px 18px 4px !important; }
+
+/* ============================================================
+   APPLE FIX — round the sharp legacy cards
+   About / Founder / Path Finder
+   ============================================================ */
+
+/* ── Path Finder cards (#paths section) ── */
+#paths > div > a {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  border: 1px solid #e5e5ea !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04) !important;
+  transition: transform .25s cubic-bezier(.22,.61,.36,1),
+              box-shadow .25s cubic-bezier(.22,.61,.36,1),
+              border-color .25s ease !important;
+}
+#paths > div > a:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+  transform: translateY(-4px) !important;
+  border-color: #d2d2d7 !important;
+}
+/* The dark featured card */
+#paths > div > a[style*="background:#010B1C"] {
+  background: #1d1d1f !important;
+  border-color: #000000 !important;
+}
+#paths > div > a[style*="background:#010B1C"]:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,.25) !important;
+  border-color: #1d1d1f !important;
+}
+
+/* ── About section "Who We Are" — modernize ── */
+.about-box {
+  background: #1d1d1f !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 56px 48px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,.08);
+}
+.about-box-inner {
+  border: none !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.about-box-lion {
+  width: clamp(160px, 18vw, 200px) !important;
+  height: clamp(160px, 18vw, 200px) !important;
+  margin: 0 auto 28px !important;
+}
+.about-name {
+  font-size: 32px !important;
+  letter-spacing: -1px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 8px !important;
+}
+.about-sub {
+  font-size: 14px !important;
+  color: #a1a1a6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  margin-bottom: 36px !important;
+}
+.pillars {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+  margin-top: 28px !important;
+}
+.pillar {
+  background: rgba(255,255,255,.04) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 20px 18px !important;
+  text-align: left !important;
+}
+.pillar-num {
+  font-size: 11px !important;
+  color: #86868b !important;
+  letter-spacing: 0 !important;
+  font-weight: 500 !important;
+  margin-bottom: 8px !important;
+}
+.pillar-t {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 6px !important;
+  letter-spacing: -0.2px !important;
+}
+.pillar-d {
+  font-size: 13px !important;
+  color: #a1a1a6 !important;
+  line-height: 1.5 !important;
+}
+
+/* About — right-side text */
+.section.about {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 80px !important;
+  align-items: center !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+}
+.section.about .sec-tag {
+  display: inline-block !important;
+  background: #f5f5f7 !important;
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  margin-bottom: 18px !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+@media (max-width: 900px) {
+  .section.about {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .about-box {
+    padding: 40px 32px !important;
+  }
+  .pillars {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── Founder card ── */
+.founder-card {
+  background: #1d1d1f !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 56px 48px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,.08);
+}
+.founder-avatar {
+  width: 100% !important;
+  height: 340px !important;
+  border: none !important;
+  border-radius: 18px !important;
+  margin: 0 0 24px 0 !important;
+  background: #000000 !important;
+  overflow: hidden !important;
+}
+.founder-name {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 8px !important;
+}
+.founder-title {
+  font-size: 14px !important;
+  color: #a1a1a6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+.founder-quote {
+  font-size: clamp(20px, 2vw, 26px) !important;
+  line-height: 1.45 !important;
+  color: #f5f5f7 !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  margin-bottom: 28px !important;
+  letter-spacing: -0.3px !important;
+}
+.quote-mark {
+  font-size: 64px !important;
+  color: rgba(255,255,255,.15) !important;
+  line-height: .5 !important;
+  font-family: Georgia, serif !important;
+  margin-bottom: 24px !important;
+}
+.founder-sig {
+  font-size: 14px !important;
+  color: #a1a1a6 !important;
+  font-weight: 500 !important;
+}
+
+/* Founder section layout */
+.section.founder {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 80px !important;
+  align-items: center !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+}
+.section.founder .sec-tag {
+  display: inline-block !important;
+  background: #f5f5f7 !important;
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  margin-bottom: 18px !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+@media (max-width: 900px) {
+  .section.founder {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .founder-card {
+    padding: 40px 32px !important;
+  }
+  .founder-avatar {
+    height: 300px !important;
+  }
+}
+
+/* ── Founder story section (dark) — soften ── */
+.founder-story {
+  background: #000000 !important;
+  border-top: none !important;
+  padding: clamp(80px, 10vh, 130px) 64px !important;
+}
+.story-intro {
+  font-size: 19px !important;
+  line-height: 1.6 !important;
+  color: #a1a1a6 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+.story-header .sec-title {
+  color: #FFFFFF !important;
+}
+
+/* ── Systems section ── */
+.section.systems {
+  background: #f5f5f7 !important;
+}
+.sys-header .sec-tag {
+  display: inline-block !important;
+  background: #FFFFFF !important;
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  color: #86868b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+.sys-card {
+  background: #FFFFFF !important;
+  border: 1px solid #e5e5ea !important;
+  border-radius: 18px !important;
+  padding: 36px 32px !important;
+}
+.sys-card:hover {
+  border-color: #d2d2d7 !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+
+/* ── Stats — already light gray bg, refine ── */
+.stat {
+  border-right: none !important;
+  border-left: none !important;
+}
+
+/* ── Hero — ensure text readability + larger lion ── */
+.hero-badge {
+  background: rgba(255,255,255,.1) !important;
+  color: #f5f5f7 !important;
+  border-radius: 980px !important;
+  padding: 6px 16px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.badge-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #34c759 !important;
+  display: inline-block !important;
+}
+.hero-by {
+  font-size: 14px !important;
+  color: #a1a1a6 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  margin-bottom: 4px !important;
+}
+.hero-divider {
+  display: none !important;
+}
+
