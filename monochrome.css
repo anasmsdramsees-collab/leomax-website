@@ -1,7 +1,227 @@
 /* ============================================================
    LEOMAX — Apple-inspired monochrome system
-   ============================================================
-   Tokens:
+   ============================================================ */
+
+/* ── APPLE TYPOGRAPHY — SF Pro Display via system stack ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, * {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Inter', 'Segoe UI', sans-serif !important;
+}
+
+/* SF Pro fallback via Apple's CDN (works on all OS) */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ── APPLE TYPOGRAPHY SCALE — Hero is HUGE ── */
+.hero h1, .case-header h1 {
+  font-size: clamp(56px, 9vw, 120px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -2px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+}
+.hero .hero-tagline, .hero-tagline {
+  font-size: clamp(24px, 3.5vw, 40px) !important;
+  font-weight: 500 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 18px !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+}
+.hero .hero-desc, .hero-desc, .hero p {
+  font-size: clamp(17px, 1.5vw, 21px) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  max-width: 680px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: #a1a1a6 !important;
+}
+
+/* Big section titles */
+.sec-title {
+  font-size: clamp(40px, 5vw, 64px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  color: #1d1d1f !important;
+  margin-bottom: 18px !important;
+}
+.hero .sec-title, .bottom-cta .sec-title, .case-cta .sec-title,
+.fo-section .sec-title, .widgets-section .sec-title, .how-section .sec-title,
+.case-header .sec-title {
+  color: #FFFFFF !important;
+}
+
+/* Section descriptions — bigger, more breathable */
+.sec-desc {
+  font-size: clamp(17px, 1.4vw, 21px) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  max-width: 720px !important;
+  color: #6e6e73 !important;
+}
+
+/* H3 / card titles */
+h3, .card-title, .pillar-card h3, .advisor-name {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.25 !important;
+}
+
+/* ── APPLE SPACING — generous ── */
+.hero {
+  padding-top: clamp(80px, 12vh, 140px) !important;
+  padding-bottom: clamp(80px, 12vh, 140px) !important;
+  text-align: center !important;
+}
+section, .section {
+  padding-top: clamp(80px, 10vh, 130px) !important;
+  padding-bottom: clamp(80px, 10vh, 130px) !important;
+}
+.sec-divider {
+  display: none !important; /* Apple doesn't use dividers — uses whitespace */
+}
+
+/* ── APPLE LION ICON — bigger ── */
+.hero-lion-wrap {
+  width: clamp(120px, 18vw, 200px) !important;
+  height: clamp(120px, 18vw, 200px) !important;
+  margin: 0 auto 32px !important;
+}
+
+/* ── APPLE BUTTONS — pill, more padding ── */
+.btn-primary, .nav-cta, .submit-btn, .cta-gold, .card-cta, .pillar-cta,
+.btn-white, .hero-cta, .btn-outline, .btn-ghost, .cta-outline {
+  padding: 12px 28px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+.hero .btn-primary, .hero .btn-white, .hero .hero-cta,
+.hero .btn-outline, .hero .btn-ghost {
+  padding: 14px 32px !important;
+  font-size: 16px !important;
+}
+.hero-btns {
+  display: flex !important;
+  gap: 14px !important;
+  justify-content: center !important;
+  margin-top: 32px !important;
+  flex-wrap: wrap !important;
+}
+
+/* ── APPLE STATS — minimal, large ── */
+.stats {
+  background: #f5f5f7 !important;
+  padding: 80px 64px !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 0 !important;
+  max-width: none !important;
+}
+.stat { text-align: center !important; padding: 0 24px !important; }
+.stat-v, .stat .stat-v {
+  font-size: clamp(40px, 5vw, 64px) !important;
+  font-weight: 700 !important;
+  color: #1d1d1f !important;
+  letter-spacing: -1px !important;
+  line-height: 1 !important;
+}
+.stat-l, .stat .stat-l {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6e6e73 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  margin-top: 10px !important;
+}
+
+/* ── APPLE NAV — cleaner, slim ── */
+nav {
+  padding: 16px 64px !important;
+  min-height: 44px !important;
+}
+.nav-links { gap: 24px !important; }
+.nav-wordmark { font-size: 17px !important; letter-spacing: 0 !important; }
+
+/* ── PILL TAGS / BADGES ── */
+.hero-badge, .featured-badge, .audience-pill, .coming-badge, .sec-tag {
+  border-radius: 980px !important;
+  padding: 5px 14px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  display: inline-block !important;
+}
+.hero-badge {
+  background: rgba(255,255,255,.1) !important;
+  color: #f5f5f7 !important;
+  margin-bottom: 24px !important;
+}
+
+/* ── CARDS — Apple tile feel ── */
+.price-card, .pillar-card, .who-card, .fo-card, .widget-card,
+.advisor-card, .problem-card, .trust-item, .faq-item,
+.sys-card, .fw-card, .blog-card, .readiness-card {
+  padding: 36px 32px !important;
+}
+.member-card {
+  padding: 24px !important;
+}
+
+/* Hover lift — gentler, smoother */
+.price-card:hover, .pillar-card:hover, .who-card:hover, .fo-card:hover,
+.advisor-card:hover, .problem-card:hover, .trust-item:hover, .faq-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+
+/* ── FOOTER — Apple's clean footer ── */
+footer {
+  padding: 60px 64px 30px !important;
+  font-size: 12px !important;
+}
+.footer-col h4 {
+  font-size: 12px !important;
+  margin-bottom: 14px !important;
+}
+.footer-col a {
+  font-size: 12px !important;
+  line-height: 1.8 !important;
+}
+.footer-bottom {
+  font-size: 11px !important;
+  padding-top: 18px !important;
+  margin-top: 36px !important;
+  letter-spacing: 0 !important;
+}
+
+/* ── MOBILE — Apple keeps it big ── */
+@media (max-width: 720px) {
+  nav { padding: 12px 18px !important; }
+  .hero { padding: 60px 24px !important; }
+  section, .section { padding: 60px 24px !important; }
+  .stats { padding: 50px 24px !important; }
+  footer { padding: 40px 24px 24px !important; }
+}
+
+/* ============================================================
+   Color tokens (kept below — overrides earlier in cascade)
    --apple-black:    #000000   true black (dark sections)
    --apple-dark:     #1d1d1f   dark text on light bg
    --apple-white:    #FFFFFF   light primary
