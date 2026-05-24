@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Account Brief — Sample · LEOMAX</title>
+<meta name="description" content="Sample Account Brief deliverable from LEOMAX — full intelligence package on any Saudi target company, delivered in 24 hours.">
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#FFFFFF;color:#1d1d1f;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-bottom:1px solid #e5e5ea;padding:14px 64px;display:flex;justify-content:space-between;align-items:center}
+nav .brand{display:flex;align-items:center;gap:14px}
+nav .brand img{height:30px}
+nav .brand-text{font-size:11px;color:#86868b;font-weight:500}
+nav .brand-text strong{color:#1d1d1f}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-actions a{font-size:13px;color:#1d1d1f;text-decoration:none;font-weight:500}
+.nav-cta{background:#1d1d1f;color:#fff;padding:8px 18px;border-radius:980px}
+.nav-cta:hover{background:#424245}
+
+.sample-banner{background:#FFF7E6;border-bottom:1px solid #FFE4A0;padding:10px 64px;text-align:center;font-size:13px;color:#7A5C00}
+.sample-banner strong{color:#5C4400}
+
+.case-picker{padding:14px 64px;background:#fafafa;border-bottom:1px solid #e5e5ea;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.case-picker label{font-size:12px;color:#86868b;font-weight:500}
+.case-picker select{padding:7px 12px;border-radius:980px;border:1px solid #d2d2d7;background:#fff;font-size:13px;color:#1d1d1f;cursor:pointer;font-family:inherit}
+.case-picker .hint{font-size:11px;color:#86868b;margin-left:auto}
+
+.hero{background:#000;color:#fff;padding:clamp(80px,12vh,120px) 64px;text-align:center}
+.hero .pill{display:inline-block;background:rgba(255,255,255,.1);color:#f5f5f7;padding:6px 16px;border-radius:980px;font-size:13px;font-weight:500;margin-bottom:24px}
+.hero h1{font-size:clamp(44px,6vw,72px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px}
+.hero .sub{font-size:clamp(18px,1.8vw,24px);color:#a1a1a6;font-weight:400;max-width:600px;margin:0 auto;line-height:1.4}
+.hero .delivered{font-size:13px;color:#86868b;margin-top:32px;letter-spacing:0}
+.hero .delivered strong{color:#fff}
+
+section{padding:clamp(60px,8vh,90px) 64px;max-width:1100px;margin:0 auto}
+section.gray{max-width:none;background:#f5f5f7}
+section .inner{max-width:1100px;margin:0 auto}
+.sec-pill{display:inline-block;background:#f5f5f7;border-radius:980px;padding:5px 14px;font-size:12px;color:#86868b;font-weight:500;margin-bottom:18px}
+section.gray .sec-pill{background:#FFF}
+h2{font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:14px}
+.lead{font-size:16px;color:#6e6e73;line-height:1.55;max-width:780px;margin-bottom:32px}
+
+/* SNAPSHOT — single block */
+.snapshot{background:#fff;border-radius:24px;border:1px solid #e5e5ea;padding:36px 40px;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-top:24px}
+.snapshot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px}
+.snap-item{}
+.snap-label{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:1px;font-weight:500;margin-bottom:6px}
+.snap-value{font-size:18px;font-weight:600;color:#1d1d1f;letter-spacing:-0.3px}
+
+/* DECISION MAKERS */
+.dms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px}
+.dm-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:24px 26px}
+.dm-name{font-size:16px;font-weight:600;color:#1d1d1f;letter-spacing:-0.2px;margin-bottom:4px}
+.dm-title{font-size:13px;color:#86868b;font-weight:500;margin-bottom:14px}
+.dm-meta{font-size:13px;color:#1d1d1f;line-height:1.6}
+.dm-meta div{padding:5px 0;border-bottom:1px solid #f5f5f7;display:flex;justify-content:space-between;gap:10px}
+.dm-meta div:last-child{border-bottom:none}
+.dm-meta div span:first-child{color:#86868b;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:500;align-self:center;flex-shrink:0}
+.dm-meta div span:last-child{font-weight:500;text-align:right}
+
+/* TIMELINE / ACTIVITY */
+.activity{margin-top:24px;background:#fff;border-radius:18px;border:1px solid #e5e5ea;overflow:hidden}
+.act-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:18px 24px;border-bottom:1px solid #f5f5f7;align-items:start}
+.act-item:last-child{border-bottom:none}
+.act-date{font-size:12px;color:#86868b;font-weight:500;padding-top:2px}
+.act-content{font-size:14px;line-height:1.55;color:#1d1d1f}
+.act-content strong{color:#1d1d1f;font-weight:600}
+.act-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:980px;font-weight:600;margin-right:8px;text-transform:uppercase;letter-spacing:0.5px}
+.act-tag.signal{background:#e8f5ee;color:#1d8348}
+.act-tag.risk{background:#fff5e0;color:#a86b00}
+.act-tag.info{background:#f5f5f7;color:#6e6e73}
+
+/* SIGNALS / BUYING */
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.signal-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:22px 24px}
+.signal-card .what{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:500}
+.signal-card .answer{font-size:15px;color:#1d1d1f;line-height:1.55}
+.signal-card .answer strong{font-weight:600}
+
+/* ENTRY ANGLE */
+.angle{background:#1d1d1f;color:#fff;border-radius:24px;padding:40px 36px;margin-top:24px}
+.angle-label{font-size:11px;color:#a1a1a6;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:500}
+.angle-hypothesis{font-size:clamp(20px,2vw,26px);font-weight:600;color:#fff;line-height:1.4;letter-spacing:-0.3px;margin-bottom:20px}
+.angle-rationale{font-size:14px;color:#a1a1a6;line-height:1.65}
+
+/* WARM PATH */
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
+.path-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:24px 26px}
+.path-prob{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:980px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.path-prob.high{background:#e8f5ee;color:#1d8348}
+.path-prob.med{background:#fff5e0;color:#a86b00}
+.path-prob.low{background:#fce8e8;color:#a83232}
+.path-to{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:0.5px;font-weight:500;margin-bottom:4px}
+.path-via{font-size:15px;color:#1d1d1f;font-weight:600;letter-spacing:-0.2px;margin-bottom:10px}
+.path-detail{font-size:13px;color:#6e6e73;line-height:1.55}
+
+/* CTA */
+.cta-section{background:#000;color:#fff;padding:clamp(80px,10vh,120px) 64px;text-align:center}
+.cta-section h2{color:#fff;font-size:clamp(32px,4vw,56px)}
+.cta-section p{color:#a1a1a6;font-size:18px;max-width:600px;margin:18px auto 32px}
+.cta-btn{display:inline-block;background:#fff;color:#1d1d1f;padding:14px 32px;border-radius:980px;font-size:15px;font-weight:500;text-decoration:none}
+.cta-btn.outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);margin-left:10px}
+
+footer{background:#000;color:#86868b;padding:32px 64px;text-align:center;font-size:12px}
+
+@media (max-width:760px){
+  nav,section,.cta-section,footer,.case-picker,.sample-banner,.hero{padding-left:24px !important;padding-right:24px !important}
+  .act-item{grid-template-columns:1fr !important;gap:6px !important}
+  .act-date{font-size:11px}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<nav>
+  <a href="LEOMAX_Website_Design.html" style="text-decoration:none">
+    <div class="brand">
+      <img src="logo.png" alt="LEOMAX">
+      <div class="brand-text">Account Brief · <strong>Sample Deliverable</strong></div>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <a href="bd-services.html">BD &amp; Access</a>
+    <a class="nav-cta" href="account-brief.html">Request Yours →</a>
+  </div>
+</nav>
+
+<div class="sample-banner">
+  📌 <strong>Sample / illustration only.</strong> A real Account Brief uses live data sourced within 24 hours of request. Names below are public; details are representative.
+</div>
+
+<div class="case-picker">
+  <label for="caseSelect">View brief for:</label>
+  <select id="caseSelect" onchange="loadCase(this.value)"></select>
+  <span class="hint">Same framework, applied to different KSA targets.</span>
+</div>
+
+<div id="content"></div>
+
+<div class="cta-section">
+  <h2>Get a brief on the company YOU want to reach.</h2>
+  <p>Tell us the name. We deliver a full intelligence brief within 24 hours. Free. One per visitor. No catch.</p>
+  <a href="account-brief.html" class="cta-btn">Request Your Brief →</a>
+  <a href="bd-services.html" class="cta-btn outline">Back to BD &amp; Access</a>
+</div>
+
+<footer>© LEOMAX 2026 · Sample for illustration only. Numbers and signals shown are representative.</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+
+<script>
+const TARGETS = {
+  stc: {
+    name: 'STC (Saudi Telecom Company)',
+    sector: 'Telecom · Digital Infrastructure',
+    revenue: 'SAR 76.1B (2024)',
+    employees: '~22,000',
+    stage: 'Public (TADAWUL: 7010)',
+    hq: 'Riyadh',
+    snapshot: 'KSA market leader in mobile, fixed-line, enterprise IT, and digital services. Aggressive Vision 2030 investments in cloud (stc Cloud) and fintech (stc pay). Active corporate venture arm.',
+    decisionMakers: [
+      {name:'Olayan M. Alwetaid', title:'Group CEO', tenure:'Since 2022', bg:'ex-stc Solutions CEO', signals:'Aggressive on AI partnerships'},
+      {name:'Ameen F. Al-Romaily', title:'Group CFO', tenure:'Since 2023', bg:'ex-MOI Saudi', signals:'Capex discipline tightening'},
+      {name:'Haitham A. Al-Ohali', title:'GM, stc Business', tenure:'Since 2020', bg:'10+ yrs telecom', signals:'Owner of enterprise budget'},
+      {name:'Sultan Al-Rashed', title:'VP, Procurement', tenure:'Since 2021', bg:'ex-Aramco', signals:'Gatekeeper for vendor onboarding'}
+    ],
+    activity: [
+      {date:'Q4 2025', tag:'signal', content:'<strong>SAR 4.2B</strong> committed to AI/cloud infrastructure expansion (3-year horizon).'},
+      {date:'Sep 2025', tag:'signal', content:'New <strong>"AI for Industries"</strong> business unit launched — looking for sector partners.'},
+      {date:'Aug 2025', tag:'info', content:'Acquired <strong>40% stake in Mobily DC</strong> data center for SAR 1.1B.'},
+      {date:'Jul 2025', tag:'risk', content:'CFO publicly stated <strong>"vendor consolidation"</strong> as 2026 priority — 30% reduction target.'},
+      {date:'Jun 2025', tag:'signal', content:'Hired ex-Microsoft VP as <strong>Head of AI Strategy</strong> — first 90 days = ecosystem mapping.'},
+      {date:'May 2025', tag:'info', content:'Q1 earnings beat — <strong>+9% YoY revenue</strong>, fintech (stc pay) +47%.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Q1 + Q3 budget cycles. Vendor onboarding takes <strong>4-6 months</strong> for new suppliers.'},
+      {q:'Who signs?', a:'Up to SAR 5M: division head. SAR 5-20M: Group CFO + CEO. <strong>Above SAR 20M:</strong> Board.'},
+      {q:'Current vendors?', a:'Heavy on Huawei, Nokia, Cisco at infra. <strong>Open</strong> at AI/cloud orchestration layer.'},
+      {q:'Buying signals?', a:'Recent RFI on <strong>"AI-enabled CX platform"</strong>. CFO consolidation memo public. Hired AI strategy lead.'}
+    ],
+    angle: {
+      hypothesis: 'STC has SAR 4.2B in AI/cloud capex but lacks a unified vendor-orchestration layer. The "vendor consolidation" mandate creates urgency for a single-pane-of-glass solution.',
+      rationale: 'The new Head of AI Strategy is doing ecosystem mapping — first 90 days. Hitting now lets you become part of his strategic thinking BEFORE the formal RFP. Position as "infrastructure simplification" rather than yet-another-vendor. CFO mandate of vendor consolidation = your buyer needs ammunition.'
+    },
+    paths: [
+      {prob:'high', to:'Haitham Al-Ohali (GM stc Business)', via:'Anas Elimam direct relationship — met at LEAP 2025', detail:'Anas has a 2-degree relationship via [redacted]. Confirmed warm via WhatsApp. Best timing: post-Eid Al-Adha. Suggested intro template prepared.'},
+      {prob:'med', to:'Sultan Al-Rashed (VP Procurement)', via:'2nd-degree LinkedIn — former colleague at Aramco', detail:'Tougher path — procurement is gatekeeper, not enabler. Use only if Haitham path stalls.'},
+      {prob:'high', to:'New Head of AI Strategy (ex-MSFT)', via:'LinkedIn cold + LEOMAX network', detail:'Highest leverage: he is mapping ecosystem now. Approach as peer, not vendor. Frame: research conversation, not pitch.'}
+    ]
+  },
+  aramco: {
+    name: 'Saudi Aramco',
+    sector: 'Energy · Petrochemicals · Tech ventures',
+    revenue: 'USD 478B (2024)',
+    employees: '~73,000',
+    stage: 'Public (TADAWUL: 2222)',
+    hq: 'Dhahran',
+    snapshot: 'World\'s most profitable company. Major Vision 2030 anchor: digital transformation, downstream expansion, ventures arm (Wa\'ed). Buying patterns are slow but high-value.',
+    decisionMakers: [
+      {name:'Amin H. Nasser', title:'President & CEO', tenure:'Since 2015', bg:'30+ yrs Aramco', signals:'Pro-AI but conservative procurement'},
+      {name:'Ziad T. Al-Murshed', title:'EVP & CFO', tenure:'Since 2021', bg:'ex-investment banking', signals:'Capex discipline'},
+      {name:'Tareq Al-Tunisi', title:'EVP, Technology & Innovation', tenure:'Since 2022', bg:'ex-McKinsey', signals:'Pulls vendors directly when needed'},
+      {name:'Wassim Khoury', title:'VP, Digital & IT', tenure:'Since 2020', bg:'ex-IBM Saudi', signals:'Day-to-day budget owner'}
+    ],
+    activity: [
+      {date:'Dec 2025', tag:'signal', content:'<strong>USD 1.5B</strong> tech investment announced — focus on AI, robotics, advanced analytics.'},
+      {date:'Nov 2025', tag:'info', content:'Wa\'ed Ventures led <strong>USD 50M Series B</strong> in Saudi AI startup.'},
+      {date:'Oct 2025', tag:'signal', content:'Tareq Al-Tunisi <strong>public keynote</strong>: "We need 10x more AI experimentation."'},
+      {date:'Sep 2025', tag:'info', content:'New <strong>Aramco Digital</strong> entity established — separate procurement.'},
+      {date:'Aug 2025', tag:'risk', content:'Vendor preferred-supplier list <strong>frozen until Q2 2026</strong> — getting added is hardest path.'},
+      {date:'Jul 2025', tag:'signal', content:'Hosted <strong>"Innovation Sandbox"</strong> for vendors — bypasses normal procurement.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Annual budget process Dec-Feb. POCs run continuously. <strong>Sandbox program</strong> = fast path.'},
+      {q:'Who signs?', a:'Up to USD 2M: VP level. USD 2-20M: EVP. <strong>Above USD 20M:</strong> Management Committee.'},
+      {q:'Current vendors?', a:'Microsoft, IBM, Oracle, SAP at enterprise IT. Cogniance + Quantiphi for AI/data science.'},
+      {q:'Buying signals?', a:'Aramco Digital entity stood up Q3 — new procurement lane. <strong>Sandbox program</strong> accepting new vendors.'}
+    ],
+    angle: {
+      hypothesis: 'Aramco Digital is a separate entity with separate procurement — bypasses the frozen preferred-supplier list. The Sandbox program lets you start with a POC, not a vendor pitch.',
+      rationale: 'Don\'t fight the procurement freeze — go around it. Aramco Digital is set up to move faster. Position as "Sandbox candidate" rather than "preferred supplier candidate." Tareq Al-Tunisi has explicitly said they need 10x more experimentation — his ask gives you cover.'
+    },
+    paths: [
+      {prob:'med', to:'Tareq Al-Tunisi (EVP T&I)', via:'2nd-degree via ex-McKinsey alumni network', detail:'Senior, time-poor. Approach via written brief, not meeting request. He responds to substance.'},
+      {prob:'high', to:'Aramco Sandbox Program', via:'Public application + LEOMAX advisory letter', detail:'Best entry. 6-week POC structure. If POC succeeds, fast-tracked to procurement.'},
+      {prob:'low', to:'Amin Nasser (CEO)', via:'No path mapped — too senior', detail:'Don\'t target. Use only if escalation needed.'}
+    ]
+  },
+  saudia: {
+    name: 'Saudia (Saudi Arabian Airlines)',
+    sector: 'Aviation · Travel · Government-linked',
+    revenue: 'SAR 21B (2024 est.)',
+    employees: '~13,000',
+    stage: 'State-owned, in IPO prep',
+    hq: 'Jeddah',
+    snapshot: 'Flag carrier in pre-IPO transformation. Significant Vision 2030 alignment around tourism + aviation. Buying decisions slow but procurement reform underway.',
+    decisionMakers: [
+      {name:'Ibrahim Al-Omar', title:'Director General', tenure:'Since 2018', bg:'ex-MEFIC Capital', signals:'IPO discipline, vendor reform'},
+      {name:'Mansour Al-Mansour', title:'CFO', tenure:'Since 2022', bg:'ex-Big-4', signals:'Tight controls pre-IPO'},
+      {name:'Mishaal Al-Mershed', title:'EVP, Digital Transformation', tenure:'Since 2023', bg:'ex-Almosafer', signals:'Active vendor evaluator'},
+      {name:'Khalid Al-Suwailem', title:'VP, Customer Experience', tenure:'Since 2021', bg:'ex-Emirates', signals:'Owns CX platform decisions'}
+    ],
+    activity: [
+      {date:'Nov 2025', tag:'signal', content:'<strong>SAR 1.8B</strong> digital transformation budget announced — 3-year horizon.'},
+      {date:'Oct 2025', tag:'info', content:'IPO advisors <strong>HSBC + Saudi Fransi</strong> appointed — IPO targeted late 2026.'},
+      {date:'Sep 2025', tag:'signal', content:'CX revamp <strong>RFP issued</strong> for AI-driven customer service platform.'},
+      {date:'Aug 2025', tag:'risk', content:'Procurement system <strong>migrated to SAP Ariba</strong> — all new vendors must onboard via system.'},
+      {date:'Jul 2025', tag:'info', content:'New <strong>Riyadh Air</strong> launching as competitor — pressure on Saudia to differentiate.'},
+      {date:'Jun 2025', tag:'signal', content:'Mishaal Al-Mershed <strong>publicly searching</strong> for "AI co-pilot" partners.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Annual cycle. <strong>Pre-IPO acceleration</strong> creating urgency in 2026 for differentiation tech.'},
+      {q:'Who signs?', a:'EVP level signs up to SAR 8M. CFO + DG above. <strong>Board approval</strong> for SAR 20M+.'},
+      {q:'Current vendors?', a:'Amadeus (PSS), SAP (ERP), Salesforce (CRM). <strong>Gap at AI/CX layer.</strong>'},
+      {q:'Buying signals?', a:'Active CX revamp RFP. Riyadh Air competitive pressure. Pre-IPO differentiation pressure.'}
+    ],
+    angle: {
+      hypothesis: 'Riyadh Air launch = existential pressure on Saudia. They need to differentiate via CX before IPO. Mishaal Al-Mershed is openly looking for AI partners — strike while window is open.',
+      rationale: 'IPO timing creates a 12-month decision window. After IPO, procurement freezes. Pre-IPO = appetite for differentiation moves. Riyadh Air launch (Q3 2026) means Saudia needs CX wins fast. Frame as "competitive moat for IPO story."'
+    },
+    paths: [
+      {prob:'high', to:'Mishaal Al-Mershed (EVP Digital)', via:'LinkedIn direct (he\'s active) + LEOMAX intro letter', detail:'Best path. He\'s openly searching. Respond to his public posts as warm-up before formal outreach.'},
+      {prob:'med', to:'Khalid Al-Suwailem (VP CX)', via:'2nd-degree via ex-Emirates colleague', detail:'Strong technical evaluator. Use for POC-level engagement.'},
+      {prob:'med', to:'Active CX RFP', via:'Standard procurement application', detail:'Slow path but legitimate. Combine with warm-path to Mishaal for acceleration.'}
+    ]
+  },
+  sabic: {
+    name: 'SABIC',
+    sector: 'Petrochemicals · Industrial · Manufacturing',
+    revenue: 'SAR 137B (2024)',
+    employees: '~32,000',
+    stage: 'Public (TADAWUL: 2010), Aramco majority',
+    hq: 'Riyadh',
+    snapshot: 'Global petrochemicals leader. Heavy industrial buyer with conservative procurement. Vision 2030 alignment via Saudization of supply + sustainability investments.',
+    decisionMakers: [
+      {name:'Abdulrahman Al-Fageeh', title:'CEO', tenure:'Since 2022', bg:'30+ yrs SABIC', signals:'Sustainability + efficiency mandate'},
+      {name:'Mansoor Al-Murshed', title:'CFO', tenure:'Since 2024', bg:'ex-Banque Saudi Fransi', signals:'New, building team'},
+      {name:'Bob Maughon', title:'EVP, Technology & Innovation', tenure:'Since 2020', bg:'ex-Dow Chemical', signals:'Pulls vendors for sustainability tech'},
+      {name:'Khalid Al-Otaibi', title:'VP, Digital & Analytics', tenure:'Since 2023', bg:'ex-Aramco', signals:'Active in AI/data partnerships'}
+    ],
+    activity: [
+      {date:'Q4 2025', tag:'signal', content:'<strong>USD 800M</strong> committed to AI for manufacturing — 5-year roadmap.'},
+      {date:'Oct 2025', tag:'info', content:'<strong>Sustainability strategy refresh</strong> — net-zero by 2050.'},
+      {date:'Sep 2025', tag:'risk', content:'<strong>50+ vendor consolidation</strong> announced for non-core IT.'},
+      {date:'Aug 2025', tag:'signal', content:'Hired ex-IBM as <strong>Chief AI Officer</strong> — building strategy from scratch.'},
+      {date:'Jul 2025', tag:'info', content:'Q2 earnings — petchem margins compressed, cost-out focus.'},
+      {date:'Jun 2025', tag:'signal', content:'Partnership with <strong>Microsoft for AI co-pilot</strong> rollout to 5,000 engineers.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Slow buyer. <strong>9-month</strong> typical procurement cycle. Q1 budget setting.'},
+      {q:'Who signs?', a:'Bob Maughon for tech innovations. Mansoor (CFO) up to USD 5M. <strong>CEO + Board</strong> above.'},
+      {q:'Current vendors?', a:'Microsoft (Azure), IBM, SAP, Honeywell at industrial. <strong>New CAIO</strong> = new vendor opportunity.'},
+      {q:'Buying signals?', a:'New CAIO building strategy. USD 800M AI commitment. Margin compression = cost-saving tech buying.'}
+    ],
+    angle: {
+      hypothesis: 'SABIC has a new CAIO from IBM — his first 6 months = strategy formation. Get into his thinking now and you\'re part of the roadmap. Frame as cost-saving AI for petchem operations.',
+      rationale: 'New CAIO means new procurement appetite. Margin compression creates demand for cost-saving (not just efficiency-improving) AI. Microsoft Azure existing + AI commitment means your solution must be Azure-friendly. Sustainability angle resonates at CEO level.'
+    },
+    paths: [
+      {prob:'high', to:'CAIO (new, ex-IBM)', via:'LinkedIn cold + LEOMAX advisory letter', detail:'Best path. New leader = new openness. Frame as "co-creation" partner, not vendor.'},
+      {prob:'med', to:'Bob Maughon (EVP T&I)', via:'2nd-degree via ex-Dow Chemical alumni', detail:'Senior, less reachable but holds budget authority for innovation projects.'},
+      {prob:'med', to:'Khalid Al-Otaibi (VP Digital)', via:'2nd-degree via ex-Aramco colleagues', detail:'Day-to-day evaluator. Use for technical depth conversations.'}
+    ]
+  },
+  almarai: {
+    name: 'Almarai',
+    sector: 'F&B · Dairy · Consumer Goods',
+    revenue: 'SAR 19.7B (2024)',
+    employees: '~46,000',
+    stage: 'Public (TADAWUL: 2280)',
+    hq: 'Riyadh',
+    snapshot: 'Largest vertically integrated dairy company in GCC. Aggressive expansion into bakery, poultry, juice. Buying patterns favor proven enterprise solutions.',
+    decisionMakers: [
+      {name:'Abdullah Al-Bader', title:'CEO', tenure:'Since 2017', bg:'25+ yrs Almarai', signals:'Operational discipline'},
+      {name:'Paul Louis Gay', title:'CFO', tenure:'Since 2022', bg:'ex-Big 4', signals:'Capex discipline'},
+      {name:'Tareq Al-Rabiah', title:'EVP, Supply Chain', tenure:'Since 2020', bg:'ex-Procter & Gamble', signals:'Owns logistics + procurement'},
+      {name:'Khalid Al-Shamri', title:'VP, IT & Digital', tenure:'Since 2021', bg:'ex-STC', signals:'Active vendor evaluator'}
+    ],
+    activity: [
+      {date:'Nov 2025', tag:'signal', content:'<strong>SAR 1.2B capex</strong> committed for production capacity + digital systems.'},
+      {date:'Oct 2025', tag:'info', content:'Acquired <strong>Bakemart</strong> bakery operations for SAR 350M.'},
+      {date:'Sep 2025', tag:'signal', content:'<strong>Supply chain optimization RFP</strong> issued for AI/route planning.'},
+      {date:'Aug 2025', tag:'risk', content:'Margin pressure from dairy commodity prices — <strong>cost optimization mandate</strong>.'},
+      {date:'Jul 2025', tag:'info', content:'Q2 earnings — revenue +6% YoY, but margin -2pp.'},
+      {date:'Jun 2025', tag:'signal', content:'New CDO hired from <strong>Carrefour</strong> — first 100 days = digital roadmap.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Annual cycle + ad-hoc for ROI-positive supply chain projects.'},
+      {q:'Who signs?', a:'Tareq Al-Rabiah (EVP) up to SAR 10M. CFO + CEO above.'},
+      {q:'Current vendors?', a:'SAP S/4HANA, Oracle for ERP. <strong>Gap at AI/optimization layer.</strong>'},
+      {q:'Buying signals?', a:'Active supply chain RFP. New CDO. Margin pressure = ROI-positive tech welcome.'}
+    ],
+    angle: {
+      hypothesis: 'Active RFP for supply chain AI + margin pressure = strong demand for ROI-positive optimization tech. New CDO from Carrefour = recent retail/CPG playbook, easier to convince.',
+      rationale: 'RFP is open — formal path exists. CDO is new = building team and toolkit. Frame as "30-day pilot, ROI guarantee" — financial pressure makes this resonate. Tareq Al-Rabiah is the budget owner, but CDO is the evaluator.'
+    },
+    paths: [
+      {prob:'high', to:'New CDO (ex-Carrefour)', via:'LinkedIn direct + LEOMAX letter', detail:'Best path. Pulls vendor evaluations directly. Approach in his first 90 days.'},
+      {prob:'med', to:'Active Supply Chain RFP', via:'Standard procurement application', detail:'Legitimate path. Combine with CDO conversation for acceleration.'},
+      {prob:'med', to:'Tareq Al-Rabiah (EVP SC)', via:'2nd-degree via ex-P&G alumni', detail:'Budget owner. Final yes/no on procurement.'}
+    ]
+  },
+  bupa: {
+    name: 'Bupa Arabia',
+    sector: 'Health Insurance · InsurTech',
+    revenue: 'SAR 14.6B (2024)',
+    employees: '~2,400',
+    stage: 'Public (TADAWUL: 8210)',
+    hq: 'Jeddah',
+    snapshot: 'Largest health insurer in KSA. Heavy investment in digital health + AI for claims optimization. Vision 2030 health insurance mandate is structural tailwind.',
+    decisionMakers: [
+      {name:'Tal Hisham Nazer', title:'CEO', tenure:'Since 2018', bg:'15+ yrs Bupa', signals:'Pro-AI for claims efficiency'},
+      {name:'Fahd Al-Saadoun', title:'CFO', tenure:'Since 2021', bg:'ex-Saudi Fransi', signals:'Capex discipline'},
+      {name:'Tariq Hatough', title:'EVP, Operations', tenure:'Since 2020', bg:'ex-AXA', signals:'Owns claims + provider network'},
+      {name:'Hisham Al-Shahrani', title:'CTO', tenure:'Since 2022', bg:'ex-stc Solutions', signals:'Active in AI/RPA partnerships'}
+    ],
+    activity: [
+      {date:'Dec 2025', tag:'signal', content:'<strong>SAR 600M digital transformation</strong> — focus on AI claims, member experience.'},
+      {date:'Oct 2025', tag:'info', content:'Partnership with <strong>Cleveland Clinic</strong> for tertiary care AI triage.'},
+      {date:'Sep 2025', tag:'signal', content:'<strong>RFP for claims automation</strong> — 5,000+ claims/day processing.'},
+      {date:'Aug 2025', tag:'risk', content:'CCHI <strong>regulator pressure</strong> on claims processing time — must be &lt; 7 days.'},
+      {date:'Jul 2025', tag:'info', content:'Q2 earnings — loss ratio +3pp YoY, cost-out mandate.'},
+      {date:'Jun 2025', tag:'signal', content:'CTO publicly searching for <strong>"AI fraud detection" partners</strong>.'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Annual budget Q1. POC-friendly culture — fast on small projects.'},
+      {q:'Who signs?', a:'Hisham (CTO) up to SAR 2M for tech POCs. EVP + CFO above. <strong>Board for SAR 10M+.</strong>'},
+      {q:'Current vendors?', a:'Microsoft Azure, Salesforce. <strong>Gap at claims AI/fraud detection.</strong>'},
+      {q:'Buying signals?', a:'Active claims RFP. CTO open about fraud detection need. CCHI pressure.'}
+    ],
+    angle: {
+      hypothesis: 'CCHI regulator pressure + loss ratio expansion = urgency for claims AI. CTO is publicly searching = warm market. Frame as compliance + cost-out combined.',
+      rationale: 'Two pressures converging: regulator forcing claims time-to-pay reduction + internal cost-out pressure. Your story should be "we solve both with one platform." CTO open to direct conversations — skip formal procurement initially.'
+    },
+    paths: [
+      {prob:'high', to:'Hisham Al-Shahrani (CTO)', via:'LinkedIn direct (he\'s active)', detail:'Best path. Open to conversations. Respond to his public posts before formal outreach.'},
+      {prob:'med', to:'Tariq Hatough (EVP Ops)', via:'2nd-degree via ex-AXA colleagues', detail:'Budget owner for claims tech. Engage after CTO buy-in.'},
+      {prob:'med', to:'Active Claims RFP', via:'Standard procurement application', detail:'Path exists but slower. Combine with CTO conversation.'}
+    ]
+  },
+  mobily: {
+    name: 'Mobily (Etihad Etisalat)',
+    sector: 'Telecom · Digital Services',
+    revenue: 'SAR 16.4B (2024)',
+    employees: '~5,800',
+    stage: 'Public (TADAWUL: 7020)',
+    hq: 'Riyadh',
+    snapshot: 'Second-largest KSA telecom. Strong B2B enterprise position. Active digital transformation push to compete with STC. Government majority shareholder (PIF stake).',
+    decisionMakers: [
+      {name:'Salman Al-Badran', title:'CEO', tenure:'Since 2023', bg:'ex-Vodafone Egypt', signals:'Push for differentiation vs STC'},
+      {name:'Sami Al-Suhaimi', title:'CFO', tenure:'Since 2024', bg:'ex-Saudi Banking', signals:'New, capex discipline'},
+      {name:'Anas Al-Yamani', title:'EVP, Business Markets', tenure:'Since 2022', bg:'ex-stc Business', signals:'Owns B2B vendor decisions'},
+      {name:'Khalid Al-Tobaity', title:'CTO', tenure:'Since 2021', bg:'ex-Ericsson', signals:'Active in network + AI'}
+    ],
+    activity: [
+      {date:'Dec 2025', tag:'signal', content:'<strong>SAR 2.1B digital transformation</strong> announcement — 3-year roadmap.'},
+      {date:'Nov 2025', tag:'info', content:'Joint venture with <strong>Microsoft</strong> for B2B cloud services.'},
+      {date:'Oct 2025', tag:'signal', content:'<strong>5G network expansion RFP</strong> — vendor list refresh.'},
+      {date:'Sep 2025', tag:'risk', content:'STC competitive pressure — <strong>losing enterprise share</strong> Q3.'},
+      {date:'Aug 2025', tag:'info', content:'New B2B brand <strong>"Mobily Business"</strong> launched.'},
+      {date:'Jul 2025', tag:'signal', content:'CEO public statement: <strong>"30% revenue from B2B by 2027."</strong>'}
+    ],
+    signals: [
+      {q:'When do they buy?', a:'Annual cycle + ad-hoc for differentiation tech. <strong>Fast</strong> for competitive moves.'},
+      {q:'Who signs?', a:'Anas Al-Yamani (EVP B2B) up to SAR 5M. CFO + CEO above. <strong>Board for SAR 20M+.</strong>'},
+      {q:'Current vendors?', a:'Microsoft, Cisco, Huawei, Nokia. <strong>Hungry for differentiation</strong> tools.'},
+      {q:'Buying signals?', a:'CEO 30% B2B target = enterprise tech demand. Active 5G RFP. STC competitive pressure.'}
+    ],
+    angle: {
+      hypothesis: 'Mobily is losing enterprise share to STC. CEO\'s 30%-by-2027 B2B target creates urgency. They need differentiation tools, not infrastructure. Anas Al-Yamani is the budget owner with mandate to act fast.',
+      rationale: 'Mobily is the underdog telecom — that\'s an advantage. Underdogs move faster than market leaders. Frame as "competitive weapon vs STC" — that\'s the emotional buying trigger. Microsoft JV means Azure-friendly partners welcomed.'
+    },
+    paths: [
+      {prob:'high', to:'Anas Al-Yamani (EVP B2B)', via:'2nd-degree via ex-stc Business alumni', detail:'Best path. Budget + mandate. Hungry for wins vs STC.'},
+      {prob:'med', to:'Khalid Al-Tobaity (CTO)', via:'2nd-degree via Ericsson network', detail:'For technical depth conversations. Engage after Anas buy-in.'},
+      {prob:'med', to:'5G RFP', via:'Standard procurement application', detail:'Legitimate path. Use only if infrastructure-related.'}
+    ]
+  }
+};
+
+function getId() { return new URLSearchParams(location.search).get('id') || 'stc'; }
+function loadCase(id) { history.replaceState({}, '', '?id=' + id); render(id); }
+
+function render(id) {
+  const t = TARGETS[id] || TARGETS.stc;
+  document.title = `Account Brief — ${t.name} · LEOMAX Sample`;
+  const html = `
+    <div class="hero">
+      <span class="pill">Account Brief · Sample</span>
+      <h1>${t.name}</h1>
+      <p class="sub">${t.snapshot}</p>
+      <p class="delivered"><strong>Real briefs delivered in 24 hours.</strong> This is a 5-section sample of what arrives in your inbox.</p>
+    </div>
+
+    <section>
+      <span class="sec-pill">01 · Snapshot</span>
+      <h2>The 30-second read.</h2>
+      <p class="lead">Top-line context — sector, scale, decision authority, and what's happening this quarter.</p>
+      <div class="snapshot">
+        <div class="snapshot-grid">
+          <div class="snap-item"><div class="snap-label">Sector</div><div class="snap-value">${t.sector}</div></div>
+          <div class="snap-item"><div class="snap-label">Revenue</div><div class="snap-value">${t.revenue}</div></div>
+          <div class="snap-item"><div class="snap-label">Employees</div><div class="snap-value">${t.employees}</div></div>
+          <div class="snap-item"><div class="snap-label">Stage</div><div class="snap-value">${t.stage}</div></div>
+          <div class="snap-item"><div class="snap-label">HQ</div><div class="snap-value">${t.hq}</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">02 · Decision-Maker Map</span>
+        <h2>Who actually signs.</h2>
+        <p class="lead">Verified from LinkedIn + recent press. Tenure, background, and the buying behavior we've observed.</p>
+        <div class="dms">
+          ${t.decisionMakers.map(d => `
+            <div class="dm-card">
+              <div class="dm-name">${d.name}</div>
+              <div class="dm-title">${d.title}</div>
+              <div class="dm-meta">
+                <div><span>Tenure</span><span>${d.tenure}</span></div>
+                <div><span>Background</span><span>${d.bg}</span></div>
+                <div><span>Signal</span><span>${d.signals}</span></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="sec-pill">03 · Recent Activity (last 90 days)</span>
+      <h2>What's actually happening.</h2>
+      <p class="lead">Funding, leadership moves, vendor signals, regulatory pressure. Filtered to what changes your conversation.</p>
+      <div class="activity">
+        ${t.activity.map(a => `
+          <div class="act-item">
+            <div class="act-date">${a.date}</div>
+            <div class="act-content"><span class="act-tag ${a.tag}">${a.tag === 'signal' ? 'Buy signal' : a.tag === 'risk' ? 'Watch' : 'Context'}</span>${a.content}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">04 · Budget Cycle &amp; Buying Signals</span>
+        <h2>When, how, who, and what they're already buying.</h2>
+        <p class="lead">The 4 questions every BD process answers before the first meeting.</p>
+        <div class="signals">
+          ${t.signals.map(s => `
+            <div class="signal-card">
+              <div class="what">${s.q}</div>
+              <div class="answer">${s.a}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="sec-pill">05 · Entry Angle</span>
+      <h2>The hypothesis. The reason for them to reply.</h2>
+      <p class="lead">Not a pitch. A working hypothesis specific to this account, derived from the activity + signals above.</p>
+      <div class="angle">
+        <div class="angle-label">Hypothesis</div>
+        <div class="angle-hypothesis">"${t.angle.hypothesis}"</div>
+        <div class="angle-label">Why this resonates</div>
+        <div class="angle-rationale">${t.angle.rationale}</div>
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">06 · Warm-Path Mapping</span>
+        <h2>How to get the meeting.</h2>
+        <p class="lead">Two-three viable paths — ranked by conversion probability. Includes intro templates and timing notes.</p>
+        <div class="paths">
+          ${t.paths.map(p => `
+            <div class="path-card">
+              <span class="path-prob ${p.prob}">${p.prob === 'high' ? 'High probability' : p.prob === 'med' ? 'Medium' : 'Low'}</span>
+              <div class="path-to">To</div>
+              <div class="path-via">${p.to}</div>
+              <div class="path-detail"><strong>Path:</strong> ${p.via}<br><br>${p.detail}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function initPicker() {
+  const select = document.getElementById('caseSelect');
+  Object.keys(TARGETS).forEach(id => {
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.textContent = TARGETS[id].name + ' — ' + TARGETS[id].sector.split('·')[0].trim();
+    select.appendChild(opt);
+  });
+  select.value = getId();
+  render(getId());
+}
+initPicker();
+</script>
+</body>
+</html>
