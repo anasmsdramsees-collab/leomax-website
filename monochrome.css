@@ -1451,3 +1451,42 @@ img:not(.client-logo):not(.nav-logo):not([style*="border-radius"]) {
   border-color: #1d1d1f !important;
   box-shadow: 0 20px 40px rgba(0,0,0,.25) !important;
 }
+
+/* ── Blog hero — match Apple typography ── */
+.blog-hero {
+  background: #000000 !important;
+  padding: clamp(80px, 12vh, 140px) 64px !important;
+}
+.blog-hero-title {
+  font-size: clamp(48px, 7vw, 96px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -2px !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  color: #FFFFFF !important;
+  line-height: 1.05 !important;
+  margin-bottom: 22px !important;
+}
+.blog-hero-tag {
+  display: inline-block !important;
+  background: rgba(255,255,255,.1) !important;
+  color: #f5f5f7 !important;
+  padding: 6px 16px !important;
+  border-radius: 980px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  margin-bottom: 24px !important;
+}
+.blog-hero-divider { display: none !important; }
+.blog-hero-desc {
+  font-size: clamp(17px, 1.5vw, 21px) !important;
+  color: #a1a1a6 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  max-width: 680px !important;
+}
+.blog-hero-grid, .blog-hero-glow { opacity: .3 !important; }
+
