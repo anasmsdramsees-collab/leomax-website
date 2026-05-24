@@ -1247,3 +1247,178 @@ footer {
   margin-bottom: 32px !important;
 }
 
+/* ============================================================
+   UNIVERSAL ROUND-EVERYTHING — applies to all inner pages
+   ============================================================ */
+
+/* ── Catch-all: any class with "card", "box", "item", "tile", "panel" → 18px ── */
+[class*="card"]:not(.modal-card),
+[class*="-box"],
+[class*="-tile"],
+[class*="-panel"],
+[class*="-cell"]:not(td):not(th),
+.outcome-item, .proc-item, .module, .track, .phase,
+.del-card, .proc-step, .timeline-row, .key-stats, .stat-cell,
+.modal-card {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+/* Modals get extra round */
+.modal-card, .auth-card, .apply-modal, .member-modal {
+  border-radius: 24px !important;
+  overflow: hidden;
+}
+
+/* ── Any inline-styled div that LOOKS like a box (has bg + padding) → round ── */
+div[style*="background:#"][style*="padding:"]:not([style*="border-radius"]),
+div[style*="background-color:"][style*="padding:"]:not([style*="border-radius"]),
+a[style*="background:#"][style*="padding:"]:not([style*="border-radius"]),
+div[style*="border:1px solid"][style*="padding:"]:not([style*="border-radius"]) {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+/* ── SYSTEMS PAGES (system-01...05) specific cards ── */
+.del-card, .outcome-item, .proc-item, .hero-icon,
+.what-inner, .outcomes-inner, .process-inner,
+.cta-inner, .process-timeline > * {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+.proc-num, .del-card-num, .outcome-icon, .del-card-icon, .hero-sys-num {
+  border-radius: 50% !important;
+}
+/* Soft shadows on system cards */
+.del-card, .outcome-item, .proc-item {
+  background: #FFFFFF !important;
+  border: 1px solid #e5e5ea !important;
+  padding: 36px 32px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  transition: transform .25s, box-shadow .25s, border-color .25s !important;
+}
+.del-card:hover, .outcome-item:hover, .proc-item:hover {
+  border-color: #d2d2d7 !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08) !important;
+}
+.del-card-title, .outcome-title, .proc-title {
+  color: #1d1d1f !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.2px !important;
+  margin-bottom: 10px !important;
+}
+.del-card-desc, .outcome-desc, .proc-desc {
+  color: #6e6e73 !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+}
+.proc-num, .del-card-num {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  margin-bottom: 18px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.gold-line {
+  background: #d2d2d7 !important;
+  height: 1px !important;
+}
+
+/* ── Tables ── */
+table {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+/* ── Form inputs already pill-shape from earlier; reinforce ── */
+input, textarea, select {
+  border-radius: 12px !important;
+}
+button, .btn, .btn-dark, .btn-dark-outline, .btn-white, .btn-outline {
+  border-radius: 980px !important;
+}
+
+/* ── Hero glow/grid backgrounds (decorative) ── */
+.hero-glow, .hero-grid {
+  border-radius: 0 !important;  /* These are decorative full-bleed, don't round */
+}
+
+/* ── Image containers in cards ── */
+img:not(.client-logo):not(.nav-logo):not([style*="border-radius"]) {
+  /* Only round images inside card-like containers */
+}
+[class*="card"] img:not([class*="logo"]):not(.client-logo),
+[class*="box"] img:not([class*="logo"]):not(.client-logo) {
+  border-radius: 14px !important;
+}
+
+/* ── Frameworks pages cards ── */
+.fw-card, .fw-grid > * {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+/* ── Blog cards ── */
+.blog-card, .blog-grid > * {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.blog-card img {
+  border-radius: 18px 18px 0 0 !important;
+}
+
+/* ── Case-* page hero & detail blocks ── */
+[id*="case-"] .hero, [id*="case-"] [class*="block"] {
+  border-radius: 0 !important;
+}
+[class*="case-"][class*="block"]:not(.case-cta),
+[class*="case-"][class*="section"]:not(.case-cta):not(.case-header) {
+  /* The blocks within case pages should not be full bleed if smaller */
+}
+
+/* ── Story closing already done — reinforce ── */
+.story-closing { border-radius: 18px !important; overflow: hidden; }
+
+/* ── Hero icons / numbered badges ── */
+.hero-sys-num {
+  background: #1d1d1f !important;
+  color: #FFFFFF !important;
+  border-radius: 980px !important;
+  padding: 6px 16px !important;
+  display: inline-block !important;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  font-weight: 500 !important;
+}
+
+/* ── Process timeline items ── */
+.process-timeline {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+.proc-item {
+  display: grid !important;
+  grid-template-columns: 80px 1fr auto !important;
+  gap: 24px !important;
+  align-items: center !important;
+}
+.proc-duration {
+  color: #86868b !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+.proc-content { padding: 0 !important; }
+
+
