@@ -475,21 +475,404 @@ const CASES = {
   }
 };
 
-/* Aliases for remaining cases — same template, lighter customization */
-function makeAlias(id, name, sector, stage, raise) {
-  CASES[id] = { ...CASES.madar, name, sector, stage, raise,
-    summary: `Sample illustration of the Investment Readiness Sprint deliverable applied to a ${sector.toLowerCase()} business. Real engagement uses the company's actual data.`,
-    metrics: CASES.madar.metrics.map(m => ({...m, n: m.n.replace(/MADAR|logistics|Salla\/Zid/g, 'this company')}))
-  };
-}
-makeAlias('garage', 'Garage', 'Co-working · Community', 'Seed', 'SAR 3.5M');
-makeAlias('kbc', 'KBC', 'Construction · Industrial', 'Series A', 'SAR 15M');
-makeAlias('lanova', 'La Nova Sweets', 'F&B · Confectionery', 'Seed', 'SAR 4M');
-makeAlias('lsofia', "L'Sofia", 'Beauty · D2C', 'Pre-Seed', 'SAR 2M');
-makeAlias('nadialamal', 'نادي الأعمال', 'Business Network · B2B', 'Seed', 'SAR 3M');
-makeAlias('clenso', 'Clenso', 'Cleaning Services · B2B', 'Seed', 'SAR 4M');
-makeAlias('redstudio', 'Red Studio', 'Creative Agency · B2B Services', 'Seed', 'SAR 3M');
-makeAlias('regional', 'Regional Business Summit', 'Events · B2B', 'Bootstrapped', 'SAR 2.5M');
+CASES.garage = {
+  name: 'Garage', sector: 'Co-working · Community', stage: 'Seed', raise: 'SAR 3.5M', market: 'KSA · Riyadh',
+  verdict: 'go', verdictText: 'GO', confidence: 'Medium-High', confidenceClass: 'high',
+  summary: 'Community moat is real — 1,200 active members with 84% retention. Concept scalable to Jeddah and Dammam with the right partnership model.',
+  risks: ['Real estate costs in Riyadh outpacing revenue growth', 'Heavy dependence on 2 anchor corporate tenants', 'Founder bandwidth as sole community builder'],
+  metrics: [
+    {l:'Active Members', v:'1,200', c:'+9% MoM', cClass:'up', n:'Mix: 65% individual, 35% corporate teams.'},
+    {l:'Revenue / member', v:'SAR 1,450/mo', c:'Stable', cClass:'up', n:'Above co-working market avg (~SAR 950 in KSA).'},
+    {l:'Occupancy', v:'87%', c:'Strong', cClass:'up', n:'Riyadh location near capacity. Justifies expansion.'},
+    {l:'Retention (12-mo)', v:'84%', c:'Excellent', cClass:'up', n:'Community lock-in works. Programmed events drive stickiness.'},
+    {l:'CAC', v:'SAR 410', c:'Mostly organic', cClass:'up', n:'Word-of-mouth + 3 strategic events / quarter.'},
+    {l:'EBITDA Margin', v:'14%', c:'Positive', cClass:'up', n:'Already cash-flow positive at one location.'}
+  ],
+  model: [
+    ['Locations','1','3','7'],
+    ['Members / location','1,200','1,500','1,800'],
+    ['Annual revenue / location','SAR 17M','SAR 22M','SAR 30M'],
+    ['Annual Revenue (SAR)','17M','66M','210M', true],
+    ['Gross Margin %','52%','58%','62%'],
+    ['Operating Expenses','13.8M','46.5M','138M'],
+    ['EBITDA','2.4M','9.6M','30.2M', true]
+  ],
+  questions: [
+    {t:'"What\'s the moat once IWG or WeWork enter Riyadh seriously?"', s:'weak'},
+    {t:'"Show me your revenue per square meter benchmark."', s:'ready'},
+    {t:'"How do you scale community as you 7× locations?"', s:'gap'},
+    {t:'"What\'s the corporate-vs-individual unit economics split?"', s:'ready'},
+    {t:'"Why now — what changed in the KSA work culture?"', s:'ready'},
+    {t:'"What\'s the path to flagship status in Jeddah?"', s:'weak'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:8, note:'Strong on operations, weaker on cohort analysis.'},
+    {n:'Storytelling', s:10, note:'Charismatic founder. Story sells itself.'},
+    {n:'Domain Expertise', s:8, note:'8 years building community pre-Garage.'},
+    {n:'Vision Articulation', s:9, note:'Clear: become the default workspace for Saudi founders.'},
+    {n:'Team Strength', s:6, note:'Founder-only at leadership. Need a COO before scaling.', cls:'weak'},
+    {n:'Resilience', s:9, note:'Survived COVID near-shutdown. Refocused stronger.'},
+    {n:'Closing Discipline', s:8, note:'Disciplined process, clear ask.'}
+  ],
+  overall: '8.3/10 — fundable. Team strength is the gap to close.',
+  investors: [
+    {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+    {n:'[Real estate FO]', t:'Family Office · KSA', stage:'Seed–A', ticket:'$2–5M', path:'warm', pathText:'Real estate angle resonates'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'LEOMAX network'},
+    {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'Cold sequence designed'},
+    {n:'Vision Ventures', t:'VC · KSA', stage:'Seed', ticket:'$250K–1M', path:'warm', pathText:'Existing relationship'},
+    {n:'[Anchor corporate tenant]', t:'Strategic · KSA', stage:'Strategic', ticket:'$500K–1M', path:'warm', pathText:'Convert existing customer to investor'}
+  ]
+};
+
+CASES.kbc = {
+  name: 'KBC', sector: 'Construction · Industrial', stage: 'Series A', raise: 'SAR 15M', market: 'KSA + Bahrain',
+  verdict: 'go', verdictText: 'GO', confidence: 'High', confidenceClass: 'high',
+  summary: 'Strong project pipeline (SAR 280M committed), proven operational excellence. Series A to fund equipment + Bahrain expansion. Recommended for diligence.',
+  risks: ['Project concentration — 2 mega-projects = 64% of revenue', 'Cement/steel cost volatility', 'Saudization compliance at Bahrain expansion'],
+  metrics: [
+    {l:'Annual Revenue', v:'SAR 95M', c:'+38% YoY', cClass:'up', n:'Project-based + service contracts mix.'},
+    {l:'Gross Margin', v:'22%', c:'Industry-leading', cClass:'up', n:'KSA construction median ~15%. Tech-enabled processes.'},
+    {l:'Backlog', v:'SAR 280M', c:'2.9× annual revenue', cClass:'up', n:'Committed projects across 18-month horizon.'},
+    {l:'EBITDA Margin', v:'11%', c:'Improving', cClass:'up', n:'Up from 7% YoY. Software layer driving efficiency.'},
+    {l:'Avg project size', v:'SAR 8M', c:'Growing', cClass:'up', n:'Up from SAR 4M two years ago.'},
+    {l:'Win rate (bids)', v:'31%', c:'Excellent', cClass:'up', n:'KSA median ~12%. Reputation premium visible.'}
+  ],
+  model: [
+    ['Active projects','14','38','75'],
+    ['Avg project value (SAR)','8M','11M','14M'],
+    ['Annual Revenue (SAR)','95M','280M','620M', true],
+    ['Gross Margin %','22%','25%','28%'],
+    ['Operating Expenses','78M','215M','450M'],
+    ['EBITDA','10.5M','38M','105M', true],
+    ['Net Margin','7%','10%','13%']
+  ],
+  questions: [
+    {t:'"How do you compete with Hassan & Mohi-uddin or Al-Rashid?"', s:'ready'},
+    {t:'"Two projects = 64% of revenue — what happens if one cancels?"', s:'gap'},
+    {t:'"Show me your bid-to-win pipeline conversion."', s:'ready'},
+    {t:'"Bahrain expansion — what\'s the regulator + labor strategy?"', s:'weak'},
+    {t:'"How does Vision 2030 megaproject pipeline shape next 5 years?"', s:'ready'},
+    {t:'"What\'s the path from SAR 95M to SAR 500M revenue?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:9, note:'Founder is engineer-turned-CFO. Numbers fluent.'},
+    {n:'Storytelling', s:7, note:'Solid case but lacks narrative arc that excites generalists.'},
+    {n:'Domain Expertise', s:10, note:'20 years in KSA construction. Unmatched.'},
+    {n:'Vision Articulation', s:8, note:'Vision is clear, just under-communicated.'},
+    {n:'Team Strength', s:9, note:'Strong PMs + CFO + COO. Builds for scale.'},
+    {n:'Resilience', s:9, note:'Survived 2 recessions. Disciplined operator.'},
+    {n:'Closing Discipline', s:9, note:'Investor process is professional and fast.'}
+  ],
+  overall: '8.7/10 — Series A ready. Diversify project concentration story.',
+  investors: [
+    {n:'Sanabil Investments', t:'PIF Affiliate · KSA', stage:'A+', ticket:'$3–10M', path:'warm', pathText:'PIF Vision 2030 angle'},
+    {n:'Olayan Group VC', t:'Strategic · KSA', stage:'A+', ticket:'$5–15M', path:'warm', pathText:'2nd-degree via existing customer'},
+    {n:'STC Venture', t:'CVC · KSA', stage:'A', ticket:'$2–8M', path:'cold', pathText:'Cold sequence designed'},
+    {n:'[Saudi mega-FO]', t:'Family Office · KSA', stage:'A+', ticket:'$5–20M', path:'warm', pathText:'Direct intro available'},
+    {n:'Mubadala Investment', t:'Strategic · UAE', stage:'A+', ticket:'$5–15M', path:'cold', pathText:'For SAR 30M+ round'},
+    {n:'Riyad Bank Capital', t:'CVC · KSA', stage:'A', ticket:'$2–8M', path:'warm', pathText:'Banking relationship leverage'}
+  ]
+};
+
+CASES.lanova = {
+  name: 'La Nova Sweets', sector: 'F&B · Premium Confectionery', stage: 'Seed', raise: 'SAR 4M', market: 'KSA',
+  verdict: 'caution', verdictText: 'CONDITIONAL — distribution risk', confidence: 'Medium', confidenceClass: 'med',
+  summary: 'Premium brand with loyal Riyadh following, but distribution dependence on Carrefour creates risk. Condition: secure 2nd modern-trade partner before close.',
+  risks: ['Single modern-trade partner = 71% of retail revenue', 'Ingredient cost volatility (cocoa, dairy)', 'Limited brand awareness outside Riyadh metro'],
+  metrics: [
+    {l:'Monthly Revenue', v:'SAR 285K', c:'+18% MoM', cClass:'up', n:'Retail (70%) + D2C (20%) + Corporate gifts (10%).'},
+    {l:'Gross Margin', v:'48%', c:'Healthy', cClass:'up', n:'Premium positioning supports margin. Above mass-market ~35%.'},
+    {l:'Repeat Rate', v:'72%', c:'Excellent', cClass:'up', n:'D2C cohort returns 3.8× annually.'},
+    {l:'CAC (D2C)', v:'SAR 95', c:'Stable', cClass:'up', n:'Instagram + influencer-led acquisition.'},
+    {l:'AOV', v:'SAR 145', c:'Growing', cClass:'up', n:'Gift baskets pull AOV higher than category.'},
+    {l:'Burn (net)', v:'SAR 60K/mo', c:'Runway: 12 months', cClass:'up', n:'Already break-even at one location.'}
+  ],
+  model: [
+    ['Retail doors','38','110','280'],
+    ['Avg revenue / door / month','SAR 5,200','SAR 6,500','SAR 7,800'],
+    ['D2C orders / month','1,400','4,200','11,000'],
+    ['Annual Revenue (SAR)','3.4M','11.2M','32.1M', true],
+    ['Gross Margin %','48%','51%','54%'],
+    ['Operating Expenses','2.6M','7.8M','21.4M'],
+    ['EBITDA','−0.4M','+1.9M','+8.9M', true]
+  ],
+  questions: [
+    {t:'"How do you compete with Bateel at the premium end?"', s:'ready'},
+    {t:'"71% retail concentration — what\'s the diversification plan?"', s:'gap'},
+    {t:'"Show me ingredient cost sensitivity at scale."', s:'weak'},
+    {t:'"What\'s the path to Jeddah + Dammam without flagship stores?"', s:'weak'},
+    {t:'"Corporate gifts — is the SAR 500K/year customer real?"', s:'ready'},
+    {t:'"E-commerce vs retail — which channel wins long-term?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:7, note:'Solid retail metrics; weaker on D2C cohort math.'},
+    {n:'Storytelling', s:10, note:'Founder personal story is captivating. Crafts narrative well.'},
+    {n:'Domain Expertise', s:8, note:'7 years in F&B. Knows the buyer + supply chain.'},
+    {n:'Vision Articulation', s:8, note:'Clear: become the default premium gift brand in Gulf.'},
+    {n:'Team Strength', s:6, note:'Strong creative; need a CFO + ops lead at next stage.', cls:'weak'},
+    {n:'Resilience', s:9, note:'Bootstrapped through 2 years before raising.'},
+    {n:'Closing Discipline', s:7, note:'Clear ask; follow-up cadence inconsistent.'}
+  ],
+  overall: '8.0/10 — brand strength fundable, team gap to close.',
+  investors: [
+    {n:'[F&B-focused FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'Direct intro available'},
+    {n:'BY Venture Partners', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'Cold sequence ready'},
+    {n:'Nuwa Capital', t:'VC · UAE', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'2nd-degree via portfolio'},
+    {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+    {n:'[Hospitality FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$1–3M', path:'warm', pathText:'Strategic angle on corporate gifts'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'cold', pathText:'After 2nd channel secured'}
+  ]
+};
+
+CASES.lsofia = {
+  name: "L'Sofia", sector: 'Beauty · D2C Premium', stage: 'Pre-Seed', raise: 'SAR 2M', market: 'KSA + UAE',
+  verdict: 'caution', verdictText: 'CONDITIONAL — early traction', confidence: 'Medium', confidenceClass: 'med',
+  summary: 'Strong brand aesthetic, repeat customers love it, but revenue base is small. Condition: hit SAR 80K MRR before close — currently at SAR 45K.',
+  risks: ['Small revenue base — under SAR 600K annualized', 'Heavy reliance on Meta ads (Apple ATT impact)', 'Inventory financing risk on premium SKUs'],
+  metrics: [
+    {l:'Monthly Revenue', v:'SAR 45K', c:'+22% MoM', cClass:'up', n:'D2C only. Retail launch planned post-round.'},
+    {l:'Gross Margin', v:'62%', c:'Strong', cClass:'up', n:'Premium positioning + private-label manufacturing.'},
+    {l:'Repeat Rate', v:'58%', c:'Good', cClass:'up', n:'Strong for a 14-month-old D2C brand.'},
+    {l:'CAC', v:'SAR 145', c:'Rising', cClass:'down', n:'Meta ATT impact. Need diversified channels.'},
+    {l:'AOV', v:'SAR 280', c:'Growing', cClass:'up', n:'Skincare-set bundles drive AOV.'},
+    {l:'Burn (net)', v:'SAR 32K/mo', c:'Runway: 8 months', cClass:'down', n:'Round must close in 90 days.'}
+  ],
+  model: [
+    ['Active customers','1,400','5,200','15,000'],
+    ['Orders / customer / year','3.2','3.8','4.5'],
+    ['AOV (SAR)','280','310','345'],
+    ['Annual Revenue (SAR)','1.25M','6.1M','23.3M', true],
+    ['Gross Margin %','62%','64%','66%'],
+    ['Operating Expenses','1.8M','5.4M','17.2M'],
+    ['EBITDA','−1.0M','−1.5M','+2.2M', true]
+  ],
+  questions: [
+    {t:'"How is L\'Sofia different from Huda Beauty or Anastasia?"', s:'ready'},
+    {t:'"SAR 45K MRR — is that enough for Pre-Seed at this valuation?"', s:'gap'},
+    {t:'"Show me your post-ATT CAC trajectory."', s:'weak'},
+    {t:'"What\'s the retail strategy without burning the D2C margins?"', s:'weak'},
+    {t:'"Why this team for this category?"', s:'ready'},
+    {t:'"UAE expansion — what changes about the model?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:6, note:'Knows top-line; cohort + LTV need work.', cls:'weak'},
+    {n:'Storytelling', s:10, note:'Founder is the brand. Compelling personal narrative.'},
+    {n:'Domain Expertise', s:7, note:'Beauty industry background — formulator + retail.'},
+    {n:'Vision Articulation', s:9, note:'Vision is crisp: regional premium beauty leader.'},
+    {n:'Team Strength', s:5, note:'Solo founder + 2 contractors. High execution risk.', cls:'gap'},
+    {n:'Resilience', s:8, note:'Bootstrapped 14 months. Knows hard.'},
+    {n:'Closing Discipline', s:7, note:'Clear ask, decent process.'}
+  ],
+  overall: '7.4/10 — early but defensible. Hire CTO/COO before A.',
+  investors: [
+    {n:'Antler MENA', t:'Pre-Seed VC · MENA', stage:'Pre-Seed', ticket:'$100K–250K', path:'cold', pathText:'Cold sequence ready'},
+    {n:'[Beauty-focused angel syndicate]', t:'Angels · KSA+UAE', stage:'Pre-Seed', ticket:'$25K–100K each', path:'warm', pathText:'Direct intros mapped'},
+    {n:'Plug and Play Riyadh', t:'Accelerator · KSA', stage:'Pre-Seed', ticket:'$50K–250K', path:'warm', pathText:'Direct application'},
+    {n:'[D2C-focused FO]', t:'Family Office · UAE', stage:'Pre-Seed–Seed', ticket:'$200K–1M', path:'warm', pathText:'Existing relationship'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Pre-Seed–Seed', ticket:'$250K–1M', path:'cold', pathText:'After SAR 100K MRR'},
+    {n:'500 Global (MENA)', t:'VC · MENA', stage:'Pre-Seed–Seed', ticket:'$250K–500K', path:'warm', pathText:'LEOMAX network'}
+  ]
+};
+
+CASES.nadialamal = {
+  name: 'نادي الأعمال', sector: 'B2B Community · Business Network', stage: 'Seed', raise: 'SAR 3M', market: 'KSA',
+  verdict: 'go', verdictText: 'GO', confidence: 'Medium-High', confidenceClass: 'high',
+  summary: 'Community + events business with strong member engagement. Recommend for diligence — founder reputation is the real moat.',
+  risks: ['Founder dependence — events live or die on him', 'Sponsorship revenue concentration', 'Hard to productize community at scale'],
+  metrics: [
+    {l:'Active Members', v:'2,800', c:'+15% MoM', cClass:'up', n:'Paying tier across 4 city chapters.'},
+    {l:'Avg revenue / member', v:'SAR 2,400/yr', c:'Stable', cClass:'up', n:'Subscription + event tickets + sponsorship pass-through.'},
+    {l:'Retention (12-mo)', v:'78%', c:'Strong', cClass:'up', n:'Community lock-in is real.'},
+    {l:'Sponsorship Revenue', v:'SAR 1.6M', c:'Growing', cClass:'up', n:'12 corporate sponsors across 4 events / year.'},
+    {l:'CAC', v:'SAR 280', c:'Mostly organic', cClass:'up', n:'Founder reputation + member referrals drive growth.'},
+    {l:'EBITDA Margin', v:'18%', c:'Profitable', cClass:'up', n:'Already cash-flow positive.'}
+  ],
+  model: [
+    ['Active members','2,800','6,500','14,000'],
+    ['Avg revenue / member / yr','SAR 2,400','SAR 2,800','SAR 3,300'],
+    ['Sponsorship revenue (SAR)','1.6M','4.2M','9.5M'],
+    ['Total Revenue (SAR)','8.3M','22.4M','55.7M', true],
+    ['Gross Margin %','64%','67%','71%'],
+    ['Operating Expenses','5.4M','14.5M','34.2M'],
+    ['EBITDA','1.5M','5.4M','15.5M', true]
+  ],
+  questions: [
+    {t:'"What happens to the community if the founder steps back?"', s:'gap'},
+    {t:'"How does this compete with YPO or EO?"', s:'ready'},
+    {t:'"Show me sponsor renewal rate."', s:'ready'},
+    {t:'"Can you productize this into a SaaS layer?"', s:'weak'},
+    {t:'"Geographic expansion — what changes when you leave Riyadh?"', s:'weak'},
+    {t:'"What\'s your defensibility vs LinkedIn premium groups?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:8, note:'Solid on the operational metrics.'},
+    {n:'Storytelling', s:10, note:'Compelling personal brand — founder IS the platform.'},
+    {n:'Domain Expertise', s:9, note:'15 years building Saudi business networks.'},
+    {n:'Vision Articulation', s:8, note:'Clear vision, just needs scale narrative.'},
+    {n:'Team Strength', s:5, note:'Founder-dependent. Building a leadership layer is critical.', cls:'gap'},
+    {n:'Resilience', s:9, note:'Built through Saudi market cycles. Adapts.'},
+    {n:'Closing Discipline', s:8, note:'Clear ask, structured process.'}
+  ],
+  overall: '8.1/10 — fundable. Team layer is the unlock for Series A.',
+  investors: [
+    {n:'[Saudi media FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'Strategic alignment'},
+    {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+    {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+    {n:'[Corporate sponsor → strategic]', t:'Strategic · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'Convert sponsor to investor'},
+    {n:'Vision Ventures', t:'VC · KSA', stage:'Seed', ticket:'$250K–1M', path:'cold', pathText:'Cold sequence ready'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'After SaaS layer prototype'}
+  ]
+};
+
+CASES.clenso = {
+  name: 'Clenso', sector: 'Cleaning Services · B2B', stage: 'Seed', raise: 'SAR 4M', market: 'KSA',
+  verdict: 'go', verdictText: 'GO', confidence: 'Medium-High', confidenceClass: 'high',
+  summary: 'Tech-enabled cleaning services with strong B2B contract base. Recommend for diligence — operational excellence is the moat.',
+  risks: ['Worker visa cost pressure (Saudization)', 'Customer concentration — top 5 = 38% of revenue', 'Margin compression as competitors enter'],
+  metrics: [
+    {l:'Annual Revenue', v:'SAR 12M', c:'+52% YoY', cClass:'up', n:'B2B contracts (80%) + residential premium (20%).'},
+    {l:'Gross Margin', v:'31%', c:'Industry-leading', cClass:'up', n:'KSA cleaning median ~22%. Tech layer drives efficiency.'},
+    {l:'Customer Retention', v:'92%', c:'Excellent', cClass:'up', n:'Annual contract renewals strong.'},
+    {l:'Avg Contract Value', v:'SAR 95K/yr', c:'Growing', cClass:'up', n:'Up from SAR 65K two years ago.'},
+    {l:'CAC (B2B)', v:'SAR 2,800', c:'Improving', cClass:'down', n:'Mostly outbound sales + referrals.'},
+    {l:'EBITDA Margin', v:'9%', c:'Improving', cClass:'up', n:'Up from 4% YoY. Software-driven.'}
+  ],
+  model: [
+    ['Active B2B contracts','135','340','780'],
+    ['Avg contract value (SAR)','95K','115K','140K'],
+    ['Annual Revenue (SAR)','12.0M','35.4M','98.5M', true],
+    ['Gross Margin %','31%','35%','39%'],
+    ['Operating Expenses','9.5M','26.5M','68.4M'],
+    ['EBITDA','1.1M','5.5M','19.4M', true]
+  ],
+  questions: [
+    {t:'"How do you compete with ISS or Initial when they\'re already in KSA?"', s:'ready'},
+    {t:'"Saudization compliance — what\'s the cost trajectory?"', s:'gap'},
+    {t:'"Show me your software ROI on the operational team."', s:'ready'},
+    {t:'"5-customer concentration — what\'s the diversification plan?"', s:'weak'},
+    {t:'"What\'s the unit economics at the residential premium tier?"', s:'weak'},
+    {t:'"How does this play with the Vision 2030 sector growth?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:9, note:'Operator background. Knows every margin line.'},
+    {n:'Storytelling', s:7, note:'Solid case, narrative could be sharper for VCs.'},
+    {n:'Domain Expertise', s:10, note:'12 years in facility services in KSA.'},
+    {n:'Vision Articulation', s:8, note:'Clear path: tech-enabled facility services leader.'},
+    {n:'Team Strength', s:8, note:'Strong ops + CFO. Hiring VP Sales.'},
+    {n:'Resilience', s:9, note:'Pivoted twice in cleaning category. Knows the customer.'},
+    {n:'Closing Discipline', s:8, note:'Disciplined fundraise process.'}
+  ],
+  overall: '8.4/10 — Seed-ready. Cleaning narrative needs tech-edge framing.',
+  investors: [
+    {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+    {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+    {n:'[Facilities FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$1–3M', path:'warm', pathText:'Direct intro available'},
+    {n:'Riyad Bank Capital', t:'CVC · KSA', stage:'Seed–A', ticket:'$1–3M', path:'cold', pathText:'Cold sequence ready'},
+    {n:'BY Venture Partners', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'Cold sequence designed'},
+    {n:'[Real estate FO]', t:'Family Office · KSA', stage:'Seed–A', ticket:'$1–3M', path:'warm', pathText:'Strategic alignment'}
+  ]
+};
+
+CASES.redstudio = {
+  name: 'Red Studio', sector: 'Creative Agency · B2B Services', stage: 'Seed', raise: 'SAR 2.5M', market: 'KSA + UAE',
+  verdict: 'caution', verdictText: 'CONDITIONAL — agency scale model', confidence: 'Medium', confidenceClass: 'med',
+  summary: 'Strong client roster and creative chops, but agencies are hard to scale. Condition: prove productized service line (SaaS-tier) before close.',
+  risks: ['Services revenue caps at team capacity', 'Client churn at agencies historically high', 'Margin compression as team grows'],
+  metrics: [
+    {l:'Annual Revenue', v:'SAR 6.8M', c:'+28% YoY', cClass:'up', n:'12 retainer clients + project work.'},
+    {l:'Gross Margin', v:'42%', c:'Industry-good', cClass:'up', n:'KSA agency median ~35%. Senior-light pyramid helps.'},
+    {l:'Client Retention', v:'88%', c:'Strong', cClass:'up', n:'Above agency median (~70%).'},
+    {l:'Avg Retainer', v:'SAR 35K/mo', c:'Growing', cClass:'up', n:'Up from SAR 22K. Moving up-market.'},
+    {l:'Revenue / Employee', v:'SAR 360K', c:'Healthy', cClass:'up', n:'Lean team. Above agency benchmarks.'},
+    {l:'EBITDA Margin', v:'16%', c:'Profitable', cClass:'up', n:'Already cash-flow positive.'}
+  ],
+  model: [
+    ['Active retainers','12','22','38'],
+    ['Avg retainer value (SAR/mo)','35K','45K','55K'],
+    ['Project revenue (SAR/yr)','1.8M','3.2M','5.5M'],
+    ['Annual Revenue (SAR)','6.8M','15.1M','30.5M', true],
+    ['Gross Margin %','42%','45%','48%'],
+    ['Operating Expenses','5.7M','11.9M','22.8M'],
+    ['EBITDA','1.1M','3.2M','7.7M', true]
+  ],
+  questions: [
+    {t:'"Agencies don\'t scale — what\'s your productization play?"', s:'gap'},
+    {t:'"How do you compete with the 100 other Riyadh agencies?"', s:'weak'},
+    {t:'"Show me revenue per FTE benchmark."', s:'ready'},
+    {t:'"What\'s the client acquisition channel — outbound or inbound?"', s:'ready'},
+    {t:'"UAE expansion — does the brand carry?"', s:'weak'},
+    {t:'"At what revenue does margin compress?"', s:'ready'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:8, note:'Strong on services metrics; needs productization economics.'},
+    {n:'Storytelling', s:10, note:'Creative founder — narrative is a strength.'},
+    {n:'Domain Expertise', s:9, note:'10+ years in MENA creative industry.'},
+    {n:'Vision Articulation', s:7, note:'Clear vision for creative work; product layer story unclear.'},
+    {n:'Team Strength', s:8, note:'Strong creative leads. Need a CRO or product lead.'},
+    {n:'Resilience', s:9, note:'Built through 2 recessions and a brand pivot.'},
+    {n:'Closing Discipline', s:7, note:'Clear ask, decent process.'}
+  ],
+  overall: '8.2/10 — fundable for productization angle, not pure agency.',
+  investors: [
+    {n:'[Media-focused FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'Direct intro available'},
+    {n:'Nuwa Capital', t:'VC · UAE', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'2nd-degree via portfolio'},
+    {n:'Algebra Ventures', t:'VC · Egypt', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'After UAE expansion plan'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'cold', pathText:'After product-tier prototype'},
+    {n:'500 Global (MENA)', t:'VC · MENA', stage:'Seed', ticket:'$250K–1M', path:'warm', pathText:'LEOMAX network'},
+    {n:'[Agency network strategic]', t:'Strategic · Regional', stage:'Seed–A', ticket:'$1–3M', path:'cold', pathText:'For roll-up play'}
+  ]
+};
+
+CASES.regional = {
+  name: 'Regional Business Summit', sector: 'Events · B2B', stage: 'Bootstrapped', raise: 'SAR 2.5M', market: 'GCC',
+  verdict: 'caution', verdictText: 'CONDITIONAL — single-event risk', confidence: 'Medium', confidenceClass: 'med',
+  summary: 'Marquee event with strong sponsor base, but one-event-per-year model is fragile. Condition: launch 2 additional regional editions before close.',
+  risks: ['Single-event concentration — one bad year = catastrophic', 'Sponsor renewal risk in macro downturns', 'Founder bandwidth as primary operator'],
+  metrics: [
+    {l:'Annual Revenue', v:'SAR 4.2M', c:'+38% YoY', cClass:'up', n:'Sponsorship (75%) + tickets (15%) + add-ons (10%).'},
+    {l:'Gross Margin', v:'52%', c:'Strong', cClass:'up', n:'High-margin event model with disciplined cost base.'},
+    {l:'Sponsor Renewal', v:'78%', c:'Strong', cClass:'up', n:'Above events industry median (~55%).'},
+    {l:'Attendance', v:'1,200', c:'+22% YoY', cClass:'up', n:'Mix of C-suite executives + government officials.'},
+    {l:'Net Promoter Score', v:'68', c:'Excellent', cClass:'up', n:'Among top 10% of business events in MEA region.'},
+    {l:'EBITDA Margin', v:'22%', c:'Highly profitable', cClass:'up', n:'Lean ops + sponsorship-heavy economics.'}
+  ],
+  model: [
+    ['Annual editions','1','3','6'],
+    ['Avg revenue / edition (SAR)','4.2M','3.8M','3.5M'],
+    ['Sponsorship % of revenue','75%','70%','65%'],
+    ['Annual Revenue (SAR)','4.2M','11.4M','21.0M', true],
+    ['Gross Margin %','52%','55%','58%'],
+    ['Operating Expenses','3.3M','8.6M','15.5M'],
+    ['EBITDA','0.9M','2.7M','5.5M', true]
+  ],
+  questions: [
+    {t:'"What happens if one annual event has a bad year?"', s:'gap'},
+    {t:'"How does this compete with Davos-style global events?"', s:'ready'},
+    {t:'"Show me your sponsor concentration."', s:'weak'},
+    {t:'"What\'s the path beyond Riyadh — UAE, Egypt?"', s:'ready'},
+    {t:'"Why now — what changed in the GCC events landscape?"', s:'ready'},
+    {t:'"What\'s the digital/year-round community play?"', s:'weak'}
+  ],
+  scores: [
+    {n:'Numbers Mastery', s:8, note:'Strong on event P&L; weaker on multi-year cohort.'},
+    {n:'Storytelling', s:10, note:'Founder is a natural — narrates the event story powerfully.'},
+    {n:'Domain Expertise', s:9, note:'15 years in business events + government relations.'},
+    {n:'Vision Articulation', s:8, note:'Vision is clear, but tone is conservative for VCs.'},
+    {n:'Team Strength', s:6, note:'Founder + 4 contractors. Need a core ops team.', cls:'weak'},
+    {n:'Resilience', s:9, note:'Survived COVID — pivoted to hybrid format.'},
+    {n:'Closing Discipline', s:8, note:'Disciplined ask, clear process.'}
+  ],
+  overall: '8.3/10 — fundable for multi-edition expansion model.',
+  investors: [
+    {n:'[Media-focused FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'Strategic alignment'},
+    {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+    {n:'[Government relations FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'Direct relationship'},
+    {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'After 2nd edition launched'},
+    {n:'Hala Ventures', t:'VC · KSA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'LEOMAX network'},
+    {n:'[Sponsor → strategic]', t:'Strategic · KSA', stage:'Seed', ticket:'$500K–1M', path:'warm', pathText:'Convert lead sponsor'}
+  ]
+};
 
 /* ─── Render ───────────────────────────────────────── */
 function getCaseId() {
