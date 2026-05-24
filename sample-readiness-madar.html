@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Investment Readiness Sprint — MADAR Sample · LEOMAX</title>
+<meta name="description" content="A sample deliverable from a LEOMAX Investment Readiness Sprint: investor memo, unit economics, 3-year model, pitch stress test, cap table, and investor map for MADAR Logistics.">
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+  background:#FFFFFF;color:#1d1d1f;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);
+    border-bottom:1px solid #e5e5ea;padding:14px 64px;display:flex;justify-content:space-between;align-items:center}
+nav .brand{display:flex;align-items:center;gap:14px}
+nav .brand img{height:30px}
+nav .brand-text{font-size:11px;color:#86868b;letter-spacing:0;font-weight:500}
+nav .brand-text strong{color:#1d1d1f}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-actions a{font-size:13px;color:#1d1d1f;text-decoration:none;font-weight:500}
+.nav-actions a:hover{color:#000}
+.nav-cta{background:#1d1d1f;color:#fff;padding:8px 18px;border-radius:980px;font-size:13px}
+.nav-cta:hover{background:#424245}
+
+/* SAMPLE BANNER */
+.sample-banner{background:#FFF7E6;border-bottom:1px solid #FFE4A0;padding:10px 64px;text-align:center;font-size:13px;color:#7A5C00}
+.sample-banner strong{color:#5C4400}
+
+/* HERO */
+.hero{background:#000;color:#fff;padding:clamp(80px,12vh,140px) 64px;text-align:center}
+.hero .pill{display:inline-block;background:rgba(255,255,255,.1);color:#f5f5f7;padding:6px 16px;
+  border-radius:980px;font-size:13px;font-weight:500;margin-bottom:24px}
+.hero h1{font-size:clamp(48px,7vw,84px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero .sub{font-size:clamp(20px,2vw,26px);color:#a1a1a6;font-weight:400;max-width:700px;margin:0 auto;line-height:1.4}
+.hero .deal-meta{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+.hero .deal-meta div{text-align:center}
+.hero .deal-meta .v{font-size:24px;font-weight:600;color:#fff;letter-spacing:-0.5px}
+.hero .deal-meta .l{font-size:11px;color:#86868b;margin-top:4px;letter-spacing:0}
+
+/* SECTION COMMON */
+section{padding:clamp(80px,10vh,120px) 64px;max-width:1200px;margin:0 auto}
+section.dark{max-width:none;background:#000;color:#fff}
+section.gray{max-width:none;background:#f5f5f7}
+section .inner{max-width:1200px;margin:0 auto}
+.sec-pill{display:inline-block;background:#f5f5f7;border-radius:980px;padding:5px 14px;font-size:12px;
+  color:#86868b;font-weight:500;margin-bottom:18px}
+section.dark .sec-pill{background:rgba(255,255,255,.08);color:#a1a1a6}
+section.gray .sec-pill{background:#FFF}
+h2{font-size:clamp(36px,4.5vw,56px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:18px}
+section.dark h2{color:#fff}
+.lead{font-size:clamp(18px,1.5vw,21px);color:#6e6e73;line-height:1.55;max-width:780px;margin-bottom:48px}
+section.dark .lead{color:#a1a1a6}
+
+/* VERDICT CARD */
+.verdict{background:#fff;border-radius:24px;padding:48px 40px;box-shadow:0 8px 32px rgba(0,0,0,.06);border:1px solid #e5e5ea;margin-top:40px}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.verdict-recommend{font-size:14px;color:#86868b;font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.verdict-call{font-size:32px;font-weight:700;color:#1d1d1f;letter-spacing:-0.5px;line-height:1.15;margin-bottom:12px}
+.verdict-call.go{color:#1d8348}
+.verdict-call.caution{color:#a86b00}
+.verdict-confidence{display:inline-block;background:#1d8348;color:#fff;padding:4px 12px;border-radius:980px;font-size:12px;font-weight:600;margin-bottom:24px}
+.verdict-list{margin-top:8px}
+.verdict-list li{padding:8px 0;font-size:14px;color:#1d1d1f;display:flex;gap:10px;align-items:flex-start;list-style:none}
+.verdict-list li::before{content:'';width:6px;height:6px;background:#1d8348;border-radius:50%;flex-shrink:0;margin-top:8px}
+.verdict-risks li::before{background:#a86b00}
+
+/* UNIT ECONOMICS TABLE */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+.metric-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:28px 24px}
+.metric-card .label{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:1px;font-weight:500;margin-bottom:10px}
+.metric-card .value{font-size:36px;font-weight:700;color:#1d1d1f;letter-spacing:-1px;line-height:1}
+.metric-card .change{font-size:12px;margin-top:8px;font-weight:500}
+.metric-card .change.up{color:#1d8348}
+.metric-card .change.down{color:#a83232}
+.metric-card .note{font-size:11px;color:#86868b;margin-top:12px;line-height:1.5}
+
+/* FINANCIAL MODEL TABLE */
+.fin-table{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #e5e5ea;margin-top:32px}
+.fin-table table{width:100%;border-collapse:collapse}
+.fin-table th{text-align:left;background:#f5f5f7;padding:14px 20px;font-size:12px;font-weight:600;color:#1d1d1f;letter-spacing:0;text-transform:uppercase}
+.fin-table th.num{text-align:right}
+.fin-table td{padding:14px 20px;font-size:14px;border-top:1px solid #f5f5f7;color:#1d1d1f}
+.fin-table td.num{text-align:right;font-variant-numeric:tabular-nums;color:#1d1d1f;font-weight:500}
+.fin-table tr.total td{font-weight:700;background:#fafafa;color:#000}
+.fin-table tr:hover td{background:#fafafa}
+
+/* PITCH STRESS TEST */
+.questions{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.q-card{background:#fff;border-radius:14px;border:1px solid #e5e5ea;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.q-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#1d1d1f;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.q-num.weak{background:#a86b00}
+.q-num.gap{background:#a83232}
+.q-text{font-size:14px;line-height:1.5;color:#1d1d1f}
+.q-text strong{color:#1d1d1f}
+.q-status{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:980px;margin-top:8px;text-transform:uppercase;letter-spacing:.5px}
+.q-status.ready{background:#e8f5ee;color:#1d8348}
+.q-status.weak{background:#fff5e0;color:#a86b00}
+.q-status.gap{background:#fce8e8;color:#a83232}
+
+/* FOUNDER READINESS SCORES */
+.readiness{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px}
+.r-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:28px 24px}
+.r-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.r-name{font-size:15px;font-weight:600;color:#1d1d1f;letter-spacing:-0.2px}
+.r-score{font-size:28px;font-weight:700;color:#1d1d1f;letter-spacing:-0.5px}
+.r-score span{font-size:14px;color:#86868b;font-weight:400}
+.r-bar{height:6px;background:#f5f5f7;border-radius:980px;overflow:hidden;margin-bottom:12px}
+.r-bar > div{height:100%;background:#1d1d1f;border-radius:980px}
+.r-bar.weak > div{background:#a86b00}
+.r-bar.gap > div{background:#a83232}
+.r-note{font-size:12px;color:#6e6e73;line-height:1.5}
+
+/* INVESTOR MAP */
+.investors{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:32px}
+.inv-card{background:#fff;border-radius:14px;border:1px solid #e5e5ea;padding:22px 24px}
+.inv-name{font-size:15px;font-weight:600;color:#1d1d1f;margin-bottom:4px;letter-spacing:-0.2px}
+.inv-type{font-size:11px;color:#86868b;letter-spacing:0;font-weight:500;margin-bottom:14px;text-transform:uppercase}
+.inv-meta{display:flex;gap:12px;font-size:12px;color:#6e6e73;flex-wrap:wrap}
+.inv-meta span{display:flex;gap:6px;align-items:center}
+.inv-meta strong{color:#1d1d1f;font-weight:500}
+.inv-path{margin-top:12px;font-size:11px;padding:4px 10px;background:#f5f5f7;border-radius:980px;color:#6e6e73;display:inline-block}
+.inv-path.warm{background:#e8f5ee;color:#1d8348}
+
+/* CAP TABLE */
+.captable{background:#fff;border-radius:18px;border:1px solid #e5e5ea;overflow:hidden;margin-top:32px}
+.captable-bar{display:flex;height:48px}
+.captable-bar > div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;letter-spacing:0;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.captable-bar .founder{background:#1d1d1f;flex:65}
+.captable-bar .esop{background:#424245;flex:10}
+.captable-bar .angel{background:#6e6e73;flex:15}
+.captable-bar .new{background:#86868b;flex:10}
+.captable-legend{padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.cap-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid #f5f5f7;font-size:14px}
+.cap-row:last-child{border:none}
+.cap-row .who{color:#1d1d1f;font-weight:500;display:flex;gap:8px;align-items:center}
+.cap-row .pct{font-variant-numeric:tabular-nums;color:#86868b;font-weight:500}
+.cap-row .who::before{content:'';width:8px;height:8px;border-radius:2px;display:inline-block}
+.cap-row.founder .who::before{background:#1d1d1f}
+.cap-row.esop .who::before{background:#424245}
+.cap-row.angel .who::before{background:#6e6e73}
+.cap-row.new .who::before{background:#86868b}
+
+/* INTRO PATHS */
+.paths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:32px}
+.path-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:24px 26px}
+.path-from{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:500}
+.path-name{font-size:16px;color:#1d1d1f;font-weight:600;margin-bottom:8px;letter-spacing:-0.2px}
+.path-via{font-size:13px;color:#6e6e73;line-height:1.5}
+.path-via strong{color:#1d1d1f}
+
+/* CTA */
+.cta-section{background:#000;color:#fff;padding:clamp(80px,12vh,140px) 64px;text-align:center}
+.cta-section h2{color:#fff;font-size:clamp(36px,4.5vw,64px);font-weight:700;letter-spacing:-1px}
+.cta-section p{color:#a1a1a6;font-size:19px;max-width:600px;margin:18px auto 36px}
+.cta-btn{display:inline-block;background:#fff;color:#1d1d1f;padding:14px 32px;border-radius:980px;
+  font-size:16px;font-weight:500;text-decoration:none;transition:background .15s}
+.cta-btn:hover{background:#d2d2d7}
+.cta-btn.outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);margin-left:10px}
+.cta-btn.outline:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff}
+
+footer{background:#000;color:#86868b;padding:40px 64px;text-align:center;font-size:12px}
+
+@media (max-width:760px){
+  nav,section,.cta-section,footer{padding-left:24px !important;padding-right:24px !important}
+  .questions,.verdict-grid{grid-template-columns:1fr !important}
+  .captable-legend{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="LEOMAX_Website_Design.html" style="text-decoration:none">
+    <div class="brand">
+      <img src="logo.png" alt="LEOMAX">
+      <div class="brand-text">Investment Readiness Sprint · <strong>Sample Deliverable</strong></div>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <a href="investor-services.html">Investor Layer</a>
+    <a class="nav-cta" href="https://calendly.com/anas-msd-ramsees/30min" target="_blank">Book a Call →</a>
+  </div>
+</nav>
+
+<!-- SAMPLE BANNER -->
+<div class="sample-banner">
+  📌 <strong>Sample / illustration only.</strong> The numbers and verdict on this page are representative of a real Readiness Sprint deliverable but are not MADAR's actual figures.
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="pill">Investment Readiness Sprint · Sample</span>
+  <h1>MADAR Logistics</h1>
+  <p class="sub">A 14-day diligence package built to take this company from "raising" to "fundable" — investor memo, unit economics, model, pitch stress test, cap table, founder readiness, and a warm-intro map.</p>
+  <div class="deal-meta">
+    <div><div class="v">SAR 12M</div><div class="l">Round target</div></div>
+    <div><div class="v">Pre-A</div><div class="l">Stage</div></div>
+    <div><div class="v">Logistics</div><div class="l">Sector</div></div>
+    <div><div class="v">KSA</div><div class="l">Market</div></div>
+    <div><div class="v">14 days</div><div class="l">Engagement</div></div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<section>
+  <span class="sec-pill">Recommendation</span>
+  <h2>Recommend to diligence with one condition.</h2>
+  <p class="lead">After 14 days of diligence across financial, market, and founder dimensions, the engagement closes with a single verdict — and a list of what must be true to close the round.</p>
+
+  <div class="verdict">
+    <div class="verdict-grid">
+      <div>
+        <div class="verdict-recommend">Verdict</div>
+        <div class="verdict-call go">GO — conditional</div>
+        <span class="verdict-confidence">Confidence: Medium-High</span>
+        <div style="font-size:14px;color:#6e6e73;line-height:1.6">
+          The business has product-market fit signals and a defensible operating model. The condition: lock in one of the named exclusivity partnerships in the next 60 days before round closes, or accept a 15-20% lower valuation.
+        </div>
+      </div>
+      <div>
+        <div class="verdict-recommend">Top risks</div>
+        <ul class="verdict-list verdict-risks">
+          <li>Customer concentration — top 3 = 41% of MRR</li>
+          <li>Driver/courier supply elasticity in Tier-2 cities</li>
+          <li>Regulator risk: pending TGA last-mile licensing change</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIT ECONOMICS -->
+<section class="gray">
+  <div class="inner">
+    <span class="sec-pill">Unit Economics · Rebuilt</span>
+    <h2>The numbers — diligenced, not narrated.</h2>
+    <p class="lead">Founder-stated metrics rebuilt from source data. Where assumptions are unverifiable, marked as such. Below: the 6 numbers a Series A lead will start with.</p>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="label">MRR (current)</div>
+        <div class="value">SAR 480K</div>
+        <div class="change up">+14% MoM (3-mo avg)</div>
+        <div class="note">Verified against bank statements + Salla/Zid revenue tracking.</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Gross Margin</div>
+        <div class="value">38%</div>
+        <div class="change up">Up from 31% YoY</div>
+        <div class="note">After driver payouts, fuel, packaging — KSA logistics median ~35%.</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">CAC</div>
+        <div class="value">SAR 720</div>
+        <div class="change down">Trending down — was 1,140 in Q1</div>
+        <div class="note">Mostly B2B referrals + Salla marketplace listings.</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">LTV (24-mo)</div>
+        <div class="value">SAR 9,800</div>
+        <div class="change up">LTV:CAC = 13.6×</div>
+        <div class="note">B2B contracts auto-renew at 78% retention.</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">CAC Payback</div>
+        <div class="value">7 mo</div>
+        <div class="change up">Below 12-mo threshold</div>
+        <div class="note">Strong signal for KSA SaaS-enabled logistics.</div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Burn (net)</div>
+        <div class="value">SAR 340K/mo</div>
+        <div class="change down">Runway: 14 months pre-round</div>
+        <div class="note">Round closes runway to ~32 months at target burn.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3-YEAR MODEL -->
+<section>
+  <span class="sec-pill">Financial Model · v1</span>
+  <h2>3-year projection — base case.</h2>
+  <p class="lead">Bottom-up, driven by 3 sensitivity variables: customer count, avg order value, gross margin. Full model includes high/low scenarios + monthly granularity.</p>
+
+  <div class="fin-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th class="num">2026 (current)</th>
+          <th class="num">2027 (P)</th>
+          <th class="num">2028 (P)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Active customers (B2B)</td><td class="num">132</td><td class="num">410</td><td class="num">980</td></tr>
+        <tr><td>Avg orders / customer / month</td><td class="num">86</td><td class="num">110</td><td class="num">128</td></tr>
+        <tr><td>Avg revenue / order (SAR)</td><td class="num">42</td><td class="num">46</td><td class="num">50</td></tr>
+        <tr class="total"><td>Annual Revenue (SAR)</td><td class="num">5.7M</td><td class="num">24.9M</td><td class="num">75.3M</td></tr>
+        <tr><td>Gross Margin %</td><td class="num">38%</td><td class="num">42%</td><td class="num">47%</td></tr>
+        <tr><td>Operating Expenses (SAR)</td><td class="num">6.8M</td><td class="num">14.2M</td><td class="num">28.5M</td></tr>
+        <tr class="total"><td>EBITDA (SAR)</td><td class="num">−4.6M</td><td class="num">−3.7M</td><td class="num">+6.9M</td></tr>
+        <tr><td>EBITDA Break-even</td><td class="num">—</td><td class="num">Q3 2028</td><td class="num">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PITCH STRESS TEST -->
+<section class="gray">
+  <div class="inner">
+    <span class="sec-pill">Pitch Deck Stress Test</span>
+    <h2>20 questions every GCC VC will ask.</h2>
+    <p class="lead">We tested the existing deck against the top 20 questions from a curated list of 47 KSA + Gulf investor calls in the last 18 months. Below: 6 sample question outcomes.</p>
+
+    <div class="questions">
+      <div class="q-card">
+        <div class="q-num">01</div>
+        <div>
+          <div class="q-text">"Why won't Aramex or SMSA just build this?"</div>
+          <span class="q-status ready">Ready</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">02</div>
+        <div>
+          <div class="q-text">"What's the moat once Salla/Zid plug in any logistics provider?"</div>
+          <span class="q-status ready">Ready</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-num weak">03</div>
+        <div>
+          <div class="q-text">"Show me your customer churn curve — not retention."</div>
+          <span class="q-status weak">Needs work</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-num">04</div>
+        <div>
+          <div class="q-text">"Walk me through your unit economics at 100 orders/customer/day."</div>
+          <span class="q-status ready">Ready</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-num gap">05</div>
+        <div>
+          <div class="q-text">"What's your defensibility against a Chinese logistics player entering KSA?"</div>
+          <span class="q-status gap">Gap</span>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-num weak">06</div>
+        <div>
+          <div class="q-text">"What is your founder's plan if you can't raise on these terms in 90 days?"</div>
+          <span class="q-status weak">Needs work</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;margin-top:24px;border:1px solid #e5e5ea">
+      <div style="font-size:14px;color:#6e6e73">
+        <strong style="color:#1d1d1f">Sprint outcome:</strong> 14/20 questions <span style="color:#1d8348">ready</span> · 4/20 <span style="color:#a86b00">need rework</span> · 2/20 <span style="color:#a83232">are gaps</span> requiring new data or positioning before the first investor meeting.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP TABLE -->
+<section>
+  <span class="sec-pill">Cap Table · Post-Round (modeled)</span>
+  <h2>Dilution map across 3 round-path scenarios.</h2>
+  <p class="lead">Below: the base case at SAR 12M raise on SAR 35M post. Full deliverable models 3 paths (lead-only, syndicate, strategic + financial) with implications on board seats and tag-along rights.</p>
+
+  <div class="captable">
+    <div class="captable-bar">
+      <div class="founder">Founders · 65%</div>
+      <div class="esop">ESOP · 10%</div>
+      <div class="angel">Angels · 15%</div>
+      <div class="new">New round · 10%</div>
+    </div>
+    <div class="captable-legend">
+      <div>
+        <div class="cap-row founder"><div class="who">Founders (2)</div><div class="pct">65%</div></div>
+        <div class="cap-row esop"><div class="who">ESOP Pool</div><div class="pct">10%</div></div>
+      </div>
+      <div>
+        <div class="cap-row angel"><div class="who">Existing Angels</div><div class="pct">15%</div></div>
+        <div class="cap-row new"><div class="who">New Round (Pre-A)</div><div class="pct">10%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER READINESS -->
+<section class="gray">
+  <div class="inner">
+    <span class="sec-pill">Founder Readiness · 7 Dimensions</span>
+    <h2>The hardest part of fundraising isn't the deck.</h2>
+    <p class="lead">After 4 working sessions and a stress-interview against 8 fictional VC partners, founder readiness scored across 7 dimensions. Anything below 7 gets a working plan to close the gap.</p>
+
+    <div class="readiness">
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Numbers Mastery</div><div class="r-score">9<span>/10</span></div></div>
+        <div class="r-bar"><div style="width:90%"></div></div>
+        <div class="r-note">Knows unit economics cold, can defend against hostile questions.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Storytelling</div><div class="r-score">7<span>/10</span></div></div>
+        <div class="r-bar"><div style="width:70%"></div></div>
+        <div class="r-note">Strong narrative arc; needs work on the Why-Now hook (KSA Vision 2030 angle).</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Domain Expertise</div><div class="r-score">10<span>/10</span></div></div>
+        <div class="r-bar"><div style="width:100%"></div></div>
+        <div class="r-note">10 years in logistics. Deep relationships with regulators and platforms.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Vision Articulation</div><div class="r-score">6<span>/10</span></div></div>
+        <div class="r-bar weak"><div style="width:60%"></div></div>
+        <div class="r-note">Vision is too tactical. Needs a 10-year "what could this become" frame.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Team Strength</div><div class="r-score">7<span>/10</span></div></div>
+        <div class="r-bar"><div style="width:70%"></div></div>
+        <div class="r-note">Strong ops team; investors will ask about a CTO co-founder dynamic.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Resilience under Pressure</div><div class="r-score">8<span>/10</span></div></div>
+        <div class="r-bar"><div style="width:80%"></div></div>
+        <div class="r-note">Held up well under hostile mock-questioning. Stays calm.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-head"><div class="r-name">Closing Discipline</div><div class="r-score">5<span>/10</span></div></div>
+        <div class="r-bar gap"><div style="width:50%"></div></div>
+        <div class="r-note">Tends to over-explain. Needs to learn the 30-second close + ask.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:20px 24px;background:#fff;border-radius:18px;border:1px solid #e5e5ea">
+      <div style="font-size:14px;color:#6e6e73"><strong style="color:#1d1d1f">Overall founder readiness: 7.4/10</strong> — fundable. Two dimensions (Vision, Closing) get a coaching plan included with the sprint deliverable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR MAP -->
+<section>
+  <span class="sec-pill">Investor Map · 40 right-fit names</span>
+  <h2>Who to talk to, in what order, and via whom.</h2>
+  <p class="lead">Below: 6 sample investors out of the full 40. Each entry tagged by fit, ticket-size match, warm-path availability, and likely process timeline.</p>
+
+  <div class="investors">
+    <div class="inv-card">
+      <div class="inv-name">STV (Saudi Technology Ventures)</div>
+      <div class="inv-type">VC · KSA</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> Pre-A / A</span>
+        <span><strong>Ticket:</strong> $1–5M</span>
+      </div>
+      <div class="inv-path warm">Warm path · 2nd-degree via portfolio CFO</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-name">RAED Ventures</div>
+      <div class="inv-type">VC · KSA</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> Pre-A</span>
+        <span><strong>Ticket:</strong> $500K–2M</span>
+      </div>
+      <div class="inv-path warm">Warm path · LEOMAX network</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-name">Wamda Capital</div>
+      <div class="inv-type">VC · UAE</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> Pre-A</span>
+        <span><strong>Ticket:</strong> $1–3M</span>
+      </div>
+      <div class="inv-path">Cold sequence designed (45-day plan)</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-name">[Family Office — KSA, logistics-focused]</div>
+      <div class="inv-type">Family Office · KSA</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> Pre-A to A</span>
+        <span><strong>Ticket:</strong> $2–8M</span>
+      </div>
+      <div class="inv-path warm">Warm path · direct intro available</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-name">Sanabil Investments</div>
+      <div class="inv-type">PIF Affiliate · KSA</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> A and up</span>
+        <span><strong>Ticket:</strong> $3–10M</span>
+      </div>
+      <div class="inv-path">Path: wait until Series A signals stronger</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-name">500 Global (MENA)</div>
+      <div class="inv-type">VC · MENA</div>
+      <div class="inv-meta">
+        <span><strong>Stage:</strong> Seed–Pre-A</span>
+        <span><strong>Ticket:</strong> $500K–1.5M</span>
+      </div>
+      <div class="inv-path warm">Warm path · LEOMAX existing relationship</div>
+    </div>
+  </div>
+</section>
+
+<!-- WARM-INTRO PATHS -->
+<section class="gray">
+  <div class="inner">
+    <span class="sec-pill">Warm-Intro Mapping</span>
+    <h2>The path beats the pitch.</h2>
+    <p class="lead">For the 40 named investors, we mapped warm-intro pathways using LEOMAX network, founder's existing relationships, and 2nd-degree LinkedIn. 23 of 40 have a viable warm path. Sample:</p>
+
+    <div class="paths-grid">
+      <div class="path-card">
+        <div class="path-from">STV → Partner</div>
+        <div class="path-name">via portfolio CFO at [redacted SaaS]</div>
+        <div class="path-via">2nd-degree on LinkedIn · met at <strong>LEAP 2026</strong>. Intro request prepared, founder-approved, scheduled to send week 1.</div>
+      </div>
+      <div class="path-card">
+        <div class="path-from">RAED → Partner</div>
+        <div class="path-name">via Anas Elimam (LEOMAX direct)</div>
+        <div class="path-via">Direct relationship · 4 prior intros across logistics/e-commerce. Intro template drafted, founder-approved.</div>
+      </div>
+      <div class="path-card">
+        <div class="path-from">Family Office → Principal</div>
+        <div class="path-name">via existing MADAR investor</div>
+        <div class="path-via">Existing angel sits on FO advisory board. <strong>Highest conversion probability</strong> — coach founder on positioning.</div>
+      </div>
+      <div class="path-card">
+        <div class="path-from">500 Global → MENA lead</div>
+        <div class="path-name">via LEOMAX network</div>
+        <div class="path-via">LEOMAX partner has worked with previous 500 portfolio. Soft intro request ready.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Want this kind of diligence on your company?</h2>
+  <p>The Investment Readiness Sprint is a fixed-scope 14-day engagement at SAR 18,000. Built for founders raising Pre-A or A in KSA / Gulf.</p>
+  <a href="https://calendly.com/anas-msd-ramsees/30min" target="_blank" class="cta-btn">Book a 30-min call</a>
+  <a href="investor-services.html" class="cta-btn outline">Back to Investor Layer</a>
+</div>
+
+<footer>
+  © LEOMAX 2026 · This sample is for illustration only. Numbers and verdict shown do not represent MADAR's actual figures.
+</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+</body>
+</html>
