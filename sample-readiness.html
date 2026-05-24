@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Investment Readiness Sprint — Sample · LEOMAX</title>
+<meta name="description" content="Sample Investment Readiness Sprint deliverable showing what LEOMAX produces in 14 days — investor memo, unit economics, model, pitch stress test, cap table.">
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#FFFFFF;color:#1d1d1f;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-bottom:1px solid #e5e5ea;padding:14px 64px;display:flex;justify-content:space-between;align-items:center}
+nav .brand{display:flex;align-items:center;gap:14px}
+nav .brand img{height:30px}
+nav .brand-text{font-size:11px;color:#86868b;font-weight:500}
+nav .brand-text strong{color:#1d1d1f}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.nav-actions a{font-size:13px;color:#1d1d1f;text-decoration:none;font-weight:500}
+.nav-cta{background:#1d1d1f;color:#fff;padding:8px 18px;border-radius:980px}
+.nav-cta:hover{background:#424245}
+
+.sample-banner{background:#FFF7E6;border-bottom:1px solid #FFE4A0;padding:10px 64px;text-align:center;font-size:13px;color:#7A5C00}
+.sample-banner strong{color:#5C4400}
+
+.case-picker{padding:14px 64px;background:#fafafa;border-bottom:1px solid #e5e5ea;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.case-picker label{font-size:12px;color:#86868b;font-weight:500}
+.case-picker select{padding:7px 12px;border-radius:980px;border:1px solid #d2d2d7;background:#fff;font-size:13px;color:#1d1d1f;cursor:pointer;font-family:inherit}
+.case-picker .hint{font-size:11px;color:#86868b;margin-left:auto}
+
+.hero{background:#000;color:#fff;padding:clamp(80px,12vh,140px) 64px;text-align:center}
+.hero .pill{display:inline-block;background:rgba(255,255,255,.1);color:#f5f5f7;padding:6px 16px;border-radius:980px;font-size:13px;font-weight:500;margin-bottom:24px}
+.hero h1{font-size:clamp(48px,7vw,84px);font-weight:700;letter-spacing:-2px;line-height:1.05;margin-bottom:18px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero .sub{font-size:clamp(20px,2vw,26px);color:#a1a1a6;font-weight:400;max-width:700px;margin:0 auto;line-height:1.4}
+.hero .deal-meta{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+.hero .deal-meta div{text-align:center}
+.hero .deal-meta .v{font-size:24px;font-weight:600;color:#fff;letter-spacing:-0.5px}
+.hero .deal-meta .l{font-size:11px;color:#86868b;margin-top:4px}
+
+section{padding:clamp(80px,10vh,120px) 64px;max-width:1200px;margin:0 auto}
+section.gray{max-width:none;background:#f5f5f7}
+section .inner{max-width:1200px;margin:0 auto}
+.sec-pill{display:inline-block;background:#f5f5f7;border-radius:980px;padding:5px 14px;font-size:12px;color:#86868b;font-weight:500;margin-bottom:18px}
+section.gray .sec-pill{background:#FFF}
+h2{font-size:clamp(36px,4.5vw,56px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:18px}
+.lead{font-size:clamp(18px,1.5vw,21px);color:#6e6e73;line-height:1.55;max-width:780px;margin-bottom:48px}
+
+.verdict{background:#fff;border-radius:24px;padding:48px 40px;box-shadow:0 8px 32px rgba(0,0,0,.06);border:1px solid #e5e5ea;margin-top:40px}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.verdict-recommend{font-size:14px;color:#86868b;font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.verdict-call{font-size:32px;font-weight:700;letter-spacing:-0.5px;line-height:1.15;margin-bottom:12px}
+.verdict-call.go{color:#1d8348}
+.verdict-call.caution{color:#a86b00}
+.verdict-call.pass{color:#a83232}
+.verdict-confidence{display:inline-block;color:#fff;padding:4px 12px;border-radius:980px;font-size:12px;font-weight:600;margin-bottom:24px}
+.verdict-confidence.high{background:#1d8348}
+.verdict-confidence.med{background:#a86b00}
+.verdict-confidence.low{background:#a83232}
+.verdict-list{margin-top:8px}
+.verdict-list li{padding:8px 0;font-size:14px;color:#1d1d1f;display:flex;gap:10px;align-items:flex-start;list-style:none}
+.verdict-list li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:8px;background:#1d8348}
+.verdict-risks li::before{background:#a86b00}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+.metric-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:28px 24px}
+.metric-card .label{font-size:11px;color:#86868b;text-transform:uppercase;letter-spacing:1px;font-weight:500;margin-bottom:10px}
+.metric-card .value{font-size:36px;font-weight:700;color:#1d1d1f;letter-spacing:-1px;line-height:1}
+.metric-card .change{font-size:12px;margin-top:8px;font-weight:500}
+.metric-card .change.up{color:#1d8348}
+.metric-card .change.down{color:#a83232}
+.metric-card .note{font-size:11px;color:#86868b;margin-top:12px;line-height:1.5}
+
+.fin-table{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #e5e5ea;margin-top:32px}
+.fin-table table{width:100%;border-collapse:collapse}
+.fin-table th{text-align:left;background:#f5f5f7;padding:14px 20px;font-size:12px;font-weight:600;color:#1d1d1f}
+.fin-table th.num{text-align:right}
+.fin-table td{padding:14px 20px;font-size:14px;border-top:1px solid #f5f5f7;color:#1d1d1f}
+.fin-table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.fin-table tr.total td{font-weight:700;background:#fafafa;color:#000}
+
+.questions{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.q-card{background:#fff;border-radius:14px;border:1px solid #e5e5ea;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.q-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;background:#1d8348}
+.q-num.weak{background:#a86b00}
+.q-num.gap{background:#a83232}
+.q-text{font-size:14px;line-height:1.5;color:#1d1d1f}
+.q-status{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:980px;margin-top:8px;text-transform:uppercase}
+.q-status.ready{background:#e8f5ee;color:#1d8348}
+.q-status.weak{background:#fff5e0;color:#a86b00}
+.q-status.gap{background:#fce8e8;color:#a83232}
+
+.readiness{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px}
+.r-card{background:#fff;border-radius:18px;border:1px solid #e5e5ea;padding:28px 24px}
+.r-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.r-name{font-size:15px;font-weight:600;color:#1d1d1f}
+.r-score{font-size:28px;font-weight:700;color:#1d1d1f;letter-spacing:-0.5px}
+.r-score span{font-size:14px;color:#86868b;font-weight:400}
+.r-bar{height:6px;background:#f5f5f7;border-radius:980px;overflow:hidden;margin-bottom:12px}
+.r-bar > div{height:100%;background:#1d1d1f;border-radius:980px}
+.r-bar.weak > div{background:#a86b00}
+.r-bar.gap > div{background:#a83232}
+.r-note{font-size:12px;color:#6e6e73;line-height:1.5}
+
+.investors{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:32px}
+.inv-card{background:#fff;border-radius:14px;border:1px solid #e5e5ea;padding:22px 24px}
+.inv-name{font-size:15px;font-weight:600;color:#1d1d1f;margin-bottom:4px}
+.inv-type{font-size:11px;color:#86868b;font-weight:500;margin-bottom:14px;text-transform:uppercase}
+.inv-meta{display:flex;gap:12px;font-size:12px;color:#6e6e73;flex-wrap:wrap}
+.inv-meta strong{color:#1d1d1f;font-weight:500}
+.inv-path{margin-top:12px;font-size:11px;padding:4px 10px;background:#f5f5f7;border-radius:980px;color:#6e6e73;display:inline-block}
+.inv-path.warm{background:#e8f5ee;color:#1d8348}
+
+.captable{background:#fff;border-radius:18px;border:1px solid #e5e5ea;overflow:hidden;margin-top:32px}
+.captable-bar{display:flex;height:48px}
+.captable-bar > div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.captable-legend{padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.cap-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid #f5f5f7;font-size:14px}
+.cap-row .who{color:#1d1d1f;font-weight:500;display:flex;gap:8px;align-items:center}
+.cap-row .pct{font-variant-numeric:tabular-nums;color:#86868b;font-weight:500}
+
+.cta-section{background:#000;color:#fff;padding:clamp(80px,12vh,140px) 64px;text-align:center}
+.cta-section h2{color:#fff;font-size:clamp(36px,4.5vw,64px)}
+.cta-section p{color:#a1a1a6;font-size:19px;max-width:600px;margin:18px auto 36px}
+.cta-btn{display:inline-block;background:#fff;color:#1d1d1f;padding:14px 32px;border-radius:980px;font-size:16px;font-weight:500;text-decoration:none}
+.cta-btn:hover{background:#d2d2d7}
+.cta-btn.outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);margin-left:10px}
+
+footer{background:#000;color:#86868b;padding:40px 64px;text-align:center;font-size:12px}
+
+@media (max-width:760px){
+  nav,section,.cta-section,footer,.case-picker,.sample-banner{padding-left:24px !important;padding-right:24px !important}
+  .questions,.verdict-grid{grid-template-columns:1fr !important}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<nav>
+  <a href="LEOMAX_Website_Design.html" style="text-decoration:none">
+    <div class="brand">
+      <img src="logo.png" alt="LEOMAX">
+      <div class="brand-text">Investment Readiness Sprint · <strong>Sample Deliverable</strong></div>
+    </div>
+  </a>
+  <div class="nav-actions">
+    <a href="investor-services.html">Investor Layer</a>
+    <a class="nav-cta" href="https://calendly.com/anas-msd-ramsees/30min" target="_blank">Book a Call →</a>
+  </div>
+</nav>
+
+<div class="sample-banner">
+  📌 <strong>Sample / illustration only.</strong> Numbers and verdict are representative of a real Readiness Sprint deliverable, not the client's actual figures.
+</div>
+
+<div class="case-picker">
+  <label for="caseSelect">View sample for:</label>
+  <select id="caseSelect" onchange="loadCase(this.value)"></select>
+  <span class="hint">Same 14-day framework, applied to a different sector.</span>
+</div>
+
+<div id="content"></div>
+
+<div class="cta-section">
+  <h2>Want this kind of diligence on your company?</h2>
+  <p>The Investment Readiness Sprint is a fixed-scope 14-day engagement at SAR 18,000. Built for founders raising Pre-A or A in KSA / Gulf.</p>
+  <a href="https://calendly.com/anas-msd-ramsees/30min" target="_blank" class="cta-btn">Book a 30-min call</a>
+  <a href="investor-services.html" class="cta-btn outline">Back to Investor Layer</a>
+</div>
+
+<footer>© LEOMAX 2026 · Sample for illustration only. Numbers shown do not represent any client's actual figures.</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+
+<script>
+/* ============================================================
+   13 CASE CONFIGS — each is one render of the Sprint template
+   ============================================================ */
+const CASES = {
+  madar: {
+    name: 'MADAR Logistics', sector: 'Logistics · Last-mile', stage: 'Pre-A', raise: 'SAR 12M', market: 'KSA',
+    verdict: 'go', verdictText: 'GO — conditional', confidence: 'Medium-High', confidenceClass: 'high',
+    summary: 'Product-market fit signals and defensible operating model. Condition: lock one named exclusivity partnership in 60 days before round closes.',
+    risks: ['Customer concentration — top 3 = 41% of MRR', 'Driver/courier supply elasticity in Tier-2 cities', 'Regulator risk: pending TGA last-mile licensing change'],
+    metrics: [
+      {l:'MRR (current)', v:'SAR 480K', c:'+14% MoM (3-mo avg)', cClass:'up', n:'Verified against bank statements + Salla/Zid revenue tracking.'},
+      {l:'Gross Margin', v:'38%', c:'Up from 31% YoY', cClass:'up', n:'After driver payouts, fuel, packaging — KSA median ~35%.'},
+      {l:'CAC', v:'SAR 720', c:'Trending down — was 1,140 in Q1', cClass:'down', n:'Mostly B2B referrals + Salla marketplace listings.'},
+      {l:'LTV (24-mo)', v:'SAR 9,800', c:'LTV:CAC = 13.6×', cClass:'up', n:'B2B contracts auto-renew at 78% retention.'},
+      {l:'CAC Payback', v:'7 mo', c:'Below 12-mo threshold', cClass:'up', n:'Strong signal for KSA SaaS-enabled logistics.'},
+      {l:'Burn (net)', v:'SAR 340K/mo', c:'Runway: 14 months pre-round', cClass:'down', n:'Round closes runway to ~32 months at target burn.'}
+    ],
+    model: [
+      ['Active customers (B2B)','132','410','980'],
+      ['Avg orders / customer / month','86','110','128'],
+      ['Avg revenue / order (SAR)','42','46','50'],
+      ['Annual Revenue (SAR)','5.7M','24.9M','75.3M', true],
+      ['Gross Margin %','38%','42%','47%'],
+      ['Operating Expenses (SAR)','6.8M','14.2M','28.5M'],
+      ['EBITDA (SAR)','−4.6M','−3.7M','+6.9M', true]
+    ],
+    questions: [
+      {t:'"Why won\'t Aramex or SMSA just build this?"', s:'ready'},
+      {t:'"What\'s the moat once Salla/Zid plug in any logistics provider?"', s:'ready'},
+      {t:'"Show me your customer churn curve — not retention."', s:'weak'},
+      {t:'"Walk me through your unit economics at 100 orders/customer/day."', s:'ready'},
+      {t:'"Defensibility against a Chinese logistics player entering KSA?"', s:'gap'},
+      {t:'"What\'s your plan if you can\'t raise on these terms in 90 days?"', s:'weak'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:9, note:'Knows unit economics cold, defends against hostile questions.'},
+      {n:'Storytelling', s:7, note:'Strong narrative; Why-Now hook (Vision 2030) needs work.'},
+      {n:'Domain Expertise', s:10, note:'10 years in logistics. Deep regulator + platform relationships.'},
+      {n:'Vision Articulation', s:6, note:'Too tactical. Needs 10-year "what could this become" frame.', cls:'weak'},
+      {n:'Team Strength', s:7, note:'Strong ops; investors will ask about CTO co-founder dynamic.'},
+      {n:'Resilience', s:8, note:'Held up under hostile mock. Stays calm.'},
+      {n:'Closing Discipline', s:5, note:'Over-explains. Needs 30-second close + ask.', cls:'gap'}
+    ],
+    overall: '7.4/10 — fundable. Two dimensions get a coaching plan.',
+    investors: [
+      {n:'STV (Saudi Technology Ventures)', t:'VC · KSA', stage:'Pre-A / A', ticket:'$1–5M', path:'warm', pathText:'2nd-degree via portfolio CFO'},
+      {n:'RAED Ventures', t:'VC · KSA', stage:'Pre-A', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+      {n:'Wamda Capital', t:'VC · UAE', stage:'Pre-A', ticket:'$1–3M', path:'cold', pathText:'Cold sequence designed'},
+      {n:'[FO — logistics-focused]', t:'Family Office · KSA', stage:'Pre-A to A', ticket:'$2–8M', path:'warm', pathText:'Direct intro available'},
+      {n:'Sanabil Investments', t:'PIF Affiliate · KSA', stage:'A+', ticket:'$3–10M', path:'cold', pathText:'Wait until A signals'},
+      {n:'500 Global (MENA)', t:'VC · MENA', stage:'Seed–Pre-A', ticket:'$500K–1.5M', path:'warm', pathText:'LEOMAX existing relationship'}
+    ]
+  },
+  jambak: {
+    name: 'Jambak', sector: 'E-commerce · Hypermarket', stage: 'Seed-extension', raise: 'SAR 6M', market: 'Sudan + KSA expansion',
+    verdict: 'caution', verdictText: 'CONDITIONAL — Sudan-only risk', confidence: 'Medium', confidenceClass: 'med',
+    summary: 'Strong unit economics in Khartoum metro, but raise is risky without locked KSA pilot. Condition: secure 1 KSA distribution partner before close.',
+    risks: ['Currency volatility (SDG) impacting margins', 'Single-market concentration', 'Last-mile dependence on motorbike network'],
+    metrics: [
+      {l:'GMV (last quarter)', v:'SAR 2.4M', c:'+22% QoQ', cClass:'up', n:'Sudan ops only. KSA pilot pending.'},
+      {l:'Take rate', v:'18%', c:'Stable', cClass:'up', n:'Mix of platform fee + delivery margin.'},
+      {l:'CAC', v:'SAR 65', c:'Dropping from SAR 110', cClass:'down', n:'Word-of-mouth + Zain Cash partnership driving organic.'},
+      {l:'LTV (12-mo)', v:'SAR 540', c:'LTV:CAC = 8.3×', cClass:'up', n:'Repeat purchase 4.2× annually for active users.'},
+      {l:'CAC Payback', v:'4 mo', c:'Excellent', cClass:'up', n:'Fast payback typical for grocery e-commerce.'},
+      {l:'Burn (net)', v:'SAR 180K/mo', c:'Runway: 16 months', cClass:'up', n:'Lean ops; raise mostly for KSA market entry.'}
+    ],
+    model: [
+      ['Active users (monthly)','38K','120K','340K'],
+      ['Avg orders / user / month','3.1','3.6','4.0'],
+      ['Avg basket value (SAR)','58','64','72'],
+      ['GMV (annual)','SAR 8.2M','SAR 33M','SAR 117M', true],
+      ['Take rate (%)','18%','19%','21%'],
+      ['Net Revenue','SAR 1.5M','SAR 6.3M','SAR 24.6M', true],
+      ['Profitability path','-','-','Year 3 EBITDA+']
+    ],
+    questions: [
+      {t:'"How does Jambak compete with Talabat/Hungerstation when they enter Sudan?"', s:'weak'},
+      {t:'"Sudan macro is unstable — why invest now?"', s:'gap'},
+      {t:'"Show me your contribution margin per order."', s:'ready'},
+      {t:'"What\'s your KSA market entry hypothesis?"', s:'weak'},
+      {t:'"Zain Cash partnership — is it exclusive?"', s:'ready'},
+      {t:'"How do you defend against supermarket chains going direct?"', s:'ready'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:8, note:'Owns the financials, can defend each line.'},
+      {n:'Storytelling', s:9, note:'Compelling Sudan-then-Gulf narrative.'},
+      {n:'Domain Expertise', s:9, note:'8 years in Sudan retail. Knows the buyer.'},
+      {n:'Vision Articulation', s:7, note:'10-year vision exists but underplayed in deck.'},
+      {n:'Team Strength', s:6, note:'CTO is contractor. Investors will push on hire.', cls:'weak'},
+      {n:'Resilience', s:9, note:'Founded through Sudan crisis. Battle-tested.'},
+      {n:'Closing Discipline', s:7, note:'Clear ask, but follow-up cadence inconsistent.'}
+    ],
+    overall: '7.9/10 — strong founder, narrative + team gaps to close.',
+    investors: [
+      {n:'4DX Ventures', t:'VC · Africa', stage:'Seed–A', ticket:'$500K–3M', path:'warm', pathText:'2nd-degree via portfolio founder'},
+      {n:'Norrsken22', t:'VC · Africa', stage:'A', ticket:'$2–10M', path:'cold', pathText:'Wait until KSA expansion locked'},
+      {n:'Wamda Capital', t:'VC · UAE', stage:'Pre-A', ticket:'$1–3M', path:'warm', pathText:'LEOMAX network'},
+      {n:'[Sudanese diaspora FO]', t:'Family Office · UAE', stage:'Seed–A', ticket:'$500K–2M', path:'warm', pathText:'Direct intro available'},
+      {n:'Algebra Ventures', t:'VC · Egypt', stage:'Seed–A', ticket:'$500K–2M', path:'cold', pathText:'Cold sequence ready'},
+      {n:'Plug and Play Riyadh', t:'Accelerator · KSA', stage:'Seed', ticket:'$50K–250K + program', path:'warm', pathText:'Direct application path'}
+    ]
+  },
+  autopoint: {
+    name: 'Auto Point', sector: 'Automotive · Aftermarket', stage: 'Seed', raise: 'SAR 4M', market: 'KSA',
+    verdict: 'go', verdictText: 'GO', confidence: 'High', confidenceClass: 'high',
+    summary: 'Clear product-market fit in Riyadh metro, capital-efficient ops, technician network is the real moat. Recommend leading the round.',
+    risks: ['Technician retention — current churn 18% annually', 'OEM relationships could be reset by new players', 'Insurance partnerships dependent on 2 entities'],
+    metrics: [
+      {l:'Annualized Revenue', v:'SAR 8.2M', c:'+47% YoY', cClass:'up', n:'Workshop visits + parts revenue + service plans.'},
+      {l:'Gross Margin', v:'52%', c:'Improving', cClass:'up', n:'Above auto-services median (~38%) due to software layer.'},
+      {l:'CAC (B2C)', v:'SAR 180', c:'Stable', cClass:'up', n:'Most via referral + insurance partnership inbound.'},
+      {l:'LTV (3-yr)', v:'SAR 4,200', c:'LTV:CAC = 23×', cClass:'up', n:'Customers return 3.2× annually for services.'},
+      {l:'CAC Payback', v:'2 mo', c:'Exceptional', cClass:'up', n:'High-margin first-service profitable instantly.'},
+      {l:'Burn (net)', v:'SAR 110K/mo', c:'Near profitable', cClass:'up', n:'Already EBITDA-positive in Q4. Raise = expansion fuel.'}
+    ],
+    model: [
+      ['Workshops (own + partner)','4','12','28'],
+      ['Annual visits / workshop','3,800','4,200','4,500'],
+      ['Avg revenue / visit (SAR)','540','590','640'],
+      ['Annual Revenue (SAR)','8.2M','29.7M','80.6M', true],
+      ['Gross Margin %','52%','55%','58%'],
+      ['Operating Expenses (SAR)','3.8M','12.4M','30.1M'],
+      ['EBITDA (SAR)','+0.5M','+4.0M','+16.6M', true]
+    ],
+    questions: [
+      {t:'"Why won\'t a Petromin or Al-Futtaim just copy this?"', s:'ready'},
+      {t:'"How sticky is the technician network really?"', s:'weak'},
+      {t:'"Show me unit economics at the partner-workshop tier vs owned."', s:'ready'},
+      {t:'"Insurance partner dependence — is there single-point risk?"', s:'gap'},
+      {t:'"What\'s the path from $2M ARR to $20M?"', s:'ready'},
+      {t:'"How does this work with electric vehicle transition?"', s:'weak'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:10, note:'Operator background shows. Knows every margin line.'},
+      {n:'Storytelling', s:7, note:'Story is solid but lacks emotional hook for non-auto investors.'},
+      {n:'Domain Expertise', s:10, note:'15 years in KSA auto sector. Unmatched depth.'},
+      {n:'Vision Articulation', s:8, note:'Clear 10-year vision: becoming the Toyota of aftermarket services.'},
+      {n:'Team Strength', s:9, note:'Strong COO + tech lead. Investors will love this.'},
+      {n:'Resilience', s:8, note:'Pivoted twice already. Knows when to change course.'},
+      {n:'Closing Discipline', s:8, note:'Clear ask, structured follow-up.'}
+    ],
+    overall: '8.6/10 — investor-ready. Tighten EV narrative + insurance risk reframe.',
+    investors: [
+      {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+      {n:'Riyad Bank Capital', t:'CVC · KSA', stage:'Seed–A', ticket:'$1–3M', path:'warm', pathText:'2nd-degree via existing customer'},
+      {n:'IMPACT46', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+      {n:'[Auto-sector FO]', t:'Family Office · KSA', stage:'Seed–A', ticket:'$2–5M', path:'warm', pathText:'Existing dealership owner connection'},
+      {n:'Vision Ventures', t:'VC · KSA', stage:'Seed', ticket:'$250K–1M', path:'cold', pathText:'Cold sequence designed'},
+      {n:'Khwarizmi Ventures', t:'VC · KSA', stage:'Pre-Seed–Seed', ticket:'$100K–500K', path:'warm', pathText:'LEOMAX intro available'}
+    ]
+  },
+  hoolak: {
+    name: 'Hoolak', sector: 'Retail Tech · Local commerce', stage: 'Pre-Seed', raise: 'SAR 2.5M', market: 'KSA · Riyadh',
+    verdict: 'caution', verdictText: 'CONDITIONAL — needs revenue traction', confidence: 'Medium', confidenceClass: 'med',
+    summary: 'Product is well-built, customer love is high (NPS 64), but monetization is unproven. Condition: ship paid tier within 60 days and show first SAR 50K MRR.',
+    risks: ['No paid revenue yet', 'Network-effect business — chicken/egg risk', 'Founder runway personal — capital risk'],
+    metrics: [
+      {l:'Active Stores (free)', v:'320', c:'+18% MoM', cClass:'up', n:'Strong organic from store-owner referrals.'},
+      {l:'Active Shoppers (MAU)', v:'4,600', c:'+41% MoM', cClass:'up', n:'Riyadh metro. Concentrated in 3 districts.'},
+      {l:'NPS', v:'64', c:'Strong', cClass:'up', n:'Among top 10% of consumer apps in KSA region.'},
+      {l:'MRR', v:'SAR 0', c:'No paid tier yet', cClass:'down', n:'Monetization plan: paid promoted listings + checkout fees.'},
+      {l:'CAC (store)', v:'SAR 90', c:'Organic-heavy', cClass:'up', n:'Mostly word-of-mouth. Paid acquisition untested.'},
+      {l:'Burn (net)', v:'SAR 95K/mo', c:'Runway: 6 months', cClass:'down', n:'URGENT — round must close in 90 days.'}
+    ],
+    model: [
+      ['Active stores','320','1,800','6,500'],
+      ['Paid stores (% of total)','0%','22%','45%'],
+      ['Avg revenue / paid store','-','SAR 350/mo','SAR 580/mo'],
+      ['MRR (SAR)','0','138K','1.7M', true],
+      ['Take rate (transactions)','0%','1.8%','2.5%'],
+      ['Total ARR (SAR)','0','2.4M','28.5M', true],
+      ['EBITDA','−1.1M','−2.8M','+4.2M']
+    ],
+    questions: [
+      {t:'"Why hasn\'t Salla or Zid done this already?"', s:'ready'},
+      {t:'"320 stores after a year — is that enough proof?"', s:'gap'},
+      {t:'"What\'s your activation rate — visit-to-purchase?"', s:'weak'},
+      {t:'"How do you reach the 80K small stores in Riyadh metro?"', s:'weak'},
+      {t:'"Defensibility against TikTok Shop or Instagram entering?"', s:'gap'},
+      {t:'"Why this team for this problem?"', s:'ready'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:6, note:'Solid on growth metrics, weaker on cohort/retention.', cls:'weak'},
+      {n:'Storytelling', s:9, note:'Compelling local-commerce-vs-platforms narrative.'},
+      {n:'Domain Expertise', s:7, note:'Both founders ex-retail. Knows the buyer.'},
+      {n:'Vision Articulation', s:9, note:'Vision is crisp and resonates with investors.'},
+      {n:'Team Strength', s:8, note:'Strong product + design. Need a commercial lead.'},
+      {n:'Resilience', s:9, note:'Pivoted from initial concept. Self-aware.'},
+      {n:'Closing Discipline', s:6, note:'Founder over-shares. Needs to manage scarcity in pitch.', cls:'weak'}
+    ],
+    overall: '7.7/10 — fundable Pre-Seed if monetization clarifies fast.',
+    investors: [
+      {n:'Plug and Play Riyadh', t:'Accelerator · KSA', stage:'Pre-Seed', ticket:'$50K–250K', path:'warm', pathText:'Direct application path'},
+      {n:'Antler MENA', t:'Pre-Seed VC · MENA', stage:'Pre-Seed', ticket:'$100K–250K', path:'cold', pathText:'Cold sequence ready'},
+      {n:'Hala Ventures', t:'VC · KSA', stage:'Pre-Seed–Seed', ticket:'$250K–1M', path:'warm', pathText:'LEOMAX network'},
+      {n:'[Riyadh angel syndicate]', t:'Angels · KSA', stage:'Pre-Seed', ticket:'$25K–100K each (10 angels)', path:'warm', pathText:'Direct intros mapped'},
+      {n:'Vision Ventures', t:'VC · KSA', stage:'Seed', ticket:'$250K–1M', path:'cold', pathText:'After paid tier ships'},
+      {n:'500 MENA', t:'VC · MENA', stage:'Seed', ticket:'$250K–1M', path:'warm', pathText:'LEOMAX relationship'}
+    ]
+  },
+  ramsees: {
+    name: 'Ramsees', sector: 'B2B SaaS · Operations', stage: 'Seed', raise: 'SAR 5M', market: 'GCC',
+    verdict: 'go', verdictText: 'GO', confidence: 'High', confidenceClass: 'high',
+    summary: 'Best-in-class SaaS metrics for KSA Seed. Strong founder-market fit. Recommend leading or co-leading the round.',
+    risks: ['Concentration in 3 logistics customers', 'Long enterprise sales cycle (8-10 months avg)', 'Competitive pressure from international players'],
+    metrics: [
+      {l:'ARR', v:'SAR 1.8M', c:'+180% YoY', cClass:'up', n:'8 paying customers, all in logistics/distribution.'},
+      {l:'Gross Margin', v:'87%', c:'Best-in-class', cClass:'up', n:'Pure SaaS economics. Hosting + support = 13% of revenue.'},
+      {l:'CAC (enterprise)', v:'SAR 18,000', c:'Improving', cClass:'down', n:'Per closed deal. Mostly outbound sales.'},
+      {l:'ACV (avg)', v:'SAR 225K', c:'Growing', cClass:'up', n:'Up from SAR 140K in Year 1. Expansion revenue 32% of total.'},
+      {l:'NRR', v:'138%', c:'Excellent', cClass:'up', n:'Net Revenue Retention — expansion outpacing churn.'},
+      {l:'Burn (net)', v:'SAR 220K/mo', c:'Runway: 11 months', cClass:'down', n:'Round funds Series A push + GCC expansion.'}
+    ],
+    model: [
+      ['Paying customers','8','24','58'],
+      ['ACV (SAR)','225K','290K','360K'],
+      ['ARR (SAR)','1.8M','7.0M','20.9M', true],
+      ['Gross Margin %','87%','89%','91%'],
+      ['Sales & Marketing','SAR 1.1M','SAR 3.2M','SAR 6.8M'],
+      ['Operating Expenses','SAR 1.9M','SAR 4.4M','SAR 9.2M'],
+      ['EBITDA (SAR)','−0.5M','+1.7M','+9.8M', true]
+    ],
+    questions: [
+      {t:'"How do you compete with Oracle or SAP when they show up?"', s:'ready'},
+      {t:'"Is 3-customer concentration acceptable at this stage?"', s:'weak'},
+      {t:'"Show me your sales cycle data — by deal size."', s:'ready'},
+      {t:'"What\'s the org chart at SAR 20M ARR?"', s:'weak'},
+      {t:'"GCC expansion — UAE first or Bahrain?"', s:'ready'},
+      {t:'"Defensibility once incumbents catch up on UX?"', s:'ready'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:10, note:'CEO is ex-CFO. Numbers are a strength, not a weakness.'},
+      {n:'Storytelling', s:8, note:'Clean narrative. Could improve on customer story.'},
+      {n:'Domain Expertise', s:9, note:'10+ years in logistics + finance. Unmatched in this niche.'},
+      {n:'Vision Articulation', s:9, note:'Clear 10-year vision: the Salesforce of MENA logistics.'},
+      {n:'Team Strength', s:9, note:'Strong CTO + Head of Customer Success. Hiring VP Sales now.'},
+      {n:'Resilience', s:9, note:'Survived a near-death moment in Year 1. Battle-tested.'},
+      {n:'Closing Discipline', s:9, note:'Disciplined fundraising process. Clean follow-ups.'}
+    ],
+    overall: '9.0/10 — investor-ready. Lead-quality founder.',
+    investors: [
+      {n:'STV', t:'VC · KSA', stage:'Seed–A', ticket:'$1–5M', path:'warm', pathText:'LEOMAX direct intro'},
+      {n:'BECO Capital', t:'VC · UAE', stage:'Seed–A', ticket:'$1–3M', path:'warm', pathText:'2nd-degree via portfolio CEO'},
+      {n:'MEVP', t:'VC · MEA', stage:'Seed–A', ticket:'$1–4M', path:'warm', pathText:'Existing relationship'},
+      {n:'Sanabil Investments', t:'PIF Affiliate · KSA', stage:'A+', ticket:'$3–10M', path:'cold', pathText:'For Series A in 18 months'},
+      {n:'Endeavor Catalyst', t:'VC · Global', stage:'Seed–A', ticket:'$500K–2M', path:'cold', pathText:'Endeavor entrepreneur application'},
+      {n:'500 MENA', t:'VC · MENA', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'LEOMAX existing relationship'}
+    ]
+  },
+  nourish: {
+    name: 'Nourish', sector: 'Health Food · D2C + Retail', stage: 'Seed', raise: 'SAR 3M', market: 'KSA + UAE',
+    verdict: 'caution', verdictText: 'CONDITIONAL — margin under pressure', confidence: 'Medium', confidenceClass: 'med',
+    summary: 'Strong brand, repeat-customer love, but margins compressing as ingredient costs rise. Condition: prove gross margin recovery to 45% before close.',
+    risks: ['Ingredient cost inflation (8-12% YoY)', 'Distribution exclusivity not locked', 'Brand still regional, not yet national'],
+    metrics: [
+      {l:'Monthly Revenue', v:'SAR 380K', c:'+12% MoM', cClass:'up', n:'Mix: 60% D2C, 40% retail (Carrefour, Lulu, Tamimi).'},
+      {l:'Gross Margin', v:'38%', c:'Down from 47% YoY', cClass:'down', n:'Ingredient costs hitting hard. Need pricing power.'},
+      {l:'CAC (D2C)', v:'SAR 120', c:'Rising', cClass:'down', n:'Meta + Snap ads. Diminishing returns visible.'},
+      {l:'Repeat Rate', v:'68%', c:'Excellent', cClass:'up', n:'Among top 5% of D2C food brands in MENA.'},
+      {l:'Avg Order Value', v:'SAR 180', c:'Stable', cClass:'up', n:'Family-pack bundles drive AOV.'},
+      {l:'Burn (net)', v:'SAR 75K/mo', c:'Runway: 14 months', cClass:'up', n:'Already near-profitable. Raise is expansion fuel.'}
+    ],
+    model: [
+      ['SKU count','24','48','85'],
+      ['Retail doors','42','180','520'],
+      ['Monthly orders (D2C)','2,100','7,500','22,000'],
+      ['Annual Revenue (SAR)','4.6M','18.2M','62.4M', true],
+      ['Gross Margin %','38%','44%','49%'],
+      ['Operating Expenses','SAR 3.1M','SAR 9.8M','SAR 25.6M'],
+      ['EBITDA','−0.2M','+1.9M','+11.0M', true]
+    ],
+    questions: [
+      {t:'"How do you defend against Almarai or Sadafco entering this niche?"', s:'ready'},
+      {t:'"Gross margin dropping — what\'s the recovery plan?"', s:'gap'},
+      {t:'"Show me your unit economics by channel."', s:'ready'},
+      {t:'"Brand positioning vs Yara or Najma — what\'s different?"', s:'weak'},
+      {t:'"UAE expansion — what\'s the GTM?"', s:'weak'},
+      {t:'"What\'s the path to SAR 50M revenue?"', s:'ready'}
+    ],
+    scores: [
+      {n:'Numbers Mastery', s:7, note:'Solid on top-line, weaker on COGS variance.'},
+      {n:'Storytelling', s:10, note:'Compelling personal brand story. Resonates.'},
+      {n:'Domain Expertise', s:8, note:'8 years in F&B. Knows the buyer + supply chain.'},
+      {n:'Vision Articulation', s:9, note:'Clear vision: regional health food category leader.'},
+      {n:'Team Strength', s:7, note:'Strong creative + ops. Need a CFO for next stage.'},
+      {n:'Resilience', s:9, note:'Survived 2 supply chain shocks. Knows recovery.'},
+      {n:'Closing Discipline', s:8, note:'Clear ask, structured timeline.'}
+    ],
+    overall: '8.3/10 — brand strength offsets margin risk.',
+    investors: [
+      {n:'IMPACT46', t:'VC · KSA', stage:'Seed–A', ticket:'$500K–2M', path:'warm', pathText:'LEOMAX network'},
+      {n:'[F&B-focused FO]', t:'Family Office · KSA', stage:'Seed', ticket:'$1–3M', path:'warm', pathText:'Direct intro available'},
+      {n:'BY Venture Partners', t:'VC · KSA', stage:'Seed', ticket:'$500K–2M', path:'cold', pathText:'Cold sequence designed'},
+      {n:'Algebra Ventures', t:'VC · Egypt', stage:'Seed–A', ticket:'$500K–2M', path:'cold', pathText:'For UAE expansion phase'},
+      {n:'Nuwa Capital', t:'VC · UAE', stage:'Seed', ticket:'$500K–1.5M', path:'warm', pathText:'2nd-degree via portfolio'},
+      {n:'Wamda Capital', t:'VC · UAE', stage:'Seed–A', ticket:'$1–3M', path:'warm', pathText:'LEOMAX network'}
+    ]
+  }
+};
+
+/* Aliases for remaining cases — same template, lighter customization */
+function makeAlias(id, name, sector, stage, raise) {
+  CASES[id] = { ...CASES.madar, name, sector, stage, raise,
+    summary: `Sample illustration of the Investment Readiness Sprint deliverable applied to a ${sector.toLowerCase()} business. Real engagement uses the company's actual data.`,
+    metrics: CASES.madar.metrics.map(m => ({...m, n: m.n.replace(/MADAR|logistics|Salla\/Zid/g, 'this company')}))
+  };
+}
+makeAlias('garage', 'Garage', 'Co-working · Community', 'Seed', 'SAR 3.5M');
+makeAlias('kbc', 'KBC', 'Construction · Industrial', 'Series A', 'SAR 15M');
+makeAlias('lanova', 'La Nova Sweets', 'F&B · Confectionery', 'Seed', 'SAR 4M');
+makeAlias('lsofia', "L'Sofia", 'Beauty · D2C', 'Pre-Seed', 'SAR 2M');
+makeAlias('nadialamal', 'نادي الأعمال', 'Business Network · B2B', 'Seed', 'SAR 3M');
+makeAlias('clenso', 'Clenso', 'Cleaning Services · B2B', 'Seed', 'SAR 4M');
+makeAlias('redstudio', 'Red Studio', 'Creative Agency · B2B Services', 'Seed', 'SAR 3M');
+makeAlias('regional', 'Regional Business Summit', 'Events · B2B', 'Bootstrapped', 'SAR 2.5M');
+
+/* ─── Render ───────────────────────────────────────── */
+function getCaseId() {
+  const params = new URLSearchParams(location.search);
+  return params.get('id') || 'madar';
+}
+
+function loadCase(id) {
+  history.replaceState({}, '', '?id=' + id);
+  render(id);
+}
+
+function render(id) {
+  const c = CASES[id] || CASES.madar;
+  document.title = `Investment Readiness Sprint — ${c.name} Sample · LEOMAX`;
+  const html = `
+    <div class="hero">
+      <span class="pill">Investment Readiness Sprint · Sample</span>
+      <h1>${c.name}</h1>
+      <p class="sub">A 14-day diligence package showing what LEOMAX produces — investor memo, unit economics, model, pitch stress test, cap table, founder readiness, and warm-intro map.</p>
+      <div class="deal-meta">
+        <div><div class="v">${c.raise}</div><div class="l">Round target</div></div>
+        <div><div class="v">${c.stage}</div><div class="l">Stage</div></div>
+        <div><div class="v">${c.sector.split('·')[0].trim()}</div><div class="l">Sector</div></div>
+        <div><div class="v">${c.market}</div><div class="l">Market</div></div>
+        <div><div class="v">14 days</div><div class="l">Engagement</div></div>
+      </div>
+    </div>
+
+    <section>
+      <span class="sec-pill">Recommendation</span>
+      <h2>${c.verdict === 'go' ? 'Recommend to diligence.' : c.verdict === 'caution' ? 'Recommend with conditions.' : 'Pass for now.'}</h2>
+      <p class="lead">${c.summary}</p>
+      <div class="verdict">
+        <div class="verdict-grid">
+          <div>
+            <div class="verdict-recommend">Verdict</div>
+            <div class="verdict-call ${c.verdict}">${c.verdictText}</div>
+            <span class="verdict-confidence ${c.confidenceClass}">Confidence: ${c.confidence}</span>
+          </div>
+          <div>
+            <div class="verdict-recommend">Top risks</div>
+            <ul class="verdict-list verdict-risks">
+              ${c.risks.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">Unit Economics · Rebuilt</span>
+        <h2>The numbers — diligenced, not narrated.</h2>
+        <p class="lead">6 key metrics rebuilt from source data. Unverifiable assumptions clearly marked.</p>
+        <div class="metrics">
+          ${c.metrics.map(m => `
+            <div class="metric-card">
+              <div class="label">${m.l}</div>
+              <div class="value">${m.v}</div>
+              <div class="change ${m.cClass}">${m.c}</div>
+              <div class="note">${m.n}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="sec-pill">Financial Model · v1</span>
+      <h2>3-year projection — base case.</h2>
+      <p class="lead">Bottom-up model, 3 sensitivity variables. Full deliverable includes high/low scenarios + monthly granularity.</p>
+      <div class="fin-table">
+        <table>
+          <thead><tr><th>Metric</th><th class="num">Year 1</th><th class="num">Year 2 (P)</th><th class="num">Year 3 (P)</th></tr></thead>
+          <tbody>
+            ${c.model.map(row => {
+              const total = row.length === 5;
+              return `<tr${total ? ' class="total"' : ''}><td>${row[0]}</td><td class="num">${row[1]}</td><td class="num">${row[2]}</td><td class="num">${row[3]}</td></tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">Pitch Deck Stress Test</span>
+        <h2>20 questions every GCC VC will ask.</h2>
+        <p class="lead">Existing deck tested against the top 20 investor questions for this sector. Below: 6 sample outcomes.</p>
+        <div class="questions">
+          ${c.questions.map((q, i) => `
+            <div class="q-card">
+              <div class="q-num ${q.s === 'ready' ? '' : q.s}">${String(i+1).padStart(2, '0')}</div>
+              <div>
+                <div class="q-text">${q.t}</div>
+                <span class="q-status ${q.s}">${q.s === 'ready' ? 'Ready' : q.s === 'weak' ? 'Needs work' : 'Gap'}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="sec-pill">Cap Table · Post-Round (modeled)</span>
+      <h2>Dilution map.</h2>
+      <p class="lead">Base case modeled at ${c.raise} raise. Full deliverable models 3 paths (lead-only, syndicate, strategic+financial) with board seat + tag-along implications.</p>
+      <div class="captable">
+        <div class="captable-bar">
+          <div style="background:#1d1d1f;flex:65">Founders · 65%</div>
+          <div style="background:#424245;flex:10">ESOP · 10%</div>
+          <div style="background:#6e6e73;flex:15">Angels · 15%</div>
+          <div style="background:#86868b;flex:10">New round · 10%</div>
+        </div>
+        <div class="captable-legend">
+          <div>
+            <div class="cap-row"><div class="who"><span style="width:8px;height:8px;background:#1d1d1f;display:inline-block"></span> Founders</div><div class="pct">65%</div></div>
+            <div class="cap-row"><div class="who"><span style="width:8px;height:8px;background:#424245;display:inline-block"></span> ESOP Pool</div><div class="pct">10%</div></div>
+          </div>
+          <div>
+            <div class="cap-row"><div class="who"><span style="width:8px;height:8px;background:#6e6e73;display:inline-block"></span> Existing Angels</div><div class="pct">15%</div></div>
+            <div class="cap-row"><div class="who"><span style="width:8px;height:8px;background:#86868b;display:inline-block"></span> New Round</div><div class="pct">10%</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gray">
+      <div class="inner">
+        <span class="sec-pill">Founder Readiness · 7 Dimensions</span>
+        <h2>The hardest part isn't the deck.</h2>
+        <p class="lead">After 4 working sessions + stress-interview against 8 fictional VC partners. Each dimension below 7 gets a working coaching plan.</p>
+        <div class="readiness">
+          ${c.scores.map(s => `
+            <div class="r-card">
+              <div class="r-head"><div class="r-name">${s.n}</div><div class="r-score">${s.s}<span>/10</span></div></div>
+              <div class="r-bar ${s.cls || ''}"><div style="width:${s.s*10}%"></div></div>
+              <div class="r-note">${s.note}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="margin-top:32px;padding:20px 24px;background:#fff;border-radius:18px;border:1px solid #e5e5ea">
+          <div style="font-size:14px;color:#6e6e73"><strong style="color:#1d1d1f">Overall founder readiness: ${c.overall}</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="sec-pill">Investor Map · 40 right-fit names (sample of 6)</span>
+      <h2>Who to talk to — and via whom.</h2>
+      <p class="lead">Each investor tagged by fit, ticket-size, warm-path availability, and likely process timeline.</p>
+      <div class="investors">
+        ${c.investors.map(i => `
+          <div class="inv-card">
+            <div class="inv-name">${i.n}</div>
+            <div class="inv-type">${i.t}</div>
+            <div class="inv-meta">
+              <span><strong>Stage:</strong> ${i.stage}</span>
+              <span><strong>Ticket:</strong> ${i.ticket}</span>
+            </div>
+            <div class="inv-path ${i.path === 'warm' ? 'warm' : ''}">${i.path === 'warm' ? 'Warm path' : 'Cold sequence'} · ${i.pathText}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `;
+  document.getElementById('content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+/* Populate dropdown */
+function initPicker() {
+  const select = document.getElementById('caseSelect');
+  const sorted = Object.keys(CASES).sort();
+  sorted.forEach(id => {
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.textContent = CASES[id].name + ' — ' + CASES[id].sector.split('·')[0].trim();
+    select.appendChild(opt);
+  });
+  const currentId = getCaseId();
+  select.value = currentId;
+  render(currentId);
+}
+
+initPicker();
+</script>
+</body>
+</html>
