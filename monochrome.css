@@ -1871,3 +1871,10 @@ footer { display: block !important; }
 .articles-grid { display: grid !important; }
 /* Don't force display on article-card — let original styles handle it */
 
+
+/* ── Force ALL images visible (apple-feel.js was hiding them with opacity:0) ── */
+img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+

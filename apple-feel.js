@@ -80,12 +80,8 @@
     /* Smooth scroll for anchor links accounting for sticky nav */
     section, [id] { scroll-margin-top: 80px; }
 
-    /* Image fade-in on load */
+    /* Image fade-in on load — DISABLED (was hiding images when load event missed) */
     img {
-      opacity: 0;
-      transition: opacity .4s ease-out;
-    }
-    img.af-loaded, img[src*="data:image"] {
       opacity: 1;
     }
 
