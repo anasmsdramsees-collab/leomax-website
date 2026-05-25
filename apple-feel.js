@@ -123,7 +123,7 @@
 
   /* ─── Mark elements for fade-in ─────────────────────── */
   var FADE_SELECTORS = [
-    'section', '.section',
+    // 'section', '.section', — removed to prevent whole-section invisibility
     '.price-card', '.pillar-card', '.advisor-card',
     '.who-card', '.fo-card', '.widget-card', '.problem-card',
     '.trust-item', '.faq-item', '.member-card', '.case-card',

@@ -1855,3 +1855,16 @@ footer { display: block !important; }
   }
 }
 
+
+/* ── Blog: always visible (no fade animation) ── */
+.articles-section, .articles-grid, .article-card,
+.articles-grid > *, .filter-bar, .filter-pill,
+.blog-hero, .blog-hero-inner, .blog-hero-title, .blog-hero-tag, .blog-hero-desc,
+.blog-cta {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+.articles-grid { display: grid !important; }
+.article-card { display: flex !important; }
+
