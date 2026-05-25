@@ -139,7 +139,7 @@
     });
 
     // Stagger grid children
-    var grids = document.querySelectorAll('.pricing-grid, .advisor-grid, .two-pillars, .problem-grid, .who-grid, .widget-grid, .trust-grid, .fo-grid, .readiness-grid, .process-grid, .footer-grid, .stats');
+    var grids = document.querySelectorAll('.pricing-grid, .advisor-grid, .two-pillars, .problem-grid, .who-grid, .widget-grid, .trust-grid, .fo-grid, .readiness-grid, .process-grid, .stats');
     grids.forEach(function (grid) {
       var children = grid.children;
       for (var i = 0; i < Math.min(children.length, 5); i++) {

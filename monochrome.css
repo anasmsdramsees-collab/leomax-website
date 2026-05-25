@@ -1816,3 +1816,42 @@ img:not(.client-logo):not(.nav-logo):not([style*="border-radius"]) {
   }
 }
 
+
+/* ── Footer — always visible (no fade animation, never hidden on mobile) ── */
+footer, footer *, .footer-grid, .footer-grid *,
+.foot-brand, .foot-links, .foot-copy, .foot-nav-grid {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+footer { display: block !important; }
+.footer-grid { display: grid !important; }
+
+/* Mobile footer — single column, generous padding */
+@media (max-width: 720px) {
+  footer {
+    padding: 48px 24px 32px !important;
+    display: block !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    text-align: left !important;
+  }
+  .footer-brand { text-align: center !important; }
+  .footer-brand img { margin: 0 auto 16px !important; }
+  .footer-brand p { max-width: 100% !important; text-align: center !important; }
+  .footer-col {
+    border-top: 1px solid rgba(255,255,255,.08) !important;
+    padding-top: 24px !important;
+  }
+  .footer-col:first-of-type {
+    border-top: none !important;
+    padding-top: 0 !important;
+  }
+  .footer-bottom {
+    margin-top: 32px !important;
+    text-align: center !important;
+  }
+}
+
