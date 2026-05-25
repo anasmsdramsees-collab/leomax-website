@@ -1857,8 +1857,11 @@ footer { display: block !important; }
 
 
 /* ── Blog: always visible (no fade animation) ── */
-.articles-section, .articles-grid, .article-card,
-.articles-grid > *, .filter-bar, .filter-pill,
+.articles-section,
+.articles-grid,
+.articles-grid > a,
+.article-card,
+.filter-bar, .filter-pill,
 .blog-hero, .blog-hero-inner, .blog-hero-title, .blog-hero-tag, .blog-hero-desc,
 .blog-cta {
   opacity: 1 !important;
@@ -1866,5 +1869,5 @@ footer { display: block !important; }
   visibility: visible !important;
 }
 .articles-grid { display: grid !important; }
-.article-card { display: flex !important; }
+/* Don't force display on article-card — let original styles handle it */
 
