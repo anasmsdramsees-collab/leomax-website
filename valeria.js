@@ -395,7 +395,7 @@
     if (action === 'CALL') {
       btn = el('a', {
         class: 'vm-action',
-        href: 'https://calendly.com/anas-msd-ramsees/30min',
+        href: 'https://calendly.com/leomaxglobalsa/30min',
         target: '_blank',
         rel: 'noopener'
       });

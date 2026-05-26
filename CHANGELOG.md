@@ -83,7 +83,7 @@ Replaced simple footer on all sub-pages with a full 3-column footer:
 - **Column 3:** Contact info + Home button
 
 ### 6. Calendly Integration
-**URL:** `https://calendly.com/anas-msd-ramsees/30min`
+**URL:** `https://calendly.com/leomaxglobalsa/30min`
 - **Contact page:** Calendly inline widget embedded
 - **All 5 System pages:** Calendly popup on CTA buttons
 
@@ -187,7 +187,7 @@ Replaced simple footer on all sub-pages with a full 3-column footer:
 ---
 
 ## Calendly
-**URL:** `https://calendly.com/anas-msd-ramsees/30min`
+**URL:** `https://calendly.com/leomaxglobalsa/30min`
 - Contact page: inline widget (dark theme)
 - System pages: popup widget on CTA buttons
 

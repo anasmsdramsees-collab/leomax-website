@@ -279,7 +279,7 @@ When someone cancels, Calendly sends an automatic message. You can customize it.
 ```
 No problem. Things come up.
 
-If you want to reschedule, just book a new time: calendly.com/anas-msd-ramsees/30min
+If you want to reschedule, just book a new time: calendly.com/leomaxglobalsa/30min
 
 Or if your situation has shifted and you'd like to talk later, reply and let me know roughly when — I'll send a reminder then.
 
@@ -290,7 +290,7 @@ Or if your situation has shifted and you'd like to talk later, reply and let me 
 ```
 مفيش مشكلة. الظروف بتتغيّر.
 
-لو حابب تعيد الجدولة، احجز وقت تاني: calendly.com/anas-msd-ramsees/30min
+لو حابب تعيد الجدولة، احجز وقت تاني: calendly.com/leomaxglobalsa/30min
 
 أو لو وضعك اتغيّر وحابب نتكلم بعدين، رد وقل لي تقريباً متى — هاذكّرك ساعتها.
 

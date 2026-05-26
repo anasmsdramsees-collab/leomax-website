@@ -24,7 +24,7 @@
   const API_KEY      = 'YOUR_API_KEY_HERE';
   const MODEL        = 'claude-3-5-haiku-20241022';
   const BASE_IMG     = 'https://anasmsdramsees-collab.github.io/leomax-website/team/';
-  const CALENDLY_URL = 'https://calendly.com/anas-msd-ramsees/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1';
+  const CALENDLY_URL = 'https://calendly.com/leomaxglobalsa/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1';
 
   const HAS_KEY     = API_KEY && API_KEY !== 'YOUR_API_KEY_HERE';
   const HAS_W3F = !!WEB3FORMS_KEY;
@@ -95,8 +95,8 @@ We've worked with 90+ companies across Saudi, UAE, Qatar, and Egypt. We build an
                "كيف تبدو شركتك اليوم مقارنةً بالمكان الذي تريدها أن تكون فيه خلال 18 شهرًا؟"]
         },
         price: {
-          en: ["Pricing depends on scope. An honest answer needs a 30-minute conversation.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["السعر يعتمد على النطاق. الإجابة الصادقة تحتاج محادثة 30 دقيقة.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["Pricing depends on scope. An honest answer needs a 30-minute conversation.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["السعر يعتمد على النطاق. الإجابة الصادقة تحتاج محادثة 30 دقيقة.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         growth: {
           en: ["The Growth System starts with a full audit of your revenue engine — where leads come from, where they drop, what conversion actually is. Then we rebuild it with automation. What does your current pipeline look like?"],
@@ -107,8 +107,8 @@ We've worked with 90+ companies across Saudi, UAE, Qatar, and Egypt. We build an
           ar: ["معظم ما نسميه تحول ذكاء اصطناعي هو أتمتة منظمة تُطبَّق على العمليات الصحيحة. نحدد العمل المتكرر كثيف الحجم — ثم نزيله من أعباء فريقك."]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -143,16 +143,16 @@ The pattern I see most: companies that are technically capable but strategically
                "معظم مشكلات الاستراتيجية تعود إلى محاولة خدمة قطاعات كثيرة بعرض واحد. هل هذا ينطبق عليك؟"]
         },
         price: {
-          en: ["Strategy work is scoped per engagement.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["عمل الاستراتيجية يُحدَّد نطاقه لكل مشاركة.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["Strategy work is scoped per engagement.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["عمل الاستراتيجية يُحدَّد نطاقه لكل مشاركة.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         growth: {
           en: ["Growth strategy starts with an honest look at competitive positioning. Where do you actually win today — and why?"],
           ar: ["استراتيجية النمو تبدأ بنظرة صادقة على التموضع التنافسي. أين تفوز فعليًا اليوم — ولماذا؟"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -187,12 +187,12 @@ I've been building applied AI systems for businesses for several years — workf
           ar: ["أربعة مجالات نبدأ بها عادةً: أتمتة العمليات، التقارير الذكية، التحليلات التنبؤية، وأنظمة الذكاء الاصطناعي للعملاء. أيها أكثر صلة بوضعك؟"]
         },
         price: {
-          en: ["AI work varies by scope.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["تكلفة عمل الذكاء الاصطناعي تعتمد على النطاق.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["AI work varies by scope.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["تكلفة عمل الذكاء الاصطناعي تعتمد على النطاق.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -231,12 +231,12 @@ At LEOMAX I design complete Marketing Engines: brand strategy, campaigns, and fu
           ar: ["محرك التسويق يعمل كنظام: علامة تجارية ← محتوى ← حملات ← مسارات ← تتبع. معظم الشركات لديها أجزاء منه لكن ليس النظام كاملًا."]
         },
         price: {
-          en: ["Depends on channels and scope.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["يعتمد على القنوات والنطاق.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["Depends on channels and scope.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["يعتمد على القنوات والنطاق.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -271,12 +271,12 @@ At LEOMAX my focus is financial clarity: every transformation investment with a 
                "السؤالان الأكثر شيوعًا: 'هل يستحق هذا الاستثمار؟' و'كيف نقيس النتائج؟' أيهما يخصك؟"]
         },
         price: {
-          en: ["Clients average +150% revenue growth within 12 months. The investment conversation needs context.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["عملاؤنا يحققون في المتوسط +150% نموًا في الإيرادات خلال 12 شهرًا. محادثة الاستثمار تحتاج سياقًا.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["Clients average +150% revenue growth within 12 months. The investment conversation needs context.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["عملاؤنا يحققون في المتوسط +150% نموًا في الإيرادات خلال 12 شهرًا. محادثة الاستثمار تحتاج سياقًا.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -307,12 +307,12 @@ Gulf markets through real deal experience — not case studies. My focus is new 
                "مشهد تطوير الأعمال في الخليج قائم على العلاقات قبل كل شيء. هل لديك الاتصالات المحلية المناسبة لما تحاول تحقيقه؟"]
         },
         price: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -343,12 +343,12 @@ I specialize in businesses that are growing but starting to strain — processes
                "ما القرارات التي تنتظر شخصًا واحدًا حاليًا رغم أنه لا ينبغي أن تكون كذلك؟"]
         },
         price: {
-          en: ["Operations work typically pays for itself within months.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["عمل العمليات عادةً يعوّض تكلفته خلال أشهر.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["Operations work typically pays for itself within months.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["عمل العمليات عادةً يعوّض تكلفته خلال أشهر.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -379,8 +379,8 @@ I'm focused on the gap between what companies know they should build and what th
                "الابتكار الحقيقي يحتاج نظامًا: توليد أفكار ← تحقق ← تطوير ← إطلاق. أين ينكسر نظامك؟"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -411,8 +411,8 @@ I've spent my career at the intersection of capital and growth-stage businesses 
                "الاستعداد للاستثمار يتعلق بالوضوح في السردية — شرح قصة خلق القيمة للأشخاص المناسبين."]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -443,8 +443,8 @@ I came into sustainability from a business background. In the Gulf right now, wi
                "ESG في الخليج له أبعاد محددة: رؤية 2030، التوطين، التحول في الطاقة. أيها أكثر صلة بك؟"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -475,8 +475,8 @@ My background is strategic alliances across UAE and MENA — between local SMEs 
                "من يخدم عميلك المثالي بالفعل؟ عادةً ما يكون هناك هدف شراكة واضح في هذا السياق."]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -507,8 +507,8 @@ I've lived and worked in four MENA countries — Saudi, UAE, Egypt, and Lebanon.
                "السعودية والإمارات ومصر — لكل منها ديناميكيات مختلفة. أيها وما الذي يمنعك من التحرك بشكل أسرع؟"]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -543,8 +543,8 @@ I redesign supply chain systems to support growth — not constrain it.`,
                "هل المشكلة في الشراء أم التخزين أم التوصيل أم التنبؤ؟ عادةً ما تكون أوضح في إحدى هذه النقاط الأربع."]
         },
         contact: {
-          en: ["📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["📅 calendly.com/leomaxglobalsa/30min"]
         }
       }
     },
@@ -562,7 +562,7 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
 إذا كنت بحاجة للتواصل معه مباشرة، فقد وصلت للمكان الصحيح. مهمتي التأكد من حدوث ذلك — سواء كان مكالمة استراتيجية أو اجتماعًا أو إيصال سؤالك للشخص المناسب في فريقه.
 
 أدير جدوله وأعرف بالضبط ما يركز عليه حاليًا. إذا كان لديك شيء يحتاج انتباهه، أخبرني عنه وسأتأكد من وصوله.`,
-      system: `You are Valeria Moreno, personal assistant to Dr. Anas Elimam, Founder & CEO of LEOMAX. Your role is to act as the gatekeeper and scheduler for Dr. Anas. Help visitors understand what LEOMAX does, guide them to the right service or advisor, and most importantly — arrange calls or meetings with Dr. Anas when appropriate. LEOMAX has 5 systems: Growth, AI Transformation, Marketing Engine, Content System, Launch System. Book at calendly.com/anas-msd-ramsees/30min. Respond in the same language the user writes in. Be professional and efficient — like a real executive assistant.`,
+      system: `You are Valeria Moreno, personal assistant to Dr. Anas Elimam, Founder & CEO of LEOMAX. Your role is to act as the gatekeeper and scheduler for Dr. Anas. Help visitors understand what LEOMAX does, guide them to the right service or advisor, and most importantly — arrange calls or meetings with Dr. Anas when appropriate. LEOMAX has 5 systems: Growth, AI Transformation, Marketing Engine, Content System, Launch System. Book at calendly.com/leomaxglobalsa/30min. Respond in the same language the user writes in. Be professional and efficient — like a real executive assistant.`,
       qualify: [
         ['What is this about — are you looking to discuss a potential engagement with Dr. Anas, or do you have a specific question about LEOMAX?',
          'ما موضوع تواصلك — هل تريد مناقشة مشاركة محتملة مع الدكتور أنس، أم لديك سؤال محدد عن LEOMAX؟'],
@@ -577,12 +577,12 @@ I manage his schedule and I know exactly what he's currently focused on. If you 
                "إذا كنت تريد التحدث مع الدكتور أنس، يمكنني ترتيب ذلك. ما السياق — مشاركة محتملة أم سؤال محدد أم شيء آخر؟"]
         },
         price: {
-          en: ["The right starting point is a direct conversation with Dr. Anas — 30 minutes, and you\'ll have a clear picture.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["نقطة البداية الصحيحة هي محادثة مباشرة مع الدكتور أنس — 30 دقيقة وستحصل على صورة واضحة.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["The right starting point is a direct conversation with Dr. Anas — 30 minutes, and you\'ll have a clear picture.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["نقطة البداية الصحيحة هي محادثة مباشرة مع الدكتور أنس — 30 دقيقة وستحصل على صورة واضحة.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         contact: {
-          en: ["I\'ll get that arranged.\n\n📅 calendly.com/anas-msd-ramsees/30min"],
-          ar: ["سأرتب ذلك.\n\n📅 calendly.com/anas-msd-ramsees/30min"]
+          en: ["I\'ll get that arranged.\n\n📅 calendly.com/leomaxglobalsa/30min"],
+          ar: ["سأرتب ذلك.\n\n📅 calendly.com/leomaxglobalsa/30min"]
         },
         systems: {
           en: ["LEOMAX has 5 AI-powered systems:\n\n**01 Growth** — revenue engine & automated pipelines\n**02 AI Transformation** — AI built into your operations\n**03 Marketing Engine** — brand, campaigns & demand\n**04 Content System** — content strategy & distribution\n**05 Launch System** — full build in 90 days\n\nWhich is most relevant for you?"],

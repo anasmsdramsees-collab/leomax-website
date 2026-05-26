@@ -45,7 +45,7 @@ LEOMAX متخصصة في تطوير الأعمال في السعودية، وع�
 لو شركتك في مرحلة تخطيط لدخول السوق السعودي، أحب أعمل مكالمة 30 دقيقة معاك نشوف لو نقدر نساعد.
 
 اللينك: leomaxglobal.com
-موعد مباشر: calendly.com/anas-msd-ramsees/30min
+موعد مباشر: calendly.com/leomaxglobalsa/30min
 ```
 
 ### D) Investor / Family Office DM (premium tone)
@@ -128,7 +128,7 @@ Closest fit to MADAR's success — start here Day 1.
 
 ### Calendly setup (15 minutes)
 
-1. Go to calendly.com → log in (you already have `calendly.com/anas-msd-ramsees/30min`)
+1. Go to calendly.com → log in (you already have `calendly.com/leomaxglobalsa/30min`)
 2. Settings:
    - **Time zone**: Asia/Riyadh
    - **Availability**: Sun-Thu, 10 AM - 4 PM KSA (skip lunch 1-2 PM if you want)
