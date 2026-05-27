@@ -279,14 +279,86 @@
     mo.observe(document.body, { childList: true, subtree: true });
   }
 
+  /* ─── i18n: language switcher, hreflang, RTL ────────── */
+  // List of pages that have AR/FR translations live.
+  // Add filename to this set as translations are completed.
+  var TRANSLATED_PAGES = {
+    ar: { 'LEOMAX_Website_Design.html': true, 'index.html': true },
+    fr: { 'LEOMAX_Website_Design.html': true, 'index.html': true }
+  };
+  function currentLang() {
+    var p = window.location.pathname;
+    if (p.indexOf('/ar/') === 0 || p.indexOf('/ar/') > -1) return 'ar';
+    if (p.indexOf('/fr/') === 0 || p.indexOf('/fr/') > -1) return 'fr';
+    return 'en';
+  }
+  function currentFilename() {
+    var p = window.location.pathname.replace(/^\/(ar|fr)\//, '/');
+    var m = p.match(/\/([^\/]+\.html)$/);
+    return m ? m[1] : 'LEOMAX_Website_Design.html';
+  }
+  function pathFor(lang) {
+    var file = currentFilename();
+    if (lang === 'en') return '/' + file;
+    var hasTranslation = TRANSLATED_PAGES[lang] && TRANSLATED_PAGES[lang][file];
+    return hasTranslation ? '/' + lang + '/' + file : '/' + file;
+  }
+  function setupHreflang() {
+    if (document.querySelector('link[rel="alternate"][hreflang]')) return;
+    var head = document.head;
+    var langs = [
+      { code: 'en', href: 'https://leomaxglobal.com' + pathFor('en') },
+      { code: 'ar', href: 'https://leomaxglobal.com' + pathFor('ar') },
+      { code: 'fr', href: 'https://leomaxglobal.com' + pathFor('fr') },
+      { code: 'x-default', href: 'https://leomaxglobal.com' + pathFor('en') }
+    ];
+    langs.forEach(function (l) {
+      var link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l.code;
+      link.href = l.href;
+      head.appendChild(link);
+    });
+  }
+  function setupRTL() {
+    if (currentLang() !== 'ar') return;
+    document.documentElement.setAttribute('lang', 'ar');
+    document.documentElement.setAttribute('dir', 'rtl');
+  }
+  function injectLangSwitcher() {
+    if (document.getElementById('lang-switcher')) return;
+    var lang = currentLang();
+    var sw = document.createElement('div');
+    sw.id = 'lang-switcher';
+    sw.style.cssText = 'position:fixed;top:14px;right:14px;z-index:1000;display:flex;gap:4px;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);border-radius:980px;padding:5px 8px;border:1px solid rgba(255,255,255,.12);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;';
+    var langs = [
+      { code: 'en', label: 'EN' },
+      { code: 'ar', label: 'ع' },
+      { code: 'fr', label: 'FR' }
+    ];
+    langs.forEach(function (l) {
+      var a = document.createElement('a');
+      a.href = pathFor(l.code);
+      a.textContent = l.label;
+      a.style.cssText = 'color:' + (l.code === lang ? '#FFFFFF' : 'rgba(255,255,255,.55)') + ';text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.5px;padding:5px 10px;border-radius:980px;background:' + (l.code === lang ? 'rgba(255,255,255,.15)' : 'transparent') + ';transition:all .2s;';
+      a.addEventListener('mouseover', function () { if (l.code !== lang) a.style.color = 'rgba(255,255,255,.9)'; });
+      a.addEventListener('mouseout', function () { if (l.code !== lang) a.style.color = 'rgba(255,255,255,.55)'; });
+      sw.appendChild(a);
+    });
+    document.body.appendChild(sw);
+  }
+
   /* ─── INIT ──────────────────────────────────────────── */
   function init() {
+    setupRTL();
     injectStyle();
     applyFadeClasses();
     setupObserver();
     setupNavScroll();
     setupImageFade();
     setupCalendlyPopup();
+    setupHreflang();
+    injectLangSwitcher();
     // Parallax is nice but can feel laggy on low-end devices — only on desktop
     if (window.matchMedia && window.matchMedia('(min-width: 1024px)').matches) {
       setupHeroParallax();
