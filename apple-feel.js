@@ -225,6 +225,60 @@
     }, { passive: true });
   }
 
+  /* ─── Calendly in-page popup widget ─────────────────── */
+  var CALENDLY_URL = 'https://calendly.com/leomaxglobalsa/30min';
+  function setupCalendlyPopup() {
+    // Inject Calendly widget CSS once
+    if (!document.querySelector('link[href="https://assets.calendly.com/assets/external/widget.css"]')) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(l);
+    }
+    // Inject Calendly widget JS once
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      var s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    // Intercept all clicks on Calendly anchors site-wide (event delegation)
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('calendly.com/leomaxglobalsa') === -1) return;
+      e.preventDefault();
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+      } else {
+        // Calendly script not yet loaded — wait briefly then retry
+        var waited = 0;
+        var poll = setInterval(function () {
+          waited += 100;
+          if (window.Calendly && window.Calendly.initPopupWidget) {
+            clearInterval(poll);
+            window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+          } else if (waited > 3000) {
+            clearInterval(poll);
+            // Fallback to opening URL if script never loads
+            window.open(CALENDLY_URL, '_blank');
+          }
+        }, 100);
+      }
+    }, true);
+    // Also strip target="_blank" so right-click/middle-click still works as link
+    function stripTargets() {
+      document.querySelectorAll('a[href*="calendly.com/leomaxglobalsa"]').forEach(function (a) {
+        if (a.getAttribute('target') === '_blank') a.removeAttribute('target');
+      });
+    }
+    stripTargets();
+    // Re-strip after dynamic chat-injected links
+    var mo = new MutationObserver(stripTargets);
+    mo.observe(document.body, { childList: true, subtree: true });
+  }
+
   /* ─── INIT ──────────────────────────────────────────── */
   function init() {
     injectStyle();
@@ -232,6 +286,7 @@
     setupObserver();
     setupNavScroll();
     setupImageFade();
+    setupCalendlyPopup();
     // Parallax is nice but can feel laggy on low-end devices — only on desktop
     if (window.matchMedia && window.matchMedia('(min-width: 1024px)').matches) {
       setupHeroParallax();
