@@ -1,0 +1,30 @@
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Office temp/lock files
+~$*
+.~lock*
+
+# Editor cruft
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Sensitive — bank certificates, contracts, NDAs
+*.pdf
+!docs/articles/*.pdf
+*Certificate*
+IBAN*
+
+# Source/working files not for deployment
+_source/
+_archive/
+
+# Logs
+*.log
+
+# Local env
+.env
+.env.local
