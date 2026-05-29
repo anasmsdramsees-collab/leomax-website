@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LEOMAX Systems - Five engineered products for ambitious operators</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<meta name="description" content="The five LEOMAX systems. Growth, AI, Marketing, Content, Launch. Engineered products for serious operators in KSA and the GCC.">
+<link rel="canonical" href="https://leomaxglobal.com/systems.html">
+<meta property="og:title" content="The LEOMAX Systems">
+<meta property="og:description" content="Five engineered systems. One purpose: building businesses that compound.">
+<meta property="og:url" content="https://leomaxglobal.com/systems.html">
+<meta property="og:image" content="https://leomaxglobal.com/og-image.png">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--dgray:#3A4A5A;--accent:#9DB5CF}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.55}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.92);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo img{height:36px}
+.nav-links{display:flex;list-style:none;gap:32px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+
+/* HERO */
+.hero{padding:160px 64px 80px;text-align:center;background:radial-gradient(ellipse at top,#0D1E35 0%,#010B1C 70%);position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hero-eyebrow{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent);padding:6px 16px;border:1px solid rgba(157,181,207,.3);border-radius:980px;margin-bottom:32px;position:relative;z-index:1;font-family:'SF Mono',monospace}
+.hero h1{font-size:clamp(56px,9vw,128px);font-weight:900;line-height:.95;letter-spacing:-2px;color:var(--white);margin-bottom:24px;position:relative;z-index:1}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--accent)}
+.hero-sub{font-size:clamp(17px,2.4vw,24px);color:var(--gray);max-width:720px;margin:0 auto 48px;line-height:1.5;position:relative;z-index:1;font-weight:300}
+.hero-stats{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;position:relative;z-index:1;padding-top:48px;border-top:1px solid rgba(184,184,184,.1);max-width:760px;margin:0 auto}
+.hero-stat-num{font-size:42px;font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1}
+.hero-stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:6px}
+
+/* CHOOSE YOUR SYSTEM */
+.section-tag{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-family:'SF Mono',monospace}
+.section-title{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;color:var(--white)}
+.section-rule{width:48px;height:2px;background:var(--accent);margin:20px auto 24px}
+.section-desc{font-size:17px;color:var(--gray);max-width:680px;margin:0 auto;line-height:1.7;font-weight:300}
+
+.lineup{padding:140px 64px 120px;text-align:center;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%)}
+.lineup-header{margin-bottom:80px}
+
+.systems-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1400px;margin:0 auto}
+.system-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1);position:relative}
+.system-card:hover{transform:translateY(-8px)}
+.system-product{position:relative;overflow:hidden;background:rgba(255,255,255,.02);border:1px solid rgba(184,184,184,.06);padding:20px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.system-product::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center bottom,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none}
+.system-product img{max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .5s ease;filter:drop-shadow(0 20px 40px rgba(0,0,0,.4))}
+.system-card:hover .system-product img{transform:scale(1.04)}
+.system-num{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--lgray);margin-bottom:8px;font-family:'SF Mono',monospace}
+.system-name{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--white);margin-bottom:8px;line-height:1.1}
+.system-tag{font-size:13px;color:var(--gray);margin-bottom:16px;font-style:italic;font-weight:300;line-height:1.5}
+.system-price{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'SF Mono',monospace}
+.system-cta{margin-top:14px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);border-bottom:1px solid rgba(157,181,207,.5);display:inline-block;padding-bottom:3px;align-self:center}
+
+/* COMPARE */
+.compare{padding:120px 64px;background:#060F1F;border-top:1px solid rgba(184,184,184,.06)}
+.compare-header{text-align:center;margin-bottom:64px}
+.compare-table-wrap{max-width:1100px;margin:0 auto;overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+.compare-table th,.compare-table td{padding:18px 14px;text-align:left;border-bottom:1px solid rgba(184,184,184,.08)}
+.compare-table th{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);background:rgba(255,255,255,.02)}
+.compare-table th.col-system{color:var(--white);text-align:center;padding-bottom:18px}
+.compare-table td{color:var(--gray)}
+.compare-table td:first-child{color:var(--white);font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.compare-table td.cell-check{text-align:center;color:var(--accent);font-size:16px}
+
+/* CTA */
+.cta-section{padding:120px 64px;text-align:center;background:var(--black)}
+
+.cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:36px}
+.btn-primary{background:var(--white);color:var(--black);padding:16px 36px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:.2s}
+.btn-primary:hover{background:var(--chrome)}
+.btn-outline{background:transparent;color:var(--silver);padding:16px 36px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;border:1px solid rgba(184,184,184,.25);text-decoration:none;transition:.2s}
+.btn-outline:hover{border-color:var(--silver);color:var(--white)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+
+@media(max-width:1100px){
+  .systems-grid{grid-template-columns:repeat(3,1fr)}
+  .systems-grid .system-card:nth-child(4){grid-column:1/3}
+  .systems-grid .system-card:nth-child(5){grid-column:3/4}
+}
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hero{padding:130px 24px 70px}
+  .hero h1{letter-spacing:-1px}
+  .hero-stats{gap:32px;padding-top:36px}
+  .lineup,.compare,.cta-section{padding:80px 24px}
+  .systems-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .systems-grid .system-card:nth-child(4),.systems-grid .system-card:nth-child(5){grid-column:auto}
+  .system-name{font-size:18px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .systems-grid{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <ul class="nav-links">
+    <li><a href="brief.html">Brief</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="bd-services.html">BD &amp; Access</a></li>
+    <li><a href="investor-services.html">Investor</a></li>
+    <li><a href="services-pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="company-contact.html">Get in Touch →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <span class="hero-eyebrow">● The Lineup · Five Systems</span>
+  <h1>Engineered to <em>compound</em>.</h1>
+  <p class="hero-sub">
+    Five LEOMAX systems. Each one a product, not a project. Each one built to
+    install inside your business and keep producing after we leave.
+  </p>
+  <div class="hero-stats">
+    <div><div class="hero-stat-num">5</div><div class="hero-stat-label">Systems</div></div>
+    <div><div class="hero-stat-num">90</div><div class="hero-stat-label">Days to install</div></div>
+    <div><div class="hero-stat-num">+150%</div><div class="hero-stat-label">Avg Revenue Growth</div></div>
+    <div><div class="hero-stat-num">95%</div><div class="hero-stat-label">Client Retention</div></div>
+  </div>
+</section>
+
+<!-- THE LINEUP -->
+<section class="lineup">
+  <div class="lineup-header">
+    <p class="section-tag">Choose your system</p>
+    <h2 class="section-title">The Lineup.</h2>
+    <div class="section-rule"></div>
+    <p class="section-desc">
+      Buy one. Buy the stack. Each system stands alone, and each compounds when run together.
+    </p>
+  </div>
+
+  <div class="systems-grid">
+
+    <a class="system-card" href="system-01-growth.html">
+      <div class="system-product"><img src="system-product-growth.png" alt="LEOMAX Growth System"></div>
+      <div class="system-num">SYSTEM 01</div>
+      <div class="system-name">Growth System</div>
+      <div class="system-tag">From stagnant to scaling.</div>
+      <div class="system-price">SAR 5,500 / mo</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
+    <a class="system-card" href="system-02-ai.html">
+      <div class="system-product"><img src="system-product-ai.png" alt="LEOMAX AI Transformation System"></div>
+      <div class="system-num">SYSTEM 02</div>
+      <div class="system-name">AI Transformation</div>
+      <div class="system-tag">Turn intelligence into advantage.</div>
+      <div class="system-price">SAR 7,500 / mo</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
+    <a class="system-card" href="system-03-marketing.html">
+      <div class="system-product"><img src="system-product-marketing.png" alt="LEOMAX Marketing Engine"></div>
+      <div class="system-num">SYSTEM 03</div>
+      <div class="system-name">Marketing Engine</div>
+      <div class="system-tag">Create demand. Build authority.</div>
+      <div class="system-price">SAR 6,500 / mo</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
+    <a class="system-card" href="system-04-content.html">
+      <div class="system-product"><img src="system-product-content.png" alt="LEOMAX Content System"></div>
+      <div class="system-num">SYSTEM 04</div>
+      <div class="system-name">Content System</div>
+      <div class="system-tag">Your voice. Amplified.</div>
+      <div class="system-price">SAR 4,500 / mo</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
+    <a class="system-card" href="system-05-launch.html">
+      <div class="system-product"><img src="system-product-launch.png" alt="LEOMAX Launch System"></div>
+      <div class="system-num">SYSTEM 05</div>
+      <div class="system-name">Launch System</div>
+      <div class="system-tag">Idea to revenue. 90 days.</div>
+      <div class="system-price">SAR 22,000 / one-time</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare">
+  <div class="compare-header">
+    <p class="section-tag">Compare</p>
+    <h2 class="section-title">Pick the one that fits.</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-system">Growth</th>
+          <th class="col-system">AI</th>
+          <th class="col-system">Marketing</th>
+          <th class="col-system">Content</th>
+          <th class="col-system">Launch</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Best for</td>
+          <td>Stuck revenue</td>
+          <td>Manual ops</td>
+          <td>Weak demand</td>
+          <td>Quiet brand</td>
+          <td>Pre-revenue</td>
+        </tr>
+        <tr>
+          <td>Time to install</td>
+          <td>60 days</td>
+          <td>45 days</td>
+          <td>60 days</td>
+          <td>30 days</td>
+          <td>90 days</td>
+        </tr>
+        <tr>
+          <td>Pricing model</td>
+          <td>Monthly</td>
+          <td>Monthly</td>
+          <td>Monthly</td>
+          <td>Monthly</td>
+          <td>One-time</td>
+        </tr>
+        <tr>
+          <td>From</td>
+          <td>SAR 5,500</td>
+          <td>SAR 7,500</td>
+          <td>SAR 6,500</td>
+          <td>SAR 4,500</td>
+          <td>SAR 22,000</td>
+        </tr>
+        <tr>
+          <td>Pipeline impact</td>
+          <td class="cell-check">●</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+        </tr>
+        <tr>
+          <td>Automation</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>Demand generation</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+          <td class="cell-check">●</td>
+          <td class="cell-check">●</td>
+        </tr>
+        <tr>
+          <td>Brand infrastructure</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+          <td class="cell-check">●</td>
+          <td class="cell-check">●</td>
+        </tr>
+        <tr>
+          <td>Full stack</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="section-tag">Next step</p>
+  <h2 class="section-title">Not sure which one?</h2>
+  <div class="section-rule"></div>
+  <p class="section-desc">
+    Start with a 90-minute diagnostic. SAR 1,500. We will tell you which system to buy,
+    or that you do not need one yet.
+  </p>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="https://calendly.com/leomaxglobalsa/30min">Book diagnostic →</a>
+    <a class="btn-outline" href="services-pricing.html">See full pricing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="systems.html">Systems</a>
+    <a href="brief.html">Brief</a>
+    <a href="services-pricing.html">Pricing</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+<script src="business-hours.js"></script>
+</body>
+</html>
