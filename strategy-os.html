@@ -198,13 +198,31 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px}
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-inner">
-    <span class="coming-badge">Coming Q3 2026 · Closed Beta</span>
-    <h1>STRATEGY<br/>OPERATING SYSTEM</h1>
-    <p>A vertical strategy OS built for Saudi businesses. Dashboard, AI insights, and a strategy agent that recommends decisions - not just data. We're building it logistics-first, expanding from there.</p>
-    <a href="#waitlist" class="hero-cta">Join the Waitlist →</a>
+  <div class="hero-inner" style="display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;max-width:1200px;margin:0 auto;text-align:left">
+    <div>
+      <span class="coming-badge">● Now Live · Founding Members Open</span>
+      <h1 style="text-align:left">STRATEGY<br/>OPERATING SYSTEM</h1>
+      <p style="margin-left:0;text-align:left">A vertical Strategy OS built for Saudi operators. Dashboard, vertical-specific intelligence, and a strategy agent that recommends decisions - not just data. Four verticals live: Family Office, Logistics, F&amp;B, Healthcare.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="signup.html" class="hero-cta">Start Free Trial →</a>
+        <a href="brief.html" style="display:inline-block;background:transparent;color:#FFFFFF;padding:16px 30px;font-size:12px;font-weight:600;letter-spacing:.04em;text-decoration:none;border:1px solid rgba(255,255,255,.25);border-radius:980px;transition:.2s">See pricing</a>
+      </div>
+    </div>
+    <div style="position:relative;padding:30px;background:radial-gradient(ellipse 100% 80% at 50% 40%,rgba(157,181,207,.12) 0%,rgba(157,181,207,.04) 40%,transparent 80%),linear-gradient(180deg,#1A2A3F 0%,#0D1A2D 100%);border:1px solid rgba(184,184,184,.12);border-radius:0;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;max-width:420px;justify-self:center">
+      <img src="system-product-strategy-os.png" alt="LEOMAX Strategy OS product" style="max-width:100%;max-height:100%;object-fit:contain;display:block;filter:drop-shadow(0 24px 48px rgba(0,0,0,.6)) drop-shadow(0 4px 12px rgba(157,181,207,.15))">
+    </div>
   </div>
 </div>
+
+<style>
+@media(max-width:880px){
+  .hero .hero-inner{grid-template-columns:1fr !important;text-align:center !important}
+  .hero .hero-inner > div:first-child{text-align:center !important}
+  .hero .hero-inner > div:first-child h1{text-align:center !important}
+  .hero .hero-inner > div:first-child p{text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+  .hero .hero-inner > div:first-child > div{justify-content:center}
+}
+</style>
 
 <!-- THE THESIS -->
 <section>

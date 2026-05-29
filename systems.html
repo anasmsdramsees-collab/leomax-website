@@ -46,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:cen
 .lineup{padding:140px 64px 120px;text-align:center;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%)}
 .lineup-header{margin-bottom:80px}
 
-.systems-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1400px;margin:0 auto}
+.systems-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px;max-width:1500px;margin:0 auto}
 .system-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1);position:relative}
 .system-card:hover{transform:translateY(-8px)}
 .system-product{position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 50% 40%,rgba(157,181,207,.12) 0%,rgba(157,181,207,.04) 40%,transparent 80%),linear-gradient(180deg,#1A2A3F 0%,#0D1A2D 100%);border:1px solid rgba(184,184,184,.12);padding:24px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
@@ -90,11 +90,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
 .foot-links a:hover{color:var(--white)}
 .foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
 
-@media(max-width:1100px){
-  .systems-grid{grid-template-columns:repeat(3,1fr)}
-  .systems-grid .system-card:nth-child(4){grid-column:1/3}
-  .systems-grid .system-card:nth-child(5){grid-column:3/4}
-}
+@media(max-width:1300px){.systems-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nav-links{display:none}
@@ -103,7 +99,6 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
   .hero-stats{gap:32px;padding-top:36px}
   .lineup,.compare,.cta-section{padding:80px 24px}
   .systems-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .systems-grid .system-card:nth-child(4),.systems-grid .system-card:nth-child(5){grid-column:auto}
   .system-name{font-size:18px}
   footer{padding:28px 24px;flex-direction:column;text-align:center}
 }
@@ -203,6 +198,15 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
       <span class="system-cta">Open →</span>
     </a>
 
+    <a class="system-card" href="strategy-os.html">
+      <div class="system-product"><img src="system-product-strategy-os.png" alt="LEOMAX Strategy OS"></div>
+      <div class="system-num">SYSTEM 06 · FLAGSHIP</div>
+      <div class="system-name">Strategy OS</div>
+      <div class="system-tag">Decisions, engineered.</div>
+      <div class="system-price">SUBSCRIPTION FROM SAR 599 / MO</div>
+      <span class="system-cta">Open →</span>
+    </a>
+
   </div>
 </section>
 
@@ -224,6 +228,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <th class="col-system">Marketing</th>
           <th class="col-system">Content</th>
           <th class="col-system">Launch</th>
+          <th class="col-system">Strategy OS</th>
         </tr>
       </thead>
       <tbody>
@@ -234,6 +239,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>Weak demand</td>
           <td>Quiet brand</td>
           <td>Pre-revenue</td>
+          <td>Ongoing decisions</td>
         </tr>
         <tr>
           <td>Install window</td>
@@ -242,6 +248,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>60 days</td>
           <td>30 days</td>
           <td>90 days</td>
+          <td>Same day signup</td>
         </tr>
         <tr>
           <td>Support included</td>
@@ -250,6 +257,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>6 months</td>
           <td>6 months</td>
           <td>12 months</td>
+          <td>Ongoing</td>
         </tr>
         <tr>
           <td>From</td>
@@ -258,6 +266,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>SAR 55,000</td>
           <td>SAR 35,000</td>
           <td>SAR 95,000</td>
+          <td>SAR 599 / mo</td>
         </tr>
         <tr>
           <td>Pipeline impact</td>
@@ -265,6 +274,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>-</td>
           <td class="cell-check">●</td>
           <td>-</td>
+          <td class="cell-check">●</td>
           <td class="cell-check">●</td>
         </tr>
         <tr>
@@ -274,6 +284,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td>-</td>
           <td>-</td>
           <td>-</td>
+          <td class="cell-check">●</td>
         </tr>
         <tr>
           <td>Demand generation</td>
@@ -282,6 +293,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td class="cell-check">●</td>
           <td class="cell-check">●</td>
           <td class="cell-check">●</td>
+          <td>-</td>
         </tr>
         <tr>
           <td>Brand infrastructure</td>
@@ -290,9 +302,20 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.06);paddin
           <td class="cell-check">●</td>
           <td class="cell-check">●</td>
           <td class="cell-check">●</td>
+          <td>-</td>
         </tr>
         <tr>
           <td>Full stack</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="cell-check">●</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>Subscription</td>
+          <td>-</td>
           <td>-</td>
           <td>-</td>
           <td>-</td>

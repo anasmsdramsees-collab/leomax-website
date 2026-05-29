@@ -853,7 +853,7 @@ function openCalendly(){
   </div>
 
   <style>
-    .home-sys-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1440px;margin:60px auto 40px;padding:0 24px}
+    .home-sys-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px;max-width:1500px;margin:60px auto 40px;padding:0 24px}
     .home-sys-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1);position:relative}
     .home-sys-card:hover{transform:translateY(-8px)}
     .home-sys-product{position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 50% 40%,rgba(157,181,207,.12) 0%,rgba(157,181,207,.04) 40%,transparent 80%),linear-gradient(180deg,#1A2A3F 0%,#0D1A2D 100%);border:1px solid rgba(184,184,184,.12);padding:24px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
@@ -867,15 +867,8 @@ function openCalendly(){
     .home-sys-tag{font-size:14px;color:#4A6783;font-weight:400;line-height:1.45;letter-spacing:-.005em}
     .home-sys-cta{margin-top:14px;font-size:13px;font-weight:500;letter-spacing:-.01em;color:#010B1C;display:inline-block;align-self:flex-start;transition:color .2s}
     .home-sys-card:hover .home-sys-cta{color:#4A6783}
-    @media(max-width:1100px){
-      .home-sys-grid{grid-template-columns:repeat(3,1fr)}
-      .home-sys-card:nth-child(4){grid-column:1/3}
-      .home-sys-card:nth-child(5){grid-column:3/4}
-    }
-    @media(max-width:720px){
-      .home-sys-grid{grid-template-columns:1fr 1fr;gap:16px;padding:0 18px}
-      .home-sys-card:nth-child(4),.home-sys-card:nth-child(5){grid-column:auto}
-    }
+    @media(max-width:1300px){.home-sys-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:720px){.home-sys-grid{grid-template-columns:1fr 1fr;gap:16px;padding:0 18px}}
     @media(max-width:460px){.home-sys-grid{grid-template-columns:1fr}}
   </style>
 
@@ -913,6 +906,13 @@ function openCalendly(){
       <div class="home-sys-num">SYSTEM · 05</div>
       <div class="home-sys-name">Launch System</div>
       <div class="home-sys-tag">Idea to revenue. 90 days.</div>
+      <span class="home-sys-cta">Open →</span>
+    </a>
+    <a class="home-sys-card" href="strategy-os.html">
+      <div class="home-sys-product"><img src="system-product-strategy-os.png" alt="LEOMAX Strategy OS"></div>
+      <div class="home-sys-num">SYSTEM · 06 · FLAGSHIP</div>
+      <div class="home-sys-name">Strategy OS</div>
+      <div class="home-sys-tag">Decisions, engineered.</div>
       <span class="home-sys-cta">Open →</span>
     </a>
   </div>
