@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LEOMAX Brief - Family Office | Subscribe</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<meta name="description" content="The LEOMAX Brief - Family Office. Strategic intelligence on capital deployment, deal flow, and what other principals are doing across the Kingdom. SAR 599/month. Founding members SAR 399.">
+<link rel="canonical" href="https://leomaxglobal.com/brief-family-office.html">
+<meta property="og:title" content="The LEOMAX Brief - Family Office">
+<meta property="og:description" content="Vertical strategic intelligence for Saudi family office. Strategic intelligence on capital deployment, deal flow, and what other principals are doing across the Kingdom.">
+<meta property="og:url" content="https://leomaxglobal.com/brief-family-office.html">
+<meta property="og:image" content="https://leomaxglobal.com/og-image.png">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--dgray:#3A4A5A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo img{height:36px;width:auto}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none}
+.nav-back:hover{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+
+/* HERO */
+.hero{padding:160px 64px 100px;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%);text-align:center;color:var(--white);position:relative}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hero-num{font-size:11px;font-weight:700;letter-spacing:4px;color:#9DB5CF;margin-bottom:24px;position:relative;z-index:1;font-family:'SF Mono',monospace}
+.hero h1{font-size:clamp(56px,9vw,112px);font-weight:900;line-height:.95;letter-spacing:-1.5px;color:var(--white);margin-bottom:18px;position:relative;z-index:1}
+.hero-tag{font-size:16px;font-style:italic;color:#9DB5CF;margin-bottom:32px;position:relative;z-index:1}
+.hero-desc{font-size:17px;color:var(--gray);max-width:680px;margin:0 auto 56px;line-height:1.75;position:relative;z-index:1}
+.hero-cta{display:inline-block;background:var(--white);color:var(--black);padding:18px 48px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;position:relative;z-index:1;transition:.2s}
+.hero-cta:hover{background:var(--chrome)}
+.hero-price{display:block;margin-top:32px;font-family:'SF Mono',monospace;font-size:13px;letter-spacing:2px;color:#9DB5CF;position:relative;z-index:1}
+
+/* SECTIONS */
+section{padding:100px 64px}
+.sec-light{background:#F4F7FB}
+.sec-lighter{background:#EEF2F7}
+.sec-dark{background:var(--black);color:var(--white)}
+.sec-header{text-align:center;max-width:760px;margin:0 auto 60px}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin-bottom:16px}
+.sec-title{font-size:clamp(32px,5vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:18px;color:var(--black)}
+.sec-dark .sec-title{color:var(--white)}
+.sec-rule{width:40px;height:2px;background:var(--lgray);margin:20px auto 24px}
+.sec-desc{font-size:16px;color:var(--lgray);line-height:1.7}
+.sec-dark .sec-desc{color:var(--gray)}
+
+/* WHAT YOU GET */
+.bullets{max-width:680px;margin:0 auto;list-style:none;padding:0}
+.bullets li{font-size:17px;line-height:1.7;color:var(--black);padding:18px 0;border-bottom:1px solid #DDE4ED;display:flex;gap:18px;align-items:flex-start}
+.bullets li::before{content:counter(b, decimal-leading-zero);counter-increment:b;font-family:'SF Mono',monospace;font-size:13px;font-weight:700;color:var(--lgray);flex-shrink:0;letter-spacing:1px;padding-top:3px}
+.bullets{counter-reset:b}
+
+/* SAMPLE */
+.sample-paper{max-width:740px;margin:0 auto;background:#FFFFFF;border:1px solid #DDE4ED;padding:56px 64px;font-family:Georgia,serif;line-height:1.85;box-shadow:0 8px 32px rgba(1,11,28,.06)}
+.sample-meta{font-family:'SF Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--lgray);margin-bottom:24px}
+.sample-title{font-family:-apple-system,'SF Pro Display',sans-serif;font-size:34px;font-weight:900;color:var(--black);letter-spacing:-.5px;line-height:1.15;margin-bottom:14px}
+.sample-sub{font-style:italic;color:var(--lgray);margin-bottom:32px;font-size:16px}
+.sample-body p{font-size:16px;color:var(--black);margin-bottom:18px}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:920px;margin:0 auto}
+.price-card{background:#FFFFFF;border:1px solid #DDE4ED;padding:40px 32px;text-align:center}
+.price-card.featured{background:var(--black);color:var(--white);border-color:var(--black)}
+.price-eb{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin-bottom:20px}
+.price-card.featured .price-eb{color:#9DB5CF}
+.price-amount{font-size:48px;font-weight:900;letter-spacing:-1.5px;color:var(--black);margin-bottom:6px}
+.price-card.featured .price-amount{color:var(--white)}
+.price-amount small{font-size:14px;font-weight:400;color:var(--lgray);letter-spacing:.5px}
+.price-card.featured .price-amount small{color:var(--gray)}
+.price-note{font-size:13px;color:var(--lgray);margin-bottom:28px}
+.price-card.featured .price-note{color:var(--gray)}
+.price-cta{display:inline-block;background:var(--black);color:var(--white);padding:14px 36px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:.2s}
+.price-card.featured .price-cta{background:var(--white);color:var(--black)}
+
+/* FAQ */
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid #DDE4ED;padding:24px 0}
+.faq-q{font-size:17px;font-weight:700;color:var(--black);margin-bottom:10px;letter-spacing:-.2px}
+.faq-a{font-size:14px;color:var(--lgray);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{padding:120px 24px 70px}
+  section{padding:64px 24px}
+  .sample-paper{padding:36px 28px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <a class="nav-back" href="brief.html">← All Verticals</a>
+  <a class="nav-cta" href="#subscribe">Subscribe →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <p class="hero-num">VERTICAL  01  ·  THE  LEOMAX  BRIEF</p>
+  <h1>Family Office</h1>
+  <p class="hero-tag">For principals and investment teams in KSA family offices.</p>
+  <p class="hero-desc">Strategic intelligence on capital deployment, deal flow, and what other principals are doing across the Kingdom. Built for the people sitting in the seat where allocation decisions get made.</p>
+  <a class="hero-cta" href="#subscribe">Subscribe Now →</a>
+  <span class="hero-price">SAR 599 / MONTH · FOUNDING MEMBERS SAR 399</span>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="sec-light">
+  <div class="sec-header">
+    <p class="sec-tag">What's in this vertical</p>
+    <h2 class="sec-title">Built for family office operators.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-desc">
+      Specialized content for the people actually making decisions in this sector.
+    </p>
+  </div>
+  <ol class="bullets">
+    <li>Capital deployment notes from KSA + GCC family offices</li>
+    <li>Deal flow signals before public announcements</li>
+    <li>Sector concentration and rotation analysis</li>
+    <li>Co-investment opportunity flags from network deals</li>
+    <li>Quarterly principal-level letter from Anas</li>
+  </ol>
+</section>
+
+<!-- SAMPLE -->
+<section class="sec-lighter">
+  <div class="sec-header">
+    <p class="sec-tag">A sample issue</p>
+    <h2 class="sec-title">What lands in your inbox.</h2>
+    <div class="sec-rule"></div>
+    <p class="sec-desc">
+      Real signal, not curated headlines. This is an excerpt from a recent Brief.
+    </p>
+  </div>
+  <div class="sample-paper">
+    <div class="sample-meta">THE LEOMAX BRIEF · FAMILY OFFICE · ISSUE 14 · SUNDAY 25 MAY 2026</div>
+    <h3 class="sample-title">What Three KSA Family Offices Quietly Bought This Quarter</h3>
+    <p class="sample-sub">What it means, who benefits, what to watch.</p>
+    <div class="sample-body">
+      <p>Three Riyadh-based family offices closed positions this quarter that</p>
+      <p>didn't make any deal announcement. Two were in mid-cap logistics.</p>
+      <p>One was in private healthcare. The pattern matters more than the deals.</p>
+      <p>&nbsp;</p>
+      <p>What is interesting is the timing. All three closed within a 6-week</p>
+      <p>window. All three came in at valuations 20-30% below the original</p>
+      <p>asks. And all three structured the rounds with anti-dilution clauses</p>
+      <p>that suggest they expect a follow-on inside 18 months.</p>
+      <p>&nbsp;</p>
+      <p>The macro signal: KSA family offices are pricing for a Q4 / early</p>
+      <p>2027 valuation reset. They are quietly building positions before it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec-dark" id="subscribe">
+  <div class="sec-header">
+    <p class="sec-tag" style="color:#9DB5CF">Choose your plan</p>
+    <h2 class="sec-title">Simple pricing. Real value.</h2>
+    <div class="sec-rule" style="background:#9DB5CF"></div>
+    <p class="sec-desc">Cancel any time. 30-day money-back guarantee.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p class="price-eb">Monthly</p>
+      <div class="price-amount">SAR 599 <small>/ mo</small></div>
+      <p class="price-note">Standard rate after the founding window closes.</p>
+      <a class="price-cta" href="mailto:anas@leomaxglobal.com?subject=Subscribe to The LEOMAX Brief - Family Office - Monthly">Subscribe →</a>
+    </div>
+
+    <div class="price-card featured">
+      <p class="price-eb">Founding Member · Limited</p>
+      <div class="price-amount">SAR 399 <small>/ mo for life</small></div>
+      <p class="price-note">First 100 subscribers only, locked at this rate.</p>
+      <a class="price-cta" href="mailto:anas@leomaxglobal.com?subject=Founding Member - Family Office - SAR 399">Lock in 399 →</a>
+    </div>
+
+    <div class="price-card">
+      <p class="price-eb">Annual</p>
+      <div class="price-amount">SAR 5,990 <small>/ yr</small></div>
+      <p class="price-note">10 months at the monthly rate. 2 months free.</p>
+      <a class="price-cta" href="mailto:anas@leomaxglobal.com?subject=Subscribe to The LEOMAX Brief - Family Office - Annual">Pay Annual →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-light">
+  <div class="sec-header">
+    <p class="sec-tag">Specific to this vertical</p>
+    <h2 class="sec-title">Questions worth answering.</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item">
+      <div class="faq-q">Who reads this?</div>
+      <div class="faq-a">Principals, IC members, and senior investment professionals at Saudi family offices. Some single-family offices, some multi-family. All making real allocation decisions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How sensitive is the intelligence?</div>
+      <div class="faq-a">Specific enough to be useful, anonymized where it has to be. Named players when public. Deal flow signals come from network conversations, not leaks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will this replace my analysts?</div>
+      <div class="faq-a">No. It will make their work shorter. Most allocation conversations start by aligning on context — this gives you the context in 30 minutes a week.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Arabic edition?</div>
+      <div class="faq-a">Coming Q3 2026. Founding members get the Arabic edition free when it ships.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="brief.html">All Verticals</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+<script src="business-hours.js"></script>
+</body>
+</html>

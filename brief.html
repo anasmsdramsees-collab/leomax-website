@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LEOMAX Brief - Vertical strategic intelligence for Saudi operators</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#010B1C">
+<meta name="description" content="The LEOMAX Brief - vertical strategic intelligence delivered every Sunday. Choose your sector: Family Office, Logistics, F&B, or Healthcare. SAR 599/month.">
+<link rel="canonical" href="https://leomaxglobal.com/brief.html">
+<meta property="og:title" content="The LEOMAX Brief">
+<meta property="og:description" content="Vertical strategic intelligence on Saudi business. Delivered every Sunday. Choose your sector.">
+<meta property="og:url" content="https://leomaxglobal.com/brief.html">
+<meta property="og:image" content="https://leomaxglobal.com/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The LEOMAX Brief">
+<meta name="twitter:description" content="Vertical strategic intelligence on Saudi business. Choose your sector.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--dgray:#3A4A5A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:#EEF2F7;color:var(--black);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 64px;background:rgba(1,11,28,.95);border-bottom:1px solid rgba(184,184,184,.08);backdrop-filter:blur(16px)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:36px;width:auto}
+.nav-links{display:flex;list-style:none;gap:32px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--chrome)}
+
+/* HERO */
+.hero{padding:160px 64px 80px;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%);text-align:center;color:var(--white);position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hero-eyebrow{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#9DB5CF;padding:6px 16px;border:1px solid rgba(157,181,207,.3);border-radius:980px;margin-bottom:32px;position:relative;z-index:1}
+.hero h1{font-size:clamp(48px,8vw,96px);font-weight:900;line-height:1;letter-spacing:-1px;color:var(--white);margin-bottom:24px;position:relative;z-index:1}
+.hero h1 em{font-style:italic;font-weight:500;color:#9DB5CF}
+.hero-sub{font-size:clamp(16px,2.2vw,22px);color:var(--gray);max-width:680px;margin:0 auto 56px;line-height:1.5;position:relative;z-index:1}
+.hero-pricing{display:inline-block;font-family:'SF Mono','Courier',monospace;font-size:13px;letter-spacing:2px;color:#9DB5CF;padding-top:24px;border-top:1px solid rgba(184,184,184,.15);position:relative;z-index:1}
+
+/* CHOOSER */
+.chooser{padding:100px 64px;background:#F4F7FB}
+.chooser-header{text-align:center;max-width:720px;margin:0 auto 60px}
+.chooser-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin-bottom:16px}
+.chooser-title{font-size:clamp(32px,5vw,52px);font-weight:900;letter-spacing:-1px;color:var(--black);line-height:1.1;margin-bottom:18px}
+.chooser-rule{width:40px;height:2px;background:var(--lgray);margin:20px auto 24px}
+.chooser-desc{font-size:16px;color:var(--lgray);line-height:1.7}
+.verticals-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1080px;margin:0 auto}
+.vertical-card{background:#FFFFFF;border:1px solid #DDE4ED;padding:48px 40px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden}
+.vertical-card:hover{border-color:var(--black);transform:translateY(-4px);box-shadow:0 16px 40px rgba(1,11,28,.08)}
+.vertical-card::before{content:'';position:absolute;top:0;left:0;width:0;height:3px;background:var(--black);transition:width .3s}
+.vertical-card:hover::before{width:100%}
+.vc-num{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--lgray);margin-bottom:24px;font-family:'SF Mono',monospace}
+.vc-title{font-size:32px;font-weight:900;letter-spacing:-.5px;color:var(--black);margin-bottom:8px;line-height:1.1}
+.vc-tag{font-size:13px;font-style:italic;color:var(--lgray);margin-bottom:24px;letter-spacing:.5px}
+.vc-desc{font-size:14px;line-height:1.7;color:var(--lgray);margin-bottom:24px;flex:1}
+.vc-bullets{list-style:none;margin-bottom:32px;padding:0}
+.vc-bullets li{font-size:13px;color:var(--black);padding:7px 0;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid #EEF2F7}
+.vc-bullets li:last-child{border-bottom:none}
+.vc-bullets li::before{content:'';width:4px;height:4px;background:var(--lgray);border-radius:50%;flex-shrink:0;margin-top:8px}
+.vc-cta{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid #DDE4ED;margin-top:auto}
+.vc-price{font-size:20px;font-weight:900;color:var(--black);letter-spacing:-.5px}
+.vc-price small{font-size:11px;font-weight:400;color:var(--lgray);letter-spacing:1px;margin-left:4px}
+.vc-arrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black)}
+
+/* HOW IT WORKS */
+.how{padding:100px 64px;background:#EEF2F7}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;max-width:1080px;margin:60px auto 0}
+.how-card{background:#FFFFFF;border:1px solid #DDE4ED;padding:36px 28px}
+.how-num{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--lgray);margin-bottom:18px;font-family:'SF Mono',monospace}
+.how-card h3{font-size:18px;font-weight:800;color:var(--black);margin-bottom:10px;letter-spacing:-.3px}
+.how-card p{font-size:13px;color:var(--lgray);line-height:1.65}
+
+/* FOUNDING MEMBER */
+.founding{padding:80px 64px;background:#010B1C;color:var(--white);text-align:center}
+.founding-eyebrow{display:inline-block;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9DB5CF;padding:6px 16px;border:1px solid rgba(157,181,207,.4);border-radius:980px;margin-bottom:28px}
+.founding h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.5px;margin-bottom:18px;line-height:1.15;color:var(--white)}
+.founding p{font-size:16px;color:var(--gray);max-width:560px;margin:0 auto 36px;line-height:1.7}
+.founding-stats{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;margin-bottom:40px}
+.fs-num{font-size:38px;font-weight:900;color:#9DB5CF;letter-spacing:-1px}
+.fs-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:6px}
+.founding-cta{display:inline-block;background:var(--white);color:var(--black);padding:16px 44px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:.2s}
+.founding-cta:hover{background:var(--chrome)}
+
+/* FAQ */
+.faq{padding:100px 64px;background:#F4F7FB}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.5px;color:var(--black);margin-bottom:48px;text-align:center}
+.faq-item{border-bottom:1px solid #DDE4ED;padding:24px 0}
+.faq-q{font-size:17px;font-weight:700;color:var(--black);margin-bottom:10px;letter-spacing:-.2px}
+.faq-a{font-size:14px;color:var(--lgray);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);padding:36px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-brand{font-size:14px;font-weight:800;letter-spacing:5px;color:var(--white)}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:#555;text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+.foot-links a:hover{color:var(--white)}
+.foot-copy{font-size:10px;color:#2A2A2A;letter-spacing:1.5px}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hero{padding:120px 24px 64px}
+  .chooser,.how,.founding,.faq{padding:64px 24px}
+  .verticals-grid{grid-template-columns:1fr;gap:18px}
+  .vertical-card{padding:36px 28px}
+  .vc-title{font-size:26px}
+  .founding-stats{gap:36px}
+  footer{padding:28px 24px;flex-direction:column;text-align:center}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <ul class="nav-links">
+    <li><a href="brief.html">Brief</a></li>
+    <li><a href="bd-services.html">BD &amp; Access</a></li>
+    <li><a href="investor-services.html">Investor</a></li>
+    <li><a href="strategy-os.html">Strategy OS</a></li>
+    <li><a href="services-pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="#verticals">Subscribe →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <span class="hero-eyebrow">● New Subscription · Founding Members Open</span>
+  <h1>The LEOMAX <em>Brief</em></h1>
+  <p class="hero-sub">
+    Vertical strategic intelligence on Saudi business. One sector. One sharp take a week.
+    Delivered every Sunday at 7 AM.
+  </p>
+  <div class="hero-pricing">SAR 599 / MONTH · ANNUAL SAR 5,990 · FOUNDING MEMBERS SAR 399</div>
+</section>
+
+<!-- VERTICAL CHOOSER -->
+<section class="chooser" id="verticals">
+  <div class="chooser-header">
+    <p class="chooser-tag">Step 1</p>
+    <h2 class="chooser-title">Choose your vertical.</h2>
+    <div class="chooser-rule"></div>
+    <p class="chooser-desc">
+      Generic intelligence is for analysts. Operators need depth. Pick the sector where
+      you actually make decisions, and the Brief is built around it.
+    </p>
+  </div>
+
+  <div class="verticals-grid">
+
+    <!-- Family Office -->
+    <a class="vertical-card" href="brief-family-office.html">
+      <div class="vc-num">01 / VERTICAL</div>
+      <h3 class="vc-title">Family Office</h3>
+      <p class="vc-tag">For principals and investment teams in KSA family offices.</p>
+      <p class="vc-desc">
+        Capital deployment signals, deal flow analysis, family office activity across the
+        Kingdom. What other principals are buying, exiting, or quietly building.
+      </p>
+      <ul class="vc-bullets">
+        <li>Weekly capital deployment notes</li>
+        <li>Deal flow signals across KSA + GCC</li>
+        <li>Sector concentration analysis</li>
+        <li>Co-investment opportunity flags</li>
+      </ul>
+      <div class="vc-cta">
+        <div class="vc-price">SAR 599<small>/ month</small></div>
+        <div class="vc-arrow">Choose →</div>
+      </div>
+    </a>
+
+    <!-- Logistics -->
+    <a class="vertical-card" href="brief-logistics.html">
+      <div class="vc-num">02 / VERTICAL</div>
+      <h3 class="vc-title">Logistics</h3>
+      <p class="vc-tag">For founders and operators in Saudi logistics, last-mile, and supply chain.</p>
+      <p class="vc-desc">
+        Regulatory moves, infrastructure shifts, what TGA and Public Transport Authority
+        are actually doing, last-mile economics, and the operators worth watching.
+      </p>
+      <ul class="vc-bullets">
+        <li>TGA / regulatory updates with analysis</li>
+        <li>Infrastructure project signals (NEOM, ports, railways)</li>
+        <li>Last-mile economics and unit cost trends</li>
+        <li>Hoolak field notes from real operations</li>
+      </ul>
+      <div class="vc-cta">
+        <div class="vc-price">SAR 599<small>/ month</small></div>
+        <div class="vc-arrow">Choose →</div>
+      </div>
+    </a>
+
+    <!-- F&B -->
+    <a class="vertical-card" href="brief-fnb.html">
+      <div class="vc-num">03 / VERTICAL</div>
+      <h3 class="vc-title">F&amp;B</h3>
+      <p class="vc-tag">For Saudi restaurant operators, F&amp;B founders, and food retail.</p>
+      <p class="vc-desc">
+        Restaurant chain expansion patterns, Saudi consumer shifts, what Almarai, AlBaik,
+        Half Million, and the new wave of concepts are doing. Operating unit economics.
+      </p>
+      <ul class="vc-bullets">
+        <li>Chain expansion + closure tracker</li>
+        <li>SAMA spend data + consumer signals</li>
+        <li>Cloud kitchen and aggregator economics</li>
+        <li>Franchise vs. company-owned analysis</li>
+      </ul>
+      <div class="vc-cta">
+        <div class="vc-price">SAR 599<small>/ month</small></div>
+        <div class="vc-arrow">Choose →</div>
+      </div>
+    </a>
+
+    <!-- Healthcare -->
+    <a class="vertical-card" href="brief-healthcare.html">
+      <div class="vc-num">04 / VERTICAL</div>
+      <h3 class="vc-title">Healthcare</h3>
+      <p class="vc-tag">For Saudi hospital groups, clinic operators, and healthcare investors.</p>
+      <p class="vc-desc">
+        MOH and CHI moves, hospital chain operations, the privatization push, CCHI
+        insurance dynamics, and what the big players (HMG, Almoosa, Saudi German) are doing.
+      </p>
+      <ul class="vc-bullets">
+        <li>MOH + CHI regulatory analysis</li>
+        <li>Hospital chain M&amp;A activity</li>
+        <li>Privatization tender signals</li>
+        <li>Clinic chain unit economics</li>
+      </ul>
+      <div class="vc-cta">
+        <div class="vc-price">SAR 599<small>/ month</small></div>
+        <div class="vc-arrow">Choose →</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- SYSTEM SCREENSHOT -->
+<section style="padding:80px 64px;background:#EEF2F7;text-align:center">
+  <img src="brief-system.png" alt="The LEOMAX Brief — what you get every week" style="max-width:1200px;width:100%;height:auto;display:block;margin:0 auto;border:1px solid rgba(1,11,28,.06)">
+</section>
+
+<!-- CADENCE SCREENSHOT -->
+<section style="padding:0 64px 80px;background:#EEF2F7;text-align:center">
+  <img src="brief-cadence.png" alt="The LEOMAX Brief — weekly cadence" style="max-width:1200px;width:100%;height:auto;display:block;margin:0 auto;border:1px solid rgba(1,11,28,.06)">
+</section>
+
+<!-- SAMPLE -->
+<section style="padding:80px 64px;background:#F4F7FB;text-align:center">
+  <div class="chooser-header">
+    <p class="chooser-tag">Step 3</p>
+    <h2 class="chooser-title">A look inside.</h2>
+    <div class="chooser-rule"></div>
+    <p class="chooser-desc">
+      Specific situations, named players, real numbers. No filler.
+    </p>
+  </div>
+  <img src="brief-sample.png" alt="Sample Brief from The LEOMAX Brief" style="max-width:1200px;width:100%;height:auto;display:block;margin:0 auto;border:1px solid rgba(1,11,28,.06)">
+</section>
+
+<!-- FOUNDING MEMBER -->
+<section class="founding">
+  <span class="founding-eyebrow">● Founding Member Window · Open Now</span>
+  <h2>Lock in SAR 399 / month for life.</h2>
+  <p>
+    The first 100 subscribers across all verticals pay SAR 399 / month, locked at that price
+    for as long as the subscription stays active. After 100, the standard rate is SAR 599.
+  </p>
+  <div class="founding-stats">
+    <div>
+      <div class="fs-num">100</div>
+      <div class="fs-label">Founding Slots</div>
+    </div>
+    <div>
+      <div class="fs-num">33%</div>
+      <div class="fs-label">Discount Locked</div>
+    </div>
+    <div>
+      <div class="fs-num">∞</div>
+      <div class="fs-label">For Life</div>
+    </div>
+  </div>
+  <a href="#verticals" class="founding-cta">Choose Your Vertical →</a>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2>Common questions.</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Why a vertical Brief instead of a general Saudi business newsletter?</div>
+      <div class="faq-a">Because generic intelligence is for analysts writing reports, not operators making decisions. A logistics founder does not need a wealth management note. A family office principal does not need last-mile unit economics. You pay for relevance, not volume.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Who writes the Brief?</div>
+      <div class="faq-a">Anas Elimam writes every issue. Founder of LEOMAX, working from Riyadh, building Hoolak in parallel. The intelligence is grounded in active deal flow, not desk research.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I subscribe to more than one vertical?</div>
+      <div class="faq-a">Yes. Two verticals: SAR 999 / month. Three or four: SAR 1,499 / month. Founding member pricing applies proportionally. Email anas@leomaxglobal.com to set up multi-vertical access.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel anytime?</div>
+      <div class="faq-a">Yes. Cancel any time from your account. No questions, no exit interview. Founding member pricing is forfeited if cancelled and resubscribed later.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Refund policy?</div>
+      <div class="faq-a">First 30 days, full refund, no questions. After that, no partial month refunds. The Brief is built for the long game.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is the Brief in English or Arabic?</div>
+      <div class="faq-a">English by default. Arabic-only edition for the Family Office vertical is coming Q3 2026. Subscribers will be notified when it ships.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How is this different from a free LinkedIn post?</div>
+      <div class="faq-a">LinkedIn posts are about visibility. The Brief is about depth. Specific situations, named players, actual numbers, decision frames. The kind of analysis that does not make sense to publish for free.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I pay?</div>
+      <div class="faq-a">Stripe checkout in SAR via credit card or Mada. Annual subscribers can also pay via bank transfer. Saudi VAT applies where required.</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">LEOMAX</div>
+  <div class="foot-links">
+    <a href="LEOMAX_Website_Design.html">Home</a>
+    <a href="brief.html">Brief</a>
+    <a href="services-pricing.html">Pricing</a>
+    <a href="company-contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 LEOMAX</div>
+</footer>
+
+<script src="valeria.js"></script>
+<script src="apple-feel.js"></script>
+<script src="business-hours.js"></script>
+</body>
+</html>
