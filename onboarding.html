@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding - LEOMAX Strategy OS</title>
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--accent:#9DB5CF;--paper:#F4F7FB;--ink:#1A2433;--ok:#34D399;--err:#E53E3E}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:#EEF2F7;color:var(--ink);line-height:1.6}
+
+/* Topbar */
+.topbar{background:var(--black);color:var(--white);padding:18px 48px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.tb-logo img{height:30px}
+.tb-actions{display:flex;align-items:center;gap:20px}
+.tb-link{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);text-decoration:none}
+.tb-link:hover{color:var(--white)}
+
+main{max-width:880px;margin:0 auto;padding:48px 32px 100px}
+
+.head-eyebrow{font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--lgray);font-family:'SF Mono',monospace;margin-bottom:14px}
+.head-title{font-size:clamp(32px,5vw,52px);font-weight:900;letter-spacing:-1px;color:var(--ink);line-height:1.1;margin-bottom:14px}
+.head-sub{font-size:17px;color:var(--lgray);line-height:1.65;max-width:620px}
+
+.progress-bar{margin:40px 0 56px;height:2px;background:#DDE4ED;position:relative}
+.progress-fill{position:absolute;left:0;top:0;height:100%;background:var(--ink);transition:width .3s}
+
+.fieldset{background:#FFFFFF;border:1px solid #DDE4ED;padding:40px 36px;margin-bottom:24px}
+.fs-eb{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin-bottom:10px;font-family:'SF Mono',monospace}
+.fs-title{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.3px}
+.fs-desc{font-size:14px;color:var(--lgray);margin-bottom:28px;line-height:1.65}
+
+.field{margin-bottom:24px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.1px}
+.field .hint{display:block;font-size:12px;color:var(--lgray);margin-bottom:10px;line-height:1.5}
+.field input[type="text"],.field input[type="number"],.field select,.field textarea{width:100%;padding:13px 16px;border:1px solid #DDE4ED;background:#FFFFFF;color:var(--ink);font-size:15px;font-family:inherit;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
+.field textarea{resize:vertical;min-height:80px;line-height:1.55}
+
+.chip-group{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;padding:9px 16px;border:1px solid #DDE4ED;background:#FFFFFF;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;transition:all .15s;user-select:none}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip:hover{border-color:#A8BCD0}
+.chip.is-on{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+.actions{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:32px}
+.btn-primary{background:var(--ink);color:var(--white);padding:16px 44px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:#000}
+.btn-primary:disabled{background:rgba(0,0,0,.3);cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--lgray);padding:14px 24px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-ghost:hover{color:var(--ink)}
+
+.alert{padding:14px 18px;margin-bottom:24px;font-size:13px;display:none}
+.alert.show{display:block}
+.alert-ok{background:rgba(52,211,153,.1);border-left:2px solid var(--ok);color:#0F7A56}
+.alert-err{background:rgba(229,62,62,.1);border-left:2px solid var(--err);color:#A02020}
+
+.done{text-align:center;padding:72px 32px;background:#FFFFFF;border:1px solid #DDE4ED}
+.done-icon{font-size:48px;margin-bottom:16px;color:var(--ok)}
+.done h2{font-size:32px;font-weight:900;color:var(--ink);margin-bottom:14px;letter-spacing:-.5px}
+.done p{font-size:15px;color:var(--lgray);max-width:480px;margin:0 auto 28px;line-height:1.7}
+
+@media(max-width:680px){
+  .topbar{padding:14px 20px}
+  main{padding:32px 18px 80px}
+  .fieldset{padding:28px 22px}
+  .actions{flex-direction:column;align-items:stretch}
+  .btn-primary{width:100%}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="tb-logo" href="dashboard.html"><img src="logo.png" alt="LEOMAX"></a>
+  <div class="tb-actions">
+    <a class="tb-link" href="dashboard.html">Skip for now</a>
+    <a class="tb-link" id="logout">Log out</a>
+  </div>
+</header>
+
+<main>
+
+  <p class="head-eyebrow" id="vertical-eyebrow">VERTICAL · ONBOARDING</p>
+  <h1 class="head-title">Tell me what you operate.</h1>
+  <p class="head-sub">
+    Three sections. About five minutes. The more specific your answers, the
+    sharper your briefs will be.
+  </p>
+
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+  <div id="alert" class="alert"></div>
+
+  <form id="onboarding-form" autocomplete="off">
+    <div id="form-body"><!-- vertical-specific fields injected here --></div>
+
+    <div class="actions">
+      <a class="btn-ghost" href="dashboard.html">Save and continue later</a>
+      <button id="submit" type="submit" class="btn-primary">Finish onboarding →</button>
+    </div>
+  </form>
+
+  <div class="done" id="done-screen" style="display:none">
+    <div class="done-icon">✓</div>
+    <h2>Onboarding complete.</h2>
+    <p>
+      Your profile is in. Anas reviews new founding-member profiles personally and
+      ships your first personalized brief within 5 business days. You will get an
+      email when it lands in your dashboard.
+    </p>
+    <a class="btn-primary" href="dashboard.html" style="text-decoration:none;display:inline-block">Back to dashboard →</a>
+  </div>
+
+</main>
+
+<script src="auth.js"></script>
+<script>
+if (!LMAuth.requireAuth('login.html')) { /* redirecting */ }
+
+const VERTICAL_LABELS = {
+  'family-office': 'Family Office',
+  'logistics': 'Logistics',
+  'fnb': 'F&B',
+  'healthcare': 'Healthcare'
+};
+
+/* ─── Vertical-specific forms ─────────────────────────────── */
+
+const FORMS = {
+
+  'family-office': [
+    {
+      eb: 'Section 01 of 03 · The Fund',
+      title: 'About the office.',
+      desc: 'Who you are and what you allocate.',
+      fields: [
+        { type: 'text', name: 'office_name', label: 'Office name (kept private)' },
+        {
+          type: 'select', name: 'aum_bracket', label: 'AUM bracket',
+          options: ['Under SAR 100M', 'SAR 100-500M', 'SAR 500M-2B', 'SAR 2B-5B', 'Over SAR 5B', 'Prefer not to say']
+        },
+        {
+          type: 'select', name: 'office_type', label: 'Office structure',
+          options: ['Single family office', 'Multi family office', 'Sovereign / quasi-sovereign', 'Other']
+        },
+        {
+          type: 'select', name: 'allocation_horizon', label: 'Typical allocation horizon',
+          options: ['Short (under 3 years)', 'Medium (3-7 years)', 'Long (7+ years)', 'Generational']
+        },
+      ]
+    },
+    {
+      eb: 'Section 02 of 03 · The Thesis',
+      title: 'What you allocate to.',
+      desc: 'Pick the sectors and geographies the brief should focus on.',
+      fields: [
+        {
+          type: 'chips', name: 'focus_sectors', label: 'Focus sectors (pick all that apply)',
+          options: ['Logistics', 'Healthcare', 'F&B', 'Real estate', 'Tech / SaaS', 'Industrials', 'Energy', 'Financial services', 'Consumer brands', 'Education']
+        },
+        {
+          type: 'chips', name: 'geographies', label: 'Geographies',
+          options: ['KSA', 'UAE', 'Bahrain', 'Kuwait', 'Qatar', 'Oman', 'Egypt', 'Sudan', 'Wider MENA', 'Europe', 'US']
+        },
+        {
+          type: 'select', name: 'check_size', label: 'Typical check size',
+          options: ['Under SAR 5M', 'SAR 5-25M', 'SAR 25-100M', 'SAR 100-500M', 'Over SAR 500M', 'Variable']
+        },
+        {
+          type: 'select', name: 'co_invest_appetite', label: 'Co-investment appetite',
+          options: ['Active LP only', 'Selective co-invest', 'Lead with co-investors', 'Direct only', 'Open to all']
+        },
+      ]
+    },
+    {
+      eb: 'Section 03 of 03 · The Decisions',
+      title: 'What you are deciding now.',
+      desc: 'The brief gets sharpest when it can address what is in front of you.',
+      fields: [
+        { type: 'textarea', name: 'current_decision', label: 'The next strategic decision you face', hint: 'A specific allocation, an exit, a re-up, a new sector. The brief can help frame it.' },
+        { type: 'textarea', name: 'priority_questions', label: 'What questions would the perfect brief answer for you?', hint: 'Anything you have been wondering about. We will fold it into the briefs.' },
+        { type: 'text', name: 'preferred_call_time', label: 'Preferred call time (KSA timezone)', hint: 'For the monthly subscriber call. Example: Tuesday 10am.' },
+      ]
+    }
+  ],
+
+  'logistics': [
+    {
+      eb: 'Section 01 of 03 · The Operation',
+      title: 'About the operation.',
+      desc: 'What you run, where, and how big.',
+      fields: [
+        { type: 'text', name: 'company_name', label: 'Company name' },
+        {
+          type: 'select', name: 'operation_type', label: 'Primary operation',
+          options: ['Last-mile delivery', '3PL / fulfillment', 'Freight / trucking', 'Cold chain', 'Cross-border', 'Multi-modal', 'Other']
+        },
+        {
+          type: 'chips', name: 'service_lines', label: 'Service lines (all that apply)',
+          options: ['B2C delivery', 'B2B delivery', 'Warehousing', 'Reverse logistics', 'Same-day', 'Scheduled delivery', 'Express freight', 'LTL freight', 'FTL freight']
+        },
+        {
+          type: 'select', name: 'fleet_size', label: 'Fleet size',
+          options: ['Under 20', '20-100', '100-500', '500-2000', 'Over 2000', 'Asset-light']
+        },
+      ]
+    },
+    {
+      eb: 'Section 02 of 03 · The Economics',
+      title: 'The numbers that move you.',
+      desc: 'Numbers stay private. They make the brief specific to your unit economics.',
+      fields: [
+        {
+          type: 'select', name: 'monthly_volume', label: 'Monthly delivery / shipment volume',
+          options: ['Under 10K', '10K-50K', '50K-250K', '250K-1M', 'Over 1M', 'Variable']
+        },
+        {
+          type: 'select', name: 'avg_cost_per_delivery', label: 'Avg cost per delivery (SAR)',
+          options: ['Under SAR 10', 'SAR 10-20', 'SAR 20-40', 'SAR 40-80', 'Over SAR 80']
+        },
+        {
+          type: 'chips', name: 'geographies', label: 'Geographic coverage',
+          options: ['Riyadh', 'Jeddah', 'Eastern Province', 'Madinah', 'Makkah', 'Tabuk / NEOM', 'Cross-Kingdom', 'GCC outside KSA', 'International']
+        },
+        { type: 'text', name: 'aggregator_dependency', label: '% revenue via aggregators (HungerStation, Jahez, etc.)', hint: 'Approximate is fine.' },
+      ]
+    },
+    {
+      eb: 'Section 03 of 03 · The Decisions',
+      title: 'What you are deciding now.',
+      desc: 'The brief gets sharpest when it can address what is in front of you.',
+      fields: [
+        { type: 'textarea', name: 'current_challenge', label: 'Biggest operational decision facing you', hint: 'New region, fleet shift, aggregator vs direct, route density, etc.' },
+        { type: 'textarea', name: 'regulatory_concerns', label: 'Regulatory or compliance items you are watching', hint: 'TGA, Public Transport Authority, customs, anything specific.' },
+        { type: 'text', name: 'preferred_call_time', label: 'Preferred call time (KSA timezone)' },
+      ]
+    }
+  ],
+
+  'fnb': [
+    {
+      eb: 'Section 01 of 03 · The Concept',
+      title: 'About the operation.',
+      desc: 'What you run, what format, what scale.',
+      fields: [
+        { type: 'text', name: 'company_name', label: 'Brand / concept name' },
+        {
+          type: 'select', name: 'concept_type', label: 'Concept type',
+          options: ['Quick service (QSR)', 'Casual dining', 'Fine dining', 'Cafe / coffee', 'Cloud kitchen only', 'Catering / B2B', 'Food retail', 'Multi-concept group']
+        },
+        {
+          type: 'select', name: 'location_count', label: 'Number of locations',
+          options: ['1', '2-5', '6-15', '16-50', '50+', 'Pre-launch']
+        },
+        {
+          type: 'chips', name: 'format', label: 'Store format (all that apply)',
+          options: ['Mall locations', 'Standalone', 'Drive-through', 'Cloud kitchen', 'Inside grocer / department store', 'Stadium / venue', 'Inside hotel']
+        },
+      ]
+    },
+    {
+      eb: 'Section 02 of 03 · The Economics',
+      title: 'The numbers that move you.',
+      desc: 'Numbers stay private. They make the brief specific to your operating model.',
+      fields: [
+        {
+          type: 'select', name: 'avg_aov', label: 'Average ticket / AOV',
+          options: ['Under SAR 30', 'SAR 30-60', 'SAR 60-120', 'SAR 120-250', 'Over SAR 250']
+        },
+        {
+          type: 'select', name: 'aggregator_mix', label: '% revenue via aggregators (HungerStation, Jahez, etc.)',
+          options: ['0-10%', '10-30%', '30-50%', '50-70%', '70%+']
+        },
+        {
+          type: 'chips', name: 'geographies', label: 'Geographic presence',
+          options: ['Riyadh', 'Jeddah', 'Eastern Province', 'Madinah', 'Makkah', 'Tabuk / NEOM', 'Cross-Kingdom', 'GCC outside KSA', 'International']
+        },
+        {
+          type: 'select', name: 'ownership_model', label: 'Ownership model',
+          options: ['100% company-owned', 'Mostly company-owned, some franchise', 'Mostly franchise', 'Franchisor only', 'Master franchisee for international brand']
+        },
+      ]
+    },
+    {
+      eb: 'Section 03 of 03 · The Decisions',
+      title: 'What you are deciding now.',
+      desc: 'The brief gets sharpest when it can address what is in front of you.',
+      fields: [
+        { type: 'textarea', name: 'current_challenge', label: 'Biggest decision facing you in the next 12 months', hint: 'New format, expansion, franchise restructure, vertical integration, etc.' },
+        { type: 'textarea', name: 'competitive_focus', label: 'Concepts you are watching', hint: 'Local or international concepts you want analysis on.' },
+        { type: 'text', name: 'preferred_call_time', label: 'Preferred call time (KSA timezone)' },
+      ]
+    }
+  ],
+
+  'healthcare': [
+    {
+      eb: 'Section 01 of 03 · The Operation',
+      title: 'About the operation.',
+      desc: 'What you run, what specialty, what scale.',
+      fields: [
+        { type: 'text', name: 'company_name', label: 'Organization name' },
+        {
+          type: 'select', name: 'operation_type', label: 'Primary operation',
+          options: ['Hospital group', 'Single hospital', 'Specialty clinic chain', 'Standalone clinic', 'Diagnostic centers', 'Health insurance / TPA', 'Pharmacy chain', 'Investor in healthcare', 'Other']
+        },
+        {
+          type: 'chips', name: 'specialties', label: 'Primary specialties (all that apply)',
+          options: ['General medicine', 'Surgery', 'Maternity / OBGYN', 'Pediatrics', 'Cardiology', 'Oncology', 'Cosmetic / dermatology', 'Dental', 'Mental health', 'Diagnostics / imaging', 'Long-term care']
+        },
+        {
+          type: 'select', name: 'patient_volume', label: 'Monthly patient encounters',
+          options: ['Under 1K', '1K-5K', '5K-25K', '25K-100K', 'Over 100K', 'Pre-launch']
+        },
+      ]
+    },
+    {
+      eb: 'Section 02 of 03 · The Coverage',
+      title: 'Where you operate and how you bill.',
+      desc: 'The brief gets sharpest when grounded in your payer mix and footprint.',
+      fields: [
+        {
+          type: 'chips', name: 'geographies', label: 'Geographic coverage',
+          options: ['Riyadh', 'Jeddah', 'Eastern Province', 'Madinah', 'Makkah', 'Asir', 'Northern Borders', 'Tabuk / NEOM', 'GCC outside KSA']
+        },
+        {
+          type: 'select', name: 'cchi_mix', label: 'Payer mix - CCHI insurance %',
+          options: ['Under 30%', '30-50%', '50-70%', '70-90%', 'Over 90%']
+        },
+        {
+          type: 'select', name: 'moh_share', label: 'Government / MOH share',
+          options: ['None', 'Under 20%', '20-50%', 'Over 50%', 'Fully government-affiliated']
+        },
+        {
+          type: 'select', name: 'ownership', label: 'Ownership structure',
+          options: ['Family-owned', 'PE-backed', 'Publicly listed', 'Government-affiliated', 'Other']
+        },
+      ]
+    },
+    {
+      eb: 'Section 03 of 03 · The Decisions',
+      title: 'What you are deciding now.',
+      desc: 'The brief gets sharpest when it can address what is in front of you.',
+      fields: [
+        { type: 'textarea', name: 'current_challenge', label: 'Biggest strategic decision facing you', hint: 'Privatization opportunity, M&A, expansion, specialty shift, etc.' },
+        { type: 'textarea', name: 'regulatory_concerns', label: 'Regulatory / payer items you are watching', hint: 'MOH, CHI, CCHI claim dynamics, anything specific.' },
+        { type: 'text', name: 'preferred_call_time', label: 'Preferred call time (KSA timezone)' },
+      ]
+    }
+  ],
+
+};
+
+/* ─── Render ────────────────────────────────────────────── */
+
+function renderField(f) {
+  const id = 'f_' + f.name;
+  const hint = f.hint ? `<span class="hint">${f.hint}</span>` : '';
+
+  if (f.type === 'text' || f.type === 'number') {
+    return `<div class="field">
+      <label for="${id}">${f.label}</label>${hint}
+      <input id="${id}" name="${f.name}" type="${f.type}">
+    </div>`;
+  }
+  if (f.type === 'textarea') {
+    return `<div class="field">
+      <label for="${id}">${f.label}</label>${hint}
+      <textarea id="${id}" name="${f.name}" rows="3"></textarea>
+    </div>`;
+  }
+  if (f.type === 'select') {
+    const opts = ['<option value="">Select...</option>']
+      .concat(f.options.map(o => `<option value="${o}">${o}</option>`)).join('');
+    return `<div class="field">
+      <label for="${id}">${f.label}</label>${hint}
+      <select id="${id}" name="${f.name}">${opts}</select>
+    </div>`;
+  }
+  if (f.type === 'chips') {
+    const chips = f.options.map(o =>
+      `<label class="chip"><input type="checkbox" name="${f.name}" value="${o}"><span>${o}</span></label>`
+    ).join('');
+    return `<div class="field">
+      <label>${f.label}</label>${hint}
+      <div class="chip-group" data-group="${f.name}">${chips}</div>
+    </div>`;
+  }
+  return '';
+}
+
+function renderForm(sections) {
+  return sections.map(s => `
+    <div class="fieldset">
+      <p class="fs-eb">${s.eb}</p>
+      <h2 class="fs-title">${s.title}</h2>
+      <p class="fs-desc">${s.desc}</p>
+      ${s.fields.map(renderField).join('')}
+    </div>
+  `).join('');
+}
+
+function showAlert(msg, type) {
+  const el = document.getElementById('alert');
+  el.className = 'alert show alert-' + (type || 'err');
+  el.textContent = msg;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function collectForm(sections) {
+  const out = {};
+  sections.forEach(s => s.fields.forEach(f => {
+    if (f.type === 'chips') {
+      const boxes = document.querySelectorAll(`input[name="${f.name}"]:checked`);
+      out[f.name] = Array.from(boxes).map(b => b.value);
+    } else {
+      const el = document.querySelector(`[name="${f.name}"]`);
+      if (el) out[f.name] = el.value;
+    }
+  }));
+  return out;
+}
+
+function updateProgress(sections) {
+  let total = 0, done = 0;
+  sections.forEach(s => s.fields.forEach(f => {
+    total += 1;
+    if (f.type === 'chips') {
+      if (document.querySelectorAll(`input[name="${f.name}"]:checked`).length) done += 1;
+    } else {
+      const el = document.querySelector(`[name="${f.name}"]`);
+      if (el && el.value && el.value.trim().length > 0) done += 1;
+    }
+  }));
+  document.getElementById('progress').style.width = (total ? Math.round(done/total*100) : 0) + '%';
+}
+
+async function init() {
+  let user = LMAuth.getCachedUser();
+  try { user = await LMAuth.me() || user; }
+  catch (err) {
+    if (err.status === 401) { LMAuth.clearToken(); window.location.replace('login.html'); return; }
+  }
+  if (!user || !user.vertical) {
+    showAlert('No vertical assigned to your account. Contact anas@leomaxglobal.com.');
+    return;
+  }
+
+  document.getElementById('vertical-eyebrow').textContent =
+    'VERTICAL · ' + (VERTICAL_LABELS[user.vertical] || user.vertical).toUpperCase() + ' · ONBOARDING';
+
+  const sections = FORMS[user.vertical];
+  if (!sections) {
+    showAlert('Onboarding for this vertical is not ready yet. Contact anas@leomaxglobal.com.');
+    return;
+  }
+
+  document.getElementById('form-body').innerHTML = renderForm(sections);
+
+  // Pre-fill from saved data
+  try {
+    const saved = await LMAuth.getData();
+    Object.keys(saved || {}).forEach(name => {
+      const val = saved[name];
+      if (Array.isArray(val)) {
+        val.forEach(v => {
+          const box = document.querySelector(`input[name="${name}"][value="${v}"]`);
+          if (box) { box.checked = true; box.closest('.chip').classList.add('is-on'); }
+        });
+      } else {
+        const el = document.querySelector(`[name="${name}"]`);
+        if (el) el.value = val;
+      }
+    });
+  } catch {}
+
+  updateProgress(sections);
+
+  // Chip toggling visual + progress on any change
+  document.querySelectorAll('.chip input').forEach(b => {
+    b.addEventListener('change', function () {
+      this.closest('.chip').classList.toggle('is-on', this.checked);
+      updateProgress(sections);
+    });
+  });
+  document.querySelectorAll('input[type="text"],input[type="number"],select,textarea')
+    .forEach(el => el.addEventListener('input', () => updateProgress(sections)));
+
+  document.getElementById('onboarding-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    document.getElementById('alert').className = 'alert';
+    const btn = document.getElementById('submit');
+    btn.disabled = true; btn.textContent = 'Saving...';
+    try {
+      const data = collectForm(sections);
+      data.onboardingComplete = true;
+      data.onboardedAt = new Date().toISOString();
+      await LMAuth.saveData(data);
+      document.getElementById('onboarding-form').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+      document.getElementById('done-screen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      showAlert(err.message || 'Could not save. Check connection and try again.');
+      btn.disabled = false;
+      btn.textContent = 'Finish onboarding →';
+    }
+  });
+}
+
+document.getElementById('logout').addEventListener('click', async function (e) {
+  e.preventDefault();
+  await LMAuth.logout();
+  window.location.replace('login.html');
+});
+
+init();
+</script>
+</body>
+</html>

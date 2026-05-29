@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - LEOMAX Strategy OS</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--accent:#9DB5CF;--ink:#1A2433;--err:#E53E3E}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:#EEF2F7;color:var(--ink);line-height:1.5;min-height:100vh}
+
+.topbar{background:var(--black);color:var(--white);padding:18px 36px;display:flex;justify-content:space-between;align-items:center}
+.tb-logo img{height:28px;vertical-align:middle}
+.tb-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#9DB5CF;margin-left:18px;display:inline-block;vertical-align:middle}
+.tb-link{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);text-decoration:none;cursor:pointer}
+.tb-link:hover{color:var(--white)}
+
+main{max-width:1280px;margin:0 auto;padding:32px}
+
+/* Auth gate */
+.gate{max-width:440px;margin:80px auto 0;background:#FFFFFF;border:1px solid #DDE4ED;padding:48px 40px}
+.gate h1{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:8px;letter-spacing:-.3px}
+.gate p{font-size:13px;color:var(--lgray);margin-bottom:24px}
+.gate label{display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);margin-bottom:8px}
+.gate input{width:100%;padding:13px 16px;border:1px solid #DDE4ED;font-size:14px;font-family:'SF Mono',monospace;outline:none;margin-bottom:20px}
+.gate input:focus{border-color:var(--ink)}
+.gate button{width:100%;background:var(--ink);color:var(--white);padding:14px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:32px}
+.stat{background:#FFFFFF;border:1px solid #DDE4ED;padding:22px 24px}
+.stat-eb{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--lgray);font-family:'SF Mono',monospace;margin-bottom:8px}
+.stat-num{font-size:32px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1}
+
+/* Filters */
+.filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.fil-tab{padding:8px 16px;background:#FFFFFF;border:1px solid #DDE4ED;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;text-transform:uppercase;letter-spacing:1.5px}
+.fil-tab.is-on{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.search{margin-left:auto;padding:8px 14px;border:1px solid #DDE4ED;background:#FFFFFF;font-size:13px;width:240px;outline:none}
+
+/* Table */
+.users-table{width:100%;background:#FFFFFF;border:1px solid #DDE4ED;border-collapse:collapse;font-size:13px}
+.users-table th,.users-table td{padding:12px 14px;text-align:left;border-bottom:1px solid #EEF2F7}
+.users-table th{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);background:#F4F7FB}
+.users-table tr:hover{background:#F4F7FB;cursor:pointer}
+.users-table tr.is-open{background:#EEF2F7}
+.tag{display:inline-block;padding:3px 8px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.tag-family-office{background:rgba(157,181,207,.2);color:#3A5A7A}
+.tag-logistics{background:rgba(52,211,153,.15);color:#0F7A56}
+.tag-fnb{background:rgba(251,191,36,.15);color:#856200}
+.tag-healthcare{background:rgba(239,68,68,.12);color:#902020}
+.tag-pending{background:rgba(184,184,184,.2);color:#555}
+.tag-active{background:rgba(52,211,153,.2);color:#0F7A56}
+.tag-cancelled{background:rgba(239,68,68,.15);color:#902020}
+
+/* Detail row */
+.detail-row td{padding:0;background:#FAFBFD;border-top:1px solid #DDE4ED}
+.detail{padding:24px 28px}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.detail-card{background:#FFFFFF;border:1px solid #DDE4ED;padding:16px 18px}
+.detail-eb{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lgray);margin-bottom:6px;font-family:'SF Mono',monospace}
+.detail-val{font-size:13px;color:var(--ink);word-break:break-word;line-height:1.5}
+.detail-val ul{list-style:none;padding:0;margin:0}
+.detail-val li{padding:2px 0;font-size:12px}
+.no-data{font-style:italic;color:var(--lgray);font-size:13px;padding:20px}
+
+.empty{text-align:center;padding:60px 32px;color:var(--lgray);background:#FFFFFF;border:1px solid #DDE4ED}
+
+.alert{padding:14px 18px;margin-bottom:20px;font-size:13px;display:none}
+.alert.show{display:block}
+.alert-err{background:rgba(229,62,62,.1);border-left:2px solid var(--err);color:#A02020}
+
+@media(max-width:768px){
+  .topbar{padding:14px 20px}
+  main{padding:18px}
+  .users-table{font-size:12px}
+  .users-table th,.users-table td{padding:9px 10px}
+  .search{width:140px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <a class="tb-logo" href="dashboard.html"><img src="logo.png" alt="LEOMAX"></a>
+    <span class="tb-title">STRATEGY OS · ADMIN</span>
+  </div>
+  <a class="tb-link" id="signout">Sign out of admin</a>
+</header>
+
+<main id="main">
+
+  <!-- Auth gate -->
+  <div class="gate" id="gate">
+    <h1>Admin sign-in</h1>
+    <p>Paste the admin token to view all Strategy OS users.</p>
+    <div class="alert" id="gate-alert"></div>
+    <label for="token">Admin Token</label>
+    <input id="token" type="password" autocomplete="off" placeholder="Bearer token">
+    <button id="gate-submit" type="button">Continue →</button>
+  </div>
+
+  <!-- Loaded admin view -->
+  <div id="admin-view" style="display:none">
+
+    <div class="stats">
+      <div class="stat"><div class="stat-eb">Total Users</div><div class="stat-num" id="stat-total">-</div></div>
+      <div class="stat"><div class="stat-eb">Family Office</div><div class="stat-num" id="stat-fo">-</div></div>
+      <div class="stat"><div class="stat-eb">Logistics</div><div class="stat-num" id="stat-log">-</div></div>
+      <div class="stat"><div class="stat-eb">F&amp;B</div><div class="stat-num" id="stat-fnb">-</div></div>
+      <div class="stat"><div class="stat-eb">Healthcare</div><div class="stat-num" id="stat-hc">-</div></div>
+      <div class="stat"><div class="stat-eb">Onboarded</div><div class="stat-num" id="stat-onb">-</div></div>
+    </div>
+
+    <div class="filters">
+      <button class="fil-tab is-on" data-fil="all">All</button>
+      <button class="fil-tab" data-fil="family-office">Family Office</button>
+      <button class="fil-tab" data-fil="logistics">Logistics</button>
+      <button class="fil-tab" data-fil="fnb">F&amp;B</button>
+      <button class="fil-tab" data-fil="healthcare">Healthcare</button>
+      <input class="search" id="search" placeholder="Search name, email, company..." type="text">
+    </div>
+
+    <div id="users-container"></div>
+
+  </div>
+
+</main>
+
+<script src="auth.js"></script>
+<script>
+const ADMIN_KEY = 'leomax_admin_token';
+
+let ALL_USERS = [];
+let CURRENT_FILTER = 'all';
+let CURRENT_SEARCH = '';
+let OPEN_USER_ID = null;
+
+function showGateAlert(msg) {
+  const el = document.getElementById('gate-alert');
+  el.className = 'alert show alert-err';
+  el.textContent = msg;
+}
+
+async function fetchUsers(token) {
+  const res = await fetch(LMAuth.API_BASE + '/admin/users', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  let data;
+  try { data = await res.json(); } catch { data = {}; }
+  if (!res.ok) {
+    throw new Error(data.error || ('HTTP ' + res.status));
+  }
+  return data.users || [];
+}
+
+function renderStats(users) {
+  const by = { 'family-office': 0, 'logistics': 0, 'fnb': 0, 'healthcare': 0 };
+  let onboarded = 0;
+  users.forEach(u => {
+    if (u.vertical && by[u.vertical] !== undefined) by[u.vertical] += 1;
+    if (u.data && u.data.onboardingComplete) onboarded += 1;
+  });
+  document.getElementById('stat-total').textContent = users.length;
+  document.getElementById('stat-fo').textContent = by['family-office'];
+  document.getElementById('stat-log').textContent = by['logistics'];
+  document.getElementById('stat-fnb').textContent = by['fnb'];
+  document.getElementById('stat-hc').textContent = by['healthcare'];
+  document.getElementById('stat-onb').textContent = onboarded;
+}
+
+function filterUsers(users) {
+  return users.filter(u => {
+    if (CURRENT_FILTER !== 'all' && u.vertical !== CURRENT_FILTER) return false;
+    if (CURRENT_SEARCH) {
+      const s = CURRENT_SEARCH.toLowerCase();
+      const hay = (u.name + ' ' + u.email + ' ' + (u.company || '')).toLowerCase();
+      if (!hay.includes(s)) return false;
+    }
+    return true;
+  });
+}
+
+function formatDate(iso) {
+  if (!iso) return '-';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  } catch { return iso; }
+}
+
+function detailHtml(user) {
+  const d = user.data || {};
+  const keys = Object.keys(d).filter(k => !['onboardingComplete','onboardedAt'].includes(k));
+  if (!keys.length) return '<div class="no-data">No onboarding data yet.</div>';
+  const cards = keys.map(k => {
+    let val = d[k];
+    if (Array.isArray(val)) {
+      val = '<ul>' + val.map(v => '<li>' + v + '</li>').join('') + '</ul>';
+    } else if (!val) {
+      val = '<span style="color:#999">(empty)</span>';
+    }
+    return `<div class="detail-card">
+      <div class="detail-eb">${k.replace(/_/g, ' ')}</div>
+      <div class="detail-val">${val}</div>
+    </div>`;
+  }).join('');
+  return `<div class="detail">
+    <div class="detail-grid">${cards}</div>
+  </div>`;
+}
+
+function renderTable() {
+  const list = filterUsers(ALL_USERS);
+  const container = document.getElementById('users-container');
+  if (!list.length) {
+    container.innerHTML = '<div class="empty">No users match this filter yet.</div>';
+    return;
+  }
+  const rows = list.map(u => {
+    const onb = (u.data && u.data.onboardingComplete);
+    const status = u.subscriptionStatus || 'founding-member-pending';
+    const statusTag = status === 'active' ? 'tag-active'
+                    : status === 'cancelled' ? 'tag-cancelled'
+                    : 'tag-pending';
+    const verticalTag = 'tag-' + (u.vertical || 'pending');
+    let html = `<tr data-uid="${u.id}" class="${OPEN_USER_ID === u.id ? 'is-open' : ''}">
+      <td><strong>${u.name || '-'}</strong><br><span style="color:#888;font-size:11px">${u.email}</span></td>
+      <td>${u.company || '-'}</td>
+      <td><span class="tag ${verticalTag}">${u.vertical || '-'}</span></td>
+      <td>${onb ? '<span class="tag tag-active">YES</span>' : '<span class="tag tag-pending">NO</span>'}</td>
+      <td><span class="tag ${statusTag}">${status.replace(/-/g, ' ')}</span></td>
+      <td>${formatDate(u.createdAt)}</td>
+    </tr>`;
+    if (OPEN_USER_ID === u.id) {
+      html += `<tr class="detail-row"><td colspan="6">${detailHtml(u)}</td></tr>`;
+    }
+    return html;
+  }).join('');
+  container.innerHTML = `<table class="users-table">
+    <thead><tr>
+      <th>User</th><th>Company</th><th>Vertical</th><th>Onboarded</th><th>Status</th><th>Joined</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+
+  // Row click to toggle detail
+  container.querySelectorAll('tr[data-uid]').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const id = tr.getAttribute('data-uid');
+      OPEN_USER_ID = OPEN_USER_ID === id ? null : id;
+      renderTable();
+    });
+  });
+}
+
+async function loadAdmin(token) {
+  try {
+    const users = await fetchUsers(token);
+    ALL_USERS = users.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+    sessionStorage.setItem(ADMIN_KEY, token);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('admin-view').style.display = 'block';
+    renderStats(users);
+    renderTable();
+  } catch (err) {
+    showGateAlert(err.message || 'Could not load users.');
+  }
+}
+
+document.getElementById('gate-submit').addEventListener('click', () => {
+  const token = document.getElementById('token').value.trim();
+  if (!token) { showGateAlert('Token is required.'); return; }
+  loadAdmin(token);
+});
+document.getElementById('token').addEventListener('keypress', e => {
+  if (e.key === 'Enter') document.getElementById('gate-submit').click();
+});
+
+document.querySelectorAll('.fil-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.fil-tab').forEach(x => x.classList.remove('is-on'));
+    t.classList.add('is-on');
+    CURRENT_FILTER = t.getAttribute('data-fil');
+    OPEN_USER_ID = null;
+    renderTable();
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  CURRENT_SEARCH = e.target.value;
+  renderTable();
+});
+
+document.getElementById('signout').addEventListener('click', e => {
+  e.preventDefault();
+  sessionStorage.removeItem(ADMIN_KEY);
+  window.location.reload();
+});
+
+// Auto-restore if admin token is in sessionStorage
+const saved = sessionStorage.getItem(ADMIN_KEY);
+if (saved) loadAdmin(saved);
+</script>
+</body>
+</html>
