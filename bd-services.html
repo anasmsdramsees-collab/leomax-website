@@ -52,32 +52,41 @@ section.light{background:#F4F7FB}
 .problem-card h3{font-size:18px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:var(--black)}
 .problem-card p{font-size:14px;color:var(--lgray);line-height:1.75}
 
-/* PRICING CARDS */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;margin-top:48px}
-.price-card{background:var(--white);padding:42px 36px;position:relative;transition:transform .25s,background .25s;border:1px solid #DDE4ED;color:var(--black)}
-.price-card:hover{background:#F4F7FB;transform:translateY(-4px)}
-.price-card.featured{background:var(--dark);border:1px solid rgba(0,0,0,.3);color:var(--white)}
-.featured-badge{position:absolute;top:20px;right:36px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);background:rgba(0,0,0,.1);padding:4px 10px;border:1px solid rgba(0,0,0,.25)}
-.card-num{font-size:9px;letter-spacing:2px;color:#8fa8be;margin-bottom:20px;display:block}
-.card-title{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
-.card-sub{font-size:12px;color:var(--lgray);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
-.card-price{font-size:38px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:6px}
-.card-price span{font-size:14px;font-weight:400;color:var(--lgray);letter-spacing:1px}
-.price-card.featured .card-sub,.price-card.featured .card-price span,.price-card.featured .card-note{color:var(--gray)}
-.card-note{font-size:12px;color:var(--lgray);margin-bottom:18px;line-height:1.6}
-.card-divider{height:1px;background:#DDE4ED;margin:18px 0 22px}
-.price-card.featured .card-divider{background:rgba(255,255,255,.08)}
-.card-features{list-style:none;margin-bottom:32px}
-.card-features li{font-size:13px;color:var(--black);padding:11px 0;border-bottom:1px solid #EEF2F7;line-height:1.55;display:flex;align-items:flex-start;gap:10px}
-.price-card.featured .card-features li{color:var(--gray);border-bottom-color:rgba(255,255,255,.06)}
-.feat-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:7px}
-.card-cta{display:block;text-align:center;padding:13px 22px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s;border:1px solid;cursor:pointer}
-.cta-outline{color:var(--black);border-color:#C8D3DE}
-.cta-outline:hover{background:var(--black);color:var(--white);border-color:var(--black)}
-.price-card.featured .cta-outline{color:var(--silver);border-color:rgba(184,184,184,.2)}
-.price-card.featured .cta-outline:hover{border-color:var(--gold);color:var(--gold);background:transparent}
-.cta-gold{background:var(--gold);color:var(--black);border-color:var(--gold)}
-.cta-gold:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+/* PRICING CARDS — Apple Pay credit-card style */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto}
+.price-card{background:#FFFFFF;padding:44px 36px 36px;position:relative;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease;border:none;border-radius:24px;color:#010B1C;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(1,11,28,.04),0 8px 24px rgba(1,11,28,.06),0 24px 48px rgba(1,11,28,.04);overflow:hidden}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.6) 50%,transparent 100%);pointer-events:none;z-index:2}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 2px 4px rgba(1,11,28,.06),0 16px 36px rgba(1,11,28,.1),0 36px 72px rgba(1,11,28,.08)}
+.price-card.featured{background:linear-gradient(155deg,#1A2433 0%,#010B1C 50%,#000409 100%);color:#FFFFFF;box-shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(1,11,28,.25),0 36px 72px rgba(1,11,28,.18)}
+.price-card.featured::before{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%)}
+.price-card.featured::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(157,181,207,.08) 0%,transparent 60%);pointer-events:none;border-radius:24px}
+.featured-badge{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:.04em;color:#FFFFFF;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);padding:6px 12px;border:none;border-radius:980px;font-weight:500;z-index:3}
+.card-num{font-size:11px;letter-spacing:.18em;color:#7B95B0;margin-bottom:22px;display:block;font-weight:600;text-transform:uppercase}
+.price-card.featured .card-num{color:#9DB5CF}
+.card-title{font-size:clamp(24px,2vw,30px);font-weight:600;letter-spacing:-.022em;margin-bottom:8px;line-height:1.1;text-transform:none}
+.card-sub{font-size:13px;color:#4A6783;letter-spacing:-.005em;text-transform:none;margin-bottom:32px;font-weight:400}
+.price-card.featured .card-sub{color:#9DB5CF}
+.card-price{font-size:clamp(40px,3vw,52px);font-weight:600;letter-spacing:-.028em;line-height:1;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+.card-price span{font-size:15px;font-weight:400;color:#4A6783;letter-spacing:-.005em;margin-left:6px}
+.price-card.featured .card-price{color:#FFFFFF}
+.price-card.featured .card-price span{color:#9DB5CF}
+.card-note{font-size:13px;color:#4A6783;margin-bottom:24px;line-height:1.55;letter-spacing:-.005em}
+.price-card.featured .card-note{color:#9DB5CF}
+.card-divider{height:1px;background:rgba(1,11,28,.06);margin:20px 0 24px}
+.price-card.featured .card-divider{background:rgba(255,255,255,.1)}
+.card-features{list-style:none;margin-bottom:32px;flex:1}
+.card-features li{font-size:14px;color:#1A2433;padding:11px 0;border-bottom:1px solid rgba(1,11,28,.05);line-height:1.5;display:flex;align-items:flex-start;gap:12px;letter-spacing:-.005em;font-weight:400}
+.card-features li:last-child{border-bottom:none}
+.price-card.featured .card-features li{color:#D6E0EC;border-bottom-color:rgba(255,255,255,.08)}
+.feat-dot{width:5px;height:5px;background:#9DB5CF;border-radius:50%;flex-shrink:0;margin-top:8px}
+.price-card.featured .feat-dot{background:#9DB5CF}
+.card-cta{display:block;text-align:center;padding:14px 28px;font-size:14px;font-weight:500;letter-spacing:-.01em;text-decoration:none;transition:all .25s ease;border-radius:980px;cursor:pointer;border:1px solid;text-transform:none;line-height:1}
+.cta-outline{color:#010B1C;border-color:rgba(1,11,28,.15);background:transparent}
+.cta-outline:hover{background:#010B1C;color:#FFFFFF;border-color:#010B1C;transform:scale(1.015)}
+.price-card.featured .cta-outline{color:#FFFFFF;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08);backdrop-filter:blur(12px)}
+.price-card.featured .cta-outline:hover{background:#FFFFFF;color:#010B1C;border-color:#FFFFFF;transform:scale(1.015)}
+.cta-gold{background:#010B1C;color:#FFFFFF;border-color:#010B1C}
+.cta-gold:hover{background:#1A2433;border-color:#1A2433;transform:scale(1.015)}
 
 /* HOW IT WORKS */
 .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:48px;max-width:1200px;margin-left:auto;margin-right:auto}
@@ -261,8 +270,8 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px;border-t
 
     <!-- Tier 1 - Free Account Brief -->
     <div class="price-card">
-      <span class="card-num">01 - INTELLIGENCE</span>
-      <div class="card-title">ACCOUNT BRIEF</div>
+      <span class="card-num">01 · Intelligence</span>
+      <div class="card-title">Account Brief</div>
       <div class="card-sub">Free · Delivered in 24h</div>
       <div class="card-price">FREE <span></span></div>
       <div class="card-note">One brief per visitor · 1 target company</div>
@@ -283,8 +292,8 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px;border-t
     <!-- Tier 2 - Account Access Sprint -->
     <div class="price-card featured">
       <span class="featured-badge">Most Popular</span>
-      <span class="card-num">02 - SPRINT</span>
-      <div class="card-title">ACCOUNT ACCESS SPRINT</div>
+      <span class="card-num">02 · Sprint</span>
+      <div class="card-title">Account Access Sprint</div>
       <div class="card-sub">4-Week Engagement</div>
       <div class="card-price">15,000 <span>SAR</span></div>
       <div class="card-note">Fixed-scope · 10 target accounts · Outcome-focused</div>
@@ -301,8 +310,8 @@ footer{background:var(--black);color:var(--gray);padding:60px 64px 36px;border-t
 
     <!-- Tier 3 - BD-as-a-Service -->
     <div class="price-card">
-      <span class="card-num">03 - PARTNERSHIP</span>
-      <div class="card-title">BD-AS-A-SERVICE</div>
+      <span class="card-num">03 · Partnership</span>
+      <div class="card-title">BD-as-a-Service</div>
       <div class="card-sub">Hybrid Retainer + Commission</div>
       <div class="card-price">7,500 <span>SAR / mo</span></div>
       <div class="card-note">+ 8% on closed deals · Min. 6-month commitment</div>
