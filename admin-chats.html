@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Valeria Chat Dashboard — LEOMAX (Admin)</title>
+<title>Valeria Chat Dashboard - LEOMAX (Admin)</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -119,7 +119,7 @@ tbody tr:hover{background:#F4F7FB}
 <div class="auth-overlay" id="authOverlay">
   <div class="auth-card">
     <h1>ADMIN ACCESS</h1>
-    <p class="sub">Valeria Chat Dashboard — internal LEOMAX use only. Enter your admin token to continue.</p>
+    <p class="sub">Valeria Chat Dashboard - internal LEOMAX use only. Enter your admin token to continue.</p>
     <label>Admin Token</label>
     <input type="password" id="tokenInput" autocomplete="off" placeholder="Bearer token from Cloudflare secret">
     <button onclick="auth()">Unlock →</button>
@@ -298,10 +298,10 @@ function renderTable() {
     var firstRtl = isArabic(c.firstMessage) ? ' style="direction:rtl;text-align:right"' : '';
     return '<tr onclick="openConversation(\'' + encodeURIComponent(c.id) + '\')">' +
       '<td class="col-time">' + time + '</td>' +
-      '<td class="col-page" title="' + (c.page || '') + '">' + (pageShort || '—') + '</td>' +
+      '<td class="col-page" title="' + (c.page || '') + '">' + (pageShort || '-') + '</td>' +
       '<td class="col-lang"><span class="tag lang-' + lang + '">' + lang + '</span></td>' +
       '<td class="col-turns">' + (c.turns || 0) + '</td>' +
-      '<td class="col-action">' + (actionTag || '<span style="color:#c8d3de">—</span>') + '</td>' +
+      '<td class="col-action">' + (actionTag || '<span style="color:#c8d3de">-</span>') + '</td>' +
       '<td class="col-msg"' + firstRtl + '>' + escapeHtml((c.firstMessage || '').slice(0, 120)) + (c.firstMessage && c.firstMessage.length > 120 ? '…' : '') + '</td>' +
       '</tr>';
   }).join('');
@@ -340,7 +340,7 @@ async function openConversation(id) {
     }
     document.getElementById('modalTags').innerHTML = tagsHTML;
 
-    var infoHTML = '<div class="row"><span>Page</span><span>' + escapeHtml(c.page || '—') + '</span></div>';
+    var infoHTML = '<div class="row"><span>Page</span><span>' + escapeHtml(c.page || '-') + '</span></div>';
     infoHTML += '<div class="row"><span>ID</span><span>' + escapeHtml(c.id) + '</span></div>';
     var bubblesHTML = (c.messages || []).map(function (m) {
       var role = m.role === 'user' ? 'user' : 'assistant';
