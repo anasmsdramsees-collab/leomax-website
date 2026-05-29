@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in - LEOMAX Strategy OS</title>
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--err:#E53E3E}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%);color:var(--white);min-height:100vh;display:flex;flex-direction:column;line-height:1.55;overflow-x:hidden}
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+
+nav{position:relative;z-index:2;padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:32px}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none}
+
+main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px 80px}
+
+.auth-card{width:100%;max-width:440px;background:rgba(255,255,255,.02);border:1px solid rgba(184,184,184,.12);padding:56px 48px;backdrop-filter:blur(8px)}
+.auth-eyebrow{font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#9DB5CF;margin-bottom:20px;font-family:'SF Mono',monospace}
+.auth-title{font-size:36px;font-weight:900;letter-spacing:-.5px;color:var(--white);margin-bottom:12px;line-height:1.15}
+.auth-sub{font-size:15px;color:var(--gray);margin-bottom:36px;line-height:1.6}
+
+.form-row{margin-bottom:20px}
+.form-row label{display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.form-row input{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(184,184,184,.2);color:var(--white);padding:14px 16px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-row input:focus{border-color:#9DB5CF}
+
+.submit-btn{width:100%;background:var(--white);color:var(--black);padding:16px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
+.submit-btn:hover{background:var(--chrome)}
+.submit-btn:disabled{background:rgba(255,255,255,.3);cursor:not-allowed}
+
+.auth-footer{text-align:center;margin-top:28px;font-size:13px;color:var(--gray)}
+.auth-footer a{color:#9DB5CF;text-decoration:none;font-weight:600}
+
+.alert{padding:12px 14px;margin-bottom:20px;font-size:13px;display:none}
+.alert.show{display:block}
+.alert-err{background:rgba(229,62,62,.1);border-left:2px solid var(--err);color:#FF9090}
+
+@media(max-width:520px){
+  nav{padding:18px 24px}
+  .auth-card{padding:40px 28px}
+  .auth-title{font-size:30px}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <a class="nav-back" href="brief.html">← Back to Brief</a>
+</nav>
+
+<main>
+  <div class="auth-card">
+    <p class="auth-eyebrow">● LEOMAX  STRATEGY  OS</p>
+    <h1 class="auth-title">Welcome back.</h1>
+    <p class="auth-sub">Log in to your dashboard.</p>
+
+    <div id="alert" class="alert"></div>
+
+    <form id="login-form" autocomplete="on">
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button id="submit" type="submit" class="submit-btn">Log in →</button>
+    </form>
+
+    <div class="auth-footer">
+      No account yet? <a href="signup.html">Create one</a>
+    </div>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+<script>
+LMAuth.requireGuest('dashboard.html');
+
+function showAlert(msg) {
+  const el = document.getElementById('alert');
+  el.className = 'alert show alert-err';
+  el.textContent = msg;
+}
+
+document.getElementById('login-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  document.getElementById('alert').className = 'alert';
+
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const password = document.getElementById('password').value;
+
+  const btn = document.getElementById('submit');
+  btn.disabled = true;
+  btn.textContent = 'Logging in...';
+
+  try {
+    await LMAuth.login(email, password);
+    window.location.replace('dashboard.html');
+  } catch (err) {
+    showAlert(err.message || 'Could not log in.');
+    btn.disabled = false;
+    btn.textContent = 'Log in →';
+  }
+});
+</script>
+</body>
+</html>

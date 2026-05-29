@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create your account - LEOMAX Strategy OS</title>
+<meta name="description" content="Create a LEOMAX Strategy OS account. Choose your vertical: Family Office, Logistics, F&B, or Healthcare.">
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--err:#E53E3E;--ok:#9DB5CF}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;background:linear-gradient(180deg,#010B1C 0%,#060F1F 100%);color:var(--white);min-height:100vh;display:flex;flex-direction:column;line-height:1.55;overflow-x:hidden}
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(184,184,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,184,184,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+
+nav{position:relative;z-index:2;padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo img{height:32px}
+.nav-back{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none}
+
+main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px 80px}
+
+.auth-card{width:100%;max-width:540px;background:rgba(255,255,255,.02);border:1px solid rgba(184,184,184,.12);padding:56px 48px;backdrop-filter:blur(8px)}
+.auth-eyebrow{font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#9DB5CF;margin-bottom:20px;font-family:'SF Mono',monospace}
+.auth-title{font-size:36px;font-weight:900;letter-spacing:-.5px;color:var(--white);margin-bottom:12px;line-height:1.15}
+.auth-sub{font-size:15px;color:var(--gray);margin-bottom:36px;line-height:1.6}
+
+.form-row{margin-bottom:20px}
+.form-row label{display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.form-row input,.form-row select{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(184,184,184,.2);color:var(--white);padding:14px 16px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-row input:focus,.form-row select:focus{border-color:#9DB5CF}
+
+.verticals{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
+.vertical-pick{display:block;cursor:pointer;background:rgba(0,0,0,.3);border:1px solid rgba(184,184,184,.2);padding:14px 12px;transition:all .15s}
+.vertical-pick:hover{border-color:rgba(184,184,184,.4)}
+.vertical-pick input{position:absolute;opacity:0;pointer-events:none}
+.vertical-pick.is-selected{border-color:#9DB5CF;background:rgba(157,181,207,.06)}
+.vp-num{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gray);margin-bottom:4px;font-family:'SF Mono',monospace}
+.vp-name{font-size:14px;font-weight:700;color:var(--white)}
+
+.submit-btn{width:100%;background:var(--white);color:var(--black);padding:16px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;margin-top:8px;transition:background .2s}
+.submit-btn:hover{background:var(--chrome)}
+.submit-btn:disabled{background:rgba(255,255,255,.3);cursor:not-allowed}
+
+.auth-footer{text-align:center;margin-top:28px;font-size:13px;color:var(--gray)}
+.auth-footer a{color:#9DB5CF;text-decoration:none;font-weight:600}
+.auth-footer a:hover{color:var(--white)}
+
+.alert{padding:12px 14px;margin-bottom:20px;font-size:13px;display:none}
+.alert.show{display:block}
+.alert-err{background:rgba(229,62,62,.1);border-left:2px solid var(--err);color:#FF9090}
+.alert-ok{background:rgba(157,181,207,.1);border-left:2px solid #9DB5CF;color:#9DB5CF}
+
+@media(max-width:560px){
+  nav{padding:18px 24px}
+  .auth-card{padding:40px 28px}
+  .auth-title{font-size:30px}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<nav>
+  <a class="nav-logo" href="LEOMAX_Website_Design.html"><img src="logo.png" alt="LEOMAX"></a>
+  <a class="nav-back" href="brief.html">← Back to Brief</a>
+</nav>
+
+<main>
+  <div class="auth-card">
+    <p class="auth-eyebrow">● LEOMAX  STRATEGY  OS  ·  FOUNDING  MEMBER  ACCESS</p>
+    <h1 class="auth-title">Create your account.</h1>
+    <p class="auth-sub">
+      Pick your vertical, get your dashboard. The system is built for the
+      decisions you actually make, not the ones somebody else does.
+    </p>
+
+    <div id="alert" class="alert"></div>
+
+    <form id="signup-form" autocomplete="on">
+
+      <div class="form-row">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="company">Company (optional)</label>
+        <input id="company" name="company" type="text" autocomplete="organization">
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="password">Password · 8+ characters</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8">
+      </div>
+
+      <div class="form-row">
+        <label>Choose your vertical</label>
+        <div class="verticals">
+          <label class="vertical-pick">
+            <input type="radio" name="vertical" value="family-office" required>
+            <div class="vp-num">01</div>
+            <div class="vp-name">Family Office</div>
+          </label>
+          <label class="vertical-pick">
+            <input type="radio" name="vertical" value="logistics">
+            <div class="vp-num">02</div>
+            <div class="vp-name">Logistics</div>
+          </label>
+          <label class="vertical-pick">
+            <input type="radio" name="vertical" value="fnb">
+            <div class="vp-num">03</div>
+            <div class="vp-name">F&amp;B</div>
+          </label>
+          <label class="vertical-pick">
+            <input type="radio" name="vertical" value="healthcare">
+            <div class="vp-num">04</div>
+            <div class="vp-name">Healthcare</div>
+          </label>
+        </div>
+      </div>
+
+      <button id="submit" type="submit" class="submit-btn">Create account →</button>
+    </form>
+
+    <div class="auth-footer">
+      Already have access? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+<script>
+LMAuth.requireGuest('dashboard.html');
+
+// Pre-select vertical from URL ?vertical=...
+const urlVertical = new URLSearchParams(window.location.search).get('vertical');
+if (urlVertical) {
+  const radio = document.querySelector('input[name="vertical"][value="' + urlVertical + '"]');
+  if (radio) {
+    radio.checked = true;
+    radio.closest('.vertical-pick').classList.add('is-selected');
+  }
+}
+
+// Vertical pick visual state
+document.querySelectorAll('.vertical-pick').forEach(function (label) {
+  const radio = label.querySelector('input[type="radio"]');
+  radio.addEventListener('change', function () {
+    document.querySelectorAll('.vertical-pick').forEach(function (l) {
+      l.classList.toggle('is-selected', l.querySelector('input').checked);
+    });
+  });
+});
+
+function showAlert(msg, type) {
+  const el = document.getElementById('alert');
+  el.className = 'alert show alert-' + (type || 'err');
+  el.textContent = msg;
+}
+function hideAlert() {
+  document.getElementById('alert').className = 'alert';
+}
+
+document.getElementById('signup-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  hideAlert();
+
+  const data = {
+    name: document.getElementById('name').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    email: document.getElementById('email').value.trim().toLowerCase(),
+    password: document.getElementById('password').value,
+    vertical: (document.querySelector('input[name="vertical"]:checked') || {}).value,
+  };
+
+  if (!data.vertical) {
+    showAlert('Pick a vertical to continue.');
+    return;
+  }
+
+  const btn = document.getElementById('submit');
+  btn.disabled = true;
+  btn.textContent = 'Creating account...';
+
+  try {
+    await LMAuth.signup(data);
+    window.location.replace('dashboard.html');
+  } catch (err) {
+    showAlert(err.message || 'Could not create the account.');
+    btn.disabled = false;
+    btn.textContent = 'Create account →';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - LEOMAX Strategy OS</title>
+<meta name="robots" content="noindex">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#010B1C;--charcoal:#0D1E35;--dark:#060F1F;--silver:#B8B8B8;--chrome:#D4D4D4;--white:#FFFFFF;--gray:#8fa8be;--lgray:#4a7090;--accent:#9DB5CF;--paper:#F4F7FB;--ink:#1A2433}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:#EEF2F7;color:var(--ink);line-height:1.6}
+
+/* SIDEBAR */
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.sidebar{background:var(--black);color:var(--white);padding:28px 0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.sb-logo{padding:0 28px 32px;border-bottom:1px solid rgba(184,184,184,.08);margin-bottom:24px}
+.sb-logo img{height:30px}
+.sb-section{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);padding:14px 28px 8px;font-family:'SF Mono',monospace}
+.sb-nav{list-style:none;flex:1}
+.sb-nav a{display:block;padding:11px 28px;font-size:13px;font-weight:500;color:var(--gray);text-decoration:none;border-left:2px solid transparent;transition:all .15s}
+.sb-nav a:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.sb-nav a.is-active{color:var(--white);border-left-color:var(--accent);background:rgba(157,181,207,.04)}
+.sb-user{padding:20px 28px;border-top:1px solid rgba(184,184,184,.08);font-size:12px}
+.sb-user-name{color:var(--white);font-weight:700;margin-bottom:2px}
+.sb-user-email{color:var(--gray);font-size:11px;margin-bottom:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-logout{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-decoration:none;cursor:pointer;padding-bottom:2px;border-bottom:1px solid rgba(157,181,207,.3)}
+
+/* MAIN */
+main{padding:40px 64px 80px;max-width:1280px;width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
+.tb-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);font-family:'SF Mono',monospace;margin-bottom:6px}
+.tb-title{font-size:36px;font-weight:900;letter-spacing:-.8px;color:var(--ink);line-height:1.1}
+.tb-cta{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:12px 22px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+
+/* HERO STRIP */
+.hero-strip{background:var(--black);color:var(--white);padding:36px 40px;margin-bottom:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.hs-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--accent);margin-bottom:8px;font-family:'SF Mono',monospace}
+.hs-title{font-size:22px;font-weight:800;letter-spacing:-.3px;line-height:1.3;max-width:540px}
+.hs-cta{background:var(--white);color:var(--black);padding:14px 26px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+
+/* GRID OF CARDS */
+.section-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lgray);margin:48px 0 18px;font-family:'SF Mono',monospace}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:#FFFFFF;border:1px solid #DDE4ED;padding:28px 26px;display:flex;flex-direction:column}
+.card-eb{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--lgray);margin-bottom:12px;font-family:'SF Mono',monospace}
+.card-title{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.2px}
+.card-body{font-size:13px;color:var(--lgray);line-height:1.6;flex:1;margin-bottom:16px}
+.card-cta{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.card.locked{opacity:.55}
+.card.locked .card-cta{color:var(--lgray)}
+
+/* EMPTY STATES */
+.empty{background:#FFFFFF;border:1px dashed #C8D3DE;padding:48px;text-align:center}
+.empty h3{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:10px}
+.empty p{font-size:14px;color:var(--lgray);max-width:440px;margin:0 auto 24px;line-height:1.7}
+.empty-btn{display:inline-block;background:var(--black);color:var(--white);padding:14px 30px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+
+@media(max-width:920px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;padding:18px 0}
+  main{padding:32px 24px 64px}
+  .tb-title{font-size:28px}
+  .hero-strip{padding:28px 26px}
+}
+</style>
+<link rel="stylesheet" href="monochrome.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="sb-logo"><img src="logo.png" alt="LEOMAX"></div>
+    <div class="sb-section">Workspace</div>
+    <ul class="sb-nav">
+      <li><a href="dashboard.html" class="is-active">Overview</a></li>
+      <li><a href="#onboarding" id="link-onboarding">Onboarding</a></li>
+      <li><a href="#briefs">Briefs</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#account">Account</a></li>
+    </ul>
+    <div class="sb-user">
+      <div class="sb-user-name" id="user-name">Loading...</div>
+      <div class="sb-user-email" id="user-email">&nbsp;</div>
+      <a class="sb-logout" id="logout">Log out</a>
+    </div>
+  </aside>
+
+  <main>
+
+    <div class="topbar">
+      <div>
+        <div class="tb-eyebrow" id="vertical-label">VERTICAL</div>
+        <h1 class="tb-title" id="welcome">Welcome.</h1>
+      </div>
+      <a href="brief.html" class="tb-cta">View Brief →</a>
+    </div>
+
+    <div class="hero-strip">
+      <div>
+        <div class="hs-eyebrow">● FOUNDING MEMBER ACCESS</div>
+        <div class="hs-title">Phase 1: Onboarding open. Complete your profile to unlock your first personalized brief.</div>
+      </div>
+      <a href="#onboarding" class="hs-cta">Start onboarding →</a>
+    </div>
+
+    <div class="section-label">Your Workspace</div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-eb">Step 1 · 5 min</div>
+        <div class="card-title">Profile your vertical</div>
+        <div class="card-body">
+          Tell the system what you operate, where, and what decisions you are facing.
+          The brief gets sharper from here.
+        </div>
+        <a href="onboarding.html" class="card-cta">Start onboarding →</a>
+      </div>
+
+      <div class="card locked">
+        <div class="card-eb">Step 2</div>
+        <div class="card-title">Your first brief</div>
+        <div class="card-body">
+          Anas reviews your profile and ships your first personalized strategic brief
+          within 5 business days.
+        </div>
+        <span class="card-cta">Locked - finish step 1</span>
+      </div>
+
+      <div class="card locked">
+        <div class="card-eb">Step 3</div>
+        <div class="card-title">Subscriber community</div>
+        <div class="card-body">
+          Join the WhatsApp group for your vertical. Subscribers only, curated, not noisy.
+        </div>
+        <span class="card-cta">Available after first brief</span>
+      </div>
+
+      <div class="card">
+        <div class="card-eb">Anytime</div>
+        <div class="card-title">Book a strategy call</div>
+        <div class="card-body">
+          30 minutes with Anas on a specific decision. Included monthly for subscribers.
+        </div>
+        <a href="https://calendly.com/leomaxglobalsa/30min" class="card-cta">Schedule →</a>
+      </div>
+
+    </div>
+
+    <div class="section-label">Recent Activity</div>
+
+    <div class="empty">
+      <h3>Nothing here yet.</h3>
+      <p>Once you finish onboarding, your briefs, notes, and recommendations will land here.</p>
+      <a href="onboarding.html" class="empty-btn">Begin onboarding →</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="auth.js"></script>
+<script>
+if (!LMAuth.requireAuth('login.html')) {
+  // Will redirect, stop execution
+}
+
+const VERTICAL_LABELS = {
+  'family-office': 'Family Office',
+  'logistics': 'Logistics',
+  'fnb': 'F&B',
+  'healthcare': 'Healthcare'
+};
+
+async function init() {
+  let user = LMAuth.getCachedUser();
+  // Refresh from server in the background to catch updates
+  try {
+    user = await LMAuth.me() || user;
+  } catch (err) {
+    if (err && err.status === 401) {
+      LMAuth.clearToken();
+      window.location.replace('login.html');
+      return;
+    }
+  }
+  if (!user) return;
+
+  document.getElementById('user-name').textContent = user.name || 'Subscriber';
+  document.getElementById('user-email').textContent = user.email;
+  document.getElementById('vertical-label').textContent =
+    'VERTICAL · ' + (VERTICAL_LABELS[user.vertical] || user.vertical || '').toUpperCase();
+
+  const firstName = (user.name || '').split(' ')[0] || 'There';
+  document.getElementById('welcome').textContent = 'Welcome, ' + firstName + '.';
+}
+
+document.getElementById('logout').addEventListener('click', async function (e) {
+  e.preventDefault();
+  await LMAuth.logout();
+  window.location.replace('login.html');
+});
+
+init();
+</script>
+</body>
+</html>
