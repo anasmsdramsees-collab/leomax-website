@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Control Panel — LEOMAX</title>
-<link rel="stylesheet" href="monochrome.css">
+<link rel="icon" href="data:,">
 <style>
 :root {
   --bg: #fbfbfd;
@@ -19,8 +19,8 @@
   --red: #ff3b30;
 }
 * { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -29,545 +29,1183 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
-.cp-header {
+/* ===== LOGIN VIEW ===== */
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #000;
-  color: #f5f5f7;
-  padding: 32px 32px 28px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 24px;
 }
-.cp-header .row {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.cp-header .brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.cp-header .brand .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 12px var(--green);
-}
-.cp-header h1 {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -.022em;
-  margin: 0;
-}
-.cp-header .sub {
-  font-size: 13px;
-  color: #86868b;
-  margin-top: 2px;
-}
-.cp-header .who { font-size: 14px; color: #86868b; }
-.cp-header .who strong { color: #f5f5f7; }
-
-/* Layout */
-.cp-wrap {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 32px;
-}
-
-/* Stat grid */
-.cp-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  margin-bottom: 32px;
-}
-.cp-stat {
-  background: var(--surface);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
-}
-.cp-stat .label {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 8px;
-}
-.cp-stat .value {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -.022em;
-  color: var(--text);
-  margin: 0;
-  line-height: 1;
-}
-.cp-stat .delta {
-  font-size: 12px;
-  color: var(--green);
-  margin-top: 6px;
-  font-weight: 500;
-}
-.cp-stat .delta.warn { color: var(--orange); }
-
-/* Sections */
-.cp-section {
-  background: var(--surface);
+.login-card {
+  background: #fff;
   border-radius: 22px;
-  padding: 28px;
-  margin-bottom: 22px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
+  padding: 44px 38px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.4);
 }
-.cp-section h2 {
-  font-size: 20px;
+.login-card h1 {
+  font-size: 26px;
   font-weight: 600;
   letter-spacing: -.022em;
-  margin: 0 0 4px;
-  color: var(--text);
+  margin: 0 0 6px;
 }
-.cp-section .desc {
+.login-card .sub {
   font-size: 14px;
   color: var(--muted);
-  margin: 0 0 22px;
+  margin: 0 0 28px;
+}
+.login-card label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+.login-card input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  letter-spacing: -.01em;
+  background: var(--bg);
+}
+.login-card input:focus { border-color: var(--blue); background: #fff; }
+.login-card .btn {
+  width: 100%;
+  padding: 13px 18px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 24px;
+  letter-spacing: -.01em;
+  transition: background .15s ease;
+}
+.login-card .btn:hover { background: #0077ed; }
+.login-card .btn:disabled { opacity: .5; cursor: not-allowed; }
+.login-card .err {
+  background: rgba(255,59,48,.08);
+  color: var(--red);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 14px;
+  display: none;
+}
+.login-card .err.show { display: block; }
+
+/* ===== APP LAYOUT ===== */
+.app { display: none; min-height: 100vh; }
+.app.show { display: grid; grid-template-columns: 240px 1fr; }
+
+.sidebar {
+  background: #000;
+  color: #f5f5f7;
+  min-height: 100vh;
+  padding: 24px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+.sidebar .brand .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); }
+.sidebar .brand h2 { font-size: 14px; font-weight: 600; margin: 0; letter-spacing: -.012em; }
+.sidebar .brand .sub { font-size: 11px; color: #86868b; margin-top: 1px; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #d2d2d7;
+  margin-bottom: 2px;
+  transition: background .12s ease;
+  letter-spacing: -.01em;
+}
+.nav-item:hover { background: rgba(255,255,255,.06); color: #fff; }
+.nav-item.active { background: rgba(0,113,227,.18); color: #fff; }
+.nav-item .icon { width: 16px; opacity: .8; text-align: center; }
+.nav-item .badge {
+  margin-left: auto;
+  background: rgba(255,255,255,.12);
+  color: #f5f5f7;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
 }
 
-/* Action grid */
-.cp-grid {
+.sidebar .who {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  right: 16px;
+  font-size: 12px;
+  color: #86868b;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 16px;
+}
+.sidebar .who strong { color: #f5f5f7; display: block; font-size: 13px; margin-bottom: 2px; }
+.sidebar .logout-btn {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.16);
+  color: #f5f5f7;
+  padding: 6px 12px;
+  border-radius: 980px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== MAIN ===== */
+.main { padding: 32px 36px; max-width: 1280px; overflow-x: hidden; }
+.page { display: none; }
+.page.show { display: block; }
+.page h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -.024em;
+  margin: 0 0 6px;
+}
+.page .sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
 }
-.cp-link {
-  display: block;
-  padding: 16px 18px;
-  background: var(--bg);
-  border-radius: 14px;
-  text-decoration: none;
-  color: var(--text);
-  box-shadow: 0 0 0 1px var(--line);
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+.stat {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
 }
-.cp-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.06), 0 0 0 1px rgba(0,113,227,.4);
-  background: #fff;
-}
-.cp-link .lbl {
+.stat .lbl {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--muted);
   font-weight: 600;
-  display: block;
-  margin-bottom: 4px;
+  margin: 0 0 8px;
 }
-.cp-link .title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  letter-spacing: -.012em;
+.stat .val {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  margin: 0;
+  line-height: 1;
 }
-.cp-link .meta {
-  font-size: 12px;
+.stat .delta { font-size: 12px; color: var(--green); margin-top: 6px; font-weight: 500; }
+.stat .delta.warn { color: var(--orange); }
+.stat .delta.bad { color: var(--red); }
+
+.card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
+  margin-bottom: 18px;
+}
+.card h2 { font-size: 17px; font-weight: 600; letter-spacing: -.018em; margin: 0 0 4px; }
+.card .desc { font-size: 13px; color: var(--muted); margin: 0 0 18px; }
+
+/* Table */
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
   color: var(--muted);
-  margin-top: 4px;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
 }
-.cp-link.accent {
-  background: var(--blue);
-  color: #fff;
-  box-shadow: none;
-}
-.cp-link.accent .lbl, .cp-link.accent .title, .cp-link.accent .meta { color: #fff; }
-.cp-link.accent .lbl { color: rgba(255,255,255,.7); }
-
-/* Search box */
-.cp-search {
-  width: 100%;
-  padding: 14px 18px;
-  font-size: 15px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  outline: none;
-  background: var(--bg);
-  color: var(--text);
-  font-family: inherit;
-  letter-spacing: -.012em;
-}
-.cp-search:focus { border-color: var(--blue); }
-
-/* Page list */
-.cp-pages {
-  max-height: 320px;
-  overflow-y: auto;
-  margin-top: 16px;
-  border-radius: 12px;
-  background: var(--bg);
-  padding: 8px;
-}
-.cp-pages a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 14px;
-  text-decoration: none;
-  color: var(--text);
-  border-radius: 8px;
+.tbl td {
+  padding: 12px;
   font-size: 14px;
+  border-bottom: 1px solid rgba(0,0,0,.04);
+  vertical-align: middle;
 }
-.cp-pages a:hover { background: #fff; box-shadow: 0 0 0 1px var(--line); }
-.cp-pages a .url { color: var(--muted); font-size: 12px; }
+.tbl tr.row { cursor: pointer; }
+.tbl tr.row:hover { background: var(--bg); }
+.tbl td.muted { color: var(--muted); font-size: 13px; }
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 980px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--bg);
+  color: var(--text);
+}
+.tag.green { background: rgba(52,199,89,.12); color: #1d6b35; }
+.tag.blue  { background: rgba(0,113,227,.12); color: #054a92; }
+.tag.orange { background: rgba(255,149,0,.14); color: #8a4b00; }
+.tag.gray { background: rgba(0,0,0,.06); color: #555; }
 
-/* Buttons */
-.cp-btn {
+.btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
+  gap: 6px;
+  padding: 9px 16px;
   background: var(--blue);
   color: #fff;
   border: none;
   border-radius: 980px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   font-family: inherit;
   letter-spacing: -.01em;
-  transition: background .15s ease;
 }
-.cp-btn:hover { background: #0077ed; }
-.cp-btn.secondary { background: var(--bg); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
-.cp-btn.secondary:hover { background: #fff; }
-.cp-btn.danger { background: var(--red); }
+.btn:hover { background: #0077ed; }
+.btn.sec { background: var(--bg); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+.btn.sec:hover { background: #fff; }
+.btn.danger { background: var(--red); }
 
-/* Two-col on wide */
-@media (min-width: 980px) {
-  .cp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  .cp-two > .cp-section { margin-bottom: 0; }
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 9px 14px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  font-family: inherit;
+  outline: none;
+}
+.search-input:focus { border-color: var(--blue); background: #fff; }
+
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal.show { display: flex; }
+.modal-card {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 28px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 84vh;
+  overflow-y: auto;
+}
+.modal-card h2 { font-size: 20px; margin: 0 0 8px; font-weight: 600; }
+.modal-card .field { margin-bottom: 14px; }
+.modal-card label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.modal-card input, .modal-card select, .modal-card textarea {
+  width: 100%; padding: 10px 12px; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 10px; outline: none;
+  font-family: inherit; background: var(--bg);
+}
+.modal-card input:focus { border-color: var(--blue); }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+
+/* Detail panel inline */
+.detail {
+  padding: 16px;
+  background: var(--bg);
+  border-radius: 12px;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.detail .kv { display: grid; grid-template-columns: 140px 1fr; gap: 8px 14px; }
+.detail .kv .k { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+
+/* Chat messages */
+.chat-msg {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  max-width: 80%;
+}
+.chat-msg.user { background: var(--blue); color: #fff; margin-left: auto; }
+.chat-msg.bot { background: var(--bg); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+.chat-msg .who { font-size: 10px; opacity: .7; text-transform: uppercase; letter-spacing: .08em; display: block; margin-bottom: 2px; }
+
+@media (max-width: 880px) {
+  .app.show { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; padding: 16px; }
+  .main { padding: 20px; }
 }
 </style>
 </head>
 <body>
 
-<header class="cp-header">
-  <div class="row">
+<!-- ============== LOGIN ============== -->
+<div class="login-wrap" id="loginView">
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <h1>Control Panel</h1>
+    <p class="sub">Sign in to access LEOMAX admin</p>
+    <label>Email</label>
+    <input type="email" id="loginEmail" required autocomplete="username">
+    <label>Password</label>
+    <input type="password" id="loginPwd" required autocomplete="current-password">
+    <button type="submit" class="btn" id="loginBtn">Sign in</button>
+    <div class="err" id="loginErr"></div>
+  </form>
+</div>
+
+<!-- ============== APP ============== -->
+<div class="app" id="app">
+  <aside class="sidebar">
     <div class="brand">
       <span class="dot"></span>
       <div>
-        <h1>Control Panel</h1>
-        <div class="sub">leomaxglobal.com · all systems operational</div>
+        <h2>LEOMAX</h2>
+        <div class="sub">Control panel</div>
       </div>
     </div>
-    <div class="who">Signed in as <strong>Dr. Anas Elimam</strong></div>
-  </div>
-</header>
 
-<main class="cp-wrap">
+    <div class="nav-item active" data-page="overview"><span class="icon">▦</span> Overview</div>
+    <div class="nav-item" data-page="customers"><span class="icon">◉</span> Customers <span class="badge" id="badge-customers">—</span></div>
+    <div class="nav-item" data-page="waitlist"><span class="icon">○</span> Waitlist <span class="badge" id="badge-waitlist">—</span></div>
+    <div class="nav-item" data-page="financials"><span class="icon">◈</span> Financials</div>
+    <div class="nav-item" data-page="chats"><span class="icon">◌</span> Chat history <span class="badge" id="badge-chats">—</span></div>
+    <div class="nav-item" data-page="seo"><span class="icon">↗</span> SEO &amp; site</div>
 
-  <!-- Stat row -->
-  <div class="cp-stats">
-    <div class="cp-stat">
-      <p class="label">Indexed pages</p>
-      <p class="value" id="stat-pages">87</p>
-      <p class="delta">+ sitemap up to date</p>
+    <div class="who">
+      <strong id="whoEmail">—</strong>
+      <span id="whoRole">admin</span>
+      <br>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
     </div>
-    <div class="cp-stat">
-      <p class="label">Person sameAs</p>
-      <p class="value">6</p>
-      <p class="delta">LinkedIn · X · Instagram + 3 site</p>
-    </div>
-    <div class="cp-stat">
-      <p class="label">SEO clean pages</p>
-      <p class="value">60 / 83</p>
-      <p class="delta">72% — strong</p>
-    </div>
-    <div class="cp-stat">
-      <p class="label">Last deploy</p>
-      <p class="value" id="stat-deploy">just now</p>
-      <p class="delta">GitHub Pages · CDN warm</p>
-    </div>
-  </div>
+  </aside>
 
-  <!-- SEO & indexing -->
-  <section class="cp-section">
-    <h2>SEO &amp; Indexing</h2>
-    <p class="desc">Submit URLs, check verification, view sitemap.</p>
-    <div class="cp-grid">
-      <a class="cp-link accent" href="https://search.google.com/search-console" target="_blank">
-        <span class="lbl">Google</span>
-        <span class="title">Search Console</span>
-        <span class="meta">Verify · Sitemap · URL Inspection</span>
-      </a>
-      <a class="cp-link" href="https://www.bing.com/webmasters" target="_blank">
-        <span class="lbl">Bing</span>
-        <span class="title">Webmaster Tools</span>
-        <span class="meta">Indexed pages · backlinks</span>
-      </a>
-      <a class="cp-link" href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fleomaxglobal.com%2Fanas-elimam.html" target="_blank">
-        <span class="lbl">Test</span>
-        <span class="title">Rich Results</span>
-        <span class="meta">Validate Person schema</span>
-      </a>
-      <a class="cp-link" href="https://leomaxglobal.com/sitemap.xml" target="_blank">
-        <span class="lbl">XML</span>
-        <span class="title">Sitemap</span>
-        <span class="meta">87 URLs · last updated today</span>
-      </a>
-      <a class="cp-link" href="https://leomaxglobal.com/robots.txt" target="_blank">
-        <span class="lbl">Crawl</span>
-        <span class="title">robots.txt</span>
-        <span class="meta">Allow all · sitemap reference</span>
-      </a>
-      <a class="cp-link" href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fleomaxglobal.com" target="_blank">
-        <span class="lbl">Perf</span>
-        <span class="title">PageSpeed Insights</span>
-        <span class="meta">Core Web Vitals</span>
-      </a>
-    </div>
-  </section>
+  <main class="main">
 
-  <div class="cp-two">
+    <!-- OVERVIEW -->
+    <section class="page show" id="page-overview">
+      <h1>Overview</h1>
+      <p class="sub">Snapshot of your customers, revenue, and pipeline.</p>
+      <div class="stats">
+        <div class="stat"><p class="lbl">Customers</p><p class="val" id="ov-customers">—</p><p class="delta" id="ov-customers-d">live</p></div>
+        <div class="stat"><p class="lbl">Waitlist</p><p class="val" id="ov-waitlist">—</p><p class="delta">prospects</p></div>
+        <div class="stat"><p class="lbl">MRR (SAR)</p><p class="val" id="ov-mrr">—</p><p class="delta" id="ov-mrr-d">recurring</p></div>
+        <div class="stat"><p class="lbl">Total revenue (SAR)</p><p class="val" id="ov-rev">—</p><p class="delta">all-time</p></div>
+        <div class="stat"><p class="lbl">Chat sessions</p><p class="val" id="ov-chats">—</p><p class="delta">total</p></div>
+        <div class="stat"><p class="lbl">Onboarded</p><p class="val" id="ov-onb">—</p><p class="delta" id="ov-onb-d">complete</p></div>
+      </div>
 
-    <!-- Brand -->
-    <section class="cp-section">
-      <h2>Brand &amp; Identity</h2>
-      <p class="desc">Your canonical identity surfaces.</p>
-      <div class="cp-grid">
-        <a class="cp-link" href="anas-elimam.html">
-          <span class="lbl">Person</span>
-          <span class="title">Dr. Anas Elimam</span>
-          <span class="meta">Canonical personal page</span>
-        </a>
-        <a class="cp-link" href="company-founder.html">
-          <span class="lbl">Role</span>
-          <span class="title">Founder at LEOMAX</span>
-          <span class="meta">Company-context bio</span>
-        </a>
-        <a class="cp-link" href="company-about.html">
-          <span class="lbl">Org</span>
-          <span class="title">About LEOMAX</span>
-          <span class="meta">Why we exist</span>
-        </a>
-        <a class="cp-link" href="team.html">
-          <span class="lbl">Team</span>
-          <span class="title">Team page</span>
-          <span class="meta">Operators behind LEOMAX</span>
-        </a>
+      <div class="card">
+        <h2>Customer mix</h2>
+        <p class="desc">Breakdown by vertical.</p>
+        <div id="mix-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px"></div>
+      </div>
+
+      <div class="card">
+        <h2>Recent activity</h2>
+        <p class="desc">Last 8 signups, transactions, and chats.</p>
+        <div id="activity-list"></div>
       </div>
     </section>
 
-    <!-- Products -->
-    <section class="cp-section">
-      <h2>Products &amp; Systems</h2>
-      <p class="desc">The six operating systems and subscriptions.</p>
-      <div class="cp-grid">
-        <a class="cp-link" href="systems.html">
-          <span class="lbl">Lineup</span>
-          <span class="title">All systems</span>
-          <span class="meta">6 products · SAR pricing</span>
-        </a>
-        <a class="cp-link" href="brief.html">
-          <span class="lbl">Subscription</span>
-          <span class="title">The LEOMAX Brief</span>
-          <span class="meta">4 verticals · SAR 599/mo</span>
-        </a>
-        <a class="cp-link" href="strategy-os.html">
-          <span class="lbl">SaaS</span>
-          <span class="title">Strategy OS</span>
-          <span class="meta">Founder operating system</span>
-        </a>
-        <a class="cp-link" href="services-pricing.html">
-          <span class="lbl">Pricing</span>
-          <span class="title">Services &amp; pricing</span>
-          <span class="meta">All offers in one place</span>
-        </a>
+    <!-- CUSTOMERS -->
+    <section class="page" id="page-customers">
+      <h1>Customers</h1>
+      <p class="sub">Registered Strategy OS users. Click a row for full onboarding data.</p>
+      <div class="toolbar">
+        <input class="search-input" id="cust-search" placeholder="Search by name, email, or company...">
+        <select id="cust-filter" class="search-input" style="flex:0 0 180px">
+          <option value="all">All verticals</option>
+          <option value="family-office">Family office</option>
+          <option value="logistics">Logistics</option>
+          <option value="fnb">F&amp;B</option>
+          <option value="healthcare">Healthcare</option>
+        </select>
+        <button class="btn sec" onclick="exportCustomersCSV()">Export CSV</button>
+        <button class="btn sec" onclick="loadCustomers()">Refresh</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl">
+          <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Vertical</th><th>Status</th><th>Signed up</th></tr></thead>
+          <tbody id="cust-tbody"></tbody>
+        </table>
       </div>
     </section>
 
+    <!-- WAITLIST -->
+    <section class="page" id="page-waitlist">
+      <h1>Waitlist</h1>
+      <p class="sub">Prospects who registered interest but haven't converted yet.</p>
+      <div class="toolbar">
+        <input class="search-input" id="wl-search" placeholder="Search waitlist...">
+        <button class="btn" onclick="openWaitlistModal()">+ Add manually</button>
+        <button class="btn sec" onclick="exportWaitlistCSV()">Export CSV</button>
+        <button class="btn sec" onclick="loadWaitlist()">Refresh</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl">
+          <thead><tr><th>Name</th><th>Email</th><th>Interest</th><th>Source</th><th>Status</th><th>Added</th><th></th></tr></thead>
+          <tbody id="wl-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FINANCIALS -->
+    <section class="page" id="page-financials">
+      <h1>Financials</h1>
+      <p class="sub">MRR, ARR, transactions, and outstanding invoices.</p>
+      <div class="stats">
+        <div class="stat"><p class="lbl">MRR</p><p class="val" id="fn-mrr">—</p><p class="delta">SAR</p></div>
+        <div class="stat"><p class="lbl">ARR</p><p class="val" id="fn-arr">—</p><p class="delta">SAR</p></div>
+        <div class="stat"><p class="lbl">Active subscribers</p><p class="val" id="fn-active">—</p><p class="delta">recurring</p></div>
+        <div class="stat"><p class="lbl">This month</p><p class="val" id="fn-month">—</p><p class="delta">SAR collected</p></div>
+        <div class="stat"><p class="lbl">YTD revenue</p><p class="val" id="fn-ytd">—</p><p class="delta">SAR</p></div>
+        <div class="stat"><p class="lbl">Outstanding</p><p class="val" id="fn-out">—</p><p class="delta warn">SAR pending</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Transactions</h2>
+        <p class="desc">Most recent payments and refunds.</p>
+        <div class="toolbar">
+          <button class="btn" onclick="openTxModal()">+ Add transaction</button>
+          <button class="btn sec" onclick="exportTxCSV()">Export CSV</button>
+          <button class="btn sec" onclick="loadTransactions()">Refresh</button>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Date</th><th>Customer</th><th>Item</th><th>Amount</th><th>Status</th><th>Method</th></tr></thead>
+          <tbody id="tx-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CHATS -->
+    <section class="page" id="page-chats">
+      <h1>Chat history</h1>
+      <p class="sub">Conversations with Valeria (the LEOMAX bot).</p>
+      <div class="toolbar">
+        <input class="search-input" id="chat-search" placeholder="Search by user or content...">
+        <button class="btn sec" onclick="loadChats()">Refresh</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl">
+          <thead><tr><th>When</th><th>User</th><th>Messages</th><th>Last preview</th></tr></thead>
+          <tbody id="chat-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEO -->
+    <section class="page" id="page-seo">
+      <h1>SEO &amp; site</h1>
+      <p class="sub">Indexing, sitemap, structured data, and quick links.</p>
+      <div class="stats">
+        <div class="stat"><p class="lbl">Sitemap URLs</p><p class="val">87</p><p class="delta">updated</p></div>
+        <div class="stat"><p class="lbl">Person sameAs</p><p class="val">6</p><p class="delta">LinkedIn · X · IG · 3 site</p></div>
+        <div class="stat"><p class="lbl">JSON-LD pages</p><p class="val">60+</p><p class="delta">structured</p></div>
+        <div class="stat"><p class="lbl">Verified</p><p class="val">✓</p><p class="delta">Google + Bing</p></div>
+      </div>
+
+      <div class="card">
+        <h2>Submit URL to IndexNow</h2>
+        <p class="desc">Tell Bing, Yandex, and others to reindex a page immediately.</p>
+        <div class="toolbar">
+          <input class="search-input" id="indexnow-url" placeholder="https://leomaxglobal.com/...">
+          <button class="btn" onclick="submitIndexNow()">Submit</button>
+        </div>
+        <div id="indexnow-status" style="font-size:13px;color:var(--muted);margin-top:6px"></div>
+      </div>
+
+      <div class="card">
+        <h2>Quick links</h2>
+        <div class="stats" style="margin:0">
+          <a href="https://search.google.com/search-console" target="_blank" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">Google</p><p class="val" style="font-size:18px">Search Console</p></a>
+          <a href="https://www.bing.com/webmasters" target="_blank" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">Bing</p><p class="val" style="font-size:18px">Webmaster Tools</p></a>
+          <a href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fleomaxglobal.com%2Fanas-elimam.html" target="_blank" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">Test</p><p class="val" style="font-size:18px">Rich Results</p></a>
+          <a href="https://leomaxglobal.com/sitemap.xml" target="_blank" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">XML</p><p class="val" style="font-size:18px">Sitemap</p></a>
+          <a href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fleomaxglobal.com" target="_blank" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">Perf</p><p class="val" style="font-size:18px">PageSpeed</p></a>
+          <a href="anas-elimam.html" class="stat" style="text-decoration:none;color:inherit"><p class="lbl">Page</p><p class="val" style="font-size:18px">Anas Elimam</p></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============== MODALS ============== -->
+<div class="modal" id="modal-wl">
+  <div class="modal-card">
+    <h2>Add to waitlist</h2>
+    <form id="wlForm" onsubmit="submitWaitlist(event)">
+      <div class="field"><label>Name</label><input id="wl-name" required></div>
+      <div class="field"><label>Email</label><input type="email" id="wl-email" required></div>
+      <div class="field"><label>Interest</label>
+        <select id="wl-interest">
+          <option value="brief">The Brief subscription</option>
+          <option value="strategy-os">Strategy OS</option>
+          <option value="growth">Growth System</option>
+          <option value="ai">AI System</option>
+          <option value="marketing">Marketing System</option>
+          <option value="content">Content System</option>
+          <option value="launch">Launch System</option>
+          <option value="advisory">Advisory</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Source</label>
+        <select id="wl-source">
+          <option value="manual">Manual entry</option>
+          <option value="referral">Referral</option>
+          <option value="event">Event</option>
+          <option value="website">Website form</option>
+          <option value="linkedin">LinkedIn</option>
+        </select>
+      </div>
+      <div class="field"><label>Notes</label><textarea id="wl-notes" rows="3"></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn sec" onclick="closeModal('modal-wl')">Cancel</button>
+        <button type="submit" class="btn">Add</button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <!-- Admin -->
-  <section class="cp-section">
-    <h2>Strategy OS · Admin</h2>
-    <p class="desc">Internal admin surfaces (private).</p>
-    <div class="cp-grid">
-      <a class="cp-link" href="strategy-os-admin.html">
-        <span class="lbl">SOS</span>
-        <span class="title">Strategy OS admin</span>
-        <span class="meta">Users · sessions · KV store</span>
-      </a>
-      <a class="cp-link" href="admin-strategy-os.html">
-        <span class="lbl">SOS</span>
-        <span class="title">Admin dashboard</span>
-        <span class="meta">Strategy OS oversight</span>
-      </a>
-      <a class="cp-link" href="admin-chats.html">
-        <span class="lbl">Chats</span>
-        <span class="title">Chat admin</span>
-        <span class="meta">Conversation history</span>
-      </a>
-      <a class="cp-link" href="dashboard.html">
-        <span class="lbl">User</span>
-        <span class="title">User dashboard</span>
-        <span class="meta">What users see post-login</span>
-      </a>
-    </div>
-  </section>
+<div class="modal" id="modal-tx">
+  <div class="modal-card">
+    <h2>Add transaction</h2>
+    <form id="txForm" onsubmit="submitTransaction(event)">
+      <div class="field"><label>Customer</label><input id="tx-customer" placeholder="Name or email" required></div>
+      <div class="field"><label>Item</label>
+        <select id="tx-item">
+          <option value="brief-monthly">Brief — Monthly (SAR 599)</option>
+          <option value="brief-annual">Brief — Annual (SAR 5,990)</option>
+          <option value="strategy-os">Strategy OS (SAR 599/mo)</option>
+          <option value="growth">Growth System (SAR 48,000)</option>
+          <option value="ai">AI System (SAR 75,000)</option>
+          <option value="marketing">Marketing System (SAR 55,000)</option>
+          <option value="content">Content System (SAR 35,000)</option>
+          <option value="launch">Launch System (SAR 95,000)</option>
+          <option value="advisory">Advisory retainer</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Amount (SAR)</label><input type="number" id="tx-amount" required></div>
+      <div class="field"><label>Status</label>
+        <select id="tx-status">
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+          <option value="refunded">Refunded</option>
+        </select>
+      </div>
+      <div class="field"><label>Payment method</label>
+        <select id="tx-method">
+          <option value="bank">Bank transfer</option>
+          <option value="card">Card</option>
+          <option value="stripe">Stripe</option>
+          <option value="cash">Cash</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Notes</label><textarea id="tx-notes" rows="2"></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn sec" onclick="closeModal('modal-tx')">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-  <!-- Sample artifacts -->
-  <section class="cp-section">
-    <h2>Sample artifacts</h2>
-    <p class="desc">What prospects see before buying.</p>
-    <div class="cp-grid">
-      <a class="cp-link" href="sample-readiness.html">
-        <span class="lbl">Sample</span>
-        <span class="title">Readiness reports</span>
-        <span class="meta">13 KSA startup cases</span>
-      </a>
-      <a class="cp-link" href="sample-account-brief.html">
-        <span class="lbl">Sample</span>
-        <span class="title">Account briefs</span>
-        <span class="meta">7 KSA enterprise targets</span>
-      </a>
-      <a class="cp-link" href="company-case-studies.html">
-        <span class="lbl">Real</span>
-        <span class="title">Case studies</span>
-        <span class="meta">13 founder ventures</span>
-      </a>
-      <a class="cp-link" href="blog.html">
-        <span class="lbl">Journal</span>
-        <span class="title">Blog</span>
-        <span class="meta">32+ essays</span>
-      </a>
-    </div>
-  </section>
+<div class="modal" id="modal-detail">
+  <div class="modal-card" id="modal-detail-body"></div>
+</div>
 
-  <!-- Social presence -->
-  <section class="cp-section">
-    <h2>Social presence</h2>
-    <p class="desc">Linked in Person schema sameAs — keep website URL in each profile.</p>
-    <div class="cp-grid">
-      <a class="cp-link" href="https://www.linkedin.com/in/anas-sharif-elimam-a52530193" target="_blank">
-        <span class="lbl">LinkedIn</span>
-        <span class="title">Anas Sharif Elimam</span>
-        <span class="meta">Profile page</span>
-      </a>
-      <a class="cp-link" href="https://x.com/anasimam_" target="_blank">
-        <span class="lbl">X / Twitter</span>
-        <span class="title">@anasimam_</span>
-        <span class="meta">Profile page</span>
-      </a>
-      <a class="cp-link" href="https://www.instagram.com/anas_ramsees" target="_blank">
-        <span class="lbl">Instagram</span>
-        <span class="title">@anas_ramsees</span>
-        <span class="meta">Profile page</span>
-      </a>
-      <a class="cp-link" href="https://calendly.com/leomaxglobalsa/30min" target="_blank">
-        <span class="lbl">Calendar</span>
-        <span class="title">Calendly</span>
-        <span class="meta">30-minute booking</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Page search -->
-  <section class="cp-section">
-    <h2>All pages</h2>
-    <p class="desc">Search and jump to any of the 87 site pages.</p>
-    <input class="cp-search" id="pageSearch" placeholder="Search pages... (e.g. growth, brief, founder)" oninput="filterPages()">
-    <div class="cp-pages" id="pageList"></div>
-  </section>
-
-  <!-- Footer -->
-  <p style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">
-    Private control panel · noindex · last loaded <span id="now"></span>
-  </p>
-
-</main>
-
+<script src="auth.js"></script>
 <script>
-// Page catalog
-const PAGES = [
-  ["Homepage", "LEOMAX_Website_Design.html"],
-  ["Anas Elimam (personal)", "anas-elimam.html"],
-  ["About LEOMAX", "company-about.html"],
-  ["Founder at LEOMAX", "company-founder.html"],
-  ["Process", "company-process.html"],
-  ["Team", "team.html"],
-  ["Contact", "company-contact.html"],
-  ["Case studies (index)", "company-case-studies.html"],
-  ["Systems lineup", "systems.html"],
-  ["Strategy OS", "strategy-os.html"],
-  ["The LEOMAX Brief", "brief.html"],
-  ["Brief — Family office", "brief-family-office.html"],
-  ["Brief — Logistics", "brief-logistics.html"],
-  ["Brief — F&B", "brief-fnb.html"],
-  ["Brief — Healthcare", "brief-healthcare.html"],
-  ["Services & pricing", "services-pricing.html"],
-  ["BD services", "bd-services.html"],
-  ["Investor services", "investor-services.html"],
-  ["Account brief service", "account-brief.html"],
-  ["Advisory board", "advisory-board.html"],
-  ["Podcast", "podcast.html"],
-  ["Blog (index)", "blog.html"],
-  ["Sample — Readiness", "sample-readiness.html"],
-  ["Sample — Account brief", "sample-account-brief.html"],
-  ["Sample — Readiness Madar", "sample-readiness-madar.html"],
-  ["System 01 — Growth", "system-01-growth.html"],
-  ["System 02 — AI", "system-02-ai.html"],
-  ["System 03 — Marketing", "system-03-marketing.html"],
-  ["System 04 — Content", "system-04-content.html"],
-  ["System 05 — Launch", "system-05-launch.html"],
-  ["Framework 01 — 90-day reset", "framework-01-90day-reset.html"],
-  ["Framework 02 — AI readiness", "framework-02-ai-readiness.html"],
-  ["Framework 03 — Brand positioning", "framework-03-brand-positioning.html"],
-  ["Framework 04 — B2B pipeline", "framework-04-b2b-pipeline.html"],
-  ["Framework 05 — Content system", "framework-05-content-system.html"],
-  ["Framework 06 — Launch playbook", "framework-06-launch-playbook.html"],
-  ["Case — Madar", "case-madar.html"],
-  ["Case — Hoolak", "case-hoolak.html"],
-  ["Case — Jambak", "case-jambak.html"],
-  ["Case — Autopoint", "case-autopoint.html"],
-  ["Case — Ramsees", "case-ramsees.html"],
-  ["Case — Nourish", "case-nourish.html"],
-  ["Case — KBC", "case-kbc.html"],
-  ["Case — Clenso", "case-clenso.html"],
-  ["Case — Garage", "case-garage.html"],
-  ["Case — L'Sofia", "case-lsofia.html"],
-  ["Case — Lanova", "case-lanova.html"],
-  ["Case — Nadia Lamal", "case-nadialamal.html"],
-  ["Case — Red Studio", "case-redstudio.html"],
-  ["Case — Regional", "case-regional.html"],
-  ["Strategy OS — Login", "strategy-os-login.html"],
-  ["Strategy OS — Signup", "strategy-os-signup.html"],
-  ["Strategy OS — Onboarding", "strategy-os-onboarding.html"],
-  ["Strategy OS — Dashboard", "strategy-os-dashboard.html"],
-  ["Strategy OS — Admin", "strategy-os-admin.html"],
-  ["Admin — Strategy OS", "admin-strategy-os.html"],
-  ["Admin — Chats", "admin-chats.html"]
-];
+'use strict';
 
-function renderPages(items){
-  const list = document.getElementById("pageList");
-  list.innerHTML = items.map(p =>
-    `<a href="${p[1]}"><span>${p[0]}</span><span class="url">/${p[1]}</span></a>`
-  ).join("");
-}
-function filterPages(){
-  const q = document.getElementById("pageSearch").value.toLowerCase().trim();
-  if (!q) return renderPages(PAGES);
-  renderPages(PAGES.filter(p => p[0].toLowerCase().includes(q) || p[1].toLowerCase().includes(q)));
-}
-renderPages(PAGES);
+// ===== STATE =====
+const CHAT_WORKER = 'https://leomax-valeria-chat.anas-msd-ramsees.workers.dev';
+const INDEXNOW_KEY = 'd0ceb75623ce6fa60a9f02d32939d6fe451dfd9e4eb35f90b30c86136f0ef8d2';
 
-// Live timestamp
-document.getElementById("now").textContent = new Date().toLocaleString("en-GB", {
-  dateStyle: "medium", timeStyle: "short"
+const STATE = {
+  user: null,
+  customers: [],
+  waitlist: [],
+  transactions: [],
+  chats: [],
+};
+
+// localStorage fallback for transactions + waitlist
+// (used when /admin/waitlist or /admin/transactions endpoint isn't deployed yet)
+const LS_TX = 'leomax_cp_transactions';
+const LS_WL = 'leomax_cp_waitlist';
+
+function lsGet(k){ try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch { return []; } }
+function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+
+// ===== LOGIN =====
+function showLogin(){
+  document.getElementById('loginView').style.display = 'flex';
+  document.getElementById('app').classList.remove('show');
+}
+function showApp(){
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('app').classList.add('show');
+}
+
+async function tryAutoLogin(){
+  if (!window.LMAuth || !LMAuth.isLoggedIn()) { showLogin(); return; }
+  try {
+    const user = await LMAuth.me();
+    STATE.user = user;
+    document.getElementById('whoEmail').textContent = user.email || 'unknown';
+    document.getElementById('whoRole').textContent = user.role || 'admin';
+    showApp();
+    loadAll();
+  } catch (e) {
+    LMAuth.clearToken();
+    showLogin();
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('loginErr');
+  err.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+  try {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pwd = document.getElementById('loginPwd').value;
+    const res = await LMAuth.login(email, pwd);
+    STATE.user = res.user;
+    document.getElementById('whoEmail').textContent = res.user.email;
+    document.getElementById('whoRole').textContent = res.user.role || 'admin';
+    showApp();
+    loadAll();
+  } catch (ex) {
+    err.classList.add('show');
+    err.textContent = (ex && ex.message) || 'Sign in failed.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
+  }
 });
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  try { await LMAuth.logout(); } catch {}
+  showLogin();
+});
+
+// ===== NAV =====
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const target = item.getAttribute('data-page');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+    document.getElementById('page-' + target).classList.add('show');
+  });
+});
+
+// ===== LOAD ALL =====
+async function loadAll(){
+  await Promise.all([
+    loadCustomers(),
+    loadWaitlist(),
+    loadTransactions(),
+    loadChats(),
+  ]);
+  renderOverview();
+}
+
+// ===== CUSTOMERS (via /admin/users) =====
+async function loadCustomers(){
+  const tbody = document.getElementById('cust-tbody');
+  tbody.innerHTML = '<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  try {
+    const res = await fetch(LMAuth.API_BASE + '/admin/users', {
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || ('HTTP ' + res.status));
+    STATE.customers = data.users || [];
+  } catch (e) {
+    STATE.customers = [];
+    tbody.innerHTML = `<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Could not load customers: ${e.message}. Make sure you're signed in as admin.</td></tr>`;
+    document.getElementById('badge-customers').textContent = 'err';
+    return;
+  }
+  document.getElementById('badge-customers').textContent = STATE.customers.length;
+  renderCustomers();
+  renderOverview();
+}
+
+function renderCustomers(){
+  const tbody = document.getElementById('cust-tbody');
+  const q = (document.getElementById('cust-search').value || '').toLowerCase();
+  const f = document.getElementById('cust-filter').value;
+  const list = STATE.customers.filter(u => {
+    if (f !== 'all' && u.vertical !== f) return false;
+    if (q) {
+      const hay = ((u.name||'') + ' ' + (u.email||'') + ' ' + (u.company||'')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">No customers match your filter.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(u => `
+    <tr class="row" onclick='showCustomerDetail(${JSON.stringify(u.id||u.email).replace(/'/g,"&#39;")})'>
+      <td>${esc(u.name||'-')}</td>
+      <td class="muted">${esc(u.email||'-')}</td>
+      <td>${esc(u.company||'-')}</td>
+      <td><span class="tag blue">${esc(u.vertical||'—')}</span></td>
+      <td>${(u.data && u.data.onboardingComplete) ? '<span class="tag green">Onboarded</span>' : '<span class="tag gray">Pending</span>'}</td>
+      <td class="muted">${fmtDate(u.createdAt)}</td>
+    </tr>
+  `).join('');
+}
+
+function showCustomerDetail(id){
+  const u = STATE.customers.find(x => (x.id||x.email) === id);
+  if (!u) return;
+  const d = u.data || {};
+  const keys = Object.keys(d).filter(k => !['onboardingComplete','onboardedAt'].includes(k));
+  const dataRows = keys.length
+    ? keys.map(k => `<div><div class="k">${esc(k.replace(/_/g,' '))}</div><div>${esc(Array.isArray(d[k]) ? d[k].join(', ') : (d[k]||'-'))}</div></div>`).join('')
+    : '<div class="muted">No onboarding data yet.</div>';
+  document.getElementById('modal-detail-body').innerHTML = `
+    <h2>${esc(u.name||'-')}</h2>
+    <p class="muted" style="margin:0 0 16px">${esc(u.email||'-')}</p>
+    <div class="detail">
+      <div class="kv">
+        <div class="k">Company</div><div>${esc(u.company||'-')}</div>
+        <div class="k">Vertical</div><div>${esc(u.vertical||'—')}</div>
+        <div class="k">Joined</div><div>${fmtDate(u.createdAt)}</div>
+        <div class="k">Status</div><div>${u.data && u.data.onboardingComplete ? 'Onboarded' : 'Pending'}</div>
+      </div>
+    </div>
+    <h2 style="margin-top:18px;font-size:15px">Onboarding data</h2>
+    <div class="detail"><div class="kv">${dataRows}</div></div>
+    <div class="modal-actions"><button class="btn sec" onclick="closeModal('modal-detail')">Close</button></div>
+  `;
+  openModal('modal-detail');
+}
+
+document.getElementById('cust-search').addEventListener('input', renderCustomers);
+document.getElementById('cust-filter').addEventListener('change', renderCustomers);
+
+function exportCustomersCSV(){ downloadCSV('customers.csv', STATE.customers, ['id','name','email','company','vertical','createdAt']); }
+
+// ===== WAITLIST (via /admin/waitlist OR localStorage fallback) =====
+async function loadWaitlist(){
+  const tbody = document.getElementById('wl-tbody');
+  tbody.innerHTML = '<tr><td colspan="7" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  try {
+    const res = await fetch(LMAuth.API_BASE + '/admin/waitlist', {
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      STATE.waitlist = data.waitlist || data.entries || [];
+    } else {
+      throw new Error('Endpoint not deployed');
+    }
+  } catch (e) {
+    // Fallback to localStorage
+    STATE.waitlist = lsGet(LS_WL);
+  }
+  document.getElementById('badge-waitlist').textContent = STATE.waitlist.length;
+  renderWaitlist();
+  renderOverview();
+}
+
+function renderWaitlist(){
+  const tbody = document.getElementById('wl-tbody');
+  const q = (document.getElementById('wl-search').value || '').toLowerCase();
+  const list = STATE.waitlist.filter(w => {
+    if (!q) return true;
+    const hay = ((w.name||'') + ' ' + (w.email||'') + ' ' + (w.interest||'')).toLowerCase();
+    return hay.includes(q);
+  });
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty">No waitlist entries yet. Click "+ Add manually" to add one.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map((w, i) => `
+    <tr>
+      <td>${esc(w.name||'-')}</td>
+      <td class="muted">${esc(w.email||'-')}</td>
+      <td><span class="tag blue">${esc(w.interest||'—')}</span></td>
+      <td class="muted">${esc(w.source||'-')}</td>
+      <td><span class="tag ${w.status==='converted'?'green':(w.status==='contacted'?'orange':'gray')}">${esc(w.status||'new')}</span></td>
+      <td class="muted">${fmtDate(w.addedAt)}</td>
+      <td><button class="btn sec" style="padding:4px 10px;font-size:11px" onclick="deleteWaitlist(${i})">Remove</button></td>
+    </tr>
+  `).join('');
+}
+
+document.getElementById('wl-search').addEventListener('input', renderWaitlist);
+
+function openWaitlistModal(){ openModal('modal-wl'); }
+async function submitWaitlist(e){
+  e.preventDefault();
+  const entry = {
+    id: 'wl_' + Date.now(),
+    name: document.getElementById('wl-name').value.trim(),
+    email: document.getElementById('wl-email').value.trim(),
+    interest: document.getElementById('wl-interest').value,
+    source: document.getElementById('wl-source').value,
+    notes: document.getElementById('wl-notes').value.trim(),
+    status: 'new',
+    addedAt: new Date().toISOString()
+  };
+  // Try API first, fallback to localStorage
+  try {
+    const res = await fetch(LMAuth.API_BASE + '/admin/waitlist', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(entry)
+    });
+    if (!res.ok) throw new Error('API unavailable');
+  } catch {
+    const all = lsGet(LS_WL);
+    all.unshift(entry);
+    lsSet(LS_WL, all);
+  }
+  closeModal('modal-wl');
+  document.getElementById('wlForm').reset();
+  loadWaitlist();
+}
+
+function deleteWaitlist(i){
+  if (!confirm('Remove this waitlist entry?')) return;
+  // Best-effort: remove from localStorage fallback
+  const all = lsGet(LS_WL);
+  all.splice(i, 1);
+  lsSet(LS_WL, all);
+  loadWaitlist();
+}
+
+function exportWaitlistCSV(){ downloadCSV('waitlist.csv', STATE.waitlist, ['name','email','interest','source','status','addedAt','notes']); }
+
+// ===== FINANCIALS (via /admin/transactions OR localStorage fallback) =====
+async function loadTransactions(){
+  const tbody = document.getElementById('tx-tbody');
+  tbody.innerHTML = '<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  try {
+    const res = await fetch(LMAuth.API_BASE + '/admin/transactions', {
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      STATE.transactions = data.transactions || [];
+    } else {
+      throw new Error('Endpoint not deployed');
+    }
+  } catch (e) {
+    STATE.transactions = lsGet(LS_TX);
+  }
+  renderTransactions();
+  renderFinancials();
+  renderOverview();
+}
+
+function renderTransactions(){
+  const tbody = document.getElementById('tx-tbody');
+  if (!STATE.transactions.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">No transactions yet. Click "+ Add transaction".</td></tr>';
+    return;
+  }
+  tbody.innerHTML = STATE.transactions.slice(0, 50).map(t => `
+    <tr>
+      <td class="muted">${fmtDate(t.date)}</td>
+      <td>${esc(t.customer||'-')}</td>
+      <td>${esc(t.item||'-')}</td>
+      <td><strong>${fmtMoney(t.amount)}</strong></td>
+      <td><span class="tag ${t.status==='paid'?'green':(t.status==='pending'?'orange':'gray')}">${esc(t.status||'paid')}</span></td>
+      <td class="muted">${esc(t.method||'-')}</td>
+    </tr>
+  `).join('');
+}
+
+function renderFinancials(){
+  const tx = STATE.transactions;
+  const paid = tx.filter(t => t.status === 'paid');
+  const recurring = paid.filter(t => /monthly|brief|strategy-os/i.test(t.item||''));
+  const mrr = recurring.reduce((s,t) => s + (Number(t.amount)||0) / (/(annual)/i.test(t.item||'') ? 12 : 1), 0);
+  const arr = mrr * 12;
+  const ytd = paid.filter(t => new Date(t.date).getFullYear() === new Date().getFullYear())
+                  .reduce((s,t) => s + Number(t.amount||0), 0);
+  const thisMonth = paid.filter(t => {
+    const d = new Date(t.date);
+    const n = new Date();
+    return d.getFullYear()===n.getFullYear() && d.getMonth()===n.getMonth();
+  }).reduce((s,t) => s + Number(t.amount||0), 0);
+  const outstanding = tx.filter(t => t.status === 'pending').reduce((s,t) => s + Number(t.amount||0), 0);
+  const activeSubs = new Set(recurring.map(t => t.customer)).size;
+  document.getElementById('fn-mrr').textContent = fmtMoney(Math.round(mrr));
+  document.getElementById('fn-arr').textContent = fmtMoney(Math.round(arr));
+  document.getElementById('fn-active').textContent = activeSubs;
+  document.getElementById('fn-month').textContent = fmtMoney(thisMonth);
+  document.getElementById('fn-ytd').textContent = fmtMoney(ytd);
+  document.getElementById('fn-out').textContent = fmtMoney(outstanding);
+}
+
+function openTxModal(){ openModal('modal-tx'); }
+async function submitTransaction(e){
+  e.preventDefault();
+  const tx = {
+    id: 'tx_' + Date.now(),
+    customer: document.getElementById('tx-customer').value.trim(),
+    item: document.getElementById('tx-item').value,
+    amount: Number(document.getElementById('tx-amount').value),
+    status: document.getElementById('tx-status').value,
+    method: document.getElementById('tx-method').value,
+    notes: document.getElementById('tx-notes').value.trim(),
+    date: new Date().toISOString()
+  };
+  try {
+    const res = await fetch(LMAuth.API_BASE + '/admin/transactions', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(tx)
+    });
+    if (!res.ok) throw new Error('API unavailable');
+  } catch {
+    const all = lsGet(LS_TX);
+    all.unshift(tx);
+    lsSet(LS_TX, all);
+  }
+  closeModal('modal-tx');
+  document.getElementById('txForm').reset();
+  loadTransactions();
+}
+
+function exportTxCSV(){ downloadCSV('transactions.csv', STATE.transactions, ['date','customer','item','amount','status','method','notes']); }
+
+// ===== CHATS (via leomax-valeria-chat worker) =====
+async function loadChats(){
+  const tbody = document.getElementById('chat-tbody');
+  tbody.innerHTML = '<tr><td colspan="4" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  try {
+    const res = await fetch(CHAT_WORKER + '/list?limit=200', {
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
+    });
+    const data = await res.json();
+    STATE.chats = data.sessions || data.conversations || data.items || [];
+  } catch (e) {
+    STATE.chats = [];
+    tbody.innerHTML = `<tr><td colspan="4" class="muted" style="padding:20px;text-align:center">Could not load chats: ${e.message}</td></tr>`;
+    document.getElementById('badge-chats').textContent = 'err';
+    return;
+  }
+  document.getElementById('badge-chats').textContent = STATE.chats.length;
+  renderChats();
+  renderOverview();
+}
+
+function renderChats(){
+  const tbody = document.getElementById('chat-tbody');
+  const q = (document.getElementById('chat-search').value || '').toLowerCase();
+  const list = STATE.chats.filter(c => {
+    if (!q) return true;
+    const hay = JSON.stringify(c).toLowerCase();
+    return hay.includes(q);
+  });
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty">No chat sessions found.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(c => {
+    const preview = (c.lastMessage || (c.messages && c.messages[c.messages.length-1] && c.messages[c.messages.length-1].content) || '').toString().slice(0, 60);
+    const count = (c.messages && c.messages.length) || c.messageCount || c.count || '-';
+    return `
+      <tr class="row" onclick='showChatDetail(${JSON.stringify(c.id||c.sessionId||'').replace(/'/g,"&#39;")})'>
+        <td class="muted">${fmtDate(c.createdAt || c.updatedAt || c.time)}</td>
+        <td>${esc(c.user || c.email || c.userId || '-')}</td>
+        <td><span class="tag gray">${count}</span></td>
+        <td class="muted">${esc(preview || '-')}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+document.getElementById('chat-search').addEventListener('input', renderChats);
+
+async function showChatDetail(id){
+  if (!id) return;
+  try {
+    const res = await fetch(CHAT_WORKER + '/get?id=' + encodeURIComponent(id), {
+      headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
+    });
+    const data = await res.json();
+    const msgs = (data.messages || data.conversation || []).map(m => `
+      <div class="chat-msg ${m.role==='user'?'user':'bot'}">
+        <span class="who">${esc(m.role||'')}</span>
+        ${esc(m.content||m.text||'')}
+      </div>
+    `).join('');
+    document.getElementById('modal-detail-body').innerHTML = `
+      <h2>Chat session</h2>
+      <p class="muted" style="margin:0 0 16px">${esc(data.user||data.email||id)} · ${fmtDate(data.createdAt||data.updatedAt)}</p>
+      <div style="max-height:50vh;overflow-y:auto">${msgs || '<div class="muted">No messages.</div>'}</div>
+      <div class="modal-actions"><button class="btn sec" onclick="closeModal('modal-detail')">Close</button></div>
+    `;
+    openModal('modal-detail');
+  } catch (e) {
+    alert('Could not load chat: ' + e.message);
+  }
+}
+
+// ===== OVERVIEW =====
+function renderOverview(){
+  document.getElementById('ov-customers').textContent = STATE.customers.length;
+  document.getElementById('ov-waitlist').textContent = STATE.waitlist.length;
+  document.getElementById('ov-chats').textContent = STATE.chats.length;
+  const onbCount = STATE.customers.filter(u => u.data && u.data.onboardingComplete).length;
+  document.getElementById('ov-onb').textContent = onbCount;
+  document.getElementById('ov-onb-d').textContent = STATE.customers.length
+    ? `${Math.round(100*onbCount/STATE.customers.length)}% of customers` : 'none yet';
+
+  const paid = STATE.transactions.filter(t => t.status === 'paid');
+  const ytd = paid.filter(t => new Date(t.date).getFullYear() === new Date().getFullYear())
+                  .reduce((s,t) => s + Number(t.amount||0), 0);
+  const recurring = paid.filter(t => /monthly|brief|strategy-os/i.test(t.item||''));
+  const mrr = recurring.reduce((s,t) => s + (Number(t.amount)||0) / (/(annual)/i.test(t.item||'') ? 12 : 1), 0);
+  document.getElementById('ov-mrr').textContent = fmtMoney(Math.round(mrr));
+  document.getElementById('ov-rev').textContent = fmtMoney(ytd);
+
+  // Mix
+  const by = {};
+  STATE.customers.forEach(u => { const v = u.vertical||'other'; by[v] = (by[v]||0)+1; });
+  const grid = document.getElementById('mix-grid');
+  grid.innerHTML = Object.keys(by).length
+    ? Object.entries(by).map(([k,v]) => `<div class="stat"><p class="lbl">${esc(k)}</p><p class="val">${v}</p></div>`).join('')
+    : '<div class="muted" style="padding:20px">No customer data yet.</div>';
+
+  // Activity feed
+  const activity = [];
+  STATE.customers.slice(0,3).forEach(u => activity.push({ when: u.createdAt, type:'signup', label:`${u.name||u.email||'New user'} signed up` }));
+  STATE.transactions.slice(0,3).forEach(t => activity.push({ when: t.date, type:'tx', label:`${t.customer||'Payment'} — ${t.item||''} — ${fmtMoney(t.amount)}` }));
+  STATE.waitlist.slice(0,2).forEach(w => activity.push({ when: w.addedAt, type:'wl', label:`${w.name||w.email||'New entry'} joined waitlist (${w.interest||''})` }));
+  activity.sort((a,b) => new Date(b.when||0) - new Date(a.when||0));
+  const al = document.getElementById('activity-list');
+  al.innerHTML = activity.length
+    ? activity.slice(0,8).map(a => `<div style="padding:10px 0;border-bottom:1px solid var(--line);font-size:14px"><span class="tag ${a.type==='signup'?'green':(a.type==='tx'?'blue':'gray')}">${a.type}</span> ${esc(a.label)} <span class="muted" style="float:right;font-size:12px">${fmtDate(a.when)}</span></div>`).join('')
+    : '<div class="muted">No activity yet.</div>';
+}
+
+// ===== SEO TOOLS =====
+async function submitIndexNow(){
+  const url = document.getElementById('indexnow-url').value.trim();
+  const status = document.getElementById('indexnow-status');
+  if (!url) { status.textContent = 'Enter a URL first.'; return; }
+  status.textContent = 'Submitting...';
+  const payload = {
+    host: 'leomaxglobal.com',
+    key: INDEXNOW_KEY,
+    keyLocation: `https://leomaxglobal.com/${INDEXNOW_KEY}.txt`,
+    urlList: [url]
+  };
+  try {
+    const res = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    status.textContent = `✓ Submitted (HTTP ${res.status}). Bing/Yandex notified.`;
+    status.style.color = 'var(--green)';
+  } catch (e) {
+    status.textContent = 'Error: ' + e.message;
+    status.style.color = 'var(--red)';
+  }
+}
+
+// ===== HELPERS =====
+function fmtDate(iso){
+  if (!iso) return '-';
+  try {
+    return new Date(iso).toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  } catch { return iso; }
+}
+function fmtMoney(n){
+  n = Number(n) || 0;
+  return 'SAR ' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+}
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+
+function downloadCSV(name, rows, cols){
+  if (!rows || !rows.length) { alert('Nothing to export.'); return; }
+  const header = cols.join(',');
+  const body = rows.map(r => cols.map(c => {
+    let v = r[c] == null ? '' : String(r[c]);
+    if (v.includes(',') || v.includes('"') || v.includes('\n')) v = '"' + v.replace(/"/g,'""') + '"';
+    return v;
+  }).join(',')).join('\n');
+  const blob = new Blob([header + '\n' + body], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+}
+
+// ===== BOOT =====
+tryAutoLogin();
 </script>
 
 </body>
