@@ -1,84 +1,24 @@
-const CACHE_NAME = 'leomax-v31';
+// LEOMAX Service Worker — aggressive caching for performance
+// Bump version on every meaningful asset change.
+const CACHE_NAME = 'leomax-v40';
 
-const ASSETS = [
-  './intake-chat.js',
-  './motion.js',
-  './chat-widget.js',
+// Minimal install — pre-cache only the homepage + critical assets.
+// Everything else gets cached on first visit (cache-first runtime).
+const PRECACHE = [
   './LEOMAX_Website_Design.html',
-  './company-about.html',
-  './company-case-studies.html',
-  './company-contact.html',
-  './company-founder.html',
-  './company-process.html',
-  './case-autopoint.html',
-  './case-clenso.html',
-  './case-garage.html',
-  './case-hoolak.html',
-  './case-jambak.html',
-  './case-kbc.html',
-  './case-lanova.html',
-  './case-lsofia.html',
-  './case-nadialamal.html',
-  './case-nourish.html',
-  './case-ramsees.html',
-  './case-redstudio.html',
-  './case-regional.html',
-  './system-01-growth.html',
-  './system-02-ai.html',
-  './system-03-marketing.html',
-  './system-04-content.html',
-  './system-05-launch.html',
+  './monochrome.css',
+  './leomax-nav.js',
   './manifest.json',
-  './PHOTO-2025-12-12-11-14-59.jpg',
-  './team.html',
-  './team/dr-anas-photo.png',
-  './team/dr-anas.png',
-  './team/kaya-haddad.png',
-  './team/rita-nasser.png',
-  './team/rami-khalidi.png',
-  './team/haya-kuwari.png',
-  './team/laith-darwish.png',
-  './team/hani-masry.png',
-  './team/kamilia-fouad.png',
-  './team/yasin-sherif.png',
-  './team/mashari-otaibi.png',
-  './team/elhanouf-harbi.png',
-  './team/mira-mansoori.png',
-  './team/miral-hakimi.png',
-  './team/valeria-moreno.png',
-  './team/team-group.png',
-  './team/team-office.png',
-  './clients/clenso.png',
-  './clients/autopoint.png',
-  './clients/regional.png',
-  './clients/kbc.png',
-  './clients/jambak.png',
-  './clients/awc.png',
-  './blog.html',
-  './blog-strategy-why-most-strategic-plans-fail.html',
-  './blog-ai-what-businesses-get-wrong-about-ai.html',
-  './blog-finance-cash-flow-is-not-profit.html',
-  './blog-marketing-brand-before-campaigns.html',
-  './blog-operations-the-cost-of-undocumented-processes.html',
-  './blog-growth-pipeline-is-a-system-not-a-list.html',
-  './blog-investment-what-investors-look-for.html',
-  './blog-sustainability-esg-is-now-a-business-requirement.html',
-  './blog-expansion-why-regional-expansion-fails.html',
-  './blog-supply-chain-resilience-not-efficiency.html',
-  './blog-innovation-ideas-that-never-ship.html',
-  './blog-strategy-90-days-to-a-real-system.html',
-  './podcast.html'
+  './logo.png'
 ];
 
-// Install: cache all assets
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE)).catch(()=>{})
   );
   self.skipWaiting();
 });
 
-// Activate: clean old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -88,29 +28,48 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch: network-first for HTML, cache-first for assets
+// Strategy:
+//   - HTML: network-first (always get latest, fallback to cache)
+//   - Images / fonts / static assets: cache-first (long TTL — fixes "Use efficient cache lifetimes")
+//   - 3rd-party (calendly): pass-through, no cache
 self.addEventListener('fetch', event => {
-  const isHTML = event.request.destination === 'document' ||
-                 event.request.url.endsWith('.html');
+  const req = event.request;
+  const url = new URL(req.url);
+
+  // Don't intercept POST / non-GET requests
+  if (req.method !== 'GET') return;
+
+  // Don't cache cross-origin (calendly, analytics, etc.)
+  if (url.origin !== location.origin) return;
+
+  const isHTML = req.destination === 'document' ||
+                 url.pathname.endsWith('.html') ||
+                 url.pathname === '/' ||
+                 url.pathname === '';
 
   if (isHTML) {
     // Network-first: always get latest HTML, fallback to cache
     event.respondWith(
-      fetch(event.request).then(response => {
-        const clone = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        return response;
-      }).catch(() => caches.match(event.request))
+      fetch(req).then(resp => {
+        if (resp && resp.status === 200) {
+          const clone = resp.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, clone)).catch(()=>{});
+        }
+        return resp;
+      }).catch(() => caches.match(req).then(m => m || caches.match('./LEOMAX_Website_Design.html')))
     );
   } else {
-    // Cache-first for images, fonts, etc.
+    // Cache-first for everything else (images, CSS, JS, fonts)
     event.respondWith(
-      caches.match(event.request).then(cached => {
-        return cached || fetch(event.request).then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          return response;
-        });
+      caches.match(req).then(cached => {
+        if (cached) return cached;
+        return fetch(req).then(resp => {
+          if (resp && resp.status === 200) {
+            const clone = resp.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(req, clone)).catch(()=>{});
+          }
+          return resp;
+        }).catch(() => cached);
       })
     );
   }

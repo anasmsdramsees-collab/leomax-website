@@ -682,16 +682,30 @@ section:not(.hero):not(.hero-section) h3{color:var(--black)}
 }
 
 </style>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" defer ></script>
+<!-- Calendly assets — load lazily on first interaction (not blocking) -->
+<link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 <script>
+let _calendlyLoaded=false;
+function _loadCalendly(cb){
+  if(_calendlyLoaded){cb&&cb();return}
+  _calendlyLoaded=true;
+  const s=document.createElement('script');
+  s.src='https://assets.calendly.com/assets/external/widget.js';
+  s.async=true;s.onload=cb;
+  document.head.appendChild(s);
+}
 function openCalendly(){
-  if(typeof Calendly==='undefined'){setTimeout(openCalendly,300);return false;}
-  Calendly.initPopupWidget({url:'https://calendly.com/leomaxglobalsa/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1'});
+  _loadCalendly(()=>{
+    if(typeof Calendly==='undefined'){setTimeout(openCalendly,200);return}
+    Calendly.initPopupWidget({url:'https://calendly.com/leomaxglobalsa/30min?background_color=010B1C&text_color=D4D4D4&primary_color=B8B8B8&hide_gdpr_banner=1'});
+  });
   return false;
 }
 </script>
-<link rel="stylesheet" href="monochrome.css">
+<!-- monochrome.css — load non-blocking (homepage has inline CSS already) -->
+<link rel="preload" href="monochrome.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="monochrome.css"></noscript>
 <meta name="description" content="Saudi business development - engineered for results. Three clear paths: BD & enterprise access, investor readiness, and operating systems built in 90 days.">
 <link rel="preconnect" href="https://assets.calendly.com">
 <link rel="preconnect" href="https://calendly.com">
@@ -759,7 +773,7 @@ function openCalendly(){
 
 <!--  NAV  -->
 <nav>
-  <a class="nav-logo" href="#"><img src="logo.png" alt="LEOMAX" style="height:40px;width:auto;display:block"></a>
+  <a class="nav-logo" href="#"><img src="logo.png" alt="LEOMAX" style="height:40px;width:auto;display:block" fetchpriority="high" decoding="async"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="systems.html">Systems</a></li>
@@ -781,7 +795,7 @@ function openCalendly(){
 
   <div class="hero-badge"><span class="badge-dot"></span>Saudi Business Development · Riyadh, KSA</div>
 
-    <div class="hero-lion-wrap" style="width:160px;height:160px;margin:0 auto 24px;position:relative;z-index:1"><img src="icons/icon-512.png" alt="LEOMAX Lion" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(184,184,184,.2))"></div>
+    <div class="hero-lion-wrap" style="width:160px;height:160px;margin:0 auto 24px;position:relative;z-index:1"><img src="icons/icon-512.png" alt="LEOMAX Lion" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(184,184,184,.2))" fetchpriority="high" decoding="async"></div>
 
   <h1>LEOMAX</h1>
   <p class="hero-by">by Anas Elimam</p>
