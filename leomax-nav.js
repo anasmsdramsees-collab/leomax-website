@@ -87,7 +87,8 @@
           title: 'About',
           items: [
             { name: 'About LEOMAX',           desc: 'Why we exist.',                     href: 'company-about.html' },
-            { name: 'Anas Elimam',            desc: 'Founder.',                          href: 'company-founder.html' },
+            { name: 'Dr. Anas Elimam',        desc: 'Founder profile.',                  href: 'anas-elimam.html' },
+            { name: 'Anas at LEOMAX',         desc: 'The founder role.',                 href: 'company-founder.html' },
             { name: 'Process',                desc: 'How we engage.',                    href: 'company-process.html' },
             { name: 'Team',                   desc: 'The operators behind LEOMAX.',      href: 'team.html' },
           ]

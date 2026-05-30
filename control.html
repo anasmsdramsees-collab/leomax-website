@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Control Panel — LEOMAX</title>
+<link rel="stylesheet" href="monochrome.css">
+<style>
+:root {
+  --bg: #fbfbfd;
+  --surface: #fff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(0,0,0,.08);
+  --blue: #0071e3;
+  --green: #34c759;
+  --orange: #ff9500;
+  --red: #ff3b30;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -.012em;
+  min-height: 100vh;
+}
+
+/* Header */
+.cp-header {
+  background: #000;
+  color: #f5f5f7;
+  padding: 32px 32px 28px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.cp-header .row {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cp-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cp-header .brand .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+.cp-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  margin: 0;
+}
+.cp-header .sub {
+  font-size: 13px;
+  color: #86868b;
+  margin-top: 2px;
+}
+.cp-header .who { font-size: 14px; color: #86868b; }
+.cp-header .who strong { color: #f5f5f7; }
+
+/* Layout */
+.cp-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Stat grid */
+.cp-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.cp-stat {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
+}
+.cp-stat .label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+.cp-stat .value {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  color: var(--text);
+  margin: 0;
+  line-height: 1;
+}
+.cp-stat .delta {
+  font-size: 12px;
+  color: var(--green);
+  margin-top: 6px;
+  font-weight: 500;
+}
+.cp-stat .delta.warn { color: var(--orange); }
+
+/* Sections */
+.cp-section {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 1px var(--line);
+}
+.cp-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+.cp-section .desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+
+/* Action grid */
+.cp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.cp-link {
+  display: block;
+  padding: 16px 18px;
+  background: var(--bg);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 0 0 1px var(--line);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.cp-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.06), 0 0 0 1px rgba(0,113,227,.4);
+  background: #fff;
+}
+.cp-link .lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+.cp-link .title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -.012em;
+}
+.cp-link .meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.cp-link.accent {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: none;
+}
+.cp-link.accent .lbl, .cp-link.accent .title, .cp-link.accent .meta { color: #fff; }
+.cp-link.accent .lbl { color: rgba(255,255,255,.7); }
+
+/* Search box */
+.cp-search {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  outline: none;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  letter-spacing: -.012em;
+}
+.cp-search:focus { border-color: var(--blue); }
+
+/* Page list */
+.cp-pages {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-top: 16px;
+  border-radius: 12px;
+  background: var(--bg);
+  padding: 8px;
+}
+.cp-pages a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.cp-pages a:hover { background: #fff; box-shadow: 0 0 0 1px var(--line); }
+.cp-pages a .url { color: var(--muted); font-size: 12px; }
+
+/* Buttons */
+.cp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: -.01em;
+  transition: background .15s ease;
+}
+.cp-btn:hover { background: #0077ed; }
+.cp-btn.secondary { background: var(--bg); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+.cp-btn.secondary:hover { background: #fff; }
+.cp-btn.danger { background: var(--red); }
+
+/* Two-col on wide */
+@media (min-width: 980px) {
+  .cp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .cp-two > .cp-section { margin-bottom: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="cp-header">
+  <div class="row">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <h1>Control Panel</h1>
+        <div class="sub">leomaxglobal.com · all systems operational</div>
+      </div>
+    </div>
+    <div class="who">Signed in as <strong>Dr. Anas Elimam</strong></div>
+  </div>
+</header>
+
+<main class="cp-wrap">
+
+  <!-- Stat row -->
+  <div class="cp-stats">
+    <div class="cp-stat">
+      <p class="label">Indexed pages</p>
+      <p class="value" id="stat-pages">87</p>
+      <p class="delta">+ sitemap up to date</p>
+    </div>
+    <div class="cp-stat">
+      <p class="label">Person sameAs</p>
+      <p class="value">6</p>
+      <p class="delta">LinkedIn · X · Instagram + 3 site</p>
+    </div>
+    <div class="cp-stat">
+      <p class="label">SEO clean pages</p>
+      <p class="value">60 / 83</p>
+      <p class="delta">72% — strong</p>
+    </div>
+    <div class="cp-stat">
+      <p class="label">Last deploy</p>
+      <p class="value" id="stat-deploy">just now</p>
+      <p class="delta">GitHub Pages · CDN warm</p>
+    </div>
+  </div>
+
+  <!-- SEO & indexing -->
+  <section class="cp-section">
+    <h2>SEO &amp; Indexing</h2>
+    <p class="desc">Submit URLs, check verification, view sitemap.</p>
+    <div class="cp-grid">
+      <a class="cp-link accent" href="https://search.google.com/search-console" target="_blank">
+        <span class="lbl">Google</span>
+        <span class="title">Search Console</span>
+        <span class="meta">Verify · Sitemap · URL Inspection</span>
+      </a>
+      <a class="cp-link" href="https://www.bing.com/webmasters" target="_blank">
+        <span class="lbl">Bing</span>
+        <span class="title">Webmaster Tools</span>
+        <span class="meta">Indexed pages · backlinks</span>
+      </a>
+      <a class="cp-link" href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fleomaxglobal.com%2Fanas-elimam.html" target="_blank">
+        <span class="lbl">Test</span>
+        <span class="title">Rich Results</span>
+        <span class="meta">Validate Person schema</span>
+      </a>
+      <a class="cp-link" href="https://leomaxglobal.com/sitemap.xml" target="_blank">
+        <span class="lbl">XML</span>
+        <span class="title">Sitemap</span>
+        <span class="meta">87 URLs · last updated today</span>
+      </a>
+      <a class="cp-link" href="https://leomaxglobal.com/robots.txt" target="_blank">
+        <span class="lbl">Crawl</span>
+        <span class="title">robots.txt</span>
+        <span class="meta">Allow all · sitemap reference</span>
+      </a>
+      <a class="cp-link" href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fleomaxglobal.com" target="_blank">
+        <span class="lbl">Perf</span>
+        <span class="title">PageSpeed Insights</span>
+        <span class="meta">Core Web Vitals</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="cp-two">
+
+    <!-- Brand -->
+    <section class="cp-section">
+      <h2>Brand &amp; Identity</h2>
+      <p class="desc">Your canonical identity surfaces.</p>
+      <div class="cp-grid">
+        <a class="cp-link" href="anas-elimam.html">
+          <span class="lbl">Person</span>
+          <span class="title">Dr. Anas Elimam</span>
+          <span class="meta">Canonical personal page</span>
+        </a>
+        <a class="cp-link" href="company-founder.html">
+          <span class="lbl">Role</span>
+          <span class="title">Founder at LEOMAX</span>
+          <span class="meta">Company-context bio</span>
+        </a>
+        <a class="cp-link" href="company-about.html">
+          <span class="lbl">Org</span>
+          <span class="title">About LEOMAX</span>
+          <span class="meta">Why we exist</span>
+        </a>
+        <a class="cp-link" href="team.html">
+          <span class="lbl">Team</span>
+          <span class="title">Team page</span>
+          <span class="meta">Operators behind LEOMAX</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="cp-section">
+      <h2>Products &amp; Systems</h2>
+      <p class="desc">The six operating systems and subscriptions.</p>
+      <div class="cp-grid">
+        <a class="cp-link" href="systems.html">
+          <span class="lbl">Lineup</span>
+          <span class="title">All systems</span>
+          <span class="meta">6 products · SAR pricing</span>
+        </a>
+        <a class="cp-link" href="brief.html">
+          <span class="lbl">Subscription</span>
+          <span class="title">The LEOMAX Brief</span>
+          <span class="meta">4 verticals · SAR 599/mo</span>
+        </a>
+        <a class="cp-link" href="strategy-os.html">
+          <span class="lbl">SaaS</span>
+          <span class="title">Strategy OS</span>
+          <span class="meta">Founder operating system</span>
+        </a>
+        <a class="cp-link" href="services-pricing.html">
+          <span class="lbl">Pricing</span>
+          <span class="title">Services &amp; pricing</span>
+          <span class="meta">All offers in one place</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Admin -->
+  <section class="cp-section">
+    <h2>Strategy OS · Admin</h2>
+    <p class="desc">Internal admin surfaces (private).</p>
+    <div class="cp-grid">
+      <a class="cp-link" href="strategy-os-admin.html">
+        <span class="lbl">SOS</span>
+        <span class="title">Strategy OS admin</span>
+        <span class="meta">Users · sessions · KV store</span>
+      </a>
+      <a class="cp-link" href="admin-strategy-os.html">
+        <span class="lbl">SOS</span>
+        <span class="title">Admin dashboard</span>
+        <span class="meta">Strategy OS oversight</span>
+      </a>
+      <a class="cp-link" href="admin-chats.html">
+        <span class="lbl">Chats</span>
+        <span class="title">Chat admin</span>
+        <span class="meta">Conversation history</span>
+      </a>
+      <a class="cp-link" href="dashboard.html">
+        <span class="lbl">User</span>
+        <span class="title">User dashboard</span>
+        <span class="meta">What users see post-login</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sample artifacts -->
+  <section class="cp-section">
+    <h2>Sample artifacts</h2>
+    <p class="desc">What prospects see before buying.</p>
+    <div class="cp-grid">
+      <a class="cp-link" href="sample-readiness.html">
+        <span class="lbl">Sample</span>
+        <span class="title">Readiness reports</span>
+        <span class="meta">13 KSA startup cases</span>
+      </a>
+      <a class="cp-link" href="sample-account-brief.html">
+        <span class="lbl">Sample</span>
+        <span class="title">Account briefs</span>
+        <span class="meta">7 KSA enterprise targets</span>
+      </a>
+      <a class="cp-link" href="company-case-studies.html">
+        <span class="lbl">Real</span>
+        <span class="title">Case studies</span>
+        <span class="meta">13 founder ventures</span>
+      </a>
+      <a class="cp-link" href="blog.html">
+        <span class="lbl">Journal</span>
+        <span class="title">Blog</span>
+        <span class="meta">32+ essays</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Social presence -->
+  <section class="cp-section">
+    <h2>Social presence</h2>
+    <p class="desc">Linked in Person schema sameAs — keep website URL in each profile.</p>
+    <div class="cp-grid">
+      <a class="cp-link" href="https://www.linkedin.com/in/anas-sharif-elimam-a52530193" target="_blank">
+        <span class="lbl">LinkedIn</span>
+        <span class="title">Anas Sharif Elimam</span>
+        <span class="meta">Profile page</span>
+      </a>
+      <a class="cp-link" href="https://x.com/anasimam_" target="_blank">
+        <span class="lbl">X / Twitter</span>
+        <span class="title">@anasimam_</span>
+        <span class="meta">Profile page</span>
+      </a>
+      <a class="cp-link" href="https://www.instagram.com/anas_ramsees" target="_blank">
+        <span class="lbl">Instagram</span>
+        <span class="title">@anas_ramsees</span>
+        <span class="meta">Profile page</span>
+      </a>
+      <a class="cp-link" href="https://calendly.com/leomaxglobalsa/30min" target="_blank">
+        <span class="lbl">Calendar</span>
+        <span class="title">Calendly</span>
+        <span class="meta">30-minute booking</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Page search -->
+  <section class="cp-section">
+    <h2>All pages</h2>
+    <p class="desc">Search and jump to any of the 87 site pages.</p>
+    <input class="cp-search" id="pageSearch" placeholder="Search pages... (e.g. growth, brief, founder)" oninput="filterPages()">
+    <div class="cp-pages" id="pageList"></div>
+  </section>
+
+  <!-- Footer -->
+  <p style="text-align:center;color:var(--muted);font-size:12px;padding:20px 0">
+    Private control panel · noindex · last loaded <span id="now"></span>
+  </p>
+
+</main>
+
+<script>
+// Page catalog
+const PAGES = [
+  ["Homepage", "LEOMAX_Website_Design.html"],
+  ["Anas Elimam (personal)", "anas-elimam.html"],
+  ["About LEOMAX", "company-about.html"],
+  ["Founder at LEOMAX", "company-founder.html"],
+  ["Process", "company-process.html"],
+  ["Team", "team.html"],
+  ["Contact", "company-contact.html"],
+  ["Case studies (index)", "company-case-studies.html"],
+  ["Systems lineup", "systems.html"],
+  ["Strategy OS", "strategy-os.html"],
+  ["The LEOMAX Brief", "brief.html"],
+  ["Brief — Family office", "brief-family-office.html"],
+  ["Brief — Logistics", "brief-logistics.html"],
+  ["Brief — F&B", "brief-fnb.html"],
+  ["Brief — Healthcare", "brief-healthcare.html"],
+  ["Services & pricing", "services-pricing.html"],
+  ["BD services", "bd-services.html"],
+  ["Investor services", "investor-services.html"],
+  ["Account brief service", "account-brief.html"],
+  ["Advisory board", "advisory-board.html"],
+  ["Podcast", "podcast.html"],
+  ["Blog (index)", "blog.html"],
+  ["Sample — Readiness", "sample-readiness.html"],
+  ["Sample — Account brief", "sample-account-brief.html"],
+  ["Sample — Readiness Madar", "sample-readiness-madar.html"],
+  ["System 01 — Growth", "system-01-growth.html"],
+  ["System 02 — AI", "system-02-ai.html"],
+  ["System 03 — Marketing", "system-03-marketing.html"],
+  ["System 04 — Content", "system-04-content.html"],
+  ["System 05 — Launch", "system-05-launch.html"],
+  ["Framework 01 — 90-day reset", "framework-01-90day-reset.html"],
+  ["Framework 02 — AI readiness", "framework-02-ai-readiness.html"],
+  ["Framework 03 — Brand positioning", "framework-03-brand-positioning.html"],
+  ["Framework 04 — B2B pipeline", "framework-04-b2b-pipeline.html"],
+  ["Framework 05 — Content system", "framework-05-content-system.html"],
+  ["Framework 06 — Launch playbook", "framework-06-launch-playbook.html"],
+  ["Case — Madar", "case-madar.html"],
+  ["Case — Hoolak", "case-hoolak.html"],
+  ["Case — Jambak", "case-jambak.html"],
+  ["Case — Autopoint", "case-autopoint.html"],
+  ["Case — Ramsees", "case-ramsees.html"],
+  ["Case — Nourish", "case-nourish.html"],
+  ["Case — KBC", "case-kbc.html"],
+  ["Case — Clenso", "case-clenso.html"],
+  ["Case — Garage", "case-garage.html"],
+  ["Case — L'Sofia", "case-lsofia.html"],
+  ["Case — Lanova", "case-lanova.html"],
+  ["Case — Nadia Lamal", "case-nadialamal.html"],
+  ["Case — Red Studio", "case-redstudio.html"],
+  ["Case — Regional", "case-regional.html"],
+  ["Strategy OS — Login", "strategy-os-login.html"],
+  ["Strategy OS — Signup", "strategy-os-signup.html"],
+  ["Strategy OS — Onboarding", "strategy-os-onboarding.html"],
+  ["Strategy OS — Dashboard", "strategy-os-dashboard.html"],
+  ["Strategy OS — Admin", "strategy-os-admin.html"],
+  ["Admin — Strategy OS", "admin-strategy-os.html"],
+  ["Admin — Chats", "admin-chats.html"]
+];
+
+function renderPages(items){
+  const list = document.getElementById("pageList");
+  list.innerHTML = items.map(p =>
+    `<a href="${p[1]}"><span>${p[0]}</span><span class="url">/${p[1]}</span></a>`
+  ).join("");
+}
+function filterPages(){
+  const q = document.getElementById("pageSearch").value.toLowerCase().trim();
+  if (!q) return renderPages(PAGES);
+  renderPages(PAGES.filter(p => p[0].toLowerCase().includes(q) || p[1].toLowerCase().includes(q)));
+}
+renderPages(PAGES);
+
+// Live timestamp
+document.getElementById("now").textContent = new Date().toLocaleString("en-GB", {
+  dateStyle: "medium", timeStyle: "short"
+});
+</script>
+
+</body>
+</html>
