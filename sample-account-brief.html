@@ -24,10 +24,20 @@ nav .brand-text strong{color:#1d1d1f}
 .sample-banner{background:#FFF7E6;border-bottom:1px solid #FFE4A0;padding:10px 64px;text-align:center;font-size:13px;color:#7A5C00}
 .sample-banner strong{color:#5C4400}
 
-.case-picker{padding:14px 64px;background:#fafafa;border-bottom:1px solid #e5e5ea;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.case-picker label{font-size:12px;color:#86868b;font-weight:500}
-.case-picker select{padding:7px 12px;border-radius:980px;border:1px solid #d2d2d7;background:#fff;font-size:13px;color:#1d1d1f;cursor:pointer;font-family:inherit}
-.case-picker .hint{font-size:11px;color:#86868b;margin-left:auto}
+.case-picker{display:none !important}
+.cases-head{padding:48px 64px 8px;max-width:1280px;margin:0 auto;text-align:center}
+.cases-head h1{font-size:clamp(34px,4vw,52px);font-weight:600;letter-spacing:-.024em;color:#1d1d1f;line-height:1.05;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+.cases-head p{font-size:17px;color:#6e6e73;line-height:1.4;letter-spacing:-.012em;font-weight:400;max-width:600px;margin:0 auto;font-family:inherit}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding:32px 64px 64px;max-width:1280px;margin:0 auto}
+.case-card{background:#fbfbfd;border-radius:18px;padding:28px;cursor:pointer;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.05);display:flex;flex-direction:column;border:none;font-family:inherit}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 16px 32px rgba(0,0,0,.08)}
+.case-card-name{font-size:21px;font-weight:600;letter-spacing:-.022em;color:#1d1d1f;margin-bottom:6px;line-height:1.1}
+.case-card-sector{font-size:13px;color:#6e6e73;margin-bottom:18px;letter-spacing:-.005em;line-height:1.4}
+.case-card-meta{display:flex;gap:6px;font-size:11px;color:#1d1d1f;margin-bottom:18px;flex-wrap:wrap}
+.case-card-meta span{padding:3px 9px;background:rgba(0,0,0,.05);border-radius:980px;letter-spacing:-.005em}
+.case-card-cta{font-size:13px;color:#0071e3;margin-top:auto;letter-spacing:-.005em;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 0;background:transparent;border:none;font-size:14px;color:#0071e3;cursor:pointer;font-family:inherit;letter-spacing:-.005em;text-decoration:none;margin:24px 64px 0;transition:opacity .15s}
+.back-btn:hover{opacity:.7}
 
 .hero{background:#000;color:#fff;padding:clamp(80px,12vh,120px) 64px;text-align:center}
 .hero .pill{display:inline-block;background:rgba(255,255,255,.1);color:#f5f5f7;padding:6px 16px;border-radius:980px;font-size:13px;font-weight:500;margin-bottom:24px}
@@ -166,7 +176,16 @@ footer{background:#000;color:#86868b;padding:32px 64px;text-align:center;font-si
   <span class="hint">Same framework, applied to different KSA targets.</span>
 </div>
 
-<div id="content"></div>
+<div class="cases-head" id="cases-head">
+  <h1>Sample Account Briefs.</h1>
+  <p>Each card is one KSA target. Tap any company to see the full intelligence brief - decision makers, recent activity, buying signals.</p>
+</div>
+
+<div id="cases-grid" class="cases-grid"></div>
+
+<a class="back-btn" id="back-btn" style="display:none" onclick="showGrid();return false;" href="#">‹ Back to companies</a>
+
+<div id="content" style="display:none"></div>
 
 <div class="cta-section">
   <h2>Get a brief on the company YOU want to reach.</h2>
@@ -564,18 +583,50 @@ function render(id) {
   window.scrollTo(0, 0);
 }
 
-function initPicker() {
-  const select = document.getElementById('caseSelect');
-  Object.keys(TARGETS).forEach(id => {
-    const opt = document.createElement('option');
-    opt.value = id;
-    opt.textContent = TARGETS[id].name + ' - ' + TARGETS[id].sector.split('·')[0].trim();
-    select.appendChild(opt);
-  });
-  select.value = getId();
-  render(getId());
+/* Build cards grid (replaces the old dropdown picker) */
+function buildGrid() {
+  const grid = document.getElementById('cases-grid');
+  const sorted = Object.keys(TARGETS).sort((a,b) => TARGETS[a].name.localeCompare(TARGETS[b].name));
+  grid.innerHTML = sorted.map(id => {
+    const t = TARGETS[id];
+    return `<div class="case-card" onclick="showCase('${id}')">
+      <h3 class="case-card-name">${t.name}</h3>
+      <p class="case-card-sector">${t.sector || ''}</p>
+      <div class="case-card-meta">
+        ${t.hq ? '<span>'+t.hq+'</span>' : ''}
+        ${t.revenue ? '<span>'+t.revenue+'</span>' : ''}
+        ${t.employees ? '<span>'+t.employees+'</span>' : ''}
+      </div>
+      <span class="case-card-cta">View brief →</span>
+    </div>`;
+  }).join('');
 }
-initPicker();
+
+function showCase(id) {
+  render(id);
+  document.getElementById('cases-head').style.display = 'none';
+  document.getElementById('cases-grid').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+  document.getElementById('back-btn').style.display = 'inline-flex';
+  history.replaceState({}, '', '?id=' + id);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showGrid() {
+  document.getElementById('cases-head').style.display = 'block';
+  document.getElementById('cases-grid').style.display = 'grid';
+  document.getElementById('content').style.display = 'none';
+  document.getElementById('back-btn').style.display = 'none';
+  history.replaceState({}, '', window.location.pathname);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildGrid();
+// If URL has ?id=, open that target directly (so deep links still work)
+const urlId = getId();
+if (urlId && TARGETS[urlId] && window.location.search.includes('id=')) {
+  showCase(urlId);
+}
 </script>
 <script src="business-hours.js"></script>
 <script src="leomax-nav.js"></script>
