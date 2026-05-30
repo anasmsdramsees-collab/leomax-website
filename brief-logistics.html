@@ -55,11 +55,13 @@ section{padding:100px 64px}
 .bullets{counter-reset:b}
 
 /* SAMPLE */
-.sample-paper{max-width:740px;margin:0 auto;background:#FFFFFF;border:1px solid #DDE4ED;padding:56px 64px;font-family:Georgia,serif;line-height:1.85;box-shadow:0 8px 32px rgba(1,11,28,.06)}
-.sample-meta{font-family:'SF Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--lgray);margin-bottom:24px}
-.sample-title{font-family:-apple-system,'SF Pro Display',sans-serif;font-size:34px;font-weight:900;color:var(--black);letter-spacing:-.5px;line-height:1.15;margin-bottom:14px}
-.sample-sub{font-style:italic;color:var(--lgray);margin-bottom:32px;font-size:16px}
-.sample-body p{font-size:16px;color:var(--black);margin-bottom:18px}
+.sample-paper{max-width:740px;margin:0 auto;background:#1d1d1f;border:none;border-radius:22px;padding:56px 64px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;line-height:1.7;box-shadow:0 4px 12px rgba(0,0,0,.1),0 24px 60px rgba(0,0,0,.18);color:#f5f5f7;position:relative;overflow:hidden}
+.sample-paper::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.12) 50%,transparent 100%)}
+.sample-logo{height:32px;width:auto;display:block;margin:0 0 32px 0;filter:brightness(0) invert(1);opacity:.9}
+.sample-meta{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;font-size:12px;letter-spacing:-.005em;color:#86868b;margin-bottom:20px;font-weight:500;text-transform:none}
+.sample-title{font-family:-apple-system,'SF Pro Display',sans-serif;font-size:34px;font-weight:600;color:#f5f5f7;letter-spacing:-.024em;line-height:1.15;margin-bottom:12px}
+.sample-sub{font-style:normal;color:#86868b;margin-bottom:28px;font-size:17px;font-weight:400;letter-spacing:-.012em}
+.sample-body p{font-size:16px;color:#f5f5f7;margin-bottom:14px;font-weight:400;letter-spacing:-.005em;line-height:1.55}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:920px;margin:0 auto}
@@ -149,6 +151,7 @@ footer{background:var(--black);border-top:1px solid rgba(184,184,184,.08);paddin
     </p>
   </div>
   <div class="sample-paper">
+    <img class="sample-logo" src="logo.png" alt="LEOMAX">
     <div class="sample-meta">THE LEOMAX BRIEF · LOGISTICS · ISSUE 14 · SUNDAY 25 MAY 2026</div>
     <h3 class="sample-title">The TGA Quietly Shifted on Last-Mile Permits</h3>
     <p class="sample-sub">What it means, who benefits, what to watch.</p>
