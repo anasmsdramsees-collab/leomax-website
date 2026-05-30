@@ -697,19 +697,46 @@ function showApp(){
   document.getElementById('app').classList.add('show');
 }
 
-async function tryAutoLogin(){
-  if (!window.LMAuth || !LMAuth.isLoggedIn()) { showLogin(); return; }
+// ===== OWNER AUTH (local gate) =====
+// Owner credentials. SHA-256 hash of "123456".
+// To change: update OWNER_EMAIL below, then compute new hash:
+//   echo -n "newpassword" | shasum -a 256
+const OWNER_EMAIL = 'leomaxglobalsa@gmail.com';
+const OWNER_PWD_HASH = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'; // sha256("123456")
+const SESSION_KEY = 'leomax_cp_session';
+
+async function sha256(text) {
+  const buf = new TextEncoder().encode(text);
+  const hashBuf = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function setSession() {
+  try { localStorage.setItem(SESSION_KEY, String(Date.now())); } catch {}
+}
+function hasSession() {
+  try { return Boolean(localStorage.getItem(SESSION_KEY)); } catch { return false; }
+}
+function clearSession() {
+  try { localStorage.removeItem(SESSION_KEY); } catch {}
+}
+
+// Optionally also sign into the Worker (LMAuth) silently so real data loads.
+// If the Worker login fails (e.g. account doesn't exist there), we still
+// open the panel — local data via localStorage will be used instead.
+async function tryWorkerSignIn(email, pwd) {
   try {
-    const user = await LMAuth.me();
-    STATE.user = user;
-    document.getElementById('whoEmail').textContent = user.email || 'unknown';
-    document.getElementById('whoRole').textContent = user.role || 'admin';
-    showApp();
-    loadAll();
-  } catch (e) {
-    LMAuth.clearToken();
-    showLogin();
-  }
+    if (window.LMAuth) await LMAuth.login(email, pwd);
+  } catch {}
+}
+
+async function tryAutoLogin(){
+  if (!hasSession()) { showLogin(); return; }
+  STATE.user = { email: OWNER_EMAIL, role: 'owner' };
+  document.getElementById('whoEmail').textContent = OWNER_EMAIL;
+  document.getElementById('whoRole').textContent = 'owner';
+  showApp();
+  loadAll();
 }
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -720,12 +747,18 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   btn.disabled = true;
   btn.textContent = 'Signing in...';
   try {
-    const email = document.getElementById('loginEmail').value.trim();
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
     const pwd = document.getElementById('loginPwd').value;
-    const res = await LMAuth.login(email, pwd);
-    STATE.user = res.user;
-    document.getElementById('whoEmail').textContent = res.user.email;
-    document.getElementById('whoRole').textContent = res.user.role || 'admin';
+    const pwdHash = await sha256(pwd);
+    if (email !== OWNER_EMAIL.toLowerCase() || pwdHash !== OWNER_PWD_HASH) {
+      throw new Error('Invalid email or password.');
+    }
+    setSession();
+    STATE.user = { email: OWNER_EMAIL, role: 'owner' };
+    document.getElementById('whoEmail').textContent = OWNER_EMAIL;
+    document.getElementById('whoRole').textContent = 'owner';
+    // Silently attempt Worker login so customer/chat data can stream from /admin endpoints
+    tryWorkerSignIn(email, pwd);
     showApp();
     loadAll();
   } catch (ex) {
@@ -738,7 +771,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 });
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-  try { await LMAuth.logout(); } catch {}
+  clearSession();
+  try { if (window.LMAuth) await LMAuth.logout(); } catch {}
   showLogin();
 });
 
