@@ -1,6 +1,6 @@
 // LEOMAX Service Worker — aggressive caching for performance
 // Bump version on every meaningful asset change.
-const CACHE_NAME = 'leomax-v43';
+const CACHE_NAME = 'leomax-v44';
 
 // Minimal install — pre-cache only the homepage + critical assets.
 // Everything else gets cached on first visit (cache-first runtime).
