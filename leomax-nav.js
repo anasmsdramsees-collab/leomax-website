@@ -263,6 +263,9 @@
     return e;
   }
 
+  // Force-hidden inline styles - can't be overridden by any external CSS.
+  const HIDDEN_STYLE = 'display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;position:fixed !important;top:-9999px !important;left:-9999px !important;';
+
   function buildDropdown(menu, idx) {
     const cols = menu.sections.map(section => {
       const items = section.items.map(it => {
@@ -279,9 +282,10 @@
         el('ul', { class: 'lm-dropdown-list' }, items)
       ]);
     });
-    return el('div', { class: 'lm-dropdown', 'data-idx': idx }, [
+    const dropdown = el('div', { class: 'lm-dropdown', 'data-idx': idx, style: HIDDEN_STYLE }, [
       el('div', { class: 'lm-dropdown-inner' }, cols)
     ]);
+    return dropdown;
   }
 
   function chevronSvg() {
@@ -416,12 +420,13 @@
     const dropdowns = MENU.map((m, i) => buildDropdown(m, i));
     dropdowns.forEach(d => host.appendChild(d));
 
-    // Backdrop
-    const backdrop = el('div', { class: 'lm-backdrop' });
+    // Backdrop — force-hidden inline so nothing can override
+    const backdrop = el('div', { class: 'lm-backdrop', style: HIDDEN_STYLE });
     host.appendChild(backdrop);
 
-    // Mobile drawer
+    // Mobile drawer — force-hidden inline
     const mobile = buildMobile();
+    mobile.setAttribute('style', HIDDEN_STYLE);
     host.appendChild(mobile);
 
     // Spacer to push content below fixed nav
@@ -434,12 +439,17 @@
     let openIdx = -1;
     let closeTimer = null;
 
+    const VISIBLE_DROPDOWN = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;top:44px !important;left:0 !important;right:0 !important;';
+    const VISIBLE_BACKDROP = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;inset:0 !important;';
+
     function openDropdown(idx) {
       clearTimeout(closeTimer);
       if (openIdx === idx) return;
       closeAll(true);
       openIdx = idx;
+      dropdowns[idx].setAttribute('style', VISIBLE_DROPDOWN);
       dropdowns[idx].classList.add('is-open');
+      backdrop.setAttribute('style', VISIBLE_BACKDROP);
       backdrop.classList.add('is-open');
       const link = links.querySelector('[data-idx="' + idx + '"]');
       if (link) link.classList.add('is-open');
@@ -447,8 +457,12 @@
 
     function closeAll(immediate) {
       const fn = () => {
-        dropdowns.forEach(d => d.classList.remove('is-open'));
+        dropdowns.forEach(d => {
+          d.classList.remove('is-open');
+          d.setAttribute('style', HIDDEN_STYLE);
+        });
         backdrop.classList.remove('is-open');
+        backdrop.setAttribute('style', HIDDEN_STYLE);
         links.querySelectorAll('.lm-nav-link').forEach(l => l.classList.remove('is-open'));
         openIdx = -1;
       };
@@ -473,10 +487,18 @@
       if (e.key === 'Escape') closeAll(true);
     });
 
+    const VISIBLE_MOBILE = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;top:44px !important;left:0 !important;right:0 !important;bottom:0 !important;overflow-y:auto !important;';
+
     // Mobile burger
     burger.addEventListener('click', () => {
       const open = !mobile.classList.contains('is-open');
-      mobile.classList.toggle('is-open', open);
+      if (open) {
+        mobile.setAttribute('style', VISIBLE_MOBILE);
+        mobile.classList.add('is-open');
+      } else {
+        mobile.setAttribute('style', HIDDEN_STYLE);
+        mobile.classList.remove('is-open');
+      }
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
@@ -486,6 +508,7 @@
     mobile.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         mobile.classList.remove('is-open');
+        mobile.setAttribute('style', HIDDEN_STYLE);
         burger.classList.remove('is-open');
         document.body.style.overflow = '';
       });
