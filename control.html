@@ -1293,12 +1293,14 @@ function renderOverview(){
     ? `${Math.round(100*onbCount/STATE.customers.length)}% of customers` : 'none yet';
 
   const paid = STATE.transactions.filter(t => t.status === 'paid');
-  const ytd = paid.filter(t => new Date(t.date).getFullYear() === new Date().getFullYear())
-                  .reduce((s,t) => s + Number(t.amount||0), 0);
+  const totalAllTime = paid.reduce((s,t) => s + Number(t.amount||0), 0);
   const recurring = paid.filter(t => /monthly|brief|strategy-os/i.test(t.item||''));
   const mrr = recurring.reduce((s,t) => s + (Number(t.amount)||0) / (/(annual)/i.test(t.item||'') ? 12 : 1), 0);
   document.getElementById('ov-mrr').textContent = fmtMoney(Math.round(mrr));
-  document.getElementById('ov-rev').textContent = fmtMoney(ytd);
+  document.getElementById('ov-rev').textContent = fmtMoney(totalAllTime);
+  // Surface count of paid transactions in MRR delta
+  const mrrD = document.getElementById('ov-mrr-d');
+  if (mrrD) mrrD.textContent = mrr > 0 ? 'recurring' : `${paid.length} paid · projects`;
 
   // Mix
   const by = {};
