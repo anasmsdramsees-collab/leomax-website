@@ -763,6 +763,44 @@ const SEED_CUSTOMERS = [
       stage: 'Active',
       notes: 'Founder venture — LEOMAX-built positioning, membership flow, and ops.'
     }
+  },
+  {
+    id: 'client_madar',
+    name: 'MADAR Logistics',
+    email: 'team@madar.sa',
+    company: 'MADAR',
+    vertical: 'logistics',
+    plan: 'Launch System (90 days)',
+    mrr: 0,
+    ltv: 95000,
+    createdAt: '2025-03-10T10:00:00Z',
+    data: {
+      onboardingComplete: true,
+      engagement: '90-day Launch System — research → MVP → go-live',
+      industry: 'Logistics / last-mile',
+      hq: 'Riyadh, KSA',
+      stage: 'Completed',
+      notes: 'From idea to revenue in 90 days. Operational integrations live on Day 1.'
+    }
+  },
+  {
+    id: 'client_lanova',
+    name: 'LANOVA',
+    email: 'office@lanova.sa',
+    company: 'LANOVA',
+    vertical: 'logistics',
+    plan: 'Advisory retainer (monthly)',
+    mrr: 12500,
+    ltv: 37500,
+    createdAt: '2026-03-01T10:00:00Z',
+    data: {
+      onboardingComplete: true,
+      engagement: 'Active monthly advisory retainer — currently 3 months in',
+      industry: 'Logistics / specialty operations',
+      hq: 'Riyadh, KSA',
+      stage: 'Active subscriber',
+      notes: 'Current ongoing engagement. Monthly retainer SAR 12,500.'
+    }
   }
 ];
 
@@ -831,6 +869,58 @@ const SEED_TRANSACTIONS = [
     method: 'bank',
     notes: 'Brand & positioning sprint',
     date: '2025-01-15T10:00:00Z'
+  },
+  // MADAR — Launch System (90 days, 2 milestones)
+  {
+    id: 'tx_seed_madar_1',
+    customer: 'MADAR Logistics',
+    item: 'launch',
+    amount: 47500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Launch System — kickoff milestone (50%)',
+    date: '2025-03-10T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_madar_2',
+    customer: 'MADAR Logistics',
+    item: 'launch',
+    amount: 47500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Launch System — go-live milestone (50%)',
+    date: '2025-06-05T10:00:00Z'
+  },
+  // LANOVA — Active monthly advisory retainer (3 months running)
+  {
+    id: 'tx_seed_lanova_1',
+    customer: 'LANOVA',
+    item: 'advisory-monthly',
+    amount: 12500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Advisory retainer — month 1 of 3',
+    date: '2026-03-01T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_lanova_2',
+    customer: 'LANOVA',
+    item: 'advisory-monthly',
+    amount: 12500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Advisory retainer — month 2 of 3',
+    date: '2026-04-01T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_lanova_3',
+    customer: 'LANOVA',
+    item: 'advisory-monthly',
+    amount: 12500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Advisory retainer — month 3 (current)',
+    date: '2026-05-01T10:00:00Z'
   }
 ];
 
