@@ -44,9 +44,10 @@ function openCalendly(){
   return false;
 }
 </script>
-<!-- monochrome.css — load non-blocking (homepage has inline CSS already) -->
-<link rel="preload" href="monochrome.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="monochrome.css"></noscript>
+<!-- monochrome.css — blocking load (image sizing depends on it) -->
+<link rel="stylesheet" href="monochrome.css">
+<!-- Safety net: ensure images respect container even if CSS is briefly delayed -->
+<style>img{max-width:100%;height:auto}</style>
 <meta name="description" content="Saudi business development - engineered for results. Three clear paths: BD & enterprise access, investor readiness, and operating systems built in 90 days.">
 <link rel="preconnect" href="https://assets.calendly.com">
 <link rel="preconnect" href="https://calendly.com">
