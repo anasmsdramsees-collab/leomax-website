@@ -1,14 +1,6 @@
-/* ============================================================
-   LEOMAX — Apple-style global navigation
-   - Injects a shared <nav> on every page that loads this script
-   - Mega-menu dropdowns (Systems, Services, Resources, Company)
-   - Mobile: hamburger -> full-screen overlay
-   - Hides any pre-existing <nav> so we don't double-up
-   ============================================================ */
+
 (function () {
   'use strict';
-
-  /* ─── Menu definition ─────────────────────────────────── */
   const MENU = [
     {
       label: 'Systems',
@@ -103,14 +95,10 @@
       ]
     }
   ];
-
-  /* ─── Account links (right side) ──────────────────────── */
   const ACCOUNT = [
     { name: 'Log in',   href: 'login.html' },
     { name: 'Sign up',  href: 'signup.html' },
   ];
-
-  /* ─── Styles ──────────────────────────────────────────── */
   const STYLE = `
   .lm-nav-host, .lm-nav-host *, .lm-nav-host *::before, .lm-nav-host *::after { box-sizing: border-box; }
   .lm-nav-host { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; }
@@ -127,10 +115,6 @@
   .lm-nav-account a:hover { background: transparent !important; color: #f5f5f7 !important; opacity: 1 !important; }
   .lm-nav-cta { background: #0071e3 !important; color: #FFFFFF !important; text-decoration: none !important; font-size: 12px !important; font-weight: 400 !important; padding: 6px 14px !important; border-radius: 980px !important; transition: background .2s !important; letter-spacing: -.005em !important; margin-left: 10px !important; text-transform: none !important; line-height: 1 !important; opacity: 1 !important; }
   .lm-nav-cta:hover { background: #0077ed !important; color: #FFFFFF !important; opacity: 1 !important; }
-
-  /* Dropdown panel — Apple dark glass. display:none as defensive default
-     so even if position:fixed gets stripped by a parent rule the content
-     stays hidden until JS adds .is-open. */
   .lm-dropdown { display: none !important; position: fixed !important; top: 44px !important; left: 0 !important; right: 0 !important; background: rgba(29,29,31,.92) !important; backdrop-filter: saturate(180%) blur(24px) !important; -webkit-backdrop-filter: saturate(180%) blur(24px) !important; border-bottom: none !important; transform: translateY(-8px) !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease, transform .25s ease !important; z-index: 8999 !important; visibility: hidden !important; }
   .lm-dropdown.is-open { display: block !important; opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; visibility: visible !important; }
   .lm-dropdown-inner { max-width: 1200px !important; margin: 0 auto !important; padding: 32px 28px 36px !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 64px !important; }
@@ -142,22 +126,14 @@
   .lm-dropdown-name { display: flex !important; align-items: center !important; gap: 10px !important; font-size: 24px !important; font-weight: 500 !important; letter-spacing: -.018em !important; line-height: 1.2 !important; color: #f5f5f7 !important; }
   .lm-dropdown-flag { font-size: 10px !important; font-weight: 500 !important; letter-spacing: -.005em !important; text-transform: none !important; color: #2997ff !important; background: rgba(41,151,255,.15) !important; padding: 3px 8px !important; border-radius: 980px !important; }
   .lm-dropdown-desc { font-size: 12px !important; color: #86868b !important; margin-top: 2px !important; letter-spacing: -.005em !important; }
-
-  /* Backdrop */
   .lm-backdrop { display: none !important; position: fixed !important; inset: 0 !important; background: rgba(0,0,0,.15) !important; z-index: 8998 !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease !important; visibility: hidden !important; }
   .lm-backdrop.is-open { display: block !important; opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; }
-
-  /* Mobile hamburger */
   .lm-burger { display: none; background: transparent !important; border: none !important; padding: 8px !important; cursor: pointer !important; color: #f5f5f7 !important; }
   .lm-burger span { display: block !important; width: 18px !important; height: 1.5px !important; background: #f5f5f7 !important; margin: 4px 0 !important; transition: transform .25s, opacity .15s !important; }
   .lm-burger.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
   .lm-burger.is-open span:nth-child(2) { opacity: 0; }
   .lm-burger.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
-
-  /* Spacer so page content doesn't slip under fixed nav */
   .lm-nav-spacer { height: 44px; width: 100%; }
-
-  /* Mobile (<= 900px) - Apple-style accordion drawer */
   @media (max-width: 900px) {
     .lm-nav-links, .lm-nav-account a { display: none; }
     .lm-nav-account a.lm-nav-cta { display: none; }
@@ -242,8 +218,6 @@
     .lm-mobile-cta:hover, .lm-mobile-cta:active { background: #0077ed !important; opacity: 1 !important; }
   }
   `;
-
-  /* ─── Render ──────────────────────────────────────────── */
   function el(tag, attrs, children) {
     const e = document.createElement(tag);
     if (attrs) {
@@ -263,10 +237,8 @@
     }
     return e;
   }
-
   // Force-hidden inline styles - can't be overridden by any external CSS.
   const HIDDEN_STYLE = 'display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;position:fixed !important;top:-9999px !important;left:-9999px !important;';
-
   function buildDropdown(menu, idx) {
     const cols = menu.sections.map(section => {
       const items = section.items.map(it => {
@@ -288,7 +260,6 @@
     ]);
     return dropdown;
   }
-
   function chevronSvg() {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'lm-chevron');
@@ -303,7 +274,6 @@
     svg.appendChild(p);
     return svg;
   }
-
   function buildMobile() {
     const sections = MENU.map(menu => {
       // Body: rendered sub-sections with sub-headers + items
@@ -322,12 +292,10 @@
       const body = el('div', { class: 'lm-mobile-section-body' },
         el('div', { class: 'lm-mobile-section-body-inner' }, bodyChildren)
       );
-
       const head = el('button', { class: 'lm-mobile-section-head', type: 'button' }, [
         document.createTextNode(menu.label),
         chevronSvg()
       ]);
-
       const sec = el('div', { class: 'lm-mobile-section' }, [head, body]);
       head.addEventListener('click', () => {
         const open = sec.classList.toggle('is-expanded');
@@ -340,7 +308,6 @@
       });
       return sec;
     });
-
     // Account section (last)
     const accountBody = [];
     ACCOUNT.forEach(a => {
@@ -364,19 +331,15 @@
       }
     });
     sections.push(accountSec);
-
     // Pinned sticky CTA at the bottom
     const cta = el('div', { class: 'lm-mobile-cta-wrap' },
       el('a', { class: 'lm-mobile-cta', href: 'company-contact.html' }, 'Book a Call')
     );
-
     return el('div', { class: 'lm-mobile' }, [...sections, cta]);
   }
-
   function init() {
     // Remove any pre-existing <nav> from the page so we don't double-stack.
     document.querySelectorAll('body > nav, body > header > nav').forEach(n => n.remove());
-
     // Inject styles
     if (!document.getElementById('lm-nav-style')) {
       const s = document.createElement('style');
@@ -384,28 +347,23 @@
       s.textContent = STYLE;
       document.head.appendChild(s);
     }
-
     // Host wrapper so our CSS scoping is safe
     const host = el('div', { class: 'lm-nav-host' });
-
     // Top bar
     const links = el('ul', { class: 'lm-nav-links' });
     MENU.forEach((m, i) => {
       const a = el('a', { class: 'lm-nav-link', href: m.href, 'data-idx': i }, m.label);
       links.appendChild(el('li', null, a));
     });
-
     const account = el('div', { class: 'lm-nav-account' }, [
       ...ACCOUNT.map(a => el('a', { href: a.href }, a.name)),
       el('a', { class: 'lm-nav-cta', href: 'company-contact.html' }, 'Book a Call')
     ]);
-
     const burger = el('button', {
       class: 'lm-burger',
       'aria-label': 'Menu',
       'aria-expanded': 'false'
     }, [el('span'), el('span'), el('span')]);
-
     const bar = el('div', { class: 'lm-nav-bar' }, [
       el('a', { class: 'lm-nav-logo', href: 'LEOMAX_Website_Design.html' },
         el('img', { src: 'logo.png', alt: 'LEOMAX' })),
@@ -413,36 +371,26 @@
       account,
       burger
     ]);
-
     const nav = el('nav', { class: 'lm-nav' }, bar);
     host.appendChild(nav);
-
     // Dropdowns
     const dropdowns = MENU.map((m, i) => buildDropdown(m, i));
     dropdowns.forEach(d => host.appendChild(d));
-
     // Backdrop — force-hidden inline so nothing can override
     const backdrop = el('div', { class: 'lm-backdrop', style: HIDDEN_STYLE });
     host.appendChild(backdrop);
-
     // Mobile drawer — force-hidden inline
     const mobile = buildMobile();
     mobile.setAttribute('style', HIDDEN_STYLE);
     host.appendChild(mobile);
-
     // Spacer to push content below fixed nav
     const spacer = el('div', { class: 'lm-nav-spacer' });
-
     document.body.insertBefore(host, document.body.firstChild);
     document.body.insertBefore(spacer, host.nextSibling);
-
-    /* ─── Behaviour ─────────────────────────────────────── */
     let openIdx = -1;
     let closeTimer = null;
-
     const VISIBLE_DROPDOWN = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;top:44px !important;left:0 !important;right:0 !important;';
     const VISIBLE_BACKDROP = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;inset:0 !important;';
-
     function openDropdown(idx) {
       clearTimeout(closeTimer);
       if (openIdx === idx) return;
@@ -455,7 +403,6 @@
       const link = links.querySelector('[data-idx="' + idx + '"]');
       if (link) link.classList.add('is-open');
     }
-
     function closeAll(immediate) {
       const fn = () => {
         dropdowns.forEach(d => {
@@ -470,7 +417,6 @@
       if (immediate) fn();
       else closeTimer = setTimeout(fn, 120);
     }
-
     // Hover open + intent-to-close delay (Apple-like)
     links.querySelectorAll('.lm-nav-link').forEach(link => {
       const idx = parseInt(link.getAttribute('data-idx'), 10);
@@ -482,14 +428,11 @@
       d.addEventListener('mouseenter', () => clearTimeout(closeTimer));
       d.addEventListener('mouseleave', () => closeAll(false));
     });
-
     backdrop.addEventListener('click', () => closeAll(true));
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeAll(true);
     });
-
     const VISIBLE_MOBILE = 'display:block !important;visibility:visible !important;opacity:1 !important;pointer-events:auto !important;position:fixed !important;top:44px !important;left:0 !important;right:0 !important;bottom:0 !important;overflow-y:auto !important;';
-
     // Mobile burger
     burger.addEventListener('click', () => {
       const open = !mobile.classList.contains('is-open');
@@ -504,7 +447,6 @@
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
     });
-
     // Close mobile on link click
     mobile.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
@@ -515,7 +457,6 @@
       });
     });
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
