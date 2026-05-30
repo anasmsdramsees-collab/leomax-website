@@ -766,6 +766,74 @@ const SEED_CUSTOMERS = [
   }
 ];
 
+// Real transactions for seeded LEOMAX consulting clients
+// These power the Financials tab and overview MRR/revenue stats
+const SEED_TRANSACTIONS = [
+  // Autopoint — BD Enablement + Growth System (split into 2 milestones)
+  {
+    id: 'tx_seed_autopoint_1',
+    customer: 'Autopoint',
+    item: 'growth',
+    amount: 32500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Growth System — kickoff milestone (50%)',
+    date: '2025-09-12T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_autopoint_2',
+    customer: 'Autopoint',
+    item: 'growth',
+    amount: 32500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Growth System — delivery milestone (50%)',
+    date: '2025-11-20T10:00:00Z'
+  },
+  // The Garage — Launch System (90 days) split 50/50
+  {
+    id: 'tx_seed_garage_1',
+    customer: 'The Garage',
+    item: 'launch',
+    amount: 47500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Launch System — kickoff milestone (50%)',
+    date: '2025-06-05T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_garage_2',
+    customer: 'The Garage',
+    item: 'launch',
+    amount: 47500,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Launch System — delivery milestone (50%)',
+    date: '2025-08-30T10:00:00Z'
+  },
+  // KBC — Advisory + Brand (one-time)
+  {
+    id: 'tx_seed_kbc_1',
+    customer: 'Khartoum Business Club',
+    item: 'advisory',
+    amount: 25000,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Advisory retainer — Q4 2024',
+    date: '2024-11-20T10:00:00Z'
+  },
+  {
+    id: 'tx_seed_kbc_2',
+    customer: 'Khartoum Business Club',
+    item: 'marketing',
+    amount: 20000,
+    status: 'paid',
+    method: 'bank',
+    notes: 'Brand & positioning sprint',
+    date: '2025-01-15T10:00:00Z'
+  }
+];
+
 async function sha256(text) {
   const buf = new TextEncoder().encode(text);
   const hashBuf = await crypto.subtle.digest('SHA-256', buf);
@@ -1035,23 +1103,33 @@ function deleteWaitlist(i){
 
 function exportWaitlistCSV(){ downloadCSV('waitlist.csv', STATE.waitlist, ['name','email','interest','source','status','addedAt','notes']); }
 
-// ===== FINANCIALS (via /admin/transactions OR localStorage fallback) =====
+// ===== FINANCIALS (seeded LEOMAX revenue + API transactions + localStorage fallback) =====
 async function loadTransactions(){
-  const tbody = document.getElementById('tx-tbody');
-  tbody.innerHTML = '<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  // Always start with the seeded historical transactions for real clients
+  let merged = [...SEED_TRANSACTIONS];
   try {
     const res = await fetch(LMAuth.API_BASE + '/admin/transactions', {
       headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
     });
     if (res.ok) {
       const data = await res.json();
-      STATE.transactions = data.transactions || [];
+      const apiTx = data.transactions || [];
+      const existingIds = new Set(merged.map(t => t.id));
+      apiTx.forEach(t => { if (!existingIds.has(t.id)) merged.push(t); });
     } else {
-      throw new Error('Endpoint not deployed');
+      // Fall back to localStorage
+      const ls = lsGet(LS_TX);
+      const existingIds = new Set(merged.map(t => t.id));
+      ls.forEach(t => { if (!existingIds.has(t.id)) merged.push(t); });
     }
   } catch (e) {
-    STATE.transactions = lsGet(LS_TX);
+    const ls = lsGet(LS_TX);
+    const existingIds = new Set(merged.map(t => t.id));
+    ls.forEach(t => { if (!existingIds.has(t.id)) merged.push(t); });
   }
+  // Sort most-recent first
+  merged.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+  STATE.transactions = merged;
   renderTransactions();
   renderFinancials();
   renderOverview();
