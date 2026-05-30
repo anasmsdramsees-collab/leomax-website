@@ -127,9 +127,11 @@
   .lm-nav-cta { background: #0071e3 !important; color: #FFFFFF !important; text-decoration: none !important; font-size: 12px !important; font-weight: 400 !important; padding: 6px 14px !important; border-radius: 980px !important; transition: background .2s !important; letter-spacing: -.005em !important; margin-left: 10px !important; text-transform: none !important; line-height: 1 !important; opacity: 1 !important; }
   .lm-nav-cta:hover { background: #0077ed !important; color: #FFFFFF !important; opacity: 1 !important; }
 
-  /* Dropdown panel — Apple dark glass */
-  .lm-dropdown { position: fixed !important; top: 44px !important; left: 0 !important; right: 0 !important; background: rgba(29,29,31,.92) !important; backdrop-filter: saturate(180%) blur(24px) !important; -webkit-backdrop-filter: saturate(180%) blur(24px) !important; border-bottom: none !important; transform: translateY(-8px) !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease, transform .25s ease !important; z-index: 8999 !important; }
-  .lm-dropdown.is-open { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
+  /* Dropdown panel — Apple dark glass. display:none as defensive default
+     so even if position:fixed gets stripped by a parent rule the content
+     stays hidden until JS adds .is-open. */
+  .lm-dropdown { display: none !important; position: fixed !important; top: 44px !important; left: 0 !important; right: 0 !important; background: rgba(29,29,31,.92) !important; backdrop-filter: saturate(180%) blur(24px) !important; -webkit-backdrop-filter: saturate(180%) blur(24px) !important; border-bottom: none !important; transform: translateY(-8px) !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease, transform .25s ease !important; z-index: 8999 !important; visibility: hidden !important; }
+  .lm-dropdown.is-open { display: block !important; opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; visibility: visible !important; }
   .lm-dropdown-inner { max-width: 1200px !important; margin: 0 auto !important; padding: 32px 28px 36px !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 64px !important; }
   .lm-dropdown-col h4 { font-size: 12px !important; font-weight: 500 !important; letter-spacing: -.005em !important; text-transform: none !important; color: #86868b !important; margin: 0 0 14px 0 !important; }
   .lm-dropdown-list { list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex !important; flex-direction: column !important; gap: 2px !important; }
@@ -141,8 +143,8 @@
   .lm-dropdown-desc { font-size: 12px !important; color: #86868b !important; margin-top: 2px !important; letter-spacing: -.005em !important; }
 
   /* Backdrop */
-  .lm-backdrop { position: fixed !important; inset: 0 !important; background: rgba(0,0,0,.15) !important; z-index: 8998 !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease !important; }
-  .lm-backdrop.is-open { opacity: 1 !important; pointer-events: auto !important; }
+  .lm-backdrop { display: none !important; position: fixed !important; inset: 0 !important; background: rgba(0,0,0,.15) !important; z-index: 8998 !important; opacity: 0 !important; pointer-events: none !important; transition: opacity .25s ease !important; visibility: hidden !important; }
+  .lm-backdrop.is-open { display: block !important; opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; }
 
   /* Mobile hamburger */
   .lm-burger { display: none; background: transparent !important; border: none !important; padding: 8px !important; cursor: pointer !important; color: #f5f5f7 !important; }
@@ -161,6 +163,7 @@
     .lm-burger { display: block; }
     .lm-nav-bar { padding: 0 20px; }
     .lm-mobile {
+      display: none !important;
       position: fixed !important; top: 44px !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
       background: rgba(29,29,31,.97) !important;
       backdrop-filter: saturate(180%) blur(24px) !important;
@@ -170,8 +173,9 @@
       transition: transform .35s cubic-bezier(.22,.61,.36,1) !important;
       overflow-y: auto !important; -webkit-overflow-scrolling: touch !important;
       padding: 8px 0 120px !important;
+      visibility: hidden !important;
     }
-    .lm-mobile.is-open { transform: translateY(0) !important; }
+    .lm-mobile.is-open { display: block !important; transform: translateY(0) !important; visibility: visible !important; }
     .lm-mobile-section {
       border-bottom: 1px solid rgba(255,255,255,.08) !important;
       overflow: hidden !important;
