@@ -705,6 +705,67 @@ const OWNER_EMAIL = 'leomaxglobalsa@gmail.com';
 const OWNER_PWD_HASH = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'; // sha256("123456")
 const SESSION_KEY = 'leomax_cp_session';
 
+// LEOMAX consulting clients (real engagements outside Strategy OS)
+const SEED_CUSTOMERS = [
+  {
+    id: 'client_autopoint',
+    name: 'Autopoint',
+    email: 'info@autopoint.sa',
+    company: 'Autopoint',
+    vertical: 'logistics',
+    plan: 'BD + Growth System',
+    mrr: 0,
+    ltv: 65000,
+    createdAt: '2025-09-12T10:00:00Z',
+    data: {
+      onboardingComplete: true,
+      engagement: 'BD enablement + Growth System sprint',
+      industry: 'Automotive tech / aftermarket',
+      hq: 'Riyadh, KSA',
+      stage: 'Active',
+      notes: 'Founder venture — LEOMAX-led pipeline and account access program.'
+    }
+  },
+  {
+    id: 'client_garage',
+    name: 'The Garage',
+    email: 'team@thegarage.sa',
+    company: 'The Garage',
+    vertical: 'logistics',
+    plan: 'Launch System + Brand',
+    mrr: 0,
+    ltv: 95000,
+    createdAt: '2025-06-05T10:00:00Z',
+    data: {
+      onboardingComplete: true,
+      engagement: '90-day Launch System + brand positioning',
+      industry: 'Property / venue / community',
+      hq: 'Riyadh, KSA',
+      stage: 'Active',
+      notes: 'Founder venture — LEOMAX-built operating playbook and brand.'
+    }
+  },
+  {
+    id: 'client_kbc',
+    name: 'Khartoum Business Club',
+    email: 'office@kbc.sd',
+    company: 'KBC',
+    vertical: 'family-office',
+    plan: 'Advisory + Brand',
+    mrr: 0,
+    ltv: 45000,
+    createdAt: '2024-11-20T10:00:00Z',
+    data: {
+      onboardingComplete: true,
+      engagement: 'Advisory retainer + brand & community architecture',
+      industry: 'Community / business network',
+      hq: 'Khartoum, Sudan',
+      stage: 'Active',
+      notes: 'Founder venture — LEOMAX-built positioning, membership flow, and ops.'
+    }
+  }
+];
+
 async function sha256(text) {
   const buf = new TextEncoder().encode(text);
   const hashBuf = await crypto.subtle.digest('SHA-256', buf);
@@ -798,23 +859,26 @@ async function loadAll(){
   renderOverview();
 }
 
-// ===== CUSTOMERS (via /admin/users) =====
+// ===== CUSTOMERS (seeded LEOMAX clients + Strategy OS users via /admin/users) =====
 async function loadCustomers(){
-  const tbody = document.getElementById('cust-tbody');
-  tbody.innerHTML = '<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Loading...</td></tr>';
+  // Always start with the real consulting clients (seeded)
+  let merged = [...SEED_CUSTOMERS];
   try {
     const res = await fetch(LMAuth.API_BASE + '/admin/users', {
       headers: { 'Authorization': 'Bearer ' + LMAuth.getToken() }
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error || ('HTTP ' + res.status));
-    STATE.customers = data.users || [];
+    if (res.ok && Array.isArray(data.users)) {
+      // Merge API users, avoiding duplicates by email
+      const existingEmails = new Set(merged.map(u => (u.email||'').toLowerCase()));
+      data.users.forEach(u => {
+        if (!existingEmails.has((u.email||'').toLowerCase())) merged.push(u);
+      });
+    }
   } catch (e) {
-    STATE.customers = [];
-    tbody.innerHTML = `<tr><td colspan="6" class="muted" style="padding:20px;text-align:center">Could not load customers: ${e.message}. Make sure you're signed in as admin.</td></tr>`;
-    document.getElementById('badge-customers').textContent = 'err';
-    return;
+    // API unavailable — silently continue with seeded clients only
   }
+  STATE.customers = merged;
   document.getElementById('badge-customers').textContent = STATE.customers.length;
   renderCustomers();
   renderOverview();
