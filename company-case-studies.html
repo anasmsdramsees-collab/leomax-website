@@ -157,17 +157,46 @@ img{max-width:100%;height:auto}
 }
 .cs-card.featured .cs-card-desc{font-size:16px;line-height:1.6}
 .cs-card-stats{
-  display:flex;gap:24px;padding-top:18px;
-  border-top:1px solid var(--apple-line);margin-top:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  padding-top:18px;
+  border-top:1px solid var(--apple-line);
+  margin-top:auto;
+}
+.cs-stat-cell{
+  min-width:0;
+  text-align:left;
+  overflow:hidden;
 }
 .cs-stat-cell .val{
-  font-size:18px;font-weight:600;letter-spacing:-.018em;
-  color:var(--apple-text);line-height:1;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-.012em;
+  color:var(--apple-text);
+  line-height:1.15;
+  word-break:keep-all;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .cs-stat-cell .lbl{
-  font-size:10px;font-weight:500;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--apple-muted);margin-top:4px;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--apple-muted);
+  margin-top:4px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
+.cs-card.featured .cs-card-stats{gap:24px}
+.cs-card.featured .cs-stat-cell .val{font-size:22px;letter-spacing:-.018em}
+.cs-card.featured .cs-stat-cell .lbl{font-size:11px}
+.cs-card-body{padding:24px 22px 26px;display:flex;flex-direction:column;flex:1;overflow:hidden}
+.cs-card.featured .cs-card-body{padding:48px}
 .cs-card-cta{
   display:inline-flex;align-items:center;gap:6px;font-size:14px;
   font-weight:500;color:var(--apple-blue);margin-top:16px;letter-spacing:-.012em;
