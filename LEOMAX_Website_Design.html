@@ -826,7 +826,7 @@ function openCalendly(){
   </div>
 
   <style>
-    .home-sys-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px;max-width:1500px;margin:60px auto 40px;padding:0 24px}
+    .home-sys-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;max-width:1440px;margin:60px auto 40px;padding:0 24px}
     .home-sys-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1);position:relative}
     .home-sys-card:hover{transform:translateY(-8px)}
     .home-sys-product{position:relative;overflow:hidden;background:radial-gradient(ellipse 100% 80% at 50% 40%,rgba(157,181,207,.12) 0%,rgba(157,181,207,.04) 40%,transparent 80%),linear-gradient(180deg,#1A2A3F 0%,#0D1A2D 100%);border:1px solid rgba(184,184,184,.12);padding:24px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
@@ -881,17 +881,97 @@ function openCalendly(){
       <div class="home-sys-tag">Idea to revenue. 90 days.</div>
       <span class="home-sys-cta">Open →</span>
     </a>
-    <a class="home-sys-card" href="strategy-os.html">
-      <div class="home-sys-product"><img src="system-product-strategy-os.png" alt="LEOMAX Strategy OS"></div>
-      <div class="home-sys-num">SYSTEM · 06 · FLAGSHIP</div>
-      <div class="home-sys-name">Strategy OS</div>
-      <div class="home-sys-tag">Decisions, engineered.</div>
-      <span class="home-sys-cta">Open →</span>
-    </a>
   </div>
 
   <div style="text-align:center;padding:8px 0 60px">
     <a href="systems.html" style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);text-decoration:none;padding:14px 28px;border:1px solid rgba(184,184,184,.25);transition:.2s;display:inline-block" onmouseover="this.style.borderColor='var(--silver)';this.style.color='var(--white)'" onmouseout="this.style.borderColor='rgba(184,184,184,.25)';this.style.color='var(--silver)'">Compare all systems →</a>
+  </div>
+</section>
+
+<!--  STRATEGY OS + BRIEF — subscriptional layer  -->
+<section style="background:#010B1C;color:#FFFFFF;padding:120px 64px;position:relative;overflow:hidden">
+  <style>
+    .sub-layer-head{text-align:center;max-width:760px;margin:0 auto 64px}
+    .sub-layer-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9DB5CF;padding:6px 14px;border:1px solid rgba(157,181,207,.3);border-radius:980px;margin-bottom:24px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+    .sub-layer-title{font-size:clamp(36px,5vw,60px);font-weight:600;letter-spacing:-.026em;color:#FFFFFF;line-height:1.05;margin-bottom:18px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+    .sub-layer-sub{font-size:17px;color:#8FA8BE;line-height:1.6;letter-spacing:-.005em;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;font-weight:400;max-width:580px;margin:0 auto}
+    .sub-pair{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;max-width:1280px;margin:0 auto;align-items:stretch}
+    .sub-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px;transition:all .35s cubic-bezier(.22,.61,.36,1);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;position:relative;overflow:hidden}
+    .sub-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(157,181,207,.4) 50%,transparent 100%)}
+    .sub-card:hover{transform:translateY(-4px);border-color:rgba(157,181,207,.25);background:rgba(255,255,255,.04)}
+    .sub-card-eb{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9DB5CF;margin-bottom:20px;font-family:'SF Mono',ui-monospace,monospace}
+    .sub-card-title{font-size:clamp(28px,2.4vw,36px);font-weight:600;letter-spacing:-.024em;color:#FFFFFF;line-height:1.1;margin-bottom:14px}
+    .sub-card-tag{font-size:15px;color:#8FA8BE;font-style:italic;margin-bottom:24px;letter-spacing:-.005em;font-weight:300}
+    .sub-card-desc{font-size:14px;color:#B8C7D5;line-height:1.65;letter-spacing:-.005em;margin-bottom:28px;font-weight:400}
+    .sub-card-bullets{list-style:none;padding:0;margin:0 0 32px 0;flex:1}
+    .sub-card-bullets li{font-size:13px;color:#D6E0EC;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;align-items:flex-start;letter-spacing:-.005em;line-height:1.45}
+    .sub-card-bullets li:last-child{border-bottom:none}
+    .sub-card-bullets li::before{content:'';width:5px;height:5px;background:#9DB5CF;border-radius:50%;flex-shrink:0;margin-top:7px}
+    .sub-card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);margin-top:auto}
+    .sub-card-price{font-size:20px;font-weight:600;letter-spacing:-.022em;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+    .sub-card-price small{font-size:13px;font-weight:400;color:#8FA8BE;letter-spacing:-.005em;margin-left:4px}
+    .sub-card-cta{font-size:13px;font-weight:500;letter-spacing:-.005em;color:#9DB5CF;border-bottom:1px solid rgba(157,181,207,.4);padding-bottom:2px}
+    .sub-card:hover .sub-card-cta{color:#FFFFFF;border-bottom-color:#FFFFFF}
+    .sub-card-product{aspect-ratio:1/1;background:radial-gradient(ellipse 100% 80% at 50% 40%,rgba(157,181,207,.12) 0%,rgba(157,181,207,.04) 40%,transparent 80%),linear-gradient(180deg,#1A2A3F 0%,#0D1A2D 100%);border:1px solid rgba(184,184,184,.12);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;margin-bottom:24px;position:relative;overflow:hidden}
+    .sub-card-product::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 30% at 50% 95%,rgba(157,181,207,.18) 0%,transparent 70%);pointer-events:none;border-radius:16px}
+    .sub-card-product img{max-width:100%;max-height:100%;object-fit:contain;display:block;position:relative;z-index:1;filter:drop-shadow(0 16px 32px rgba(0,0,0,.5))}
+    @media(max-width:900px){.sub-pair{grid-template-columns:1fr;gap:20px}section[style*="background:#010B1C"]{padding:80px 24px !important}.sub-card{padding:32px 24px}}
+  </style>
+
+  <div class="sub-layer-head">
+    <span class="sub-layer-tag">● Subscriptional · The Recurring Layer</span>
+    <h2 class="sub-layer-title">Ongoing intelligence, on subscription.</h2>
+    <p class="sub-layer-sub">
+      Two products that compound between engagements. The system you log into,
+      and the brief that lands in your inbox.
+    </p>
+  </div>
+
+  <div class="sub-pair">
+
+    <a class="sub-card" href="strategy-os.html">
+      <div class="sub-card-product"><img src="system-product-strategy-os.png" alt="LEOMAX Strategy OS"></div>
+      <div class="sub-card-eb">FLAGSHIP · STRATEGY OS</div>
+      <h3 class="sub-card-title">Strategy OS</h3>
+      <p class="sub-card-tag">Decisions, engineered.</p>
+      <p class="sub-card-desc">
+        The vertical Strategy OS for Saudi operators. Dashboard, decision agent,
+        and weekly briefs - all tailored to your sector. Sign in, set your
+        vertical, get answers.
+      </p>
+      <ul class="sub-card-bullets">
+        <li>Personalized dashboard per vertical</li>
+        <li>Decision agent that recommends, not just reports</li>
+        <li>Weekly brief built around your business</li>
+        <li>Monthly call with Anas</li>
+      </ul>
+      <div class="sub-card-foot">
+        <span class="sub-card-price">SAR 599<small>/ mo</small></span>
+        <span class="sub-card-cta">Open Strategy OS →</span>
+      </div>
+    </a>
+
+    <a class="sub-card" href="brief.html">
+      <div class="sub-card-eb" style="margin-bottom:20px">SUBSCRIPTION · THE BRIEF</div>
+      <h3 class="sub-card-title">The LEOMAX Brief</h3>
+      <p class="sub-card-tag">Vertical intelligence, every Sunday.</p>
+      <p class="sub-card-desc">
+        The companion to Strategy OS. Pick your vertical - Family Office,
+        Logistics, F&amp;B, or Healthcare - and get one sharp strategic take
+        delivered every Sunday at 7AM.
+      </p>
+      <ul class="sub-card-bullets">
+        <li>One 4-6 page brief per week, named players, real numbers</li>
+        <li>Audio version for the drive in</li>
+        <li>Monthly subscriber call per vertical</li>
+        <li>WhatsApp community of subscribers only</li>
+      </ul>
+      <div class="sub-card-foot">
+        <span class="sub-card-price">SAR 599<small>/ mo</small></span>
+        <span class="sub-card-cta">See pricing →</span>
+      </div>
+    </a>
+
   </div>
 </section>
 
