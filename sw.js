@@ -1,11 +1,11 @@
 // LEOMAX Service Worker — aggressive caching for performance
 // Bump version on every meaningful asset change.
-const CACHE_NAME = 'leomax-v44';
+const CACHE_NAME = 'leomax-v45';
 
 // Minimal install — pre-cache only the homepage + critical assets.
 // Everything else gets cached on first visit (cache-first runtime).
 const PRECACHE = [
-  './LEOMAX_Website_Design.html',
+  './',
   './monochrome.css',
   './leomax-nav.js',
   './manifest.json',
@@ -56,7 +56,7 @@ self.addEventListener('fetch', event => {
           caches.open(CACHE_NAME).then(cache => cache.put(req, clone)).catch(()=>{});
         }
         return resp;
-      }).catch(() => caches.match(req).then(m => m || caches.match('./LEOMAX_Website_Design.html')))
+      }).catch(() => caches.match(req).then(m => m || caches.match('./')))
     );
   } else {
     // Cache-first for everything else (images, CSS, JS, fonts)
