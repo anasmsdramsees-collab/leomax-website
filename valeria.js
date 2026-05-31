@@ -22,7 +22,7 @@
   var CHAT_WORKER_URL = 'https://leomax-valeria-chat.anas-msd-ramsees.workers.dev';
   var HAS_AI = CHAT_WORKER_URL && CHAT_WORKER_URL !== 'PASTE_YOUR_WORKER_URL_HERE';
 
-  var AVATAR_URL = 'team/valeria-moreno.png';
+  var AVATAR_URL = 'team/valeria-moreno.jpg';
   var STORAGE_KEY = 'leomax_valeria_v1';
   var MAX_HISTORY = 30; // keep last 30 turns in context
 
