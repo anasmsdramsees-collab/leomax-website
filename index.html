@@ -547,11 +547,31 @@ const obs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.stats').forEach(el=>obs.observe(el));
 </script>
 
-<script defer src="valeria.js"></script>
-
-<script defer src="motion.js"></script>
-<script defer src="apple-feel.js"></script>
-<script defer src="business-hours.js"></script>
+<!-- Nav loads with defer (renders nav bar) -->
 <script defer src="leomax-nav.js"></script>
+
+<!-- Non-critical scripts: load idle after first paint to reduce TBT -->
+<script>
+(function(){
+  function load(src){
+    var s=document.createElement('script');
+    s.src=src;s.async=true;
+    document.body.appendChild(s);
+  }
+  function loadAll(){
+    load('motion.js');
+    load('apple-feel.js');
+    load('business-hours.js');
+    load('valeria.js');
+  }
+  if('requestIdleCallback' in window){
+    window.addEventListener('load',function(){
+      requestIdleCallback(loadAll,{timeout:3000});
+    });
+  } else {
+    window.addEventListener('load',function(){setTimeout(loadAll,1500);});
+  }
+})();
+</script>
 </body>
 </html>
